@@ -1,0 +1,92 @@
+<!--
+ Copyright (c) 2004-2022 Michael G. Brehm
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+-->
+
+<Project DefaultTargets="all" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <PackageVersion></PackageVersion>         <!-- Set by PackageVersion Target; may override on the command line -->
+    <Configuration>Release</Configuration>
+  </PropertyGroup>
+
+  <!-- Generates tmp\version\version.txt file and populates the PackageVersion property if not specified -->
+  <Target Name="PackageVersion">
+
+    <MSBuild Projects="src\version\version.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Rebuild" ContinueOnError="false"/>
+    <CreateProperty Condition="'$(PackageVersion)'==''" Value="$([System.IO.File]::ReadAllText('tmp\version\version.txt'))">
+      <Output TaskParameter="Value" PropertyName="PackageVersion" />
+    </CreateProperty>
+
+    <Message Importance="high" Text="PackageVersion = $(PackageVersion)"/>
+
+  </Target>
+
+  <!-- BUILD: WINDOWS-X86 -->
+  <Target Name="windows-x86" DependsOnTargets="PackageVersion">
+
+    <MakeDir Directories="out" ContinueOnError="false"/>
+
+    <MSBuild Targets="Restore" Projects="src\ronin\ronin.csproj" Properties="SolutionDir=$(MSBuildThisFileDirectory);RestorePackagesConfig=true"/>
+    <MSBuild Projects="src\findvcmsms\findvcmsms.csproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\ronin.database\ronin.database.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\ronin\ronin.csproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\setup.findvcmsms\setup.findvcmsms.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\setup\setup.wixproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
+
+    <ItemGroup>
+      <PackagesX86 Include="bin\Release\x86\ronin.msi"/>
+    </ItemGroup>
+
+    <Move SourceFiles="@(PackagesX86)" DestinationFiles="@(PackagesX86->Replace('.msi', '-$(PackageVersion)-x86.msi'))">
+      <Output TaskParameter="MovedFiles" ItemName="PackagesX86_1"/>
+    </Move>
+
+    <Copy SourceFiles="@(PackagesX86_1)" DestinationFolder="out"/>
+
+  </Target>
+
+  <!-- BUILD: WINDOWS-X64 -->
+  <Target Name="windows-x64" DependsOnTargets="PackageVersion">
+
+    <MakeDir Directories="out" ContinueOnError="false"/>
+
+    <MSBuild Targets="Restore" Projects="src\ronin\ronin.csproj" Properties="SolutionDir=$(MSBuildThisFileDirectory);RestorePackagesConfig=true"/>
+    <MSBuild Projects="src\findvcmsms\findvcmsms.csproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\ronin.database\ronin.database.vcxproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\ronin\ronin.csproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\setup.findvcmsms\setup.findvcmsms.vcxproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\setup\setup.wixproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+
+    <ItemGroup>
+      <PackagesX64 Include="bin\Release\x64\ronin.msi"/>
+    </ItemGroup>
+
+    <Move SourceFiles="@(PackagesX64)" DestinationFiles="@(PackagesX64->Replace('.msi', '-$(PackageVersion)-x64.msi'))">
+      <Output TaskParameter="MovedFiles" ItemName="PackagesX64_1"/>
+    </Move>
+
+    <Copy SourceFiles="@(PackagesX64_1)" DestinationFolder="out"/>
+
+  </Target>
+
+  <Target Name="all" DependsOnTargets="windows-x86;windows-x64"/>
+
+</Project>

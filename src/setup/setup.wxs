@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <!-- Version -->
+  <?include $(var.ProjectDir)..\..\tmp\version\version.wxi ?>
+
+  <!-- Build Environment -->
+  <?include $(var.ProjectDir)buildenv.wxi ?>
+
+  <Product Id="$(var.ProjectGuid)"
+    Name="RONIN"
+    Language="1033"
+    Version="$(var.ProjectVersion.4)"
+    Manufacturer="ZukiSoft"
+    UpgradeCode="A6B5B867-66FF-49A9-828C-304D26EC1CE6"> <!-- NEVER CHANGE THE UPGRADE CODE -->
+
+    <Package InstallerVersion="405" Compressed="yes" InstallPrivileges="elevated" InstallScope="perMachine" Platform="$(var.Platform)"/>
+    
+    <Media Id="1" Cabinet="ronin.cab" EmbedCab="yes" />
+
+    <!-- UPGRADES -->
+    <MajorUpgrade DowngradeErrorMessage="A later version of RONIN has been installed. Please uninstall that version before running RONIN setup."/>
+
+    <!-- DISALLOW ADVERTISED SHORTCUTS -->
+    <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
+
+    <!-- DISALLOW CHANGE OPTION -->
+    <Property Id="ARPNOMODIFY" Value="1" />
+
+    <!-- ENVIRONMENTAL CONDITION: Windows 10 or higher -->
+    <Condition Message='RONIN requires Microsoft Windows 10 (or higher).'>
+      (VersionNT >= 603)
+    </Condition>
+
+    <!-- CLOSE APPLICATION PRIOR TO INSTALL/UNINSTALL -->
+    <util:CloseApplication Id="ronin_close" CloseMessage="yes" Target="ronin.exe" RebootPrompt="no" TerminateProcess="1"/>
+
+    <!-- ENVIRONMENTAL CONDITION: Microsoft .NET 4.8 -->
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_480_OR_LATER_INSTALLED"/>
+    <Condition Message="The Microsoft .NET Framework version 4.8 is not installed. Please install before installing RONIN.">
+      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_480_OR_LATER_INSTALLED]]>
+    </Condition>
+
+    <!-- LAUNCH APPLICATION AFTER INSTALLATION -->
+    <!-- https://wixtoolset.org/documentation/manual/v3/howtos/ui_and_localization/run_program_after_install.html -->
+    
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch RONIN" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>
+    <Property Id="WixShellExecTarget" Value="[#ronin.exe]" />
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <?if $(var.Platform) = "x86" ?>
+        <!-- C:\Program Files (x86)\ZukiSoft\RONIN -->
+        <Directory Id="ProgramFilesFolder">
+          <Directory Id="ZukiSoftBinFolder" Name="ZukiSoft">
+            <Directory Id="RONINBinFolder" Name="RONIN"/>
+          </Directory>
+        </Directory>
+      <?else?>
+        <!-- C:\Program Files\ZukiSoft\RONIN -->
+        <Directory Id="ProgramFiles64Folder">
+          <Directory Id="ZukiSoftBinFolder" Name="ZukiSoft">
+            <Directory Id="RONINBinFolder" Name="RONIN"/>
+          </Directory>
+        </Directory>
+      <?endif?>
+      
+      <!-- Start Menu -->
+      <Directory Id="ProgramMenuFolder"/>
+
+    </Directory>
+
+    <!-- Default feature and components -->
+    <Feature Id="feature_ronin" Title="RONIN" Level="1" TypicalDefault="install"
+      Description="Installs the RONIN application" Absent="disallow" AllowAdvertise="no">
+      <?include addvcrt.wxi ?>
+      <ComponentGroupRef Id="componentgroup_ronin"/>
+    </Feature>
+
+    <ComponentGroup Id="componentgroup_ronin">
+      <ComponentRef Id="ronin_exe"/>
+      <ComponentRef Id="ronin_exe_config"/>
+      <ComponentRef Id="ronin_database_dll"/>
+
+      <?if $(var.Configuration) = "Debug" ?>
+      <ComponentRef Id="ronin_pdb"/>
+      <ComponentRef Id="ronin_database_pdb"/>
+      <?endif?>
+
+    </ComponentGroup>
+
+    <Component Id="ronin_exe" Directory="RONINBinFolder" Guid="A61EC129-474F-4E5F-8F82-525529980BF8">
+      <File Id="ronin.exe" Source="$(var.ProjectBinFolder)ronin.exe" Vital="yes" KeyPath="yes"/>
+      <Shortcut Id="ronin_exe_shortcut" Directory="ProgramMenuFolder" Advertise="yes" Name="RONIN" Description="RONIN" WorkingDirectory="ZukiSoftBinFolder"/>
+    </Component>
+
+    <Component Id="ronin_exe_config" Directory="RONINBinFolder" Guid="23406546-C8AF-45A5-95D8-E113E65C3985">
+      <File Id="ronin.exe.config" Source="$(var.ProjectBinFolder)ronin.exe.config" Vital="yes" KeyPath="yes"/>
+    </Component>
+
+    <Component Id="ronin_database_dll" Directory="RONINBinFolder" Guid="BD4AA29F-03D7-4834-BE00-EF8B17FC466E">
+      <File Id="ronin.database.dll" Source="$(var.ProjectBinFolder)ronin.database.dll" Vital="yes" KeyPath="yes" />
+    </Component>
+
+    <?if $(var.Configuration) = "Debug" ?>
+    <Component Id="ronin_pdb" Directory="RONINBinFolder" Guid="D0A4745C-FF71-4CB7-AE15-3DE0AE54F68E">
+      <File Id="ronin.pdb" Source="$(var.ProjectBinFolder)ronin.pdb" Vital="yes" KeyPath="yes"/>
+    </Component>
+
+    <Component Id="ronin_database_pdb" Directory="RONINBinFolder" Guid="E6D765A1-FF46-4330-8C22-BE7734DB2D7E">
+      <File Id="ronin.database.pdb" Source="$(var.ProjectBinFolder)ronin.database.pdb" Vital="yes" KeyPath="yes"/>
+    </Component>
+    <?endif?>
+
+    <Icon Id="app_ico" SourceFile="$(var.ProjectAssetsFolder)app.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="app_ico" />
+
+    <UIRef Id="WixUI_ronin" />
+
+    <InstallExecuteSequence>
+      <Custom After="InstallInitialize" Action="WixCloseApplications"/>
+    </InstallExecuteSequence>
+
+  </Product>
+
+</Wix>

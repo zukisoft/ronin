@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+  <!-- ProjectAssetsFolder -->
+  <!-- Set to the root \assets path  for the project -->
+  <?define ProjectAssetsFolder = $(var.ProjectDir)..\..\assets\ ?>
+
+  <!-- ProjectBinFolder -->
+  <!-- Set to the platform-specific \bin path  for the project -->
+  <?if $(var.Platform) = "x86" ?>
+  <?define ProjectBinFolder = $(var.ProjectDir)..\..\bin\$(var.Configuration)\x86\ ?>
+  <?else?>
+  <?define ProjectBinFolder = $(var.ProjectDir)..\..\bin\$(var.Configuration)\x64\ ?>
+  <?endif?>
+
+  <!-- ProjectDependsFolder -->
+  <!-- Set to the root \depends path for the project -->
+  <?define ProjectDependsFolder = $(var.ProjectDir)..\..\depends\ ?>
+
+  <!-- ProjectPackagesFolder -->
+  <!-- Set to the root \packages path for the project -->
+  <?define ProjectPackagesFolder = $(var.ProjectDir)..\..\packages\ ?>
+
+  <!-- ProjectSourceFolder -->
+  <!-- Set to the root \src path for the project -->
+  <?define ProjectSourceFolder = $(var.ProjectDir)..\..\src\ ?>
+
+</Include>
