@@ -22,5 +22,17 @@ namespace zuki.ronin.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("System")]
+        public global::zuki.ronin.Theme Theme {
+            get {
+                return ((global::zuki.ronin.Theme)(this["Theme"]));
+            }
+            set {
+                this["Theme"] = value;
+            }
+        }
     }
 }

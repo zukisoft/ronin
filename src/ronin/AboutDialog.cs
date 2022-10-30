@@ -20,21 +20,86 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
-
 using System.Windows.Forms;
 
 namespace zuki.ronin
 {
+	/// <summary>
+	/// Implements the About dialog
+	/// </summary>
 	public partial class AboutDialog : Form
 	{
+		/// <summary>
+		/// Instance Constructor
+		/// </summary>
 		public AboutDialog()
 		{
 			InitializeComponent();
 
-			// Get the version information for the binary
+			// Wire up the application theme change handler
+			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
+			ApplicationTheme.Changed += m_appthemechanged;
+
+			// Reset the theme based on the current system settings
+			UpdateTheme();
+
+			// Get the version information for the binary and update the label
 			FileVersionInfo fileverinfo = FileVersionInfo.GetVersionInfo(typeof(AboutDialog).Assembly.Location);
 			m_version.Text = "RONIN v" + fileverinfo.FileVersion;
 		}
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">flag if managed resources should be disposed</param>
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing)
+			{
+				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
+				if(components != null) components.Dispose();
+			}
+
+			base.Dispose(disposing);
+		}
+
+		//---------------------------------------------------------------------
+		// Event Handlers
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Invoked when the application theme has changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		{
+			// This comes in from another thread, Invoke() is required
+			Invoke((MethodInvoker)(() => { UpdateTheme(); }));
+		}
+
+		//---------------------------------------------------------------------
+		// Private Member Functions
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Updates the theme
+		/// </summary>
+		private void UpdateTheme()
+		{
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
+		}
+
+		//---------------------------------------------------------------------
+		// Member Variables
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Event handler for application theme changes
+		/// </summary>
+		private readonly EventHandler m_appthemechanged;
 	}
 }

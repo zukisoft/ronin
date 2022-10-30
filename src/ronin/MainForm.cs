@@ -23,8 +23,9 @@
 using System.Runtime.InteropServices;
 using System;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.Drawing;
+
+using Microsoft.Win32;
 
 namespace zuki.ronin
 {
@@ -63,13 +64,18 @@ namespace zuki.ronin
 		{
 			InitializeComponent();
 
-			// WM_PAINT-based background
-			SetStyle(ControlStyles.UserPaint, true);
-			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-			SetStyle(ControlStyles.ResizeRedraw, true);
-
 			// Enable double-buffering
 			this.EnableDoubleBuffering();
+
+			// Wire up the application theme change handler
+			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
+			ApplicationTheme.Changed += m_appthemechanged;
+			
+			// Reset the theme based on the current system settings
+			UpdateTheme();
+			
+			// Set the custom professional renderer for the MenuStrip
+			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
 
 			// WINDOWS 11
 			if(VersionHelper.IsWindows11OrGreater())
@@ -88,11 +94,48 @@ namespace zuki.ronin
 
 			// Manual DPI scaling
 			Padding = Padding.ScaleDPI(m_scalefactor);
+
+			// Create the system theme change monitor instance
+			if(VersionHelper.IsWindows10OrGreater())
+			{
+				m_thememonitor = new RegistryKeyValueChangeMonitor(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+				m_thememonitor.ValueChanged += new EventHandler(OnSystemThemesChanged);
+			}
+
+			try { m_thememonitor.Start(); }
+			catch(Exception) { /* DON'T CARE */ }
+		}
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">flag if managed resources should be disposed</param>
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing)
+			{
+				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
+				if(m_thememonitor != null) m_thememonitor.Dispose();
+				if(components != null) components.Dispose();
+			}
+
+			base.Dispose(disposing);
 		}
 
 		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Invoked when the application theme has changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		{
+			// This comes in from another thread, Invoke() is required
+			Invoke((MethodInvoker)(() => { UpdateTheme(); }));
+		}
 
 		/// <summary>
 		/// Invoked when the File/Exit menu item has been selected
@@ -117,25 +160,34 @@ namespace zuki.ronin
 			}
 		}
 
+		/// <summary>
+		/// Invoked when the system theme(s) have changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnSystemThemesChanged(object sender, EventArgs args)
+		{
+			// Inform the ApplicationTheme class that the registry changed
+			ApplicationTheme.SystemThemesChanged(this, EventArgs.Empty);
+		}
+
 		//---------------------------------------------------------------------
-		// Form Overrides
+		// Private Member Functions
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Overrides Form::OnPaint
+		/// Updates the theme
 		/// </summary>
-		/// <param name="args">Paint event arguments</param>
-		protected override void OnPaint(PaintEventArgs args)
+		private void UpdateTheme()
 		{
-			base.OnPaint(args);				// Invoke base implementation first
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
 
-			if((Width == 0) || (Height == 0)) return;
-
-			// Paint the background of the form to match the linear gradient of the MenuStrip
-			using(LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, Width, Height),
-				s_colortable.MenuStripGradientBegin, s_colortable.MenuStripGradientEnd, LinearGradientMode.Horizontal))
+			foreach(ToolStripMenuItem item in m_menu.Items)
 			{
-				args.Graphics.FillRectangle(brush, new Rectangle(0, 0, Width, Height));
+				item.ForeColor = ApplicationTheme.MenuForeColor;
+				item.DropDown.BackColor = ApplicationTheme.MenuBackColor;
+				item.DropDown.ForeColor = ApplicationTheme.MenuForeColor;
 			}
 		}
 
@@ -144,13 +196,18 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 
 		/// <summary>
+		/// Event handler for application theme changes
+		/// </summary>
+		private readonly EventHandler m_appthemechanged;
+
+		/// <summary>
 		/// DPI scaling factor to be applied across the application
 		/// </summary>
 		private readonly SizeF m_scalefactor = SizeF.Empty;
 
 		/// <summary>
-		/// Color table for painting the background of the form
+		/// Registry change monitor for theme changes
 		/// </summary>
-		private static readonly ProfessionalColorTable s_colortable = new ProfessionalColorTable();
+		private readonly RegistryKeyValueChangeMonitor m_thememonitor;
 	}
 }

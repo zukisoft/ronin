@@ -7,19 +7,6 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-
 		#region Windows Form Designer generated code
 
 		/// <summary>
@@ -54,9 +41,9 @@
 			this.m_version.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_version.Location = new System.Drawing.Point(120, 17);
 			this.m_version.Name = "m_version";
-			this.m_version.Size = new System.Drawing.Size(112, 15);
+			this.m_version.Size = new System.Drawing.Size(69, 15);
 			this.m_version.TabIndex = 1;
-			this.m_version.Text = "RONIN v(VERSION}";
+			this.m_version.Text = "{m_version}";
 			// 
 			// m_static2
 			// 
@@ -92,6 +79,7 @@
 			// 
 			this.m_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.m_ok.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.m_ok.Location = new System.Drawing.Point(297, 126);
 			this.m_ok.Name = "m_ok";
 			this.m_ok.Size = new System.Drawing.Size(75, 23);

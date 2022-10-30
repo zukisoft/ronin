@@ -20,37 +20,31 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace zuki.ronin
 {
 	/// <summary>
-	/// Implements the static application entry point
+	/// Defines constants that determine the available application themes
 	/// </summary>
-	internal static class Program
+	public enum Theme
 	{
-		#region Win32 API Declarations
-		private static class NativeMethods
-		{
-			[DllImport("user32.dll")]
-			[return: MarshalAs(UnmanagedType.Bool)]
-			public static extern bool SetProcessDPIAware();
-		}
-		#endregion
+		/// <summary>
+		/// Follows the system default theme
+		/// </summary>
+		[Description("System Default")]
+		System = 0,
 
 		/// <summary>
-		/// Application entry point
+		/// Forces light mode
 		/// </summary>
-		[STAThread]
-		private static void Main()
-		{
-			if(Environment.OSVersion.Version.Major >= 6) NativeMethods.SetProcessDPIAware();
+		[Description("Light Mode")]
+		Light = 1,
 
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			using(var mainform = new MainForm()) Application.Run(mainform);
-		}
+		/// <summary>
+		/// Forces dark mode
+		/// </summary>
+		[Description("Dark Mode")]
+		Dark = 2,
 	}
 }

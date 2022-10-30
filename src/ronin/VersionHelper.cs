@@ -78,12 +78,12 @@ namespace zuki.ronin
 
 			public static byte LOBYTE(ushort w)
 			{
-				return ((byte)(w & 0xff));
+				return (byte)(w & 0xff);
 			}
 
 			public static byte HIBYTE(ushort w)
 			{
-				return ((byte)(w >> 8 & 0xff));
+				return (byte)(w >> 8 & 0xff);
 			}
 
 			[DllImport("kernel32.dll")]
