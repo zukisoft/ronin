@@ -22,6 +22,7 @@
 			this.m_static3 = new System.Windows.Forms.Label();
 			this.m_static4 = new System.Windows.Forms.Label();
 			this.m_ok = new System.Windows.Forms.Button();
+			this.m_static5 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.m_icon)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -49,7 +50,7 @@
 			// 
 			this.m_static2.AutoSize = true;
 			this.m_static2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_static2.Location = new System.Drawing.Point(120, 34);
+			this.m_static2.Location = new System.Drawing.Point(120, 35);
 			this.m_static2.Name = "m_static2";
 			this.m_static2.Size = new System.Drawing.Size(244, 15);
 			this.m_static2.TabIndex = 2;
@@ -59,11 +60,11 @@
 			// 
 			this.m_static3.AutoSize = true;
 			this.m_static3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_static3.Location = new System.Drawing.Point(119, 79);
+			this.m_static3.Location = new System.Drawing.Point(119, 80);
 			this.m_static3.Name = "m_static3";
-			this.m_static3.Size = new System.Drawing.Size(234, 15);
+			this.m_static3.Size = new System.Drawing.Size(235, 15);
 			this.m_static3.TabIndex = 3;
-			this.m_static3.Text = "Copyright © 2004-2022 Michael G. Brehm";
+			this.m_static3.Text = "Copyright © 2007-2009 Sean M. Patterson";
 			// 
 			// m_static4
 			// 
@@ -80,12 +81,22 @@
 			this.m_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.m_ok.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.m_ok.Location = new System.Drawing.Point(297, 126);
+			this.m_ok.Location = new System.Drawing.Point(297, 131);
 			this.m_ok.Name = "m_ok";
 			this.m_ok.Size = new System.Drawing.Size(75, 23);
 			this.m_ok.TabIndex = 6;
 			this.m_ok.Text = "OK";
 			this.m_ok.UseVisualStyleBackColor = true;
+			// 
+			// m_static5
+			// 
+			this.m_static5.AutoSize = true;
+			this.m_static5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.m_static5.Location = new System.Drawing.Point(119, 62);
+			this.m_static5.Name = "m_static5";
+			this.m_static5.Size = new System.Drawing.Size(234, 15);
+			this.m_static5.TabIndex = 7;
+			this.m_static5.Text = "Copyright © 2004-2022 Michael G. Brehm";
 			// 
 			// AboutDialog
 			// 
@@ -93,7 +104,8 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.CancelButton = this.m_ok;
-			this.ClientSize = new System.Drawing.Size(384, 161);
+			this.ClientSize = new System.Drawing.Size(384, 166);
+			this.Controls.Add(this.m_static5);
 			this.Controls.Add(this.m_ok);
 			this.Controls.Add(this.m_static4);
 			this.Controls.Add(this.m_static3);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.Label m_static3;
         private System.Windows.Forms.Label m_static4;
         private System.Windows.Forms.Button m_ok;
+        private System.Windows.Forms.Label m_static5;
     }
 }

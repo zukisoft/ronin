@@ -1,6 +1,7 @@
 # RONIN  
 
 Copyright (C)2004-2022 Michael G. Brehm    
+Copyright (C)2007-2009 Sean M. Patterson   
 [MIT LICENSE](https://opensource.org/licenses/MIT)   
    
 ## BUILD ENVIRONMENT
