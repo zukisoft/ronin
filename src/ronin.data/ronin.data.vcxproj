@@ -23,9 +23,9 @@
     <ProjectGuid>{717D3B61-E1FD-4960-8188-0B2215F6A7FB}</ProjectGuid>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>ronin.database</RootNamespace>
+    <RootNamespace>ronin.data</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>ronin.database</ProjectName>
+    <ProjectName>ronin.data</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -103,13 +103,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;SQLITE_DQS=0;SQLITE_THREADSAFE=2;SQLITE_DEFAULT_MEMSTATUS=0;SQLITE_DEFAULT_WAL_SYNCHRONOUS=1;SQLITE_LIKE_DOESNT_MATCH_BLOBS;SQLITE_MAX_EXPR_DEPTH=0;SQLITE_OMIT_DECLTYPE;SQLITE_OMIT_DEPRECATED;SQLITE_OMIT_PROGRESS_CALLBACK;SQLITE_OMIT_SHARED_CACHE;SQLITE_USE_ALLOCA;SQLITE_TEMP_STORE=3;SQLITE_ENABLE_API_ARMOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\depends\sqlite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link />
     <Link>
-      <AdditionalDependencies>ws2_32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,13 +117,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;SQLITE_DQS=0;SQLITE_THREADSAFE=2;SQLITE_DEFAULT_MEMSTATUS=0;SQLITE_DEFAULT_WAL_SYNCHRONOUS=1;SQLITE_LIKE_DOESNT_MATCH_BLOBS;SQLITE_MAX_EXPR_DEPTH=0;SQLITE_OMIT_DECLTYPE;SQLITE_OMIT_DEPRECATED;SQLITE_OMIT_PROGRESS_CALLBACK;SQLITE_OMIT_SHARED_CACHE;SQLITE_USE_ALLOCA;SQLITE_TEMP_STORE=3;SQLITE_ENABLE_API_ARMOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\depends\sqlite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link />
     <Link>
-      <AdditionalDependencies>ws2_32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,13 +131,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;SQLITE_DQS=0;SQLITE_THREADSAFE=2;SQLITE_DEFAULT_MEMSTATUS=0;SQLITE_DEFAULT_WAL_SYNCHRONOUS=1;SQLITE_LIKE_DOESNT_MATCH_BLOBS;SQLITE_MAX_EXPR_DEPTH=0;SQLITE_OMIT_DECLTYPE;SQLITE_OMIT_DEPRECATED;SQLITE_OMIT_PROGRESS_CALLBACK;SQLITE_OMIT_SHARED_CACHE;SQLITE_USE_ALLOCA;SQLITE_TEMP_STORE=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\depends\sqlite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link />
     <Link>
-      <AdditionalDependencies>ws2_32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,19 +145,21 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;SQLITE_DQS=0;SQLITE_THREADSAFE=2;SQLITE_DEFAULT_MEMSTATUS=0;SQLITE_DEFAULT_WAL_SYNCHRONOUS=1;SQLITE_LIKE_DOESNT_MATCH_BLOBS;SQLITE_MAX_EXPR_DEPTH=0;SQLITE_OMIT_DECLTYPE;SQLITE_OMIT_DEPRECATED;SQLITE_OMIT_PROGRESS_CALLBACK;SQLITE_OMIT_SHARED_CACHE;SQLITE_USE_ALLOCA;SQLITE_TEMP_STORE=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\depends\sqlite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link />
     <Link>
-      <AdditionalDependencies>ws2_32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\depends\sqlite\sqlite3.h" />
     <ClInclude Include="..\..\depends\sqlite\sqlite3ext.h" />
     <ClInclude Include="Database.h" />
+    <ClInclude Include="SQLiteException.h" />
+    <ClInclude Include="SQLiteSafeHandle.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +184,8 @@
     <ClCompile Include="..\..\tmp\version\version.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Database.cpp" />
+    <ClCompile Include="dbextension.cpp" />
+    <ClCompile Include="SQLiteException.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

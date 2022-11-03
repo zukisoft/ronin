@@ -82,11 +82,11 @@
     <ComponentGroup Id="componentgroup_ronin">
       <ComponentRef Id="ronin_exe"/>
       <ComponentRef Id="ronin_exe_config"/>
-      <ComponentRef Id="ronin_database_dll"/>
+      <ComponentRef Id="ronin_data_dll"/>
 
       <?if $(var.Configuration) = "Debug" ?>
       <ComponentRef Id="ronin_pdb"/>
-      <ComponentRef Id="ronin_database_pdb"/>
+      <ComponentRef Id="ronin_data_pdb"/>
       <?endif?>
 
     </ComponentGroup>
@@ -100,8 +100,8 @@
       <File Id="ronin.exe.config" Source="$(var.ProjectBinFolder)ronin.exe.config" Vital="yes" KeyPath="yes"/>
     </Component>
 
-    <Component Id="ronin_database_dll" Directory="RONINBinFolder" Guid="BD4AA29F-03D7-4834-BE00-EF8B17FC466E">
-      <File Id="ronin.database.dll" Source="$(var.ProjectBinFolder)ronin.database.dll" Vital="yes" KeyPath="yes" />
+    <Component Id="ronin_data_dll" Directory="RONINBinFolder" Guid="BD4AA29F-03D7-4834-BE00-EF8B17FC466E">
+      <File Id="ronin.data.dll" Source="$(var.ProjectBinFolder)ronin.data.dll" Vital="yes" KeyPath="yes" />
     </Component>
 
     <?if $(var.Configuration) = "Debug" ?>
@@ -109,8 +109,8 @@
       <File Id="ronin.pdb" Source="$(var.ProjectBinFolder)ronin.pdb" Vital="yes" KeyPath="yes"/>
     </Component>
 
-    <Component Id="ronin_database_pdb" Directory="RONINBinFolder" Guid="E6D765A1-FF46-4330-8C22-BE7734DB2D7E">
-      <File Id="ronin.database.pdb" Source="$(var.ProjectBinFolder)ronin.database.pdb" Vital="yes" KeyPath="yes"/>
+    <Component Id="ronin_data_pdb" Directory="RONINBinFolder" Guid="E6D765A1-FF46-4330-8C22-BE7734DB2D7E">
+      <File Id="ronin.data.pdb" Source="$(var.ProjectBinFolder)ronin.data.pdb" Vital="yes" KeyPath="yes"/>
     </Component>
     <?endif?>
 

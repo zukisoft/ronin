@@ -26,28 +26,68 @@
 
 #pragma warning(push, 4)
 
+#include "SQLiteSafeHandle.h"
+
 using namespace System;
 
-namespace zuki::ronin::database {
+// dbextension.cpp
+//
+extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_api_routines* api);
+
+namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
 // Class Database
 //
-// Dummy compilation unit
+// Implements the backing store database operations
 //---------------------------------------------------------------------------
 
 public ref class Database
 {
 public:
 
+	//-----------------------------------------------------------------------
+	// Member Functions
+
+	// Create
+	//
+	// Creates a new Database instance
+	static Database^ Create(String^ path);
+
+private:
+
+	// Static Constructor
+	//
+	static Database();
+
 	// Instance Constructor
 	//
-	Database();
+	Database(SQLiteSafeHandle^ handle);
+
+	// Destructor
+	//
+	~Database();
+
+	//-----------------------------------------------------------------------
+	// Private Member Functions
+
+	// InitializeInstance (static)
+	//
+	// Initializes the database instance for use
+	static void InitializeInstance(SQLiteSafeHandle^ handle);
+
+	//-----------------------------------------------------------------------
+	// Member Variables
+
+	bool					m_disposed = false;		// Object disposal flag
+	SQLiteSafeHandle^		m_handle;				// Database safe handle
+	
+	static int				s_result = SQLITE_OK;	// Result from static init
 };
 
 //---------------------------------------------------------------------------
 
-} // zuki::ronin::database
+} // zuki::ronin::data
 
 #pragma warning(pop)
 

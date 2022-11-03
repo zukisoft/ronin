@@ -77,6 +77,7 @@
 			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.Name = "MainForm";
 			this.Text = "RONIN";
+			this.Load += new System.EventHandler(this.OnLoad);
 			this.m_menu.ResumeLayout(false);
 			this.m_menu.PerformLayout();
 			this.ResumeLayout(false);

@@ -137,9 +137,9 @@
     <Content Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ronin.database\ronin.database.vcxproj">
+    <ProjectReference Include="..\ronin.data\ronin.data.vcxproj">
       <Project>{717d3b61-e1fd-4960-8188-0b2215f6a7fb}</Project>
-      <Name>ronin.database</Name>
+      <Name>ronin.data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

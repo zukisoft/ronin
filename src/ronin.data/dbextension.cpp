@@ -20,57 +20,70 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __STDAFX_H_
-#define __STDAFX_H_
-#pragma once
+#include "stdafx.h"
+
+#include <rpc.h>
+#include <sqlite3ext.h>
+
+extern "C" { SQLITE_EXTENSION_INIT1 };
+
+#pragma warning(push, 4)
 
 //---------------------------------------------------------------------------
-// CHECK_DISPOSED
+// FUNCTION PROTOTYPES
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+// uuid (local)
 //
-// Used throughout to make object disposed exceptions easier to read and not
-// require hard-coding a class name into the statement.  This will throw the
-// function name, but that's actually better in my opinion
-
-#define CHECK_DISPOSED(__flag) \
-	if(__flag) throw gcnew ObjectDisposedException(gcnew String(__FUNCTION__));
-
-//-----------------------------------------------------------------------------
-// CLRASSERT
+// SQLite scalar function to generate a UUID
 //
-// Used in place of directly calling Debug::Assert() in the code to ensure that
-// it won't fire for RELEASE builds.  C++/CLI does not define the necessary DEBUG
-// ConditionalAttribute to suppress it
-
-#ifdef _DEBUG
-#define CLRASSERT(condition, ...) System::Diagnostics::Debug::Assert(condition, ##__VA_ARGS__)
-#else
-#define CLRASSERT(condition, ...)
-#endif
-
-//---------------------------------------------------------------------------
-// CLRISNULL / CLRISNOTNULL
+// Arguments:
 //
-// Shorthand macros for the often-used Object::ReferenceEquals(o, nullptr)
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
 
-#define CLRISNULL(__object) (Object::ReferenceEquals(__object, nullptr))
-#define CLRISNOTNULL(__object) (!Object::ReferenceEquals(__object, nullptr))
+static void uuid(sqlite3_context* context, int argc, sqlite3_value** /*argv*/)
+{
+	UUID uuid = {};
 
-//---------------------------------------------------------------------------
-// Win32 Declarations
+	if(argc != 0) return sqlite3_result_error16(context, L"invalid argument", -1);
 
-#define	WINVER				_WIN32_WINNT_WIN10
-#define	_WIN32_WINNT		_WIN32_WINNT_WIN10
+	// Create a new UUID using Windows RPC
+	RPC_STATUS status = UuidCreate(&uuid);
+	if(status != RPC_S_OK) { /* Suppress C6031 */ }
 
-#include <Windows.h>
-#include <msclr\auto_handle.h>
-#include <msclr\lock.h>
-#include <msclr\marshal.h>
+	// Return the UUID back as a 16-byte blob
+	return sqlite3_result_blob(context, &uuid, sizeof(UUID), SQLITE_TRANSIENT);
+}
 
-//---------------------------------------------------------------------------
-// SQLite
-
-#include <sqlite3.h>
 
 //---------------------------------------------------------------------------
+// sqlite3_extension_init
+//
+// SQLite Extension Library entry point
+//
+// Arguments:
+//
+//	db		- SQLite database instance
+//	errmsg	- On failure set to the error message (use sqlite3_malloc() to allocate)
+//	api		- Pointer to the SQLite API functions
 
-#endif	// __STDAFX_H_
+extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_api_routines* api)
+{
+	SQLITE_EXTENSION_INIT2(api);
+
+	*errmsg = nullptr;							// Initialize [out] variable
+
+	// uuid function
+	//
+	int result = sqlite3_create_function16(db, L"uuid", 0, SQLITE_UTF16, nullptr, uuid, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function uuid (%d)", result); return result; }
+
+	return SQLITE_OK;
+}
+
+//---------------------------------------------------------------------------
+
+#pragma warning(pop)
