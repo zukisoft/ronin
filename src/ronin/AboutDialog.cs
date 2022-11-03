@@ -90,6 +90,7 @@ namespace zuki.ronin
 		/// </summary>
 		private void UpdateTheme()
 		{
+			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
 		}

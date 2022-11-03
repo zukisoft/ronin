@@ -201,8 +201,7 @@ namespace zuki.ronin
 			return IsWindowsVersionOrGreater(NativeMethods.HIBYTE(NativeMethods._WIN32_WINNT_WINTHRESHOLD), NativeMethods.LOBYTE(NativeMethods._WIN32_WINNT_WINTHRESHOLD), 0);
 		}
 
-		// TODO: Revisit this when <versionhelpers.h> has this macro implemented
-		public static bool IsWindows11OrGreater()
+		public static bool IsWindows10OrGreater(int build)
 		{
 			NativeMethods.OSVERSIONINFOEXW osvi = new NativeMethods.OSVERSIONINFOEXW
 			{
@@ -218,9 +217,14 @@ namespace zuki.ronin
 
 			osvi.dwMajorVersion = NativeMethods.HIBYTE(NativeMethods._WIN32_WINNT_WINTHRESHOLD);
 			osvi.dwMinorVersion = NativeMethods.LOBYTE(NativeMethods._WIN32_WINNT_WINTHRESHOLD);
-			osvi.dwBuildNumber = 22000;
+			osvi.dwBuildNumber = build;
 
 			return NativeMethods.VerifyVersionInfoW(ref osvi, NativeMethods.VER_MAJORVERSION | NativeMethods.VER_MINORVERSION | NativeMethods.VER_BUILDNUMBER, dwlConditionMask) != NativeMethods.FALSE;
+		}
+
+		public static bool IsWindows11OrGreater()
+		{
+			return IsWindows10OrGreater(22000);
 		}
 
 		public static bool IsWindowsServer()

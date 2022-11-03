@@ -88,6 +88,11 @@ namespace zuki.ronin
 		//-------------------------------------------------------------------
 
 		/// <summary>
+		/// Gets the dark mode indicator
+		/// </summary>
+		public static bool DarkMode => s_darkmode;
+
+		/// <summary>
 		/// The foreground color of a form
 		/// </summary>
 		public static Color FormForeColor => s_darkmode ? Color.White : Color.Black;
@@ -96,6 +101,11 @@ namespace zuki.ronin
 		/// The background color of a form
 		/// </summary>
 		public static Color FormBackColor => s_darkmode ? Color.FromArgb(0x20, 0x20, 0x20) : Color.FromArgb(0xF3, 0xF3, 0xF3);
+
+		/// <summary>
+		/// Gets the light mode indicator
+		/// </summary>
+		public static bool LightMode => !s_darkmode;
 
 		/// <summary>
 		/// The text color of a hyperlink

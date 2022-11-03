@@ -43,6 +43,7 @@ namespace zuki.ronin
 
 			public enum DWMWINDOWATTRIBUTE
 			{
+				DWMA_USE_IMMERSIVE_DARK_MODE = 20,
 				DWMWA_WINDOW_CORNER_PREFERENCE = 33
 			}
 
@@ -55,7 +56,7 @@ namespace zuki.ronin
 			}
 
 			[DllImport("dwmapi.dll")]
-			public static extern long DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref DWM_WINDOW_CORNER_PREFERENCE pvAttribute, uint cbAttribute);
+			public static extern long DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref uint pvAttribute, uint cbAttribute);
 		}
 		#endregion
 
@@ -79,14 +80,8 @@ namespace zuki.ronin
 			// Set the custom professional renderer for the MenuStrip
 			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
 
-			// WINDOWS 11
-			if(VersionHelper.IsWindows11OrGreater())
-			{
-				// Apply rounded corners to the form
-				NativeMethods.DWMWINDOWATTRIBUTE attribute = NativeMethods.DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
-				NativeMethods.DWM_WINDOW_CORNER_PREFERENCE preference = NativeMethods.DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
-				NativeMethods.DwmSetWindowAttribute(Handle, attribute, ref preference, sizeof(uint));
-			}
+			// Enable rounded corners if supported by the OS
+			this.EnableRoundedCorners(true);
 
 			// Precalculate a DPI-based scaling factor that be applied to child controls
 			using(Graphics graphics = CreateGraphics())
@@ -193,6 +188,7 @@ namespace zuki.ronin
 		/// </summary>
 		private void UpdateTheme()
 		{
+			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
 
