@@ -157,10 +157,20 @@
   <ItemGroup>
     <ClInclude Include="..\..\depends\sqlite\sqlite3.h" />
     <ClInclude Include="..\..\depends\sqlite\sqlite3ext.h" />
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="CardType.h" />
     <ClInclude Include="Database.h" />
+    <ClInclude Include="MonsterAttribute.h" />
+    <ClInclude Include="MonsterCard.h" />
+    <ClInclude Include="MonsterType.h" />
+    <ClInclude Include="Print.h" />
+    <ClInclude Include="PrintRarity.h" />
+    <ClInclude Include="Series.h" />
+    <ClInclude Include="SpellCard.h" />
     <ClInclude Include="SQLiteException.h" />
     <ClInclude Include="SQLiteSafeHandle.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TrapCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\depends\sqlite\sqlite3.c">
@@ -183,8 +193,13 @@
     </ClCompile>
     <ClCompile Include="..\..\tmp\version\version.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Card.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="dbextension.cpp" />
+    <ClCompile Include="MonsterCard.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="Series.cpp" />
+    <ClCompile Include="SpellCard.cpp" />
     <ClCompile Include="SQLiteException.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -192,6 +207,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TrapCard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -238,6 +238,9 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 	// Switch the database to UTF-16 encoding
 	execute_non_query(instance, L"pragma encoding='UTF-16'");
 
+	// Enable foreign key constraints
+	execute_non_query(instance, L"pragma foreign_keys=ON");
+
 	// Get the database schema version
 	int dbversion = execute_scalar_int(instance, L"pragma user_version");
 
@@ -249,7 +252,8 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		//
 		// cardid(pk) | name(u) | type | passcode(u) | text
 		execute_non_query(instance, L"create table card(cardid blob not null, name text unique not null, type integer not null, "
-			"passcode text unique not null, text text not null, primary key(cardid))");
+			"passcode text unique not null, text text not null, primary key(cardid), "
+			"check(type in (0, 1, 2)))");
 
 		// table: monster
 		//
@@ -257,7 +261,16 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		execute_non_query(instance, L"create table monster(cardid blob not null, attribute text not null, level integer not null, "
 			"type text not null, attack integer not null, defense integer not null, normal integer not null, effect integer not null, "
 			"fusion integer not null, ritual integer not null, toon integer not null, [union] integer not null, spirit integer not null, "
-			"gemini integer not null, foreign key(cardid) references card(cardid))");
+			"gemini integer not null, foreign key(cardid) references card(cardid), "
+			"check(attribute in ('DARK', 'EARTH', 'FIRE', 'LIGHT', 'WATER', 'WIND')), "
+			"check(level between 1 and 12), check(attack between -1 and 5000), check(defense between -1 and 5000), "
+			"check(type in ('Aqua', 'Beast', 'Beast-Warrior', 'Dinosaur', 'Dragon', 'Fairy', 'Fiend', 'Fish', 'Insect', 'Machine', "
+			"  'Plant', 'Pyro', 'Reptile', 'Rock', 'Sea Serpent', 'Spellcaster', 'Thunder', 'Warrior', 'Winged Beast', 'Zombie')), "
+			"check(normal = 0 or (effect + fusion + ritual + toon + [union] + spirit + gemini = 0)), "
+			"check(fusion = 0 or (toon + [union] + spirit + gemini = 0)), "
+			"check(ritual = 0 or (toon + [union] + spirit + gemini = 0)), "
+			"check(toon = 0 or effect = 1), check([union] = 0 or effect = 1), check(spirit = 0 or effect = 1), "
+			"check(gemini = 0 or effect = 1))");
 		execute_non_query(instance, L"create index monster_attribute on monster(attribute)");
 		execute_non_query(instance, L"create index monster_level on monster(level)");
 		execute_non_query(instance, L"create index monster_type on monster(type)");
@@ -269,14 +282,16 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		// cardid(fk) | normal | continuous | equip | field | quickplay | ritual
 		execute_non_query(instance, L"create table spell(cardid blob not null, normal integer not null, continuous integer not null, "
 			"equip integer not null, field integer not null, quickplay integer not null, ritual integer not null, "
-			"foreign key(cardid) references card(cardid))");
+			"foreign key(cardid) references card(cardid), "
+			"check(normal + continuous + equip + field + quickplay + ritual = 1))");
 		execute_non_query(instance, L"create index spell_flag on spell(normal, continuous, equip, field, quickplay, ritual)");
 
 		// table: trap
 		//
 		// cardid(fk) | normal | continuous | counter
 		execute_non_query(instance, L"create table trap(cardid blob not null, normal integer not null, continuous integer not null, "
-			"counter integer not null, foreign key(cardid) references card(cardid))");
+			"counter integer not null, foreign key(cardid) references card(cardid), "
+			"check(normal + continuous + counter = 1))");
 		execute_non_query(instance, L"create index trap_flag on trap(normal, continuous, counter)");
 
 		// table: artwork
@@ -289,8 +304,26 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		// table: defaultartwork
 		//
 		// cardid(pk,fk) | artworkid(pk,fk)
-		execute_non_query(instance, L"create table defaultartwork(cardid blob not null, artworkid blob not null, "
+		execute_non_query(instance, L"create table defaultartwork(cardid blob not null, artworkid blob null, "
 			"primary key(cardid, artworkid), foreign key(cardid) references card(cardid), foreign key(artworkid) references artwork(artworkid))");
+
+		// table: series
+		//
+		// seriesid(pk) | code(u) | name(u) | releasedate
+		execute_non_query(instance, L"create table series(seriesid blob not null, code text unique not null, name text unique not null, "
+			"releasedate text null, primary key(seriesid))");
+		execute_non_query(instance, L"create index series_releasedate on series(releasedate)");
+
+		// table: print
+		//
+		// printid(pk) | cardid(fk) | seriesid(fk) | artworkid(fk) | code | language | number | rarity | releasedate
+		execute_non_query(instance, L"create table print(printid blob not null, cardid blob not null, seriesid blob not null, "
+			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, releasedate not null, "
+			"primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
+			"foreign key(artworkid) references artwork(artworkid))");
+		execute_non_query(instance, L"create unique index print_code on print(code, language, number)");
+		execute_non_query(instance, L"create index print_rarity on print(rarity)");
+		execute_non_query(instance, L"create index print_releasedate on print(releasedate)");
 
 		// table: restrictionlist
 		//
@@ -310,24 +343,6 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		// cardid(fk) | sequence | ruling
 		execute_non_query(instance, L"create table ruling(cardid blob not null, sequence integer not null, ruling text not null, "
 			"foreign key(cardid) references card(cardid))");
-
-		// table: series
-		//
-		// seriesid(pk) | code(u) | name(u) | releasedate
-		execute_non_query(instance, L"create table series(seriesid blob not null, code text unique not null, name text unique not null, "
-			"releasedate text null, primary key(seriesid))");
-		execute_non_query(instance, L"create index series_releasedate on series(releasedate)");
-
-		// table: print
-		//
-		// printid(pk) | cardid(fk) | seriesid(fk) | artworkid(fk) | code | language | number | rarity | releasedate
-		execute_non_query(instance, L"create table print(printid blob not null, cardid blob not null, seriesid blob not null, "
-			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, releasedate not null, "
-			"primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
-			"foreign key(artworkid) references artwork(artworkid))");
-		execute_non_query(instance, L"create index print_code on print(code, language, number)");
-		execute_non_query(instance, L"create index print_rarity on print(rarity)");
-		execute_non_query(instance, L"create index print_releasedate on print(releasedate)");
 
 		execute_non_query(instance, L"pragma user_version = 1");
 		dbversion = 1;

@@ -27,7 +27,6 @@ using System.Windows.Forms;
 using System.Drawing;
 
 using Microsoft.Win32;
-using zuki.ronin.data;
 
 namespace zuki.ronin
 {
@@ -164,8 +163,6 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			// TODO: Remove this in favor of unit tests when available
-			// Database.Create(null);
 		}
 
 		/// <summary>
