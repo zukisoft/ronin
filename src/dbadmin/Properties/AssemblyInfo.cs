@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +32,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
-[assembly: Guid("E0E9E041-160A-4777-94F9-52E66278B9CE")]
+[assembly: Guid("85375FC9-AA1C-4C60-8082-84E0E2FFC05D")]
 
 [assembly: CLSCompliant(true)]
 [assembly: NeutralResourcesLanguage("en-US")]

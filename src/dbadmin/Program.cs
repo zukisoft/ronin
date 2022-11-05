@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,18 +21,36 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using System.Resources;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
-[assembly: AssemblyTitle("RONIN")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace zuki.ronin
+{
+	/// <summary>
+	/// Implements the static application entry point
+	/// </summary>
+	internal static class Program
+	{
+		#region Win32 API Declarations
+		private static class NativeMethods
+		{
+			[DllImport("user32.dll")]
+			[return: MarshalAs(UnmanagedType.Bool)]
+			public static extern bool SetProcessDPIAware();
+		}
+		#endregion
 
-[assembly: ComVisible(false)]
-[assembly: Guid("E0E9E041-160A-4777-94F9-52E66278B9CE")]
+		/// <summary>
+		/// Application entry point
+		/// </summary>
+		[STAThread]
+		private static void Main()
+		{
+			if(Environment.OSVersion.Version.Major >= 6) NativeMethods.SetProcessDPIAware();
 
-[assembly: CLSCompliant(true)]
-[assembly: NeutralResourcesLanguage("en-US")]
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			using(var mainform = new MainForm()) Application.Run(mainform);
+		}
+	}
+}

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE5B686C-C64D-4E48-9B9E-0529897E682E}</ProjectGuid>
+    <ProjectGuid>{78E6B6F8-3E12-4A0C-9357-21CC2327747F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>zuki.ronin</RootNamespace>
-    <AssemblyName>ronin</AssemblyName>
+    <RootNamespace>dbadmin</RootNamespace>
+    <AssemblyName>dbadmin</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -83,14 +83,6 @@
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
     </Compile>
-    <Compile Include="AboutDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutDialog.Designer.cs">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ApplicationTheme.cs" />
-    <Compile Include="extensions.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistryKeyValueChangeMonitor.cs" />
-    <Compile Include="Theme.cs" />
-    <Compile Include="VersionHelper.cs" />
-    <EmbeddedResource Include="AboutDialog.resx">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

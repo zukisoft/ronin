@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,18 +21,10 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using System.Resources;
-using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("RONIN")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: ComVisible(false)]
-[assembly: Guid("E0E9E041-160A-4777-94F9-52E66278B9CE")]
-
-[assembly: CLSCompliant(true)]
-[assembly: NeutralResourcesLanguage("en-US")]
+namespace zuki.ronin.ui
+{
+    public class Class1
+    {
+    }
+}

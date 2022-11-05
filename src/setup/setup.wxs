@@ -83,10 +83,14 @@
       <ComponentRef Id="ronin_exe"/>
       <ComponentRef Id="ronin_exe_config"/>
       <ComponentRef Id="ronin_data_dll"/>
+      <ComponentRef Id="ronin_renderer_dll"/>
+      <ComponentRef Id="ronin_ui_dll"/>
 
       <?if $(var.Configuration) = "Debug" ?>
       <ComponentRef Id="ronin_pdb"/>
       <ComponentRef Id="ronin_data_pdb"/>
+      <ComponentRef Id="ronin_renderer_pdb"/>
+      <ComponentRef Id="ronin_ui_pdb"/>
       <?endif?>
 
     </ComponentGroup>
@@ -104,6 +108,14 @@
       <File Id="ronin.data.dll" Source="$(var.ProjectBinFolder)ronin.data.dll" Vital="yes" KeyPath="yes" />
     </Component>
 
+    <Component Id="ronin_renderer_dll" Directory="RONINBinFolder" Guid="CF609F43-1DC1-48C9-A0F3-DD05CBFA456D">
+      <File Id="ronin.renderer.dll" Source="$(var.ProjectBinFolder)ronin.renderer.dll" Vital="yes" KeyPath="yes" />
+    </Component>
+
+    <Component Id="ronin_ui_dll" Directory="RONINBinFolder" Guid="85944ECF-5CBF-4718-A10E-415C6CFCC930">
+      <File Id="ronin.ui.dll" Source="$(var.ProjectBinFolder)ronin.ui.dll" Vital="yes" KeyPath="yes" />
+    </Component>
+
     <?if $(var.Configuration) = "Debug" ?>
     <Component Id="ronin_pdb" Directory="RONINBinFolder" Guid="D0A4745C-FF71-4CB7-AE15-3DE0AE54F68E">
       <File Id="ronin.pdb" Source="$(var.ProjectBinFolder)ronin.pdb" Vital="yes" KeyPath="yes"/>
@@ -111,6 +123,13 @@
 
     <Component Id="ronin_data_pdb" Directory="RONINBinFolder" Guid="E6D765A1-FF46-4330-8C22-BE7734DB2D7E">
       <File Id="ronin.data.pdb" Source="$(var.ProjectBinFolder)ronin.data.pdb" Vital="yes" KeyPath="yes"/>
+    </Component>
+
+    <Component Id="ronin_renderer_pdb" Directory="RONINBinFolder" Guid="F605F7FB-573F-4A25-A2E3-196D77379AD4">
+      <File Id="ronin.renderer.pdb" Source="$(var.ProjectBinFolder)ronin.renderer.pdb" Vital="yes" KeyPath="yes"/>
+    </Component>
+    <Component Id="ronin_ui_pdb" Directory="RONINBinFolder" Guid="E6A32085-1785-49F0-B652-295DD3DE2F51">
+      <File Id="ronin.ui.pdb" Source="$(var.ProjectBinFolder)ronin.ui.pdb" Vital="yes" KeyPath="yes"/>
     </Component>
     <?endif?>
 
