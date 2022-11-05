@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +21,19 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-
 using Microsoft.Win32;
-using zuki.ronin.Properties;
 
-namespace zuki.ronin
+using zuki.ronin.util;
+
+namespace zuki.ronin.ui
 {
 	/// <summary>
 	/// Provides the theme color elements for the application
 	/// </summary>
-	internal static class ApplicationTheme
+	public static class ApplicationTheme
 	{
-		/// <summary>
-		/// Static Constructor
-		/// </summary>
-		static ApplicationTheme()
-		{
-			if(Settings.Default.Theme == Theme.System) s_darkmode = GetSystemTheme() == Theme.Dark;
-			else if(Settings.Default.Theme == Theme.Light) s_darkmode = false;
-			else if(Settings.Default.Theme == Theme.Dark) s_darkmode = true;
-
-			// Wire up a handler to watch for property changes
-			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
-		}
-
 		//-------------------------------------------------------------------------
 		// Events
 		//-------------------------------------------------------------------------
@@ -63,23 +48,31 @@ namespace zuki.ronin
 		//-------------------------------------------------------------------
 
 		/// <summary>
-		/// Invoked when the system theme(s) have changed
+		/// Sets the application-wide scaling factor for high DPI support
 		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		public static void SystemThemesChanged(object sender, EventArgs args)
+		/// <param name="factor">Scaling factor for the application</param>
+		public static void SetScalingFactor(SizeF factor)
 		{
-			// This is only applicable if the setting is set to System
-			if(Settings.Default.Theme == Theme.System)
+			s_scalingfactor = factor;
+		}
+
+		/// <summary>
+		/// Alters the application theme
+		/// </summary>
+		/// <param name="theme">New theme to be used</param>
+		public static void SetTheme(Theme theme)
+		{
+			bool dark = s_darkmode;
+
+			if(theme == Theme.System) dark = GetSystemTheme() == Theme.Dark;
+			else if(theme == Theme.Light) dark = false;
+			else if(theme == Theme.Dark) dark = true;
+
+			// If the mode has changed, invoke the event to change it
+			if(dark != s_darkmode)
 			{
-				// Get a new dark mode flag for the system, and if it has changed
-				// inform any listeners on the Changed event to switch the theme
-				bool dark = GetSystemTheme() == Theme.Dark;
-				if(dark != s_darkmode)
-				{
-					s_darkmode = dark;
-					Changed?.Invoke(typeof(ApplicationTheme), EventArgs.Empty);
-				}
+				s_darkmode = dark;
+				Changed?.Invoke(typeof(ApplicationTheme), EventArgs.Empty);
 			}
 		}
 
@@ -101,6 +94,16 @@ namespace zuki.ronin
 		/// The background color of a form
 		/// </summary>
 		public static Color FormBackColor => s_darkmode ? Color.FromArgb(0x20, 0x20, 0x20) : Color.FromArgb(0xF3, 0xF3, 0xF3);
+
+		/// <summary>
+		/// The background color of an interverted panel
+		/// </summary>
+		public static Color InvertedPanelBackColor => (s_darkmode) ? Color.FromArgb(0x58, 0x58, 0x58) : Color.FromArgb(0xB0, 0xB0, 0xB0);
+
+		/// <summary>
+		/// The foreground color of an inverted panel
+		/// </summary>
+		public static Color InvertedPanelForeColor => (s_darkmode) ? Color.White : Color.White;
 
 		/// <summary>
 		/// Gets the light mode indicator
@@ -138,38 +141,24 @@ namespace zuki.ronin
 		public static Color MenuImageColor => s_darkmode ? Color.FromArgb(0x4B, 0x4B, 0x4B) : Color.FromArgb(0xE3, 0xE3, 0xE3);
 
 		/// <summary>
+		/// The background color of a panel
+		/// </summary>
+		public static Color PanelBackColor => (s_darkmode) ? Color.FromArgb(0x2B, 0x2B, 0x2B) : Color.White;
+
+		/// <summary>
+		/// The foreground color of a panel
+		/// </summary>
+		public static Color PanelForeColor => (s_darkmode) ? Color.White : Color.Black;
+		
+		/// <summary>
 		/// Accesses the ProfessionalColorTable instance
 		/// </summary>
 		public static ProfessionalColorTable ProfessionalColorTable => s_colortable;
 
-		//-------------------------------------------------------------------
-		// Event Handlers
-		//-------------------------------------------------------------------
-
 		/// <summary>
-		/// Invoked when a settings property has been changed
+		/// Access the DPI scaling factor for the application
 		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Property changed event arguments</param>
-		private static void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
-		{
-			// Theme
-			if(args.PropertyName == nameof(Settings.Default.Theme))
-			{
-				bool dark = s_darkmode;             // Flag for dark mode
-
-				if(Settings.Default.Theme == Theme.System) dark = GetSystemTheme() == Theme.Dark;
-				else if(Settings.Default.Theme == Theme.Light) dark = false;
-				else if(Settings.Default.Theme == Theme.Dark) dark = true;
-
-				// If the mode has changed, invoke the event to change it
-				if(dark != s_darkmode)
-				{
-					s_darkmode = dark;
-					Changed?.Invoke(typeof(ApplicationTheme), EventArgs.Empty);
-				}
-			}
-		}
+		public static SizeF ScalingFactor => s_scalingfactor;
 
 		//---------------------------------------------------------------------
 		// Private Data Types
@@ -263,7 +252,7 @@ namespace zuki.ronin
 				return ((value is int @int) && (@int == 0)) ? Theme.Dark : Theme.Light;
 			}
 
-			return Theme.Light;			// Always default to light theme
+			return Theme.Light;         // Always default to light theme
 		}
 
 		//-------------------------------------------------------------------
@@ -271,13 +260,18 @@ namespace zuki.ronin
 		//-------------------------------------------------------------------
 
 		/// <summary>
-		/// Flag indicating that dark mode has been set
+		/// Flag indicating if dark mode is currently enabled
 		/// </summary>
-		private static bool s_darkmode = false;
+		private static bool s_darkmode = GetSystemTheme() == Theme.Dark;
 
 		/// <summary>
-		/// The ProfessionalColorTable instance for the application theme
+		/// ProfessionalColorTable for styling Tool/Menu/Status Strips
 		/// </summary>
 		private static readonly ProfessionalColorTable s_colortable = new ApplicationProfessionalColorTable();
+
+		/// <summary>
+		/// Application-wide DPI scaling factor
+		/// </summary>
+		private static SizeF s_scalingfactor = new SizeF(1.0F, 1.0F);
 	}
 }

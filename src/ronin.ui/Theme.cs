@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +22,7 @@
 
 using System.ComponentModel;
 
-namespace zuki.ronin
+namespace zuki.ronin.ui
 {
 	/// <summary>
 	/// Defines constants that determine the available application themes

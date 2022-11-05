@@ -28,10 +28,11 @@ using namespace System::Runtime::CompilerServices;
 using namespace System::Runtime::InteropServices;
 using namespace System::Security::Permissions;
 
-[assembly:AssemblyTitleAttribute(L"ronin.database")];
+[assembly:AssemblyTitleAttribute(L"RONIN")];
 [assembly:AssemblyDescriptionAttribute(L"")];
 [assembly:AssemblyConfigurationAttribute(L"")];
 [assembly:AssemblyTrademarkAttribute(L"")];
 [assembly:AssemblyCultureAttribute(L"")];
 
-[assembly:ComVisible(false)];
+[assembly:ComVisibleAttribute(false)];
+[assembly:CLSCompliantAttribute(true)];

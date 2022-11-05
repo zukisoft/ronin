@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,77 +22,66 @@
 
 using System;
 using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-using zuki.ronin.ui;
-
-namespace zuki.ronin
+namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Implements the About dialog
+	/// Fixes a flicker and TopItem problem with the WinForms ListView
+	/// 
+	/// Source: https://objectlistview.sourceforge.net/cs/blog6.html
 	/// </summary>
-	public partial class AboutDialog : Form
+	internal class VirtualListView : ListView
 	{
-		/// <summary>
-		/// Instance Constructor
-		/// </summary>
-		public AboutDialog()
+		#region Win32 API Declarations
+		private static class NativeMethods
 		{
-			InitializeComponent();
+			public const uint LVM_SETITEMCOUNT = 0x1000 + 47;
+			public const uint LVSICF_NOSCROLL = 0x02;
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
+			[DllImport("user32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
+			public static extern IntPtr SendMessageW(IntPtr hWnd, uint Msg, IntPtr wParam = default, IntPtr lParam = default);
+		}
+		#endregion
 
-			// Reset the theme based on the current system settings
-			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-
-			// Get the version information for the binary and update the label
-			FileVersionInfo fileverinfo = FileVersionInfo.GetVersionInfo(typeof(AboutDialog).Assembly.Location);
-			m_version.Text = "RONIN v" + fileverinfo.FileVersion;
+		/// <summary>
+		/// Static Constructor
+		/// </summary>
+		static VirtualListView()
+		{
+			s_fieldinfo = typeof(ListView).GetField("virtualListSize", BindingFlags.NonPublic | BindingFlags.Instance);
+			Debug.Assert(s_fieldinfo != null);
 		}
 
+		//---------------------------------------------------------------------
+		// Protected Member Functions
+		//---------------------------------------------------------------------
+
 		/// <summary>
-		/// Clean up any resources being used
+		/// Replaces ListView::VirtualListSize
 		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
+		protected new virtual int VirtualListSize
 		{
-			if(disposing)
+			get { return base.VirtualListSize; }
+			set
 			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				if(components != null) components.Dispose();
+				if(value == VirtualListSize || value < 0)return;
+
+				// Set the base class private field
+				s_fieldinfo.SetValue(this, value);
+
+				// Send a raw message to change the virtual list size *without* changing the scroll position
+				if(IsHandleCreated && !DesignMode)
+					NativeMethods.SendMessageW(Handle, NativeMethods.LVM_SETITEMCOUNT, new IntPtr(value), new IntPtr(NativeMethods.LVSICF_NOSCROLL));
 			}
-
-			base.Dispose(disposing);
-		}
-
-		//---------------------------------------------------------------------
-		// Event Handlers
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Invoked when the application theme has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
-		{
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
 		}
 
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
 
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
+		private static FieldInfo s_fieldinfo;
 	}
 }

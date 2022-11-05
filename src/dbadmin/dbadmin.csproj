@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{78E6B6F8-3E12-4A0C-9357-21CC2327747F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>dbadmin</RootNamespace>
+    <RootNamespace>zuki.ronin</RootNamespace>
     <AssemblyName>dbadmin</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -78,10 +78,17 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
+    </Compile>
+    <Compile Include="CardViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CardViewer.Designer.cs">
+      <DependentUpon>CardViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -91,6 +98,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CardViewer.resx">
+      <DependentUpon>CardViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +140,10 @@
     <ProjectReference Include="..\ronin.ui\ronin.ui.csproj">
       <Project>{77405237-4b18-4345-86d5-4cffbb6547c1}</Project>
       <Name>ronin.ui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ronin.util\ronin.util.csproj">
+      <Project>{442d8bc2-e58b-4233-a24b-8f819c772b70}</Project>
+      <Name>ronin.util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

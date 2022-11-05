@@ -24,7 +24,10 @@
 
 #include "Database.h"
 
+#include "MonsterCard.h"
+#include "SpellCard.h"
 #include "SQLiteException.h"
+#include "TrapCard.h"
 
 using namespace System::IO;
 
@@ -347,6 +350,135 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		execute_non_query(instance, L"pragma user_version = 1");
 		dbversion = 1;
 	}
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectCards
+//
+// Selects Card objects from the database
+//
+// Arguments:
+//
+//	NONE
+
+List<Card^>^ Database::SelectCards(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt*				statement;				// Statement handle
+
+	List<Card^>^ cards = gcnew List<Card^>();
+
+	// type | cardid | name | passcode | text
+	auto sql = L"select type, cardid, name, passcode, text from card "
+		"order by name asc";
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Card^ card = nullptr;
+
+			// Get the type of card being iterated here in order to instantiate the
+			// proper derivation of the Card class
+			CardType type = static_cast<CardType>(sqlite3_column_int(statement, 0));
+			
+			// MonsterCard (0)
+			if(type == CardType::Monster) {
+
+				MonsterCard^ monster = gcnew MonsterCard();
+
+				// TODO: Set MonsterCard specific properties here
+
+				card = static_cast<Card^>(monster);
+			}
+
+			// SpellCard (1)
+			else if(type == CardType::Spell) {
+
+				SpellCard^ spell = gcnew SpellCard();
+
+				// TODO: Set SpellCard specific properties here
+
+				card = static_cast<Card^>(spell);
+			}
+
+			// TrapCard (2)
+			else if(type == CardType::Trap) {
+
+				TrapCard^ trap = gcnew TrapCard();
+
+				// TODO: Set SpellCard specific properties here
+
+				card = static_cast<Card^>(trap);
+			}
+
+			else throw gcnew Exception("Invalid card.type value");
+
+			// The base class reference should have been set above
+			CLRASSERT(card != nullptr);
+
+			// cardid
+			// TODO: test efficiency of converting the BLOB to a string in SQLite with
+			// an extension function; probably faster than this method
+			int cardidlen = sqlite3_column_bytes(statement, 1);
+			if(cardidlen != sizeof(UUID)) throw gcnew Exception("Invalid card.cardid length");
+			array<byte>^ cardidblob = gcnew array<byte>(16);
+			Marshal::Copy(IntPtr(const_cast<void*>(sqlite3_column_blob(statement, 1))), cardidblob, 0, cardidlen);
+			card->CardID = Guid(cardidblob);
+
+			// name
+			wchar_t const* nameptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 2));
+			card->Name = (nameptr == nullptr) ? String::Empty : gcnew String(nameptr);
+
+			// passcode
+			wchar_t const* passcodeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 3));
+			card->Passcode = (passcodeptr == nullptr) ? String::Empty : gcnew String(passcodeptr);
+
+			// text
+			wchar_t const* textptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			card->Text = (textptr == nullptr) ? String::Empty : gcnew String(textptr);
+
+			cards->Add(card);							// Add the Card instance
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+		sqlite3_finalize(statement);			// Finalize the SQLite statement
+	}
+
+	catch(Exception^) { sqlite3_finalize(statement); throw; }
+
+	return cards;
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectCards
+//
+// Selects Card objects from the database
+//
+// Arguments:
+//
+//	filter		- CardFilter instance on which to filter the results
+
+List<Card^>^ Database::SelectCards(CardFilter^ filter)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	// Passing in a null filter would just select all cards
+	if(CLRISNULL(filter)) return SelectCards();
+
+	// TODO
+	return gcnew List<Card^>();
 }
 
 //---------------------------------------------------------------------------

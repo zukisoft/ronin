@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +26,14 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace zuki.ronin
+using zuki.ronin.util;
+
+namespace zuki.ronin.ui
 {
 	/// <summary>
 	/// Implements extension methods
 	/// </summary>
-	internal static class Extensions
+	public static class Extensions
 	{
 		#region Win32 API Declarations
 		private static class NativeMethods
@@ -71,7 +72,7 @@ namespace zuki.ronin
 			{
 				// Beginning in Windows 10 20H1 (19041) the attribute became documented and changed values
 				NativeMethods.DWMWINDOWATTRIBUTE attribute = VersionHelper.IsWindows10OrGreater(19041) ?
-					NativeMethods.DWMWINDOWATTRIBUTE.DWMA_USE_IMMERSIVE_DARK_MODE : 
+					NativeMethods.DWMWINDOWATTRIBUTE.DWMA_USE_IMMERSIVE_DARK_MODE :
 					NativeMethods.DWMWINDOWATTRIBUTE.DWMA_USE_IMMERSIVE_DARK_MODE_WIN10;
 
 				uint preference = (enable) ? 0xFFFFFFFF : 0;
@@ -106,6 +107,25 @@ namespace zuki.ronin
 		{
 			PropertyInfo property = typeof(Control).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
 			property.SetValue(control, true, null);
+		}
+
+		/// <summary>
+		/// Inflates a Rectangle based on a previously calculated scaling factor
+		/// </summary>
+		/// <param name="rectangle">Rectangle to be inflated</param>
+		/// <param name="width">Unscaled width to inflate</param>
+		/// <param name="height">Unscaled height to inflate</param>
+		/// <param name="factor">Precalcualted scaling factor</param>
+		/// <returns>Scaled Rectangle value</returns>
+		public static Rectangle InflateDPI(this Rectangle rectangle, int width, int height, SizeF factor)
+		{
+			// Inflate the provided Rectangle based on the scaling factor
+			int scaledwidth = (int)(width * factor.Width);
+			int scaledheight = (int)(height * factor.Height);
+			rectangle.Inflate(scaledwidth, scaledheight);
+
+			// Return the scaled/inflated rectangle
+			return rectangle;
 		}
 
 		/// <summary>

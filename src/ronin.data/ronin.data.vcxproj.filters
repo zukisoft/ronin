@@ -77,6 +77,9 @@
     <ClInclude Include="PrintRarity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CardFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">

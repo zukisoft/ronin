@@ -20,9 +20,19 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-namespace zuki.ronin.renderer
-{
-	public class Class1
-    {
-    }
-}
+using System;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.InteropServices;
+
+[assembly: AssemblyTitle("RONIN")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+[assembly: ComVisible(false)]
+[assembly: Guid("00D8B32B-BF18-4964-B17B-CC7D081E7159")]
+
+[assembly: CLSCompliant(true)]
+[assembly: NeutralResourcesLanguage("en-US")]

@@ -21,8 +21,6 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
@@ -31,43 +29,35 @@ using zuki.ronin.ui;
 namespace zuki.ronin
 {
 	/// <summary>
-	/// Implements the main application form
+	/// Implements the card viewer form
 	/// </summary>
-	public partial class MainForm : Form
+	public partial class CardViewer : Form
 	{
-		#region Win32 API Declarations
-		private static class NativeMethods
-		{
-			public const int WS_EX_COMPOSITED = 0x02000000;
-
-			public enum DWMWINDOWATTRIBUTE
-			{
-				DWMA_USE_IMMERSIVE_DARK_MODE = 20,
-				DWMWA_WINDOW_CORNER_PREFERENCE = 33
-			}
-
-			public enum DWM_WINDOW_CORNER_PREFERENCE
-			{
-				DWMWCP_DEFAULT = 0,
-				DWMWCP_DONOTROUND = 1,
-				DWMWCP_ROUND = 2,
-				DWMWCP_ROUNDSMALL = 3
-			}
-
-			[DllImport("dwmapi.dll")]
-			public static extern long DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref uint pvAttribute, uint cbAttribute);
-		}
-		#endregion
-
 		/// <summary>
-		/// Instance Constructor
+		/// Default constructor
 		/// </summary>
-		public MainForm()
+		private CardViewer()
 		{
 			InitializeComponent();
 
-			// TODO: TESTING
-			ApplicationTheme.SetTheme(Theme.Dark);
+			// Wire up the application theme change handler
+			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
+			ApplicationTheme.Changed += m_appthemechanged;
+
+			// Reset the theme based on the current system settings
+			OnApplicationThemeChanged(this, EventArgs.Empty);
+
+			// Manual DPI scaling
+			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+		}
+
+		/// <summary>
+		/// Instance constructor
+		/// </summary>
+		/// <param name="database">Database instance to use</param>
+		public CardViewer(Database database) : this()
+		{
+			m_database = database ?? throw new ArgumentNullException(nameof(database));
 		}
 
 		/// <summary>
@@ -78,7 +68,7 @@ namespace zuki.ronin
 		{
 			if(disposing)
 			{
-				if(m_database != null) m_database.Dispose();
+				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
 				if(components != null) components.Dispose();
 			}
 
@@ -90,40 +80,42 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 
 		/// <summary>
+		/// Invoked when the application theme has changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		{
+			// NOTE: This is not working for MDI child forms
+			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
+
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
+		}
+
+		/// <summary>
 		/// Invoked when the form has been loaded
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			var result = m_opendatabase.ShowDialog(this);
-			if(result != DialogResult.OK) Close();
-
-			// TODO: this needs to be in a loop like the temporary dbadmin app
-			try
-			{
-				string canonicalizedpath = Path.GetFullPath(m_opendatabase.FileName);
-				m_database = Database.Create(canonicalizedpath);
-				m_statuslabel.Text = canonicalizedpath;
-			}
-			catch(Exception) { /* TODO - HANDLER */ }
-
-			var child = new CardViewer(m_database);
-			child.MdiParent = this;
-			child.Show();
-
-			// TODO: testing
-			// List<Card> allcards = m_database.SelectCards(null);
+			// TODO: TESTING
+			m_cardlistview.Cards = m_database.SelectCards(null);
 		}
-
-		//---------------------------------------------------------------------
-		// Private Member Functions
-		//---------------------------------------------------------------------
 
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
 
-		Database m_database = null;
+		/// <summary>
+		/// Event handler for application theme changes
+		/// </summary>
+		private readonly EventHandler m_appthemechanged;
+
+		/// <summary>
+		/// Database instance
+		/// </summary>
+		private readonly Database m_database;
 	}
 }

@@ -85,12 +85,14 @@
       <ComponentRef Id="ronin_data_dll"/>
       <ComponentRef Id="ronin_renderer_dll"/>
       <ComponentRef Id="ronin_ui_dll"/>
+      <ComponentRef Id="ronin_util_dll"/>
 
       <?if $(var.Configuration) = "Debug" ?>
       <ComponentRef Id="ronin_pdb"/>
       <ComponentRef Id="ronin_data_pdb"/>
       <ComponentRef Id="ronin_renderer_pdb"/>
       <ComponentRef Id="ronin_ui_pdb"/>
+      <ComponentRef Id="ronin_util_pdb"/>
       <?endif?>
 
     </ComponentGroup>
@@ -116,6 +118,10 @@
       <File Id="ronin.ui.dll" Source="$(var.ProjectBinFolder)ronin.ui.dll" Vital="yes" KeyPath="yes" />
     </Component>
 
+    <Component Id="ronin_util_dll" Directory="RONINBinFolder" Guid="085DF2E6-7C20-47B5-AE8D-5459D61CDC22">
+      <File Id="ronin.util.dll" Source="$(var.ProjectBinFolder)ronin.util.dll" Vital="yes" KeyPath="yes" />
+    </Component>
+
     <?if $(var.Configuration) = "Debug" ?>
     <Component Id="ronin_pdb" Directory="RONINBinFolder" Guid="D0A4745C-FF71-4CB7-AE15-3DE0AE54F68E">
       <File Id="ronin.pdb" Source="$(var.ProjectBinFolder)ronin.pdb" Vital="yes" KeyPath="yes"/>
@@ -128,8 +134,13 @@
     <Component Id="ronin_renderer_pdb" Directory="RONINBinFolder" Guid="F605F7FB-573F-4A25-A2E3-196D77379AD4">
       <File Id="ronin.renderer.pdb" Source="$(var.ProjectBinFolder)ronin.renderer.pdb" Vital="yes" KeyPath="yes"/>
     </Component>
+
     <Component Id="ronin_ui_pdb" Directory="RONINBinFolder" Guid="E6A32085-1785-49F0-B652-295DD3DE2F51">
       <File Id="ronin.ui.pdb" Source="$(var.ProjectBinFolder)ronin.ui.pdb" Vital="yes" KeyPath="yes"/>
+    </Component>
+
+    <Component Id="ronin_util_pdb" Directory="RONINBinFolder" Guid="06267D10-D0F3-4BC9-B538-D23F1CFC3325">
+      <File Id="ronin.util.pdb" Source="$(var.ProjectBinFolder)ronin.util.pdb" Vital="yes" KeyPath="yes"/>
     </Component>
     <?endif?>
 

@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,11 +20,35 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-using System;
+#ifndef __CARDFILTER_H_
+#define __CARDFILTER_H_
+#pragma once
 
-namespace zuki.ronin.ui
+#pragma warning(push, 4)
+
+using namespace System;
+
+namespace zuki::ronin::data {
+
+//---------------------------------------------------------------------------
+// Class CardFilter
+//
+// Describes a filter against the CARD table in the database
+//---------------------------------------------------------------------------
+
+public ref class CardFilter
 {
-    public class Class1
-    {
-    }
-}
+public:
+
+	// Instance Constructor
+	//
+	CardFilter() {}
+};
+
+//---------------------------------------------------------------------------
+
+} // zuki::ronin::data
+
+#pragma warning(pop)
+
+#endif	// __CARDFILTER_H_

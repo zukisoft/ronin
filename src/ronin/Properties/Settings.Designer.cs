@@ -26,9 +26,9 @@ namespace zuki.ronin.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("System")]
-        public global::zuki.ronin.Theme Theme {
+        public global::zuki.ronin.ui.Theme Theme {
             get {
-                return ((global::zuki.ronin.Theme)(this["Theme"]));
+                return ((global::zuki.ronin.ui.Theme)(this["Theme"]));
             }
             set {
                 this["Theme"] = value;

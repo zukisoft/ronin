@@ -26,9 +26,12 @@
 
 #pragma warning(push, 4)
 
+#include "Card.h"
+#include "CardFilter.h"
 #include "SQLiteSafeHandle.h"
 
 using namespace System;
+using namespace System::Collections::Generic;
 
 // dbextension.cpp
 //
@@ -53,6 +56,12 @@ public:
 	//
 	// Creates a new Database instance
 	static Database^ Create(String^ path);
+
+	// SelectCards
+	//
+	// Selects Card objects from the database
+	List<Card^>^ SelectCards(void);
+	List<Card^>^ SelectCards(CardFilter^ filter);
 
 private:
 

@@ -1,6 +1,5 @@
 ﻿//---------------------------------------------------------------------------
 // Copyright (c) 2004-2022 Michael G. Brehm
-// Copyright (c) 2007-2009 Sean M. Patterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +23,9 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-
 using Microsoft.Win32;
 
-namespace zuki.ronin
+namespace zuki.ronin.util
 {
 	/// <summary>
 	/// Simple registry key value change monitor, will raise an event if
@@ -36,7 +34,7 @@ namespace zuki.ronin
 	/// Loosely based on:
 	/// http://www.pinvoke.net/default.aspx/advapi32.regnotifychangekeyvalue
 	/// </summary>
-	internal class RegistryKeyValueChangeMonitor : IDisposable
+	public class RegistryKeyValueChangeMonitor : IDisposable
 	{
 		#region Win32 API Declarations
 		private static class NativeMethods

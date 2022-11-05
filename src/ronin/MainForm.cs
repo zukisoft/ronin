@@ -21,12 +21,16 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using System;
-using System.Windows.Forms;
+using System.ComponentModel;
 using System.Drawing;
-
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using Microsoft.Win32;
+
+using zuki.ronin.ui;
+using zuki.ronin.util;
+using zuki.ronin.Properties;
 
 namespace zuki.ronin
 {
@@ -66,15 +70,19 @@ namespace zuki.ronin
 		{
 			InitializeComponent();
 
-			// Enable double-buffering
-			this.EnableDoubleBuffering();
+			// Wire up a handler to watch for property changes
+			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
+
+			// Precalculate a DPI-based scaling factor to be applied as necessary
+			using(Graphics graphics = CreateGraphics())
+				ApplicationTheme.SetScalingFactor(new SizeF(graphics.DpiX / 96.0F, graphics.DpiY / 96.0F));
 
 			// Wire up the application theme change handler
 			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
 			ApplicationTheme.Changed += m_appthemechanged;
-			
-			// Reset the theme based on the current system settings
-			UpdateTheme();
+
+			// Reset the theme based on the current settings
+			OnApplicationThemeChanged(this, EventArgs.Empty);
 			
 			// Set the custom professional renderer for the MenuStrip
 			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
@@ -82,14 +90,8 @@ namespace zuki.ronin
 			// Enable rounded corners if supported by the OS
 			this.EnableRoundedCorners(true);
 
-			// Precalculate a DPI-based scaling factor that be applied to child controls
-			using(Graphics graphics = CreateGraphics())
-			{
-				m_scalefactor = new SizeF(graphics.DpiX / 96.0F, graphics.DpiY / 96.0F);
-			}
-
 			// Manual DPI scaling
-			Padding = Padding.ScaleDPI(m_scalefactor);
+			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Create the system theme change monitor instance
 			if(VersionHelper.IsWindows10OrGreater())
@@ -103,7 +105,7 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
-		/// Clean up any resources being used.
+		/// Clean up any resources being used
 		/// </summary>
 		/// <param name="disposing">flag if managed resources should be disposed</param>
 		protected override void Dispose(bool disposing)
@@ -129,8 +131,16 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			// This comes in from another thread, Invoke() is required
-			Invoke((MethodInvoker)(() => { UpdateTheme(); }));
+			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
+
+			foreach(ToolStripMenuItem item in m_menu.Items)
+			{
+				item.ForeColor = ApplicationTheme.MenuForeColor;
+				item.DropDown.BackColor = ApplicationTheme.MenuBackColor;
+				item.DropDown.ForeColor = ApplicationTheme.MenuForeColor;
+			}
 		}
 
 		/// <summary>
@@ -166,35 +176,32 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
+		/// Invoked when a settings property has been changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Property changed event arguments</param>
+		private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
+		{
+			// Theme
+			if(args.PropertyName == nameof(Settings.Default.Theme))
+			{
+				ApplicationTheme.SetTheme(Settings.Default.Theme);
+			}
+		}
+
+		/// <summary>
 		/// Invoked when the system theme(s) have changed
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
 		private void OnSystemThemesChanged(object sender, EventArgs args)
 		{
-			// Inform the ApplicationTheme class that the registry changed
-			ApplicationTheme.SystemThemesChanged(this, EventArgs.Empty);
-		}
-
-		//---------------------------------------------------------------------
-		// Private Member Functions
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Updates the theme
-		/// </summary>
-		private void UpdateTheme()
-		{
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
-
-			foreach(ToolStripMenuItem item in m_menu.Items)
+			// This comes in from another thread, Invoke() is required
+			Invoke((MethodInvoker)(() =>
 			{
-				item.ForeColor = ApplicationTheme.MenuForeColor;
-				item.DropDown.BackColor = ApplicationTheme.MenuBackColor;
-				item.DropDown.ForeColor = ApplicationTheme.MenuForeColor;
-			}
+				// This is only relevant if the setting is set to System
+				if(Settings.Default.Theme == Theme.System) ApplicationTheme.SetTheme(Theme.System);
+			}));
 		}
 
 		//---------------------------------------------------------------------
@@ -207,12 +214,7 @@ namespace zuki.ronin
 		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
-		/// DPI scaling factor to be applied across the application
-		/// </summary>
-		private readonly SizeF m_scalefactor = SizeF.Empty;
-
-		/// <summary>
-		/// Registry change monitor for theme changes
+		/// Event handler for system theme changes
 		/// </summary>
 		private readonly RegistryKeyValueChangeMonitor m_thememonitor;
 	}
