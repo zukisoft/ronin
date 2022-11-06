@@ -46,7 +46,7 @@
 
     <MSBuild Targets="Restore" Projects="src\ronin\ronin.csproj" Properties="SolutionDir=$(MSBuildThisFileDirectory);RestorePackagesConfig=true"/>
     <MSBuild Projects="src\findvcmsms\findvcmsms.csproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
-    <MSBuild Projects="src\ronin.data\ronin.data.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\dbadmin\dbadmin.csproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\ronin\ronin.csproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup.findvcmsms\setup.findvcmsms.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup\setup.wixproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
@@ -70,7 +70,7 @@
 
     <MSBuild Targets="Restore" Projects="src\ronin\ronin.csproj" Properties="SolutionDir=$(MSBuildThisFileDirectory);RestorePackagesConfig=true"/>
     <MSBuild Projects="src\findvcmsms\findvcmsms.csproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
-    <MSBuild Projects="src\ronin.data\ronin.data.vcxproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\dbadmin\dbadmin.csproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\ronin\ronin.csproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup.findvcmsms\setup.findvcmsms.vcxproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup\setup.wixproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
