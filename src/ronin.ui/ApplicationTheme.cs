@@ -233,6 +233,16 @@ namespace zuki.ronin.ui
 			/// Gets the end color of the gradient used in the MenuStrip
 			/// </summary>
 			public override Color MenuStripGradientEnd => MenuBackColor;
+
+			/// <summary>
+			/// Gets the starting color of the gradient used in the StatusStrip
+			/// </summary>
+			public override Color StatusStripGradientBegin => MenuBackColor;
+
+			/// <summary>
+			/// Gets the end color of the gradient used in the StatusStrip
+			/// </summary>
+			public override Color StatusStripGradientEnd => MenuBackColor;
 		}
 
 		//-------------------------------------------------------------------

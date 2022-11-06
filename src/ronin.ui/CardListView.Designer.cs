@@ -23,6 +23,7 @@
 			// 
 			// m_listview
 			// 
+			this.m_listview.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.m_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.m_listviewcolumn});
 			this.m_listview.Dock = System.Windows.Forms.DockStyle.Fill;
