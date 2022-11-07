@@ -23,6 +23,8 @@
 #include "stdafx.h"
 #include "Series.h"
 
+#include "Extensions.h"
+
 #pragma warning(push, 4)
 
 namespace zuki::ronin::data {
@@ -36,6 +38,26 @@ namespace zuki::ronin::data {
 
 Series::Series()
 {
+}
+
+//---------------------------------------------------------------------------
+// Series Constructor (private)
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+Series::Series(SerializationInfo^ info, StreamingContext /*context*/)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	m_seriesid.Parse(info->GetString("@m_seriesid"));
+	m_code = info->GetString("@m_code");
+	m_name = info->GetString("@m_name");
+
+	Object^ releasedate = Extensions::GetValueNoThrow(info, "@m_releasedate", DateTime::typeid);
+	if(CLRISNOTNULL(releasedate)) m_releasedate = safe_cast<DateTime>(releasedate);
 }
 
 //---------------------------------------------------------------------------
@@ -126,6 +148,26 @@ bool Series::Equals(Object^ rhs)
 int Series::GetHashCode(void)
 {
 	return m_seriesid.GetHashCode();
+}
+
+//---------------------------------------------------------------------------
+// Series::GetObjectData
+//
+// Implements ISerializable::GetObjectData
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+void Series::GetObjectData(SerializationInfo^ info, StreamingContext /*context*/)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	info->AddValue("@m_seriesid", m_seriesid.ToString());
+	info->AddValue("@m_code", m_code);
+	info->AddValue("@m_name", m_name);
+	if(m_releasedate.HasValue) info->AddValue("@m_releasedate", m_releasedate.Value);
 }
 
 //---------------------------------------------------------------------------

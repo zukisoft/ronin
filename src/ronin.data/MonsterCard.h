@@ -31,6 +31,9 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Runtime::Serialization;
+using namespace System::Security;
+using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
 
@@ -43,6 +46,18 @@ namespace zuki::ronin::data {
 public ref class MonsterCard : public Card
 {
 public:
+
+	//-----------------------------------------------------------------------
+	// Member Functions
+
+	// GetObjectData
+	//
+	// Implements ISerializable::GetObjectData
+	[SecurityCriticalAttribute]
+	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
+	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
+	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
+	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context) override;
 
 	//-----------------------------------------------------------------------
 	// Properties
@@ -94,6 +109,11 @@ internal:
 	static MonsterType ParseType(String^ value);
 
 private:
+
+	// Serialization Constructor
+	//
+	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
+	MonsterCard(SerializationInfo^ info, StreamingContext context);
 
 	//-----------------------------------------------------------------------
 	// Member Variables

@@ -33,7 +33,6 @@
 			this.m_listview.HideSelection = false;
 			this.m_listview.LabelWrap = false;
 			this.m_listview.Location = new System.Drawing.Point(0, 0);
-			this.m_listview.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.m_listview.MultiSelect = false;
 			this.m_listview.Name = "m_listview";
 			this.m_listview.OwnerDraw = true;
@@ -53,7 +52,7 @@
 			// m_dummyimagelist
 			// 
 			this.m_dummyimagelist.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-			this.m_dummyimagelist.ImageSize = new System.Drawing.Size(1, 32);
+			this.m_dummyimagelist.ImageSize = new System.Drawing.Size(1, 30);
 			this.m_dummyimagelist.TransparentColor = System.Drawing.Color.Transparent;
 			// 
 			// CardListView

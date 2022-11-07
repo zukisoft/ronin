@@ -31,13 +31,13 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace zuki.ronin.ui
 {
 	/// <summary>
 	/// Implements a Card ListView control
 	/// </summary>
-	[DefaultBindingProperty("Cards")]
 	public partial class CardListView : UserControl
 	{
 		#region Win32 API Declarations
@@ -46,6 +46,13 @@ namespace zuki.ronin.ui
 			public const int SB_HORZ = 0;
 			public const int SB_VERT = 1;
 			public const int SB_BOTH = 3;
+
+			public const uint LVM_SETEXTENDEDLISTVIEWSTYLE = 0x1000 + 54;
+			public const uint LVM_GETEXTENDEDLISTVIEWSTYLE = 0x1000 + 55;
+			public const uint LVS_EX_DOUBLEBUFFER = 0x10000;
+
+			[DllImport("user32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
+			public static extern IntPtr SendMessageW(IntPtr hWnd, uint Msg, IntPtr wParam = default, IntPtr lParam = default);
 
 			[DllImport("user32", CallingConvention = System.Runtime.InteropServices.CallingConvention.Winapi)]
 			[return: MarshalAs(UnmanagedType.Bool)]
@@ -59,7 +66,6 @@ namespace zuki.ronin.ui
 		public CardListView()
 		{
 			InitializeComponent();
-			m_listview.EnableDoubleBuffering();
 
 			// Wire up the application theme change handler
 			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
@@ -69,8 +75,14 @@ namespace zuki.ronin.ui
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 
 			// Manual DPI scaling
-			Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_dummyimagelist.ImageSize = m_dummyimagelist.ImageSize.ScaleDPI(ApplicationTheme.ScalingFactor);
+
+			// Fix the flicker seen on the owner drawn listview items when the mouse moves over them
+			IntPtr lvmstyles = NativeMethods.SendMessageW(m_listview.Handle, NativeMethods.LVM_GETEXTENDEDLISTVIEWSTYLE);
+			lvmstyles = new IntPtr(lvmstyles.ToInt32() | NativeMethods.LVS_EX_DOUBLEBUFFER);
+			NativeMethods.SendMessageW(m_listview.Handle, NativeMethods.LVM_SETEXTENDEDLISTVIEWSTYLE, IntPtr.Zero, lvmstyles);
 		}
 
 		/// <summary>
@@ -102,7 +114,14 @@ namespace zuki.ronin.ui
 		// Properties
 		//-------------------------------------------------------------------
 
-		public List<Card> Cards
+		/// <summary>
+		/// Gets/sets the enumerable list of Card objects to display
+		/// </summary>
+		[Browsable(false)]
+		[Bindable(false)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public IEnumerable<Card> Cards
 		{
 			get { return m_cards; }
 			set
@@ -116,19 +135,17 @@ namespace zuki.ronin.ui
 
 				try
 				{
-					m_cards = value;
+					// Scroll the list back to the top on a list change, this prevents odd
+					// behaviors when the previous top item had an index higher than the new total
+					if((m_listview.VirtualListSize > 0) && (m_listview.TopItem != null))
+						m_listview.TopItem = m_listview.Items[0];
 
 					// Clear out and reload the existing list of cards
-					//m_list.Clear();
-					//m_list.AddRange(cards);
+					m_cards.Clear();
+					m_cards.AddRange(value);
 
 					// Update the number of virtual items available for the ListView control
 					m_listview.VirtualListSize = m_cards.Count;
-
-					// Scroll the list back to the top on a list change, this prevents odd
-					// behaviors when the previous top item had an index higher than the new total
-					//if((m_listView.VirtualListSize > 0) && (m_listView.TopItem != null))
-					//	m_listView.TopItem = m_listView.Items[0];
 				}
 
 				catch { m_listview.VirtualListSize = 0; throw; }
@@ -176,14 +193,14 @@ namespace zuki.ronin.ui
 		{
 			// Take off a few pixels at the top and bottom of the cell to provide the "lines"
 			// that serve as the visual separator between the items
-			var adjustedBounds = args.Bounds.InflateDPI(-4, -4, ApplicationTheme.ScalingFactor);
+			var adjustedBounds = args.Bounds.InflateDPI(0, -2, ApplicationTheme.ScalingFactor);
 
 			// Can't use args.State here - known (and very old) defect in .NET
 			Brush background = new SolidBrush(args.Item.Selected ? ApplicationTheme.InvertedPanelBackColor : 
 				ApplicationTheme.PanelBackColor);
 
 			// Fill the background with a different color based on if the item is selected or not
-			args.Graphics.FillRectangle(background, adjustedBounds);
+			args.Graphics.FillRoundedRectangle(background, adjustedBounds, 4.ScaleDPI(ApplicationTheme.ScalingFactor));
 		}
 
 		/// <summary>
@@ -193,7 +210,7 @@ namespace zuki.ronin.ui
 		/// <param name="args">Draw item event arguments</param>
 		private void OnDrawSubItem(object sender, DrawListViewSubItemEventArgs args)
 		{
-			var adjustedBounds = args.SubItem.Bounds.InflateDPI(-8, -4, ApplicationTheme.ScalingFactor);
+			var adjustedBounds = args.SubItem.Bounds.InflateDPI(-4, -2, ApplicationTheme.ScalingFactor);
 
 			// Use high-quality text rendering for the subitem
 			args.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
@@ -214,7 +231,7 @@ namespace zuki.ronin.ui
 		private void OnResize(object sender, EventArgs args)
 		{
 			// Resize the column(s) of the list view
-			m_listviewcolumn.Width = m_listview.ClientSize.Width - 1;
+			m_listviewcolumn.Width = (m_listview.ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor));
 		}
 
 		/// <summary>

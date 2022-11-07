@@ -21,22 +21,21 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
-using zuki.ronin.ui;
 
-namespace zuki.ronin
+namespace zuki.ronin.ui
 {
-	/// <summary>
-	/// Implements the card viewer form
-	/// </summary>
-	public partial class CardViewer : Form
+	public partial class CardSelector : UserControl
 	{
 		/// <summary>
-		/// Default constructor
+		/// Instance Constructor
 		/// </summary>
-		private CardViewer()
+		public CardSelector()
 		{
 			InitializeComponent();
 
@@ -44,24 +43,14 @@ namespace zuki.ronin
 			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
 			ApplicationTheme.Changed += m_appthemechanged;
 
-			// Reset the theme based on the current system settings
+			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 
 			// Manual DPI scaling
+			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel1.Padding = m_splitcontainer.Panel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel1.Margin = m_splitcontainer.Panel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel2.Padding = m_splitcontainer.Panel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel2.Margin = m_splitcontainer.Panel2.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-		}
-
-		/// <summary>
-		/// Instance constructor
-		/// </summary>
-		/// <param name="database">Database instance to use</param>
-		public CardViewer(Database database) : this()
-		{
-			m_database = database ?? throw new ArgumentNullException(nameof(database));
+			m_toppanel.Margin = m_toppanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_toppanel.Padding = m_toppanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
@@ -79,6 +68,42 @@ namespace zuki.ronin
 			base.Dispose(disposing);
 		}
 
+		//-------------------------------------------------------------------
+		// Events
+		//-------------------------------------------------------------------
+
+		/// <summary>
+		/// Fired when the selected item has changed
+		/// </summary>
+		[Browsable(true), Category("Behavior")]
+		public event EventHandler<Card> SelectionChanged;
+
+		//-------------------------------------------------------------------
+		// Properties
+		//-------------------------------------------------------------------
+
+		/// <summary>
+		/// Gets/sets the enumerable list of Card objects to display
+		/// </summary>
+		[Browsable(false)]
+		[Bindable(false)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public IEnumerable<Card> Cards
+		{
+			get { return m_cards; }
+			set
+			{
+				// Clear out and reload the existing list of cards
+				m_cards.Clear();
+				m_cards.AddRange(value);
+
+				// Reset the filter text to trigger an update to the listview
+				if(m_filter.Text != string.Empty) m_filter.Text = string.Empty;
+				else OnFilterTextChanged(this, EventArgs.Empty);
+			}
+		}
+
 		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
@@ -90,22 +115,32 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			// NOTE: This is not working for MDI child forms
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
+			BackColor = m_toppanel.BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = m_toppanel.ForeColor = ApplicationTheme.FormForeColor;
 
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
+			m_filter.BackColor = ApplicationTheme.PanelBackColor;
+			m_filter.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>
-		/// Invoked when the form has been loaded
+		/// Invoked when the filter text has changed
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnLoad(object sender, EventArgs args)
+		private void OnFilterTextChanged(object sender, EventArgs args)
 		{
-			// TODO: TESTING
-			m_cardselector.Cards = m_database.SelectCards(null);
+			// Update the listview to only contain the subset of Card objects with matching names to the filter
+			m_cardlistview.Cards = m_cards.Where(item => item.Name.IndexOf(m_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+		}
+
+		/// <summary>
+		/// Invoked when the listview selection has changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="card">Card object that was selected</param>
+		private void OnSelectionChanged(object sender, Card card)
+		{
+			SelectionChanged?.Invoke(this, card);
 		}
 
 		//---------------------------------------------------------------------
@@ -118,8 +153,8 @@ namespace zuki.ronin
 		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
-		/// Database instance
+		/// Backing List<> for the virtual list view
 		/// </summary>
-		private readonly Database m_database;
+		private List<Card> m_cards = new List<Card>();
 	}
 }

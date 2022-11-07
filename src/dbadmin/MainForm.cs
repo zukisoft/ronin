@@ -153,9 +153,12 @@ namespace zuki.ronin
 			catch(Exception) { /* TODO - HANDLER */ }
 
 			// TODO: TESTING
-			var child = new CardViewer(m_database);
-			child.MdiParent = this;
-			child.Show();
+			if(m_database != null)
+			{
+				var child = new CardViewer(m_database);
+				child.MdiParent = this;
+				child.Show();
+			}
 		}
 
 		/// <summary>

@@ -29,6 +29,9 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Runtime::Serialization;
+using namespace System::Security;
+using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
 
@@ -38,7 +41,8 @@ namespace zuki::ronin::data {
 // Describes a card object
 //---------------------------------------------------------------------------
 
-public ref class Card abstract
+[SerializableAttribute]
+public ref class Card abstract : public ISerializable
 {
 public:
 
@@ -70,6 +74,15 @@ public:
 	//
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
+
+	// GetObjectData
+	//
+	// Implements ISerializable::GetObjectData
+	[SecurityCriticalAttribute]
+	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
+	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
+	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
+	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context);
 
 	// ToString
 	//
@@ -128,6 +141,11 @@ protected:
 	// Instance Constructor
 	//
 	Card(CardType type);
+
+	// Serialization Constructor
+	//
+	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
+	Card(SerializationInfo^ info, StreamingContext context);
 
 private:
 

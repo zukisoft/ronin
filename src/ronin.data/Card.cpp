@@ -39,6 +39,25 @@ Card::Card(CardType type) : m_type(type)
 }
 
 //---------------------------------------------------------------------------
+// Card Constructor (protected)
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+Card::Card(SerializationInfo^ info, StreamingContext /*context*/)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	m_type = static_cast<CardType>(info->GetInt32("@m_type"));
+	m_cardid.Parse(info->GetString("@m_cardid"));
+	m_name = info->GetString("@m_name");
+	m_passcode = info->GetString("@m_passcode");
+	m_text = info->GetString("@m_text");
+}
+
+//---------------------------------------------------------------------------
 // Card::operator == (static)
 
 bool Card::operator==(Card^ lhs, Card^ rhs)
@@ -126,6 +145,27 @@ bool Card::Equals(Object^ rhs)
 int Card::GetHashCode(void)
 {
 	return m_cardid.GetHashCode();
+}
+
+//---------------------------------------------------------------------------
+// Card::GetObjectData
+//
+// Implements ISerializable::GetObjectData
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+void Card::GetObjectData(SerializationInfo^ info, StreamingContext /*context*/)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	info->AddValue("@m_type", static_cast<int>(m_type));
+	info->AddValue("@m_name", m_name);
+	info->AddValue("@m_passcode", m_passcode);
+	info->AddValue("@m_text", m_text);
+	info->AddValue("@m_cardid", m_cardid.ToString());
 }
 
 //---------------------------------------------------------------------------

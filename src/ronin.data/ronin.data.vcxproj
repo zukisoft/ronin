@@ -161,6 +161,7 @@
     <ClInclude Include="CardFilter.h" />
     <ClInclude Include="CardType.h" />
     <ClInclude Include="Database.h" />
+    <ClInclude Include="Extensions.h" />
     <ClInclude Include="MonsterAttribute.h" />
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="MonsterType.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="dbextension.cpp" />
+    <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
     <ClCompile Include="Print.cpp" />
     <ClCompile Include="Series.cpp" />

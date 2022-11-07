@@ -39,6 +39,23 @@ MonsterCard::MonsterCard() : Card(CardType::Monster)
 }
 
 //---------------------------------------------------------------------------
+// MonsterCard Constructor (private)
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+MonsterCard::MonsterCard(SerializationInfo^ info, StreamingContext context) : Card(info, context)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	m_attribute = static_cast<MonsterAttribute>(info->GetInt32("@monster_m_attribute"));
+	m_type = static_cast<MonsterType>(info->GetInt32("@monster_m_type"));
+	m_normal = info->GetBoolean("@monster_m_normal");
+}
+
+//---------------------------------------------------------------------------
 // MonsterCard::Attribute::get
 //
 // Gets the monster attribute
@@ -59,23 +76,23 @@ void MonsterCard::Attribute::set(MonsterAttribute value)
 }
 
 //---------------------------------------------------------------------------
-// MonsterCard::Type::get
+// MonsterCard::GetObjectData
 //
-// Gets the monster type
-
-MonsterType MonsterCard::Type::get(void)
-{
-	return m_type;
-}
-
-//---------------------------------------------------------------------------
-// MonsterCard::Type::set (internal)
+// Implements ISerializable::GetObjectData
 //
-// Sets the monster type
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
 
-void MonsterCard::Type::set(MonsterType value)
+void MonsterCard::GetObjectData(SerializationInfo^ info, StreamingContext context)
 {
-	m_type = value;
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	Card::GetObjectData(info, context);
+	info->AddValue("@monster_m_attribute", static_cast<int>(m_attribute));
+	info->AddValue("@monster_m_type", static_cast<int>(m_type));
+	info->AddValue("@monster_m_normal", m_normal);
 }
 
 //---------------------------------------------------------------------------
@@ -96,6 +113,26 @@ bool MonsterCard::Normal::get(void)
 void MonsterCard::Normal::set(bool value)
 {
 	m_normal = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Type::get
+//
+// Gets the monster type
+
+MonsterType MonsterCard::Type::get(void)
+{
+	return m_type;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Type::set (internal)
+//
+// Sets the monster type
+
+void MonsterCard::Type::set(MonsterType value)
+{
+	m_type = value;
 }
 
 //---------------------------------------------------------------------------

@@ -39,6 +39,26 @@ SpellCard::SpellCard() : Card(CardType::Spell)
 }
 
 //---------------------------------------------------------------------------
+// SpellCard Constructor (private)
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+SpellCard::SpellCard(SerializationInfo^ info, StreamingContext context) : Card(info, context)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	m_continuous = info->GetBoolean("@spell_m_continuous");
+	m_equip = info->GetBoolean("@spell_m_equip");
+	m_field = info->GetBoolean("@spell_m_field");
+	m_normal = info->GetBoolean("@spell_m_normal");
+	m_quickplay = info->GetBoolean("@spell_m_quickplay");
+	m_ritual = info->GetBoolean("@spell_m_ritual");
+}
+
+//---------------------------------------------------------------------------
 // SpellCard::Continuous::get
 //
 // Gets the continuous spell flag
@@ -96,6 +116,29 @@ bool SpellCard::Field::get(void)
 void SpellCard::Field::set(bool value)
 {
 	m_field = value;
+}
+
+//---------------------------------------------------------------------------
+// SpellCard::GetObjectData
+//
+// Implements ISerializable::GetObjectData
+//
+// Arguments:
+//
+//	info		- Serialization information
+//	context		- Serialization context
+
+void SpellCard::GetObjectData(SerializationInfo^ info, StreamingContext context)
+{
+	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+
+	Card::GetObjectData(info, context);
+	info->AddValue("@spell_m_continuous", m_continuous);
+	info->AddValue("@spell_m_equip", m_equip);
+	info->AddValue("@spell_m_field", m_field);
+	info->AddValue("@spell_m_normal", m_normal);
+	info->AddValue("@spell_m_quickplay", m_quickplay);
+	info->AddValue("@spell_m_ritual", m_ritual);
 }
 
 //---------------------------------------------------------------------------

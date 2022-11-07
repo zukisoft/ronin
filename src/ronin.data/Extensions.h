@@ -20,92 +20,49 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __TRAPCARD_H_
-#define __TRAPCARD_H_
+#ifndef __EXTENSIONS_H_
+#define __EXTENSIONS_H_
 #pragma once
-
-#include "Card.h"
 
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Reflection;
+using namespace System::Runtime::CompilerServices;
 using namespace System::Runtime::Serialization;
-using namespace System::Security;
-using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Class TrapCard
+// Class Extensions (internal)
 //
-// Describes a trap card object
+// Implements Extension methods
 //---------------------------------------------------------------------------
 
-public ref class TrapCard : public Card
+[ExtensionAttribute]
+ref class Extensions abstract sealed
 {
 public:
 
 	//-----------------------------------------------------------------------
 	// Member Functions
 
-	// GetObjectData
+	// GetValueNoThrow
 	//
-	// Implements ISerializable::GetObjectData
-	[SecurityCriticalAttribute]
-	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
-	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context) override;
-
-	//-----------------------------------------------------------------------
-	// Properties
-
-	// Continuous
-	//
-	// Gets the continuous trap flag
-	property bool Continuous
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Counter
-	//
-	// Gets the continuous trap flag
-	property bool Counter
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Normal
-	//
-	// Gets the normal trap flag
-	property bool Normal
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-internal:
-
-	// Instance Constructor
-	//
-	TrapCard();
+	// Extends SerializationInfo
+	[ExtensionAttribute]
+	static Object^ GetValueNoThrow(SerializationInfo^ info, String^ name, Type^ type);
 
 private:
 
-	// Serialization Constructor
+	// Static Constructor
 	//
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	TrapCard(SerializationInfo^ info, StreamingContext context);
+	static Extensions();
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
-	bool			m_continuous = false;		// Continuous trap
-	bool			m_counter = false;			// Counter trap
-	bool			m_normal = false;			// Normal trap
+	static initonly MethodInfo^ s_getvaluenothrow;
 };
 
 //---------------------------------------------------------------------------
@@ -114,4 +71,4 @@ private:
 
 #pragma warning(pop)
 
-#endif	// __TRAPCARD_H_
+#endif	// __EXTENSIONS_H_
