@@ -134,6 +134,20 @@ bool Card::Equals(Object^ rhs)
 }
 
 //---------------------------------------------------------------------------
+// Card::GetArtwork
+//
+// Gets the artwork associated with the card
+//
+// Arguments:
+//
+//	NONE
+
+Bitmap^ Card::GetArtwork(void)
+{
+	return nullptr;
+}
+
+//---------------------------------------------------------------------------
 // Card::GetHashCode
 //
 // Overrides Object::GetHashCode()

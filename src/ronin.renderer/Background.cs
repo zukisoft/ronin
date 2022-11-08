@@ -22,7 +22,18 @@
 
 namespace zuki.ronin.renderer
 {
-	public class Class1
-    {
-    }
+	/// <summary>
+	/// Defines the rendering templates
+	/// </summary>
+	internal enum Background
+	{
+		None = 0,					// Transparent
+		NormalMonster,				// Yellow
+		EffectMonster,				// Orange
+		FusionMonster,				// Purple
+		RitualMonster,				// Blue
+		Spell,						// Green
+		Trap,						// Pink
+		Token,						// Gray
+	}
 }

@@ -29,6 +29,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Drawing;
 using namespace System::Runtime::Serialization;
 using namespace System::Security;
 using namespace System::Security::Permissions;
@@ -69,6 +70,11 @@ public:
 	//
 	// Compares this Card instance to another Card instance
 	bool Equals(Card^ rhs);
+
+	// GetArtwork
+	//
+	// Gets the artwork associated with the card
+	Bitmap^ GetArtwork(void);
 
 	// GetHashCode
 	//

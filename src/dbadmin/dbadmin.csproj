@@ -137,6 +137,10 @@
       <Project>{717d3b61-e1fd-4960-8188-0b2215f6a7fb}</Project>
       <Name>ronin.data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ronin.renderer\ronin.renderer.csproj">
+      <Project>{c96bd1b4-fac0-482a-aa4d-e33369881b26}</Project>
+      <Name>ronin.renderer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ronin.ui\ronin.ui.csproj">
       <Project>{77405237-4b18-4345-86d5-4cffbb6547c1}</Project>
       <Name>ronin.ui</Name>

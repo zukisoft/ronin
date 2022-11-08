@@ -24,11 +24,14 @@
 #define __PRINT_H_
 #pragma once
 
+#include "Card.h"
 #include "PrintRarity.h"
+#include "Series.h"
 
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Drawing;
 using namespace System::Runtime::Serialization;
 using namespace System::Security;
 using namespace System::Security::Permissions;
@@ -69,6 +72,16 @@ public:
 	// Compares this Print instance to another Card instance
 	bool Equals(Print^ rhs);
 
+	// GetArtwork
+	//
+	// Gets the artwork associated with the print
+	Bitmap^ GetArtwork(void);
+
+	// GetCard
+	//
+	// Gets the Card associated with the print
+	Card^ GetCard(void);
+
 	// GetHashCode
 	//
 	// Overrides Object::GetHashCode()
@@ -82,6 +95,11 @@ public:
 	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
 	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
 	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context);
+
+	// GetSeries
+	//
+	// Gets the Series associated with the print
+	Series^ GetSeries(void);
 
 	// ToString
 	//

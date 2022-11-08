@@ -21,9 +21,11 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
+using zuki.ronin.renderer;
 using zuki.ronin.ui;
 
 namespace zuki.ronin
@@ -108,6 +110,20 @@ namespace zuki.ronin
 			m_cardselector.Cards = m_database.SelectCards(null);
 		}
 
+		/// <summary>
+		/// Invoked when the selected card has changed
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="card">Selected Card instance</param>
+		private void OnSelectionChanged(object sender, Card card)
+		{
+			// TODO: TESTING
+			Bitmap b = (card != null) ? Renderer.RenderCard(card) : null;
+			Image old = pictureBox1.Image;
+			pictureBox1.Image = (b != null) ? b : null;
+			if(old != null) old.Dispose();
+		}
+
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
@@ -121,5 +137,5 @@ namespace zuki.ronin
 		/// Database instance
 		/// </summary>
 		private readonly Database m_database;
-	}
+    }
 }

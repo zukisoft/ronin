@@ -161,6 +161,34 @@ bool Print::Equals(Object^ rhs)
 }
 
 //---------------------------------------------------------------------------
+// Print::GetArtwork
+//
+// Gets the artwork associated with the print
+//
+// Arguments:
+//
+//	NONE
+
+Bitmap^ Print::GetArtwork(void)
+{
+	return nullptr;
+}
+
+//---------------------------------------------------------------------------
+// Print::GetCard
+//
+// Gets the card associated with the print
+//
+// Arguments:
+//
+//	NONE
+
+Card^ Print::GetCard(void)
+{
+	return nullptr;
+}
+
+//---------------------------------------------------------------------------
 // Print::GetHashCode
 //
 // Overrides Object::GetHashCode()
@@ -195,6 +223,20 @@ void Print::GetObjectData(SerializationInfo^ info, StreamingContext /*context*/)
 	info->AddValue("@m_language", m_language);
 	info->AddValue("@m_number", m_number);
 	if(m_releasedate.HasValue) info->AddValue("@m_releasedate", m_releasedate.Value);
+}
+
+//---------------------------------------------------------------------------
+// Print::GetSeries
+//
+// Gets the series associated with the print
+//
+// Arguments:
+//
+//	NONE
+
+Series^ Print::GetSeries(void)
+{
+	return nullptr;
 }
 
 //---------------------------------------------------------------------------
