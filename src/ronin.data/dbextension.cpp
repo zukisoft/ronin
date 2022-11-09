@@ -25,13 +25,90 @@
 #include <rpc.h>
 #include <sqlite3ext.h>
 
+#include "CardAttribute.h"
+#include "MonsterType.h"
+
 extern "C" { SQLITE_EXTENSION_INIT1 };
+
+using namespace zuki::ronin::data;
 
 #pragma warning(push, 4)
 
 //---------------------------------------------------------------------------
-// FUNCTION PROTOTYPES
+// monsterattribute (local)
+//
+// SQLite scalar function to convert an attribute string into a CardAttribute
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void monsterattribute(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	// Null or zero-length input string results in CardAttribute::None
+	wchar_t const* str = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if((str == nullptr) || (*str == L'\0')) return sqlite3_result_int(context, static_cast<int>(CardAttribute::None));
+
+	// The strings are case-sensitive and enforced by a CHECK CONSTRAINT
+	if(wcscmp(str, L"DARK") == 0) return sqlite3_result_int(context, static_cast<int>(CardAttribute::Dark));
+	else if(wcscmp(str, L"EARTH") == 0) return sqlite3_result_int(context, static_cast<int>(CardAttribute::Earth));
+	else if(wcscmp(str, L"FIRE") == 0) return sqlite3_result_int(context, static_cast<int>(CardAttribute::Fire));
+	else if(wcscmp(str, L"LIGHT") == 0) return sqlite3_result_int(context, static_cast<int>(CardAttribute::Light));
+	else if(wcscmp(str, L"WATER") == 0) return sqlite3_result_int(context, static_cast<int>(CardAttribute::Water));
+	else if(wcscmp(str, L"WIND") == 0) return sqlite3_result_int(context, static_cast<int>(CardAttribute::Wind));
+
+	// Input string was not a valid monster attribute
+	return sqlite3_result_int(context, static_cast<int>(CardAttribute::None));
+}
+
 //---------------------------------------------------------------------------
+// monstertype (local)
+//
+// SQLite scalar function to convert a type string into a MonsterType
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void monstertype(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	// Null or zero-length input string results in MonsterType::None
+	wchar_t const* str = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if((str == nullptr) || (*str == L'\0')) return sqlite3_result_int(context, static_cast<int>(MonsterType::None));
+
+	// The strings are case-sensitive and enforced by a CHECK CONSTRAINT
+	if(wcscmp(str, L"Aqua") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Aqua));
+	else if(wcscmp(str, L"Beast") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Beast));
+	else if(wcscmp(str, L"Beast-Warrior") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::BeastWarrior));
+	else if(wcscmp(str, L"Dinosaur") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Dinosaur));
+	else if(wcscmp(str, L"Dragon") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Dragon));
+	else if(wcscmp(str, L"Fairy") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Fairy));
+	else if(wcscmp(str, L"Fiend") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Fiend));
+	else if(wcscmp(str, L"Fish") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Fish));
+	else if(wcscmp(str, L"Insect") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Insect));
+	else if(wcscmp(str, L"Machine") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Machine));
+	else if(wcscmp(str, L"Plant") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Plant));
+	else if(wcscmp(str, L"Pyro") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Pyro));
+	else if(wcscmp(str, L"Reptile") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Reptile));
+	else if(wcscmp(str, L"Rock") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Rock));
+	else if(wcscmp(str, L"Sea Serpent") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::SeaSerpent));
+	else if(wcscmp(str, L"Spellcaster") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Spellcaster));
+	else if(wcscmp(str, L"Thunder") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Thunder));
+	else if(wcscmp(str, L"Warrior") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Warrior));
+	else if(wcscmp(str, L"Winged Beast") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::WingedBeast));
+	else if(wcscmp(str, L"Zombie") == 0) return sqlite3_result_int(context, static_cast<int>(MonsterType::Zombie));
+
+	// Input string was not a valid monster type
+	return sqlite3_result_int(context, static_cast<int>(CardAttribute::None));
+}
 
 //---------------------------------------------------------------------------
 // uuid (local)
@@ -58,7 +135,6 @@ static void uuid(sqlite3_context* context, int argc, sqlite3_value** /*argv*/)
 	return sqlite3_result_blob(context, &uuid, sizeof(UUID), SQLITE_TRANSIENT);
 }
 
-
 //---------------------------------------------------------------------------
 // sqlite3_extension_init
 //
@@ -76,9 +152,19 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 
 	*errmsg = nullptr;							// Initialize [out] variable
 
+	// monsterattribute function
+	//
+	int result = sqlite3_create_function16(db, L"monsterattribute", 1, SQLITE_UTF16, nullptr, monsterattribute, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function monsterattribute (%d)", result); return result; }
+
+	// monstertype function
+	//
+	result = sqlite3_create_function16(db, L"monstertype", 1, SQLITE_UTF16, nullptr, monstertype, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function monstertype (%d)", result); return result; }
+
 	// uuid function
 	//
-	int result = sqlite3_create_function16(db, L"uuid", 0, SQLITE_UTF16, nullptr, uuid, nullptr, nullptr);
+	result = sqlite3_create_function16(db, L"uuid", 0, SQLITE_UTF16, nullptr, uuid, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function uuid (%d)", result); return result; }
 
 	return SQLITE_OK;

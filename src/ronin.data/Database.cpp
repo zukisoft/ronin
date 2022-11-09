@@ -30,6 +30,7 @@
 #include "TrapCard.h"
 
 using namespace System::IO;
+using namespace System::Runtime::InteropServices;
 
 #pragma warning(push, 4)
 
@@ -75,7 +76,6 @@ static int execute_non_query(sqlite3* instance, wchar_t const* sql, _parameters&
 		// The final result from sqlite3_step should be SQLITE_DONE
 		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
-		// Finalize the statement
 		sqlite3_finalize(statement);
 
 		// Return the number of changes made by the statement
@@ -125,7 +125,6 @@ static int execute_scalar_int(sqlite3* instance, wchar_t const* sql, _parameters
 		if(result == SQLITE_ROW) value = sqlite3_column_int(statement, 0);
 		else if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
-		// Finalize the statement
 		sqlite3_finalize(statement);
 
 		// Return the resultant value from the scalar query
@@ -353,6 +352,66 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 }
 
 //---------------------------------------------------------------------------
+// Database::SelectArtwork (internal)
+//
+// Gets the default artwork for a Card
+//
+// Arguments:
+//
+//	card		- Card instance to retrieve the artwork for
+
+Bitmap^ Database::SelectArtwork(Card^ card)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	auto sql = L"select artwork.image from artwork "
+		"inner join defaultartwork on defaultartwork.artworkid = artwork.artworkid "
+		"where defaultartwork.cardid = ?1";
+
+	// Convert the cardid into a byte array and pin it
+	array<Byte>^ cardid = card->CardID.ToByteArray();
+	pin_ptr<Byte> pincardid = &cardid[0];
+
+	// Prepare the query
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pincardid, cardid->Length, SQLITE_TRANSIENT);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query; there should be at most one row returned
+		if(sqlite3_step(statement) == SQLITE_ROW) {
+
+			// Get the length of the BLOB data
+			int length = sqlite3_column_bytes(statement, 0);
+			if(length > 0) {
+
+				// Convert the BLOB data into a new Bitmap instance
+				void const* blob = sqlite3_column_blob(statement, 0);
+				if(blob != nullptr) {
+
+					// Wrap the BLOB in a read-only UnmanagedMemoryStream and create a Bitmap from it
+					Byte* blobptr = reinterpret_cast<unsigned char*>(const_cast<void*>(blob));
+					msclr::auto_handle<UnmanagedMemoryStream> stream(gcnew UnmanagedMemoryStream(blobptr, length, length, FileAccess::Read));
+					return gcnew Bitmap(stream.get());
+				}
+			}
+		}
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return nullptr;
+}
+
+//---------------------------------------------------------------------------
 // Database::SelectCards
 //
 // Selects Card objects from the database
@@ -371,9 +430,21 @@ List<Card^>^ Database::SelectCards(void)
 
 	List<Card^>^ cards = gcnew List<Card^>();
 
-	// type | cardid | name | passcode | text
-	auto sql = L"select type, cardid, name, passcode, text from card "
-		"order by name asc";
+	// { 00-04 } type | cardid | name | passcode | text |
+	// { 05-17 } attribute | level | type | attack | defense | normal | effect | fusion | ritual | toon | union | spirit | gemini |
+	// { 18-23 } normal | continuous | equip | field | quickplay | ritual |
+	// { 24-26 } normal | continuous | counter
+	auto sql = L"select card.type, card.cardid, card.name, card.passcode, card.text, "
+		"monsterattribute(monster.attribute), monster.level, monstertype(monster.type), monster.attack, "
+		"monster.defense, monster.normal, monster.effect, monster.fusion, monster.ritual,  "
+		"monster.toon, monster.[union], monster.spirit, monster.gemini, "
+		"spell.normal, spell.continuous, spell.equip, spell.field, spell.quickplay, spell.ritual, "
+		"trap.normal, trap.continuous, trap.counter from card "
+		"left outer join monster on card.cardid = monster.cardid "
+		"left outer join spell on card.cardid = spell.cardid "
+		"left outer join trap on card.cardid = trap.cardid "
+		"order by card.name asc";
+
 	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
 	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
@@ -389,32 +460,51 @@ List<Card^>^ Database::SelectCards(void)
 			// proper derivation of the Card class
 			CardType type = static_cast<CardType>(sqlite3_column_int(statement, 0));
 			
-			// MonsterCard (0)
+			// MonsterCard
 			if(type == CardType::Monster) {
 
-				MonsterCard^ monster = gcnew MonsterCard();
+				MonsterCard^ monster = gcnew MonsterCard(this);
 
-				// TODO: Set MonsterCard specific properties here
+				monster->Attribute	= static_cast<CardAttribute>(sqlite3_column_int(statement, 5));
+				monster->Level		= sqlite3_column_int(statement, 6);
+				monster->Type		= static_cast<MonsterType>(sqlite3_column_int(statement, 7));
+				monster->Attack		= sqlite3_column_int(statement, 8);
+				monster->Defense	= sqlite3_column_int(statement, 9);
+				monster->Normal		= (sqlite3_column_int(statement, 10) != 0);
+				monster->Effect		= (sqlite3_column_int(statement, 11) != 0);
+				monster->Fusion		= (sqlite3_column_int(statement, 12) != 0);
+				monster->Ritual		= (sqlite3_column_int(statement, 13) != 0);
+				monster->Toon		= (sqlite3_column_int(statement, 14) != 0);
+				monster->Union		= (sqlite3_column_int(statement, 15) != 0);
+				monster->Spirit		= (sqlite3_column_int(statement, 16) != 0);
+				monster->Gemini		= (sqlite3_column_int(statement, 17) != 0);
 
 				card = static_cast<Card^>(monster);
 			}
 
-			// SpellCard (1)
+			// SpellCard
 			else if(type == CardType::Spell) {
 
-				SpellCard^ spell = gcnew SpellCard();
+				SpellCard^ spell = gcnew SpellCard(this);
 
-				// TODO: Set SpellCard specific properties here
+				spell->Normal		= (sqlite3_column_int(statement, 18) != 0);
+				spell->Continuous	= (sqlite3_column_int(statement, 19) != 0);
+				spell->Equip		= (sqlite3_column_int(statement, 20) != 0);
+				spell->Field		= (sqlite3_column_int(statement, 21) != 0);
+				spell->QuickPlay	= (sqlite3_column_int(statement, 22) != 0);
+				spell->Ritual		= (sqlite3_column_int(statement, 23) != 0);
 
 				card = static_cast<Card^>(spell);
 			}
 
-			// TrapCard (2)
+			// TrapCard
 			else if(type == CardType::Trap) {
 
-				TrapCard^ trap = gcnew TrapCard();
+				TrapCard^ trap = gcnew TrapCard(this);
 
-				// TODO: Set SpellCard specific properties here
+				trap->Normal		= (sqlite3_column_int(statement, 24) != 0);
+				trap->Continuous	= (sqlite3_column_int(statement, 25) != 0);
+				trap->Counter		= (sqlite3_column_int(statement, 26) != 0);
 
 				card = static_cast<Card^>(trap);
 			}
@@ -451,11 +541,9 @@ List<Card^>^ Database::SelectCards(void)
 
 		// If the final result of the query was not SQLITE_DONE, something bad happened
 		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
-
-		sqlite3_finalize(statement);			// Finalize the SQLite statement
 	}
 
-	catch(Exception^) { sqlite3_finalize(statement); throw; }
+	finally { sqlite3_finalize(statement); }
 
 	return cards;
 }

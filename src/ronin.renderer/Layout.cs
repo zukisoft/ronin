@@ -40,6 +40,56 @@ namespace zuki.ronin.renderer
 		public virtual Size ArtworkSize { get; }
 
 		/// <summary>
+		/// Background image for a DARK attribute
+		/// </summary>
+		public virtual Bitmap AttributeDark { get; }
+
+		/// <summary>
+		/// Background image for an EARTH attribute
+		/// </summary>
+		public virtual Bitmap AttributeEarth { get; }
+
+		/// <summary>
+		/// Background image for a FIRE attribute
+		/// </summary>
+		public virtual Bitmap AttributeFire { get; }
+
+		/// <summary>
+		/// Background image for a LIGHT attribute
+		/// </summary>
+		public virtual Bitmap AttributeLight { get; }
+
+		/// <summary>
+		/// Position of the attribute image
+		/// </summary>
+		public virtual Point AttributePosition { get; }
+
+		/// <summary>
+		/// Size of the attribute image
+		/// </summary>
+		public virtual Size AttributeSize { get; }
+
+		/// <summary>
+		/// Background image for a SPELL attribute
+		/// </summary>
+		public virtual Bitmap AttributeSpell { get; }
+
+		/// <summary>
+		/// Background image for a TRAP attribute
+		/// </summary>
+		public virtual Bitmap AttributeTrap { get; }
+
+		/// <summary>
+		/// Background image for a WATER attribute
+		/// </summary>
+		public virtual Bitmap AttributeWater { get; }
+
+		/// <summary>
+		/// Background image for a WIND attribute
+		/// </summary>
+		public virtual Bitmap AttributeWind { get; }
+
+		/// <summary>
 		/// Background image for an effect monster card
 		/// </summary>
 		public virtual Bitmap BackgroundEffectMonster { get; }

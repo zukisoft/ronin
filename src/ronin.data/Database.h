@@ -63,6 +63,13 @@ public:
 	List<Card^>^ SelectCards(void);
 	List<Card^>^ SelectCards(CardFilter^ filter);
 
+internal:
+
+	// SelectArtwork
+	//
+	// Gets the default artwork for a Card
+	Bitmap^ SelectArtwork(Card^ card);
+
 private:
 
 	// Static Constructor

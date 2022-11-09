@@ -23,8 +23,6 @@
 #include "stdafx.h"
 #include "Print.h"
 
-#include "Extensions.h"
-
 #pragma warning(push, 4)
 
 namespace zuki::ronin::data {
@@ -38,30 +36,6 @@ namespace zuki::ronin::data {
 
 Print::Print()
 {
-}
-
-//---------------------------------------------------------------------------
-// Print Constructor (private)
-//
-// Arguments:
-//
-//	info		- Serialization information
-//	context		- Serialization context
-
-Print::Print(SerializationInfo^ info, StreamingContext /*context*/)
-{
-	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
-
-	m_printid.Parse(info->GetString("@m_printid"));
-	m_cardid.Parse(info->GetString("@m_cardid"));
-	m_seriesid.Parse(info->GetString("@m_seriesid"));
-	m_code = info->GetString("@m_code");
-	m_language = info->GetString("@m_language");
-	m_number = info->GetString("@m_number");
-	m_rarity = static_cast<PrintRarity>(info->GetInt32("@m_rarity"));
-
-	Object^ releasedate = Extensions::GetValueNoThrow(info, "@m_releasedate", DateTime::typeid);
-	if(CLRISNOTNULL(releasedate)) m_releasedate = safe_cast<DateTime>(releasedate);
 }
 
 //---------------------------------------------------------------------------
@@ -203,29 +177,6 @@ int Print::GetHashCode(void)
 }
 
 //---------------------------------------------------------------------------
-// Print::GetObjectData
-//
-// Implements ISerializable::GetObjectData
-//
-// Arguments:
-//
-//	info		- Serialization information
-//	context		- Serialization context
-
-void Print::GetObjectData(SerializationInfo^ info, StreamingContext /*context*/)
-{
-	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
-
-	info->AddValue("@m_printid", m_printid.ToString());
-	info->AddValue("@m_cardid", m_cardid.ToString());
-	info->AddValue("@m_seriesid", m_seriesid.ToString());
-	info->AddValue("@m_code", m_code);
-	info->AddValue("@m_language", m_language);
-	info->AddValue("@m_number", m_number);
-	if(m_releasedate.HasValue) info->AddValue("@m_releasedate", m_releasedate.Value);
-}
-
-//---------------------------------------------------------------------------
 // Print::GetSeries
 //
 // Gets the series associated with the print
@@ -290,7 +241,9 @@ void Print::Number::set(String^ value)
 
 PrintRarity Print::ParseRarity(String^ /*value*/)
 {
-	// TODO
+	// TODO - Move into database as an extension function, also consider
+	// refactor database to use MONSTER, SPELL, TRAP in card table instead
+	// of integers and do the same thing
 	return PrintRarity::Common;
 }
 

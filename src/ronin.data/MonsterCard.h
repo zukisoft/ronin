@@ -25,15 +25,12 @@
 #pragma once
 
 #include "Card.h"
-#include "MonsterAttribute.h"
+#include "CardAttribute.h"
 #include "MonsterType.h"
 
 #pragma warning(push, 4)
 
 using namespace System;
-using namespace System::Runtime::Serialization;
-using namespace System::Security;
-using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
 
@@ -48,36 +45,69 @@ public ref class MonsterCard : public Card
 public:
 
 	//-----------------------------------------------------------------------
-	// Member Functions
-
-	// GetObjectData
-	//
-	// Implements ISerializable::GetObjectData
-	[SecurityCriticalAttribute]
-	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
-	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context) override;
-
-	//-----------------------------------------------------------------------
 	// Properties
+
+	// Attack
+	//
+	// Gets the monster attack value
+	property int Attack
+	{
+		int get(void);
+		internal: void set(int value);
+	}
 
 	// Attribute
 	//
 	// Gets the monster attribute
-	property MonsterAttribute Attribute
+	property CardAttribute Attribute
 	{
-		MonsterAttribute get(void);
-		internal: void set(MonsterAttribute value);
+		CardAttribute get(void);
+		internal: void set(CardAttribute value);
 	}
 
-	// Type
+	// Defense
 	//
-	// Gets the monster type
-	property MonsterType Type
+	// Gets the monster defense value
+	property int Defense
 	{
-		MonsterType get(void) new;
-		internal: void set(MonsterType value);
+		int get(void);
+		internal: void set(int value);
+	}
+
+	// Effect
+	//
+	// Gets the effect monster flag
+	property bool Effect
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
+	// Fusion
+	//
+	// Gets the fusion monster flag
+	property bool Fusion
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
+	// Gemini
+	//
+	// Gets the gemini monster flag
+	property bool Gemini
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
+	// Level
+	//
+	// Gets the monster level
+	property int Level
+	{
+		int get(void);
+		internal: void set(int value);
 	}
 
 	// Normal
@@ -89,38 +119,75 @@ public:
 		internal: void set(bool value);
 	}
 
+	// Ritual
+	//
+	// Gets the ritual monster flag
+	property bool Ritual
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
+	// Spirit
+	//
+	// Gets the spirit monster flag
+	property bool Spirit
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
+	// Toon
+	//
+	// Gets the toon monster flag
+	property bool Toon
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
+	// Type
+	//
+	// Gets the monster type
+	property MonsterType Type
+	{
+		MonsterType get(void) new;
+		internal: void set(MonsterType value);
+	}
+
+	// Union
+	//
+	// Gets the union monster flag
+	property bool Union
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
 internal:
 
 	// Instance Constructor
 	//
-	MonsterCard();
-
-	//-----------------------------------------------------------------------
-	// Internal Member Functions
-
-	// ParseAttribute (static)
-	//
-	// Parses a string into a MonsterAttribute
-	static MonsterAttribute ParseAttribute(String^ value);
-
-	// ParseType (static)
-	//
-	// Parses a string into a MonsterType
-	static MonsterType ParseType(String^ value);
+	MonsterCard(Database^ database);
 
 private:
-
-	// Serialization Constructor
-	//
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	MonsterCard(SerializationInfo^ info, StreamingContext context);
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
-	MonsterAttribute	m_attribute;			// Attribute
-	MonsterType			m_type;					// Type
+	int					m_attack = 0;			// Attack
+	CardAttribute		m_attribute;			// Attribute
+	int					m_defense = 0;			// Defense
+	bool				m_effect = false;		// Effect monster
+	bool				m_fusion = false;		// Fusion monster
+	bool				m_gemini = false;		// Gemini monster
+	int					m_level = 0;			// Level
 	bool				m_normal = false;		// Normal monster
+	bool				m_ritual = false;		// Ritual monster
+	bool				m_spirit = false;		// Spirit monster
+	bool				m_toon = false;			// Toon monster
+	bool				m_union = false;		// Union monster
+	MonsterType			m_type;					// Type
 };
 
 //---------------------------------------------------------------------------

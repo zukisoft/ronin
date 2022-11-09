@@ -38,7 +38,8 @@ namespace zuki::ronin::data {
 
 public enum class MonsterType
 {
-	Aqua = 0,
+	None = 0,
+	Aqua,
 	Beast,
 	BeastWarrior,
 	Dinosaur,

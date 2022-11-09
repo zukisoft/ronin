@@ -20,8 +20,12 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics;
 using System.Drawing;
+
 using zuki.ronin.data;
+using zuki.ronin.renderer.Properties;
 
 namespace zuki.ronin.renderer
 {
@@ -52,22 +56,62 @@ namespace zuki.ronin.renderer
 		/// <param name="card">TrapCard to be rendered</param>
 		public Bitmap RenderCard(TrapCard card)
 		{
-			return null;
+			Bitmap bitmap = RenderCommon(card);
+
+			return bitmap;
 		}
 
 		/// <summary>
 		/// Renders a specific print of a trap card
 		/// </summary>
-		/// <param name="card">TrapCard to be rendered</param>
+		/// <param name="trapcard">TrapCard to be rendered</param>
 		/// <param name="print">Print information about the TrapCard</param>
-		public Bitmap RenderPrint(TrapCard card, Print print)
+		public Bitmap RenderPrint(TrapCard trapcard, Print print)
 		{
-			return null;
+			Bitmap bitmap = RenderCommon(trapcard);
+
+			return bitmap;
+		}
+
+		//-------------------------------------------------------------------------
+		// Private Member Functions
+
+		/// <summary>
+		/// Renders the common elements between a Card render and a Print render
+		/// </summary>
+		/// <param name="trapcard">TrapCard instance</param>
+		private Bitmap RenderCommon(TrapCard trapcard)
+		{
+			// Generate the background image for the trap card
+			Bitmap background = Engine.RenderBackground(s_layout, m_flags, Background.Trap);
+			if(background == null) throw new Exception("Failed to render background image for card");
+			Debug.Assert(background.Size == s_layout.ImageSize);
+
+			using(Graphics graphics = Graphics.FromImage(background))
+			{
+				// Attribute
+				Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Trap);
+
+				// Artwork
+				Bitmap artwork = trapcard.GetArtwork();
+				if(artwork == null) artwork = Resources.defaultartwork;
+				if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+			}
+
+			return background;
 		}
 
 		//-------------------------------------------------------------------------
 		// Member Variables
 
+		/// <summary>
+		/// Only the 'medium' renderer is currently supported
+		/// </summary>
+		private static Layout s_layout = new LayoutMedium();
+
+		/// <summary>
+		/// Specified special rendering flags
+		/// </summary>
 		private readonly RenderFlags m_flags;
 	}
 }

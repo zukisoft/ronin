@@ -62,7 +62,7 @@
     <ClInclude Include="MonsterType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterAttribute.h">
+    <ClInclude Include="CardAttribute.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MonsterCard.h">
@@ -78,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CardFilter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Extensions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,9 +119,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Print.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Extensions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

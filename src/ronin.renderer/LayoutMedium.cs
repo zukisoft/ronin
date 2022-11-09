@@ -31,7 +31,9 @@ namespace zuki.ronin.renderer
 	/// </summary>
 	internal class LayoutMedium : Layout
 	{
-		// Position of the artwork image
+		/// <summary>
+		/// Position of the artwork image 
+		/// </summary>
 		public override Point ArtworkPosition => new Point(113, 265);
 
 		/// <summary>
@@ -39,6 +41,57 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		public override Size ArtworkSize => new Size(624, 632);
 
+		/// <summary>
+		/// Background image for a DARK attribute
+		/// </summary>
+		public override Bitmap AttributeDark => Resources.attrdark;
+
+		/// <summary>
+		/// Background image for an EARTH attribute
+		/// </summary>
+		public override Bitmap AttributeEarth => Resources.attrearth;
+
+		/// <summary>
+		/// Background image for a FIRE attribute
+		/// </summary>
+		public override Bitmap AttributeFire => Resources.attrfire;
+
+		/// <summary>
+		/// Background image for a LIGHT attribute
+		/// </summary>
+		public override Bitmap AttributeLight => Resources.attrlight;
+
+		/// <summary>
+		/// Position of the attribute image
+		/// </summary>
+		public override Point AttributePosition => new Point(689, 68);
+
+		/// <summary>
+		/// Size of the attribute image
+		/// </summary>
+		public override Size AttributeSize => new Size(85, 85);
+
+		/// <summary>
+		/// Background image for a SPELL attribute
+		/// </summary>
+		public override Bitmap AttributeSpell => Resources.attrspell;
+
+		/// <summary>
+		/// Background image for a TRAP attribute
+		/// </summary>
+		public override Bitmap AttributeTrap => Resources.attrtrap;
+
+		/// <summary>
+		/// Background image for a WATER attribute
+		/// </summary>
+		public override Bitmap AttributeWater => Resources.attrwater;
+
+		/// <summary>
+		/// Background image for a WIND attribute
+		/// </summary>
+		public override Bitmap AttributeWind => Resources.attrwind;
+
+		/// <summary>
 		/// Background image for an effect monster card
 		/// </summary>
 		public override Bitmap BackgroundEffectMonster => Resources.cardeffect;
@@ -92,6 +145,6 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Image size
 		/// </summary>
-		public override Size ImageSize => new Size(846, 245);
+		public override Size ImageSize => new Size(846, 1245);
 	}
 }

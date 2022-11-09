@@ -32,9 +32,6 @@
 
 using namespace System;
 using namespace System::Drawing;
-using namespace System::Runtime::Serialization;
-using namespace System::Security;
-using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
 
@@ -44,7 +41,7 @@ namespace zuki::ronin::data {
 // Describes a print object
 //---------------------------------------------------------------------------
 
-public ref class Print : public ISerializable
+public ref class Print
 {
 public:
 
@@ -86,15 +83,6 @@ public:
 	//
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
-
-	// GetObjectData
-	//
-	// Implements ISerializable::GetObjectData
-	[SecurityCriticalAttribute]
-	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
-	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context);
 
 	// GetSeries
 	//
@@ -196,11 +184,6 @@ internal:
 	static PrintRarity ParseRarity(String^ value);
 
 private:
-
-	// Serialization Constructor
-	//
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	Print(SerializationInfo^ info, StreamingContext context);
 
 	//-----------------------------------------------------------------------
 	// Member Variables

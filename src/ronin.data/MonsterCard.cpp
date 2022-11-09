@@ -32,27 +32,30 @@ namespace zuki::ronin::data {
 //
 // Arguments:
 //
-//	NONE
+//	database	- Underlying Database instance
 
-MonsterCard::MonsterCard() : Card(CardType::Monster)
+MonsterCard::MonsterCard(Database^ database) : Card(database, CardType::Monster)
 {
 }
 
 //---------------------------------------------------------------------------
-// MonsterCard Constructor (private)
+// MonsterCard::Attack::get
 //
-// Arguments:
-//
-//	info		- Serialization information
-//	context		- Serialization context
+// Gets the monster attack value
 
-MonsterCard::MonsterCard(SerializationInfo^ info, StreamingContext context) : Card(info, context)
+int MonsterCard::Attack::get(void)
 {
-	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+	return m_attack;
+}
 
-	m_attribute = static_cast<MonsterAttribute>(info->GetInt32("@monster_m_attribute"));
-	m_type = static_cast<MonsterType>(info->GetInt32("@monster_m_type"));
-	m_normal = info->GetBoolean("@monster_m_normal");
+//---------------------------------------------------------------------------
+// MonsterCard::Attack::set (internal)
+//
+// Sets the monster attack value
+
+void MonsterCard::Attack::set(int value)
+{
+	m_attack = value;
 }
 
 //---------------------------------------------------------------------------
@@ -60,7 +63,7 @@ MonsterCard::MonsterCard(SerializationInfo^ info, StreamingContext context) : Ca
 //
 // Gets the monster attribute
 
-MonsterAttribute MonsterCard::Attribute::get(void)
+CardAttribute MonsterCard::Attribute::get(void)
 {
 	return m_attribute;
 }
@@ -70,29 +73,109 @@ MonsterAttribute MonsterCard::Attribute::get(void)
 //
 // Sets the monster attribute
 
-void MonsterCard::Attribute::set(MonsterAttribute value)
+void MonsterCard::Attribute::set(CardAttribute value)
 {
 	m_attribute = value;
 }
 
 //---------------------------------------------------------------------------
-// MonsterCard::GetObjectData
+// MonsterCard::Defense::get
 //
-// Implements ISerializable::GetObjectData
-//
-// Arguments:
-//
-//	info		- Serialization information
-//	context		- Serialization context
+// Gets the monster defense value
 
-void MonsterCard::GetObjectData(SerializationInfo^ info, StreamingContext context)
+int MonsterCard::Defense::get(void)
 {
-	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
+	return m_defense;
+}
 
-	Card::GetObjectData(info, context);
-	info->AddValue("@monster_m_attribute", static_cast<int>(m_attribute));
-	info->AddValue("@monster_m_type", static_cast<int>(m_type));
-	info->AddValue("@monster_m_normal", m_normal);
+//---------------------------------------------------------------------------
+// MonsterCard::Defense::set (internal)
+//
+// Sets the monster defense value
+
+void MonsterCard::Defense::set(int value)
+{
+	m_defense = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Effect::get
+//
+// Gets the effect monster flag
+
+bool MonsterCard::Effect::get(void)
+{
+	return m_effect;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Effect::set (internal)
+//
+// Sets the effect monster flag
+
+void MonsterCard::Effect::set(bool value)
+{
+	m_effect = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Fusion::get
+//
+// Gets the fusion monster flag
+
+bool MonsterCard::Fusion::get(void)
+{
+	return m_fusion;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Fusion::set (internal)
+//
+// Sets the fusion monster flag
+
+void MonsterCard::Fusion::set(bool value)
+{
+	m_fusion = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Gemini::get
+//
+// Gets the gemini monster flag
+
+bool MonsterCard::Gemini::get(void)
+{
+	return m_gemini;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Gemini::set (internal)
+//
+// Sets the gemini monster flag
+
+void MonsterCard::Gemini::set(bool value)
+{
+	m_gemini = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Level::get
+//
+// Gets the monster level
+
+int MonsterCard::Level::get(void)
+{
+	return m_level;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Level::set (internal)
+//
+// Sets the monster level
+
+void MonsterCard::Level::set(int value)
+{
+	m_level = value;
 }
 
 //---------------------------------------------------------------------------
@@ -116,6 +199,66 @@ void MonsterCard::Normal::set(bool value)
 }
 
 //---------------------------------------------------------------------------
+// MonsterCard::Ritual::get
+//
+// Gets the ritual monster flag
+
+bool MonsterCard::Ritual::get(void)
+{
+	return m_ritual;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Ritual::set (internal)
+//
+// Sets the ritual monster flag
+
+void MonsterCard::Ritual::set(bool value)
+{
+	m_ritual = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Spirit::get
+//
+// Gets the spirit monster flag
+
+bool MonsterCard::Spirit::get(void)
+{
+	return m_spirit;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Spirit::set (internal)
+//
+// Sets the spirit monster flag
+
+void MonsterCard::Spirit::set(bool value)
+{
+	m_spirit = value;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Toon::get
+//
+// Gets the toon monster flag
+
+bool MonsterCard::Toon::get(void)
+{
+	return m_toon;
+}
+
+//---------------------------------------------------------------------------
+// MonsterCard::Toon::set (internal)
+//
+// Sets the toon monster flag
+
+void MonsterCard::Toon::set(bool value)
+{
+	m_toon = value;
+}
+
+//---------------------------------------------------------------------------
 // MonsterCard::Type::get
 //
 // Gets the monster type
@@ -136,33 +279,23 @@ void MonsterCard::Type::set(MonsterType value)
 }
 
 //---------------------------------------------------------------------------
-// MonsterCard::ParseAttribute (internal, static)
+// MonsterCard::Union::get
 //
-// Parses a string into a MonsterAttribute
-//
-// Arguments:
-//
-//	value		- String to be parsed into a MonsterAttribute
+// Gets the union monster flag
 
-MonsterAttribute MonsterCard::ParseAttribute(String^ /*value*/)
+bool MonsterCard::Union::get(void)
 {
-	// TODO
-	return MonsterAttribute::Dark;
+	return m_union;
 }
 
 //---------------------------------------------------------------------------
-// MonsterCard::ParseType (internal, static)
+// MonsterCard::Union::set (internal)
 //
-// Parses a string into a MonsterType
-//
-// Arguments:
-//
-//	value		- String to be parsed into a MonsterType
+// Sets the union monster flag
 
-MonsterType MonsterCard::ParseType(String^ /*value*/)
+void MonsterCard::Union::set(bool value)
 {
-	// TODO
-	return MonsterType::Aqua;
+	m_union = value;
 }
 
 //---------------------------------------------------------------------------

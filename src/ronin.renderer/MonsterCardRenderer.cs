@@ -30,14 +30,14 @@ using zuki.ronin.renderer.Properties;
 namespace zuki.ronin.renderer
 {
 	/// <summary>
-	/// Implements the spell card rendering engine
+	/// Implements the monster card rendering engine
 	/// </summary>
-	internal class SpellCardRenderer
+	internal class MonsterCardRenderer
 	{
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public SpellCardRenderer() : this(RenderFlags.None)
+		public MonsterCardRenderer() : this(RenderFlags.None)
 		{
 		}
 
@@ -45,7 +45,7 @@ namespace zuki.ronin.renderer
 		/// Instance Constructor
 		/// </summary>
 		/// <param name="flags">Rendering flags</param>
-		public SpellCardRenderer(RenderFlags flags)
+		public MonsterCardRenderer(RenderFlags flags)
 		{
 			m_flags = flags;
 		}
@@ -53,8 +53,8 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Renders a spell card
 		/// </summary>
-		/// <param name="card">SpellCard to be rendered</param>
-		public Bitmap RenderCard(SpellCard card)
+		/// <param name="card">MonsterCard to be rendered</param>
+		public Bitmap RenderCard(MonsterCard card)
 		{
 			Bitmap bitmap = RenderCommon(card);
 
@@ -64,11 +64,11 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Renders a specific print of a spell card
 		/// </summary>
-		/// <param name="spellcard">SpellCard to be rendered</param>
-		/// <param name="print">Print information about the SpellCard</param>
-		public Bitmap RenderPrint(SpellCard spellcard, Print print)
+		/// <param name="monstercard">MonsterCard to be rendered</param>
+		/// <param name="print">Print information about the MonsterCard</param>
+		public Bitmap RenderPrint(MonsterCard monstercard, Print print)
 		{
-			Bitmap bitmap = RenderCommon(spellcard);
+			Bitmap bitmap = RenderCommon(monstercard);
 
 			return bitmap;
 		}
@@ -79,21 +79,27 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Renders the common elements between a Card render and a Print render
 		/// </summary>
-		/// <param name="spellcard">SpellCard instance</param>
-		private Bitmap RenderCommon(SpellCard spellcard)
+		/// <param name="monstercard">MonsterCard instance</param>
+		private Bitmap RenderCommon(MonsterCard monstercard)
 		{
-			// Generate the background image for the spell card
-			Bitmap background = Engine.RenderBackground(s_layout, m_flags, Background.Spell);
+			// Select the proper background for the monster card
+			Background backgroundtype = Background.EffectMonster;
+			if(monstercard.Normal) backgroundtype = Background.NormalMonster;
+			else if(monstercard.Fusion) backgroundtype = Background.FusionMonster;
+			else if(monstercard.Ritual) backgroundtype = Background.RitualMonster;
+
+			// Generate the background image for the monster card
+			Bitmap background = Engine.RenderBackground(s_layout, m_flags, backgroundtype);
 			if(background == null) throw new Exception("Failed to render background image for card");
 			Debug.Assert(background.Size == s_layout.ImageSize);
 
 			using(Graphics graphics = Graphics.FromImage(background))
 			{
 				// Attribute
-				Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Spell);
+				Engine.DrawAttribute(graphics, s_layout, m_flags, monstercard.Attribute);
 
 				// Artwork
-				Bitmap artwork = spellcard.GetArtwork();
+				Bitmap artwork = monstercard.GetArtwork();
 				if(artwork == null) artwork = Resources.defaultartwork;
 				if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
 			}

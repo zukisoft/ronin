@@ -32,27 +32,10 @@ namespace zuki::ronin::data {
 //
 // Arguments:
 //
-//	NONE
+//	database	- Underlying Database instance
 
-TrapCard::TrapCard() : Card(CardType::Trap)
+TrapCard::TrapCard(Database^ database) : Card(database, CardType::Trap)
 {
-}
-
-//---------------------------------------------------------------------------
-// TrapCard Constructor (private)
-//
-// Arguments:
-//
-//	info		- Serialization information
-//	context		- Serialization context
-
-TrapCard::TrapCard(SerializationInfo^ info, StreamingContext context) : Card(info, context)
-{
-	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
-
-	m_continuous = info->GetBoolean("@trap_m_continuous");
-	m_counter = info->GetBoolean("@trap_m_counter");
-	m_normal = info->GetBoolean("@trap_m_normal");
 }
 
 //---------------------------------------------------------------------------
@@ -93,26 +76,6 @@ bool TrapCard::Counter::get(void)
 void TrapCard::Counter::set(bool value)
 {
 	m_counter = value;
-}
-
-//---------------------------------------------------------------------------
-// TrapCard::GetObjectData
-//
-// Implements ISerializable::GetObjectData
-//
-// Arguments:
-//
-//	info		- Serialization information
-//	context		- Serialization context
-
-void TrapCard::GetObjectData(SerializationInfo^ info, StreamingContext context)
-{
-	if(CLRISNULL(info)) throw gcnew ArgumentNullException("info");
-
-	Card::GetObjectData(info, context);
-	info->AddValue("@trap_m_continuous", m_continuous);
-	info->AddValue("@trap_m_counter", m_counter);
-	info->AddValue("@trap_m_normal", m_normal);
 }
 
 //---------------------------------------------------------------------------

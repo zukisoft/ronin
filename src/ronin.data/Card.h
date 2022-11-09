@@ -30,11 +30,12 @@
 
 using namespace System;
 using namespace System::Drawing;
-using namespace System::Runtime::Serialization;
-using namespace System::Security;
-using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
+
+// FORWARD DECLARATIONS
+//
+ref class Database;
 
 //---------------------------------------------------------------------------
 // Class Card
@@ -42,8 +43,7 @@ namespace zuki::ronin::data {
 // Describes a card object
 //---------------------------------------------------------------------------
 
-[SerializableAttribute]
-public ref class Card abstract : public ISerializable
+public ref class Card abstract
 {
 public:
 
@@ -80,15 +80,6 @@ public:
 	//
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
-
-	// GetObjectData
-	//
-	// Implements ISerializable::GetObjectData
-	[SecurityCriticalAttribute]
-	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
-	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context);
 
 	// ToString
 	//
@@ -146,12 +137,7 @@ protected:
 
 	// Instance Constructor
 	//
-	Card(CardType type);
-
-	// Serialization Constructor
-	//
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	Card(SerializationInfo^ info, StreamingContext context);
+	Card(Database^ database, CardType type);
 
 private:
 
@@ -159,6 +145,8 @@ private:
 	// Member Variables
 
 	initonly CardType		m_type;						// Card type
+	initonly Database^		m_database;					// Database instance
+
 	Guid					m_cardid;					// Unique identifier
 	String^					m_name = String::Empty;		// Card name
 	String^					m_passcode = String::Empty;	// Card passcode

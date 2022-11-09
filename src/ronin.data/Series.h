@@ -29,9 +29,6 @@
 #pragma warning(push, 4)
 
 using namespace System;
-using namespace System::Runtime::Serialization;
-using namespace System::Security;
-using namespace System::Security::Permissions;
 
 namespace zuki::ronin::data {
 
@@ -41,7 +38,7 @@ namespace zuki::ronin::data {
 // Describes a series object
 //---------------------------------------------------------------------------
 
-public ref class Series : ISerializable
+public ref class Series
 {
 public:
 
@@ -73,15 +70,6 @@ public:
 	//
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
-
-	// GetObjectData
-	//
-	// Implements ISerializable::GetObjectData
-	[SecurityCriticalAttribute]
-	[PermissionSetAttribute(SecurityAction::LinkDemand, Unrestricted = true)]
-	[PermissionSetAttribute(SecurityAction::InheritanceDemand, Unrestricted = true)]
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	virtual void GetObjectData(SerializationInfo^ info, StreamingContext context);
 
 	// ToString
 	//
@@ -134,11 +122,6 @@ internal:
 	Series();
 
 private:
-
-	// Serialization Constructor
-	//
-	[SecurityPermissionAttribute(SecurityAction::Demand, SerializationFormatter = true)]
-	Series(SerializationInfo^ info, StreamingContext context);
 
 	//-----------------------------------------------------------------------
 	// Member Variables

@@ -52,6 +52,8 @@ namespace zuki.ronin.renderer
 
 			if(card is MonsterCard monstercard)
 			{
+				MonsterCardRenderer renderer = new MonsterCardRenderer(flags);
+				return renderer.RenderCard(monstercard);
 			}
 
 			else if(card is SpellCard spellcard)

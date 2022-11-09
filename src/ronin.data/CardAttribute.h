@@ -20,8 +20,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __MONSTERATTRIBUTE_H_
-#define __MONSTERATTRIBUTE_H_
+#ifndef __CARDATTRIBUTE_H_
+#define __CARDATTRIBUTE_H_
 #pragma once
 
 #pragma warning(push, 4)
@@ -31,17 +31,20 @@ using namespace System;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Enum MonsterAttribute
+// Enum CardAttribute
 //
-// Describes the attribute of a Monster
+// Describes the attribute of a card
 //---------------------------------------------------------------------------
 
-public enum class MonsterAttribute
+public enum class CardAttribute
 {
-	Dark = 0,
+	None = 0,
+	Dark,
 	Earth,
 	Fire,
 	Light,
+	Spell,
+	Trap,
 	Water,
 	Wind,
 };
@@ -52,4 +55,4 @@ public enum class MonsterAttribute
 
 #pragma warning(pop)
 
-#endif	// __MONSTERATTRIBUTE_H_
+#endif	// __CARDATTRIBUTE_H_
