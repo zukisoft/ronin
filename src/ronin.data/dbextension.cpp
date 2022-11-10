@@ -26,6 +26,7 @@
 #include <sqlite3ext.h>
 
 #include "CardAttribute.h"
+#include "CardType.h"
 #include "MonsterType.h"
 
 extern "C" { SQLITE_EXTENSION_INIT1 };
@@ -33,6 +34,34 @@ extern "C" { SQLITE_EXTENSION_INIT1 };
 using namespace zuki::ronin::data;
 
 #pragma warning(push, 4)
+
+//---------------------------------------------------------------------------
+// cardtype (local)
+//
+// SQLite scalar function to convert a card type string into a CardType
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void cardtype(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	// Null or zero-length input string results in CardType::None
+	wchar_t const* str = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if((str == nullptr) || (*str == L'\0')) return sqlite3_result_int(context, static_cast<int>(CardType::None));
+
+	// The strings are case-sensitive and enforced by a CHECK CONSTRAINT
+	if(wcscmp(str, L"Monster") == 0) return sqlite3_result_int(context, static_cast<int>(CardType::Monster));
+	else if(wcscmp(str, L"Spell") == 0) return sqlite3_result_int(context, static_cast<int>(CardType::Spell));
+	else if(wcscmp(str, L"Trap") == 0) return sqlite3_result_int(context, static_cast<int>(CardType::Trap));
+
+	// Input string was not a valid monster attribute
+	return sqlite3_result_int(context, static_cast<int>(CardType::None));
+}
 
 //---------------------------------------------------------------------------
 // monsterattribute (local)
@@ -152,9 +181,14 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 
 	*errmsg = nullptr;							// Initialize [out] variable
 
+	// cardtype function
+	//
+	int result = sqlite3_create_function16(db, L"cardtype", 1, SQLITE_UTF16, nullptr, cardtype, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function cardtype (%d)", result); return result; }
+
 	// monsterattribute function
 	//
-	int result = sqlite3_create_function16(db, L"monsterattribute", 1, SQLITE_UTF16, nullptr, monsterattribute, nullptr, nullptr);
+	result = sqlite3_create_function16(db, L"monsterattribute", 1, SQLITE_UTF16, nullptr, monsterattribute, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function monsterattribute (%d)", result); return result; }
 
 	// monstertype function

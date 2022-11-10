@@ -253,9 +253,9 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		// table: card
 		//
 		// cardid(pk) | name(u) | type | passcode(u) | text
-		execute_non_query(instance, L"create table card(cardid blob not null, name text unique not null, type integer not null, "
+		execute_non_query(instance, L"create table card(cardid blob not null, name text unique not null, type text not null, "
 			"passcode text unique not null, text text not null, primary key(cardid), "
-			"check(type in (0, 1, 2)))");
+			"check(type in ('Monster', 'Spell', 'Trap')))");
 
 		// table: monster
 		//
@@ -434,7 +434,7 @@ List<Card^>^ Database::SelectCards(void)
 	// { 05-17 } attribute | level | type | attack | defense | normal | effect | fusion | ritual | toon | union | spirit | gemini |
 	// { 18-23 } normal | continuous | equip | field | quickplay | ritual |
 	// { 24-26 } normal | continuous | counter
-	auto sql = L"select card.type, card.cardid, card.name, card.passcode, card.text, "
+	auto sql = L"select cardtype(card.type), card.cardid, card.name, card.passcode, card.text, "
 		"monsterattribute(monster.attribute), monster.level, monstertype(monster.type), monster.attack, "
 		"monster.defense, monster.normal, monster.effect, monster.fusion, monster.ritual,  "
 		"monster.toon, monster.[union], monster.spirit, monster.gemini, "

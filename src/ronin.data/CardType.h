@@ -38,9 +38,10 @@ namespace zuki::ronin::data {
 
 public enum class CardType
 {
-	Monster			= 0,
-	Spell			= 1,
-	Trap			= 2,
+	None = 0,
+	Monster,
+	Spell,
+	Trap,
 };
 
 //---------------------------------------------------------------------------
