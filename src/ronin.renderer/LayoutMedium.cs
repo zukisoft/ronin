@@ -36,6 +36,11 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		static LayoutMedium()
 		{
+			// Font used to draw the card name
+			s_namefont = FontManager.Create(FontManager.EmbeddedFonts.MatrixSmallCaps, 98,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
+			// Font used to draw the passcode and copyright
 			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 		}
@@ -187,6 +192,16 @@ namespace zuki.ronin.renderer
 		public override Size HologramSize => new Size(42, 43);
 
 		/// <summary>
+		/// Boundary of the card name
+		/// </summary>
+		public override RectangleF NameBounds => new Rectangle(77, 64, 602, 74);
+
+		/// <summary>
+		/// Font used to draw the card name
+		/// </summary>
+		public override Font NameFont => s_namefont;
+
+		/// <summary>
 		/// Boundary of the passcode
 		/// </summary>
 		public override RectangleF PasscodeBounds => new Rectangle(28, 1197, 250, 28);
@@ -198,6 +213,11 @@ namespace zuki.ronin.renderer
 
 		//-------------------------------------------------------------------
 		// Member Variables
+
+		/// <summary>
+		/// Font to use when rendering the card name
+		/// </summary>
+		private static Font s_namefont;
 
 		/// <summary>
 		/// Font to use when rendering the passcode

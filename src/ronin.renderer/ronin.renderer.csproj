@@ -80,6 +80,7 @@
     <Compile Include="RenderFlags.cs" />
     <Compile Include="SpellCardRenderer.cs" />
     <Compile Include="Background.cs" />
+    <Compile Include="NameBrush.cs" />
     <Compile Include="TrapCardRenderer.cs" />
   </ItemGroup>
   <ItemGroup>

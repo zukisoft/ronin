@@ -56,7 +56,15 @@ namespace zuki.ronin.renderer
 		/// <param name="card">TrapCard to be rendered</param>
 		public Bitmap RenderCard(TrapCard card)
 		{
-			Bitmap bitmap = RenderCommon(card);
+			Bitmap bitmap = RenderBackground();
+			using(Graphics graphics = Graphics.FromImage(bitmap))
+			{
+				// Render the common elements
+				RenderCommon(graphics, card);
+
+				// Draw the card name in solid white
+				Engine.DrawName(graphics, s_layout, m_flags, card.Name, NameBrush.SolidWhite);
+			}
 
 			return bitmap;
 		}
@@ -68,46 +76,51 @@ namespace zuki.ronin.renderer
 		/// <param name="print">Print information about the TrapCard</param>
 		public Bitmap RenderPrint(TrapCard trapcard, Print print)
 		{
-			Bitmap bitmap = RenderCommon(trapcard);
-
-			return bitmap;
+			return null;
 		}
 
 		//-------------------------------------------------------------------------
 		// Private Member Functions
 
 		/// <summary>
-		/// Renders the common elements between a Card render and a Print render
+		/// Renders the background image for the spell card
 		/// </summary>
-		/// <param name="trapcard">TrapCard instance</param>
-		private Bitmap RenderCommon(TrapCard trapcard)
+		private Bitmap RenderBackground()
 		{
-			// Generate the background image for the trap card
+			// Generate the background image for the spell card
 			Bitmap background = Engine.RenderBackground(s_layout, m_flags, Background.Trap);
 			if(background == null) throw new Exception("Failed to render background image for card");
 			Debug.Assert(background.Size == s_layout.BackgroundSize);
 
-			using(Graphics graphics = Graphics.FromImage(background))
-			{
-				// Attribute
-				Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Trap);
-
-				// Artwork
-				Bitmap artwork = trapcard.GetArtwork();
-				if(artwork == null) artwork = Resources.defaultartwork;
-				if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
-
-				// Passcode
-				Engine.DrawPasscode(graphics, s_layout, m_flags, trapcard.Passcode);
-
-				// Copyright
-				Engine.DrawCopyright(graphics, s_layout, m_flags);
-
-				// Hologram
-				Engine.DrawHologram(graphics, s_layout, m_flags);
-			}
-
 			return background;
+		}
+
+		/// <summary>
+		/// Renders the common elements between a Card render and a Print render
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="trapcard">TrapCard instance</param>
+		private void RenderCommon(Graphics graphics, TrapCard trapcard)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(trapcard == null) throw new ArgumentNullException(nameof(trapcard));
+
+			// Attribute
+			Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Trap);
+
+			// Artwork
+			Bitmap artwork = trapcard.GetArtwork();
+			if(artwork == null) artwork = Resources.defaultartwork;
+			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+
+			// Passcode
+			Engine.DrawPasscode(graphics, s_layout, m_flags, trapcard.Passcode);
+
+			// Copyright
+			Engine.DrawCopyright(graphics, s_layout, m_flags);
+
+			// Hologram
+			Engine.DrawHologram(graphics, s_layout, m_flags);
 		}
 
 		//-------------------------------------------------------------------------

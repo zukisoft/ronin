@@ -165,6 +165,16 @@ namespace zuki.ronin.renderer
 		public virtual Size HologramSize { get; }
 
 		/// <summary>
+		/// Boundary of the card name
+		/// </summary>
+		public virtual RectangleF NameBounds { get; }
+
+		/// <summary>
+		/// Font used to draw the card name
+		/// </summary>
+		public virtual Font NameFont { get; }
+		
+		/// <summary>
 		/// Boundary of the passcode
 		/// </summary>
 		public virtual RectangleF PasscodeBounds { get; }

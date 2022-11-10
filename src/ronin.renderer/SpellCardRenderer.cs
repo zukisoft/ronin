@@ -56,7 +56,15 @@ namespace zuki.ronin.renderer
 		/// <param name="card">SpellCard to be rendered</param>
 		public Bitmap RenderCard(SpellCard card)
 		{
-			Bitmap bitmap = RenderCommon(card);
+			Bitmap bitmap = RenderBackground();
+			using(Graphics graphics = Graphics.FromImage(bitmap))
+			{
+				// Render the common elements
+				RenderCommon(graphics, card);
+
+				// Draw the card name in solid white
+				Engine.DrawName(graphics, s_layout, m_flags, card.Name, NameBrush.SolidWhite);
+			}
 
 			return bitmap;
 		}
@@ -68,46 +76,51 @@ namespace zuki.ronin.renderer
 		/// <param name="print">Print information about the SpellCard</param>
 		public Bitmap RenderPrint(SpellCard spellcard, Print print)
 		{
-			Bitmap bitmap = RenderCommon(spellcard);
-
-			return bitmap;
+			return null;
 		}
 
 		//-------------------------------------------------------------------------
 		// Private Member Functions
 
 		/// <summary>
-		/// Renders the common elements between a Card render and a Print render
+		/// Renders the background image for the spell card
 		/// </summary>
-		/// <param name="spellcard">SpellCard instance</param>
-		private Bitmap RenderCommon(SpellCard spellcard)
+		private Bitmap RenderBackground()
 		{
 			// Generate the background image for the spell card
 			Bitmap background = Engine.RenderBackground(s_layout, m_flags, Background.Spell);
 			if(background == null) throw new Exception("Failed to render background image for card");
 			Debug.Assert(background.Size == s_layout.BackgroundSize);
 
-			using(Graphics graphics = Graphics.FromImage(background))
-			{
-				// Attribute
-				Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Spell);
-
-				// Artwork
-				Bitmap artwork = spellcard.GetArtwork();
-				if(artwork == null) artwork = Resources.defaultartwork;
-				if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
-
-				// Passcode
-				Engine.DrawPasscode(graphics, s_layout, m_flags, spellcard.Passcode);
-
-				// Copyright
-				Engine.DrawCopyright(graphics, s_layout, m_flags);
-
-				// Hologram
-				Engine.DrawHologram(graphics, s_layout, m_flags);
-			}
-
 			return background;
+		}
+
+		/// <summary>
+		/// Renders the common elements between a Card render and a Print render
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="spellcard">SpellCard instance</param>
+		private void RenderCommon(Graphics graphics, SpellCard spellcard)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(spellcard));
+			if(spellcard == null) throw new ArgumentNullException(nameof(spellcard));
+
+			// Attribute
+			Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Spell);
+
+			// Artwork
+			Bitmap artwork = spellcard.GetArtwork();
+			if(artwork == null) artwork = Resources.defaultartwork;
+			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+
+			// Passcode
+			Engine.DrawPasscode(graphics, s_layout, m_flags, spellcard.Passcode);
+
+			// Copyright
+			Engine.DrawCopyright(graphics, s_layout, m_flags);
+
+			// Hologram
+			Engine.DrawHologram(graphics, s_layout, m_flags);
 		}
 
 		//-------------------------------------------------------------------------

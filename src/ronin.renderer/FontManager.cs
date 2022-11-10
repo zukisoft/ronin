@@ -23,8 +23,6 @@
 using System;
 using System.Drawing;
 using System.Drawing.Text;
-using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
 
 using zuki.ronin.renderer.Properties;
@@ -39,9 +37,9 @@ namespace zuki.ronin.renderer
 		#region EmbeddedFonts Class
 		public struct EmbeddedFonts
 		{
-			public const string MatrixBook = "MatrixBook";
-			public const string MatrixSmallCaps = "MatrixSmallCaps";
-			public const string StoneSerifLT = "StoneSerifLT";
+			public const string MatrixBook = "Matrix Book";
+			public const string MatrixSmallCaps = "Matrix Small Caps";
+			public const string StoneSerifLT = "ITC Stone Serif LT";
 		}
 		#endregion
 
@@ -51,9 +49,9 @@ namespace zuki.ronin.renderer
 		static FontManager()
 		{
 			// Load the embedded font objects
-			s_matrixbook = AddFontToCollection(Resources.matrixbook);
-			s_matrixsmallcaps = AddFontToCollection(Resources.matrixsmallcaps);
-			s_stoneseriflt = AddFontToCollection(Resources.stoneseriflt);
+			AddFontToCollection(Resources.matrixbook);
+			AddFontToCollection(Resources.matrixsmallcaps);
+			AddFontToCollection(Resources.stoneseriflt);
 		}
 
 		//---------------------------------------------------------------------
@@ -69,17 +67,17 @@ namespace zuki.ronin.renderer
 		/// <param name="graphicsunit">GraphicsUnit to use for size</param>
 		public static Font Create(string family, float size, FontStyle style, GraphicsUnit graphicsunit)
 		{
-			FontFamily fontfamily = null;               // Font family object
-
-			if(string.Compare(family, EmbeddedFonts.MatrixBook, true) == 0) fontfamily = s_matrixbook;
-			else if(string.Compare(family, EmbeddedFonts.MatrixSmallCaps, true) == 0) fontfamily = s_matrixsmallcaps;
-			else if(string.Compare(family, EmbeddedFonts.StoneSerifLT, true) == 0) fontfamily = s_stoneseriflt;
+			foreach(var fontfamily in s_fonts.Families)
+			{
+				// The array of private fonts has be iterated to find the font family
+				if(string.Compare(family, fontfamily.Name, true) == 0)
+				{
+					return new Font(fontfamily, size, style, graphicsunit);
+				}
+			}
 
 			// Supply a generic sans-serif font if the family was not found
-			if(fontfamily == null) fontfamily = new FontFamily(GenericFontFamilies.SansSerif);
-
-			// Construct and return the font object
-			return new Font(fontfamily, size, style, graphicsunit);
+			return new Font(new FontFamily(GenericFontFamilies.SansSerif), size, style, graphicsunit);
 		}
 
 		//---------------------------------------------------------------------
@@ -90,8 +88,9 @@ namespace zuki.ronin.renderer
 		/// Adds a font into the private font collection and returns the family object
 		/// </summary>
 		/// <param name="font">Font in byte array format</param>
-		private static FontFamily AddFontToCollection(byte[] font)
+		private static void AddFontToCollection(byte[] font)
 		{
+			System.Diagnostics.Debug.WriteLine("AddFontToCollection");
 			if(font == null) throw new ArgumentException("font");
 
 			// Pin the byte array
@@ -100,9 +99,6 @@ namespace zuki.ronin.renderer
 			// Attempt to add the private font, and release the pinned pointer
 			try { s_fonts.AddMemoryFont(pin.AddrOfPinnedObject(), font.Length); }
 			finally { pin.Free(); }
-
-			// Return the newly added font family object
-			return s_fonts.Families[s_fonts.Families.Length - 1];
 		}
 
 		//---------------------------------------------------------------------
@@ -113,20 +109,5 @@ namespace zuki.ronin.renderer
 		/// Embedded fonts collection
 		/// </summary>
 		private static PrivateFontCollection s_fonts = new PrivateFontCollection();
-
-		/// <summary>
-		/// Matrix Book
-		/// </summary>
-		private static FontFamily s_matrixbook;
-
-		/// <summary>
-		/// Matrix Small Caps
-		/// </summary>
-		private static FontFamily s_matrixsmallcaps;
-
-		/// <summary>
-		/// Stone Serif LT
-		/// </summary>
-		private static FontFamily s_stoneseriflt;
 	}
 }

@@ -56,7 +56,15 @@ namespace zuki.ronin.renderer
 		/// <param name="card">MonsterCard to be rendered</param>
 		public Bitmap RenderCard(MonsterCard card)
 		{
-			Bitmap bitmap = RenderCommon(card);
+			Bitmap bitmap = RenderBackground(card);
+			using(Graphics graphics = Graphics.FromImage(bitmap))
+			{
+				// Render the common elements
+				RenderCommon(graphics, card);
+
+				// Draw the card name in solid black
+				Engine.DrawName(graphics, s_layout, m_flags, card.Name, NameBrush.SolidBlack);
+			}
 
 			return bitmap;
 		}
@@ -68,19 +76,17 @@ namespace zuki.ronin.renderer
 		/// <param name="print">Print information about the MonsterCard</param>
 		public Bitmap RenderPrint(MonsterCard monstercard, Print print)
 		{
-			Bitmap bitmap = RenderCommon(monstercard);
-
-			return bitmap;
+			return null;
 		}
 
 		//-------------------------------------------------------------------------
 		// Private Member Functions
 
 		/// <summary>
-		/// Renders the common elements between a Card render and a Print render
+		/// Renders the background image for the monster card
 		/// </summary>
 		/// <param name="monstercard">MonsterCard instance</param>
-		private Bitmap RenderCommon(MonsterCard monstercard)
+		private Bitmap RenderBackground(MonsterCard monstercard)
 		{
 			// Select the proper background for the monster card
 			Background backgroundtype = Background.EffectMonster;
@@ -93,27 +99,35 @@ namespace zuki.ronin.renderer
 			if(background == null) throw new Exception("Failed to render background image for card");
 			Debug.Assert(background.Size == s_layout.BackgroundSize);
 
-			using(Graphics graphics = Graphics.FromImage(background))
-			{
-				// Attribute
-				Engine.DrawAttribute(graphics, s_layout, m_flags, monstercard.Attribute);
-
-				// Artwork
-				Bitmap artwork = monstercard.GetArtwork();
-				if(artwork == null) artwork = Resources.defaultartwork;
-				if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
-
-				// Passcode
-				Engine.DrawPasscode(graphics, s_layout, m_flags, monstercard.Passcode);
-
-				// Copyright
-				Engine.DrawCopyright(graphics, s_layout, m_flags);
-
-				// Hologram
-				Engine.DrawHologram(graphics, s_layout, m_flags);
-			}
-
 			return background;
+		}
+
+		/// <summary>
+		/// Renders the common elements between a Card render and a Print render
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="monstercard">MonsterCard instance</param>
+		private void RenderCommon(Graphics graphics, MonsterCard monstercard)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(monstercard == null) throw new ArgumentNullException(nameof(monstercard));
+
+			// Attribute
+			Engine.DrawAttribute(graphics, s_layout, m_flags, monstercard.Attribute);
+
+			// Artwork
+			Bitmap artwork = monstercard.GetArtwork();
+			if(artwork == null) artwork = Resources.defaultartwork;
+			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+
+			// Passcode
+			Engine.DrawPasscode(graphics, s_layout, m_flags, monstercard.Passcode);
+
+			// Copyright
+			Engine.DrawCopyright(graphics, s_layout, m_flags);
+
+			// Hologram
+			Engine.DrawHologram(graphics, s_layout, m_flags);
 		}
 
 		//-------------------------------------------------------------------------

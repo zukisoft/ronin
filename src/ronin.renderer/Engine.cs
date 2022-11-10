@@ -24,6 +24,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Drawing.Text;
 
 using zuki.ronin.data;
@@ -138,10 +139,8 @@ namespace zuki.ronin.renderer
 				return;
 			}
 
-			// OverlayProof has a transparent background, use AntiAlias
-			if(flags == RenderFlags.OverlayProof) graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-			else graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
 			// The copyright is drawn right-aligned and vertically centered in the bounds
 			StringFormat format = StringFormat.GenericTypographic;
@@ -180,6 +179,62 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
+		/// Draws the card name onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="name">Card name to be drawn</param>
+		/// <param name="brush">Brush to use when drawing the name</param>
+		public static void DrawName(Graphics graphics, Layout layout, RenderFlags flags, string name,
+			Brush brush)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.NameBounds);
+				return;
+			}
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			// The name is drawn left-aligned and vertically centered in the bounds
+			StringFormat format = StringFormat.GenericTypographic;
+			format.Alignment = StringAlignment.Near;
+			format.LineAlignment = StringAlignment.Center;
+
+			// If the name will fit in the bounding rectangle, draw it directly
+			SizeF size = graphics.MeasureString(name, layout.NameFont, int.MaxValue, format);
+			if(size.Width <= layout.NameBounds.Width)
+			{
+				graphics.DrawString(name, layout.NameFont, brush, layout.NameBounds, format);
+				return;
+			}
+
+			// The card name is too wide for the boundaries, it needs to be drawn onto a 
+			// transparent bitmap and then compressed horizontally
+			using(Bitmap bmp = new Bitmap((int)Math.Ceiling(size.Width), (int)Math.Ceiling(layout.NameBounds.Height), 
+				PixelFormat.Format32bppArgb))
+			{
+				bmp.SetResolution(96.0F, 96.0F);
+				using(Graphics gr = Graphics.FromImage(bmp))
+				{
+					gr.SmoothingMode = SmoothingMode.AntiAlias;
+					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
+					gr.DrawString(name, layout.NameFont, brush, new RectangleF(0, 0, bmp.Width, bmp.Height), format);
+				}
+
+				// Use HighQualityBicubic interpolation and scale the bitmap onto the background
+				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				graphics.DrawImage(bmp, layout.NameBounds);
+			}
+		}
+
+		/// <summary>
 		/// Draws the passcode string onto an existing background
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
@@ -200,7 +255,7 @@ namespace zuki.ronin.renderer
 
 			// OverlayProof has a transparent background, use AntiAlias
 			if(flags == RenderFlags.OverlayProof) graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-			else graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+			else graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
 			// The passcode is drawn left-aligned and vertically centered in the bounds
