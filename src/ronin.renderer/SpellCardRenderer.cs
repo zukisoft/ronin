@@ -85,7 +85,7 @@ namespace zuki.ronin.renderer
 			// Generate the background image for the spell card
 			Bitmap background = Engine.RenderBackground(s_layout, m_flags, Background.Spell);
 			if(background == null) throw new Exception("Failed to render background image for card");
-			Debug.Assert(background.Size == s_layout.ImageSize);
+			Debug.Assert(background.Size == s_layout.BackgroundSize);
 
 			using(Graphics graphics = Graphics.FromImage(background))
 			{
@@ -96,6 +96,15 @@ namespace zuki.ronin.renderer
 				Bitmap artwork = spellcard.GetArtwork();
 				if(artwork == null) artwork = Resources.defaultartwork;
 				if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+
+				// Passcode
+				Engine.DrawPasscode(graphics, s_layout, m_flags, spellcard.Passcode);
+
+				// Copyright
+				Engine.DrawCopyright(graphics, s_layout, m_flags);
+
+				// Hologram
+				Engine.DrawHologram(graphics, s_layout, m_flags);
 			}
 
 			return background;

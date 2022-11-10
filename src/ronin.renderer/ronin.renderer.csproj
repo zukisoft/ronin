@@ -66,6 +66,7 @@
       <Link>version.cs</Link>
     </Compile>
     <Compile Include="Engine.cs" />
+    <Compile Include="FontManager.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="LayoutMedium.cs" />
     <Compile Include="MonsterCardRenderer.cs" />

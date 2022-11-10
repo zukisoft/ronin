@@ -24,6 +24,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 using zuki.ronin.data;
 
@@ -68,14 +69,15 @@ namespace zuki.ronin.renderer
 
 			Bitmap bitmap = null;
 
-			if(false)
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
 			{
-				//
-				// TODO: Fill with color for proof
-				//
+				graphics.FillRectangle(Brushes.LightGreen, 
+					new Rectangle(layout.AttributePosition, layout.AttributeSize));
+				return;
 			}
 
-			else switch(attribute)
+			switch(attribute)
 			{
 				case CardAttribute.Dark:
 					bitmap = layout.AttributeDark;
@@ -116,6 +118,99 @@ namespace zuki.ronin.renderer
 				Debug.Assert(bitmap.Size == layout.AttributeSize);
 				graphics.DrawImageUnscaled(bitmap, layout.AttributePosition);
 			}
+		}
+
+		/// <summary>
+		/// Draws the copyright string onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		public static void DrawCopyright(Graphics graphics, Layout layout, RenderFlags flags)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.CopyrightBounds);
+				return;
+			}
+
+			// OverlayProof has a transparent background, use AntiAlias
+			if(flags == RenderFlags.OverlayProof) graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+			else graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+			// The copyright is drawn right-aligned and vertically centered in the bounds
+			StringFormat format = StringFormat.GenericTypographic;
+			format.Alignment = StringAlignment.Far;
+			format.LineAlignment = StringAlignment.Center;
+
+			// The copyright is always drawn in black text
+			graphics.DrawString(layout.Copyright, layout.CopyrightFont, Brushes.Black, 
+				layout.CopyrightBounds, format);
+		}
+
+		/// <summary>
+		/// Draws the Eye of Anubis hologram onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the artwork</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="artwork">Artwork to be drawn</param>
+		/// <exception cref="ArgumentNullException"></exception>
+		public static void DrawHologram(Graphics graphics, Layout layout, RenderFlags flags)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen,
+					new Rectangle(layout.HologramPosition, layout.HologramSize));
+				return;
+			}
+
+			Bitmap bitmap = layout.Hologram;
+			Debug.Assert(bitmap.Size == layout.HologramSize);
+			graphics.DrawImageUnscaled(bitmap, layout.HologramPosition);
+		}
+
+		/// <summary>
+		/// Draws the passcode string onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="passcode">Passcode string</param>
+		public static void DrawPasscode(Graphics graphics, Layout layout, RenderFlags flags, string passcode)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.PasscodeBounds);
+				return;
+			}
+
+			// OverlayProof has a transparent background, use AntiAlias
+			if(flags == RenderFlags.OverlayProof) graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+			else graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+			// The passcode is drawn left-aligned and vertically centered in the bounds
+			StringFormat format = StringFormat.GenericTypographic;
+			format.Alignment = StringAlignment.Near;
+			format.LineAlignment = StringAlignment.Center;
+
+			// The Passcode is always drawn in black text
+			graphics.DrawString(passcode, layout.PasscodeFont, Brushes.Black,
+				layout.PasscodeBounds, format);
 		}
 
 		/// <summary>

@@ -241,9 +241,7 @@ void Print::Number::set(String^ value)
 
 PrintRarity Print::ParseRarity(String^ /*value*/)
 {
-	// TODO - Move into database as an extension function, also consider
-	// refactor database to use MONSTER, SPELL, TRAP in card table instead
-	// of integers and do the same thing
+	// TODO - Move into database as an extension function
 	return PrintRarity::Common;
 }
 

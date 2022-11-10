@@ -32,6 +32,15 @@ namespace zuki.ronin.renderer
 	internal class LayoutMedium : Layout
 	{
 		/// <summary>
+		/// Static Constructor
+		/// </summary>
+		static LayoutMedium()
+		{
+			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+		}
+
+		/// <summary>
 		/// Position of the artwork image 
 		/// </summary>
 		public override Point ArtworkPosition => new Point(113, 265);
@@ -42,22 +51,22 @@ namespace zuki.ronin.renderer
 		public override Size ArtworkSize => new Size(624, 632);
 
 		/// <summary>
-		/// Background image for a DARK attribute
+		/// DARK attribute image
 		/// </summary>
 		public override Bitmap AttributeDark => Resources.attrdark;
 
 		/// <summary>
-		/// Background image for an EARTH attribute
+		/// EARTH attribute image
 		/// </summary>
 		public override Bitmap AttributeEarth => Resources.attrearth;
 
 		/// <summary>
-		/// Background image for a FIRE attribute
+		/// FIRE attribute image
 		/// </summary>
 		public override Bitmap AttributeFire => Resources.attrfire;
 
 		/// <summary>
-		/// Background image for a LIGHT attribute
+		/// LIGHT attribute image
 		/// </summary>
 		public override Bitmap AttributeLight => Resources.attrlight;
 
@@ -72,22 +81,22 @@ namespace zuki.ronin.renderer
 		public override Size AttributeSize => new Size(85, 85);
 
 		/// <summary>
-		/// Background image for a SPELL attribute
+		/// SPELL attribute image
 		/// </summary>
 		public override Bitmap AttributeSpell => Resources.attrspell;
 
 		/// <summary>
-		/// Background image for a TRAP attribute
+		/// TRAP attribute image
 		/// </summary>
 		public override Bitmap AttributeTrap => Resources.attrtrap;
 
 		/// <summary>
-		/// Background image for a WATER attribute
+		/// WATER attribute image
 		/// </summary>
 		public override Bitmap AttributeWater => Resources.attrwater;
 
 		/// <summary>
-		/// Background image for a WIND attribute
+		/// WIND attribute image
 		/// </summary>
 		public override Bitmap AttributeWind => Resources.attrwind;
 
@@ -112,6 +121,11 @@ namespace zuki.ronin.renderer
 		public override Bitmap BackgroundRitualMonster => Resources.cardritual;
 
 		/// <summary>
+		/// Background image size
+		/// </summary>
+		public override Size BackgroundSize => new Size(846, 1245);
+
+		/// <summary>
 		/// Background image for a spell card
 		/// </summary>
 		public override Bitmap BackgroundSpell => Resources.cardspell;
@@ -129,7 +143,7 @@ namespace zuki.ronin.renderer
 			get
 			{
 				// Create a new transparent bitmap based on the layout image size
-				Size size = ImageSize;
+				Size size = BackgroundSize;
 				Bitmap bitmap = new Bitmap(size.Width, size.Height);
 				bitmap.SetResolution(96.0F, 96.0F);
 				bitmap.MakeTransparent();
@@ -143,8 +157,51 @@ namespace zuki.ronin.renderer
 		public override Bitmap BackgroundTrap => Resources.cardtrap;
 
 		/// <summary>
-		/// Image size
+		/// Copyright string
 		/// </summary>
-		public override Size ImageSize => new Size(846, 1245);
+		public override string Copyright => "©1996 KAZUKI TAKAHASHI";
+
+		/// <summary>
+		/// Boundary of the copyright
+		/// </summary>
+		public override RectangleF CopyrightBounds => new Rectangle(302, 1198, 475, 28);
+
+		/// <summary>
+		/// Font used to draw the copyright
+		/// </summary>
+		public override Font CopyrightFont => s_passcodefont;
+
+		/// <summary>
+		/// Eye of Anubis hologram image
+		/// </summary>
+		public override Bitmap Hologram => Resources.eyeofanubis;
+
+		/// <summary>
+		/// Position of the hologram image
+		/// </summary>
+		public override Point HologramPosition => new Point(792, 1189);
+
+		/// <summary>
+		/// Size of the hologram image
+		/// </summary>
+		public override Size HologramSize => new Size(42, 43);
+
+		/// <summary>
+		/// Boundary of the passcode
+		/// </summary>
+		public override RectangleF PasscodeBounds => new Rectangle(28, 1197, 250, 28);
+
+		/// <summary>
+		/// Font used to draw the passcode
+		/// </summary>
+		public override Font PasscodeFont => s_passcodefont;
+
+		//-------------------------------------------------------------------
+		// Member Variables
+
+		/// <summary>
+		/// Font to use when rendering the passcode
+		/// </summary>
+		private static Font s_passcodefont;
 	}
 }

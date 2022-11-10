@@ -37,6 +37,26 @@ using namespace System::Runtime::InteropServices;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
+// column_guid (local)
+//
+// Converts a SQLite BLOB result column into a System::Guid
+//
+// Arguments:
+//
+//	instance		- Database instance
+	
+static Guid column_guid(sqlite3_stmt* statement, int index)
+{
+	int bloblen = sqlite3_column_bytes(statement, index);
+	if(bloblen != sizeof(UUID)) throw gcnew Exception("Invalid BLOB length for conversion to System::Guid");
+
+	array<byte>^ blob = gcnew array<byte>(bloblen);
+	Marshal::Copy(IntPtr(const_cast<void*>(sqlite3_column_blob(statement, 1))), blob, 0, bloblen);
+
+	return Guid(blob);
+}
+
+//---------------------------------------------------------------------------
 // execute_non_query (local)
 //
 // Executes a database query and returns the number of rows affected
@@ -515,13 +535,7 @@ List<Card^>^ Database::SelectCards(void)
 			CLRASSERT(card != nullptr);
 
 			// cardid
-			// TODO: test efficiency of converting the BLOB to a string in SQLite with
-			// an extension function; probably faster than this method
-			int cardidlen = sqlite3_column_bytes(statement, 1);
-			if(cardidlen != sizeof(UUID)) throw gcnew Exception("Invalid card.cardid length");
-			array<byte>^ cardidblob = gcnew array<byte>(16);
-			Marshal::Copy(IntPtr(const_cast<void*>(sqlite3_column_blob(statement, 1))), cardidblob, 0, cardidlen);
-			card->CardID = Guid(cardidblob);
+			card->CardID = column_guid(statement, 1);
 
 			// name
 			wchar_t const* nameptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 2));

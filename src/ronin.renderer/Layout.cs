@@ -40,22 +40,22 @@ namespace zuki.ronin.renderer
 		public virtual Size ArtworkSize { get; }
 
 		/// <summary>
-		/// Background image for a DARK attribute
+		/// DARK attribute image
 		/// </summary>
 		public virtual Bitmap AttributeDark { get; }
 
 		/// <summary>
-		/// Background image for an EARTH attribute
+		/// EARTH attribute image
 		/// </summary>
 		public virtual Bitmap AttributeEarth { get; }
 
 		/// <summary>
-		/// Background image for a FIRE attribute
+		/// FIRE attribute image
 		/// </summary>
 		public virtual Bitmap AttributeFire { get; }
 
 		/// <summary>
-		/// Background image for a LIGHT attribute
+		/// LIGHT attribute image
 		/// </summary>
 		public virtual Bitmap AttributeLight { get; }
 
@@ -70,22 +70,22 @@ namespace zuki.ronin.renderer
 		public virtual Size AttributeSize { get; }
 
 		/// <summary>
-		/// Background image for a SPELL attribute
+		/// SPELL attribute image
 		/// </summary>
 		public virtual Bitmap AttributeSpell { get; }
 
 		/// <summary>
-		/// Background image for a TRAP attribute
+		/// TRAP attribute image
 		/// </summary>
 		public virtual Bitmap AttributeTrap { get; }
 
 		/// <summary>
-		/// Background image for a WATER attribute
+		/// WATER attribute image
 		/// </summary>
 		public virtual Bitmap AttributeWater { get; }
 
 		/// <summary>
-		/// Background image for a WIND attribute
+		/// WIND attribute image
 		/// </summary>
 		public virtual Bitmap AttributeWind { get; }
 
@@ -110,6 +110,11 @@ namespace zuki.ronin.renderer
 		public virtual Bitmap BackgroundRitualMonster { get; }
 
 		/// <summary>
+		/// Background image size
+		/// </summary>
+		public virtual Size BackgroundSize { get; }
+
+		/// <summary>
 		/// Background image for a spell card
 		/// </summary>
 		public virtual Bitmap BackgroundSpell { get; }
@@ -130,8 +135,43 @@ namespace zuki.ronin.renderer
 		public virtual Bitmap BackgroundTrap { get; }
 
 		/// <summary>
-		/// Image size
+		/// Copyright string
 		/// </summary>
-		public virtual Size ImageSize { get; }
+		public virtual string Copyright { get; }
+
+		/// <summary>
+		/// Boundary of the copyright
+		/// </summary>
+		public virtual RectangleF CopyrightBounds { get; }
+
+		/// <summary>
+		/// Font used to draw the copyright
+		/// </summary>
+		public virtual Font CopyrightFont { get; }
+
+		/// <summary>
+		/// Eye of Anubis hologram image
+		/// </summary>
+		public virtual Bitmap Hologram { get; }
+
+		/// <summary>
+		/// Position of the hologram image
+		/// </summary>
+		public virtual Point HologramPosition { get; }
+
+		/// <summary>
+		/// Size of the hologram image
+		/// </summary>
+		public virtual Size HologramSize { get; }
+
+		/// <summary>
+		/// Boundary of the passcode
+		/// </summary>
+		public virtual RectangleF PasscodeBounds { get; }
+
+		/// <summary>
+		/// Font used to draw the passcode
+		/// </summary>
+		public virtual Font PasscodeFont { get; }
 	}
 }
