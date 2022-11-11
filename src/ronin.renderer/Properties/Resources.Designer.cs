@@ -313,6 +313,16 @@ namespace zuki.ronin.renderer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] matrixboldsmallcaps {
+            get {
+                object obj = ResourceManager.GetObject("matrixboldsmallcaps", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] matrixbook {
             get {
                 object obj = ResourceManager.GetObject("matrixbook", resourceCulture);
@@ -333,9 +343,39 @@ namespace zuki.ronin.renderer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] stoneserifboldsmallcaps {
+            get {
+                object obj = ResourceManager.GetObject("stoneserifboldsmallcaps", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] stoneseriflt {
             get {
                 object obj = ResourceManager.GetObject("stoneseriflt", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] stoneserifltitalic {
+            get {
+                object obj = ResourceManager.GetObject("stoneserifltitalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] stoneserifsemibold {
+            get {
+                object obj = ResourceManager.GetObject("stoneserifsemibold", resourceCulture);
                 return ((byte[])(obj));
             }
         }

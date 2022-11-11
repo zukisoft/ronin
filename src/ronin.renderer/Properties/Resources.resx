@@ -202,4 +202,16 @@
   <data name="matrixsmallcaps" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\assets\fonts\matrixsmallcaps.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="stoneserifboldsmallcaps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\assets\fonts\stoneserifboldsmallcaps.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stoneserifltitalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\assets\fonts\stoneserifltitalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="matrixboldsmallcaps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\assets\fonts\matrixboldsmallcaps.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stoneserifsemibold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\assets\fonts\stoneserifsemibold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

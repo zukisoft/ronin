@@ -37,9 +37,13 @@ namespace zuki.ronin.renderer
 		#region EmbeddedFonts Class
 		public struct EmbeddedFonts
 		{
+			public const string MatrixBoldSmallCaps = "Matrix Bold Small Caps";
 			public const string MatrixBook = "Matrix Book";
 			public const string MatrixSmallCaps = "Matrix Small Caps";
+			public const string StoneSerifBoldSmallCaps = "ITC Stone Serif Bold Small Caps";
 			public const string StoneSerifLT = "ITC Stone Serif LT";
+			public const string StoneSerifLTItalic = "ITC Stone Serif LT Italic";
+			public const string StoneSerifSemibold = "ITC Stone Serif Semibold";
 		}
 		#endregion
 
@@ -49,9 +53,13 @@ namespace zuki.ronin.renderer
 		static FontManager()
 		{
 			// Load the embedded font objects
+			AddFontToCollection(Resources.matrixboldsmallcaps);
 			AddFontToCollection(Resources.matrixbook);
 			AddFontToCollection(Resources.matrixsmallcaps);
+			AddFontToCollection(Resources.stoneserifboldsmallcaps);
 			AddFontToCollection(Resources.stoneseriflt);
+			AddFontToCollection(Resources.stoneserifltitalic);
+			AddFontToCollection(Resources.stoneserifsemibold);
 		}
 
 		//---------------------------------------------------------------------
