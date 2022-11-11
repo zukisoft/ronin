@@ -108,6 +108,11 @@ namespace zuki.ronin.renderer
 			// Attribute
 			Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Spell);
 
+			// Header / Icon
+			bool hasicon = spellcard.Icon != CardIcon.None;
+			Engine.DrawHeader(graphics, s_layout, m_flags, "Spell Card", hasicon);
+			if(hasicon) Engine.DrawIcon(graphics, s_layout, m_flags, spellcard.Icon);
+
 			// Artwork
 			Bitmap artwork = spellcard.GetArtwork();
 			if(artwork == null) artwork = Resources.defaultartwork;

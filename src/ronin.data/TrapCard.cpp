@@ -79,6 +79,19 @@ void TrapCard::Counter::set(bool value)
 }
 
 //---------------------------------------------------------------------------
+// TrapCard::Icon::get
+//
+// Gets the spell card icon
+
+CardIcon TrapCard::Icon::get(void)
+{
+	if(m_continuous) return CardIcon::Continuous;
+	else if(m_counter) return CardIcon::Counter;
+
+	return CardIcon::None;
+}
+
+//---------------------------------------------------------------------------
 // TrapCard::Normal::get
 //
 // Gets the normal trap flag

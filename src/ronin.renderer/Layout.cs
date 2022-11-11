@@ -150,6 +150,16 @@ namespace zuki.ronin.renderer
 		public virtual Font CopyrightFont { get; }
 
 		/// <summary>
+		/// Boundary of the header area above the image
+		/// </summary>
+		public virtual RectangleF HeaderBounds { get; }
+
+		/// <summary>
+		/// Font used to draw the header
+		/// </summary>
+		public virtual Font HeaderFont { get; }
+
+		/// <summary>
 		/// Eye of Anubis hologram image
 		/// </summary>
 		public virtual Bitmap Hologram { get; }
@@ -163,6 +173,66 @@ namespace zuki.ronin.renderer
 		/// Size of the hologram image
 		/// </summary>
 		public virtual Size HologramSize { get; }
+
+		/// <summary>
+		/// CONTINUOUS icon image
+		/// </summary>
+		public virtual Bitmap IconContinuous { get; }
+
+		/// <summary>
+		/// COUNTER icon image
+		/// </summary>
+		public virtual Bitmap IconCounter { get; }
+
+		/// <summary>
+		/// EQUIP icon image
+		/// </summary>
+		public virtual Bitmap IconEquip { get; }
+
+		/// <summary>
+		/// FIELD icon image
+		/// </summary>
+		public virtual Bitmap IconField { get; }
+
+		/// <summary>
+		/// Position of the spell/trap icon
+		/// </summary>
+		public virtual Point IconPosition { get; }
+
+		/// <summary>
+		/// QUICK-PLAY icon image
+		/// </summary>
+		public virtual Bitmap IconQuickPlay { get; }
+
+		/// <summary>
+		/// RITUAL icon image
+		/// </summary>
+		public virtual Bitmap IconRitual { get; }
+
+		/// <summary>
+		/// Size of the spell/trap icon
+		/// </summary>
+		public virtual Size IconSize { get; }
+
+		/// <summary>
+		/// Level star image
+		/// </summary>
+		public virtual Bitmap LevelStar { get; }
+
+		/// <summary>
+		/// Boundary of the level star area above the image
+		/// </summary>
+		public virtual RectangleF LevelStarBounds { get; }
+
+		/// <summary>
+		/// Padding between level stars
+		/// </summary>
+		public virtual int LevelStarPadding { get; }
+
+		/// <summary>
+		/// Size of a level star image
+		/// </summary>
+		public virtual Size LevelStarSize { get; }
 
 		/// <summary>
 		/// Boundary of the card name

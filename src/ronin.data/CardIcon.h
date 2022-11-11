@@ -20,12 +20,9 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __TRAPCARD_H_
-#define __TRAPCARD_H_
+#ifndef __CARDICON_H_
+#define __CARDICON_H_
 #pragma once
-
-#include "Card.h"
-#include "CardIcon.h"
 
 #pragma warning(push, 4)
 
@@ -34,67 +31,20 @@ using namespace System;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Class TrapCard
+// Enum CardIcon
 //
-// Describes a trap card object
+// Describes the icon of a card
 //---------------------------------------------------------------------------
 
-public ref class TrapCard : public Card
+public enum class CardIcon
 {
-public:
-
-	//-----------------------------------------------------------------------
-	// Properties
-
-	// Continuous
-	//
-	// Gets the continuous trap flag
-	property bool Continuous
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Counter
-	//
-	// Gets the continuous trap flag
-	property bool Counter
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Icon
-	//
-	// Gets the trap card icon
-	property CardIcon Icon
-	{
-		CardIcon get(void);
-	}
-
-	// Normal
-	//
-	// Gets the normal trap flag
-	property bool Normal
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-internal:
-
-	// Instance Constructor
-	//
-	TrapCard(Database^ database);
-
-private:
-
-	//-----------------------------------------------------------------------
-	// Member Variables
-
-	bool			m_continuous = false;		// Continuous trap
-	bool			m_counter = false;			// Counter trap
-	bool			m_normal = false;			// Normal trap
+	None = 0,
+	Continuous,
+	Counter,
+	Equip,
+	Field,
+	QuickPlay,
+	Ritual,
 };
 
 //---------------------------------------------------------------------------
@@ -103,4 +53,4 @@ private:
 
 #pragma warning(pop)
 
-#endif	// __TRAPCARD_H_
+#endif	// __CARDICON_H_

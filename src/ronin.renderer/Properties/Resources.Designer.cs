@@ -233,19 +233,9 @@ namespace zuki.ronin.renderer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iconcontspell {
+        internal static System.Drawing.Bitmap iconcontinuous {
             get {
-                object obj = ResourceManager.GetObject("iconcontspell", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconconttrap {
-            get {
-                object obj = ResourceManager.GetObject("iconconttrap", resourceCulture);
+                object obj = ResourceManager.GetObject("iconcontinuous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

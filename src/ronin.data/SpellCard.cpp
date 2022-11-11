@@ -99,6 +99,22 @@ void SpellCard::Field::set(bool value)
 }
 
 //---------------------------------------------------------------------------
+// SpellCard::Icon::get
+//
+// Gets the spell card icon
+
+CardIcon SpellCard::Icon::get(void)
+{
+	if(m_continuous) return CardIcon::Continuous;
+	else if(m_equip) return CardIcon::Equip;
+	else if(m_field) return CardIcon::Field;
+	else if(m_quickplay) return CardIcon::QuickPlay;
+	else if(m_ritual) return CardIcon::Ritual;
+
+	return CardIcon::None;
+}
+
+//---------------------------------------------------------------------------
 // SpellCard::Normal::get
 //
 // Gets the normal spell flag

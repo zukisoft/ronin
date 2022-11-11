@@ -113,6 +113,12 @@ namespace zuki.ronin.renderer
 			if(artwork == null) artwork = Resources.defaultartwork;
 			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
 
+			// Header / Icon
+			bool hasicon = trapcard.Icon != CardIcon.None;
+			Engine.DrawHeader(graphics, s_layout, m_flags, "Trap Card", hasicon);
+			if(hasicon) Engine.DrawIcon(graphics, s_layout, m_flags, trapcard.Icon);
+
+
 			// Passcode
 			Engine.DrawPasscode(graphics, s_layout, m_flags, trapcard.Passcode);
 

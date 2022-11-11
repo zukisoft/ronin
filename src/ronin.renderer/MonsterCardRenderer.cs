@@ -120,6 +120,9 @@ namespace zuki.ronin.renderer
 			if(artwork == null) artwork = Resources.defaultartwork;
 			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
 
+			// Level Stars
+			Engine.DrawLevelStars(graphics, s_layout, m_flags, monstercard.Level);
+
 			// Passcode
 			Engine.DrawPasscode(graphics, s_layout, m_flags, monstercard.Passcode);
 

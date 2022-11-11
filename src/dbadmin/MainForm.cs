@@ -140,9 +140,13 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			// TODO: Can OpenFileDialog support dark mode?
-			var result = m_opendatabase.ShowDialog(this);
-			if(result != DialogResult.OK) Close();
+			if(File.Exists("d:\\ronin.db")) m_opendatabase.FileName = "D:\\ronin.db";
+			else
+			{
+				// TODO: Can OpenFileDialog support dark mode?
+				var result = m_opendatabase.ShowDialog(this);
+				if(result != DialogResult.OK) Close();
+			}
 
 			try
 			{

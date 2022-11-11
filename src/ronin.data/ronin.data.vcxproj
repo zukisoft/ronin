@@ -159,6 +159,7 @@
     <ClInclude Include="..\..\depends\sqlite\sqlite3ext.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardFilter.h" />
+    <ClInclude Include="CardIcon.h" />
     <ClInclude Include="CardType.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="CardAttribute.h" />

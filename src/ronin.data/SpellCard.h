@@ -25,6 +25,7 @@
 #pragma once
 
 #include "Card.h"
+#include "CardIcon.h"
 
 #pragma warning(push, 4)
 
@@ -61,6 +62,14 @@ public:
 	{
 		bool get(void);
 		internal: void set(bool value);
+	}
+
+	// Icon
+	//
+	// Gets the spell card icon
+	property CardIcon Icon
+	{
+		CardIcon get(void);
 	}
 
 	// Field

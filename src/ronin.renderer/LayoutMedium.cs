@@ -36,6 +36,10 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		static LayoutMedium()
 		{
+			// Font used to render a spell/trap card header
+			s_headerfont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifBoldSmallCaps, 42,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
 			// Font used to draw the card name
 			s_namefont = FontManager.Create(FontManager.EmbeddedFonts.MatrixSmallCaps, 98,
 				FontStyle.Regular, GraphicsUnit.Pixel);
@@ -169,12 +173,22 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of the copyright
 		/// </summary>
-		public override RectangleF CopyrightBounds => new Rectangle(302, 1198, 475, 28);
+		public override RectangleF CopyrightBounds => new Rectangle(302, 1198, 475, 26);
 
 		/// <summary>
 		/// Font used to draw the copyright
 		/// </summary>
 		public override Font CopyrightFont => s_passcodefont;
+
+		/// <summary>
+		/// Boundary of the header area above the image
+		/// </summary>
+		public override RectangleF HeaderBounds => new Rectangle(96, 172, 658, 52);
+
+		/// <summary>
+		/// Font used to draw the header
+		/// </summary>
+		public override Font HeaderFont => s_headerfont;
 
 		/// <summary>
 		/// Eye of Anubis hologram image
@@ -192,6 +206,66 @@ namespace zuki.ronin.renderer
 		public override Size HologramSize => new Size(42, 43);
 
 		/// <summary>
+		/// CONTINUOUS icon image
+		/// </summary>
+		public override Bitmap IconContinuous => Resources.iconcontinuous;
+
+		/// <summary>
+		/// COUNTER icon image
+		/// </summary>
+		public override Bitmap IconCounter => Resources.iconcounter;
+
+		/// <summary>
+		/// EQUIP icon image
+		/// </summary>
+		public override Bitmap IconEquip => Resources.iconequip;
+
+		/// <summary>
+		/// FIELD icon image
+		/// </summary>
+		public override Bitmap IconField => Resources.iconfield;
+
+		/// <summary>
+		/// Position of the spell/trap icon
+		/// </summary>
+		public override Point IconPosition => new Point(686, 180);
+
+		/// <summary>
+		/// QUICK-PLAY icon image
+		/// </summary>
+		public override Bitmap IconQuickPlay => Resources.iconquickplay;
+
+		/// <summary>
+		/// RITUAL icon image
+		/// </summary>
+		public override Bitmap IconRitual => Resources.iconritual;
+
+		/// <summary>
+		/// Size of the spell/trap icon
+		/// </summary>
+		public override Size IconSize => new Size(47, 47);
+
+		/// <summary>
+		/// Level star image
+		/// </summary>
+		public override Bitmap LevelStar => Resources.levelstar;
+
+		/// <summary>
+		/// Boundary of the level star area above the image
+		/// </summary>
+		public override RectangleF LevelStarBounds => new Rectangle(96, 172, 656, 62);
+
+		/// <summary>
+		/// Padding between level stars
+		/// </summary>
+		public override int LevelStarPadding => 5;
+
+		/// <summary>
+		/// Size of a level star image
+		/// </summary>
+		public override Size LevelStarSize => new Size(56, 56);
+
+		/// <summary>
 		/// Boundary of the card name
 		/// </summary>
 		public override RectangleF NameBounds => new Rectangle(77, 64, 602, 74);
@@ -204,7 +278,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of the passcode
 		/// </summary>
-		public override RectangleF PasscodeBounds => new Rectangle(28, 1197, 250, 28);
+		public override RectangleF PasscodeBounds => new Rectangle(28, 1197, 250, 27);
 
 		/// <summary>
 		/// Font used to draw the passcode
@@ -213,6 +287,11 @@ namespace zuki.ronin.renderer
 
 		//-------------------------------------------------------------------
 		// Member Variables
+
+		/// <summary>
+		/// Font to use when rendering a spell/trap card header
+		/// </summary>
+		private static Font s_headerfont;
 
 		/// <summary>
 		/// Font to use when rendering the card name

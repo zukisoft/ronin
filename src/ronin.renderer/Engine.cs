@@ -111,7 +111,6 @@ namespace zuki.ronin.renderer
 				case CardAttribute.Water:
 					bitmap = layout.AttributeWater;
 					break;
-
 			}
 
 			if(bitmap != null)
@@ -176,6 +175,185 @@ namespace zuki.ronin.renderer
 			Bitmap bitmap = layout.Hologram;
 			Debug.Assert(bitmap.Size == layout.HologramSize);
 			graphics.DrawImageUnscaled(bitmap, layout.HologramPosition);
+		}
+
+		/// <summary>
+		/// Draws a spell/trap card header onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the header</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="header">Header string</param>
+		/// <param name="hasicon">Flag to leave space for the icon</param>
+		public static void DrawHeader(Graphics graphics, Layout layout, RenderFlags flags, string header,
+			bool hasicon)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(header == null) throw new ArgumentNullException(nameof(header));
+
+			// LayoutProof draws a colored rectange only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.HeaderBounds);
+				return;
+			}
+
+			// The header is drawn right-aligned and vertically centered in the bounds
+			StringFormat format = StringFormat.GenericTypographic;
+			format.Alignment = StringAlignment.Far;
+			format.LineAlignment = StringAlignment.Center;
+			format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			SizeF bracketsize = graphics.MeasureString("]", layout.HeaderFont, int.MaxValue, format);
+			float halfspace = graphics.MeasureString(" ", layout.HeaderFont, int.MaxValue, format).Width / 2.0F;
+			RectangleF bounds = layout.HeaderBounds;
+
+			// Render the bracket character into a new bitmap
+			using(Bitmap bracket = new Bitmap((int)Math.Ceiling(bracketsize.Width), (int)Math.Ceiling(bracketsize.Height),
+				PixelFormat.Format32bppArgb))
+			{
+				bracket.SetResolution(96.0F, 96.0F);
+				using(Graphics gr = Graphics.FromImage(bracket))
+				{
+					gr.SmoothingMode = SmoothingMode.AntiAlias;
+					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
+					gr.DrawString("]", layout.HeaderFont, Brushes.Black, new RectangleF(0, 0, bracket.Width, bracket.Height), format);
+				}
+
+				int x = (int)bounds.Right - bracket.Width;
+				int y = (int)bounds.Top + (int)((bounds.Height - bracket.Height) / 2.0F);
+				y -= 3;		// <-- TODO: Another fudge factor here
+				graphics.DrawImageUnscaled(bracket, new Point(x, y));
+				bounds.Inflate(new SizeF(-(bracketsize.Width + halfspace), 0.0F));
+
+				if(hasicon)
+				{
+					bounds.Inflate(new SizeF(-(layout.IconSize.Width), 0.0F));
+					//bounds.Inflate(new SizeF(-halfspace, 0.0F));
+				}
+
+				SizeF textsize = graphics.MeasureString(header, layout.HeaderFont, int.MaxValue, format);
+				graphics.DrawString(header, layout.HeaderFont, Brushes.Black, bounds, format);
+				bounds.Inflate(new SizeF(-(textsize.Width + halfspace), 0.0F));
+
+				bracket.RotateFlip(RotateFlipType.RotateNoneFlipX);
+				x = (int)bounds.Right - bracket.Width;
+				graphics.DrawImageUnscaled(bracket, new Point(x, y));
+			}
+		}
+
+		/// <summary>
+		/// Draws an icon onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the icon</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="icon">Icon to be drawn</param>
+		public static void DrawIcon(Graphics graphics, Layout layout, RenderFlags flags, CardIcon icon)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			Bitmap bitmap = null;
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen,
+					new Rectangle(layout.AttributePosition, layout.AttributeSize));
+				return;
+			}
+
+			switch(icon)
+			{
+				case CardIcon.Continuous:
+					bitmap = layout.IconContinuous;
+					break;
+
+				case CardIcon.Counter:
+					bitmap = layout.IconCounter;
+					break;
+
+				case CardIcon.Equip:
+					bitmap = layout.IconEquip;
+					break;
+
+				case CardIcon.Field:
+					bitmap = layout.IconField;
+					break;
+
+				case CardIcon.QuickPlay:
+					bitmap = layout.IconQuickPlay;
+					break;
+
+				case CardIcon.Ritual:
+					bitmap = layout.IconRitual;
+					break;
+			}
+
+			if(bitmap != null)
+			{
+				Debug.Assert(bitmap.Size == layout.IconSize);
+				graphics.DrawImageUnscaled(bitmap, layout.IconPosition);
+			}
+		}
+
+		/// <summary>
+		/// Draws the level stars onto a monster card
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the level stars</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="level">Number of level stars to draw</param>
+		public static void DrawLevelStars(Graphics graphics, Layout layout, RenderFlags flags, int level)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			// LayoutProof draws a colored rectange only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.LevelStarBounds);
+				return;
+			}
+
+			// For the level stars, create a transparent bitmap to draw into
+			int cx = (level * layout.LevelStarSize.Width) + (layout.LevelStarPadding * (level - 1));
+			using(Bitmap bmp = new Bitmap(cx, (int)Math.Ceiling(layout.LevelStarBounds.Height), PixelFormat.Format32bppArgb))
+			{
+				bmp.SetResolution(96.0F, 96.0F);
+				using(Graphics gr = Graphics.FromImage(bmp))
+				{
+					int x = 0;
+					for(int index = 0; index < level; index++)
+					{
+						gr.DrawImageUnscaled(layout.LevelStar, x, 0);
+						x += layout.LevelStarSize.Width + layout.LevelStarPadding;
+					}
+				}
+
+				// Calcluate the y offset for the image within the background
+				int y = (int)((layout.LevelStarBounds.Height - layout.LevelStar.Height) / 2.0F) +
+					(int)layout.LevelStarBounds.Top;
+
+				// If the bitmap will fit in the header bounds, draw it right aligned
+				if(cx <= (int)layout.LevelStarBounds.Width)
+				{
+					graphics.DrawImageUnscaled(bmp, new Point((int)layout.LevelStarBounds.Right - cx, y));
+				}
+
+				// Otherwise center the image horizontally on the background
+				else
+				{
+					int x = (int)((layout.BackgroundSize.Width - (float)cx) / 2.0F);
+					graphics.DrawImageUnscaled(bmp, new Point(x, y));
+				}
+			}
+
 		}
 
 		/// <summary>
@@ -253,10 +431,8 @@ namespace zuki.ronin.renderer
 				return;
 			}
 
-			// OverlayProof has a transparent background, use AntiAlias
-			if(flags == RenderFlags.OverlayProof) graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-			else graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
 			// The passcode is drawn left-aligned and vertically centered in the bounds
 			StringFormat format = StringFormat.GenericTypographic;
