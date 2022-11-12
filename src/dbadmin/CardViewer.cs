@@ -120,7 +120,7 @@ namespace zuki.ronin
 			// TODO: TESTING
 			Bitmap b = (card != null) ? Renderer.RenderCard(card, RenderFlags.None) : null;
 			Image old = pictureBox1.Image;
-			pictureBox1.Image = (b != null) ? b : null;
+			pictureBox1.Image = b ?? null;
 			if(old != null) old.Dispose();
 		}
 

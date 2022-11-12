@@ -1,0 +1,2 @@
+- The Matrix Book font was modified to tighten up the ascent and descent for more closely spaced lines
+- The ITC Stone Serif LT Italic font was also modified to tighten up the ascent and decent for more closely spaced lines

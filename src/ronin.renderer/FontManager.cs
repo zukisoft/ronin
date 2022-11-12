@@ -98,7 +98,6 @@ namespace zuki.ronin.renderer
 		/// <param name="font">Font in byte array format</param>
 		private static void AddFontToCollection(byte[] font)
 		{
-			System.Diagnostics.Debug.WriteLine("AddFontToCollection");
 			if(font == null) throw new ArgumentException("font");
 
 			// Pin the byte array

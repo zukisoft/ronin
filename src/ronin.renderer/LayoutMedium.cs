@@ -36,6 +36,14 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		static LayoutMedium()
 		{
+			// Font used to render effect text
+			s_effecttext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBook, 27,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
+			// Font used to render flavor text
+			s_flavortext = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLTItalic, 26,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
 			// Font used to render a spell/trap card header
 			s_headerfont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifBoldSmallCaps, 42,
 				FontStyle.Regular, GraphicsUnit.Pixel);
@@ -228,7 +236,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Position of the spell/trap icon
 		/// </summary>
-		public override Point IconPosition => new Point(686, 180);
+		public override Point IconPosition => new Point(688, 180);
 
 		/// <summary>
 		/// QUICK-PLAY icon image
@@ -276,6 +284,16 @@ namespace zuki.ronin.renderer
 		public override Font NameFont => s_namefont;
 
 		/// <summary>
+		/// Font used when drawing non-normal monster card text
+		/// </summary>
+		public override Font NonNormalMonsterTextFont => s_effecttext;
+
+		/// <summary>
+		/// Font used when drawing normal monster card text
+		/// </summary>
+		public override Font NormalMonsterTextFont => s_flavortext;
+
+		/// <summary>
 		/// Boundary of the passcode
 		/// </summary>
 		public override RectangleF PasscodeBounds => new Rectangle(28, 1197, 250, 27);
@@ -285,8 +303,28 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		public override Font PasscodeFont => s_passcodefont;
 
+		/// <summary>
+		/// Font used when drawing spell and trap card text
+		/// </summary>
+		public override Font SpellTrapTextFont => s_effecttext;
+
+		/// <summary>
+		/// Boundary of spell and trap card text
+		/// </summary>
+		public override RectangleF SpellTrapTextBounds => new Rectangle(76, 966, 693, 207);
+
 		//-------------------------------------------------------------------
 		// Member Variables
+
+		/// <summary>
+		/// Font to use when rendering effect text
+		/// </summary>
+		private static Font s_effecttext;
+
+		/// <summary>
+		/// Font to use when rendering flavor text
+		/// </summary>
+		private static Font s_flavortext;
 
 		/// <summary>
 		/// Font to use when rendering a spell/trap card header

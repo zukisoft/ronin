@@ -118,6 +118,9 @@ namespace zuki.ronin.renderer
 			if(artwork == null) artwork = Resources.defaultartwork;
 			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
 
+			// Text
+			Engine.DrawSpellTrapText(graphics, s_layout, m_flags, spellcard.Text);
+
 			// Passcode
 			Engine.DrawPasscode(graphics, s_layout, m_flags, spellcard.Passcode);
 

@@ -150,6 +150,16 @@ namespace zuki.ronin.renderer
 		public virtual Font CopyrightFont { get; }
 
 		/// <summary>
+		/// Font used when drawing non-normal monster card text
+		/// </summary>
+		public virtual Font NonNormalMonsterTextFont { get; }
+
+		/// <summary>
+		/// Font used when drawing normal monster card text
+		/// </summary>
+		public virtual Font NormalMonsterTextFont { get; }
+
+		/// <summary>
 		/// Boundary of the header area above the image
 		/// </summary>
 		public virtual RectangleF HeaderBounds { get; }
@@ -253,5 +263,15 @@ namespace zuki.ronin.renderer
 		/// Font used to draw the passcode
 		/// </summary>
 		public virtual Font PasscodeFont { get; }
+
+		/// <summary>
+		/// Font used when drawing spell and trap card text
+		/// </summary>
+		public virtual Font SpellTrapTextFont { get; }
+
+		/// <summary>
+		/// Boundary of spell and trap card text
+		/// </summary>
+		public virtual RectangleF SpellTrapTextBounds { get; }
 	}
 }

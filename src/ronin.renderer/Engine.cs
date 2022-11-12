@@ -357,6 +357,30 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
+		/// Draws the text for a non-normal monster card
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="text">Text to be drawn</param>
+		public static void DrawMonsterText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(text == null) throw new ArgumentNullException(nameof(text));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
+				return;
+			}
+
+			// TODO: use SpellTrap for now
+			JustifyText(graphics, layout.SpellTrapTextBounds, layout.SpellTrapTextFont, Brushes.Black, text);
+		}
+
+		/// <summary>
 		/// Draws the card name onto an existing background
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
@@ -413,6 +437,33 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
+		/// Draws the text for a normal monster card
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="text">Text to be drawn</param>
+		public static void DrawNormalMonsterText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(text == null) throw new ArgumentNullException(nameof(text));
+
+			//
+			// TODO: use SpellTrap layout for now
+			//
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
+				return;
+			}
+
+			JustifyText(graphics, layout.SpellTrapTextBounds, layout.NormalMonsterTextFont, Brushes.Black, text);
+		}
+
+		/// <summary>
 		/// Draws the passcode string onto an existing background
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
@@ -423,6 +474,7 @@ namespace zuki.ronin.renderer
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(passcode == null) throw new ArgumentNullException(nameof(passcode));
 
 			// LayoutProof draws a colored rectangle only
 			if(flags == RenderFlags.LayoutProof)
@@ -442,6 +494,29 @@ namespace zuki.ronin.renderer
 			// The Passcode is always drawn in black text
 			graphics.DrawString(passcode, layout.PasscodeFont, Brushes.Black,
 				layout.PasscodeBounds, format);
+		}
+
+		/// <summary>
+		/// Draws the text for a spell or trap card
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="text">Text to be drawn</param>
+		public static void DrawSpellTrapText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(text == null) throw new ArgumentNullException(nameof(text));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
+				return;
+			}
+
+			JustifyText(graphics, layout.SpellTrapTextBounds, layout.SpellTrapTextFont, Brushes.Black, text);
 		}
 
 		/// <summary>
@@ -498,6 +573,48 @@ namespace zuki.ronin.renderer
 			}
 
 			return bitmap;
+		}
+
+		//-------------------------------------------------------------------------
+		// Private Member Functions
+		//-------------------------------------------------------------------------
+
+		/// <summary>
+		/// Fully justifies text in a rectangle
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="bounds">Bounding rectangle</param>
+		/// <param name="font">Base font</param>
+		/// <param name="brush">Text color brush</param>
+		/// <param name="text">Text to be justified</param>
+		private static void JustifyText(Graphics graphics, RectangleF bounds, Font font, Brush brush, string text)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(font == null) throw new ArgumentNullException(nameof(font));
+			if(brush == null) throw new ArgumentNullException(nameof(brush));
+			if(text == null) throw new ArgumentNullException(nameof(text));
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			StringFormat format = StringFormat.GenericTypographic;
+			format.Alignment = StringAlignment.Near;
+			format.LineAlignment = StringAlignment.Near;
+
+			// Reduce the font size until the text will fit in the bounding area
+			SizeF required = graphics.MeasureString(text, font, (int)(Math.Ceiling(bounds.Width)), format);
+			while(required.Height > bounds.Height)
+			{
+				font = new Font(font.FontFamily, font.Size - 1, font.Style, GraphicsUnit.Pixel);
+				required = graphics.MeasureString(text, font, (int)(Math.Ceiling(bounds.Width)), format);
+			}
+
+			//
+			// TODO: Actually justify the text, this is OK for now. MeasureCharacterRanges might be
+			// useful to break up the string into lines for manual drawing as opposed to the legacy 
+			// method, let GDI+ do the work ...
+			//
+			graphics.DrawString(text, font, brush, bounds, format);
 		}
 	}
 }

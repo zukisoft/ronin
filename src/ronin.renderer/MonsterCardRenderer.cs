@@ -123,6 +123,10 @@ namespace zuki.ronin.renderer
 			// Level Stars
 			Engine.DrawLevelStars(graphics, s_layout, m_flags, monstercard.Level);
 
+			// Text (TODO!)
+			if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, m_flags, monstercard.Text);
+			else Engine.DrawMonsterText(graphics, s_layout, m_flags, monstercard.Text);
+
 			// Passcode
 			Engine.DrawPasscode(graphics, s_layout, m_flags, monstercard.Passcode);
 
