@@ -66,6 +66,8 @@ namespace zuki.ronin.renderer
 				Engine.DrawName(graphics, s_layout, m_flags, card.Name, NameBrush.SolidBlack);
 			}
 
+			bitmap.Save("d:\\temp.png", System.Drawing.Imaging.ImageFormat.Png);
+
 			return bitmap;
 		}
 
@@ -123,9 +125,13 @@ namespace zuki.ronin.renderer
 			// Level Stars
 			Engine.DrawLevelStars(graphics, s_layout, m_flags, monstercard.Level);
 
-			// Text (TODO!)
+			// Text
 			if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, m_flags, monstercard.Text);
+			else if(monstercard.Fusion) Engine.DrawFusionMonsterText(graphics, s_layout, m_flags, monstercard.Text);
 			else Engine.DrawMonsterText(graphics, s_layout, m_flags, monstercard.Text);
+
+			// Attack/Defense
+			Engine.DrawAttackDefense(graphics, s_layout, m_flags, monstercard.Attack, monstercard.Defense);
 
 			// Passcode
 			Engine.DrawPasscode(graphics, s_layout, m_flags, monstercard.Passcode);

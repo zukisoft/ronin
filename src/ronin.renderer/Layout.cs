@@ -30,6 +30,21 @@ namespace zuki.ronin.renderer
 	internal class Layout
 	{
 		/// <summary>
+		/// Boundary of the monster card attack region
+		/// </summary>
+		public virtual RectangleF AttackBounds { get; }
+
+		/// <summary>
+		/// Boundary of the monster card attack/defense region
+		/// </summary>
+		public virtual RectangleF AttackDefenseBounds { get; }
+
+		/// <summary>
+		/// Font used to render ATK/DEF text
+		/// </summary>
+		public virtual Font AttackDefenseFont { get; }
+
+		/// <summary>
 		/// Position of the artwork image
 		/// </summary>
 		public virtual Point ArtworkPosition { get; }
@@ -150,9 +165,19 @@ namespace zuki.ronin.renderer
 		public virtual Font CopyrightFont { get; }
 
 		/// <summary>
+		/// Boundary of the monster card defense region
+		/// </summary>
+		public virtual RectangleF DefenseBounds { get; }
+
+		/// <summary>
+		/// Width of a drawn line
+		/// </summary>
+		public virtual float LineWidth { get; }
+
+		/// <summary>
 		/// Font used when drawing non-normal monster card text
 		/// </summary>
-		public virtual Font NonNormalMonsterTextFont { get; }
+		public virtual Font MonsterTextFont { get; }
 
 		/// <summary>
 		/// Font used when drawing normal monster card text
@@ -263,6 +288,11 @@ namespace zuki.ronin.renderer
 		/// Font used to draw the passcode
 		/// </summary>
 		public virtual Font PasscodeFont { get; }
+
+		/// <summary>
+		/// Width of a "quarter space" fudge factor for layout
+		/// </summary>
+		public virtual float QuarterSpace { get; }
 
 		/// <summary>
 		/// Font used when drawing spell and trap card text

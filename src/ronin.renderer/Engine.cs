@@ -57,6 +57,64 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
+		/// Draws the attack and defense area of a monster card
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the attribute</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="attack">Attack value</param>
+		/// <param name="defense">Defense value</param>
+		public static void DrawAttackDefense(Graphics graphics, Layout layout, RenderFlags flags, int attack, int defense)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.AttackDefenseBounds);
+				return;
+			}
+
+			// Left-aligned string format (ATK/DEF labels)
+			StringFormat leftformat = new StringFormat(StringFormat.GenericTypographic);
+			leftformat.Alignment = StringAlignment.Near;
+			leftformat.LineAlignment = StringAlignment.Center;
+
+			// Right-aligned string format (ATK/DEF values)
+			StringFormat rightformat = new StringFormat(StringFormat.GenericTypographic);
+			rightformat.Alignment = StringAlignment.Far;
+			rightformat.LineAlignment = StringAlignment.Center;
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			// Draw the line across the text area
+			graphics.DrawLine(new Pen(Brushes.Black, layout.LineWidth), layout.AttackDefenseBounds.Left, layout.AttackDefenseBounds.Top,
+				layout.AttackDefenseBounds.Right, layout.AttackDefenseBounds.Top);
+
+			// Copy the layout attack and defense boundaries so they can be modified
+			RectangleF atkbounds = layout.AttackBounds;
+			RectangleF defbounds = layout.DefenseBounds;
+
+			// The position of the slash depends on the width of the ATK and DEF label strings
+			SizeF atksize = graphics.MeasureString("ATK", layout.AttackDefenseFont, int.MaxValue, leftformat);
+			SizeF defsize = graphics.MeasureString("DEF", layout.AttackDefenseFont, int.MaxValue, leftformat);
+
+			// Draw the ATK strings
+			graphics.DrawString("ATK", layout.AttackDefenseFont, Brushes.Black, atkbounds, leftformat);
+			graphics.DrawString((attack < 0) ? "?" : attack.ToString(), layout.AttackDefenseFont, Brushes.Black, atkbounds, rightformat);
+			atkbounds.Location = new PointF(atkbounds.Left + atksize.Width + layout.QuarterSpace, atkbounds.Top);
+			graphics.DrawString("/", layout.AttackDefenseFont, Brushes.Black, atkbounds, leftformat);
+
+			// Draw the DEF strings
+			graphics.DrawString("DEF", layout.AttackDefenseFont, Brushes.Black, defbounds, leftformat);
+			graphics.DrawString((defense < 0) ? "?" : defense.ToString(), layout.AttackDefenseFont, Brushes.Black, defbounds, rightformat);
+			defbounds.Location = new PointF(defbounds.Left + defsize.Width + layout.QuarterSpace, defbounds.Top);
+			graphics.DrawString("/", layout.AttackDefenseFont, Brushes.Black, defbounds, leftformat);
+		}
+
+		/// <summary>
 		/// Draws an attribute onto an existing background
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the attribute</param>
@@ -142,13 +200,34 @@ namespace zuki.ronin.renderer
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
 			// The copyright is drawn right-aligned and vertically centered in the bounds
-			StringFormat format = StringFormat.GenericTypographic;
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
 			format.Alignment = StringAlignment.Far;
 			format.LineAlignment = StringAlignment.Center;
 
 			// The copyright is always drawn in black text
 			graphics.DrawString(layout.Copyright, layout.CopyrightFont, Brushes.Black, 
 				layout.CopyrightBounds, format);
+		}
+
+		/// <summary>
+		/// Draws the text for a fusion monster card
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="text">Text to be drawn</param>
+		public static void DrawFusionMonsterText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(text == null) throw new ArgumentNullException(nameof(text));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
+				return;
+			}
 		}
 
 		/// <summary>
@@ -200,7 +279,7 @@ namespace zuki.ronin.renderer
 			}
 
 			// The header is drawn right-aligned and vertically centered in the bounds
-			StringFormat format = StringFormat.GenericTypographic;
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
 			format.Alignment = StringAlignment.Far;
 			format.LineAlignment = StringAlignment.Center;
 			format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
@@ -226,15 +305,11 @@ namespace zuki.ronin.renderer
 
 				int x = (int)bounds.Right - bracket.Width;
 				int y = (int)bounds.Top + (int)((bounds.Height - bracket.Height) / 2.0F);
-				y -= 3;		// <-- TODO: Another fudge factor here
+				y -= (int)layout.QuarterSpace;
 				graphics.DrawImageUnscaled(bracket, new Point(x, y));
 				bounds.Inflate(new SizeF(-(bracketsize.Width + halfspace), 0.0F));
 
-				if(hasicon)
-				{
-					bounds.Inflate(new SizeF(-(layout.IconSize.Width), 0.0F));
-					//bounds.Inflate(new SizeF(-halfspace, 0.0F));
-				}
+				if(hasicon) bounds.Inflate(new SizeF(-layout.IconSize.Width, 0.0F));
 
 				SizeF textsize = graphics.MeasureString(header, layout.HeaderFont, int.MaxValue, format);
 				graphics.DrawString(header, layout.HeaderFont, Brushes.Black, bounds, format);
@@ -357,7 +432,7 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
-		/// Draws the text for a non-normal monster card
+		/// Draws the text for an effect monster card
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
@@ -375,9 +450,6 @@ namespace zuki.ronin.renderer
 				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
 				return;
 			}
-
-			// TODO: use SpellTrap for now
-			JustifyText(graphics, layout.SpellTrapTextBounds, layout.SpellTrapTextFont, Brushes.Black, text);
 		}
 
 		/// <summary>
@@ -405,7 +477,7 @@ namespace zuki.ronin.renderer
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
 			// The name is drawn left-aligned and vertically centered in the bounds
-			StringFormat format = StringFormat.GenericTypographic;
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
 			format.Alignment = StringAlignment.Near;
 			format.LineAlignment = StringAlignment.Center;
 
@@ -449,18 +521,12 @@ namespace zuki.ronin.renderer
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			//
-			// TODO: use SpellTrap layout for now
-			//
-
 			// LayoutProof draws a colored rectangle only
 			if(flags == RenderFlags.LayoutProof)
 			{
 				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
 				return;
 			}
-
-			JustifyText(graphics, layout.SpellTrapTextBounds, layout.NormalMonsterTextFont, Brushes.Black, text);
 		}
 
 		/// <summary>
@@ -487,7 +553,7 @@ namespace zuki.ronin.renderer
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
 			// The passcode is drawn left-aligned and vertically centered in the bounds
-			StringFormat format = StringFormat.GenericTypographic;
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
 			format.Alignment = StringAlignment.Near;
 			format.LineAlignment = StringAlignment.Center;
 
@@ -597,16 +663,16 @@ namespace zuki.ronin.renderer
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-			StringFormat format = StringFormat.GenericTypographic;
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
 			format.Alignment = StringAlignment.Near;
 			format.LineAlignment = StringAlignment.Near;
 
 			// Reduce the font size until the text will fit in the bounding area
-			SizeF required = graphics.MeasureString(text, font, (int)(Math.Ceiling(bounds.Width)), format);
+			SizeF required = graphics.MeasureString(text, font, (int)Math.Ceiling(bounds.Width), format);
 			while(required.Height > bounds.Height)
 			{
 				font = new Font(font.FontFamily, font.Size - 1, font.Style, GraphicsUnit.Pixel);
-				required = graphics.MeasureString(text, font, (int)(Math.Ceiling(bounds.Width)), format);
+				required = graphics.MeasureString(text, font, (int)Math.Ceiling(bounds.Width), format);
 			}
 
 			//

@@ -36,6 +36,10 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		static LayoutMedium()
 		{
+			// Font used to render ATK/DEF text
+			s_atkdeftext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBoldSmallCaps, 40,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
 			// Font used to render effect text
 			s_effecttext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBook, 27,
 				FontStyle.Regular, GraphicsUnit.Pixel);
@@ -56,6 +60,21 @@ namespace zuki.ronin.renderer
 			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 		}
+
+		/// <summary>
+		/// Boundary of the monster card attack region
+		/// </summary>
+		public override RectangleF AttackBounds => new Rectangle(434, 1147, 160, 35);
+
+		/// <summary>
+		/// Boundary of the monster card attack/defense region
+		/// </summary>
+		public override RectangleF AttackDefenseBounds => new Rectangle(76, 1142, 694, 31);
+
+		/// <summary>
+		/// Font used to render ATK/DEF text
+		/// </summary>
+		public override Font AttackDefenseFont => s_atkdeftext;
 
 		/// <summary>
 		/// Position of the artwork image 
@@ -189,6 +208,11 @@ namespace zuki.ronin.renderer
 		public override Font CopyrightFont => s_passcodefont;
 
 		/// <summary>
+		/// Boundary of the monster card defense region
+		/// </summary>
+		public override RectangleF DefenseBounds => new Rectangle(613, 1147, 158, 35);
+
+		/// <summary>
 		/// Boundary of the header area above the image
 		/// </summary>
 		public override RectangleF HeaderBounds => new Rectangle(96, 172, 658, 52);
@@ -274,6 +298,11 @@ namespace zuki.ronin.renderer
 		public override Size LevelStarSize => new Size(56, 56);
 
 		/// <summary>
+		/// Width of a drawn line
+		/// </summary>
+		public override float LineWidth => 2.0F;
+
+		/// <summary>
 		/// Boundary of the card name
 		/// </summary>
 		public override RectangleF NameBounds => new Rectangle(77, 64, 602, 74);
@@ -286,7 +315,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Font used when drawing non-normal monster card text
 		/// </summary>
-		public override Font NonNormalMonsterTextFont => s_effecttext;
+		public override Font MonsterTextFont => s_effecttext;
 
 		/// <summary>
 		/// Font used when drawing normal monster card text
@@ -304,6 +333,11 @@ namespace zuki.ronin.renderer
 		public override Font PasscodeFont => s_passcodefont;
 
 		/// <summary>
+		/// Width of a "quarter space" fudge factor for layout
+		/// </summary>
+		public override float QuarterSpace => 3.0F;
+
+		/// <summary>
 		/// Font used when drawing spell and trap card text
 		/// </summary>
 		public override Font SpellTrapTextFont => s_effecttext;
@@ -311,10 +345,15 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of spell and trap card text
 		/// </summary>
-		public override RectangleF SpellTrapTextBounds => new Rectangle(76, 966, 693, 207);
+		public override RectangleF SpellTrapTextBounds => new Rectangle(76, 966, 694, 207);
 
 		//-------------------------------------------------------------------
 		// Member Variables
+
+		/// <summary>
+		/// Font to use when rendering ATK/DEF text
+		/// </summary>
+		private static Font s_atkdeftext;
 
 		/// <summary>
 		/// Font to use when rendering effect text
