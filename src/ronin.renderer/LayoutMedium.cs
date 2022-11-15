@@ -59,6 +59,10 @@ namespace zuki.ronin.renderer
 			// Font used to draw the passcode and copyright
 			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
 				FontStyle.Regular, GraphicsUnit.Pixel);
+
+			// Font used to draw a monster card type
+			s_typefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifBoldSmallCaps, 33,
+				FontStyle.Regular, GraphicsUnit.Pixel);
 		}
 
 		/// <summary>
@@ -303,6 +307,21 @@ namespace zuki.ronin.renderer
 		public override float LineWidth => 2.0F;
 
 		/// <summary>
+		/// Font used when drawing non-normal monster card text
+		/// </summary>
+		public override Font MonsterTextFont => s_effecttext;
+
+		/// <summary>
+		/// Boundary of the monster type/subtype area
+		/// </summary>
+		public override RectangleF MonsterTypeBounds => new Rectangle(76, 960, 698, 29);
+
+		/// <summary>
+		/// Font used when drawing monster type card text
+		/// </summary>
+		public override Font MonsterTypeFont => s_typefont;
+
+		/// <summary>
 		/// Boundary of the card name
 		/// </summary>
 		public override RectangleF NameBounds => new Rectangle(77, 64, 602, 74);
@@ -311,11 +330,6 @@ namespace zuki.ronin.renderer
 		/// Font used to draw the card name
 		/// </summary>
 		public override Font NameFont => s_namefont;
-
-		/// <summary>
-		/// Font used when drawing non-normal monster card text
-		/// </summary>
-		public override Font MonsterTextFont => s_effecttext;
 
 		/// <summary>
 		/// Font used when drawing normal monster card text
@@ -379,5 +393,10 @@ namespace zuki.ronin.renderer
 		/// Font to use when rendering the passcode
 		/// </summary>
 		private static Font s_passcodefont;
+
+		/// <summary>
+		/// Font to use when rendering a monster type
+		/// </summary>
+		private static Font s_typefont;
 	}
 }

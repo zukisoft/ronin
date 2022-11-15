@@ -26,7 +26,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-
 using zuki.ronin.data;
 
 namespace zuki.ronin.renderer
@@ -449,6 +448,88 @@ namespace zuki.ronin.renderer
 			{
 				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
 				return;
+			}
+		}
+
+		/// <summary>
+		/// Draws the monster card type text
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="flags">Renderer flags</param>
+		/// <param name="types">Array of types to be drawn</param>
+		public static void DrawMonsterTypes(Graphics graphics, Layout layout, RenderFlags flags, string[] types)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(types == null) throw new ArgumentNullException(nameof(types));
+
+			// LayoutProof draws a colored rectangle only
+			if(flags == RenderFlags.LayoutProof)
+			{
+				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
+				return;
+			}
+
+			// The types are drawn left-aligned and vertically centered in the bounds
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
+			format.Alignment = StringAlignment.Near;
+			format.LineAlignment = StringAlignment.Center;
+			format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			SizeF bracketsize = graphics.MeasureString("]", layout.MonsterTypeFont, int.MaxValue, format);
+			RectangleF bounds = layout.MonsterTypeBounds;
+
+			// Render the bracket character into a new bitmap
+			using(Bitmap bracket = new Bitmap((int)Math.Ceiling(bracketsize.Width), (int)Math.Ceiling(bracketsize.Height),
+				PixelFormat.Format32bppArgb))
+			{
+				bracket.SetResolution(96.0F, 96.0F);
+				using(Graphics gr = Graphics.FromImage(bracket))
+				{
+					gr.SmoothingMode = SmoothingMode.AntiAlias;
+					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
+					gr.DrawString("[", layout.MonsterTypeFont, Brushes.Black, new RectangleF(0, 0, bracket.Width, bracket.Height), format);
+				}
+
+				int x = (int)bounds.Left;
+				int y = (int)bounds.Top + (int)((bounds.Height - bracket.Height) / 2.0F);
+				y -= (int)layout.QuarterSpace;
+				graphics.DrawImageUnscaled(bracket, new Point(x, y));
+				bounds = new RectangleF(bounds.Left + bracketsize.Width + layout.QuarterSpace, bounds.Top,
+					bounds.Width - bracketsize.Width - layout.QuarterSpace, bounds.Height);
+
+				int index = 0;
+				while(index < types.Length)
+				{
+					// Draw the current type/subtype
+					SizeF size = graphics.MeasureString(types[index], layout.MonsterTypeFont, int.MaxValue, format);
+					graphics.DrawString(types[index], layout.MonsterTypeFont, Brushes.Black, bounds, format);
+					bounds = new RectangleF(bounds.Left + size.Width, bounds.Top, bounds.Width - size.Width, bounds.Height);
+
+					// Move to the next type/subtype
+					index++;
+
+					// If there are more type/subtypes to draw, insert a slash between them
+					if(index < types.Length)
+					{
+						bounds = new RectangleF(bounds.Left + layout.QuarterSpace, bounds.Top, bounds.Width - layout.QuarterSpace,
+							bounds.Height);
+						SizeF slashsize = graphics.MeasureString("/", layout.MonsterTypeFont, int.MaxValue, format);
+						graphics.DrawString("/", layout.MonsterTypeFont, Brushes.Black, bounds, format);
+						bounds = new RectangleF(bounds.Left + slashsize.Width + layout.QuarterSpace, bounds.Top,
+							bounds.Width - slashsize.Width - layout.QuarterSpace, bounds.Height);
+					}
+				}
+
+				bracket.RotateFlip(RotateFlipType.RotateNoneFlipX);
+				bounds = new RectangleF(bounds.Left + layout.QuarterSpace, bounds.Top,
+					bounds.Width - layout.QuarterSpace, bounds.Height);
+				x = (int)bounds.Left;
+				graphics.DrawImageUnscaled(bracket, new Point(x, y));
 			}
 		}
 

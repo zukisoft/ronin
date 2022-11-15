@@ -180,6 +180,16 @@ namespace zuki.ronin.renderer
 		public virtual Font MonsterTextFont { get; }
 
 		/// <summary>
+		/// Boundary of the monster type/subtype area
+		/// </summary>
+		public virtual RectangleF MonsterTypeBounds { get; }
+
+		/// <summary>
+		/// Font used when drawing monster type card text
+		/// </summary>
+		public virtual Font MonsterTypeFont { get; }
+
+		/// <summary>
 		/// Font used when drawing normal monster card text
 		/// </summary>
 		public virtual Font NormalMonsterTextFont { get; }

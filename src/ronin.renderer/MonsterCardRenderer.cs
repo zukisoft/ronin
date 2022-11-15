@@ -21,6 +21,7 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 
@@ -85,6 +86,36 @@ namespace zuki.ronin.renderer
 		// Private Member Functions
 
 		/// <summary>
+		/// Generates the array of type strings required to render the card
+		/// </summary>
+		/// <param name="monstercard">MonsterCard instance</param>
+		private static string[] GetTypes(MonsterCard monstercard)
+		{
+			// All monster cards list their primary type first
+			List<string> types = new List<string>
+			{
+				Extensions.ToString(monstercard.Type)
+			};
+
+			// Fusion/Ritual types come next when applicable
+			if(monstercard.Fusion) types.Add("Fusion");
+			else if(monstercard.Ritual) types.Add("Ritual");
+
+			// The older card format only specified the subtype
+			// and omitted "/ Effect" unless it was just "/ Effect"
+			if(monstercard.Effect)
+			{
+				if(monstercard.Gemini) types.Add("Gemini");
+				else if(monstercard.Spirit) types.Add("Spirit");
+				else if(monstercard.Toon) types.Add("Toon");
+				else if(monstercard.Union) types.Add("Union");
+				else types.Add("Effect");
+			}
+
+			return types.ToArray();
+		}
+
+		/// <summary>
 		/// Renders the background image for the monster card
 		/// </summary>
 		/// <param name="monstercard">MonsterCard instance</param>
@@ -124,6 +155,9 @@ namespace zuki.ronin.renderer
 
 			// Level Stars
 			Engine.DrawLevelStars(graphics, s_layout, m_flags, monstercard.Level);
+
+			// Type
+			Engine.DrawMonsterTypes(graphics, s_layout, m_flags, GetTypes(monstercard));
 
 			// Text
 			if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, m_flags, monstercard.Text);
