@@ -41,7 +41,7 @@ namespace zuki.ronin.renderer
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
 			// Font used to render effect text
-			s_effecttext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBook, 27,
+			s_effecttext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBook, 26,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
 			// Font used to render flavor text
@@ -307,6 +307,11 @@ namespace zuki.ronin.renderer
 		public override float LineWidth => 2.0F;
 
 		/// <summary>
+		/// Boundary of monster card text
+		/// </summary>
+		public override RectangleF MonsterTextBounds => new Rectangle(78, 996, 692, 144);
+
+		/// <summary>
 		/// Font used when drawing non-normal monster card text
 		/// </summary>
 		public override Font MonsterTextFont => s_effecttext;
@@ -314,7 +319,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of the monster type/subtype area
 		/// </summary>
-		public override RectangleF MonsterTypeBounds => new Rectangle(76, 960, 698, 29);
+		public override RectangleF MonsterTypeBounds => new Rectangle(76, 960, 694, 29);
 
 		/// <summary>
 		/// Font used when drawing monster type card text
@@ -359,7 +364,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of spell and trap card text
 		/// </summary>
-		public override RectangleF SpellTrapTextBounds => new Rectangle(76, 966, 694, 207);
+		public override RectangleF SpellTrapTextBounds => new Rectangle(78, 966, 692, 207);
 
 		//-------------------------------------------------------------------
 		// Member Variables
@@ -367,36 +372,36 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Font to use when rendering ATK/DEF text
 		/// </summary>
-		private static Font s_atkdeftext;
+		private static readonly Font s_atkdeftext;
 
 		/// <summary>
 		/// Font to use when rendering effect text
 		/// </summary>
-		private static Font s_effecttext;
+		private static readonly Font s_effecttext;
 
 		/// <summary>
 		/// Font to use when rendering flavor text
 		/// </summary>
-		private static Font s_flavortext;
+		private static readonly Font s_flavortext;
 
 		/// <summary>
 		/// Font to use when rendering a spell/trap card header
 		/// </summary>
-		private static Font s_headerfont;
+		private static readonly Font s_headerfont;
 
 		/// <summary>
 		/// Font to use when rendering the card name
 		/// </summary>
-		private static Font s_namefont;
+		private static readonly Font s_namefont;
 
 		/// <summary>
 		/// Font to use when rendering the passcode
 		/// </summary>
-		private static Font s_passcodefont;
+		private static readonly Font s_passcodefont;
 
 		/// <summary>
 		/// Font to use when rendering a monster type
 		/// </summary>
-		private static Font s_typefont;
+		private static readonly Font s_typefont;
 	}
 }

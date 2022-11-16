@@ -109,9 +109,9 @@ namespace zuki.ronin
 			if(disposing)
 			{
 				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				if(m_thememonitor != null) m_thememonitor.Dispose();
-				if(m_database != null) m_database.Dispose();
-				if(components != null) components.Dispose();
+				m_thememonitor?.Dispose();
+				m_database?.Dispose();
+				components?.Dispose();
 			}
 
 			base.Dispose(disposing);
@@ -159,8 +159,10 @@ namespace zuki.ronin
 			// TODO: TESTING
 			if(m_database != null)
 			{
-				var child = new CardViewer(m_database);
-				child.MdiParent = this;
+				var child = new CardViewer(m_database)
+				{
+					MdiParent = this
+				};
 				child.Show();
 			}
 		}

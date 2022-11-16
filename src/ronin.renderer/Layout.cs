@@ -175,6 +175,11 @@ namespace zuki.ronin.renderer
 		public virtual float LineWidth { get; }
 
 		/// <summary>
+		/// Boundary of monster card text
+		/// </summary>
+		public virtual RectangleF MonsterTextBounds { get; }
+
+		/// <summary>
 		/// Font used when drawing non-normal monster card text
 		/// </summary>
 		public virtual Font MonsterTextFont { get; }

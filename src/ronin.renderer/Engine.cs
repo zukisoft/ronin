@@ -26,6 +26,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
+
 using zuki.ronin.data;
 
 namespace zuki.ronin.renderer
@@ -40,19 +41,17 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the artwork</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="artwork">Artwork to be drawn</param>
 		/// <exception cref="ArgumentNullException"></exception>
-		public static void DrawArtwork(Graphics graphics, Layout layout, RenderFlags flags, Bitmap artwork)
+		public static void DrawArtwork(Graphics graphics, Layout layout, Bitmap artwork)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(artwork == null) throw new ArgumentNullException(nameof(artwork));
 
-			// Use HighQualityBicubic interpolation and draw the artwork
 			graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-			graphics.DrawImage(artwork, layout.ArtworkPosition.X, layout.ArtworkPosition.Y,
-				layout.ArtworkSize.Width, layout.ArtworkSize.Height);
+			graphics.DrawImage(artwork, layout.ArtworkPosition.X, layout.ArtworkPosition.Y, layout.ArtworkSize.Width,
+				layout.ArtworkSize.Height);
 		}
 
 		/// <summary>
@@ -60,35 +59,31 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the attribute</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="attack">Attack value</param>
 		/// <param name="defense">Defense value</param>
-		public static void DrawAttackDefense(Graphics graphics, Layout layout, RenderFlags flags, int attack, int defense)
+		public static void DrawAttackDefense(Graphics graphics, Layout layout, int attack, int defense)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
+			// Top/Center alignment
+			StringFormat leftformat = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.AttackDefenseBounds);
-				return;
-			}
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Center
+			};
 
-			// Left-aligned string format (ATK/DEF labels)
-			StringFormat leftformat = new StringFormat(StringFormat.GenericTypographic);
-			leftformat.Alignment = StringAlignment.Near;
-			leftformat.LineAlignment = StringAlignment.Center;
-
-			// Right-aligned string format (ATK/DEF values)
-			StringFormat rightformat = new StringFormat(StringFormat.GenericTypographic);
-			rightformat.Alignment = StringAlignment.Far;
-			rightformat.LineAlignment = StringAlignment.Center;
+			// Right/Center alignment
+			StringFormat rightformat = new StringFormat(StringFormat.GenericTypographic)
+			{
+				Alignment = StringAlignment.Far,
+				LineAlignment = StringAlignment.Center
+			};
 
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-			// Draw the line across the text area
+			// Draw the line across the top of the text area
 			graphics.DrawLine(new Pen(Brushes.Black, layout.LineWidth), layout.AttackDefenseBounds.Left, layout.AttackDefenseBounds.Top,
 				layout.AttackDefenseBounds.Right, layout.AttackDefenseBounds.Top);
 
@@ -118,22 +113,13 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the attribute</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="attribute">Attribute to be drawn</param>
-		public static void DrawAttribute(Graphics graphics, Layout layout, RenderFlags flags, CardAttribute attribute)
+		public static void DrawAttribute(Graphics graphics, Layout layout, CardAttribute attribute)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
 			Bitmap bitmap = null;
-
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen, 
-					new Rectangle(layout.AttributePosition, layout.AttributeSize));
-				return;
-			}
 
 			switch(attribute)
 			{
@@ -182,26 +168,20 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
-		public static void DrawCopyright(Graphics graphics, Layout layout, RenderFlags flags)
+		public static void DrawCopyright(Graphics graphics, Layout layout)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
+			// Right/Center alignment
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.CopyrightBounds);
-				return;
-			}
+				Alignment = StringAlignment.Far,
+				LineAlignment = StringAlignment.Center
+			};
 
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-
-			// The copyright is drawn right-aligned and vertically centered in the bounds
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
-			format.Alignment = StringAlignment.Far;
-			format.LineAlignment = StringAlignment.Center;
 
 			// The copyright is always drawn in black text
 			graphics.DrawString(layout.Copyright, layout.CopyrightFont, Brushes.Black, 
@@ -213,20 +193,28 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
+		/// <param name="materials">Fusion materials</param>
 		/// <param name="text">Text to be drawn</param>
-		public static void DrawFusionMonsterText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		public static void DrawFusionMonsterText(Graphics graphics, Layout layout, string materials, string text)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(materials == null) throw new ArgumentNullException(nameof(materials));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
+			// Top/Left alignment
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
-				return;
-			}
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Near
+			};
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			// Fusion materials are rendered using a special method that keeps them on one line
+			// but still drawn with the adjusted typeface size of the effect text
+			JustifyText(graphics, layout.MonsterTextBounds, layout.MonsterTextFont, Brushes.Black, text, materials);
 		}
 
 		/// <summary>
@@ -234,21 +222,12 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the artwork</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="artwork">Artwork to be drawn</param>
 		/// <exception cref="ArgumentNullException"></exception>
-		public static void DrawHologram(Graphics graphics, Layout layout, RenderFlags flags)
+		public static void DrawHologram(Graphics graphics, Layout layout)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
-
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen,
-					new Rectangle(layout.HologramPosition, layout.HologramSize));
-				return;
-			}
 
 			Bitmap bitmap = layout.Hologram;
 			Debug.Assert(bitmap.Size == layout.HologramSize);
@@ -260,34 +239,29 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the header</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="header">Header string</param>
 		/// <param name="hasicon">Flag to leave space for the icon</param>
-		public static void DrawHeader(Graphics graphics, Layout layout, RenderFlags flags, string header,
-			bool hasicon)
+		public static void DrawHeader(Graphics graphics, Layout layout, string header, bool hasicon)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(header == null) throw new ArgumentNullException(nameof(header));
 
-			// LayoutProof draws a colored rectange only
-			if(flags == RenderFlags.LayoutProof)
+			// Right/Center alignment; measure trailing spaces
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.HeaderBounds);
-				return;
-			}
-
-			// The header is drawn right-aligned and vertically centered in the bounds
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
-			format.Alignment = StringAlignment.Far;
-			format.LineAlignment = StringAlignment.Center;
+				Alignment = StringAlignment.Far,
+				LineAlignment = StringAlignment.Center
+			};
 			format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
 
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
+			// Determine the size of a bracket character and half of a space character for alignments
 			SizeF bracketsize = graphics.MeasureString("]", layout.HeaderFont, int.MaxValue, format);
 			float halfspace = graphics.MeasureString(" ", layout.HeaderFont, int.MaxValue, format).Width / 2.0F;
+
 			RectangleF bounds = layout.HeaderBounds;
 
 			// Render the bracket character into a new bitmap
@@ -302,18 +276,22 @@ namespace zuki.ronin.renderer
 					gr.DrawString("]", layout.HeaderFont, Brushes.Black, new RectangleF(0, 0, bracket.Width, bracket.Height), format);
 				}
 
+				// Right bracket
 				int x = (int)bounds.Right - bracket.Width;
 				int y = (int)bounds.Top + (int)((bounds.Height - bracket.Height) / 2.0F);
 				y -= (int)layout.QuarterSpace;
 				graphics.DrawImageUnscaled(bracket, new Point(x, y));
 				bounds.Inflate(new SizeF(-(bracketsize.Width + halfspace), 0.0F));
 
+				// Icon spacing
 				if(hasicon) bounds.Inflate(new SizeF(-layout.IconSize.Width, 0.0F));
 
+				// Header text
 				SizeF textsize = graphics.MeasureString(header, layout.HeaderFont, int.MaxValue, format);
 				graphics.DrawString(header, layout.HeaderFont, Brushes.Black, bounds, format);
 				bounds.Inflate(new SizeF(-(textsize.Width + halfspace), 0.0F));
 
+				// Left bracket
 				bracket.RotateFlip(RotateFlipType.RotateNoneFlipX);
 				x = (int)bounds.Right - bracket.Width;
 				graphics.DrawImageUnscaled(bracket, new Point(x, y));
@@ -325,22 +303,13 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the icon</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="icon">Icon to be drawn</param>
-		public static void DrawIcon(Graphics graphics, Layout layout, RenderFlags flags, CardIcon icon)
+		public static void DrawIcon(Graphics graphics, Layout layout, CardIcon icon)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
 			Bitmap bitmap = null;
-
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen,
-					new Rectangle(layout.AttributePosition, layout.AttributeSize));
-				return;
-			}
 
 			switch(icon)
 			{
@@ -381,21 +350,13 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the level stars</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="level">Number of level stars to draw</param>
-		public static void DrawLevelStars(Graphics graphics, Layout layout, RenderFlags flags, int level)
+		public static void DrawLevelStars(Graphics graphics, Layout layout, int level)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
-			// LayoutProof draws a colored rectange only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.LevelStarBounds);
-				return;
-			}
-
-			// For the level stars, create a transparent bitmap to draw into
+			// Render the level stars into a bitmap of the proper width
 			int cx = (level * layout.LevelStarSize.Width) + (layout.LevelStarPadding * (level - 1));
 			using(Bitmap bmp = new Bitmap(cx, (int)Math.Ceiling(layout.LevelStarBounds.Height), PixelFormat.Format32bppArgb))
 			{
@@ -435,20 +396,15 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="text">Text to be drawn</param>
-		public static void DrawMonsterText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		public static void DrawMonsterText(Graphics graphics, Layout layout, string text)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
-				return;
-			}
+			// Render the text using the justifier
+			JustifyText(graphics, layout.MonsterTextBounds, layout.MonsterTextFont, Brushes.Black, text);
 		}
 
 		/// <summary>
@@ -456,31 +412,27 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="types">Array of types to be drawn</param>
-		public static void DrawMonsterTypes(Graphics graphics, Layout layout, RenderFlags flags, string[] types)
+		public static void DrawMonsterTypes(Graphics graphics, Layout layout, string[] types)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(types == null) throw new ArgumentNullException(nameof(types));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
+			// Top/Center alignment; measure trailing spaces
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
-				return;
-			}
-
-			// The types are drawn left-aligned and vertically centered in the bounds
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
-			format.Alignment = StringAlignment.Near;
-			format.LineAlignment = StringAlignment.Center;
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Center
+			};
 			format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
 
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
+			// Determine the size of a bracket character
 			SizeF bracketsize = graphics.MeasureString("]", layout.MonsterTypeFont, int.MaxValue, format);
+
 			RectangleF bounds = layout.MonsterTypeBounds;
 
 			// Render the bracket character into a new bitmap
@@ -495,6 +447,7 @@ namespace zuki.ronin.renderer
 					gr.DrawString("[", layout.MonsterTypeFont, Brushes.Black, new RectangleF(0, 0, bracket.Width, bracket.Height), format);
 				}
 
+				// Left bracket
 				int x = (int)bounds.Left;
 				int y = (int)bounds.Top + (int)((bounds.Height - bracket.Height) / 2.0F);
 				y -= (int)layout.QuarterSpace;
@@ -502,6 +455,7 @@ namespace zuki.ronin.renderer
 				bounds = new RectangleF(bounds.Left + bracketsize.Width + layout.QuarterSpace, bounds.Top,
 					bounds.Width - bracketsize.Width - layout.QuarterSpace, bounds.Height);
 
+				// Types
 				int index = 0;
 				while(index < types.Length)
 				{
@@ -510,11 +464,8 @@ namespace zuki.ronin.renderer
 					graphics.DrawString(types[index], layout.MonsterTypeFont, Brushes.Black, bounds, format);
 					bounds = new RectangleF(bounds.Left + size.Width, bounds.Top, bounds.Width - size.Width, bounds.Height);
 
-					// Move to the next type/subtype
-					index++;
-
 					// If there are more type/subtypes to draw, insert a slash between them
-					if(index < types.Length)
+					if(++index < types.Length)
 					{
 						bounds = new RectangleF(bounds.Left + layout.QuarterSpace, bounds.Top, bounds.Width - layout.QuarterSpace,
 							bounds.Height);
@@ -525,6 +476,7 @@ namespace zuki.ronin.renderer
 					}
 				}
 
+				// Right bracket
 				bracket.RotateFlip(RotateFlipType.RotateNoneFlipX);
 				bounds = new RectangleF(bounds.Left + layout.QuarterSpace, bounds.Top,
 					bounds.Width - layout.QuarterSpace, bounds.Height);
@@ -538,29 +490,22 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="name">Card name to be drawn</param>
 		/// <param name="brush">Brush to use when drawing the name</param>
-		public static void DrawName(Graphics graphics, Layout layout, RenderFlags flags, string name,
-			Brush brush)
+		public static void DrawName(Graphics graphics, Layout layout, string name, Brush brush)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
+			// Top/Center alignment
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.NameBounds);
-				return;
-			}
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Center
+			};
 
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-
-			// The name is drawn left-aligned and vertically centered in the bounds
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
-			format.Alignment = StringAlignment.Near;
-			format.LineAlignment = StringAlignment.Center;
 
 			// If the name will fit in the bounding rectangle, draw it directly
 			SizeF size = graphics.MeasureString(name, layout.NameFont, int.MaxValue, format);
@@ -583,7 +528,6 @@ namespace zuki.ronin.renderer
 					gr.DrawString(name, layout.NameFont, brush, new RectangleF(0, 0, bmp.Width, bmp.Height), format);
 				}
 
-				// Use HighQualityBicubic interpolation and scale the bitmap onto the background
 				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 				graphics.DrawImage(bmp, layout.NameBounds);
 			}
@@ -594,20 +538,15 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="text">Text to be drawn</param>
-		public static void DrawNormalMonsterText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		public static void DrawNormalMonsterText(Graphics graphics, Layout layout, string text)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
-				return;
-			}
+			// Render the text using the justifier
+			JustifyText(graphics, layout.MonsterTextBounds, layout.NormalMonsterTextFont, Brushes.Black, text);
 		}
 
 		/// <summary>
@@ -615,32 +554,24 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="passcode">Passcode string</param>
-		public static void DrawPasscode(Graphics graphics, Layout layout, RenderFlags flags, string passcode)
+		public static void DrawPasscode(Graphics graphics, Layout layout, string passcode)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(passcode == null) throw new ArgumentNullException(nameof(passcode));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
+			// Left/Center alignment
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
 			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.PasscodeBounds);
-				return;
-			}
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Center
+			};
 
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-			// The passcode is drawn left-aligned and vertically centered in the bounds
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
-			format.Alignment = StringAlignment.Near;
-			format.LineAlignment = StringAlignment.Center;
-
-			// The Passcode is always drawn in black text
-			graphics.DrawString(passcode, layout.PasscodeFont, Brushes.Black,
-				layout.PasscodeBounds, format);
+			graphics.DrawString(passcode, layout.PasscodeFont, Brushes.Black, layout.PasscodeBounds, format);
 		}
 
 		/// <summary>
@@ -648,21 +579,14 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>
 		/// <param name="layout">Renderer layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="text">Text to be drawn</param>
-		public static void DrawSpellTrapText(Graphics graphics, Layout layout, RenderFlags flags, string text)
+		public static void DrawSpellTrapText(Graphics graphics, Layout layout, string text)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			// LayoutProof draws a colored rectangle only
-			if(flags == RenderFlags.LayoutProof)
-			{
-				graphics.FillRectangle(Brushes.LightGreen, layout.SpellTrapTextBounds);
-				return;
-			}
-
+			// Render the text using the justifier
 			JustifyText(graphics, layout.SpellTrapTextBounds, layout.SpellTrapTextFont, Brushes.Black, text);
 		}
 
@@ -670,16 +594,12 @@ namespace zuki.ronin.renderer
 		/// Renders the background image
 		/// </summary>
 		/// <param name="layout">Renderer Layout instance</param>
-		/// <param name="flags">Renderer flags</param>
 		/// <param name="background">Background to be rendered</param>
-		public static Bitmap RenderBackground(Layout layout, RenderFlags flags, Background background)
+		public static Bitmap RenderBackground(Layout layout, Background background)
 		{
 			if(layout == null) throw new ArgumentNullException(nameof(layout));
 
 			Bitmap bitmap;
-
-			// Force a "none" background if the render flags are set to overlay proof mode
-			if(flags == RenderFlags.OverlayProof) background = Background.None;
 
 			// Load the appropriate background image from the assembly resources
 			switch(background)
@@ -736,32 +656,115 @@ namespace zuki.ronin.renderer
 		/// <param name="text">Text to be justified</param>
 		private static void JustifyText(Graphics graphics, RectangleF bounds, Font font, Brush brush, string text)
 		{
+			JustifyText(graphics, bounds, font, brush, text, null);
+		}
+
+		/// <summary>
+		/// Fully justifies text in a rectangle
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="bounds">Bounding rectangle</param>
+		/// <param name="font">Base font</param>
+		/// <param name="brush">Text color brush</param>
+		/// <param name="text">Text to be justified</param>
+		/// <param name="topline">Topline text to be justified (fusion monsters)</param>
+		private static void JustifyText(Graphics graphics, RectangleF bounds, Font font, Brush brush, string text,
+			string topline)
+		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(font == null) throw new ArgumentNullException(nameof(font));
 			if(brush == null) throw new ArgumentNullException(nameof(brush));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
+			//
+			// TODO: Actually justify the text, this is OK for now as a placeholder. MeasureCharacterRanges
+			// might be useful to break up the string into lines for manual drawing as opposed to how I did
+			// it in the legacy renderer, which was tedious and a touch error prone. Get the cards to look
+			// "really good" first without full justification and cycle back at some point
+			//
+
+			// Top/Left alignment
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
+			{
+				Alignment = StringAlignment.Near,
+				LineAlignment = StringAlignment.Near
+			};
+
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic);
-			format.Alignment = StringAlignment.Near;
-			format.LineAlignment = StringAlignment.Near;
+			// Fusion monsters require the top line of text to be justified differently, accomodate
+			// the necessary vertical space by adding a CRLF to the beginning of the effect text
+			string measuretext = string.IsNullOrEmpty(topline) ? text : "\r\n" + text;
 
-			// Reduce the font size until the text will fit in the bounding area
-			SizeF required = graphics.MeasureString(text, font, (int)Math.Ceiling(bounds.Width), format);
-			while(required.Height > bounds.Height)
+			RectangleF textbounds = new RectangleF(bounds.Left, bounds.Top, bounds.Width, bounds.Height);
+
+			// Reduce the font size and increase the area until the text will fit in the required space
+			SizeF required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
+			while(required.Height > textbounds.Height)
 			{
 				font = new Font(font.FontFamily, font.Size - 1, font.Style, GraphicsUnit.Pixel);
-				required = graphics.MeasureString(text, font, (int)Math.Ceiling(bounds.Width), format);
+				required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
+				if(required.Height > textbounds.Height)
+				{
+					// This was a judgment call; the text will not exactly match the layout of a real card,
+					// but I found the effect it has to produce much more legible results overall
+					textbounds.Inflate(new SizeF(bounds.Width / 50.0F, 0.0F));
+					required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
+				}
 			}
 
-			//
-			// TODO: Actually justify the text, this is OK for now. MeasureCharacterRanges might be
-			// useful to break up the string into lines for manual drawing as opposed to the legacy 
-			// method, let GDI+ do the work ...
-			//
-			graphics.DrawString(text, font, brush, bounds, format);
+			// Render the topline bitmap using the same font that will be used for the effect text
+			Bitmap toplinebmp = null;
+			if(!string.IsNullOrEmpty(topline))
+			{
+				SizeF toplinesize = graphics.MeasureString(topline, font, int.MaxValue, format);
+
+				// Render the text into a transparent bitmap and smush it horizontally to fit
+				toplinebmp = new Bitmap((int)Math.Ceiling(toplinesize.Width), (int)Math.Ceiling(toplinesize.Height),
+					PixelFormat.Format32bppArgb);
+				toplinebmp.SetResolution(96.0F, 96.0F);
+				using(Graphics gr = Graphics.FromImage(toplinebmp))
+				{
+					gr.SmoothingMode = SmoothingMode.AntiAlias;
+					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
+					gr.DrawString(topline, font, brush, new RectangleF(0, 0, toplinesize.Width, toplinesize.Height), format);
+				}
+			}
+
+			// Render the text into a transparent bitmap that will be interpolated into the bounding region
+			using(Bitmap bmp = new Bitmap((int)Math.Ceiling(textbounds.Width), (int)Math.Ceiling(required.Height),
+				PixelFormat.Format32bppArgb))
+			{
+				bmp.SetResolution(96.0F, 96.0F);
+				using(Graphics gr = Graphics.FromImage(bmp))
+				{
+					gr.SmoothingMode = SmoothingMode.AntiAlias;
+					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
+					gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+					// If there is a top line bitmap draw that so that it would only get
+					// compressed horizontally if necessary to fit the render area
+					if(toplinebmp != null)
+					{
+						if(toplinebmp.Width <= bmp.Width) gr.DrawImageUnscaled(toplinebmp, new Point(0, 0));
+						else gr.DrawImage(toplinebmp, new Rectangle(0, 0, bmp.Width, toplinebmp.Height));
+					}
+
+					// Draw the text into the render area
+					gr.DrawString(measuretext, font, brush, new RectangleF(0.0F, 0.0F, bmp.Width, bmp.Height), format);
+				}
+
+				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+				// If the bitmap would fit in the original boundaries, draw it unscaled, otherwise
+				// interpolate it into the original boundaries
+				if((bmp.Width <= bounds.Width) && (bmp.Height <= bounds.Height))
+					graphics.DrawImageUnscaled(bmp, new Point((int)bounds.Left, (int)bounds.Top));
+				else graphics.DrawImage(bmp, bounds);
+			}
+
+			toplinebmp?.Dispose();
 		}
 	}
 }

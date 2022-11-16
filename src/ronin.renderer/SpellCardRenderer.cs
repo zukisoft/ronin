@@ -37,17 +37,8 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public SpellCardRenderer() : this(RenderFlags.None)
+		public SpellCardRenderer()
 		{
-		}
-
-		/// <summary>
-		/// Instance Constructor
-		/// </summary>
-		/// <param name="flags">Rendering flags</param>
-		public SpellCardRenderer(RenderFlags flags)
-		{
-			m_flags = flags;
 		}
 
 		/// <summary>
@@ -63,7 +54,7 @@ namespace zuki.ronin.renderer
 				RenderCommon(graphics, card);
 
 				// Draw the card name in solid white
-				Engine.DrawName(graphics, s_layout, m_flags, card.Name, NameBrush.SolidWhite);
+				Engine.DrawName(graphics, s_layout, card.Name, NameBrush.SolidWhite);
 			}
 
 			return bitmap;
@@ -88,7 +79,7 @@ namespace zuki.ronin.renderer
 		private Bitmap RenderBackground()
 		{
 			// Generate the background image for the spell card
-			Bitmap background = Engine.RenderBackground(s_layout, m_flags, Background.Spell);
+			Bitmap background = Engine.RenderBackground(s_layout, Background.Spell);
 			if(background == null) throw new Exception("Failed to render background image for card");
 			Debug.Assert(background.Size == s_layout.BackgroundSize);
 
@@ -106,29 +97,29 @@ namespace zuki.ronin.renderer
 			if(spellcard == null) throw new ArgumentNullException(nameof(spellcard));
 
 			// Attribute
-			Engine.DrawAttribute(graphics, s_layout, m_flags, CardAttribute.Spell);
+			Engine.DrawAttribute(graphics, s_layout, CardAttribute.Spell);
 
 			// Header / Icon
 			bool hasicon = spellcard.Icon != CardIcon.None;
-			Engine.DrawHeader(graphics, s_layout, m_flags, "Spell Card", hasicon);
-			if(hasicon) Engine.DrawIcon(graphics, s_layout, m_flags, spellcard.Icon);
+			Engine.DrawHeader(graphics, s_layout, "Spell Card", hasicon);
+			if(hasicon) Engine.DrawIcon(graphics, s_layout, spellcard.Icon);
 
 			// Artwork
 			Bitmap artwork = spellcard.GetArtwork();
 			if(artwork == null) artwork = Resources.defaultartwork;
-			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, artwork);
 
 			// Text
-			Engine.DrawSpellTrapText(graphics, s_layout, m_flags, spellcard.Text);
+			Engine.DrawSpellTrapText(graphics, s_layout, spellcard.Text);
 
 			// Passcode
-			Engine.DrawPasscode(graphics, s_layout, m_flags, spellcard.Passcode);
+			Engine.DrawPasscode(graphics, s_layout, spellcard.Passcode);
 
 			// Copyright
-			Engine.DrawCopyright(graphics, s_layout, m_flags);
+			Engine.DrawCopyright(graphics, s_layout);
 
 			// Hologram
-			Engine.DrawHologram(graphics, s_layout, m_flags);
+			Engine.DrawHologram(graphics, s_layout);
 		}
 
 		//-------------------------------------------------------------------------
@@ -137,11 +128,6 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Only the 'medium' renderer is currently supported
 		/// </summary>
-		private static Layout s_layout = new LayoutMedium();
-
-		/// <summary>
-		/// Specified special rendering flags
-		/// </summary>
-		private readonly RenderFlags m_flags;
+		private static readonly Layout s_layout = new LayoutMedium();
 	}
 }

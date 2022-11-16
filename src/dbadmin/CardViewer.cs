@@ -75,7 +75,7 @@ namespace zuki.ronin
 			if(disposing)
 			{
 				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				if(components != null) components.Dispose();
+				components?.Dispose();
 			}
 
 			base.Dispose(disposing);
@@ -118,10 +118,10 @@ namespace zuki.ronin
 		private void OnSelectionChanged(object sender, Card card)
 		{
 			// TODO: TESTING
-			Bitmap b = (card != null) ? Renderer.RenderCard(card, RenderFlags.None) : null;
+			Bitmap b = (card != null) ? Renderer.RenderCard(card) : null;
 			Image old = pictureBox1.Image;
 			pictureBox1.Image = b ?? null;
-			if(old != null) old.Dispose();
+			old?.Dispose();
 		}
 
 		//---------------------------------------------------------------------

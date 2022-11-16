@@ -62,7 +62,7 @@ namespace zuki.ronin.ui
 			if(disposing)
 			{
 				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				if(components != null) components.Dispose();
+				components?.Dispose();
 			}
 
 			base.Dispose(disposing);

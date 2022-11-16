@@ -77,7 +77,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RenderFlags.cs" />
     <Compile Include="SpellCardRenderer.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="NameBrush.cs" />

@@ -38,17 +38,8 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public MonsterCardRenderer() : this(RenderFlags.None)
+		public MonsterCardRenderer()
 		{
-		}
-
-		/// <summary>
-		/// Instance Constructor
-		/// </summary>
-		/// <param name="flags">Rendering flags</param>
-		public MonsterCardRenderer(RenderFlags flags)
-		{
-			m_flags = flags;
 		}
 
 		/// <summary>
@@ -64,10 +55,8 @@ namespace zuki.ronin.renderer
 				RenderCommon(graphics, card);
 
 				// Draw the card name in solid black
-				Engine.DrawName(graphics, s_layout, m_flags, card.Name, NameBrush.SolidBlack);
+				Engine.DrawName(graphics, s_layout, card.Name, NameBrush.SolidBlack);
 			}
-
-			bitmap.Save("d:\\temp.png", System.Drawing.Imaging.ImageFormat.Png);
 
 			return bitmap;
 		}
@@ -128,7 +117,7 @@ namespace zuki.ronin.renderer
 			else if(monstercard.Ritual) backgroundtype = Background.RitualMonster;
 
 			// Generate the background image for the monster card
-			Bitmap background = Engine.RenderBackground(s_layout, m_flags, backgroundtype);
+			Bitmap background = Engine.RenderBackground(s_layout, backgroundtype);
 			if(background == null) throw new Exception("Failed to render background image for card");
 			Debug.Assert(background.Size == s_layout.BackgroundSize);
 
@@ -146,35 +135,60 @@ namespace zuki.ronin.renderer
 			if(monstercard == null) throw new ArgumentNullException(nameof(monstercard));
 
 			// Attribute
-			Engine.DrawAttribute(graphics, s_layout, m_flags, monstercard.Attribute);
+			Engine.DrawAttribute(graphics, s_layout, monstercard.Attribute);
 
 			// Artwork
 			Bitmap artwork = monstercard.GetArtwork();
 			if(artwork == null) artwork = Resources.defaultartwork;
-			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, m_flags, artwork);
+			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, artwork);
 
 			// Level Stars
-			Engine.DrawLevelStars(graphics, s_layout, m_flags, monstercard.Level);
+			Engine.DrawLevelStars(graphics, s_layout, monstercard.Level);
 
 			// Type
-			Engine.DrawMonsterTypes(graphics, s_layout, m_flags, GetTypes(monstercard));
+			Engine.DrawMonsterTypes(graphics, s_layout, GetTypes(monstercard));
 
 			// Text
-			if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, m_flags, monstercard.Text);
-			else if(monstercard.Fusion) Engine.DrawFusionMonsterText(graphics, s_layout, m_flags, monstercard.Text);
-			else Engine.DrawMonsterText(graphics, s_layout, m_flags, monstercard.Text);
+			if(monstercard.Fusion)
+			{
+				if(monstercard.Effect)
+				{
+					string materials = string.Empty;
+					string effect = monstercard.Text;
+
+					// Effect fusion monsters don't always have materials listed, use the presence
+					// a CRLF pair in the string to detect
+					int linebreak = effect.IndexOf("\r\n");
+					if(linebreak > 0)
+					{
+						materials = effect.Substring(0, linebreak + 2).TrimEnd(new char[] { '\r', '\n' });
+						effect = effect.Substring(linebreak + 2);
+					}
+
+					Engine.DrawFusionMonsterText(graphics, s_layout, materials, effect);
+				}
+				else
+				{
+					// Normal fusion monsters only have the materials listed in text
+					Engine.DrawFusionMonsterText(graphics, s_layout, monstercard.Text, string.Empty);
+				}
+			}
+
+			else if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, monstercard.Text);
+			else Engine.DrawMonsterText(graphics, s_layout, monstercard.Text);
+
 
 			// Attack/Defense
-			Engine.DrawAttackDefense(graphics, s_layout, m_flags, monstercard.Attack, monstercard.Defense);
+			Engine.DrawAttackDefense(graphics, s_layout, monstercard.Attack, monstercard.Defense);
 
 			// Passcode
-			Engine.DrawPasscode(graphics, s_layout, m_flags, monstercard.Passcode);
+			Engine.DrawPasscode(graphics, s_layout, monstercard.Passcode);
 
 			// Copyright
-			Engine.DrawCopyright(graphics, s_layout, m_flags);
+			Engine.DrawCopyright(graphics, s_layout);
 
 			// Hologram
-			Engine.DrawHologram(graphics, s_layout, m_flags);
+			Engine.DrawHologram(graphics, s_layout);
 		}
 
 		//-------------------------------------------------------------------------
@@ -183,11 +197,6 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Only the 'medium' renderer is currently supported
 		/// </summary>
-		private static Layout s_layout = new LayoutMedium();
-
-		/// <summary>
-		/// Specified special rendering flags
-		/// </summary>
-		private readonly RenderFlags m_flags;
+		private static readonly Layout s_layout = new LayoutMedium();
 	}
 }

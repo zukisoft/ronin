@@ -115,6 +115,6 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Embedded fonts collection
 		/// </summary>
-		private static PrivateFontCollection s_fonts = new PrivateFontCollection();
+		private static readonly PrivateFontCollection s_fonts = new PrivateFontCollection();
 	}
 }

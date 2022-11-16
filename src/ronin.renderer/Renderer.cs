@@ -38,33 +38,23 @@ namespace zuki.ronin.renderer
 		/// <param name="card">Card being rendered</param>
 		public static Bitmap RenderCard(Card card)
 		{
-			return RenderCard(card, RenderFlags.None);
-		}
-
-		/// <summary>
-		/// Renders a generic instance of the specified card
-		/// </summary>
-		/// <param name="card">Card being rendered</param>
-		/// <param name="flags">Rendering flags</param>
-		public static Bitmap RenderCard(Card card, RenderFlags flags)
-		{
 			if(card == null) throw new ArgumentException(nameof(card));
 
 			if(card is MonsterCard monstercard)
 			{
-				MonsterCardRenderer renderer = new MonsterCardRenderer(flags);
+				MonsterCardRenderer renderer = new MonsterCardRenderer();
 				return renderer.RenderCard(monstercard);
 			}
 
 			else if(card is SpellCard spellcard)
 			{
-				SpellCardRenderer renderer = new SpellCardRenderer(flags);
+				SpellCardRenderer renderer = new SpellCardRenderer();
 				return renderer.RenderCard(spellcard);
 			}
 
 			else if(card is TrapCard trapcard)
 			{
-				TrapCardRenderer renderer = new TrapCardRenderer(flags);
+				TrapCardRenderer renderer = new TrapCardRenderer();
 				return renderer.RenderCard(trapcard);
 			}
 
@@ -77,16 +67,6 @@ namespace zuki.ronin.renderer
 		/// <param name="print">Print being rendered</param>
 		public static Bitmap RenderPrint(Print print)
 		{
-			return RenderPrint(print, RenderFlags.None);
-		}
-
-		/// <summary>
-		/// Renders a specific print of the specified card
-		/// </summary>
-		/// <param name="print">Print being rendered</param>
-		/// <param name="flags">Rendering flags</param>
-		public static Bitmap RenderPrint(Print print, RenderFlags flags)
-		{
 			if(print == null) throw new ArgumentException(nameof(print));
 
 			// Retrieve the Card information for the print from the database
@@ -95,17 +75,19 @@ namespace zuki.ronin.renderer
 
 			if(card is MonsterCard monstercard)
 			{
+				MonsterCardRenderer renderer = new MonsterCardRenderer();
+				return renderer.RenderCard(monstercard);
 			}
 
 			else if(card is SpellCard spellcard)
 			{
-				SpellCardRenderer renderer = new SpellCardRenderer(flags);
+				SpellCardRenderer renderer = new SpellCardRenderer();
 				return renderer.RenderPrint(spellcard, print);
 			}
 
 			else if(card is TrapCard trapcard)
 			{
-				TrapCardRenderer renderer = new TrapCardRenderer(flags);
+				TrapCardRenderer renderer = new TrapCardRenderer();
 				return renderer.RenderPrint(trapcard, print);
 			}
 
@@ -117,16 +99,6 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="artwork">Artwork to apply to the token card</param>
 		public static Bitmap RenderToken(Image artwork)
-		{
-			return RenderToken(artwork, RenderFlags.None);
-		}
-
-		/// <summary>
-		/// Renders a token card
-		/// </summary>
-		/// <param name="artwork">Artwork to apply to the token card</param>
-		/// <param name="flags">Rendering flags</param>
-		public static Bitmap RenderToken(Image artwork, RenderFlags flags)
 		{
 			return null;
 		}

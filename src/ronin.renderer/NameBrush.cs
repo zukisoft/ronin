@@ -45,11 +45,11 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Solid black brush
 		/// </summary>
-		private static SolidBrush s_solidblack = new SolidBrush(Color.Black);
+		private static readonly SolidBrush s_solidblack = new SolidBrush(Color.Black);
 
 		/// <summary>
 		/// Solid white brush
 		/// </summary>
-		private static SolidBrush s_solidwhite = new SolidBrush(Color.White);
+		private static readonly SolidBrush s_solidwhite = new SolidBrush(Color.White);
 	}
 }
