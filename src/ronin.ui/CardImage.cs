@@ -21,21 +21,23 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
+using zuki.ronin.renderer;
 
 namespace zuki.ronin.ui
 {
-	public partial class CardSelector : UserControl
+	/// <summary>
+	/// Implements a card image picture box
+	/// </summary>
+	public partial class CardImage : UserControl
 	{
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public CardSelector()
+		public CardImage()
 		{
 			InitializeComponent();
 
@@ -49,8 +51,6 @@ namespace zuki.ronin.ui
 			// Manual DPI scaling
 			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_toppanel.Margin = m_toppanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_toppanel.Padding = m_toppanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
@@ -68,40 +68,36 @@ namespace zuki.ronin.ui
 			base.Dispose(disposing);
 		}
 
-		//-------------------------------------------------------------------
-		// Events
-		//-------------------------------------------------------------------
+		//---------------------------------------------------------------------
+		// Member Functions
+		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Fired when the selected item has changed
+		/// Sets the image from a Card instance
 		/// </summary>
-		[Browsable(true), Category("Behavior")]
-		public event EventHandler<Card> SelectionChanged;
-
-		//-------------------------------------------------------------------
-		// Properties
-		//-------------------------------------------------------------------
-
-		/// <summary>
-		/// Gets/sets the enumerable list of Card objects to display
-		/// </summary>
-		[Browsable(false)]
-		[Bindable(false)]
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public IEnumerable<Card> Cards
+		/// <param name="card">Card for which to render and display the image</param>
+		public void SetCard(Card card)
 		{
-			get { return m_cards; }
-			set
-			{
-				// Clear out and reload the existing list of cards
-				m_cards.Clear();
-				m_cards.AddRange(value);
+			SetImage((card != null) ? Renderer.RenderCard(card) : null);
+		}
 
-				// Reset the filter text to trigger an update to the listview
-				if(m_filter.Text != string.Empty) m_filter.Text = string.Empty;
-				else OnFilterTextChanged(this, EventArgs.Empty);
-			}
+		/// <summary>
+		/// Sets the image from a Card instance with alternate text
+		/// </summary>
+		/// <param name="card">Card for which to render and display the image</param>
+		/// <param name="text">Alternate text to render for the card</param>
+		public void SetCard(Card card, string text)
+		{
+			SetImage((card != null) ? Renderer.RenderCard(card, text) : null);
+		}
+
+		/// <summary>
+		/// Sets the image from a Print instance
+		/// </summary>
+		/// <param name="print">Print for which to render and display the image</param>
+		public void SetPrint(Print print)
+		{
+			SetImage((print != null) ? Renderer.RenderPrint(print) : null);
 		}
 
 		//---------------------------------------------------------------------
@@ -115,32 +111,23 @@ namespace zuki.ronin.ui
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			BackColor = m_toppanel.BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = m_toppanel.ForeColor = ApplicationTheme.FormForeColor;
-
-			m_filter.BackColor = ApplicationTheme.PanelBackColor;
-			m_filter.ForeColor = ApplicationTheme.PanelForeColor;
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
 		}
 
-		/// <summary>
-		/// Invoked when the filter text has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnFilterTextChanged(object sender, EventArgs args)
-		{
-			// Update the listview to only contain the subset of Card objects with matching names to the filter
-			m_cardlistview.Cards = m_cards.Where(item => item.Name.IndexOf(m_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-		}
+		//---------------------------------------------------------------------
+		// Private Member Functions
+		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Invoked when the listview selection has changed
+		/// Replaces the displayed card image
 		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="card">Card object that was selected</param>
-		private void OnSelectionChanged(object sender, Card card)
+		/// <param name="image">Image to display</param>
+		private void SetImage(Bitmap image)
 		{
-			SelectionChanged?.Invoke(this, card);
+			Image old = m_image.Image;
+			m_image.Image = image ?? null;
+			old?.Dispose();
 		}
 
 		//---------------------------------------------------------------------
@@ -151,10 +138,5 @@ namespace zuki.ronin.ui
 		/// Event handler for application theme changes
 		/// </summary>
 		private readonly EventHandler m_appthemechanged;
-
-		/// <summary>
-		/// Backing List<> for the virtual list view
-		/// </summary>
-		private readonly List<Card> m_cards = new List<Card>();
 	}
 }

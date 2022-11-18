@@ -21,11 +21,9 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
-using zuki.ronin.renderer;
 using zuki.ronin.ui;
 
 namespace zuki.ronin
@@ -51,10 +49,6 @@ namespace zuki.ronin
 
 			// Manual DPI scaling
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel1.Padding = m_splitcontainer.Panel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel1.Margin = m_splitcontainer.Panel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel2.Padding = m_splitcontainer.Panel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_splitcontainer.Panel2.Margin = m_splitcontainer.Panel2.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
@@ -97,6 +91,26 @@ namespace zuki.ronin
 
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
+			m_separator.BackColor = ApplicationTheme.InvertedPanelBackColor;
+		}
+
+		/// <summary>
+		/// Invoked when the "Edit Card Text..." button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnEditText(object sender, EventArgs args)
+		{
+			if(m_selected == null) return;
+
+			using(CardTextEditor dialog = new CardTextEditor(m_selected))
+			{
+				if(dialog.ShowDialog(this) == DialogResult.OK)
+				{
+					m_selected.UpdateText(dialog.CardText);
+					OnSelectionChanged(this, m_selected);
+				}
+			}
 		}
 
 		/// <summary>
@@ -117,11 +131,9 @@ namespace zuki.ronin
 		/// <param name="card">Selected Card instance</param>
 		private void OnSelectionChanged(object sender, Card card)
 		{
-			// TODO: TESTING
-			Bitmap b = (card != null) ? Renderer.RenderCard(card) : null;
-			Image old = pictureBox1.Image;
-			pictureBox1.Image = b ?? null;
-			old?.Dispose();
+			m_selected = card;
+			m_edittext.Enabled = m_selected != null;
+			m_image.SetCard(m_selected);
 		}
 
 		//---------------------------------------------------------------------
@@ -137,5 +149,10 @@ namespace zuki.ronin
 		/// Database instance
 		/// </summary>
 		private readonly Database m_database;
-    }
+
+		/// <summary>
+		/// Currently selected Card instance
+		/// </summary>
+		private Card m_selected;
+	}
 }

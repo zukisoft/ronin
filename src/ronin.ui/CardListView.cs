@@ -274,6 +274,6 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// Backing List<> for the virtual list view
 		/// </summary>
-		private List<Card> m_cards = new List<Card>();
+		private readonly List<Card> m_cards = new List<Card>();
 	}
 }

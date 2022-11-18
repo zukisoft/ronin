@@ -86,6 +86,11 @@ public:
 	// Overrides Object::ToString()
 	virtual String^ ToString(void) override;
 
+	// UpdateText
+	//
+	// Updates the text for this card in the database
+	void UpdateText(String^ text);
+
 	//-----------------------------------------------------------------------
 	// Properties
 

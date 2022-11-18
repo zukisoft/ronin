@@ -57,6 +57,11 @@ public:
 	// Creates a new Database instance
 	static Database^ Create(String^ path);
 
+	// SelectCard
+	//
+	// Selects a single Card object from the database
+	Card^ SelectCard(Guid cardid);
+
 	// SelectCards
 	//
 	// Selects Card objects from the database
@@ -69,6 +74,11 @@ internal:
 	//
 	// Gets the default artwork for a Card
 	Bitmap^ SelectArtwork(Card^ card);
+
+	// UpdateCardText
+	//
+	// Updates the text for a Card in the database
+	void UpdateCardText(Guid cardid, String^ text);
 
 private:
 

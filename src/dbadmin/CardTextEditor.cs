@@ -21,21 +21,22 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
+using zuki.ronin.ui;
 
-namespace zuki.ronin.ui
+namespace zuki.ronin
 {
-	public partial class CardSelector : UserControl
+	/// <summary>
+	/// Implements the card text editor dialog box
+	/// </summary>
+	internal partial class CardTextEditor : Form
 	{
 		/// <summary>
-		/// Instance Constructor
+		/// Default Constructor
 		/// </summary>
-		public CardSelector()
+		private CardTextEditor()
 		{
 			InitializeComponent();
 
@@ -43,66 +44,30 @@ namespace zuki.ronin.ui
 			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
 			ApplicationTheme.Changed += m_appthemechanged;
 
-			// Reset the theme based on the current settings
+			// Reset the theme based on the current system settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 
 			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_toppanel.Margin = m_toppanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_toppanel.Padding = m_toppanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
-		/// Clean up any resources being used
+		/// Instance Constructor
 		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
+		/// <param name="cardid">Card to be edited</param>
+		public CardTextEditor(Card card) : this()
 		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
+			m_card = card ?? throw new ArgumentNullException(nameof(card));
 		}
 
-		//-------------------------------------------------------------------
-		// Events
-		//-------------------------------------------------------------------
-
-		/// <summary>
-		/// Fired when the selected item has changed
-		/// </summary>
-		[Browsable(true), Category("Behavior")]
-		public event EventHandler<Card> SelectionChanged;
-
-		//-------------------------------------------------------------------
+		//---------------------------------------------------------------------
 		// Properties
-		//-------------------------------------------------------------------
+		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Gets/sets the enumerable list of Card objects to display
+		/// Gets the updated card text
 		/// </summary>
-		[Browsable(false)]
-		[Bindable(false)]
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public IEnumerable<Card> Cards
-		{
-			get { return m_cards; }
-			set
-			{
-				// Clear out and reload the existing list of cards
-				m_cards.Clear();
-				m_cards.AddRange(value);
-
-				// Reset the filter text to trigger an update to the listview
-				if(m_filter.Text != string.Empty) m_filter.Text = string.Empty;
-				else OnFilterTextChanged(this, EventArgs.Empty);
-			}
-		}
+		public string CardText { get => m_text.Text; }
 
 		//---------------------------------------------------------------------
 		// Event Handlers
@@ -115,32 +80,47 @@ namespace zuki.ronin.ui
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			BackColor = m_toppanel.BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = m_toppanel.ForeColor = ApplicationTheme.FormForeColor;
+			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
 
-			m_filter.BackColor = ApplicationTheme.PanelBackColor;
-			m_filter.ForeColor = ApplicationTheme.PanelForeColor;
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
+			m_insertdot.ActiveLinkColor = ApplicationTheme.LinkColor;
+			m_insertdot.LinkColor = ApplicationTheme.LinkColor;
+			m_insertdot.DisabledLinkColor = ApplicationTheme.PanelForeColor;	// TODO: Need a DisabledLinkColor
+			m_text.BackColor = ApplicationTheme.PanelBackColor;
+			m_text.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>
-		/// Invoked when the filter text has changed
+		/// Invoked when the "Insert ●" link has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">LinkLabelLinkClicked event arguments</param>
+		private void OnInsertDot(object sender, LinkLabelLinkClickedEventArgs args)
+		{
+			m_text.Text = m_text.Text.Insert(m_text.SelectionStart, "● ");
+		}
+
+		/// <summary>
+		/// Invoked when the form has been loaded
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnFilterTextChanged(object sender, EventArgs args)
+		private void OnLoad(object sender, EventArgs args)
 		{
-			// Update the listview to only contain the subset of Card objects with matching names to the filter
-			m_cardlistview.Cards = m_cards.Where(item => item.Name.IndexOf(m_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+			m_text.Text = m_card.Text;
+			m_image.SetCard(m_card, m_text.Text);
+			m_text.Focus();
 		}
 
 		/// <summary>
-		/// Invoked when the listview selection has changed
+		/// Invoked when the text field has been validated
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
-		/// <param name="card">Card object that was selected</param>
-		private void OnSelectionChanged(object sender, Card card)
+		/// <param name="args">Standard event arguments</param>
+		private void OnTextValidated(object sender, EventArgs args)
 		{
-			SelectionChanged?.Invoke(this, card);
+			m_image.SetCard(m_card, m_text.Text);
 		}
 
 		//---------------------------------------------------------------------
@@ -153,8 +133,8 @@ namespace zuki.ronin.ui
 		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
-		/// Backing List<> for the virtual list view
+		/// Card to be edited
 		/// </summary>
-		private readonly List<Card> m_cards = new List<Card>();
-	}
+		private Card m_card;
+    }
 }

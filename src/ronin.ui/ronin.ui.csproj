@@ -69,6 +69,12 @@
       <Link>version.cs</Link>
     </Compile>
     <Compile Include="ApplicationTheme.cs" />
+    <Compile Include="CardImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardImage.Designer.cs">
+      <DependentUpon>CardImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +88,9 @@
       <DependentUpon>CardSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="InterpolatingPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Theme.cs" />
     <Compile Include="VirtualListView.cs">
@@ -103,6 +112,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CardImage.resx">
+      <DependentUpon>CardImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardListView.resx">
       <DependentUpon>CardListView.cs</DependentUpon>
     </EmbeddedResource>

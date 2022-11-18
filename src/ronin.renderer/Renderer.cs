@@ -62,6 +62,35 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
+		/// Renders a generic instance of the specified card with alternate text
+		/// </summary>
+		/// <param name="card">Card being rendered</param>
+		public static Bitmap RenderCard(Card card, string alttext)
+		{
+			if(card == null) throw new ArgumentException(nameof(card));
+
+			if(card is MonsterCard monstercard)
+			{
+				MonsterCardRenderer renderer = new MonsterCardRenderer();
+				return renderer.RenderCard(monstercard, alttext);
+			}
+
+			else if(card is SpellCard spellcard)
+			{
+				SpellCardRenderer renderer = new SpellCardRenderer();
+				return renderer.RenderCard(spellcard, alttext);
+			}
+
+			else if(card is TrapCard trapcard)
+			{
+				TrapCardRenderer renderer = new TrapCardRenderer();
+				return renderer.RenderCard(trapcard, alttext);
+			}
+
+			return null;
+		}
+
+		/// <summary>
 		/// Renders a specific print of the specified card
 		/// </summary>
 		/// <param name="print">Print being rendered</param>

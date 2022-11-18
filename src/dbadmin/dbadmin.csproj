@@ -84,10 +84,16 @@
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
     </Compile>
+    <Compile Include="CardTextEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CardTextEditor.designer.cs">
+      <DependentUpon>CardTextEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CardViewer.Designer.cs">
+    <Compile Include="CardViewer.designer.cs">
       <DependentUpon>CardViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -98,6 +104,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CardTextEditor.resx">
+      <DependentUpon>CardTextEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardViewer.resx">
       <DependentUpon>CardViewer.cs</DependentUpon>
     </EmbeddedResource>

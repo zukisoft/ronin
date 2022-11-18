@@ -129,6 +129,7 @@ bool Card::Equals(Object^ rhs)
 
 Bitmap^ Card::GetArtwork(void)
 {
+	CLRASSERT(CLRISNOTNULL(m_database));
 	return m_database->SelectArtwork(this);
 }
 
@@ -228,6 +229,23 @@ String^ Card::ToString(void)
 CardType Card::Type::get(void)
 {
 	return m_type;
+}
+
+//---------------------------------------------------------------------------
+// Card::UpdateText
+//
+// Updates the text for this card in the database
+//
+// Arguments:
+//
+//	text		- New text to assign to the card
+
+void Card::UpdateText(String^ text)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+
+	m_database->UpdateCardText(m_cardid, text);
+	m_text = (CLRISNULL(text)) ? "" : text;
 }
 
 //---------------------------------------------------------------------------

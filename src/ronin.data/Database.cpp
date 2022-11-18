@@ -37,6 +37,57 @@ using namespace System::Runtime::InteropServices;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
+// bind_parameter (local)
+//
+// Used by execute_non_query to bind a String^ parameter
+//
+// Arguments:
+//
+//	statement		- SQL statement instance
+//	paramindex		- Index of the parameter to bind; will be incremented
+//	value			- Value to bind as the parameter
+
+static void bind_parameter(sqlite3_stmt* statement, int& paramindex, String^ value)
+{
+	int					result;				// Result from binding operation
+
+	if(CLRISNOTNULL(value)) {
+
+		// Pin the String and specify SQLITE_TRANSIENT to have SQLite copy the string
+		pin_ptr<const wchar_t> pintext = PtrToStringChars(value);
+		result = sqlite3_bind_text16(statement, paramindex++, pintext, -1, SQLITE_TRANSIENT);
+	}
+
+	else result = sqlite3_bind_null(statement, paramindex++);
+
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+}
+
+//---------------------------------------------------------------------------
+// bind_parameter (local)
+//
+// Used by execute_non_query to bind a Guid parameter
+//
+// Arguments:
+//
+//	statement		- SQL statement instance
+//	paramindex		- Index of the parameter to bind; will be incremented
+//	value			- Value to bind as the parameter
+
+static void bind_parameter(sqlite3_stmt* statement, int& paramindex, Guid value)
+{
+	int					result;				// Result from binding operation
+
+	// Convert the Guid into a byte array and pin it
+	array<Byte>^ guid = value.ToByteArray();
+	pin_ptr<Byte> pinguid = &guid[0];
+
+	// Specify SQLITE_TRANSIENT to have SQLite copy the data
+	result = sqlite3_bind_blob(statement, paramindex++, pinguid, guid->Length, SQLITE_TRANSIENT);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+}
+
+//---------------------------------------------------------------------------
 // column_guid (local)
 //
 // Converts a SQLite BLOB result column into a System::Guid
@@ -403,7 +454,7 @@ Bitmap^ Database::SelectArtwork(Card^ card)
 	try {
 
 		// Bind the query parameter(s)
-		result = sqlite3_bind_blob(statement, 1, pincardid, cardid->Length, SQLITE_TRANSIENT);
+		result = sqlite3_bind_blob(statement, 1, pincardid, cardid->Length, SQLITE_STATIC);
 		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
 
 		// Execute the query; there should be at most one row returned
@@ -429,6 +480,136 @@ Bitmap^ Database::SelectArtwork(Card^ card)
 	finally { sqlite3_finalize(statement); }
 
 	return nullptr;
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectCard
+//
+// Selects a single card object from the database
+//
+// Arguments:
+//
+//	cardid		- Card identifier
+
+Card^ Database::SelectCard(Guid cardid)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	Card^ card = nullptr;
+
+	// { 00-04 } type | cardid | name | passcode | text |
+	// { 05-17 } attribute | level | type | attack | defense | normal | effect | fusion | ritual | toon | union | spirit | gemini |
+	// { 18-23 } normal | continuous | equip | field | quickplay | ritual |
+	// { 24-26 } normal | continuous | counter
+	auto sql = L"select cardtype(card.type), card.cardid, card.name, card.passcode, card.text, "
+		"monsterattribute(monster.attribute), monster.level, monstertype(monster.type), monster.attack, "
+		"monster.defense, monster.normal, monster.effect, monster.fusion, monster.ritual,  "
+		"monster.toon, monster.[union], monster.spirit, monster.gemini, "
+		"spell.normal, spell.continuous, spell.equip, spell.field, spell.quickplay, spell.ritual, "
+		"trap.normal, trap.continuous, trap.counter from card "
+		"left outer join monster on card.cardid = monster.cardid "
+		"left outer join spell on card.cardid = spell.cardid "
+		"left outer join trap on card.cardid = trap.cardid "
+		"where card.cardid = ?1";
+
+	// Convert the cardid into a byte array and pin it
+	array<Byte>^ guid = cardid.ToByteArray();
+	pin_ptr<Byte> pinguid = &guid[0];
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pinguid, guid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query; there should be at most one row returned
+		if(sqlite3_step(statement) == SQLITE_ROW) {
+
+			// Get the type of card being iterated here in order to instantiate the
+			// proper derivation of the Card class
+			CardType type = static_cast<CardType>(sqlite3_column_int(statement, 0));
+
+			// MonsterCard
+			if(type == CardType::Monster) {
+
+				MonsterCard^ monster = gcnew MonsterCard(this);
+
+				monster->Attribute = static_cast<CardAttribute>(sqlite3_column_int(statement, 5));
+				monster->Level = sqlite3_column_int(statement, 6);
+				monster->Type = static_cast<MonsterType>(sqlite3_column_int(statement, 7));
+				monster->Attack = sqlite3_column_int(statement, 8);
+				monster->Defense = sqlite3_column_int(statement, 9);
+				monster->Normal = (sqlite3_column_int(statement, 10) != 0);
+				monster->Effect = (sqlite3_column_int(statement, 11) != 0);
+				monster->Fusion = (sqlite3_column_int(statement, 12) != 0);
+				monster->Ritual = (sqlite3_column_int(statement, 13) != 0);
+				monster->Toon = (sqlite3_column_int(statement, 14) != 0);
+				monster->Union = (sqlite3_column_int(statement, 15) != 0);
+				monster->Spirit = (sqlite3_column_int(statement, 16) != 0);
+				monster->Gemini = (sqlite3_column_int(statement, 17) != 0);
+
+				card = static_cast<Card^>(monster);
+			}
+
+			// SpellCard
+			else if(type == CardType::Spell) {
+
+				SpellCard^ spell = gcnew SpellCard(this);
+
+				spell->Normal = (sqlite3_column_int(statement, 18) != 0);
+				spell->Continuous = (sqlite3_column_int(statement, 19) != 0);
+				spell->Equip = (sqlite3_column_int(statement, 20) != 0);
+				spell->Field = (sqlite3_column_int(statement, 21) != 0);
+				spell->QuickPlay = (sqlite3_column_int(statement, 22) != 0);
+				spell->Ritual = (sqlite3_column_int(statement, 23) != 0);
+
+				card = static_cast<Card^>(spell);
+			}
+
+			// TrapCard
+			else if(type == CardType::Trap) {
+
+				TrapCard^ trap = gcnew TrapCard(this);
+
+				trap->Normal = (sqlite3_column_int(statement, 24) != 0);
+				trap->Continuous = (sqlite3_column_int(statement, 25) != 0);
+				trap->Counter = (sqlite3_column_int(statement, 26) != 0);
+
+				card = static_cast<Card^>(trap);
+			}
+
+			else throw gcnew Exception("Invalid card.type value");
+
+			// The base class reference should have been set above
+			CLRASSERT(card != nullptr);
+
+			// cardid
+			card->CardID = column_guid(statement, 1);
+
+			// name
+			wchar_t const* nameptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 2));
+			card->Name = (nameptr == nullptr) ? String::Empty : gcnew String(nameptr);
+
+			// passcode
+			wchar_t const* passcodeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 3));
+			card->Passcode = (passcodeptr == nullptr) ? String::Empty : gcnew String(passcodeptr);
+
+			// text
+			wchar_t const* textptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			card->Text = (textptr == nullptr) ? String::Empty : gcnew String(textptr);
+		}
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return card;
 }
 
 //---------------------------------------------------------------------------
@@ -581,6 +762,27 @@ List<Card^>^ Database::SelectCards(CardFilter^ filter)
 
 	// TODO
 	return gcnew List<Card^>();
+}
+
+//---------------------------------------------------------------------------
+// Database::UpdateCardText (internal)
+//
+// Updates the text for a Card in the database
+//
+// Arguments:
+//
+//	card		- Card instance to retrieve the artwork for
+
+void Database::UpdateCardText(Guid cardid, String^ text)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(text)) throw gcnew ArgumentNullException("text");
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+
+	execute_non_query(instance, L"update card set text = ?1 where cardid = ?2", text, cardid);
 }
 
 //---------------------------------------------------------------------------

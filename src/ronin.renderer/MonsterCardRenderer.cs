@@ -43,16 +43,26 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
-		/// Renders a spell card
+		/// Renders a monster card
 		/// </summary>
 		/// <param name="card">MonsterCard to be rendered</param>
 		public Bitmap RenderCard(MonsterCard card)
+		{
+			return RenderCard(card, null);
+		}
+
+		/// <summary>
+		/// Renders a monster card
+		/// </summary>
+		/// <param name="card">MonsterCard to be rendered</param>
+		/// <param name="alttext">Alternate text to be rendered</param>
+		public Bitmap RenderCard(MonsterCard card, string alttext)
 		{
 			Bitmap bitmap = RenderBackground(card);
 			using(Graphics graphics = Graphics.FromImage(bitmap))
 			{
 				// Render the common elements
-				RenderCommon(graphics, card);
+				RenderCommon(graphics, card, alttext);
 
 				// Draw the card name in solid black
 				Engine.DrawName(graphics, s_layout, card.Name, NameBrush.SolidBlack);
@@ -62,7 +72,7 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
-		/// Renders a specific print of a spell card
+		/// Renders a specific print of a monster card
 		/// </summary>
 		/// <param name="monstercard">MonsterCard to be rendered</param>
 		/// <param name="print">Print information about the MonsterCard</param>
@@ -129,7 +139,8 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics instance</param>
 		/// <param name="monstercard">MonsterCard instance</param>
-		private void RenderCommon(Graphics graphics, MonsterCard monstercard)
+		/// <param name="alttext">Alternate text to be rendered</param>
+		private void RenderCommon(Graphics graphics, MonsterCard monstercard, string alttext)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(monstercard == null) throw new ArgumentNullException(nameof(monstercard));
@@ -154,7 +165,7 @@ namespace zuki.ronin.renderer
 				if(monstercard.Effect)
 				{
 					string materials = string.Empty;
-					string effect = monstercard.Text;
+					string effect = alttext ?? monstercard.Text;
 
 					// Effect fusion monsters don't always have materials listed, use the presence
 					// a CRLF pair in the string to detect
@@ -170,12 +181,12 @@ namespace zuki.ronin.renderer
 				else
 				{
 					// Normal fusion monsters only have the materials listed in text
-					Engine.DrawFusionMonsterText(graphics, s_layout, monstercard.Text, string.Empty);
+					Engine.DrawFusionMonsterText(graphics, s_layout, alttext ?? monstercard.Text, string.Empty);
 				}
 			}
 
-			else if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, monstercard.Text);
-			else Engine.DrawMonsterText(graphics, s_layout, monstercard.Text);
+			else if(monstercard.Normal) Engine.DrawNormalMonsterText(graphics, s_layout, alttext ?? monstercard.Text);
+			else Engine.DrawMonsterText(graphics, s_layout, alttext ?? monstercard.Text);
 
 
 			// Attack/Defense

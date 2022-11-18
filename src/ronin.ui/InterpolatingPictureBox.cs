@@ -20,68 +20,48 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.ComponentModel;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Fixes a flicker and TopItem problem with the WinForms ListView
-	/// 
-	/// Source: https://objectlistview.sourceforge.net/cs/blog6.html
+	/// Extends the Windows Forms PictureBox class to add an InterpolationMode property
 	/// </summary>
-	internal class VirtualListView : ListView
+	public class InterpolatingPictureBox : PictureBox
 	{
-		#region Win32 API Declarations
-		private static class NativeMethods
-		{
-			public const uint LVM_SETITEMCOUNT = 0x1000 + 47;
-			public const uint LVSICF_NOSCROLL = 0x02;
-
-			[DllImport("user32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
-			public static extern IntPtr SendMessageW(IntPtr hWnd, uint Msg, IntPtr wParam = default, IntPtr lParam = default);
-		}
-		#endregion
-
 		/// <summary>
-		/// Static Constructor
+		/// Instance Constructor
 		/// </summary>
-		static VirtualListView()
+		public InterpolatingPictureBox() : base()
 		{
-			s_fieldinfo = typeof(ListView).GetField("virtualListSize", BindingFlags.NonPublic | BindingFlags.Instance);
-			Debug.Assert(s_fieldinfo != null);
+			InterpolationMode = InterpolationMode.Default;
 		}
 
 		//---------------------------------------------------------------------
-		// Protected Member Functions
+		// Properties
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Replaces ListView::VirtualListSize
+		/// Gets/sets the interpolation mode to use when drawing the image
 		/// </summary>
-		protected new virtual int VirtualListSize
+		[Category("Behavior")]
+		[DefaultValue(InterpolationMode.Default)]
+		public InterpolationMode InterpolationMode { get; set; }
+
+		//---------------------------------------------------------------------
+		// PictureBox overrides
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Invoked when the control is going to be painted
+		/// </summary>
+		/// <param name="args">Paint event arguments</param>
+		protected override void OnPaint(PaintEventArgs args)
 		{
-			get { return base.VirtualListSize; }
-			set
-			{
-				if(value == VirtualListSize || value < 0)return;
-
-				// Set the base class private field
-				s_fieldinfo.SetValue(this, value);
-
-				// Send a raw message to change the virtual list size *without* changing the scroll position
-				if(IsHandleCreated && !DesignMode)
-					NativeMethods.SendMessageW(Handle, NativeMethods.LVM_SETITEMCOUNT, new IntPtr(value), new IntPtr(NativeMethods.LVSICF_NOSCROLL));
-			}
+			args.Graphics.InterpolationMode = InterpolationMode;
+			base.OnPaint(args);
 		}
-
-		//---------------------------------------------------------------------
-		// Member Variables
-		//---------------------------------------------------------------------
-
-		private static readonly FieldInfo s_fieldinfo;
 	}
 }

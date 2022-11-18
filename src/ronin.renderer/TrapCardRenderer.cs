@@ -47,11 +47,21 @@ namespace zuki.ronin.renderer
 		/// <param name="card">TrapCard to be rendered</param>
 		public Bitmap RenderCard(TrapCard card)
 		{
+			return RenderCard(card, null);
+		}
+
+		/// <summary>
+		/// Renders a trap card
+		/// </summary>
+		/// <param name="card">TrapCard to be rendered</param>
+		/// <param name="alttext">Alternate text to be rendered</param>
+		public Bitmap RenderCard(TrapCard card, string alttext)
+		{
 			Bitmap bitmap = RenderBackground();
 			using(Graphics graphics = Graphics.FromImage(bitmap))
 			{
 				// Render the common elements
-				RenderCommon(graphics, card);
+				RenderCommon(graphics, card, alttext);
 
 				// Draw the card name in solid white
 				Engine.DrawName(graphics, s_layout, card.Name, NameBrush.SolidWhite);
@@ -91,7 +101,8 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics instance</param>
 		/// <param name="trapcard">TrapCard instance</param>
-		private void RenderCommon(Graphics graphics, TrapCard trapcard)
+		/// <param name="alttext">Alternate text to be rendered</param>
+		private void RenderCommon(Graphics graphics, TrapCard trapcard, string alttext)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(trapcard == null) throw new ArgumentNullException(nameof(trapcard));
@@ -110,7 +121,7 @@ namespace zuki.ronin.renderer
 			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, artwork);
 
 			// Text
-			Engine.DrawSpellTrapText(graphics, s_layout, trapcard.Text);
+			Engine.DrawSpellTrapText(graphics, s_layout, alttext ?? trapcard.Text);
 
 			// Passcode
 			Engine.DrawPasscode(graphics, s_layout, trapcard.Passcode);
