@@ -15,7 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.m_image = new zuki.ronin.ui.InterpolatingPictureBox();
+			this.m_image = new zuki.ronin.ui.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.m_image)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -45,6 +45,6 @@
 
 		#endregion
 
-		private InterpolatingPictureBox m_image;
+		private PictureBox m_image;
 	}
 }

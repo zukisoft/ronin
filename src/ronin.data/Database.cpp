@@ -394,6 +394,7 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, releasedate not null, "
 			"primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
 			"foreign key(artworkid) references artwork(artworkid))");
+		// TODO: missing check constraint on rarity
 		execute_non_query(instance, L"create unique index print_code on print(code, language, number)");
 		execute_non_query(instance, L"create index print_rarity on print(rarity)");
 		execute_non_query(instance, L"create index print_releasedate on print(releasedate)");
@@ -762,6 +763,90 @@ List<Card^>^ Database::SelectCards(CardFilter^ filter)
 
 	// TODO
 	return gcnew List<Card^>();
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectPrints
+//
+// Selects Print objects from the database
+//
+// Arguments:
+//
+//	cardid		- Card identifier on which to filter the results
+
+List<Print^>^ Database::SelectPrints(Guid cardid)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	List<Print^>^ prints = gcnew List<Print^>();
+
+	// printid | cardid | seriesid | code | language | number | rarity | releasedate
+	auto sql = L"select print.printid, print.cardid, print.seriesid, print.code, print.language, "
+		"print.number, printrarity(print.rarity), print.releasedate from print where print.cardid = ?1 "
+		"order by print.releasedate asc";
+
+	// Convert the cardid into a byte array and pin it
+	array<Byte>^ guid = cardid.ToByteArray();
+	pin_ptr<Byte> pinguid = &guid[0];
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pinguid, guid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Print^ print = gcnew Print(this);
+
+			// printid
+			print->PrintID = column_guid(statement, 0);
+
+			// cardid
+			print->CardID = column_guid(statement, 1);
+
+			// seriesid
+			print->SeriesID = column_guid(statement, 2);
+
+			// code
+			wchar_t const* codeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 3));
+			print->Code = (codeptr == nullptr) ? String::Empty : gcnew String(codeptr);
+
+			// language
+			wchar_t const* languageptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			print->Language = (languageptr == nullptr) ? String::Empty : gcnew String(languageptr);
+
+			// number
+			wchar_t const* numberptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 5));
+			print->Number = (numberptr == nullptr) ? String::Empty : gcnew String(numberptr);
+
+			// rarity
+			print->Rarity = static_cast<PrintRarity>(sqlite3_column_int(statement, 6));
+
+			// releasedate
+			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 7));
+			print->ReleaseDate = (releasedateptr == nullptr) ? Nullable<DateTime>() : DateTime::Parse(gcnew String(releasedateptr));
+
+			prints->Add(print);							// Add the Print instance
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return prints;
 }
 
 //---------------------------------------------------------------------------

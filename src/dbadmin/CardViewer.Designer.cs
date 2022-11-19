@@ -19,10 +19,10 @@
 			this.m_cardselector = new zuki.ronin.ui.CardSelector();
 			this.m_leftpanel = new System.Windows.Forms.Panel();
 			this.m_rightpanel = new System.Windows.Forms.Panel();
+			this.m_image = new zuki.ronin.ui.CardImage();
 			this.m_lowerrightpanel = new System.Windows.Forms.Panel();
 			this.m_separator = new System.Windows.Forms.Panel();
 			this.m_edittext = new System.Windows.Forms.Button();
-			this.m_image = new zuki.ronin.ui.CardImage();
 			this.m_leftpanel.SuspendLayout();
 			this.m_rightpanel.SuspendLayout();
 			this.m_lowerrightpanel.SuspendLayout();
@@ -30,7 +30,6 @@
 			// 
 			// m_cardselector
 			// 
-			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
@@ -60,6 +59,19 @@
 			this.m_rightpanel.Padding = new System.Windows.Forms.Padding(8);
 			this.m_rightpanel.Size = new System.Drawing.Size(373, 574);
 			this.m_rightpanel.TabIndex = 2;
+			// 
+			// m_image
+			// 
+			this.m_image.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.m_image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+			this.m_image.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.m_image.ForeColor = System.Drawing.Color.Black;
+			this.m_image.Location = new System.Drawing.Point(8, 8);
+			this.m_image.Name = "m_image";
+			this.m_image.Size = new System.Drawing.Size(353, 520);
+			this.m_image.TabIndex = 2;
 			// 
 			// m_lowerrightpanel
 			// 
@@ -91,17 +103,6 @@
 			this.m_edittext.Text = "Edit Card Text...";
 			this.m_edittext.UseVisualStyleBackColor = true;
 			this.m_edittext.Click += new System.EventHandler(this.OnEditText);
-			// 
-			// m_image
-			// 
-			this.m_image.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_image.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_image.Location = new System.Drawing.Point(8, 8);
-			this.m_image.Name = "m_image";
-			this.m_image.Size = new System.Drawing.Size(353, 520);
-			this.m_image.TabIndex = 2;
 			// 
 			// CardViewer
 			// 

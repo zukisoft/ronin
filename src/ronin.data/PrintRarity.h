@@ -38,7 +38,8 @@ namespace zuki::ronin::data {
 
 public enum class PrintRarity
 {
-	Common = 0,
+	None = 0,
+	Common,
 	DuelTerminalNormalParallelRare,
 	DuelTerminalRareParallelRare,
 	DuelTerminalSuperParallelRare,

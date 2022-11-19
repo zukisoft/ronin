@@ -29,6 +29,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Collections::Generic;
 using namespace System::Drawing;
 
 namespace zuki::ronin::data {
@@ -36,6 +37,7 @@ namespace zuki::ronin::data {
 // FORWARD DECLARATIONS
 //
 ref class Database;
+ref class Print;
 
 //---------------------------------------------------------------------------
 // Class Card
@@ -80,6 +82,11 @@ public:
 	//
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
+
+	// GetPrints
+	//
+	// Gets the Print objects associated with this Card
+	List<Print^>^ GetPrints(void);
 
 	// ToString
 	//

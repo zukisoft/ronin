@@ -24,7 +24,6 @@
 #define __PRINT_H_
 #pragma once
 
-#include "Card.h"
 #include "PrintRarity.h"
 #include "Series.h"
 
@@ -34,6 +33,11 @@ using namespace System;
 using namespace System::Drawing;
 
 namespace zuki::ronin::data {
+
+// FORWARD DECLARATIONS
+//
+ref class Card;
+ref class Database;
 
 //---------------------------------------------------------------------------
 // Class Print
@@ -66,7 +70,7 @@ public:
 
 	// Equals
 	//
-	// Compares this Print instance to another Card instance
+	// Compares this Print instance to another Print instance
 	bool Equals(Print^ rhs);
 
 	// GetArtwork
@@ -173,7 +177,7 @@ internal:
 
 	// Instance Constructor
 	//
-	Print();
+	Print(Database^ database);
 
 	//-----------------------------------------------------------------------
 	// Internal Member Functions
@@ -187,6 +191,8 @@ private:
 
 	//-----------------------------------------------------------------------
 	// Member Variables
+
+	initonly Database^		m_database;					// Database instance
 
 	Guid					m_printid;					// Unique identifier
 	Guid					m_cardid;					// Card unique identifer

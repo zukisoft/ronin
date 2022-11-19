@@ -27,14 +27,14 @@ using System.Windows.Forms;
 namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Extends the Windows Forms PictureBox class to add an InterpolationMode property
+	/// Extends the Windows Forms PictureBox class
 	/// </summary>
-	public class InterpolatingPictureBox : PictureBox
+	public class PictureBox : System.Windows.Forms.PictureBox
 	{
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public InterpolatingPictureBox() : base()
+		public PictureBox() : base()
 		{
 			InterpolationMode = InterpolationMode.Default;
 		}

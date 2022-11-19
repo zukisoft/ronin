@@ -34,8 +34,8 @@
 			this.m_panel = new System.Windows.Forms.Panel();
 			this.m_innerpanel = new System.Windows.Forms.Panel();
 			this.m_text = new System.Windows.Forms.TextBox();
-			this.m_image = new zuki.ronin.ui.CardImage();
 			this.m_insertdot = new System.Windows.Forms.LinkLabel();
+			this.m_image = new zuki.ronin.ui.CardImage();
 			this.m_panel.SuspendLayout();
 			this.m_innerpanel.SuspendLayout();
 			this.SuspendLayout();
@@ -97,16 +97,6 @@
 			this.m_text.TabIndex = 0;
 			this.m_text.Validated += new System.EventHandler(this.OnTextValidated);
 			// 
-			// m_image
-			// 
-			this.m_image.Dock = System.Windows.Forms.DockStyle.Left;
-			this.m_image.Location = new System.Drawing.Point(4, 4);
-			this.m_image.Name = "m_image";
-			this.m_image.Padding = new System.Windows.Forms.Padding(8);
-			this.m_image.Size = new System.Drawing.Size(338, 457);
-			this.m_image.TabIndex = 3;
-			this.m_image.TabStop = false;
-			// 
 			// m_insertdot
 			// 
 			this.m_insertdot.ActiveLinkColor = System.Drawing.SystemColors.HotTrack;
@@ -122,6 +112,18 @@
 			this.m_insertdot.VisitedLinkColor = System.Drawing.SystemColors.HotTrack;
 			this.m_insertdot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnInsertDot);
 			// 
+			// m_image
+			// 
+			this.m_image.Dock = System.Windows.Forms.DockStyle.Left;
+			this.m_image.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.m_image.ForeColor = System.Drawing.Color.White;
+			this.m_image.Location = new System.Drawing.Point(4, 4);
+			this.m_image.Name = "m_image";
+			this.m_image.Padding = new System.Windows.Forms.Padding(8);
+			this.m_image.Size = new System.Drawing.Size(338, 457);
+			this.m_image.TabIndex = 3;
+			this.m_image.TabStop = false;
+			// 
 			// CardTextEditor
 			// 
 			this.AcceptButton = this.m_ok;
@@ -135,7 +137,6 @@
 			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "CardTextEditor";

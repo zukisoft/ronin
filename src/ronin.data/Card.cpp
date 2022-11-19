@@ -148,6 +148,21 @@ int Card::GetHashCode(void)
 }
 
 //---------------------------------------------------------------------------
+// Card::GetPrints
+//
+// Gets the Print objects associated with this Card
+//
+// Arguments:
+//
+//	NONE
+
+List<Print^>^ Card::GetPrints(void)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectPrints(this->CardID);
+}
+
+//---------------------------------------------------------------------------
 // Card::Name::get
 //
 // Gets the card name

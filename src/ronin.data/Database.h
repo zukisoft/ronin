@@ -28,6 +28,7 @@
 
 #include "Card.h"
 #include "CardFilter.h"
+#include "Print.h"
 #include "SQLiteSafeHandle.h"
 
 using namespace System;
@@ -67,6 +68,11 @@ public:
 	// Selects Card objects from the database
 	List<Card^>^ SelectCards(void);
 	List<Card^>^ SelectCards(CardFilter^ filter);
+
+	// SelectPrints
+	//
+	// Selects Print objects from the database
+	List<Print^>^ SelectPrints(Guid cardid);
 
 internal:
 

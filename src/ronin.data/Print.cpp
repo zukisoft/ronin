@@ -23,6 +23,9 @@
 #include "stdafx.h"
 #include "Print.h"
 
+#include "Card.h"
+#include "Database.h"
+
 #pragma warning(push, 4)
 
 namespace zuki::ronin::data {
@@ -32,10 +35,11 @@ namespace zuki::ronin::data {
 //
 // Arguments:
 //
-//	NONE
+//	database	- Underlying Database instance
 
-Print::Print()
+Print::Print(Database^ database) : m_database(database)
 {
+	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
 }
 
 //---------------------------------------------------------------------------

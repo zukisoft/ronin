@@ -21,6 +21,7 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using zuki.ronin.data;

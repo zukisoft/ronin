@@ -28,6 +28,7 @@
 #include "CardAttribute.h"
 #include "CardType.h"
 #include "MonsterType.h"
+#include "PrintRarity.h"
 
 extern "C" { SQLITE_EXTENSION_INIT1 };
 
@@ -140,6 +141,44 @@ static void monstertype(sqlite3_context* context, int argc, sqlite3_value** argv
 }
 
 //---------------------------------------------------------------------------
+// printrarity (local)
+//
+// SQLite scalar function to convert a rarity string into a PrintRarity
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void printrarity(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	// Null or zero-length input string results in PrintRarity::None
+	wchar_t const* str = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if((str == nullptr) || (*str == L'\0')) return sqlite3_result_int(context, static_cast<int>(PrintRarity::None));
+
+	// The strings are case-sensitive and enforced by a CHECK CONSTRAINT
+	if(wcscmp(str, L"Common") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::Common));
+	else if(wcscmp(str, L"Duel Terminal Normal Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::DuelTerminalNormalParallelRare));
+	else if(wcscmp(str, L"Duel Terminal Rare Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::DuelTerminalRareParallelRare));
+	else if(wcscmp(str, L"Duel Terminal Super Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::DuelTerminalSuperParallelRare));
+	else if(wcscmp(str, L"Gold Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::GoldRare));
+	else if(wcscmp(str, L"Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::ParallelRare));
+	else if(wcscmp(str, L"Prismatic Secret Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::PrismaticSecretRare));
+	else if(wcscmp(str, L"Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::Rare));
+	else if(wcscmp(str, L"Secret Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::SecretRare));
+	else if(wcscmp(str, L"Super Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::SuperRare));
+	else if(wcscmp(str, L"Ultra Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::UltraParallelRare));
+	else if(wcscmp(str, L"Ultra Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::UltraRare));
+	else if(wcscmp(str, L"Ultra Secret Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::UltraSecretRare));
+
+	// Input string was not a valid monster type
+	return sqlite3_result_int(context, static_cast<int>(PrintRarity::None));
+}
+
+//---------------------------------------------------------------------------
 // uuid (local)
 //
 // SQLite scalar function to generate a UUID
@@ -195,6 +234,11 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 	//
 	result = sqlite3_create_function16(db, L"monstertype", 1, SQLITE_UTF16, nullptr, monstertype, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function monstertype (%d)", result); return result; }
+
+	// printrarity function
+	//
+	result = sqlite3_create_function16(db, L"printrarity", 1, SQLITE_UTF16, nullptr, printrarity, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function printrarity (%d)", result); return result; }
 
 	// uuid function
 	//
