@@ -21,6 +21,8 @@
 			this.m_rightpanel = new System.Windows.Forms.Panel();
 			this.m_image = new zuki.ronin.ui.CardImage();
 			this.m_lowerrightpanel = new System.Windows.Forms.Panel();
+			this.m_next = new System.Windows.Forms.Button();
+			this.m_previous = new System.Windows.Forms.Button();
 			this.m_separator = new System.Windows.Forms.Panel();
 			this.m_edittext = new System.Windows.Forms.Button();
 			this.m_leftpanel.SuspendLayout();
@@ -30,6 +32,7 @@
 			// 
 			// m_cardselector
 			// 
+			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
@@ -75,6 +78,8 @@
 			// 
 			// m_lowerrightpanel
 			// 
+			this.m_lowerrightpanel.Controls.Add(this.m_next);
+			this.m_lowerrightpanel.Controls.Add(this.m_previous);
 			this.m_lowerrightpanel.Controls.Add(this.m_separator);
 			this.m_lowerrightpanel.Controls.Add(this.m_edittext);
 			this.m_lowerrightpanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -82,6 +87,30 @@
 			this.m_lowerrightpanel.Name = "m_lowerrightpanel";
 			this.m_lowerrightpanel.Size = new System.Drawing.Size(357, 32);
 			this.m_lowerrightpanel.TabIndex = 1;
+			// 
+			// m_next
+			// 
+			this.m_next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.m_next.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.m_next.Location = new System.Drawing.Point(84, 9);
+			this.m_next.Name = "m_next";
+			this.m_next.Size = new System.Drawing.Size(75, 23);
+			this.m_next.TabIndex = 4;
+			this.m_next.Text = ">";
+			this.m_next.UseVisualStyleBackColor = true;
+			this.m_next.Click += new System.EventHandler(this.OnNext);
+			// 
+			// m_previous
+			// 
+			this.m_previous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.m_previous.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.m_previous.Location = new System.Drawing.Point(3, 9);
+			this.m_previous.Name = "m_previous";
+			this.m_previous.Size = new System.Drawing.Size(75, 23);
+			this.m_previous.TabIndex = 3;
+			this.m_previous.Text = "<";
+			this.m_previous.UseVisualStyleBackColor = true;
+			this.m_previous.Click += new System.EventHandler(this.OnPrevious);
 			// 
 			// m_separator
 			// 
@@ -132,5 +161,7 @@
         private System.Windows.Forms.Button m_edittext;
         private System.Windows.Forms.Panel m_separator;
 		private ui.CardImage m_image;
+		private System.Windows.Forms.Button m_next;
+		private System.Windows.Forms.Button m_previous;
 	}
 }

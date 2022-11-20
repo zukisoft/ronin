@@ -126,6 +126,40 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
+		/// Invoked when the next button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnNext(object sender, EventArgs args)
+		{
+			if(m_selected == null) return;
+
+			Print print = m_prints[++m_printindex];
+			if(print == null) m_image.SetCard(m_selected);
+			else m_image.SetPrint(print);
+
+			m_previous.Enabled = true;
+			m_next.Enabled = (m_printindex + 1) < m_prints.Count;
+		}
+
+		/// <summary>
+		/// Invoked when the previous button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnPrevious(object sender, EventArgs args)
+		{
+			if(m_selected == null) return;
+
+			Print print = m_prints[--m_printindex];
+			if(print == null) m_image.SetCard(m_selected);
+			else m_image.SetPrint(print);
+
+			m_previous.Enabled = m_printindex > 0;
+			m_next.Enabled = m_prints.Count > 1;
+		}
+
+		/// <summary>
 		/// Invoked when the selected card has changed
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
@@ -134,6 +168,19 @@ namespace zuki.ronin
 		{
 			m_selected = card;
 			m_edittext.Enabled = m_selected != null;
+
+			m_prints.Clear();
+			m_printindex = 0;
+
+			if(card != null)
+			{
+				m_prints.Add(null);         // Generic image
+				m_prints.AddRange(card.GetPrints());
+			}
+
+			m_previous.Enabled = false;
+			m_next.Enabled = m_prints.Count > 1;
+
 			m_image.SetCard(m_selected);
 		}
 
@@ -155,5 +202,15 @@ namespace zuki.ronin
 		/// Currently selected Card instance
 		/// </summary>
 		private Card m_selected;
+
+		/// <summary>
+		/// List<> of available prints for the selected Card
+		/// </summary>
+		private List<Print> m_prints = new List<Print>();
+
+		/// <summary>
+		/// Index of the currently displayed print
+		/// </summary>
+		private int m_printindex;
 	}
 }

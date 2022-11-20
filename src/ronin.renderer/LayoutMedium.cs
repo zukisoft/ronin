@@ -60,6 +60,10 @@ namespace zuki.ronin.renderer
 			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
+			// Font used to draw the passcode and copyright
+			s_setcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 26,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
 			// Font used to draw a monster card type
 			s_typefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifBoldSmallCaps, 33,
 				FontStyle.Regular, GraphicsUnit.Pixel);
@@ -357,6 +361,16 @@ namespace zuki.ronin.renderer
 		public override float QuarterSpace => 3.0F;
 
 		/// <summary>
+		/// Boundary of the set code
+		/// </summary>
+		public override RectangleF SetCodeBounds => new Rectangle(556, 918, 198, 26);
+
+		/// <summary>
+		/// Font used to draw the set code
+		/// </summary>
+		public override Font SetCodeFont => s_setcodefont;
+
+		/// <summary>
 		/// Font used when drawing spell and trap card text
 		/// </summary>
 		public override Font SpellTrapTextFont => s_effecttext;
@@ -398,6 +412,11 @@ namespace zuki.ronin.renderer
 		/// Font to use when rendering the passcode
 		/// </summary>
 		private static readonly Font s_passcodefont;
+
+		/// <summary>
+		/// Font to use when rendering the set code
+		/// </summary>
+		private static readonly Font s_setcodefont;
 
 		/// <summary>
 		/// Font to use when rendering a monster type

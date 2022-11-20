@@ -44,27 +44,31 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Renders a spell card
 		/// </summary>
-		/// <param name="card">SpellCard to be rendered</param>
-		public Bitmap RenderCard(SpellCard card)
+		/// <param name="spellcard">SpellCard to be rendered</param>
+		public Bitmap RenderCard(SpellCard spellcard)
 		{
-			return RenderCard(card, null);
+			return RenderCard(spellcard, null);
 		}
 
 		/// <summary>
 		/// Renders a spell card
 		/// </summary>
-		/// <param name="card">SpellCard to be rendered</param>
+		/// <param name="spellcard">SpellCard to be rendered</param>
 		/// <param name="alttext">Alternate text to be rendered</param>
-		public Bitmap RenderCard(SpellCard card, string alttext)
+		public Bitmap RenderCard(SpellCard spellcard, string alttext)
 		{
 			Bitmap bitmap = RenderBackground();
 			using(Graphics graphics = Graphics.FromImage(bitmap))
 			{
 				// Render the common elements
-				RenderCommon(graphics, card, alttext);
+				RenderCommon(graphics, spellcard, alttext);
+
+				// Render the default artwork
+				Bitmap artwork = spellcard.GetArtwork();
+				Engine.DrawArtwork(graphics, s_layout, artwork ?? Resources.defaultartwork);
 
 				// Draw the card name in solid white
-				Engine.DrawName(graphics, s_layout, card.Name, NameBrush.SolidWhite);
+				Engine.DrawName(graphics, s_layout, spellcard.Name, NameBrush.SolidWhite);
 			}
 
 			return bitmap;
@@ -77,7 +81,24 @@ namespace zuki.ronin.renderer
 		/// <param name="print">Print information about the SpellCard</param>
 		public Bitmap RenderPrint(SpellCard spellcard, Print print)
 		{
-			return null;
+			Bitmap bitmap = RenderBackground();
+			using(Graphics graphics = Graphics.FromImage(bitmap))
+			{
+				// Render the common elements
+				RenderCommon(graphics, spellcard);
+
+				// Draw the card name in solid white
+				Engine.DrawName(graphics, s_layout, spellcard.Name, NameBrush.SolidWhite);
+
+				// Render the print artwork
+				Bitmap artwork = print.GetArtwork();
+				Engine.DrawArtwork(graphics, s_layout, artwork ?? Resources.defaultartwork);
+
+				// Draw the set code for the print
+				Engine.DrawSetCode(graphics, s_layout, print.ToString());
+			}
+
+			return bitmap;
 		}
 
 		//-------------------------------------------------------------------------
@@ -101,6 +122,16 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics instance</param>
 		/// <param name="spellcard">SpellCard instance</param>
+		private void RenderCommon(Graphics graphics, SpellCard spellcard)
+		{
+			RenderCommon(graphics, spellcard, null);
+		}
+
+		/// <summary>
+		/// Renders the common elements between a Card render and a Print render
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="spellcard">SpellCard instance</param>
 		/// <param name="alttext">Alternate text to be rendered</param>
 		private void RenderCommon(Graphics graphics, SpellCard spellcard, string alttext)
 		{
@@ -114,11 +145,6 @@ namespace zuki.ronin.renderer
 			bool hasicon = spellcard.Icon != CardIcon.None;
 			Engine.DrawHeader(graphics, s_layout, "Spell Card", hasicon);
 			if(hasicon) Engine.DrawIcon(graphics, s_layout, spellcard.Icon);
-
-			// Artwork
-			Bitmap artwork = spellcard.GetArtwork();
-			if(artwork == null) artwork = Resources.defaultartwork;
-			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, artwork);
 
 			// Text
 			Engine.DrawSpellTrapText(graphics, s_layout, alttext ?? spellcard.Text);

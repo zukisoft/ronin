@@ -575,6 +575,31 @@ namespace zuki.ronin.renderer
 		}
 
 		/// <summary>
+		/// Draws the set code string onto an existing background
+		/// </summary>
+		/// <param name="graphics">Graphics object on which to draw the text</param>
+		/// <param name="layout">Renderer layout instance</param>
+		/// <param name="setcode">Set code string</param>
+		public static void DrawSetCode(Graphics graphics, Layout layout, string setcode)
+		{
+			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
+			if(layout == null) throw new ArgumentNullException(nameof(layout));
+			if(setcode == null) throw new ArgumentNullException(nameof(setcode));
+
+			// Right/Center alignment
+			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
+			{
+				Alignment = StringAlignment.Far,
+				LineAlignment = StringAlignment.Center
+			};
+
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+			graphics.DrawString(setcode, layout.SetCodeFont, Brushes.Black, layout.SetCodeBounds, format);
+		}
+
+		/// <summary>
 		/// Draws the text for a spell or trap card
 		/// </summary>
 		/// <param name="graphics">Graphics object on which to draw the text</param>

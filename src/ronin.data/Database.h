@@ -55,8 +55,13 @@ public:
 
 	// Create
 	//
-	// Creates a new Database instance
+	// Creates a new database instance
 	static Database^ Create(String^ path);
+
+	// SelectArtwork
+	//
+	// Selects an artwork object from the database
+	Bitmap^ SelectArtwork(Guid artworkid);
 
 	// SelectCard
 	//
@@ -79,6 +84,7 @@ internal:
 	// SelectArtwork
 	//
 	// Gets the default artwork for a Card
+	// TODO: refactor this away in favor of SelectArtwork(artworkid), do the join for SelectCard[s]
 	Bitmap^ SelectArtwork(Card^ card);
 
 	// UpdateCardText

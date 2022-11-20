@@ -99,10 +99,11 @@ static void bind_parameter(sqlite3_stmt* statement, int& paramindex, Guid value)
 static Guid column_guid(sqlite3_stmt* statement, int index)
 {
 	int bloblen = sqlite3_column_bytes(statement, index);
+	if(bloblen == 0) return Guid::Empty;
 	if(bloblen != sizeof(UUID)) throw gcnew Exception("Invalid BLOB length for conversion to System::Guid");
 
 	array<byte>^ blob = gcnew array<byte>(bloblen);
-	Marshal::Copy(IntPtr(const_cast<void*>(sqlite3_column_blob(statement, 1))), blob, 0, bloblen);
+	Marshal::Copy(IntPtr(const_cast<void*>(sqlite3_column_blob(statement, index))), blob, 0, bloblen);
 
 	return Guid(blob);
 }
@@ -421,6 +422,64 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		execute_non_query(instance, L"pragma user_version = 1");
 		dbversion = 1;
 	}
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectArtwork
+//
+// Selects an artwork object from the database
+//
+// Arguments:
+//
+//	artworkid	- Artwork identifier
+
+Bitmap^ Database::SelectArtwork(Guid artworkid)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	auto sql = L"select artwork.image from artwork where artwork.artworkid = ?1";
+
+	// Convert the artworkid into a byte array and pin it
+	array<Byte>^ guid = artworkid.ToByteArray();
+	pin_ptr<Byte> pinguid = &guid[0];
+
+	// Prepare the query
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pinguid, guid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query; there should be at most one row returned
+		if(sqlite3_step(statement) == SQLITE_ROW) {
+
+			// Get the length of the BLOB data
+			int length = sqlite3_column_bytes(statement, 0);
+			if(length > 0) {
+
+				// Convert the BLOB data into a new Bitmap instance
+				void const* blob = sqlite3_column_blob(statement, 0);
+				if(blob != nullptr) {
+
+					// Wrap the BLOB in a read-only UnmanagedMemoryStream and create a Bitmap from it
+					Byte* blobptr = reinterpret_cast<unsigned char*>(const_cast<void*>(blob));
+					msclr::auto_handle<UnmanagedMemoryStream> stream(gcnew UnmanagedMemoryStream(blobptr, length, length, FileAccess::Read));
+					return gcnew Bitmap(stream.get());
+				}
+			}
+		}
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return nullptr;
 }
 
 //---------------------------------------------------------------------------
@@ -784,8 +843,8 @@ List<Print^>^ Database::SelectPrints(Guid cardid)
 
 	List<Print^>^ prints = gcnew List<Print^>();
 
-	// printid | cardid | seriesid | code | language | number | rarity | releasedate
-	auto sql = L"select print.printid, print.cardid, print.seriesid, print.code, print.language, "
+	// printid | cardid | seriesid | artworkid | code | language | number | rarity | releasedate
+	auto sql = L"select print.printid, print.cardid, print.seriesid, print.artworkid, print.code, print.language, "
 		"print.number, printrarity(print.rarity), print.releasedate from print where print.cardid = ?1 "
 		"order by print.releasedate asc";
 
@@ -817,23 +876,26 @@ List<Print^>^ Database::SelectPrints(Guid cardid)
 			// seriesid
 			print->SeriesID = column_guid(statement, 2);
 
+			// artworkid
+			print->ArtworkID = column_guid(statement, 3);
+
 			// code
-			wchar_t const* codeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 3));
+			wchar_t const* codeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
 			print->Code = (codeptr == nullptr) ? String::Empty : gcnew String(codeptr);
 
 			// language
-			wchar_t const* languageptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			wchar_t const* languageptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 5));
 			print->Language = (languageptr == nullptr) ? String::Empty : gcnew String(languageptr);
 
 			// number
-			wchar_t const* numberptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 5));
+			wchar_t const* numberptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 6));
 			print->Number = (numberptr == nullptr) ? String::Empty : gcnew String(numberptr);
 
 			// rarity
-			print->Rarity = static_cast<PrintRarity>(sqlite3_column_int(statement, 6));
+			print->Rarity = static_cast<PrintRarity>(sqlite3_column_int(statement, 7));
 
 			// releasedate
-			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 7));
+			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 8));
 			print->ReleaseDate = (releasedateptr == nullptr) ? Nullable<DateTime>() : DateTime::Parse(gcnew String(releasedateptr));
 
 			prints->Add(print);							// Add the Print instance

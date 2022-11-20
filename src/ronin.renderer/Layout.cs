@@ -310,6 +310,16 @@ namespace zuki.ronin.renderer
 		public virtual float QuarterSpace { get; }
 
 		/// <summary>
+		/// Boundary of the set code
+		/// </summary>
+		public virtual RectangleF SetCodeBounds { get; }
+
+		/// <summary>
+		/// Font used to draw the set code
+		/// </summary>
+		public virtual Font SetCodeFont { get; }
+
+		/// <summary>
 		/// Font used when drawing spell and trap card text
 		/// </summary>
 		public virtual Font SpellTrapTextFont { get; }

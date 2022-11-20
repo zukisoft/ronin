@@ -65,6 +65,26 @@ bool Print::operator!=(Print^ lhs, Print^ rhs)
 }
 
 //---------------------------------------------------------------------------
+// Print::ArtworkID::get
+//
+// Gets the artwork unique identifier
+
+Guid Print::ArtworkID::get(void)
+{
+	return m_artworkid;
+}
+
+//---------------------------------------------------------------------------
+// Print::ArtworkID::set (internal)
+//
+// Sets the artwork unique identifier
+
+void Print::ArtworkID::set(Guid value)
+{
+	m_artworkid = value;
+}
+
+//---------------------------------------------------------------------------
 // Print::CardID::get
 //
 // Gets the card unique identifier
@@ -149,7 +169,8 @@ bool Print::Equals(Object^ rhs)
 
 Bitmap^ Print::GetArtwork(void)
 {
-	return nullptr;
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectArtwork(m_artworkid);
 }
 
 //---------------------------------------------------------------------------
@@ -163,7 +184,8 @@ Bitmap^ Print::GetArtwork(void)
 
 Card^ Print::GetCard(void)
 {
-	return nullptr;
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectCard(m_cardid);
 }
 
 //---------------------------------------------------------------------------

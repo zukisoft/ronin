@@ -45,27 +45,31 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Renders a monster card
 		/// </summary>
-		/// <param name="card">MonsterCard to be rendered</param>
-		public Bitmap RenderCard(MonsterCard card)
+		/// <param name="monstercard">MonsterCard to be rendered</param>
+		public Bitmap RenderCard(MonsterCard monstercard)
 		{
-			return RenderCard(card, null);
+			return RenderCard(monstercard, null);
 		}
 
 		/// <summary>
 		/// Renders a monster card
 		/// </summary>
-		/// <param name="card">MonsterCard to be rendered</param>
+		/// <param name="monstercard">MonsterCard to be rendered</param>
 		/// <param name="alttext">Alternate text to be rendered</param>
-		public Bitmap RenderCard(MonsterCard card, string alttext)
+		public Bitmap RenderCard(MonsterCard monstercard, string alttext)
 		{
-			Bitmap bitmap = RenderBackground(card);
+			Bitmap bitmap = RenderBackground(monstercard);
 			using(Graphics graphics = Graphics.FromImage(bitmap))
 			{
 				// Render the common elements
-				RenderCommon(graphics, card, alttext);
+				RenderCommon(graphics, monstercard, alttext);
 
 				// Draw the card name in solid black
-				Engine.DrawName(graphics, s_layout, card.Name, NameBrush.SolidBlack);
+				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.SolidBlack);
+
+				// Render the default artwork
+				Bitmap artwork = monstercard.GetArtwork();
+				Engine.DrawArtwork(graphics, s_layout, artwork ?? Resources.defaultartwork);
 			}
 
 			return bitmap;
@@ -78,7 +82,24 @@ namespace zuki.ronin.renderer
 		/// <param name="print">Print information about the MonsterCard</param>
 		public Bitmap RenderPrint(MonsterCard monstercard, Print print)
 		{
-			return null;
+			Bitmap bitmap = RenderBackground(monstercard);
+			using(Graphics graphics = Graphics.FromImage(bitmap))
+			{
+				// Render the common elements
+				RenderCommon(graphics, monstercard);
+
+				// Draw the card name in solid black
+				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.SolidBlack);
+
+				// Render the print artwork
+				Bitmap artwork = print.GetArtwork();
+				Engine.DrawArtwork(graphics, s_layout, artwork ?? Resources.defaultartwork);
+
+				// Draw the set code for the print
+				Engine.DrawSetCode(graphics, s_layout, print.ToString());
+			}
+
+			return bitmap;
 		}
 
 		//-------------------------------------------------------------------------
@@ -139,6 +160,16 @@ namespace zuki.ronin.renderer
 		/// </summary>
 		/// <param name="graphics">Graphics instance</param>
 		/// <param name="monstercard">MonsterCard instance</param>
+		private void RenderCommon(Graphics graphics, MonsterCard monstercard)
+		{
+			RenderCommon(graphics, monstercard, null);
+		}
+
+		/// <summary>
+		/// Renders the common elements between a Card render and a Print render
+		/// </summary>
+		/// <param name="graphics">Graphics instance</param>
+		/// <param name="monstercard">MonsterCard instance</param>
 		/// <param name="alttext">Alternate text to be rendered</param>
 		private void RenderCommon(Graphics graphics, MonsterCard monstercard, string alttext)
 		{
@@ -147,11 +178,6 @@ namespace zuki.ronin.renderer
 
 			// Attribute
 			Engine.DrawAttribute(graphics, s_layout, monstercard.Attribute);
-
-			// Artwork
-			Bitmap artwork = monstercard.GetArtwork();
-			if(artwork == null) artwork = Resources.defaultartwork;
-			if(artwork != null) Engine.DrawArtwork(graphics, s_layout, artwork);
 
 			// Level Stars
 			Engine.DrawLevelStars(graphics, s_layout, monstercard.Level);

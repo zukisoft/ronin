@@ -101,6 +101,15 @@ public:
 	//-----------------------------------------------------------------------
 	// Properties
 
+	// ArtworkID
+	//
+	// Gets the artwork unique identifier
+	property Guid ArtworkID
+	{
+		Guid get(void);
+		internal: void set(Guid value);
+	}
+
 	// CardID
 	//
 	// Gets the card identifier
@@ -197,6 +206,7 @@ private:
 	Guid					m_printid;					// Unique identifier
 	Guid					m_cardid;					// Card unique identifer
 	Guid					m_seriesid;					// Series unique identifier
+	Guid					m_artworkid;				// Artwork unique identifier
 	String^					m_code = String::Empty;		// Print code
 	String^					m_language = String::Empty;	// Language code
 	String^					m_number = String::Empty;	// Print number
