@@ -97,22 +97,54 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// DARK attribute image
 		/// </summary>
-		public override Bitmap AttributeDark => Resources.attrdark;
+		public override Bitmap AttributeDark
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrdark);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// EARTH attribute image
 		/// </summary>
-		public override Bitmap AttributeEarth => Resources.attrearth;
+		public override Bitmap AttributeEarth
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrearth);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// FIRE attribute image
 		/// </summary>
-		public override Bitmap AttributeFire => Resources.attrfire;
+		public override Bitmap AttributeFire
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrfire);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// LIGHT attribute image
 		/// </summary>
-		public override Bitmap AttributeLight => Resources.attrlight;
+		public override Bitmap AttributeLight
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrlight);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Position of the attribute image
@@ -127,42 +159,106 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// SPELL attribute image
 		/// </summary>
-		public override Bitmap AttributeSpell => Resources.attrspell;
+		public override Bitmap AttributeSpell
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrspell);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// TRAP attribute image
 		/// </summary>
-		public override Bitmap AttributeTrap => Resources.attrtrap;
+		public override Bitmap AttributeTrap
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrtrap);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// WATER attribute image
 		/// </summary>
-		public override Bitmap AttributeWater => Resources.attrwater;
+		public override Bitmap AttributeWater
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrwater);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// WIND attribute image
 		/// </summary>
-		public override Bitmap AttributeWind => Resources.attrwind;
+		public override Bitmap AttributeWind
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_attrwind);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image for an effect monster card
 		/// </summary>
-		public override Bitmap BackgroundEffectMonster => Resources.cardeffect;
+		public override Bitmap BackgroundEffectMonster
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundeffect);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image for a fusion monster card
 		/// </summary>
-		public override Bitmap BackgroundFusionMonster => Resources.cardfusion;
+		public override Bitmap BackgroundFusionMonster
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundfusion);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image for a normal monster card
 		/// </summary>
-		public override Bitmap BackgroundNormalMonster => Resources.cardmonster;
+		public override Bitmap BackgroundNormalMonster
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundnormal);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image for a ritual monster card
 		/// </summary>
-		public override Bitmap BackgroundRitualMonster => Resources.cardritual;
+		public override Bitmap BackgroundRitualMonster
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundritual);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image size
@@ -172,12 +268,28 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Background image for a spell card
 		/// </summary>
-		public override Bitmap BackgroundSpell => Resources.cardspell;
+		public override Bitmap BackgroundSpell
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundspell);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image for a token card
 		/// </summary>
-		public override Bitmap BackgroundToken => Resources.cardtoken;
+		public override Bitmap BackgroundToken
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundtoken);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Background image for a transparent card
@@ -198,7 +310,15 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Background image for a trap card
 		/// </summary>
-		public override Bitmap BackgroundTrap => Resources.cardtrap;
+		public override Bitmap BackgroundTrap
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_backgroundtrap);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Copyright string
@@ -233,7 +353,15 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Eye of Anubis hologram image
 		/// </summary>
-		public override Bitmap Hologram => Resources.eyeofanubis;
+		public override Bitmap Hologram
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_hologram);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Position of the hologram image
@@ -248,22 +376,54 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// CONTINUOUS icon image
 		/// </summary>
-		public override Bitmap IconContinuous => Resources.iconcontinuous;
+		public override Bitmap IconContinuous
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_iconcontinuous);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// COUNTER icon image
 		/// </summary>
-		public override Bitmap IconCounter => Resources.iconcounter;
+		public override Bitmap IconCounter
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_iconcounter);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// EQUIP icon image
 		/// </summary>
-		public override Bitmap IconEquip => Resources.iconequip;
+		public override Bitmap IconEquip
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_iconequip);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// FIELD icon image
 		/// </summary>
-		public override Bitmap IconField => Resources.iconfield;
+		public override Bitmap IconField
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_iconfield);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Position of the spell/trap icon
@@ -273,12 +433,28 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// QUICK-PLAY icon image
 		/// </summary>
-		public override Bitmap IconQuickPlay => Resources.iconquickplay;
+		public override Bitmap IconQuickPlay
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_iconquickplay);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// RITUAL icon image
 		/// </summary>
-		public override Bitmap IconRitual => Resources.iconritual;
+		public override Bitmap IconRitual
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_iconritual);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Size of the spell/trap icon
@@ -288,7 +464,15 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Level star image
 		/// </summary>
-		public override Bitmap LevelStar => Resources.levelstar;
+		public override Bitmap LevelStar
+		{
+			get
+			{
+				Bitmap bmp = new Bitmap(s_levelstar);
+				bmp.SetResolution(96.0F, 96.0F);
+				return bmp;
+			}
+		}
 
 		/// <summary>
 		/// Boundary of the level star area above the image
@@ -389,6 +573,81 @@ namespace zuki.ronin.renderer
 		private static readonly Font s_atkdeftext;
 
 		/// <summary>
+		/// DARK attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrdark = Resources.attrdark;
+
+		/// <summary>
+		/// EARTH attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrearth = Resources.attrearth;
+
+		/// <summary>
+		/// FIRE attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrfire = Resources.attrfire;
+
+		/// <summary>
+		/// LIGHT attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrlight = Resources.attrlight;
+
+		/// <summary>
+		/// SPELL attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrspell = Resources.attrspell;
+
+		/// <summary>
+		/// TRAP attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrtrap = Resources.attrtrap;
+
+		/// <summary>
+		/// WATER attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrwater = Resources.attrwater;
+
+		/// <summary>
+		/// WIND attribute image
+		/// </summary>
+		private static readonly Bitmap s_attrwind = Resources.attrwind;
+
+		/// <summary>
+		/// Background image for effect monster cards
+		/// </summary>
+		private static readonly Bitmap s_backgroundeffect = Resources.cardeffect;
+
+		/// <summary>
+		/// Background image for fusion monster cards
+		/// </summary>
+		private static readonly Bitmap s_backgroundfusion = Resources.cardfusion;
+
+		/// <summary>
+		/// Background image for normal monster cards
+		/// </summary>
+		private static readonly Bitmap s_backgroundnormal = Resources.cardmonster;
+
+		/// <summary>
+		/// Background image for ritual monster cards
+		/// </summary>
+		private static readonly Bitmap s_backgroundritual = Resources.cardritual;
+
+		/// <summary>
+		/// Background image for spell cards
+		/// </summary>
+		private static readonly Bitmap s_backgroundspell = Resources.cardspell;
+
+		/// <summary>
+		/// Background image for tokens
+		/// </summary>
+		private static readonly Bitmap s_backgroundtoken = Resources.cardtoken;
+
+		/// <summary>
+		/// Background image for trap cards
+		/// </summary>
+		private static readonly Bitmap s_backgroundtrap = Resources.cardtrap;
+
+		/// <summary>
 		/// Font to use when rendering effect text
 		/// </summary>
 		private static readonly Font s_effecttext;
@@ -402,6 +661,46 @@ namespace zuki.ronin.renderer
 		/// Font to use when rendering a spell/trap card header
 		/// </summary>
 		private static readonly Font s_headerfont;
+
+		/// <summary>
+		/// Eye of Anubis hologram image
+		/// </summary>
+		private static readonly Bitmap s_hologram = Resources.eyeofanubis;
+
+		/// <summary>
+		/// Continuous icon image
+		/// </summary>
+		private static readonly Bitmap s_iconcontinuous = Resources.iconcontinuous;
+
+		/// <summary>
+		/// Counter icon image
+		/// </summary>
+		private static readonly Bitmap s_iconcounter = Resources.iconcounter;
+
+		/// <summary>
+		/// Equip icon image
+		/// </summary>
+		private static readonly Bitmap s_iconequip = Resources.iconequip;
+
+		/// <summary>
+		/// Field icon image
+		/// </summary>
+		private static readonly Bitmap s_iconfield = Resources.iconfield;
+
+		/// <summary>
+		/// Quick-Play icon image
+		/// </summary>
+		private static readonly Bitmap s_iconquickplay = Resources.iconquickplay;
+
+		/// <summary>
+		/// Ritual icon image
+		/// </summary>
+		private static readonly Bitmap s_iconritual = Resources.iconritual;
+
+		/// <summary>
+		/// Level star image
+		/// </summary>
+		private static readonly Bitmap s_levelstar = Resources.levelstar;
 
 		/// <summary>
 		/// Font to use when rendering the card name
