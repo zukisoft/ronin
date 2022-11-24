@@ -23,6 +23,7 @@
 #include "stdafx.h"
 #include "Print.h"
 
+#include "Artwork.h"
 #include "Card.h"
 #include "Database.h"
 
@@ -167,7 +168,7 @@ bool Print::Equals(Object^ rhs)
 //
 //	NONE
 
-Bitmap^ Print::GetArtwork(void)
+Artwork^ Print::GetArtwork(void)
 {
 	CLRASSERT(CLRISNOTNULL(m_database));
 	return m_database->SelectArtwork(m_artworkid);

@@ -30,12 +30,12 @@
 
 using namespace System;
 using namespace System::Collections::Generic;
-using namespace System::Drawing;
 
 namespace zuki::ronin::data {
 
 // FORWARD DECLARATIONS
 //
+ref class Artwork;
 ref class Database;
 ref class Print;
 
@@ -76,7 +76,7 @@ public:
 	// GetArtwork
 	//
 	// Gets the artwork associated with the card
-	Bitmap^ GetArtwork(void);
+	Artwork^ GetArtwork(void);
 
 	// GetHashCode
 	//
@@ -100,6 +100,15 @@ public:
 
 	//-----------------------------------------------------------------------
 	// Properties
+
+	// ArtworkID
+	//
+	// Gets the artwork unique identifier
+	property Guid ArtworkID
+	{
+		Guid get(void);
+		internal: void set(Guid value);
+	}
 
 	// CardID
 	//
@@ -163,6 +172,7 @@ private:
 	String^					m_name = String::Empty;		// Card name
 	String^					m_passcode = String::Empty;	// Card passcode
 	String^					m_text = String::Empty;		// Card text
+	Guid					m_artworkid;				// Default artwork ID
 };
 
 //---------------------------------------------------------------------------

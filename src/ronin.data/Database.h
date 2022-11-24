@@ -26,6 +26,7 @@
 
 #pragma warning(push, 4)
 
+#include "Artwork.h"
 #include "Card.h"
 #include "CardFilter.h"
 #include "Print.h"
@@ -61,7 +62,7 @@ public:
 	// SelectArtwork
 	//
 	// Selects an artwork object from the database
-	Bitmap^ SelectArtwork(Guid artworkid);
+	Artwork^ SelectArtwork(Guid artworkid);
 
 	// SelectCard
 	//
@@ -81,16 +82,25 @@ public:
 
 internal:
 
-	// SelectArtwork
+	// InsertArtwork
 	//
-	// Gets the default artwork for a Card
-	// TODO: refactor this away in favor of SelectArtwork(artworkid), do the join for SelectCard[s]
-	Bitmap^ SelectArtwork(Card^ card);
+	// Inserts a new artwork image into the database
+	Guid InsertArtwork(Guid cardid, String^ format, int width, int height, array<Byte>^ image);
+
+	// UpdateArtwork
+	//
+	// Updates an artwork image in the database
+	void UpdateArtwork(Guid artworkid, String^ format, int width, int height, array<Byte>^ image);
 
 	// UpdateCardText
 	//
 	// Updates the text for a Card in the database
 	void UpdateCardText(Guid cardid, String^ text);
+
+	// UpdateDefaultArtwork
+	//
+	// Updates the default artwork for a card in the database
+	void UpdateDefaultArtwork(Guid cardid, Guid artworkid);
 
 private:
 

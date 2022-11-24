@@ -20,32 +20,29 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __PRINT_H_
-#define __PRINT_H_
+#ifndef __ARTWORK_H_
+#define __ARTWORK_H_
 #pragma once
-
-#include "PrintRarity.h"
-#include "Series.h"
 
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Drawing;
 
 namespace zuki::ronin::data {
 
 // FORWARD DECLARATIONS
 //
-ref class Artwork;
 ref class Card;
 ref class Database;
 
 //---------------------------------------------------------------------------
-// Class Print
+// Class Artwork
 //
-// Describes a print object
+// Describes an artwork object
 //---------------------------------------------------------------------------
 
-public ref class Print
+public ref class Artwork
 {
 public:
 
@@ -54,11 +51,11 @@ public:
 
 	// operator== (static)
 	//
-	static bool operator==(Print^ lhs, Print^ rhs);
+	static bool operator==(Artwork^ lhs, Artwork^ rhs);
 
 	// operator!= (static)
 	//
-	static bool operator!=(Print^ lhs, Print^ rhs);
+	static bool operator!=(Artwork^ lhs, Artwork^ rhs);
 
 	//-----------------------------------------------------------------------
 	// Member Functions
@@ -70,17 +67,12 @@ public:
 
 	// Equals
 	//
-	// Compares this Print instance to another Print instance
-	bool Equals(Print^ rhs);
-
-	// GetArtwork
-	//
-	// Gets the artwork associated with the print
-	Artwork^ GetArtwork(void);
+	// Compares this Artwork instance to another Artwork instance
+	bool Equals(Artwork^ rhs);
 
 	// GetCard
 	//
-	// Gets the Card associated with the print
+	// Gets the Card associated with the Artwork
 	Card^ GetCard(void);
 
 	// GetHashCode
@@ -88,15 +80,20 @@ public:
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
 
-	// GetSeries
+	// SetDefault
 	//
-	// Gets the Series associated with the print
-	Series^ GetSeries(void);
+	// Sets the artwork as the default for the Card
+	void SetDefault(void);
 
 	// ToString
 	//
 	// Overrides Object::ToString()
 	virtual String^ ToString(void) override;
+
+	// UpdateImage
+	//
+	// Updates the artwork image
+	void UpdateImage(String^ format, int width, int height, array<Byte>^ image);
 
 	//-----------------------------------------------------------------------
 	// Properties
@@ -112,106 +109,73 @@ public:
 
 	// CardID
 	//
-	// Gets the card identifier
+	// Gets the card unique identifier
 	property Guid CardID
 	{
 		Guid get(void);
 		internal: void set(Guid value);
 	}
 
-	// Code
+	// Format
 	//
-	// Gets the print code
-	property String^ Code
+	// Gets the image format
+	property String^ Format
 	{
 		String^ get(void);
 		internal: void set(String^ value);
 	}
 
-	// Language
+	// Height
 	//
-	// Gets the print language
-	property String^ Language
+	// Gets the image height
+	property int Height
 	{
-		String^ get(void);
-		internal: void set(String^ value);
+		int get(void);
+		internal: void set(int value);
 	}
 
-	// Number
+	// Image
 	//
-	// Gets the print number
-	property String^ Number
+	// Gets the artwork image
+	property Bitmap^ Image
 	{
-		String^ get(void);
-		internal: void set(String^ value);
+		Bitmap^ get(void);
+		internal: void set(Bitmap^ value);
 	}
 
-	// PrintID
+	// Width
 	//
-	// Gets the print identifier
-	property Guid PrintID
+	// Gets the image width
+	property int Width
 	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
-	// Rarity
-	//
-	// Gets the print rarity
-	property PrintRarity Rarity
-	{
-		PrintRarity get(void);
-		internal: void set(PrintRarity value);
-	}
-
-	// ReleaseDate
-	//
-	// Gets the print release date
-	property Nullable<DateTime> ReleaseDate
-	{
-		Nullable<DateTime> get(void);
-		internal: void set(Nullable<DateTime> value);
-	}
-
-	// SeriesID
-	//
-	// Gets the series unique identifier
-	property Guid SeriesID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
+		int get(void);
+		internal: void set(int value);
 	}
 
 internal:
 
 	// Instance Constructor
 	//
-	Print(Database^ database);
-
-	//-----------------------------------------------------------------------
-	// Internal Member Functions
-
-	// ParseRarity (static)
-	//
-	// Parses a string into a PrintRarity
-	static PrintRarity ParseRarity(String^ value);
+	Artwork(Database^ database);
 
 private:
+
+	// Destructor
+	//
+	~Artwork();
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
 	initonly Database^		m_database;					// Database instance
+	bool					m_disposed = false;			// Object disposal flag
 
-	Guid					m_printid;					// Unique identifier
-	Guid					m_cardid;					// Card unique identifer
-	Guid					m_seriesid;					// Series unique identifier
-	Guid					m_artworkid;				// Artwork unique identifier
-	String^					m_code = String::Empty;		// Print code
-	String^					m_language = String::Empty;	// Language code
-	String^					m_number = String::Empty;	// Print number
-	PrintRarity				m_rarity;					// Print rarity
-	Nullable<DateTime>		m_releasedate;				// Print release date
+	Guid					m_artworkid;				// Unique identifier
+	Guid					m_cardid;					// Unique identifier
+	String^					m_format = String::Empty;	// Image format
+	int						m_height = 0;				// Image height
+	Bitmap^					m_image;					// Image
+	int						m_width = 0;				// Image width
 };
 
 //---------------------------------------------------------------------------
@@ -220,4 +184,4 @@ private:
 
 #pragma warning(pop)
 
-#endif	// __PRINT_H_
+#endif	// __ARTWORK_H_

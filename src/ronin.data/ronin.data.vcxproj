@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\depends\sqlite\sqlite3.h" />
     <ClInclude Include="..\..\depends\sqlite\sqlite3ext.h" />
+    <ClInclude Include="Artwork.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardFilter.h" />
     <ClInclude Include="CardIcon.h" />
@@ -195,6 +196,7 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
     </ClCompile>
     <ClCompile Include="..\..\tmp\version\version.cpp" />
+    <ClCompile Include="Artwork.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Database.cpp" />

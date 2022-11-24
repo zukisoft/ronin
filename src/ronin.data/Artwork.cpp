@@ -21,106 +21,124 @@
 //---------------------------------------------------------------------------
 
 #include "stdafx.h"
-#include "Card.h"
-
 #include "Artwork.h"
+
+#include "Card.h"
 #include "Database.h"
 
 #pragma warning(push, 4)
 
+using namespace System::IO;
+
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Card Constructor (protected)
+// Artwork Constructor (internal)
 //
 // Arguments:
 //
 //	database	- Underlying Database instance
-//	type		- Card type being constructed
 
-Card::Card(Database^ database, CardType type) : m_database(database), m_type(type)
+Artwork::Artwork(Database^ database) : m_database(database)
 {
 	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
 }
 
 //---------------------------------------------------------------------------
-// Card::operator == (static)
+// Artwork Destructor (private)
 
-bool Card::operator==(Card^ lhs, Card^ rhs)
+Artwork::~Artwork()
+{
+	if(m_disposed) return;
+
+	if(CLRISNOTNULL(m_image)) delete m_image;
+
+	m_disposed = true;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::operator == (static)
+
+bool Artwork::operator==(Artwork^ lhs, Artwork^ rhs)
 {
 	if(Object::ReferenceEquals(lhs, rhs)) return true;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	return lhs->CardID == rhs->CardID;
+	return lhs->ArtworkID == rhs->ArtworkID;
 }
 
 //---------------------------------------------------------------------------
-// Card::operator != (static)
+// Artwork::operator != (static)
 
-bool Card::operator!=(Card^ lhs, Card^ rhs)
+bool Artwork::operator!=(Artwork^ lhs, Artwork^ rhs)
 {
 	if(Object::ReferenceEquals(lhs, rhs)) return false;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return true;
 
-	return lhs->CardID != rhs->CardID;
+	return lhs->ArtworkID != rhs->ArtworkID;
 }
 
 //---------------------------------------------------------------------------
-// Card::ArtworkID::get
+// Artwork::ArtworkID::get
 //
-// Gets the default artwork unique identifier
+// Gets the artwork unique identifier
 
-Guid Card::ArtworkID::get(void)
+Guid Artwork::ArtworkID::get(void)
 {
+	CHECK_DISPOSED(m_disposed);
 	return m_artworkid;
 }
 
 //---------------------------------------------------------------------------
-// Card::ArtworkID::set (internal)
+// Artwork::ArtworkID::set (internal)
 //
-// Sets the default artwork unique identifier
+// Sets the artwork unique identifier
 
-void Card::ArtworkID::set(Guid value)
+void Artwork::ArtworkID::set(Guid value)
 {
+	CHECK_DISPOSED(m_disposed);
 	m_artworkid = value;
 }
 
 //---------------------------------------------------------------------------
-// Card::CardID::get
+// Artwork::CardID::get
 //
 // Gets the card unique identifier
 
-Guid Card::CardID::get(void)
+Guid Artwork::CardID::get(void)
 {
+	CHECK_DISPOSED(m_disposed);
 	return m_cardid;
 }
 
 //---------------------------------------------------------------------------
-// Card::CardID::set (internal)
+// Artwork::CardID::set (internal)
 //
 // Sets the card unique identifier
 
-void Card::CardID::set(Guid value)
+void Artwork::CardID::set(Guid value)
 {
+	CHECK_DISPOSED(m_disposed);
 	m_cardid = value;
 }
 
 //---------------------------------------------------------------------------
-// Card::Equals
+// Artwork::Equals
 //
-// Compares this Card instance to another Card instance
+// Compares this Artwork instance to another Artwork instance
 //
 // Arguments:
 //
-//	rhs		- Right-hand Card instance to compare against
+//	rhs		- Right-hand Artwork instance to compare against
 
-bool Card::Equals(Card^ rhs)
+bool Artwork::Equals(Artwork^ rhs)
 {
+	CHECK_DISPOSED(m_disposed);
 	return (this == rhs);
 }
 
 //---------------------------------------------------------------------------
-// Card::Equals
+// Artwork::Equals
 //
 // Overrides Object::Equals()
 //
@@ -128,34 +146,60 @@ bool Card::Equals(Card^ rhs)
 //
 //	rhs		- Right-hand object instance to compare against
 
-bool Card::Equals(Object^ rhs)
+bool Artwork::Equals(Object^ rhs)
 {
+	CHECK_DISPOSED(m_disposed);
+
 	if(Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	// Convert the provided object into a Card instance
-	Card^ rhsref = dynamic_cast<Card^>(rhs);
+	// Convert the provided object into a Artwork instance
+	Artwork^ rhsref = dynamic_cast<Artwork^>(rhs);
 	if(rhsref == nullptr) return false;
 
 	return (this == rhsref);
 }
 
 //---------------------------------------------------------------------------
-// Card::GetArtwork
+// Artwork::Format::get
 //
-// Gets the artwork associated with the card
+// Gets the artwork format
+
+String^ Artwork::Format::get(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	return m_format;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::Format::set (internal)
+//
+// Sets the artwork format
+
+void Artwork::Format::set(String^ value)
+{
+	CHECK_DISPOSED(m_disposed);
+	m_format = value;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::GetCard
+//
+// Gets the card associated with the artwork
 //
 // Arguments:
 //
 //	NONE
 
-Artwork^ Card::GetArtwork(void)
+Card^ Artwork::GetCard(void)
 {
+	CHECK_DISPOSED(m_disposed);
 	CLRASSERT(CLRISNOTNULL(m_database));
-	return m_database->SelectArtwork(m_artworkid);
+
+	return m_database->SelectCard(m_cardid);
 }
 
 //---------------------------------------------------------------------------
-// Card::GetHashCode
+// Artwork::GetHashCode
 //
 // Overrides Object::GetHashCode()
 //
@@ -163,88 +207,75 @@ Artwork^ Card::GetArtwork(void)
 //
 //	NONE
 
-int Card::GetHashCode(void)
+int Artwork::GetHashCode(void)
 {
+	CHECK_DISPOSED(m_disposed);
 	return m_cardid.GetHashCode();
 }
 
 //---------------------------------------------------------------------------
-// Card::GetPrints
+// Artwork::Height::get
 //
-// Gets the Print objects associated with this Card
+// Gets the artwork height
+
+int Artwork::Height::get(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	return m_height;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::Height::set (internal)
+//
+// Sets the artwork height
+
+void Artwork::Height::set(int value)
+{
+	CHECK_DISPOSED(m_disposed);
+	m_height = value;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::Image::get
+//
+// Gets the artwork image
+
+Bitmap^ Artwork::Image::get(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	return m_image;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::Image::set (internal)
+//
+// Sets the artwork image
+
+void Artwork::Image::set(Bitmap^ value)
+{
+	CHECK_DISPOSED(m_disposed);
+	m_image = value;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::SetDefault
+//
+// Sets the artwork as the default for the card
 //
 // Arguments:
 //
 //	NONE
 
-List<Print^>^ Card::GetPrints(void)
+void Artwork::SetDefault(void)
 {
+	CHECK_DISPOSED(m_disposed);
 	CLRASSERT(CLRISNOTNULL(m_database));
-	return m_database->SelectPrints(this->CardID);
+
+	m_database->UpdateDefaultArtwork(m_cardid, m_artworkid);
 }
 
 //---------------------------------------------------------------------------
-// Card::Name::get
-//
-// Gets the card name
-
-String^ Card::Name::get(void)
-{
-	return m_name;
-}
-
-//---------------------------------------------------------------------------
-// Card::Name::set (internal)
-//
-// Sets the card name
-
-void Card::Name::set(String^ value)
-{
-	m_name = value;
-}
-
-//---------------------------------------------------------------------------
-// Card::Passcode::get
-//
-// Gets the card passcode
-
-String^ Card::Passcode::get(void)
-{
-	return m_passcode;
-}
-
-//---------------------------------------------------------------------------
-// Card::Passcode::set (internal)
-//
-// Sets the card passcode
-
-void Card::Passcode::set(String^ value)
-{
-	m_passcode = value;
-}
-
-//---------------------------------------------------------------------------
-// Card::Text::get
-//
-// Gets the card text
-
-String^ Card::Text::get(void)
-{
-	return m_text;
-}
-
-//---------------------------------------------------------------------------
-// Card::Text::set (internal)
-//
-// Sets the card text
-
-void Card::Text::set(String^ value)
-{
-	m_text = value;
-}
-
-//---------------------------------------------------------------------------
-// Card::ToString
+// Artwork::ToString
 //
 // Overrides Object::ToString()
 //
@@ -252,36 +283,63 @@ void Card::Text::set(String^ value)
 //
 //	NONE
 
-String^ Card::ToString(void)
+String^ Artwork::ToString(void)
 {
-	return m_name;
+	CHECK_DISPOSED(m_disposed);
+	return m_artworkid.ToString();
 }
 
 //---------------------------------------------------------------------------
-// Card::Type::get
+// Artwork::UpdateImage
 //
-// Gets the card type
-
-CardType Card::Type::get(void)
-{
-	return m_type;
-}
-
-//---------------------------------------------------------------------------
-// Card::UpdateText
-//
-// Updates the text for this card in the database
+// Updates the artwork image
 //
 // Arguments:
 //
-//	text		- New text to assign to the card
+//	format		- Image format
+//	width		- Image width
+//	height		- Image height
+//	image		- Image data
 
-void Card::UpdateText(String^ text)
+void Artwork::UpdateImage(String^ format, int width, int height, array<Byte>^ image)
 {
+	CHECK_DISPOSED(m_disposed);
 	CLRASSERT(CLRISNOTNULL(m_database));
 
-	m_database->UpdateCardText(m_cardid, text);
-	m_text = (CLRISNULL(text)) ? "" : text;
+	if(CLRISNULL(format)) throw gcnew ArgumentNullException("format");
+	if(CLRISNULL(image)) throw gcnew ArgumentNullException("format");
+
+	// Attempt to update the image in the database
+	m_database->UpdateArtwork(m_artworkid, format, width, height, image);
+
+	m_format = format;
+	m_width = width;
+	m_height = height;
+
+	if(CLRISNOTNULL(m_image)) delete m_image;
+	m_image = gcnew Bitmap(gcnew MemoryStream(image));
+}
+
+//---------------------------------------------------------------------------
+// Artwork::Width::get
+//
+// Gets the artwork width
+
+int Artwork::Width::get(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	return m_width;
+}
+
+//---------------------------------------------------------------------------
+// Artwork::Width::set (internal)
+//
+// Sets the artwork width
+
+void Artwork::Width::set(int value)
+{
+	CHECK_DISPOSED(m_disposed);
+	m_width = value;
 }
 
 //---------------------------------------------------------------------------

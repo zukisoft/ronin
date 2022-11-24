@@ -64,8 +64,10 @@ namespace zuki.ronin.renderer
 				RenderCommon(graphics, trapcard, alttext);
 
 				// Render the default artwork
-				Bitmap artwork = trapcard.GetArtwork();
-				Engine.DrawArtwork(graphics, s_layout, artwork ?? Resources.defaultartwork);
+				using(Artwork artwork = trapcard.GetArtwork())
+				{
+					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
+				}
 
 				// Draw the card name in solid white
 				Engine.DrawName(graphics, s_layout, trapcard.Name, NameBrush.SolidWhite);
@@ -91,8 +93,10 @@ namespace zuki.ronin.renderer
 				Engine.DrawName(graphics, s_layout, trapcard.Name, NameBrush.SolidWhite);
 
 				// Render the print artwork
-				Bitmap artwork = print.GetArtwork();
-				Engine.DrawArtwork(graphics, s_layout, artwork ?? Resources.defaultartwork);
+				using(Artwork artwork = print.GetArtwork())
+				{
+					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
+				}
 
 				// Draw the set code for the print
 				Engine.DrawSetCode(graphics, s_layout, print.ToString());
