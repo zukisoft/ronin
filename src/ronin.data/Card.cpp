@@ -66,6 +66,24 @@ bool Card::operator!=(Card^ lhs, Card^ rhs)
 }
 
 //---------------------------------------------------------------------------
+// Card::AddArtwork
+//
+// Adds new artwork for the card
+//
+// Arguments:
+//
+//	format		- Artwork image format
+//	width		- Artwork image width
+//	height		- Artwork image height
+//	image		- Artwork image data
+
+void Card::AddArtwork(String^ format, int width, int height, array<Byte>^ image)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+	m_database->InsertArtwork(m_cardid, format, width, height, image);
+}
+
+//---------------------------------------------------------------------------
 // Card::ArtworkID::get
 //
 // Gets the default artwork unique identifier
@@ -140,15 +158,30 @@ bool Card::Equals(Object^ rhs)
 }
 
 //---------------------------------------------------------------------------
-// Card::GetArtwork
+// Card::GetArtworks
 //
-// Gets the artwork associated with the card
+// Gets all the artwork associated with the card
 //
 // Arguments:
 //
 //	NONE
 
-Artwork^ Card::GetArtwork(void)
+List<Artwork^>^ Card::GetArtworks(void)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectArtworks(m_cardid);
+}
+
+//---------------------------------------------------------------------------
+// Card::GetDefaultArtwork
+//
+// Gets the default artwork associated with the card
+//
+// Arguments:
+//
+//	NONE
+
+Artwork^ Card::GetDefaultArtwork(void)
 {
 	CLRASSERT(CLRISNOTNULL(m_database));
 	return m_database->SelectArtwork(m_artworkid);
@@ -221,6 +254,29 @@ String^ Card::Passcode::get(void)
 void Card::Passcode::set(String^ value)
 {
 	m_passcode = value;
+}
+
+//---------------------------------------------------------------------------
+// Card::Refresh
+//
+// ReRefreshes the information for this Card from the database
+//
+// Arguments:
+//
+//	NONE
+
+void Card::Refresh(void)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+
+	// Re-select this Card from the database
+	Card^ card = m_database->SelectCard(m_cardid);
+
+	// Update the member variables to reflect the new information
+	m_name = card->Name;
+	m_passcode = card->Passcode;
+	m_text = card->Text;
+	m_artworkid = card->ArtworkID;
 }
 
 //---------------------------------------------------------------------------

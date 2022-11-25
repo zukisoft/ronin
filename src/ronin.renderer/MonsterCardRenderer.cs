@@ -68,7 +68,7 @@ namespace zuki.ronin.renderer
 				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.SolidBlack);
 
 				// Render the default artwork
-				using(Artwork artwork = monstercard.GetArtwork())
+				using(Artwork artwork = monstercard.GetDefaultArtwork())
 				{
 					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
 				}

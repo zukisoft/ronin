@@ -64,6 +64,11 @@ public:
 	// Selects an artwork object from the database
 	Artwork^ SelectArtwork(Guid artworkid);
 
+	// SelectArtworks
+	//
+	// Selects artwork objects from the database
+	List<Artwork^>^ SelectArtworks(Guid cardid);
+
 	// SelectCard
 	//
 	// Selects a single Card object from the database
@@ -79,6 +84,11 @@ public:
 	//
 	// Selects Print objects from the database
 	List<Print^>^ SelectPrints(Guid cardid);
+
+	// Vacuum
+	//
+	// Vacuums the database
+	void Vacuum(void);
 
 internal:
 

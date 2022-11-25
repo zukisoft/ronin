@@ -21,6 +21,10 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
@@ -28,15 +32,12 @@ using zuki.ronin.ui;
 
 namespace zuki.ronin
 {
-	/// <summary>
-	/// Implements the card text editor dialog box
-	/// </summary>
-	internal partial class CardTextEditor : Form
+	public partial class ArtworkTile : UserControl
 	{
 		/// <summary>
-		/// Default Constructor
+		/// Instance constructor
 		/// </summary>
-		private CardTextEditor()
+		public ArtworkTile()
 		{
 			InitializeComponent();
 
@@ -44,20 +45,14 @@ namespace zuki.ronin
 			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
 			ApplicationTheme.Changed += m_appthemechanged;
 
-			// Reset the theme based on the current system settings
+			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 
 			// Manual DPI scaling
+			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-		}
-
-		/// <summary>
-		/// Instance Constructor
-		/// </summary>
-		/// <param name="cardid">Card to be edited</param>
-		public CardTextEditor(Card card) : this()
-		{
-			m_card = card ?? throw new ArgumentNullException(nameof(card));
+			m_lowerpanel.Margin = m_lowerpanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_lowerpanel.Padding = m_lowerpanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
@@ -75,14 +70,44 @@ namespace zuki.ronin
 			base.Dispose(disposing);
 		}
 
+		//-------------------------------------------------------------------
+		// Events
+		//-------------------------------------------------------------------
+
+		/// <summary>
+		/// Fired when the artwork was changed
+		/// </summary>
+		[Browsable(true), Category("Behavior")]
+		public event EventHandler<Artwork> ArtworkChanged;
+
 		//---------------------------------------------------------------------
-		// Properties
+		// Member Functions
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Gets the updated card text
+		/// Sets the artwork instance
 		/// </summary>
-		public string CardText { get => m_text.Text; }
+		/// <param name="artwork">Artwork instance to display</param>
+		public void SetArtwork(Artwork artwork)
+		{
+			SetArtwork(artwork, false);
+		}
+
+		/// <summary>
+		/// Sets the artwork instance
+		/// </summary>
+		/// <param name="artwork">Artwork instance to display</param>
+		/// <param name="isdefault">Flag indicating if the artwork is the default</param>
+		public void SetArtwork(Artwork artwork, bool isdefault)
+		{
+			m_artwork = artwork ?? throw new ArgumentNullException(nameof(artwork));
+
+			// Hide the Set Default link if the artwork is already the default
+			if(isdefault) m_setdefault.Visible = false;
+
+			// Set the artwork image
+			m_image.Image = artwork.Image;
+		}
 
 		//---------------------------------------------------------------------
 		// Event Handlers
@@ -95,47 +120,64 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
-
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
-			m_insertdot.ActiveLinkColor = ApplicationTheme.LinkColor;
-			m_insertdot.LinkColor = ApplicationTheme.LinkColor;
-			m_insertdot.DisabledLinkColor = ApplicationTheme.PanelForeColor;	// TODO: Need a DisabledLinkColor
-			m_text.BackColor = ApplicationTheme.PanelBackColor;
-			m_text.ForeColor = ApplicationTheme.PanelForeColor;
+			BackColor = ApplicationTheme.PanelBackColor;
+			ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>
-		/// Invoked when the "Insert ●" link has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">LinkLabelLinkClicked event arguments</param>
-		private void OnInsertDot(object sender, LinkLabelLinkClickedEventArgs args)
-		{
-			m_text.Text = m_text.Text.Insert(m_text.SelectionStart, "● ");
-		}
-
-		/// <summary>
-		/// Invoked when the form has been loaded
+		/// Invoked when the "Set Default" button has been clicked
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnLoad(object sender, EventArgs args)
+		private void OnSetDefault(object sender, EventArgs args)
 		{
-			m_text.Text = m_card.Text;
-			m_image.SetCard(m_card, m_text.Text);
-			m_text.Focus();
+			m_artwork.SetDefault();
+			ArtworkChanged?.Invoke(this, m_artwork);
 		}
 
 		/// <summary>
-		/// Invoked when the text field has been validated
+		/// Invoked when the "Update..." button has been clicked
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnTextValidated(object sender, EventArgs args)
+		private void OnUpdate(object sender, EventArgs args)
 		{
-			m_image.SetCard(m_card, m_text.Text);
+			if(m_openfile.ShowDialog(this) != DialogResult.OK) return;
+			string filename = m_openfile.FileName;
+			m_openfile.FileName = string.Empty;
+
+			try
+			{
+				string extension = Path.GetExtension(filename).ToLower().TrimStart(new char[] { '.' });
+
+				// Only support JPG, PNG, and BMP
+				if(!new List<string>(new string[] { "jpg", "png", "bmp" }).Contains(extension))
+					throw new Exception("Unsupported file type. File must be JPG, PNG, or BMP.");
+
+				// Read all of the raw data from the image file
+				byte[] filedata = File.ReadAllBytes(filename);
+				using(MemoryStream memstream = new MemoryStream(filedata))
+				{
+					// Convert the raw data into a Bitmap object to preview
+					using(Bitmap bmp = new Bitmap(memstream))
+					{
+						using(UpdateArtworkDialog preview = new UpdateArtworkDialog(m_artwork.Image, bmp))
+						{
+							if(preview.ShowDialog(ParentForm) == DialogResult.OK)
+							{
+								m_artwork.UpdateImage(extension, bmp.Width, bmp.Height, filedata);
+								ArtworkChanged?.Invoke(this, m_artwork);
+							}
+						}
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				// TODO: Make an error message dialog, go back and try/catch a bunch
+				// of things that aren't protected yet
+				MessageBox.Show(this, ex.Message, "Unable to update artwork");
+			}
 		}
 
 		//---------------------------------------------------------------------
@@ -148,8 +190,8 @@ namespace zuki.ronin
 		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
-		/// Card to be edited
+		/// The displayed Artwork instance
 		/// </summary>
-		private Card m_card;
-    }
+		private Artwork m_artwork;
+	}
 }

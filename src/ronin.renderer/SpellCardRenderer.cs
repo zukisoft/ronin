@@ -64,7 +64,7 @@ namespace zuki.ronin.renderer
 				RenderCommon(graphics, spellcard, alttext);
 
 				// Render the default artwork
-				using(Artwork artwork = spellcard.GetArtwork())
+				using(Artwork artwork = spellcard.GetDefaultArtwork())
 				{
 					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
 				}

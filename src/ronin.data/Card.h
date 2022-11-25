@@ -63,6 +63,11 @@ public:
 	//-----------------------------------------------------------------------
 	// Member Functions
 
+	// AddArtwork
+	//
+	// Adds new artwork for the card
+	void AddArtwork(String^ format, int width, int height, array<Byte>^ image);
+
 	// Equals
 	//
 	// Overrides Object::Equals()
@@ -73,10 +78,15 @@ public:
 	// Compares this Card instance to another Card instance
 	bool Equals(Card^ rhs);
 
-	// GetArtwork
+	// GetArtworks
 	//
-	// Gets the artwork associated with the card
-	Artwork^ GetArtwork(void);
+	// Gets all the artwork associated with the card
+	List<Artwork^>^ GetArtworks(void);
+
+	// GetDefaultArtwork
+	//
+	// Gets the default artwork associated with the card
+	Artwork^ GetDefaultArtwork(void);
 
 	// GetHashCode
 	//
@@ -87,6 +97,11 @@ public:
 	//
 	// Gets the Print objects associated with this Card
 	List<Print^>^ GetPrints(void);
+
+	// Refresh
+	//
+	// Refreshes the information for this Card from the database
+	void Refresh(void);
 
 	// ToString
 	//

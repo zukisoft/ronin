@@ -320,6 +320,7 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 
 	// SCHEMA VERSION 0 -> VERSION 1
 	//
+	// Original database schema
 	if(dbversion == 0) {
 
 		// table: card
@@ -421,6 +422,31 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 
 		execute_non_query(instance, L"pragma user_version = 1");
 		dbversion = 1;
+	}
+
+	// SCHEMA VERSION 1 -> VERSION 2
+	//
+	// Corrects an incorrect PRIMARY KEY constraint on the defaultartwork table
+	if(dbversion == 1) {
+
+		// table: defaultartwork_v1
+		//
+		// cardid(pk,fk) | artworkid(pk,fk)
+		execute_non_query(instance, L"alter table defaultartwork rename to defaultartwork_v1");
+
+		// table: defaultartwork
+		//
+		// cardid(pk,fk) | artworkid(fk)
+		execute_non_query(instance, L"create table defaultartwork(cardid blob not null, artworkid blob not null, "
+			"primary key(cardid), foreign key(cardid) references card(cardid), foreign key(artworkid) references artwork(artworkid))");
+
+		// Remove any NULL artworkid values from the old table, move the data into the new table, and drop the old table
+		execute_non_query(instance, L"delete from defaultartwork_v1 where artworkid is null");
+		execute_non_query(instance, L"insert into defaultartwork select v1.cardid, v1.artworkid from defaultartwork_v1 as v1");
+		execute_non_query(instance, L"drop table defaultartwork_v1");
+
+		execute_non_query(instance, L"pragma user_version = 2");
+		dbversion = 2;
 	}
 }
 
@@ -566,6 +592,91 @@ Artwork^ Database::SelectArtwork(Guid artworkid)
 	finally { sqlite3_finalize(statement); }
 
 	return artwork;
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectArtworks
+//
+// Selects artwork objects from the database
+//
+// Arguments:
+//
+//	cardid	- Card identifier
+
+List<Artwork^>^ Database::SelectArtworks(Guid cardid)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	List<Artwork^>^ artworks = gcnew List<Artwork^>();
+
+	auto sql = L"select artworkid, format, width, height, image from artwork where cardid = ?1";
+
+	// Convert the cardid into a byte array and pin it
+	array<Byte>^ guid = cardid.ToByteArray();
+	pin_ptr<Byte> pinguid = &guid[0];
+
+	// Prepare the query
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pinguid, guid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Artwork^ artwork = gcnew Artwork(this);
+
+			// artworkid
+			artwork->ArtworkID = column_guid(statement, 0);
+
+			// cardid
+			artwork->CardID = cardid;
+
+			// passcode
+			wchar_t const* formatptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 1));
+			artwork->Format = (formatptr == nullptr) ? String::Empty : gcnew String(formatptr);
+
+			// width
+			artwork->Width = sqlite3_column_int(statement, 2);
+
+			// height
+			artwork->Height = sqlite3_column_int(statement, 3);
+
+			// image
+			int length = sqlite3_column_bytes(statement, 4);
+			if(length > 0) {
+
+				// Convert the BLOB data into a new Bitmap instance
+				void const* blob = sqlite3_column_blob(statement, 4);
+				if(blob != nullptr) {
+
+					// Wrap the BLOB in a read-only UnmanagedMemoryStream and create a Bitmap from it
+					Byte* blobptr = reinterpret_cast<unsigned char*>(const_cast<void*>(blob));
+					msclr::auto_handle<UnmanagedMemoryStream> stream(gcnew UnmanagedMemoryStream(blobptr, length, length, FileAccess::Read));
+					artwork->Image = gcnew Bitmap(stream.get());
+				}
+			}
+
+			artworks->Add(artwork);						// Add the Card instance
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return artworks;
 }
 
 //---------------------------------------------------------------------------
@@ -1041,7 +1152,27 @@ void Database::UpdateDefaultArtwork(Guid cardid, Guid artworkid)
 
 	SQLiteSafeHandle::Reference instance(m_handle);
 
-	execute_non_query(instance, L"replace into defaultartwork values(?1, ?2)", cardid, artworkid);
+	execute_non_query(instance, L"insert into defaultartwork values(?1, ?2) "
+		"on conflict(cardid) do update set artworkid = excluded.artworkid", cardid, artworkid);
+}
+
+//---------------------------------------------------------------------------
+// Database::Vacuum
+//
+// Vacuums the database
+//
+// Arguments:
+//
+//	NONE
+
+void Database::Vacuum(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+
+	execute_non_query(instance, L"vacuum");
 }
 
 //---------------------------------------------------------------------------

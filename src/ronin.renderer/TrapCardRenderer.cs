@@ -64,7 +64,7 @@ namespace zuki.ronin.renderer
 				RenderCommon(graphics, trapcard, alttext);
 
 				// Render the default artwork
-				using(Artwork artwork = trapcard.GetArtwork())
+				using(Artwork artwork = trapcard.GetDefaultArtwork())
 				{
 					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
 				}

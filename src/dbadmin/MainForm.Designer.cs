@@ -59,6 +59,7 @@
 			this.Name = "MainForm";
 			this.Text = "RONIN Database Administration";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
 			this.Load += new System.EventHandler(this.OnLoad);
 			this.m_statusstrip.ResumeLayout(false);
 			this.m_statusstrip.PerformLayout();

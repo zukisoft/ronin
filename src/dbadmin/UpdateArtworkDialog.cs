@@ -21,22 +21,18 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
-
-using zuki.ronin.data;
 using zuki.ronin.ui;
 
 namespace zuki.ronin
 {
-	/// <summary>
-	/// Implements the card text editor dialog box
-	/// </summary>
-	internal partial class CardTextEditor : Form
+	public partial class UpdateArtworkDialog : Form
 	{
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
-		private CardTextEditor()
+		private UpdateArtworkDialog()
 		{
 			InitializeComponent();
 
@@ -54,10 +50,12 @@ namespace zuki.ronin
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		/// <param name="cardid">Card to be edited</param>
-		public CardTextEditor(Card card) : this()
+		/// <param name="original">Original artwork image</param>
+		/// <param name="updated">Updated artwork image</param>
+		public UpdateArtworkDialog(Bitmap original, Bitmap updated) : this()
 		{
-			m_card = card ?? throw new ArgumentNullException(nameof(card));
+			m_original.Image = original ?? throw new ArgumentNullException(nameof(original));
+			m_updated.Image = updated ?? throw new ArgumentNullException(nameof(updated));
 		}
 
 		/// <summary>
@@ -76,15 +74,6 @@ namespace zuki.ronin
 		}
 
 		//---------------------------------------------------------------------
-		// Properties
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Gets the updated card text
-		/// </summary>
-		public string CardText { get => m_text.Text; }
-
-		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
 
@@ -99,43 +88,6 @@ namespace zuki.ronin
 
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
-			m_insertdot.ActiveLinkColor = ApplicationTheme.LinkColor;
-			m_insertdot.LinkColor = ApplicationTheme.LinkColor;
-			m_insertdot.DisabledLinkColor = ApplicationTheme.PanelForeColor;	// TODO: Need a DisabledLinkColor
-			m_text.BackColor = ApplicationTheme.PanelBackColor;
-			m_text.ForeColor = ApplicationTheme.PanelForeColor;
-		}
-
-		/// <summary>
-		/// Invoked when the "Insert ●" link has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">LinkLabelLinkClicked event arguments</param>
-		private void OnInsertDot(object sender, LinkLabelLinkClickedEventArgs args)
-		{
-			m_text.Text = m_text.Text.Insert(m_text.SelectionStart, "● ");
-		}
-
-		/// <summary>
-		/// Invoked when the form has been loaded
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnLoad(object sender, EventArgs args)
-		{
-			m_text.Text = m_card.Text;
-			m_image.SetCard(m_card, m_text.Text);
-			m_text.Focus();
-		}
-
-		/// <summary>
-		/// Invoked when the text field has been validated
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnTextValidated(object sender, EventArgs args)
-		{
-			m_image.SetCard(m_card, m_text.Text);
 		}
 
 		//---------------------------------------------------------------------
@@ -146,10 +98,5 @@ namespace zuki.ronin
 		/// Event handler for application theme changes
 		/// </summary>
 		private readonly EventHandler m_appthemechanged;
-
-		/// <summary>
-		/// Card to be edited
-		/// </summary>
-		private Card m_card;
-    }
+	}
 }

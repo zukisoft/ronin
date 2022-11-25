@@ -149,7 +149,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Position of the attribute image
 		/// </summary>
-		public override Point AttributePosition => new Point(689, 68);
+		public override Point AttributePosition => new Point(689, 66);
 
 		/// <summary>
 		/// Size of the attribute image

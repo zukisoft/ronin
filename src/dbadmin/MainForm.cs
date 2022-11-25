@@ -21,6 +21,8 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -134,12 +136,41 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
+		/// Invoked when the form is closing
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Event arguments</param>
+		private void OnClosing(object sender, FormClosingEventArgs args)
+		{
+			//Exception exception = null;
+
+			//// Action<> to perform as the background task
+			//void vacuum()
+			//{
+			//	try { m_database.Vacuum(); }
+			//	catch(Exception ex) { exception = ex; }
+			//}
+
+			//using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Vacuuming database", vacuum))
+			//{
+			//	dialog.ShowDialog(this);
+			//}
+
+			//// Throw up a message box with any connection error that occurred
+			//if(exception != null)
+			//{
+			//	MessageBox.Show(this, exception.Message, "Unable to vacuum database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			//}
+		}
+
+		/// <summary>
 		/// Invoked when the form has been loaded
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
+			// TODO: hacked for ease of debugging for now
 			if(File.Exists("d:\\ronin.db")) m_opendatabase.FileName = "D:\\ronin.db";
 			else
 			{
@@ -159,7 +190,8 @@ namespace zuki.ronin
 			// TODO: TESTING
 			if(m_database != null)
 			{
-				var child = new CardViewer(m_database)
+				//var child = new CardViewer(m_database)
+				var child = new ArtworkManager(m_database)
 				{
 					MdiParent = this
 				};
