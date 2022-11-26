@@ -144,34 +144,6 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
-		/// Invoked when the form is closing
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Event arguments</param>
-		private void OnClosing(object sender, FormClosingEventArgs args)
-		{
-			//Exception exception = null;
-
-			//// Action<> to perform as the background task
-			//void vacuum()
-			//{
-			//	try { m_database.Vacuum(); }
-			//	catch(Exception ex) { exception = ex; }
-			//}
-
-			//using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Vacuuming database", vacuum))
-			//{
-			//	dialog.ShowDialog(this);
-			//}
-
-			//// Throw up a message box with any connection error that occurred
-			//if(exception != null)
-			//{
-			//	MessageBox.Show(this, exception.Message, "Unable to vacuum database", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			//}
-		}
-
-		/// <summary>
 		/// Invoked when the Database/Vacuum... menu option has been selected
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>

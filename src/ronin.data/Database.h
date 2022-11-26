@@ -59,6 +59,11 @@ public:
 	// Creates a new database instance
 	static Database^ Create(String^ path);
 
+	// GetSize
+	//
+	// Gets the current size of the database
+	int64_t GetSize(void);
+
 	// SelectArtwork
 	//
 	// Selects an artwork object from the database

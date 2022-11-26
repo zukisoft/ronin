@@ -207,6 +207,55 @@ static int execute_scalar_int(sqlite3* instance, wchar_t const* sql, _parameters
 }
 
 //---------------------------------------------------------------------------
+// execute_scalar_int64 (local)
+//
+// Executes a database query and returns a scalar 64-bit integer result
+//
+// Arguments:
+//
+//	instance		- Database instance
+//	sql				- SQL query to execute
+//	parameters		- Parameters to be bound to the query
+
+template<typename... _parameters>
+static int64_t execute_scalar_int64(sqlite3* instance, wchar_t const* sql, _parameters&&... parameters)
+{
+	sqlite3_stmt* statement = nullptr;
+	int	paramindex = 1;
+	int64_t	value = 0;
+
+	if(instance == nullptr) throw gcnew ArgumentNullException("instance");
+	if(sql == nullptr) throw gcnew ArgumentNullException("sql");
+
+	// Suppress unreferenced local variable warning when there are no parameters to bind
+	(void)paramindex;
+
+	// Prepare the statement
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the provided query parameter(s) by unpacking the parameter pack
+		int unpack[] = { 0, (static_cast<void>(bind_parameter(statement, paramindex, parameters)), 0) ... };
+		(void)unpack;
+
+		// Execute the query; only the first row returned will be used
+		result = sqlite3_step(statement);
+
+		if(result == SQLITE_ROW) value = sqlite3_column_int64(statement, 0);
+		else if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+		sqlite3_finalize(statement);
+
+		// Return the resultant value from the scalar query
+		return value;
+	}
+
+	catch(Exception^) { sqlite3_finalize(statement); throw; }
+}
+
+//---------------------------------------------------------------------------
 // Database Static Constructor (private)
 //
 // Arguments:
@@ -283,6 +332,29 @@ Database^ Database::Create(String^ path)
 	// Delete the safe handle on a construction failure
 	try { return gcnew Database(handle); }
 	catch(Exception^) { delete handle; throw; }
+}
+
+//---------------------------------------------------------------------------
+// Database::GetSize
+//
+// Gets the current size of the database
+//
+// Arguments:
+//
+//	NONE
+
+int64_t Database::GetSize(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+
+	// The database size is the page size multiplied by the page count
+	int pagesize = execute_scalar_int(instance, L"pragma page_size");
+	int64_t pagecount = execute_scalar_int64(instance, L"pragma page_count");
+
+	return pagecount * pagesize;
 }
 
 //---------------------------------------------------------------------------

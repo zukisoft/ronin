@@ -57,6 +57,8 @@ namespace zuki.ronin
 		public DatabaseVacuumForm(Database database) : this()
 		{
 			m_database = database ?? throw new ArgumentNullException(nameof(database));
+			m_original.Text = m_database.GetSize().ToString() + " Bytes";
+			m_current.Text = m_original.Text;
 		}
 
 		/// <summary>
@@ -89,6 +91,37 @@ namespace zuki.ronin
 
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
+		}
+
+		/// <summary>
+		/// Invoked when the "Vacuum" button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnVacuum(object sender, EventArgs args)
+		{
+			Exception exception = null;
+
+			// Action<> to perform as the background task
+			void vacuum()
+			{
+				try { m_database.Vacuum(); }
+				catch(Exception ex) { exception = ex; }
+			}
+
+			using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Vacuuming database", vacuum))
+			{
+				dialog.ShowDialog(this);
+			}
+
+			// Throw up a message box with any exception that occurred
+			if(exception != null)
+			{
+				// TODO: A common exception dialog is still something this needs
+				MessageBox.Show(this, exception.Message, "Unable to vacuum database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+
+			m_current.Text = m_database.GetSize().ToString() + " Bytes";
 		}
 
 		//---------------------------------------------------------------------
