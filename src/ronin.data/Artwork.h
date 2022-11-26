@@ -85,6 +85,11 @@ public:
 	// Sets the artwork as the default for the Card
 	void SetDefault(void);
 
+	// ToBitmap
+	//
+	// Converts the raw image data into a Bitmap
+	Bitmap^ ToBitmap(void);
+
 	// ToString
 	//
 	// Overrides Object::ToString()
@@ -137,10 +142,10 @@ public:
 	// Image
 	//
 	// Gets the artwork image
-	property Bitmap^ Image
+	property array<Byte>^ Image
 	{
-		Bitmap^ get(void);
-		internal: void set(Bitmap^ value);
+		array<Byte>^ get(void);
+		internal: void set(array<Byte>^ value);
 	}
 
 	// Width
@@ -174,7 +179,7 @@ private:
 	Guid					m_cardid;					// Unique identifier
 	String^					m_format = String::Empty;	// Image format
 	int						m_height = 0;				// Image height
-	Bitmap^					m_image;					// Image
+	array<Byte>^			m_image;					// Image
 	int						m_width = 0;				// Image width
 };
 

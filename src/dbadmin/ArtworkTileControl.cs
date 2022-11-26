@@ -106,7 +106,7 @@ namespace zuki.ronin
 			if(isdefault) m_setdefault.Visible = false;
 
 			// Set the artwork image
-			m_image.Image = artwork.Image;
+			m_image.Image = artwork.ToBitmap();
 		}
 
 		//---------------------------------------------------------------------
@@ -161,7 +161,7 @@ namespace zuki.ronin
 					// Convert the raw data into a Bitmap object to preview
 					using(Bitmap bmp = new Bitmap(memstream))
 					{
-						using(UpdateArtworkDialog preview = new UpdateArtworkDialog(m_artwork.Image, bmp))
+						using(UpdateArtworkDialog preview = new UpdateArtworkDialog(m_artwork.ToBitmap(), bmp))
 						{
 							if(preview.ShowDialog(ParentForm) == DialogResult.OK)
 							{

@@ -70,7 +70,7 @@ namespace zuki.ronin.renderer
 				// Render the default artwork
 				using(Artwork artwork = monstercard.GetDefaultArtwork())
 				{
-					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
+					Engine.DrawArtwork(graphics, s_layout, artwork.ToBitmap() ?? Resources.defaultartwork);
 				}
 			}
 
@@ -96,7 +96,7 @@ namespace zuki.ronin.renderer
 				// Render the print artwork
 				using(Artwork artwork = print.GetArtwork())
 				{
-					Engine.DrawArtwork(graphics, s_layout, artwork.Image ?? Resources.defaultartwork);
+					Engine.DrawArtwork(graphics, s_layout, artwork.ToBitmap() ?? Resources.defaultartwork);
 				}
 
 				// Draw the set code for the print

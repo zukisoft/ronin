@@ -240,7 +240,7 @@ void Artwork::Height::set(int value)
 //
 // Gets the artwork image
 
-Bitmap^ Artwork::Image::get(void)
+array<Byte>^ Artwork::Image::get(void)
 {
 	CHECK_DISPOSED(m_disposed);
 	return m_image;
@@ -251,9 +251,10 @@ Bitmap^ Artwork::Image::get(void)
 //
 // Sets the artwork image
 
-void Artwork::Image::set(Bitmap^ value)
+void Artwork::Image::set(array<Byte>^ value)
 {
 	CHECK_DISPOSED(m_disposed);
+	if(CLRISNOTNULL(m_image)) delete m_image;
 	m_image = value;
 }
 
@@ -272,6 +273,24 @@ void Artwork::SetDefault(void)
 	CLRASSERT(CLRISNOTNULL(m_database));
 
 	m_database->UpdateDefaultArtwork(m_cardid, m_artworkid);
+}
+
+//---------------------------------------------------------------------------
+// Artwork::ToBitmap
+//
+// Converts the raw image data into a Bitmap
+//
+// Arguments:
+//
+//	NONE
+
+Bitmap^ Artwork::ToBitmap(void)
+{
+	CHECK_DISPOSED(m_disposed);
+	if(CLRISNULL(m_image)) return nullptr;
+
+	msclr::auto_handle<MemoryStream> stream(gcnew MemoryStream(m_image));
+	return gcnew Bitmap(stream.get());
 }
 
 //---------------------------------------------------------------------------
@@ -317,7 +336,7 @@ void Artwork::UpdateImage(String^ format, int width, int height, array<Byte>^ im
 	m_height = height;
 
 	if(CLRISNOTNULL(m_image)) delete m_image;
-	m_image = gcnew Bitmap(gcnew MemoryStream(image));
+	m_image = image;
 }
 
 //---------------------------------------------------------------------------

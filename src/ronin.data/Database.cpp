@@ -576,14 +576,13 @@ Artwork^ Database::SelectArtwork(Guid artworkid)
 			int length = sqlite3_column_bytes(statement, 4);
 			if(length > 0) {
 
-				// Convert the BLOB data into a new Bitmap instance
+				array<Byte>^ image = gcnew array<Byte>(length);
+
 				void const* blob = sqlite3_column_blob(statement, 4);
 				if(blob != nullptr) {
 
-					// Wrap the BLOB in a read-only UnmanagedMemoryStream and create a Bitmap from it
-					Byte* blobptr = reinterpret_cast<unsigned char*>(const_cast<void*>(blob));
-					msclr::auto_handle<UnmanagedMemoryStream> stream(gcnew UnmanagedMemoryStream(blobptr, length, length, FileAccess::Read));
-					artwork->Image = gcnew Bitmap(stream.get());
+					Marshal::Copy(IntPtr(const_cast<void*>(blob)), image, 0, length);
+					artwork->Image = image;
 				}
 			}
 		}
@@ -655,14 +654,13 @@ List<Artwork^>^ Database::SelectArtworks(Guid cardid)
 			int length = sqlite3_column_bytes(statement, 4);
 			if(length > 0) {
 
-				// Convert the BLOB data into a new Bitmap instance
+				array<Byte>^ image = gcnew array<Byte>(length);
+
 				void const* blob = sqlite3_column_blob(statement, 4);
 				if(blob != nullptr) {
 
-					// Wrap the BLOB in a read-only UnmanagedMemoryStream and create a Bitmap from it
-					Byte* blobptr = reinterpret_cast<unsigned char*>(const_cast<void*>(blob));
-					msclr::auto_handle<UnmanagedMemoryStream> stream(gcnew UnmanagedMemoryStream(blobptr, length, length, FileAccess::Read));
-					artwork->Image = gcnew Bitmap(stream.get());
+					Marshal::Copy(IntPtr(const_cast<void*>(blob)), image, 0, length);
+					artwork->Image = image;
 				}
 			}
 
