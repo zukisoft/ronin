@@ -1,6 +1,6 @@
 ﻿namespace zuki.ronin
 {
-	partial class CardTextEditor
+	partial class CardTextEditorDialog
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -15,7 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardTextEditor));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardTextEditorDialog));
 			this.m_cancel = new System.Windows.Forms.Button();
 			this.m_ok = new System.Windows.Forms.Button();
 			this.m_panel = new System.Windows.Forms.Panel();

@@ -1,6 +1,6 @@
 ﻿namespace zuki.ronin
 {
-	partial class ArtworkManager
+	partial class ManageArtworkForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -15,7 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtworkManager));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageArtworkForm));
 			this.m_cardselector = new zuki.ronin.ui.CardSelector();
 			this.m_leftpanel = new System.Windows.Forms.Panel();
 			this.m_rightpanel = new System.Windows.Forms.Panel();

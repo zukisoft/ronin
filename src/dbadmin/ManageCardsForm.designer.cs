@@ -1,6 +1,6 @@
 ﻿namespace zuki.ronin
 {
-	partial class CardViewer
+	partial class ManageCardsForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -15,7 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardViewer));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCardsForm));
 			this.m_cardselector = new zuki.ronin.ui.CardSelector();
 			this.m_leftpanel = new System.Windows.Forms.Panel();
 			this.m_rightpanel = new System.Windows.Forms.Panel();
@@ -133,7 +133,7 @@
 			this.m_edittext.UseVisualStyleBackColor = true;
 			this.m_edittext.Click += new System.EventHandler(this.OnEditText);
 			// 
-			// CardViewer
+			// ManageCardsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -142,8 +142,8 @@
 			this.Controls.Add(this.m_leftpanel);
 			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "CardViewer";
-			this.Text = "View Card";
+			this.Name = "ManageCardsForm";
+			this.Text = "Manage Cards";
 			this.Load += new System.EventHandler(this.OnLoad);
 			this.m_leftpanel.ResumeLayout(false);
 			this.m_rightpanel.ResumeLayout(false);

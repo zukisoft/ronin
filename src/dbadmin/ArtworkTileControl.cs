@@ -32,12 +32,12 @@ using zuki.ronin.ui;
 
 namespace zuki.ronin
 {
-	public partial class ArtworkTile : UserControl
+	public partial class ArtworkTileControl : UserControl
 	{
 		/// <summary>
 		/// Instance constructor
 		/// </summary>
-		public ArtworkTile()
+		public ArtworkTileControl()
 		{
 			InitializeComponent();
 

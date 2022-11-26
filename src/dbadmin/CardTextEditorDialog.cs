@@ -21,23 +21,22 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
-using zuki.ronin.renderer;
+using zuki.ronin.ui;
 
-namespace zuki.ronin.ui
+namespace zuki.ronin
 {
 	/// <summary>
-	/// Implements a card image picture box
+	/// Implements the card text editor dialog box
 	/// </summary>
-	public partial class CardImage : UserControl
+	internal partial class CardTextEditorDialog : Form
 	{
 		/// <summary>
-		/// Instance Constructor
+		/// Default Constructor
 		/// </summary>
-		public CardImage()
+		private CardTextEditorDialog()
 		{
 			InitializeComponent();
 
@@ -45,12 +44,20 @@ namespace zuki.ronin.ui
 			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
 			ApplicationTheme.Changed += m_appthemechanged;
 
-			// Reset the theme based on the current settings
+			// Reset the theme based on the current system settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 
 			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+		}
+
+		/// <summary>
+		/// Instance Constructor
+		/// </summary>
+		/// <param name="cardid">Card to be edited</param>
+		public CardTextEditorDialog(Card card) : this()
+		{
+			m_card = card ?? throw new ArgumentNullException(nameof(card));
 		}
 
 		/// <summary>
@@ -69,36 +76,13 @@ namespace zuki.ronin.ui
 		}
 
 		//---------------------------------------------------------------------
-		// Member Functions
+		// Properties
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Sets the image from a Card instance
+		/// Gets the updated card text
 		/// </summary>
-		/// <param name="card">Card for which to render and display the image</param>
-		public void SetCard(Card card)
-		{
-			SetImage((card != null) ? Renderer.RenderCard(card) : null);
-		}
-
-		/// <summary>
-		/// Sets the image from a Card instance with alternate text
-		/// </summary>
-		/// <param name="card">Card for which to render and display the image</param>
-		/// <param name="text">Alternate text to render for the card</param>
-		public void SetCard(Card card, string text)
-		{
-			SetImage((card != null) ? Renderer.RenderCard(card, text) : null);
-		}
-
-		/// <summary>
-		/// Sets the image from a Print instance
-		/// </summary>
-		/// <param name="print">Print for which to render and display the image</param>
-		public void SetPrint(Print print)
-		{
-			SetImage((print != null) ? Renderer.RenderPrint(print) : null);
-		}
+		public string CardText { get => m_text.Text; }
 
 		//---------------------------------------------------------------------
 		// Event Handlers
@@ -111,24 +95,47 @@ namespace zuki.ronin.ui
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
+			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
+
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
-			m_image.BackColor = ApplicationTheme.PanelBackColor;
+			m_insertdot.ActiveLinkColor = ApplicationTheme.LinkColor;
+			m_insertdot.LinkColor = ApplicationTheme.LinkColor;
+			m_insertdot.DisabledLinkColor = ApplicationTheme.PanelForeColor;	// TODO: Need a DisabledLinkColor
+			m_text.BackColor = ApplicationTheme.PanelBackColor;
+			m_text.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
-		//---------------------------------------------------------------------
-		// Private Member Functions
-		//---------------------------------------------------------------------
+		/// <summary>
+		/// Invoked when the "Insert ●" link has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">LinkLabelLinkClicked event arguments</param>
+		private void OnInsertDot(object sender, LinkLabelLinkClickedEventArgs args)
+		{
+			m_text.Text = m_text.Text.Insert(m_text.SelectionStart, "● ");
+		}
 
 		/// <summary>
-		/// Replaces the displayed card image
+		/// Invoked when the form has been loaded
 		/// </summary>
-		/// <param name="image">Image to display</param>
-		private void SetImage(Bitmap image)
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnLoad(object sender, EventArgs args)
 		{
-			Image old = m_image.Image;
-			m_image.Image = image ?? null;
-			old?.Dispose();
+			m_text.Text = m_card.Text;
+			m_image.SetCard(m_card, m_text.Text);
+			m_text.Focus();
+		}
+
+		/// <summary>
+		/// Invoked when the text field has been validated
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnTextValidated(object sender, EventArgs args)
+		{
+			m_image.SetCard(m_card, m_text.Text);
 		}
 
 		//---------------------------------------------------------------------
@@ -139,5 +146,10 @@ namespace zuki.ronin.ui
 		/// Event handler for application theme changes
 		/// </summary>
 		private readonly EventHandler m_appthemechanged;
-	}
+
+		/// <summary>
+		/// Card to be edited
+		/// </summary>
+		private Card m_card;
+    }
 }

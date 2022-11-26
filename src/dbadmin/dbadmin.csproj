@@ -84,17 +84,23 @@
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
     </Compile>
-    <Compile Include="ArtworkManager.cs">
+    <Compile Include="DatabaseVacuumForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArtworkManager.designer.cs">
-      <DependentUpon>ArtworkManager.cs</DependentUpon>
+    <Compile Include="DatabaseVacuumForm.designer.cs">
+      <DependentUpon>DatabaseVacuumForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArtworkTile.cs">
+    <Compile Include="ManageArtworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageArtworkForm.designer.cs">
+      <DependentUpon>ManageArtworkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArtworkTileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ArtworkTile.Designer.cs">
-      <DependentUpon>ArtworkTile.cs</DependentUpon>
+    <Compile Include="ArtworkTileControl.Designer.cs">
+      <DependentUpon>ArtworkTileControl.cs</DependentUpon>
     </Compile>
     <Compile Include="BackgroundTaskDialog.cs">
       <SubType>Form</SubType>
@@ -102,17 +108,23 @@
     <Compile Include="BackgroundTaskDialog.designer.cs">
       <DependentUpon>BackgroundTaskDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="CardTextEditor.cs">
+    <Compile Include="CardTextEditorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CardTextEditor.designer.cs">
-      <DependentUpon>CardTextEditor.cs</DependentUpon>
+    <Compile Include="CardTextEditorDialog.designer.cs">
+      <DependentUpon>CardTextEditorDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="CardViewer.cs">
+    <Compile Include="ManageCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CardViewer.designer.cs">
-      <DependentUpon>CardViewer.cs</DependentUpon>
+    <Compile Include="ManageCardsForm.designer.cs">
+      <DependentUpon>ManageCardsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportArtworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportArtworkForm.designer.cs">
+      <DependentUpon>ExportArtworkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -128,20 +140,26 @@
     <Compile Include="UpdateArtworkDialog.Designer.cs">
       <DependentUpon>UpdateArtworkDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ArtworkManager.resx">
-      <DependentUpon>ArtworkManager.cs</DependentUpon>
+    <EmbeddedResource Include="DatabaseVacuumForm.resx">
+      <DependentUpon>DatabaseVacuumForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArtworkTile.resx">
-      <DependentUpon>ArtworkTile.cs</DependentUpon>
+    <EmbeddedResource Include="ManageArtworkForm.resx">
+      <DependentUpon>ManageArtworkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtworkTileControl.resx">
+      <DependentUpon>ArtworkTileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackgroundTaskDialog.resx">
       <DependentUpon>BackgroundTaskDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CardTextEditor.resx">
-      <DependentUpon>CardTextEditor.cs</DependentUpon>
+    <EmbeddedResource Include="CardTextEditorDialog.resx">
+      <DependentUpon>CardTextEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CardViewer.resx">
-      <DependentUpon>CardViewer.cs</DependentUpon>
+    <EmbeddedResource Include="ManageCardsForm.resx">
+      <DependentUpon>ManageCardsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportArtworkForm.resx">
+      <DependentUpon>ExportArtworkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

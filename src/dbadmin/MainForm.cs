@@ -82,7 +82,8 @@ namespace zuki.ronin
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 
-			// Set the custom professional renderer for the StatusStrip
+			// Set the custom professional renderer for the MenuStrip and StatusStrip
+			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
 			m_statusstrip.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
 
 			// Enable rounded corners if supported by the OS
@@ -133,6 +134,13 @@ namespace zuki.ronin
 			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
+
+			foreach(ToolStripMenuItem item in m_menu.Items)
+			{
+				item.ForeColor = ApplicationTheme.MenuForeColor;
+				item.DropDown.BackColor = ApplicationTheme.MenuBackColor;
+				item.DropDown.ForeColor = ApplicationTheme.MenuForeColor;
+			}
 		}
 
 		/// <summary>
@@ -164,6 +172,46 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
+		/// Invoked when the Database/Vacuum... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnDatabaseVacuum(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(DatabaseVacuumForm)))
+			{
+				var child = new DatabaseVacuumForm(m_database);
+				child.MdiParent = this;
+				child.Show();
+			}
+		}
+
+		/// <summary>
+		/// Invoked when the Export/Artwork... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnExportArtwork(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(ExportArtworkForm)))
+			{
+				var child = new ExportArtworkForm(m_database);
+				child.MdiParent = this;
+				child.Show();
+			}
+		}
+
+		/// <summary>
+		/// Invoked when the File/Exit menu option is selected
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="args"></param>
+		private void OnFileExit(object sender, EventArgs args)
+		{
+			Close();
+		}
+
+		/// <summary>
 		/// Invoked when the form has been loaded
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
@@ -187,14 +235,36 @@ namespace zuki.ronin
 			}
 			catch(Exception) { /* TODO - HANDLER */ }
 
-			// TODO: TESTING
-			if(m_database != null)
+			// Use the Card Manager as the default MDI child
+			OnManageCards(this, EventArgs.Empty);
+		}
+
+		/// <summary>
+		/// Invoked when the Manage/Artwork... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnManageArtwork(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(ManageArtworkForm)))
 			{
-				//var child = new CardViewer(m_database)
-				var child = new ArtworkManager(m_database)
-				{
-					MdiParent = this
-				};
+				var child = new ManageArtworkForm(m_database);
+				child.MdiParent = this;
+				child.Show();
+			}
+		}
+
+		/// <summary>
+		/// Invoked when the Manage/Cards... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnManageCards(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(ManageCardsForm)))
+			{
+				var child = new ManageCardsForm(m_database);
+				child.MdiParent = this;
 				child.Show();
 			}
 		}
@@ -213,6 +283,44 @@ namespace zuki.ronin
 				// will not be any light/dark mode setting to access
 				ApplicationTheme.SetTheme(Theme.System);
 			}));
+		}
+
+		/// <summary>
+		/// Invoked when the Window/Close All menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnWindowCloseAll(object sender, EventArgs args)
+		{
+			foreach(var child in MdiChildren)
+			{
+				child.Close();
+				child.Dispose();
+			}
+		}
+
+		//---------------------------------------------------------------------------
+		// Private Member Functions
+		//---------------------------------------------------------------------------
+
+		/// <summary>
+		/// Checks if an MDI child of the specified type already exists and activates it
+		/// </summary>
+		/// <param name="childtype">Type of the MDI child to check for</param>
+		/// <returns>Flag indicating if an MDI child of the specified type existed</returns>
+		private bool ActivateExistingMDIChild(Type childtype)
+		{
+			foreach(var child in MdiChildren)
+			{
+				if(child.GetType() == childtype)
+				{
+					child.Show();
+					child.Activate();
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		//---------------------------------------------------------------------

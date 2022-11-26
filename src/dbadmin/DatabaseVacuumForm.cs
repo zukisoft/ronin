@@ -21,7 +21,7 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
@@ -29,15 +29,12 @@ using zuki.ronin.ui;
 
 namespace zuki.ronin
 {
-	/// <summary>
-	/// Implements the card viewer form
-	/// </summary>
-	public partial class CardViewer : Form
+	public partial class DatabaseVacuumForm : Form
 	{
 		/// <summary>
-		/// Default constructor
+		/// Default Constructor
 		/// </summary>
-		private CardViewer()
+		private DatabaseVacuumForm()
 		{
 			InitializeComponent();
 
@@ -53,10 +50,11 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
-		/// Instance constructor
+		/// Instance Constructor
 		/// </summary>
-		/// <param name="database">Database instance to use</param>
-		public CardViewer(Database database) : this()
+		/// <param name="original">Original artwork image</param>
+		/// <param name="updated">Updated artwork image</param>
+		public DatabaseVacuumForm(Database database) : this()
 		{
 			m_database = database ?? throw new ArgumentNullException(nameof(database));
 		}
@@ -87,101 +85,10 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			// NOTE: This is not working for MDI child forms
 			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
 
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
-			m_separator.BackColor = ApplicationTheme.InvertedPanelBackColor;
-		}
-
-		/// <summary>
-		/// Invoked when the "Edit Card Text..." button has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnEditText(object sender, EventArgs args)
-		{
-			if(m_selected == null) return;
-
-			using(CardTextEditor dialog = new CardTextEditor(m_selected))
-			{
-				if(dialog.ShowDialog(this) == DialogResult.OK)
-				{
-					m_selected.UpdateText(dialog.CardText);
-					OnSelectionChanged(this, m_selected);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Invoked when the form has been loaded
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnLoad(object sender, EventArgs args)
-		{
-			// TODO: TESTING
-			m_cardselector.Cards = m_database.SelectCards(null);
-		}
-
-		/// <summary>
-		/// Invoked when the next button has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnNext(object sender, EventArgs args)
-		{
-			if(m_selected == null) return;
-
-			Print print = m_prints[++m_printindex];
-			if(print == null) m_image.SetCard(m_selected);
-			else m_image.SetPrint(print);
-
-			m_previous.Enabled = true;
-			m_next.Enabled = (m_printindex + 1) < m_prints.Count;
-		}
-
-		/// <summary>
-		/// Invoked when the previous button has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnPrevious(object sender, EventArgs args)
-		{
-			if(m_selected == null) return;
-
-			Print print = m_prints[--m_printindex];
-			if(print == null) m_image.SetCard(m_selected);
-			else m_image.SetPrint(print);
-
-			m_previous.Enabled = m_printindex > 0;
-			m_next.Enabled = m_prints.Count > 1;
-		}
-
-		/// <summary>
-		/// Invoked when the selected card has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="card">Selected Card instance</param>
-		private void OnSelectionChanged(object sender, Card card)
-		{
-			m_selected = card;
-			m_edittext.Enabled = m_selected != null;
-
-			m_prints.Clear();
-			m_printindex = 0;
-
-			if(card != null)
-			{
-				m_prints.Add(null);         // Generic image
-				m_prints.AddRange(card.GetPrints());
-			}
-
-			m_previous.Enabled = false;
-			m_next.Enabled = m_prints.Count > 1;
-
-			m_image.SetCard(m_selected);
 		}
 
 		//---------------------------------------------------------------------
@@ -197,20 +104,5 @@ namespace zuki.ronin
 		/// Database instance
 		/// </summary>
 		private readonly Database m_database;
-
-		/// <summary>
-		/// Currently selected Card instance
-		/// </summary>
-		private Card m_selected;
-
-		/// <summary>
-		/// List<> of available prints for the selected Card
-		/// </summary>
-		private List<Print> m_prints = new List<Print>();
-
-		/// <summary>
-		/// Index of the currently displayed print
-		/// </summary>
-		private int m_printindex;
 	}
 }

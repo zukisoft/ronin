@@ -35,12 +35,12 @@ namespace zuki.ronin
 	/// <summary>
 	/// Implements the artwork manager form
 	/// </summary>
-	public partial class ArtworkManager : Form
+	public partial class ManageArtworkForm : Form
 	{
 		/// <summary>
 		/// Default constructor
 		/// </summary>
-		private ArtworkManager()
+		private ManageArtworkForm()
 		{
 			InitializeComponent();
 
@@ -59,7 +59,7 @@ namespace zuki.ronin
 		/// Instance constructor
 		/// </summary>
 		/// <param name="database">Database instance to use</param>
-		public ArtworkManager(Database database) : this()
+		public ManageArtworkForm(Database database) : this()
 		{
 			m_database = database ?? throw new ArgumentNullException(nameof(database));
 		}
@@ -222,7 +222,7 @@ namespace zuki.ronin
 
 				foreach(Artwork artwork in artworks)
 				{
-					ArtworkTile tile = new ArtworkTile();
+					ArtworkTileControl tile = new ArtworkTileControl();
 					m_layoutpanel.Controls.Add(tile);
 					tile.ArtworkChanged += new EventHandler<Artwork>(OnArtworkChanged);
 					tile.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;

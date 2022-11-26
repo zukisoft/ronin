@@ -1,6 +1,6 @@
 ﻿namespace zuki.ronin
 {
-	partial class ArtworkTile
+	partial class ArtworkTileControl
 	{
 		/// <summary> 
 		/// Required designer variable.
