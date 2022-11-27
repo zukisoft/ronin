@@ -66,7 +66,7 @@ namespace zuki.ronin.renderer
 				// Render the default artwork
 				using(Artwork artwork = spellcard.GetDefaultArtwork())
 				{
-					Engine.DrawArtwork(graphics, s_layout, artwork.ToBitmap() ?? Resources.defaultartwork);
+					Engine.DrawArtwork(graphics, s_layout, (artwork != null) ? artwork.ToBitmap() : Resources.defaultartwork);
 				}
 
 				// Draw the card name in solid white
@@ -95,7 +95,7 @@ namespace zuki.ronin.renderer
 				// Render the print artwork
 				using(Artwork artwork = print.GetArtwork())
 				{
-					Engine.DrawArtwork(graphics, s_layout, artwork.ToBitmap() ?? Resources.defaultartwork);
+					Engine.DrawArtwork(graphics, s_layout, (artwork != null) ? artwork.ToBitmap() : Resources.defaultartwork);
 				}
 
 				// Draw the set code for the print

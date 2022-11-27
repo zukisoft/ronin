@@ -335,6 +335,300 @@ Database^ Database::Create(String^ path)
 }
 
 //---------------------------------------------------------------------------
+// Database::EnumerateArtwork
+//
+// Enumerates Artwork from the database
+//
+// Arguments:
+//
+//	callback	- Action<> to invoke for each Artwork instance
+
+void Database::EnumerateArtwork(Action<Artwork^>^ callback)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(callback)) throw gcnew ArgumentNullException("callback");
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	auto sql = L"select artworkid, cardid, format, width, height, image from artwork";
+
+	// Prepare the query
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			// Artwork is disposable
+			msclr::auto_handle<Artwork> artwork(gcnew Artwork(this));
+
+			// artworkid
+			artwork->ArtworkID = column_guid(statement, 0);
+
+			// cardid
+			artwork->CardID = column_guid(statement, 1);
+
+			// passcode
+			wchar_t const* formatptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 2));
+			artwork->Format = (formatptr == nullptr) ? String::Empty : gcnew String(formatptr);
+
+			// width
+			artwork->Width = sqlite3_column_int(statement, 3);
+
+			// height
+			artwork->Height = sqlite3_column_int(statement, 4);
+
+			// image
+			int length = sqlite3_column_bytes(statement, 5);
+			if(length > 0) {
+
+				array<Byte>^ image = gcnew array<Byte>(length);
+
+				void const* blob = sqlite3_column_blob(statement, 5);
+				if(blob != nullptr) {
+
+					Marshal::Copy(IntPtr(const_cast<void*>(blob)), image, 0, length);
+					artwork->Image = image;
+				}
+			}
+
+			// Invoke the callback and just eat any exceptions that occur
+			try { callback->Invoke(artwork.get()); }
+			catch(Exception^) { /* DO NOTHING */ }
+
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
+// Database::EnumerateCards
+//
+// Enumerates Cards from the database
+//
+// Arguments:
+//
+//	callback	- Action<> to invoke for each Card instance
+
+void Database::EnumerateCards(Action<Card^>^ callback)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(callback)) throw gcnew ArgumentNullException("callback");
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	// { 00-05 } type | cardid | name | passcode | text | artworkid
+	// { 06-18 } attribute | level | type | attack | defense | normal | effect | fusion | ritual | toon | union | spirit | gemini |
+	// { 19-24 } normal | continuous | equip | field | quickplay | ritual |
+	// { 25-27 } normal | continuous | counter
+	auto sql = L"select cardtype(card.type), card.cardid, card.name, card.passcode, card.text, defaultartwork.artworkid, "
+		"monsterattribute(monster.attribute), monster.level, monstertype(monster.type), monster.attack, "
+		"monster.defense, monster.normal, monster.effect, monster.fusion, monster.ritual,  "
+		"monster.toon, monster.[union], monster.spirit, monster.gemini, "
+		"spell.normal, spell.continuous, spell.equip, spell.field, spell.quickplay, spell.ritual, "
+		"trap.normal, trap.continuous, trap.counter from card "
+		"left outer join defaultartwork on card.cardid = defaultartwork.cardid "
+		"left outer join monster on card.cardid = monster.cardid "
+		"left outer join spell on card.cardid = spell.cardid "
+		"left outer join trap on card.cardid = trap.cardid "
+		"order by card.name asc";
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Card^ card = nullptr;
+
+			// Get the type of card being iterated here in order to instantiate the
+			// proper derivation of the Card class
+			CardType type = static_cast<CardType>(sqlite3_column_int(statement, 0));
+
+			// MonsterCard
+			if(type == CardType::Monster) {
+
+				MonsterCard^ monster = gcnew MonsterCard(this);
+
+				monster->Attribute = static_cast<CardAttribute>(sqlite3_column_int(statement, 6));
+				monster->Level = sqlite3_column_int(statement, 7);
+				monster->Type = static_cast<MonsterType>(sqlite3_column_int(statement, 8));
+				monster->Attack = sqlite3_column_int(statement, 9);
+				monster->Defense = sqlite3_column_int(statement, 10);
+				monster->Normal = (sqlite3_column_int(statement, 11) != 0);
+				monster->Effect = (sqlite3_column_int(statement, 12) != 0);
+				monster->Fusion = (sqlite3_column_int(statement, 13) != 0);
+				monster->Ritual = (sqlite3_column_int(statement, 14) != 0);
+				monster->Toon = (sqlite3_column_int(statement, 15) != 0);
+				monster->Union = (sqlite3_column_int(statement, 16) != 0);
+				monster->Spirit = (sqlite3_column_int(statement, 17) != 0);
+				monster->Gemini = (sqlite3_column_int(statement, 18) != 0);
+
+				card = static_cast<Card^>(monster);
+			}
+
+			// SpellCard
+			else if(type == CardType::Spell) {
+
+				SpellCard^ spell = gcnew SpellCard(this);
+
+				spell->Normal = (sqlite3_column_int(statement, 19) != 0);
+				spell->Continuous = (sqlite3_column_int(statement, 20) != 0);
+				spell->Equip = (sqlite3_column_int(statement, 21) != 0);
+				spell->Field = (sqlite3_column_int(statement, 22) != 0);
+				spell->QuickPlay = (sqlite3_column_int(statement, 23) != 0);
+				spell->Ritual = (sqlite3_column_int(statement, 24) != 0);
+
+				card = static_cast<Card^>(spell);
+			}
+
+			// TrapCard
+			else if(type == CardType::Trap) {
+
+				TrapCard^ trap = gcnew TrapCard(this);
+
+				trap->Normal = (sqlite3_column_int(statement, 25) != 0);
+				trap->Continuous = (sqlite3_column_int(statement, 26) != 0);
+				trap->Counter = (sqlite3_column_int(statement, 27) != 0);
+
+				card = static_cast<Card^>(trap);
+			}
+
+			else throw gcnew Exception("Invalid card.type value");
+
+			// The base class reference should have been set above
+			CLRASSERT(card != nullptr);
+
+			// cardid
+			card->CardID = column_guid(statement, 1);
+
+			// name
+			wchar_t const* nameptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 2));
+			card->Name = (nameptr == nullptr) ? String::Empty : gcnew String(nameptr);
+
+			// passcode
+			wchar_t const* passcodeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 3));
+			card->Passcode = (passcodeptr == nullptr) ? String::Empty : gcnew String(passcodeptr);
+
+			// text
+			wchar_t const* textptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			card->Text = (textptr == nullptr) ? String::Empty : gcnew String(textptr);
+
+			// artworkid
+			card->ArtworkID = column_guid(statement, 5);
+
+			// Invoke the callback and just eat any exceptions that occur
+			try { callback->Invoke(card); }
+			catch(Exception^) { /* DO NOTHING */ }
+
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
+// Database::EnumeratePrints
+//
+// Enumerates Cards from the database
+//
+// Arguments:
+//
+//	callback	- Action<> to invoke for each Print instance
+
+void Database::EnumeratePrints(Action<Print^>^ callback)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(callback)) throw gcnew ArgumentNullException("callback");
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	// printid | cardid | seriesid | artworkid | code | language | number | rarity | releasedate
+	auto sql = L"select print.printid, print.cardid, print.seriesid, print.artworkid, print.code, print.language, "
+		"print.number, printrarity(print.rarity), print.releasedate from print "
+		"order by print.releasedate asc";
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Print^ print = gcnew Print(this);
+
+			// printid
+			print->PrintID = column_guid(statement, 0);
+
+			// cardid
+			print->CardID = column_guid(statement, 1);
+
+			// seriesid
+			print->SeriesID = column_guid(statement, 2);
+
+			// artworkid
+			print->ArtworkID = column_guid(statement, 3);
+
+			// code
+			wchar_t const* codeptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			print->Code = (codeptr == nullptr) ? String::Empty : gcnew String(codeptr);
+
+			// language
+			wchar_t const* languageptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 5));
+			print->Language = (languageptr == nullptr) ? String::Empty : gcnew String(languageptr);
+
+			// number
+			wchar_t const* numberptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 6));
+			print->Number = (numberptr == nullptr) ? String::Empty : gcnew String(numberptr);
+
+			// rarity
+			print->Rarity = static_cast<PrintRarity>(sqlite3_column_int(statement, 7));
+
+			// releasedate
+			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 8));
+			print->ReleaseDate = (releasedateptr == nullptr) ? Nullable<DateTime>() : DateTime::Parse(gcnew String(releasedateptr));
+
+			// Invoke the callback and just eat any exceptions that occur
+			try { callback->Invoke(print); }
+			catch(Exception^) { /* DO NOTHING */ }
+
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
 // Database::GetSize
 //
 // Gets the current size of the database

@@ -21,7 +21,8 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
@@ -89,6 +90,81 @@ namespace zuki.ronin
 
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
+
+			m_folder.BackColor = ApplicationTheme.PanelBackColor;
+			m_folder.ForeColor = ApplicationTheme.PanelForeColor;
+		}
+
+		/// <summary>
+		/// Invoked when the "..." button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnBrowse(object sender, EventArgs args)
+		{
+			if(m_folderbrowser.ShowDialog(this) == DialogResult.OK)
+				m_folder.Text = m_folderbrowser.SelectedPath;
+		}
+
+		/// <summary>
+		/// Invoked when the "Close" button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnClose(object sender, EventArgs args)
+		{
+			Close();
+		}
+
+		/// <summary>
+		/// Invoked when the "Export" button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnExport(object sender, EventArgs args)
+		{
+			Exception exception = null;
+
+			// Action<> to perform as the background task
+			void export()
+			{
+				// Iterate over all of the cards in the database
+				m_database.EnumerateCards(card =>
+				{
+					List<Artwork> art = card.GetArtworks();
+					for(int index = 0; index < art.Count; index++)
+					{
+						// "Dark Magician (1).jpg"
+						string filename = Path.Combine(m_folder.Text, card.Name);
+						if(index > 0) filename += " (" + index.ToString() + ")";
+						filename += "." + art[index].Format.ToLower();
+						File.WriteAllBytes(filename, art[index].Image);
+					}
+				});
+			}
+
+			// Use a background task dialog to execute the operation
+			using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Exporting Artwork", export))
+			{
+				dialog.ShowDialog(ParentForm);
+			}
+
+			// Throw up a message box with any exception that occurred
+			if(exception != null)
+			{
+				// TODO: A common exception dialog is still something this needs
+				MessageBox.Show(this, exception.Message, "Unable to export artwork", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		/// <summary>
+		/// Invoked when the folder name changes
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnFolderChanged(object sender, EventArgs args)
+		{
+			m_export.Enabled = Directory.Exists(m_folder.Text);
 		}
 
 		//---------------------------------------------------------------------

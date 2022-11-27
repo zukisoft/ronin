@@ -59,6 +59,21 @@ public:
 	// Creates a new database instance
 	static Database^ Create(String^ path);
 
+	// EnumerateArtwork
+	//
+	// Enumerates Artwork from the database
+	void EnumerateArtwork(Action<Artwork^>^ callback);
+
+	// EnumerateCards
+	//
+	// Enumerates Cards from the database
+	void EnumerateCards(Action<Card^>^ callback);
+
+	// EnumeratePrints
+	//
+	// Enumerates Prints from the database
+	void EnumeratePrints(Action<Print^>^ callback);
+
 	// GetSize
 	//
 	// Gets the current size of the database
