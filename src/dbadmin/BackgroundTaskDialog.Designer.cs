@@ -41,6 +41,9 @@
 			// 
 			// m_marquee
 			// 
+			this.m_marquee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_marquee.Location = new System.Drawing.Point(8, 33);
 			this.m_marquee.Margin = new System.Windows.Forms.Padding(2);
 			this.m_marquee.MarqueeAnimationSpeed = 20;

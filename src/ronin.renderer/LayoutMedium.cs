@@ -40,6 +40,10 @@ namespace zuki.ronin.renderer
 			s_atkdeftext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBoldSmallCaps, 40,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
+			// Font used to draw the copyright
+			s_copyrightfont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
+				FontStyle.Regular, GraphicsUnit.Pixel);
+
 			// Font used to render effect text
 			s_effecttext = FontManager.Create(FontManager.EmbeddedFonts.MatrixBook, 26,
 				FontStyle.Regular, GraphicsUnit.Pixel);
@@ -56,12 +60,12 @@ namespace zuki.ronin.renderer
 			s_namefont = FontManager.Create(FontManager.EmbeddedFonts.MatrixSmallCaps, 98,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
-			// Font used to draw the passcode and copyright
-			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 23,
+			// Font used to draw the passcode
+			s_passcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 24,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
-			// Font used to draw the passcode and copyright
-			s_setcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 26,
+			// Font used to draw the set code
+			s_setcodefont = FontManager.Create(FontManager.EmbeddedFonts.StoneSerifLT, 24,
 				FontStyle.Regular, GraphicsUnit.Pixel);
 
 			// Font used to draw a monster card type
@@ -333,7 +337,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Font used to draw the copyright
 		/// </summary>
-		public override Font CopyrightFont => s_passcodefont;
+		public override Font CopyrightFont => s_copyrightfont;
 
 		/// <summary>
 		/// Boundary of the monster card defense region
@@ -482,7 +486,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Padding between level stars
 		/// </summary>
-		public override int LevelStarPadding => 5;
+		public override int LevelStarPadding => 4;
 
 		/// <summary>
 		/// Size of a level star image
@@ -532,7 +536,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of the passcode
 		/// </summary>
-		public override RectangleF PasscodeBounds => new Rectangle(28, 1197, 250, 27);
+		public override RectangleF PasscodeBounds => new Rectangle(28, 1198, 250, 27);
 
 		/// <summary>
 		/// Font used to draw the passcode
@@ -646,6 +650,11 @@ namespace zuki.ronin.renderer
 		/// Background image for trap cards
 		/// </summary>
 		private static readonly Bitmap s_backgroundtrap = Resources.cardtrap;
+
+		/// <summary>
+		/// Font to use when rendering the copyright
+		/// </summary>
+		private static readonly Font s_copyrightfont;
 
 		/// <summary>
 		/// Font to use when rendering effect text

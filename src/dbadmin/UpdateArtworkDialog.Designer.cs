@@ -29,7 +29,7 @@
 			this.m_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.m_cancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.m_cancel.Location = new System.Drawing.Point(551, 323);
+			this.m_cancel.Location = new System.Drawing.Point(755, 423);
 			this.m_cancel.Name = "m_cancel";
 			this.m_cancel.Size = new System.Drawing.Size(75, 23);
 			this.m_cancel.TabIndex = 0;
@@ -41,7 +41,7 @@
 			this.m_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.m_ok.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.m_ok.Location = new System.Drawing.Point(470, 323);
+			this.m_ok.Location = new System.Drawing.Point(674, 423);
 			this.m_ok.Name = "m_ok";
 			this.m_ok.Size = new System.Drawing.Size(75, 23);
 			this.m_ok.TabIndex = 1;
@@ -54,7 +54,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.m_original.Location = new System.Drawing.Point(13, 13);
 			this.m_original.Name = "m_original";
-			this.m_original.Size = new System.Drawing.Size(300, 300);
+			this.m_original.Size = new System.Drawing.Size(400, 400);
 			this.m_original.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.m_original.TabIndex = 2;
 			this.m_original.TabStop = false;
@@ -63,9 +63,9 @@
 			// 
 			this.m_updated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_updated.Location = new System.Drawing.Point(326, 13);
+			this.m_updated.Location = new System.Drawing.Point(428, 13);
 			this.m_updated.Name = "m_updated";
-			this.m_updated.Size = new System.Drawing.Size(300, 300);
+			this.m_updated.Size = new System.Drawing.Size(400, 400);
 			this.m_updated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.m_updated.TabIndex = 3;
 			this.m_updated.TabStop = false;
@@ -76,7 +76,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.CancelButton = this.m_ok;
-			this.ClientSize = new System.Drawing.Size(638, 358);
+			this.ClientSize = new System.Drawing.Size(842, 458);
 			this.Controls.Add(this.m_updated);
 			this.Controls.Add(this.m_original);
 			this.Controls.Add(this.m_ok);

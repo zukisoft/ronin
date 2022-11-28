@@ -671,6 +671,10 @@ namespace zuki.ronin.renderer
 		// Private Member Functions
 		//-------------------------------------------------------------------------
 
+		/// <summary>
+		/// Counts the number of spaces in a string
+		/// </summary>
+		/// <param name="str">string instance</param>
 		private static int CountSpaces(string str)
 		{
 			int count = 0;
@@ -739,20 +743,32 @@ namespace zuki.ronin.renderer
 			// Calculate the available boundaries for the justified text
 			RectangleF textbounds = new RectangleF(bounds.Left, bounds.Top, bounds.Width, bounds.Height);
 
+			// When the text wouldn't fit without a font or width adjustment, the final image
+			// needs to be stretched horizontally to fill the entire bounding area and prevent
+			// ugly blank space between the text and the bottom of the bounding area
+			bool horizontalstretch = false;
+
 			// Reduce the font size and increase the area until the unjustified text will fit in the required space
 			SizeF required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
 			while(required.Height > textbounds.Height)
 			{
+				horizontalstretch = true;
+
 				font = new Font(font.FontFamily, font.Size - 1, font.Style, GraphicsUnit.Pixel);
 				required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
 				if(required.Height > textbounds.Height)
 				{
 					// This was a judgment call/SWAG; the text will not exactly match the layout of a real card,
 					// but I found the effect it has produces more legible results for "screen" as opposed to "print"
-					textbounds.Inflate(new SizeF(bounds.Width / 50.0F, 0.0F));
+					textbounds.Inflate(new SizeF(bounds.Width / 80.0F, 0.0F));
 					required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
 				}
 			}
+			
+			// Ensure that any additional width required for the final typeface is accounted for
+			// and set the height of the bitmap that needs to be rendered
+			if(required.Width > textbounds.Width) textbounds.Width = required.Width;
+			textbounds.Height = required.Height;
 
 			// Render the topline bitmap using the same font that will be used for the effect text
 			Bitmap toplinebmp = null;
@@ -773,9 +789,15 @@ namespace zuki.ronin.renderer
 			}
 
 			// Render the text into a transparent bitmap that will be interpolated into the bounding region
-			using(Bitmap bmp = new Bitmap((int)Math.Ceiling(textbounds.Width), (int)Math.Ceiling(required.Height),
+			using(Bitmap bmp = new Bitmap((int)Math.Ceiling(textbounds.Width), (int)Math.Ceiling(textbounds.Height),
 				PixelFormat.Format32bppArgb))
 			{
+				// There are instances where Graphics.MeasureString() is omitting the final line
+				// of text from its measurements for some reason ...
+				bool lastlinehack = false;
+				string lastline = string.Empty;
+				float lastlinetop = 0.0F;
+
 				bmp.SetResolution(96.0F, 96.0F);
 				using(Graphics gr = Graphics.FromImage(bmp))
 				{
@@ -792,7 +814,7 @@ namespace zuki.ronin.renderer
 
 					// Determine the height of a single line of text and how many lines are available to us
 					float lineheight = gr.MeasureString("\r\n", font, int.MaxValue, format).Height;
-					int numlines = (int)Math.Round(required.Height / lineheight);
+					int numlines = (int)Math.Round(textbounds.Height / lineheight);
 
 					// Track the current line of text for formatting purposes
 					int currentline = 0;
@@ -815,7 +837,7 @@ namespace zuki.ronin.renderer
 							SizeF linesize = gr.MeasureString(linetemp, font, int.MaxValue, format);
 
 							// If the new word would exceed the available width, terminate the line
-							if(Math.Ceiling(linesize.Width) > bmp.Width)
+							if(Math.Floor(linesize.Width) > bmp.Width)
 							{
 								// If the final word that will fit on the line contains a hypen, see if
 								// breaking that word after the hyphen will allow it to fit and adjust
@@ -872,17 +894,33 @@ namespace zuki.ronin.renderer
 						// The final line of text gets rendered with normal left-justification
 						if(wordindex == words.Length)
 						{
-							gr.DrawString(line, font, brush, new PointF(0.0F, lineheight * currentline), format);
-							currentline++;
+							// There are instances where Graphics.MeasureString() is omitting the final line
+							// of text from its measurements for some reason ...
+							if(currentline == numlines && !horizontalstretch)
+							{
+								lastlinehack = true;
+								lastline = line;
+								lastlinetop = lineheight * currentline;
+							}
+							else
+							{
+								gr.DrawString(line, font, brush, new PointF(0.0F, lineheight * currentline), format);
+								currentline++;
+							}
 						}
 					}
 				}
 
-				// If the bitmap would fit in the original boundaries, draw it unscaled, otherwise
-				// interpolate it into the original boundaries
-				if((bmp.Width <= bounds.Width) && (bmp.Height <= bounds.Height))
-					graphics.DrawImageUnscaled(bmp, new Point((int)bounds.Left, (int)bounds.Top));
-				else graphics.DrawImage(bmp, bounds);
+				// Interpolate the bitmap into the original boundaries; if the font was adjusted
+				// above, the image also gets stretched vertically to fill horizontally
+				graphics.DrawImage(bmp, new RectangleF(bounds.Left, bounds.Top, bounds.Width, 
+					horizontalstretch ? bounds.Height : textbounds.Height));
+
+				// For whatever reason, Graphics.MeasureString() does not properly account for the last line
+				// of text on three cards ("Royal Oppression", "Snipe Hunter", and "Interdimensional Warp").
+				// I'm certain that Graphics is at fault, so the only thing I can do is hack it and draw that
+				// final line of text manually afterwards ...
+				if(lastlinehack) graphics.DrawString(lastline, font, brush, new PointF(bounds.Left, bounds.Top + lastlinetop), format);
 			}
 
 			toplinebmp?.Dispose();
