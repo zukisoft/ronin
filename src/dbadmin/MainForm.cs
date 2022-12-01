@@ -21,8 +21,6 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -168,6 +166,21 @@ namespace zuki.ronin
 			if(!ActivateExistingMDIChild(typeof(ExportArtworkForm)))
 			{
 				var child = new ExportArtworkForm(m_database);
+				child.MdiParent = this;
+				child.Show();
+			}
+		}
+
+		/// <summary>
+		/// Invoked when the Export/Card Images... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnExportCardImages(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(ExportCardImagesForm)))
+			{
+				var child = new ExportCardImagesForm(m_database);
 				child.MdiParent = this;
 				child.Show();
 			}

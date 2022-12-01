@@ -21,19 +21,23 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
+using zuki.ronin.renderer;
 using zuki.ronin.ui;
 
 namespace zuki.ronin
 {
-	public partial class DatabaseVacuumForm : Form
+	public partial class ExportCardImagesForm : Form
 	{
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
-		private DatabaseVacuumForm()
+		private ExportCardImagesForm()
 		{
 			InitializeComponent();
 
@@ -53,11 +57,9 @@ namespace zuki.ronin
 		/// </summary>
 		/// <param name="original">Original artwork image</param>
 		/// <param name="updated">Updated artwork image</param>
-		public DatabaseVacuumForm(Database database) : this()
+		public ExportCardImagesForm(Database database) : this()
 		{
 			m_database = database ?? throw new ArgumentNullException(nameof(database));
-			m_original.Text = m_database.GetSize().ToString() + " Bytes";
-			m_current.Text = m_original.Text;
 		}
 
 		/// <summary>
@@ -90,37 +92,83 @@ namespace zuki.ronin
 
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
+
+			m_folder.BackColor = ApplicationTheme.PanelBackColor;
+			m_folder.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>
-		/// Invoked when the "Vacuum" button has been clicked
+		/// Invoked when the "..." button has been clicked
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnVacuum(object sender, EventArgs args)
+		private void OnBrowse(object sender, EventArgs args)
+		{
+			if(m_folderbrowser.ShowDialog(this) == DialogResult.OK)
+				m_folder.Text = m_folderbrowser.SelectedPath;
+		}
+
+		/// <summary>
+		/// Invoked when the "Close" button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnClose(object sender, EventArgs args)
+		{
+			Close();
+		}
+
+		/// <summary>
+		/// Invoked when the "Render" button has been clicked
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnRender(object sender, EventArgs args)
 		{
 			Exception exception = null;
 
 			// Action<> to perform as the background task
-			void vacuum()
+			void export()
 			{
-				try { m_database.Vacuum(); }
-				catch(Exception ex) { exception = ex; }
+				// Iterate over all of the cards in the database
+				m_database.EnumerateCards(card =>
+				{
+					using(Bitmap bmp = Renderer.RenderCard(card))
+					{
+						// "Dark Magician.png"
+						string name = card.Name;
+						foreach(char ch in Path.GetInvalidFileNameChars())
+						{
+							name = name.Replace(ch, '_');
+						}
+						string filename = Path.Combine(m_folder.Text, name + ".png");
+						bmp.Save(filename, ImageFormat.Png);
+					}
+				});
 			}
 
-			using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Vacuuming database", vacuum))
+			// Use a background task dialog to execute the operation
+			using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Rendering Cards", export))
 			{
-				dialog.ShowDialog(this);
+				dialog.ShowDialog(ParentForm);
 			}
 
 			// Throw up a message box with any exception that occurred
 			if(exception != null)
 			{
 				// TODO: A common exception dialog is still something this needs
-				MessageBox.Show(this, exception.Message, "Unable to vacuum database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, exception.Message, "Unable to render cards", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
 
-			m_current.Text = m_database.GetSize().ToString() + " Bytes";
+		/// <summary>
+		/// Invoked when the folder name changes
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnFolderChanged(object sender, EventArgs args)
+		{
+			m_render.Enabled = Directory.Exists(m_folder.Text);
 		}
 
 		//---------------------------------------------------------------------

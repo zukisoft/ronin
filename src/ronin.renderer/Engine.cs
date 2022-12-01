@@ -21,6 +21,7 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -718,86 +719,144 @@ namespace zuki.ronin.renderer
 			if(brush == null) throw new ArgumentNullException(nameof(brush));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			// Remove any CR/LF/SPACE characters from the end of both the topline and text strings
-			if(topline != null) topline = topline.TrimEnd(new char[] { '\r', '\n', ' ' });
-			text = text.TrimEnd(new char[] { '\r', '\n', ' ' });
-
-			// Top/Left alignment
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
-			{
-				Alignment = StringAlignment.Near,
-				LineAlignment = StringAlignment.Near,
-			};
-
-			// Full justification relies on measurement of a single space character
-			format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
-
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 			graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+			// The rendering format requires GDI+ to measure trailing spaces in a string
+			StringFormat renderformat = new StringFormat(StringFormat.GenericTypographic);
+			renderformat.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
+
+			// Remove any CR/LF/SPACE characters from the end of both the topline and text strings
+			if(topline != null) topline = topline.TrimEnd(new char[] { '\r', '\n', ' ' });
+			text = text.TrimEnd(new char[] { '\r', '\n', ' ' });
 
 			// Fusion monsters require the top line of text to be justified differently, accomodate
 			// the necessary vertical space by adding a CRLF to the beginning of the effect text
 			string measuretext = string.IsNullOrEmpty(topline) ? text : "\r\n" + text;
 
 			// Calculate the available boundaries for the justified text
-			RectangleF textbounds = new RectangleF(bounds.Left, bounds.Top, bounds.Width, bounds.Height);
+			RectangleF textbounds = new RectangleF(0.0F, 0.0F, bounds.Width, bounds.Height);
 
-			// When the text wouldn't fit without a font or width adjustment, the final image
-			// needs to be stretched horizontally to fill the entire bounding area and prevent
-			// ugly blank space between the text and the bottom of the bounding area
-			bool horizontalstretch = false;
+			// Determine the maximum number of lines of text that would fit without any changes
+			// to the original font
+			float lineheight = graphics.MeasureString("\r\n", font, int.MaxValue, renderformat).Height;
+			int maxlines = (int)Math.Floor(bounds.Height / lineheight);
 
-			// Reduce the font size and increase the area until the unjustified text will fit in the required space
-			SizeF required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
+			// Reduce the font size and increase the area until we have a general idea of how much space
+			// is required to render the justified text
+			SizeF required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), renderformat);
 			while(required.Height > textbounds.Height)
 			{
-				horizontalstretch = true;
-
+				// Reduce the font size
 				font = new Font(font.FontFamily, font.Size - 1, font.Style, GraphicsUnit.Pixel);
-				required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
+				required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), renderformat);
 				if(required.Height > textbounds.Height)
 				{
-					// This was a judgment call/SWAG; the text will not exactly match the layout of a real card,
-					// but I found the effect it has produces more legible results for "screen" as opposed to "print"
-					textbounds.Inflate(new SizeF(bounds.Width / 80.0F, 0.0F));
-					required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), format);
+					// Increase the width of the text area
+					textbounds.Width += bounds.Width / 8.0F;
+					required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), renderformat);
 				}
 			}
-			
-			// Ensure that any additional width required for the final typeface is accounted for
-			// and set the height of the bitmap that needs to be rendered
-			if(required.Width > textbounds.Width) textbounds.Width = required.Width;
-			textbounds.Height = required.Height;
+
+			// Adjust the text boundaries to match the calculated required size
+			textbounds = new RectangleF(0.0F, 0.0F, Math.Max(textbounds.Width, required.Width), required.Height);
+
+			// Break up the text into individual lines based on the available width
+			List<string> lines = new List<string>();
+			foreach(string hardline in measuretext.Split(new string[] { "\r\n" }, StringSplitOptions.None))
+			{
+				string line = string.Empty;
+
+				// Break up the hard line of text into individual words
+				string[] words = hardline.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+				// Accumulate words until we run out of words or run out of width to draw them
+				int wordindex = 0;
+				while(wordindex < words.Length)
+				{
+					// Append the next word to the current line and calculate the new width
+					string linetemp = line;
+					linetemp += ((line.Length == 0) ? "" : " ") + words[wordindex];
+					SizeF linesize = graphics.MeasureString(linetemp, font, int.MaxValue, renderformat);
+
+					// If the new word would exceed the available width, terminate the line
+					if(linesize.Width > textbounds.Width)
+					{
+						// Don't end a line on a bullet character
+						if(words[wordindex - 1] == "●")
+						{
+							line = line.TrimEnd(new char[] { ' ', '●' });
+							wordindex--;
+						}
+
+						// If the final word that will fit on the line contains a hypen, see if
+						// breaking that word after the hyphen will allow it to fit and adjust
+						else if(words[wordindex].Contains("-"))
+						{
+							string[] hyphenated = words[wordindex].Split(new char[] { '-' }, 2);
+							if(hyphenated.Length == 2)
+							{
+								string hyphentemp = line + ((line.Length == 0) ? "" : " ") + hyphenated[0] + "-";
+								SizeF hyphensize = graphics.MeasureString(hyphentemp, font, int.MaxValue, renderformat);
+								if(hyphensize.Width <= textbounds.Width)
+								{
+									line = hyphentemp;
+									words[wordindex] = hyphenated[1];
+								}
+							}
+						}
+
+						lines.Add(line);
+						line = string.Empty;
+					}
+
+					else
+					{
+						// Still under the width limit; move onto the next word in this line
+						line = linetemp;
+						wordindex++;
+					}
+				}
+
+				// When the line didn't take up all the available width, terminate with a CRLF
+				lines.Add(line + "\r\n");
+			}
+
+			// Adjust the height of the text boundaries based on the number of generated lines
+			lineheight = graphics.MeasureString("\r\n", font, int.MaxValue, renderformat).Height;
+			textbounds.Height = lineheight * lines.Count;
 
 			// Render the topline bitmap using the same font that will be used for the effect text
-			Bitmap toplinebmp = null;
 			if(!string.IsNullOrEmpty(topline))
 			{
-				SizeF toplinesize = graphics.MeasureString(topline, font, int.MaxValue, format);
+				SizeF toplinesize = graphics.MeasureString(topline, font, int.MaxValue, renderformat);
 
 				// Render the text into a transparent bitmap and smush it horizontally to fit
-				toplinebmp = new Bitmap((int)Math.Ceiling(toplinesize.Width), (int)Math.Ceiling(toplinesize.Height),
-					PixelFormat.Format32bppArgb);
-				toplinebmp.SetResolution(96.0F, 96.0F);
-				using(Graphics gr = Graphics.FromImage(toplinebmp))
+				using(Bitmap bmp = new Bitmap((int)Math.Ceiling(toplinesize.Width), (int)Math.Ceiling(toplinesize.Height), PixelFormat.Format32bppArgb))
 				{
-					gr.SmoothingMode = SmoothingMode.AntiAlias;
-					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
-					gr.DrawString(topline, font, brush, new RectangleF(0, 0, toplinesize.Width, toplinesize.Height), format);
+					bmp.SetResolution(96.0F, 96.0F);
+					using(Graphics gr = Graphics.FromImage(bmp))
+					{
+						gr.SmoothingMode = SmoothingMode.AntiAlias;
+						gr.TextRenderingHint = TextRenderingHint.AntiAlias;
+						gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+						gr.DrawString(topline, font, brush, new RectangleF(0, 0, toplinesize.Width, toplinesize.Height), renderformat);
+					}
+
+					// If the text will be scaled vertically, the top line needs the same adjustment
+					float height = bmp.Height;
+					if(lines.Count >= maxlines) height *= bounds.Height / textbounds.Height;
+
+					// Compress the image horizontally if necessary, otherwise just stretch/compress vertically
+					if(bmp.Width <= bounds.Width) graphics.DrawImage(bmp, new RectangleF(bounds.Left, bounds.Top, bmp.Width, height));
+					else graphics.DrawImage(bmp, new RectangleF(bounds.Left, bounds.Top, bounds.Width, height));
 				}
 			}
 
-			// Render the text into a transparent bitmap that will be interpolated into the bounding region
-			using(Bitmap bmp = new Bitmap((int)Math.Ceiling(textbounds.Width), (int)Math.Ceiling(textbounds.Height),
-				PixelFormat.Format32bppArgb))
+			// Render the text bitmap using the calculated font and broken up lines of text
+			using(Bitmap bmp = new Bitmap((int)Math.Ceiling(textbounds.Width), (int)Math.Ceiling(textbounds.Height), PixelFormat.Format32bppArgb))
 			{
-				// There are instances where Graphics.MeasureString() is omitting the final line
-				// of text from its measurements for some reason ...
-				bool lastlinehack = false;
-				string lastline = string.Empty;
-				float lastlinetop = 0.0F;
-
 				bmp.SetResolution(96.0F, 96.0F);
 				using(Graphics gr = Graphics.FromImage(bmp))
 				{
@@ -805,125 +864,55 @@ namespace zuki.ronin.renderer
 					gr.TextRenderingHint = TextRenderingHint.AntiAlias;
 					gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-					// If there is a top line bitmap draw that first; it only gets compressed horizontally
-					if(toplinebmp != null)
+					// Current rendering vertical offset
+					float top = 0.0F;
+
+					// Iterate over the generated lines of text to render
+					for(int index = 0; index < lines.Count; index++)
 					{
-						if(toplinebmp.Width <= bmp.Width) gr.DrawImageUnscaled(toplinebmp, new Point(0, 0));
-						else gr.DrawImage(toplinebmp, new Rectangle(0, 0, bmp.Width, toplinebmp.Height));
-					}
+						// Current rendering horizontal offset
+						float left = 0.0F;
 
-					// Determine the height of a single line of text and how many lines are available to us
-					float lineheight = gr.MeasureString("\r\n", font, int.MaxValue, format).Height;
-					int numlines = (int)Math.Round(textbounds.Height / lineheight);
-
-					// Track the current line of text for formatting purposes
-					int currentline = 0;
-
-					// Break the text up into hard lines of text that are separated by CRLF
-					foreach(string hardline in measuretext.Split(new string[] { "\r\n" }, StringSplitOptions.None))
-					{
-						string line = string.Empty;
-
-						// Break up the hard line of text into individual words
-						string[] words = hardline.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-						// Accumulate words until we run out of words or run out of width to draw them
-						int wordindex = 0;
-						while(wordindex < words.Length)
+						// Render with full justification unless this is the last line or the
+						// line ends with a CRLF break
+						if((index + 1 < lines.Count) && !lines[index].EndsWith("\r\n"))
 						{
-							// Append the next word to the current line and calculate the new width
-							string linetemp = line;
-							linetemp += ((line.Length == 0) ? "" : " ") + words[wordindex];
-							SizeF linesize = gr.MeasureString(linetemp, font, int.MaxValue, format);
+							string line = lines[index];
 
-							// If the new word would exceed the available width, terminate the line
-							if(Math.Floor(linesize.Width) > bmp.Width)
+							// Replace any spaces after a bullet with a non-breaking space
+							if(line.Contains("● ")) line = line.Replace("● ", "●\u00a0");
+
+							// Calculate the metrics to fully justify the line of text
+							float lineextra = bmp.Width - gr.MeasureString(line, font, int.MaxValue, renderformat).Width;
+							int numspaces = CountSpaces(line);
+							float spaceextra = (float)Math.Floor(lineextra / numspaces);
+							float charextra = (lineextra - (spaceextra * numspaces)) / line.Length;
+
+							// Render each character in the string individually
+							foreach(char character in line)
 							{
-								// If the final word that will fit on the line contains a hypen, see if
-								// breaking that word after the hyphen will allow it to fit and adjust
-								if(words[wordindex].Contains("-"))
-								{
-									string[] hyphenated = words[wordindex].Split(new char[] { '-' }, 2);
-									if(hyphenated.Length == 2)
-									{
-										string hyphentemp = line + ((line.Length == 0) ? "" : " ") + hyphenated[0] + "-";
-										SizeF hyphensize = gr.MeasureString(hyphentemp, font, int.MaxValue, format);
-										if(Math.Ceiling(hyphensize.Width) <= bmp.Width)
-										{
-											line = hyphentemp;
-											words[wordindex] = hyphenated[1];
-										}
-									}
-								}
-
-								// Full justification is normally accomplished by adjusting the width of each space
-								// character in the line to be wider than it should be, but I found the end result
-								// to look better if there is also a minor increase in character spacing. Calcuate
-								// the required metrics to favor wide spaces when there is a large gap to fill, but 
-								// favor character spacing when there is a small gap to fill. Flooring the "space extra"
-								// value and then transferring any leftover spacing to "character extra" seems to 
-								// accomplish this very well, and provides a good match to how the physical cards look
-								float left = 0.0F;
-								float lineextra = bmp.Width - gr.MeasureString(line, font, int.MaxValue, format).Width;
-								int numspaces = CountSpaces(line);
-								float spaceextra = (float)Math.Floor(lineextra / numspaces);
-								float charextra = (lineextra - (spaceextra * numspaces)) / line.Length;
-
-								// Render each character in the line individually using the full justification metrics
-								foreach(char character in line)
-								{
-									string str = new string(character, 1);
-									float strwidth = gr.MeasureString(str, font, int.MaxValue, format).Width;
-									gr.DrawString(str, font, brush, new PointF(left, lineheight * currentline), format);
-									left += strwidth + ((character == ' ') ? spaceextra : charextra);
-								}
-
-								// Current line has now been rendered; move onto the next line
-								currentline++;
-								line = string.Empty;
-							}
-
-							else
-							{
-								// Still under the width limit; move onto the next word in this line
-								line = linetemp;
-								wordindex++;
+								string str = new string(character, 1);
+								float strwidth = gr.MeasureString(str, font, int.MaxValue, renderformat).Width;
+								gr.DrawString(str, font, brush, new PointF(left, top), renderformat);
+								left += strwidth + ((character == ' ') ? spaceextra : charextra);
 							}
 						}
 
-						// The final line of text gets rendered with normal left-justification
-						if(wordindex == words.Length)
-						{
-							// There are instances where Graphics.MeasureString() is omitting the final line
-							// of text from its measurements for some reason ...
-							if(currentline == numlines && !horizontalstretch)
-							{
-								lastlinehack = true;
-								lastline = line;
-								lastlinetop = lineheight * currentline;
-							}
-							else
-							{
-								gr.DrawString(line, font, brush, new PointF(0.0F, lineheight * currentline), format);
-								currentline++;
-							}
-						}
+						// The last line of text or a line with a CRLF break is rendered without justification
+						else gr.DrawString(lines[index].Replace("\r\n", ""), font, brush, new PointF(0.0F, top), renderformat);
+
+						// Move to the next line of text
+						top += lineheight;
 					}
 				}
 
-				// Interpolate the bitmap into the original boundaries; if the font was adjusted
-				// above, the image also gets stretched vertically to fill horizontally
-				graphics.DrawImage(bmp, new RectangleF(bounds.Left, bounds.Top, bounds.Width, 
-					horizontalstretch ? bounds.Height : textbounds.Height));
+				// Short text only gets compressed horizontally to preserve vertical whitespace
+				if(lines.Count < maxlines) graphics.DrawImage(bmp, bounds.Left, bounds.Top, bounds.Width,
+					textbounds.Height);
 
-				// For whatever reason, Graphics.MeasureString() does not properly account for the last line
-				// of text on three cards ("Royal Oppression", "Snipe Hunter", and "Interdimensional Warp").
-				// I'm certain that Graphics is at fault, so the only thing I can do is hack it and draw that
-				// final line of text manually afterwards ...
-				if(lastlinehack) graphics.DrawString(lastline, font, brush, new PointF(bounds.Left, bounds.Top + lastlinetop), format);
+				// Otherwise compress/stretch the image both horizontally and vertically to fill
+				else graphics.DrawImage(bmp, new RectangleF(bounds.Left, bounds.Top, bounds.Width, bounds.Height));
 			}
-
-			toplinebmp?.Dispose();
 		}
 	}
 }
