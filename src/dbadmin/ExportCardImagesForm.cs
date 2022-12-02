@@ -119,11 +119,11 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
-		/// Invoked when the "Render" button has been clicked
+		/// Invoked when the "Export" button has been clicked
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnRender(object sender, EventArgs args)
+		private void OnExport(object sender, EventArgs args)
 		{
 			Exception exception = null;
 
@@ -168,7 +168,7 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnFolderChanged(object sender, EventArgs args)
 		{
-			m_render.Enabled = Directory.Exists(m_folder.Text);
+			m_export.Enabled = Directory.Exists(m_folder.Text);
 		}
 
 		//---------------------------------------------------------------------

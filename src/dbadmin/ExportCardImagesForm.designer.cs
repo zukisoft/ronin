@@ -20,7 +20,7 @@
 			this.m_browse = new System.Windows.Forms.Button();
 			this.m_folderlabel = new System.Windows.Forms.Label();
 			this.m_close = new System.Windows.Forms.Button();
-			this.m_render = new System.Windows.Forms.Button();
+			this.m_export = new System.Windows.Forms.Button();
 			this.m_folderbrowser = new System.Windows.Forms.FolderBrowserDialog();
 			this.SuspendLayout();
 			// 
@@ -64,18 +64,18 @@
 			this.m_close.UseVisualStyleBackColor = true;
 			this.m_close.Click += new System.EventHandler(this.OnClose);
 			// 
-			// m_render
+			// m_export
 			// 
-			this.m_render.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_render.Enabled = false;
-			this.m_render.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.m_render.Location = new System.Drawing.Point(328, 45);
-			this.m_render.Name = "m_render";
-			this.m_render.Size = new System.Drawing.Size(75, 23);
-			this.m_render.TabIndex = 10;
-			this.m_render.Text = "Render";
-			this.m_render.UseVisualStyleBackColor = true;
-			this.m_render.Click += new System.EventHandler(this.OnRender);
+			this.m_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.m_export.Enabled = false;
+			this.m_export.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.m_export.Location = new System.Drawing.Point(328, 45);
+			this.m_export.Name = "m_export";
+			this.m_export.Size = new System.Drawing.Size(75, 23);
+			this.m_export.TabIndex = 10;
+			this.m_export.Text = "Export";
+			this.m_export.UseVisualStyleBackColor = true;
+			this.m_export.Click += new System.EventHandler(this.OnExport);
 			// 
 			// m_folderbrowser
 			// 
@@ -87,7 +87,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(496, 80);
-			this.Controls.Add(this.m_render);
+			this.Controls.Add(this.m_export);
 			this.Controls.Add(this.m_close);
 			this.Controls.Add(this.m_folderlabel);
 			this.Controls.Add(this.m_browse);
@@ -109,7 +109,7 @@
 		private System.Windows.Forms.Button m_browse;
 		private System.Windows.Forms.Label m_folderlabel;
 		private System.Windows.Forms.Button m_close;
-		private System.Windows.Forms.Button m_render;
+		private System.Windows.Forms.Button m_export;
 		private System.Windows.Forms.FolderBrowserDialog m_folderbrowser;
 	}
 }

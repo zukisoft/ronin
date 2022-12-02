@@ -161,9 +161,6 @@ static void printrarity(sqlite3_context* context, int argc, sqlite3_value** argv
 
 	// The strings are case-sensitive and enforced by a CHECK CONSTRAINT
 	if(wcscmp(str, L"Common") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::Common));
-	else if(wcscmp(str, L"Duel Terminal Normal Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::DuelTerminalNormalParallelRare));
-	else if(wcscmp(str, L"Duel Terminal Rare Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::DuelTerminalRareParallelRare));
-	else if(wcscmp(str, L"Duel Terminal Super Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::DuelTerminalSuperParallelRare));
 	else if(wcscmp(str, L"Gold Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::GoldRare));
 	else if(wcscmp(str, L"Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::ParallelRare));
 	else if(wcscmp(str, L"Prismatic Secret Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::PrismaticSecretRare));
@@ -172,7 +169,6 @@ static void printrarity(sqlite3_context* context, int argc, sqlite3_value** argv
 	else if(wcscmp(str, L"Super Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::SuperRare));
 	else if(wcscmp(str, L"Ultra Parallel Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::UltraParallelRare));
 	else if(wcscmp(str, L"Ultra Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::UltraRare));
-	else if(wcscmp(str, L"Ultra Secret Rare") == 0) return sqlite3_result_int(context, static_cast<int>(PrintRarity::UltraSecretRare));
 
 	// Input string was not a valid monster type
 	return sqlite3_result_int(context, static_cast<int>(PrintRarity::None));

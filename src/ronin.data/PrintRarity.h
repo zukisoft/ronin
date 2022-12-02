@@ -40,9 +40,6 @@ public enum class PrintRarity
 {
 	None = 0,
 	Common,
-	DuelTerminalNormalParallelRare,
-	DuelTerminalRareParallelRare,
-	DuelTerminalSuperParallelRare,
 	GoldRare,
 	ParallelRare,
 	PrismaticSecretRare,
@@ -51,7 +48,6 @@ public enum class PrintRarity
 	SuperRare,
 	UltraParallelRare,
 	UltraRare,
-	UltraSecretRare,
 };
 
 //---------------------------------------------------------------------------

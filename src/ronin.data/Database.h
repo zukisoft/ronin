@@ -28,12 +28,12 @@
 
 #include "Artwork.h"
 #include "Card.h"
-#include "CardFilter.h"
 #include "Print.h"
 #include "SQLiteSafeHandle.h"
 
 using namespace System;
 using namespace System::Collections::Generic;
+using namespace System::Runtime::InteropServices;
 
 // dbextension.cpp
 //
@@ -68,16 +68,25 @@ public:
 	//
 	// Enumerates Cards from the database
 	void EnumerateCards(Action<Card^>^ callback);
+	void EnumerateCards(DateTime releasedate, Action<Card^>^ callback);
 
 	// EnumeratePrints
 	//
 	// Enumerates Prints from the database
 	void EnumeratePrints(Action<Print^>^ callback);
 
-	// GetSize
+	// Vacuum
 	//
-	// Gets the current size of the database
-	int64_t GetSize(void);
+	// Vacuums the database
+	int64_t Vacuum(void);
+	int64_t Vacuum([OutAttribute] int64_t% oldsize);
+
+internal:
+
+	// InsertArtwork
+	//
+	// Inserts a new artwork image into the database
+	Guid InsertArtwork(Guid cardid, String^ format, int width, int height, array<Byte>^ image);
 
 	// SelectArtwork
 	//
@@ -86,7 +95,7 @@ public:
 
 	// SelectArtworks
 	//
-	// Selects artwork objects from the database
+	// Selects artwork objects from the database for a specific card
 	List<Artwork^>^ SelectArtworks(Guid cardid);
 
 	// SelectCard
@@ -94,28 +103,10 @@ public:
 	// Selects a single Card object from the database
 	Card^ SelectCard(Guid cardid);
 
-	// SelectCards
-	//
-	// Selects Card objects from the database
-	List<Card^>^ SelectCards(void);
-	List<Card^>^ SelectCards(CardFilter^ filter);
-
 	// SelectPrints
 	//
 	// Selects Print objects from the database
 	List<Print^>^ SelectPrints(Guid cardid);
-
-	// Vacuum
-	//
-	// Vacuums the database
-	void Vacuum(void);
-
-internal:
-
-	// InsertArtwork
-	//
-	// Inserts a new artwork image into the database
-	Guid InsertArtwork(Guid cardid, String^ format, int width, int height, array<Byte>^ image);
 
 	// UpdateArtwork
 	//

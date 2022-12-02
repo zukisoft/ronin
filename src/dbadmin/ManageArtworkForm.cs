@@ -166,7 +166,9 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			m_cardselector.Cards = m_database.SelectCards(null);
+			List<Card> cards = new List<Card>();
+			m_database.EnumerateCards(card => { cards.Add(card); });
+			m_cardselector.Cards = cards;
 		}
 
 		/// <summary>

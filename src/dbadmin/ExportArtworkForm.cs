@@ -131,11 +131,17 @@ namespace zuki.ronin
 				// Iterate over all of the cards in the database
 				m_database.EnumerateCards(card =>
 				{
+					string name = card.Name;
+					foreach(char ch in Path.GetInvalidFileNameChars())
+					{
+						name = name.Replace(ch, '_');
+					}
+
 					List<Artwork> art = card.GetArtworks();
 					for(int index = 0; index < art.Count; index++)
 					{
 						// "Dark Magician (1).jpg"
-						string filename = Path.Combine(m_folder.Text, card.Name);
+						string filename = Path.Combine(m_folder.Text, name);
 						if(index > 0) filename += " (" + index.ToString() + ")";
 						filename += "." + art[index].Format.ToLower();
 						File.WriteAllBytes(filename, art[index].Image);

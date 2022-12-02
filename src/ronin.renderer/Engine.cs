@@ -723,6 +723,9 @@ namespace zuki.ronin.renderer
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 			graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
+			// Visual adjustments for horizontally compressing the image for long cards
+			int textlength = text.Length;
+
 			// The rendering format requires GDI+ to measure trailing spaces in a string
 			StringFormat renderformat = new StringFormat(StringFormat.GenericTypographic);
 			renderformat.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
@@ -749,12 +752,12 @@ namespace zuki.ronin.renderer
 			while(required.Height > textbounds.Height)
 			{
 				// Reduce the font size
-				font = new Font(font.FontFamily, font.Size - 1, font.Style, GraphicsUnit.Pixel);
+				font = new Font(font.FontFamily, font.Size - ((textlength >= 600) ? 4 : 2), font.Style, GraphicsUnit.Pixel);
 				required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), renderformat);
 				if(required.Height > textbounds.Height)
 				{
 					// Increase the width of the text area
-					textbounds.Width += bounds.Width / 8.0F;
+					textbounds.Width += bounds.Width / ((textlength >= 600) ? 12.0F : 8.0F);
 					required = graphics.MeasureString(measuretext, font, (int)Math.Ceiling(textbounds.Width), renderformat);
 				}
 			}

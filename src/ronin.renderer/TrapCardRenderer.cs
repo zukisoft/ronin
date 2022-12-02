@@ -63,14 +63,14 @@ namespace zuki.ronin.renderer
 				// Render the common elements
 				RenderCommon(graphics, trapcard, alttext);
 
+				// Draw the card name as if it were a Common print
+				Engine.DrawName(graphics, s_layout, trapcard.Name, NameBrush.FromRarity(CardType.Trap, PrintRarity.Common));
+
 				// Render the default artwork
 				using(Artwork artwork = trapcard.GetDefaultArtwork())
 				{
 					Engine.DrawArtwork(graphics, s_layout, (artwork != null) ? artwork.ToBitmap() : Resources.defaultartwork);
 				}
-
-				// Draw the card name in solid white
-				Engine.DrawName(graphics, s_layout, trapcard.Name, NameBrush.SolidWhite);
 			}
 
 			return bitmap;
@@ -89,8 +89,9 @@ namespace zuki.ronin.renderer
 				// Render the common elements
 				RenderCommon(graphics, trapcard);
 
-				// Draw the card name in solid white
-				Engine.DrawName(graphics, s_layout, trapcard.Name, NameBrush.SolidWhite);
+				// Draw the card name based on the print rarity
+				Engine.DrawName(graphics, s_layout, trapcard.Name, NameBrush.FromRarity(CardType.Trap, print.Rarity));
+
 
 				// Render the print artwork
 				using(Artwork artwork = print.GetArtwork())

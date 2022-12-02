@@ -22,6 +22,9 @@
 
 using System.Drawing;
 
+using zuki.ronin.data;
+using zuki.ronin.renderer.Properties;
+
 namespace zuki.ronin.renderer
 {
 	/// <summary>
@@ -29,27 +32,89 @@ namespace zuki.ronin.renderer
 	/// </summary>
 	internal static class NameBrush
 	{
+		//---------------------------------------------------------------------
+		// Fields
+		//---------------------------------------------------------------------
+
 		/// <summary>
 		/// Solid black brush
 		/// </summary>
 		public static Brush SolidBlack => s_solidblack;
 
 		/// <summary>
+		/// Solid gold brush
+		/// </summary>
+		public static Brush GoldFoil => s_solidgold;
+
+		/// <summary>
+		/// Solid silver brush
+		/// </summary>
+		public static Brush SilverFoil => s_solidsilver;
+
+		/// <summary>
 		/// Solid white brush
 		/// </summary>
 		public static Brush SolidWhite => s_solidwhite;
 
+		//---------------------------------------------------------------------
+		// Member Functions
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Selects the brush based on the card type and print rarity
+		/// </summary>
+		/// <param name="cardtype">Type of card being rendered</param>
+		/// <param name="rarity">Print rarity of the card</param>
+		public static Brush FromRarity(CardType cardtype, PrintRarity rarity)
+		{
+			switch(rarity)
+			{
+				// GoldRare
+				// UltraParallelRare
+				// UltraRare
+				case PrintRarity.GoldRare:
+				case PrintRarity.UltraParallelRare:
+				case PrintRarity.UltraRare:
+					return s_solidgold;
+
+				// TODO: Prismatic Secret Rare
+
+				// Rare
+				case PrintRarity.Rare:
+					return s_solidsilver;
+
+				// TODO: Secret Rare
+			}
+
+			// Common
+			// ParallelRare
+			// SuperRare
+			if(cardtype == CardType.Monster) return s_solidblack;
+			else return s_solidwhite;
+		}
+
 		//-------------------------------------------------------------------
 		// Member Variables
+		//-------------------------------------------------------------------
 
 		/// <summary>
 		/// Solid black brush
 		/// </summary>
-		private static readonly SolidBrush s_solidblack = new SolidBrush(Color.Black);
+		private static readonly Brush s_solidblack = new SolidBrush(Color.Black);
+
+		/// <summary>
+		/// Gold foil texture brush
+		/// </summary>
+		private static readonly Brush s_solidgold = new SolidBrush(Color.Gold);
+
+		/// <summary>
+		/// Silver foil texture brush
+		/// </summary>
+		private static readonly Brush s_solidsilver = new SolidBrush(Color.FromArgb(0xBC, 0xC6, 0xCC));
 
 		/// <summary>
 		/// Solid white brush
 		/// </summary>
-		private static readonly SolidBrush s_solidwhite = new SolidBrush(Color.White);
+		private static readonly Brush s_solidwhite = new SolidBrush(Color.White);
 	}
 }

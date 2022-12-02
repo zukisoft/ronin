@@ -84,12 +84,6 @@
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
     </Compile>
-    <Compile Include="DatabaseVacuumForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DatabaseVacuumForm.designer.cs">
-      <DependentUpon>DatabaseVacuumForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManageArtworkForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,9 +140,6 @@
     <Compile Include="UpdateArtworkDialog.Designer.cs">
       <DependentUpon>UpdateArtworkDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DatabaseVacuumForm.resx">
-      <DependentUpon>DatabaseVacuumForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ManageArtworkForm.resx">
       <DependentUpon>ManageArtworkForm.cs</DependentUpon>
     </EmbeddedResource>

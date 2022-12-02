@@ -63,14 +63,14 @@ namespace zuki.ronin.renderer
 				// Render the common elements
 				RenderCommon(graphics, spellcard, alttext);
 
+				// Draw the card name as if it were a Common print
+				Engine.DrawName(graphics, s_layout, spellcard.Name, NameBrush.FromRarity(CardType.Spell, PrintRarity.Common));
+
 				// Render the default artwork
 				using(Artwork artwork = spellcard.GetDefaultArtwork())
 				{
 					Engine.DrawArtwork(graphics, s_layout, (artwork != null) ? artwork.ToBitmap() : Resources.defaultartwork);
 				}
-
-				// Draw the card name in solid white
-				Engine.DrawName(graphics, s_layout, spellcard.Name, NameBrush.SolidWhite);
 			}
 
 			return bitmap;
@@ -89,8 +89,9 @@ namespace zuki.ronin.renderer
 				// Render the common elements
 				RenderCommon(graphics, spellcard);
 
-				// Draw the card name in solid white
-				Engine.DrawName(graphics, s_layout, spellcard.Name, NameBrush.SolidWhite);
+				// Draw the card name based on the print rarity
+				Engine.DrawName(graphics, s_layout, spellcard.Name, NameBrush.FromRarity(CardType.Spell, print.Rarity));
+
 
 				// Render the print artwork
 				using(Artwork artwork = print.GetArtwork())

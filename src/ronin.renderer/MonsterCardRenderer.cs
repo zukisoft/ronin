@@ -64,8 +64,8 @@ namespace zuki.ronin.renderer
 				// Render the common elements
 				RenderCommon(graphics, monstercard, alttext);
 
-				// Draw the card name in solid black
-				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.SolidBlack);
+				// Draw the card name as if it were a Common print
+				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.FromRarity(CardType.Monster, PrintRarity.Common));
 
 				// Render the default artwork
 				using(Artwork artwork = monstercard.GetDefaultArtwork())
@@ -90,8 +90,8 @@ namespace zuki.ronin.renderer
 				// Render the common elements
 				RenderCommon(graphics, monstercard);
 
-				// Draw the card name in solid black
-				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.SolidBlack);
+				// Draw the card name based on the print rarity
+				Engine.DrawName(graphics, s_layout, monstercard.Name, NameBrush.FromRarity(CardType.Monster, print.Rarity));
 
 				// Render the print artwork
 				using(Artwork artwork = print.GetArtwork())

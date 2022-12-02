@@ -70,13 +70,13 @@
     <Compile Include="Layout.cs" />
     <Compile Include="LayoutMedium.cs" />
     <Compile Include="MonsterCardRenderer.cs" />
-    <Compile Include="Renderer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Renderer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpellCardRenderer.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="NameBrush.cs" />
@@ -85,8 +85,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

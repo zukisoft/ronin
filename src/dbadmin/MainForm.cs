@@ -148,12 +148,17 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnDatabaseVacuum(object sender, EventArgs args)
 		{
-			if(!ActivateExistingMDIChild(typeof(DatabaseVacuumForm)))
+			long beforevacuum = 0;
+			long aftervacuum = 0;
+
+			void vacuum() { aftervacuum = m_database.Vacuum(out beforevacuum); }
+			using(BackgroundTaskDialog dialog = new BackgroundTaskDialog("Vacuuming Database", vacuum))
 			{
-				var child = new DatabaseVacuumForm(m_database);
-				child.MdiParent = this;
-				child.Show();
+				dialog.ShowDialog(ParentForm);
 			}
+
+			long reclaimed = aftervacuum - beforevacuum;
+			MessageBox.Show(this, "Reclaimed " + reclaimed.ToString() + " bytes of storage from the database.", "Vacuum Database", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		/// <summary>
