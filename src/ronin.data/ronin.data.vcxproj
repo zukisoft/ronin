@@ -110,6 +110,7 @@
     <Link />
     <Link>
       <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)ronin.data.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,6 +125,7 @@
     <Link />
     <Link>
       <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)ronin.data.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,6 +140,7 @@
     <Link />
     <Link>
       <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)ronin.data.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,6 +155,7 @@
     <Link />
     <Link>
       <AdditionalDependencies>rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)ronin.data.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -168,6 +172,8 @@
     <ClInclude Include="MonsterType.h" />
     <ClInclude Include="Print.h" />
     <ClInclude Include="PrintRarity.h" />
+    <ClInclude Include="Restriction.h" />
+    <ClInclude Include="RestrictionList.h" />
     <ClInclude Include="Series.h" />
     <ClInclude Include="SpellCard.h" />
     <ClInclude Include="SQLiteException.h" />
@@ -203,6 +209,7 @@
     <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
     <ClCompile Include="Print.cpp" />
+    <ClCompile Include="RestrictionList.cpp" />
     <ClCompile Include="Series.cpp" />
     <ClCompile Include="SpellCard.cpp" />
     <ClCompile Include="SQLiteException.cpp" />
@@ -220,6 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\tmp\version\version.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ronin.data.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

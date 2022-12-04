@@ -50,6 +50,7 @@
     <MSBuild Projects="src\ronin\ronin.csproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup.findvcmsms\setup.findvcmsms.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup\setup.wixproj" Properties="Configuration=$(Configuration);Platform=x86" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\sqlite3\sqlite3.vcxproj" Properties="Configuration=$(Configuration);Platform=Win32" Targets="Build" ContinueOnError="false"/>
 
     <ItemGroup>
       <PackagesX86 Include="bin\Release\x86\ronin.msi"/>
@@ -74,6 +75,7 @@
     <MSBuild Projects="src\ronin\ronin.csproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup.findvcmsms\setup.findvcmsms.vcxproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
     <MSBuild Projects="src\setup\setup.wixproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
+    <MSBuild Projects="src\sqlite3\sqlite3.vcxproj" Properties="Configuration=$(Configuration);Platform=x64" Targets="Build" ContinueOnError="false"/>
 
     <ItemGroup>
       <PackagesX64 Include="bin\Release\x64\ronin.msi"/>

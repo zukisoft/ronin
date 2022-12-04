@@ -20,25 +20,31 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __SERIES_H_
-#define __SERIES_H_
+#ifndef __RESTRICTIONLIST_H_
+#define __RESTRICTIONLIST_H_
 #pragma once
 
-#include "CardType.h"
+#include "Restriction.h"
 
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::Collections::Generic;
 
 namespace zuki::ronin::data {
 
-//---------------------------------------------------------------------------
-// Class Series
+// FORWARD DECLARATIONS
 //
-// Describes a series object
+ref class Card;
+ref class Database;
+
+//---------------------------------------------------------------------------
+// Class RestrictionList
+//
+// Describes a restriction list object
 //---------------------------------------------------------------------------
 
-public ref class Series
+public ref class RestrictionList
 {
 public:
 
@@ -47,11 +53,11 @@ public:
 
 	// operator== (static)
 	//
-	static bool operator==(Series^ lhs, Series^ rhs);
+	static bool operator==(RestrictionList^ lhs, RestrictionList^ rhs);
 
 	// operator!= (static)
 	//
-	static bool operator!=(Series^ lhs, Series^ rhs);
+	static bool operator!=(RestrictionList^ lhs, RestrictionList^ rhs);
 
 	//-----------------------------------------------------------------------
 	// Member Functions
@@ -63,13 +69,18 @@ public:
 
 	// Equals
 	//
-	// Compares this Series instance to another Series instance
-	bool Equals(Series^ rhs);
+	// Compares this RestrictionList instance to another RestrictionList instance
+	bool Equals(RestrictionList^ rhs);
 
 	// GetHashCode
 	//
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
+
+	// GetRestriction
+	//
+	// Gets the restriction status of a Card
+	Restriction GetRestriction(Card^ card);
 
 	// ToString
 	//
@@ -79,37 +90,19 @@ public:
 	//-----------------------------------------------------------------------
 	// Properties
 
-	// Code
+	// EffectiveDate
 	//
-	// Gets the series code
-	property String^ Code
+	// Gets the RestrictionList effective date
+	property DateTime EffectiveDate
 	{
-		String^ get(void);
-		internal: void set(String^ value);
+		DateTime get(void);
+		internal: void set(DateTime value);
 	}
 
-	// Name
+	// RestrictionListID
 	//
-	// Gets the series name
-	property String^ Name
-	{
-		String^ get(void);
-		internal: void set(String^ value);
-	}
-
-	// ReleaseDate
-	//
-	// Gets the series release date
-	property Nullable<DateTime> ReleaseDate
-	{
-		Nullable<DateTime> get(void);
-		internal: void set(Nullable<DateTime> value);
-	}
-
-	// SeriesID
-	//
-	// Gets the series unique identifier
-	property Guid SeriesID
+	// Gets the RestrictionList unique identifier
+	property Guid RestrictionListID
 	{
 		Guid get(void);
 		internal: void set(Guid value);
@@ -119,17 +112,18 @@ internal:
 
 	// Instance Constructor
 	//
-	Series();
+	RestrictionList(Database^ database);
 
 private:
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
-	Guid					m_seriesid;					// Unique identifier
-	String^					m_code = String::Empty;		// Series code
-	String^					m_name = String::Empty;		// Series name
-	Nullable<DateTime>		m_releasedate;				// Series release date
+	initonly Database^				m_database;				// Database instance
+
+	Guid							m_restrictionlistid;	// Unique identifier
+	DateTime						m_effectivedate;		// Effective date
+	Dictionary<Guid, Restriction>^	m_restrictions;			// Restrictions
 };
 
 //---------------------------------------------------------------------------
@@ -138,4 +132,4 @@ private:
 
 #pragma warning(pop)
 
-#endif	// __SERIES_H_
+#endif	// __RESTRICTIONLIST_H_

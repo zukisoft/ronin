@@ -780,6 +780,61 @@ void Database::EnumeratePrints(Action<Print^>^ callback)
 }
 
 //---------------------------------------------------------------------------
+// Database::EnumerateRestrictionLists
+//
+// Enumerates RestrictionLists from the database
+//
+// Arguments:
+//
+//	callback	- Action<> to invoke for each Print instance
+
+void Database::EnumerateRestrictionLists(Action<RestrictionList^>^ callback)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(callback)) throw gcnew ArgumentNullException("callback");
+
+	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+	sqlite3_stmt* statement;							// Statement handle
+
+	// restrictionlistid | effectivedate
+	auto sql = L"select restrictionlist.restrictionlistid, restrictionlist.effective "
+		"from restrictionlist order by restrictionlist.effective asc";
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			RestrictionList^ restrictionlist = gcnew RestrictionList(this);
+
+			// restrictionlistid
+			restrictionlist->RestrictionListID = column_guid(statement, 0);
+
+			// effective
+			wchar_t const* effectiveptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 1));
+			restrictionlist->EffectiveDate = (effectiveptr == nullptr) ? DateTime::MinValue : DateTime::Parse(gcnew String(effectiveptr));
+
+			// Invoke the callback and just eat any exceptions that occur
+			try { callback->Invoke(restrictionlist); }
+			catch(Exception^) { /* DO NOTHING */ }
+
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
 // Database::InitializeInstance (private, static)
 //
 // Initializes the database instance for use
@@ -890,7 +945,6 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, releasedate not null, "
 			"primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
 			"foreign key(artworkid) references artwork(artworkid))");
-		// TODO: missing check constraint on rarity
 		execute_non_query(instance, L"create unique index print_code on print(code, language, number)");
 		execute_non_query(instance, L"create index print_rarity on print(rarity)");
 		execute_non_query(instance, L"create index print_releasedate on print(releasedate)");
@@ -941,6 +995,73 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 
 		execute_non_query(instance, L"pragma user_version = 2");
 		dbversion = 2;
+	}
+
+	// SCHEMA VERSION 2 -> VERSION 3
+	//
+	// Adds missing CHECK constraint on print.rarity
+	// Adds limitededition column to print table
+	// Adds boosterpack column to series table
+	if(dbversion == 2) {
+
+		// Disable foreign keys during the update
+		execute_non_query(instance, L"pragma foreign_keys=OFF");
+
+		// table: series_v2
+		//
+		// seriesid(pk) | code(u) | name(u) | releasedate
+		execute_non_query(instance, L"alter table series rename to series_v2");
+		execute_non_query(instance, L"drop index if exists series_releasedate");
+
+		// table: series
+		//
+		// seriesid(pk) | code(u) | name(u) | boosterpack | releasedate
+		execute_non_query(instance, L"create table series(seriesid blob not null, code text unique not null, name text unique not null, "
+			"boosterpack integer not null, releasedate text null, primary key(seriesid))");
+		execute_non_query(instance, L"create index series_releasedate on series(releasedate)");
+
+		// Move the data from series_v2 into series
+		execute_non_query(instance, L"insert into series select v2.seriesid, v2.code, v2.name, 0, v2.releasedate from series_v2 as v2");
+		execute_non_query(instance, L"update series set boosterpack = 1 where code in ('LOB', 'MRD', 'SRL', 'PSV', 'LON', 'LOD', 'PGD', "
+			"'MFC', 'DCR', 'IOC', 'AST', 'SOD', 'RDS', 'FET', 'TLM', 'CRV', 'EEN', 'SOI', 'EOJ', 'POTD', 'CDIP', 'STON', 'FOTB', 'TAEV', "
+			"'GLAS', 'PTDN', 'LOTD')");
+		
+		// Drop the series_v2 table
+		execute_non_query(instance, L"drop table series_v2");
+
+		// table: print_v2
+		//
+		// printid(pk) | cardid(fk) | seriesid(fk) | artworkid(fk) | code | language | number | rarity | releasedate
+		execute_non_query(instance, L"alter table print rename to print_v2");
+		execute_non_query(instance, L"drop index if exists print_code");
+		execute_non_query(instance, L"drop index if exists print_rarity");
+		execute_non_query(instance, L"drop index if exists print_releasedate");
+
+		// table: print
+		//
+		// printid(pk) | cardid(fk) | seriesid(fk) | artworkid(fk) | code | language | number | rarity | limitededition | releasedate
+		execute_non_query(instance, L"create table print(printid blob not null, cardid blob not null, seriesid blob not null, "
+			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, limitededition not null, "
+			"releasedate not null, primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
+			"foreign key(artworkid) references artwork(artworkid) "
+			"check(rarity in ('Common', 'Gold Rare', 'Parallel Rare', 'Prismatic Secret Rare', 'Rare', 'Secret Rare', 'Super Rare', 'Ultra Parallel Rare', "
+			"'Ultra Rare')))");
+		execute_non_query(instance, L"create unique index print_code on print(code, language, number)");
+		execute_non_query(instance, L"create index print_rarity on print(rarity)");
+		execute_non_query(instance, L"create index print_releasedate on print(releasedate)");
+
+		// Move the data from print_v2 into print
+		execute_non_query(instance, L"insert into print select v2.printid, v2.cardid, v2.seriesid, v2.artworkid, v2.code, v2.language, v2.number, "
+			"v2.rarity, 0, v2.releasedate from print_v2 as v2");
+
+		// Drop the print_v2 table
+		execute_non_query(instance, L"drop table print_v2");
+
+		// Enable foreign keys after the update
+		execute_non_query(instance, L"pragma foreign_keys=ON");
+
+		execute_non_query(instance, L"pragma user_version = 3");
+		dbversion = 3;
 	}
 }
 
@@ -1304,6 +1425,24 @@ Card^ Database::SelectCard(Guid cardid)
 
 	return card;
 }
+
+//---------------------------------------------------------------------------
+// Database::SelectCards (internal)
+//
+// Selects multiple Card objects from the database
+//
+// Arguments:
+//
+//	cardids		- Enumerable list of Card identifiers
+
+//List<Card^>^ Database::SelectCards(IEnumerable<Guid>^ cardids)
+//{
+//	CHECK_DISPOSED(m_disposed);
+//	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+//
+//	SQLiteSafeHandle::Reference instance(m_handle);		// Instance handle
+//	sqlite3_stmt* statement;							// Statement handle
+//}
 
 //---------------------------------------------------------------------------
 // Database::SelectPrints (internal)

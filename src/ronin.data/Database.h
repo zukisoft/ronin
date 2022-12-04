@@ -29,6 +29,7 @@
 #include "Artwork.h"
 #include "Card.h"
 #include "Print.h"
+#include "RestrictionList.h"
 #include "SQLiteSafeHandle.h"
 
 using namespace System;
@@ -75,6 +76,11 @@ public:
 	// Enumerates Prints from the database
 	void EnumeratePrints(Action<Print^>^ callback);
 
+	// EnumerateRestrictionLists
+	//
+	// Enumerates RestrictionLists from the database
+	void EnumerateRestrictionLists(Action<RestrictionList^>^ callback);
+
 	// Vacuum
 	//
 	// Vacuums the database
@@ -102,6 +108,11 @@ internal:
 	//
 	// Selects a single Card object from the database
 	Card^ SelectCard(Guid cardid);
+
+	// SelectCards
+	//
+	// Selects multiple Card objects from the database
+	// List<Card^>^ SelectCards(IEnumerable<Guid>^ cardids);
 
 	// SelectPrints
 	//
