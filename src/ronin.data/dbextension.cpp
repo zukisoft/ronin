@@ -295,6 +295,38 @@ static void printrarity(sqlite3_context* context, int argc, sqlite3_value** argv
 }
 
 //---------------------------------------------------------------------------
+// uuid (local)
+//
+// SQLite scalar function to convert a string into a UUID
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void uuid(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	// Use managed code to parse the string to access Guid::TryParse(), which allows all the formats
+	wchar_t const* inputptr = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if(inputptr != nullptr) {
+
+		Guid uuid = Guid::Empty;
+		if(Guid::TryParse(gcnew String(inputptr), uuid)) {
+
+			// If the Guid parsed, return it as a 16-byte blob
+			array<Byte>^ bytes = uuid.ToByteArray();
+			pin_ptr<Byte> pinbytes = &bytes[0];
+			return sqlite3_result_blob(context, &pinbytes[0], sizeof(UUID), SQLITE_TRANSIENT);
+		}
+	}
+
+	return sqlite3_result_null(context);
+}
+
+//---------------------------------------------------------------------------
 // uuids_bestindex
 //
 // Determines the best index to use when querying the virtual table
@@ -638,6 +670,11 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 	//
 	result = sqlite3_create_function16(db, L"printrarity", 1, SQLITE_UTF16, nullptr, printrarity, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function printrarity (%d)", result); return result; }
+
+	// uuid function
+	//
+	result = sqlite3_create_function16(db, L"uuid", 1, SQLITE_UTF16, nullptr, uuid, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function uuid (%d)", result); return result; }
 
 	// uuidstr function
 	//
