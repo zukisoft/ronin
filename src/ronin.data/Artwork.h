@@ -24,6 +24,9 @@
 #define __ARTWORK_H_
 #pragma once
 
+#include "ArtworkId.h"
+#include "CardId.h"
+
 #pragma warning(push, 4)
 
 using namespace System;
@@ -70,11 +73,6 @@ public:
 	// Compares this Artwork instance to another Artwork instance
 	bool Equals(Artwork^ rhs);
 
-	// GetCard
-	//
-	// Gets the Card associated with the Artwork
-	Card^ GetCard(void);
-
 	// GetHashCode
 	//
 	// Overrides Object::GetHashCode()
@@ -102,24 +100,6 @@ public:
 
 	//-----------------------------------------------------------------------
 	// Properties
-
-	// ArtworkID
-	//
-	// Gets the artwork unique identifier
-	property Guid ArtworkID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
-	// CardID
-	//
-	// Gets the card unique identifier
-	property Guid CardID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
 
 	// Format
 	//
@@ -161,7 +141,7 @@ internal:
 
 	// Instance Constructor
 	//
-	Artwork(Database^ database);
+	Artwork(Database^ database, ArtworkId^ artworkid, CardId^ cardid);
 
 private:
 
@@ -173,10 +153,10 @@ private:
 	// Member Variables
 
 	initonly Database^		m_database;					// Database instance
+	initonly ArtworkId^		m_artworkid;				// Unique identifier
+	initonly CardId^		m_cardid;					// Unique indentifier
 	bool					m_disposed = false;			// Object disposal flag
 
-	Guid					m_artworkid;				// Unique identifier
-	Guid					m_cardid;					// Unique identifier
 	String^					m_format = String::Empty;	// Image format
 	int						m_height = 0;				// Image height
 	array<Byte>^			m_image;					// Image

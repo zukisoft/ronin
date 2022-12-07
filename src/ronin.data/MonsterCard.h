@@ -59,6 +59,7 @@ public:
 	// Attribute
 	//
 	// Gets the monster attribute
+	// TODO: move to Card
 	property CardAttribute Attribute
 	{
 		CardAttribute get(void);
@@ -168,7 +169,7 @@ internal:
 
 	// Instance Constructor
 	//
-	MonsterCard(Database^ database);
+	MonsterCard(Database^ database, CardId^ cardid);
 
 private:
 

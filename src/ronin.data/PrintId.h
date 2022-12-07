@@ -20,12 +20,11 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __SPELLCARD_H_
-#define __SPELLCARD_H_
+#ifndef __PRINTID_H_
+#define __PRINTID_H_
 #pragma once
 
-#include "Card.h"
-#include "CardIcon.h"
+#include "Uuid.h"
 
 #pragma warning(push, 4)
 
@@ -34,97 +33,18 @@ using namespace System;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Class SpellCard
+// Class PrintId (internal)
 //
-// Describes a spell card object
+// Specialization of Uuid for a Print identifier
 //---------------------------------------------------------------------------
 
-public ref class SpellCard : public Card
+ref class PrintId : public Uuid
 {
 public:
 
-	//-----------------------------------------------------------------------
-	// Properties
-
-	// Continuous
-	//
-	// Gets the continuous spell flag
-	property bool Continuous
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Equip
-	//
-	// Gets the equip spell flag
-	property bool Equip
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Icon
-	//
-	// Gets the spell card icon
-	property CardIcon Icon
-	{
-		CardIcon get(void);
-	}
-
-	// Field
-	//
-	// Gets the field spell flag
-	property bool Field
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Normal
-	//
-	// Gets the normal spell flag
-	property bool Normal
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// QuickPlay
-	//
-	// Gets the quick-play spell flag
-	property bool QuickPlay
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-	// Ritual
-	//
-	// Gets the ritual spell flag
-	property bool Ritual
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
-
-internal:
-
 	// Instance Constructor
 	//
-	SpellCard(Database^ database, CardId^ cardid);
-
-private:
-
-	//-----------------------------------------------------------------------
-	// Member Variables
-
-	bool			m_continuous = false;		// Continuous spell
-	bool			m_equip = false;			// Equip spell
-	bool			m_field = false;			// Field spell
-	bool			m_normal = false;			// Normal spell
-	bool			m_quickplay = false;		// Quick-Play spell
-	bool			m_ritual = false;			// Ritual spell
+	PrintId(Guid uuid) : Uuid(uuid) {}
 };
 
 //---------------------------------------------------------------------------
@@ -133,4 +53,4 @@ private:
 
 #pragma warning(pop)
 
-#endif	// __SPELLCARD_H_
+#endif	// __PRINTID_H_

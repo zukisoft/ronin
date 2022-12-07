@@ -31,16 +31,18 @@
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Card Constructor (protected)
+// Card Constructor (internal)
 //
 // Arguments:
 //
 //	database	- Underlying Database instance
+//	cardid		- Unique identifier
 //	type		- Card type being constructed
 
-Card::Card(Database^ database, CardType type) : m_database(database), m_type(type)
+Card::Card(Database^ database, CardId^ cardid, CardType type) : m_database(database), m_cardid(cardid), m_type(type)
 {
 	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
+	if(CLRISNULL(cardid)) throw gcnew ArgumentNullException("cardid");
 }
 
 //---------------------------------------------------------------------------
@@ -51,7 +53,7 @@ bool Card::operator==(Card^ lhs, Card^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return true;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	return lhs->CardID == rhs->CardID;
+	return lhs->m_cardid == rhs->m_cardid;
 }
 
 //---------------------------------------------------------------------------
@@ -62,7 +64,7 @@ bool Card::operator!=(Card^ lhs, Card^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return false;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return true;
 
-	return lhs->CardID != rhs->CardID;
+	return lhs->m_cardid != rhs->m_cardid;
 }
 
 //---------------------------------------------------------------------------
@@ -84,43 +86,13 @@ void Card::AddArtwork(String^ format, int width, int height, array<Byte>^ image)
 }
 
 //---------------------------------------------------------------------------
-// Card::ArtworkID::get
-//
-// Gets the default artwork unique identifier
-
-Guid Card::ArtworkID::get(void)
-{
-	return m_artworkid;
-}
-
-//---------------------------------------------------------------------------
 // Card::ArtworkID::set (internal)
 //
 // Sets the default artwork unique identifier
 
-void Card::ArtworkID::set(Guid value)
+void Card::ArtworkID::set(ArtworkId^ value)
 {
 	m_artworkid = value;
-}
-
-//---------------------------------------------------------------------------
-// Card::CardID::get
-//
-// Gets the card unique identifier
-
-Guid Card::CardID::get(void)
-{
-	return m_cardid;
-}
-
-//---------------------------------------------------------------------------
-// Card::CardID::set (internal)
-//
-// Sets the card unique identifier
-
-void Card::CardID::set(Guid value)
-{
-	m_cardid = value;
 }
 
 //---------------------------------------------------------------------------
@@ -158,7 +130,7 @@ bool Card::Equals(Object^ rhs)
 }
 
 //---------------------------------------------------------------------------
-// Card::GetArtworks
+// Card::GetArtwork
 //
 // Gets all the artwork associated with the card
 //
@@ -166,10 +138,10 @@ bool Card::Equals(Object^ rhs)
 //
 //	NONE
 
-List<Artwork^>^ Card::GetArtworks(void)
+List<Artwork^>^ Card::GetArtwork(void)
 {
 	CLRASSERT(CLRISNOTNULL(m_database));
-	return m_database->SelectArtworks(m_cardid);
+	return m_database->SelectArtwork(m_cardid);
 }
 
 //---------------------------------------------------------------------------
@@ -198,7 +170,7 @@ Artwork^ Card::GetDefaultArtwork(void)
 
 int Card::GetHashCode(void)
 {
-	return m_cardid.GetHashCode();
+	return m_cardid->GetHashCode();
 }
 
 //---------------------------------------------------------------------------
@@ -213,7 +185,7 @@ int Card::GetHashCode(void)
 List<Print^>^ Card::GetPrints(void)
 {
 	CLRASSERT(CLRISNOTNULL(m_database));
-	return m_database->SelectPrints(this->CardID);
+	return m_database->SelectPrints(m_cardid);
 }
 
 //---------------------------------------------------------------------------
@@ -273,10 +245,30 @@ void Card::Refresh(void)
 	Card^ card = m_database->SelectCard(m_cardid);
 
 	// Update the member variables to reflect the new information
-	m_name = card->Name;
-	m_passcode = card->Passcode;
-	m_text = card->Text;
-	m_artworkid = card->ArtworkID;
+	m_name = card->m_name;
+	m_passcode = card->m_passcode;
+	m_text = card->m_text;
+	m_artworkid = card->m_artworkid;
+}
+
+//---------------------------------------------------------------------------
+// Card::ReleaseDate::get
+//
+// Gets the card release date
+
+DateTime Card::ReleaseDate::get(void)
+{
+	return m_releasedate;
+}
+
+//---------------------------------------------------------------------------
+// Card::ReleaseDate::set (internal)
+//
+// Sets the card release date
+
+void Card::ReleaseDate::set(DateTime value)
+{
+	m_releasedate = value;
 }
 
 //---------------------------------------------------------------------------

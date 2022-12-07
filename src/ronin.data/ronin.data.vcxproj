@@ -162,8 +162,14 @@
     <ClInclude Include="..\..\depends\sqlite\sqlite3.h" />
     <ClInclude Include="..\..\depends\sqlite\sqlite3ext.h" />
     <ClInclude Include="Artwork.h" />
+    <ClInclude Include="ArtworkId.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardIcon.h" />
+    <ClInclude Include="CardId.h" />
+    <ClInclude Include="PrintId.h" />
+    <ClInclude Include="RestrictionListId.h" />
+    <ClInclude Include="SeriesId.h" />
+    <ClInclude Include="Uuid.h" />
     <ClInclude Include="CardType.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="CardAttribute.h" />
@@ -204,6 +210,7 @@
     <ClCompile Include="Artwork.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Uuid.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="dbextension.cpp" />
     <ClCompile Include="Extensions.cpp" />

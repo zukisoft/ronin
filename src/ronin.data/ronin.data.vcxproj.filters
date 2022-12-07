@@ -92,6 +92,24 @@
     <ClInclude Include="Restriction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Uuid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtworkId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SeriesId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RestrictionListId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -140,6 +158,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RestrictionList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Uuid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

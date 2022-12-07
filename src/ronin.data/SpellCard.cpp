@@ -33,8 +33,9 @@ namespace zuki::ronin::data {
 // Arguments:
 //
 //	database	- Underlying Database instance
+//	cardid		- Unique identifier
 
-SpellCard::SpellCard(Database^ database) : Card(database, CardType::Spell)
+SpellCard::SpellCard(Database^ database, CardId^ cardid) : Card(database, cardid, CardType::Spell)
 {
 }
 

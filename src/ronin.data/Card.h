@@ -24,6 +24,8 @@
 #define __CARD_H_
 #pragma once
 
+#include "ArtworkId.h"
+#include "CardId.h"
 #include "CardType.h"
 
 #pragma warning(push, 4)
@@ -78,10 +80,10 @@ public:
 	// Compares this Card instance to another Card instance
 	bool Equals(Card^ rhs);
 
-	// GetArtworks
+	// GetArtwork
 	//
 	// Gets all the artwork associated with the card
-	List<Artwork^>^ GetArtworks(void);
+	List<Artwork^>^ GetArtwork(void);
 
 	// GetDefaultArtwork
 	//
@@ -115,24 +117,6 @@ public:
 
 	//-----------------------------------------------------------------------
 	// Properties
-
-	// ArtworkID
-	//
-	// Gets the artwork unique identifier
-	property Guid ArtworkID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
-	// CardID
-	//
-	// Gets the card unique identifier
-	property Guid CardID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
 
 	// Name
 	//
@@ -169,25 +153,43 @@ public:
 		CardType get(void);
 	}
 
-protected:
+	// ReleaseDate
+	//
+	// Gets the card release date
+	property DateTime ReleaseDate
+	{
+		DateTime get(void);
+		internal: void set(DateTime value);
+	}
+
+internal:
 
 	// Instance Constructor
 	//
-	Card(Database^ database, CardType type);
+	Card(Database^ database, CardId^ cardid, CardType type);
+
+	// ArtworkID
+	//
+	// Sets the artwork unique identifier
+	property ArtworkId^ ArtworkID
+	{
+		internal: void set(ArtworkId^ value);
+	}
 
 private:
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
+	initonly CardId^		m_cardid;					// Unique identifier
 	initonly CardType		m_type;						// Card type
 	initonly Database^		m_database;					// Database instance
 
-	Guid					m_cardid;					// Unique identifier
 	String^					m_name = String::Empty;		// Card name
 	String^					m_passcode = String::Empty;	// Card passcode
 	String^					m_text = String::Empty;		// Card text
-	Guid					m_artworkid;				// Default artwork ID
+	DateTime				m_releasedate;				// Card release date
+	ArtworkId^				m_artworkid;				// Default artwork ID
 };
 
 //---------------------------------------------------------------------------

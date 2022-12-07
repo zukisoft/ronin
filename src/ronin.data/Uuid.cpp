@@ -21,88 +21,61 @@
 //---------------------------------------------------------------------------
 
 #include "stdafx.h"
-#include "RestrictionList.h"
-
-#include "Card.h"
-#include "Database.h"
+#include "Uuid.h"
 
 #pragma warning(push, 4)
 
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// RestrictionList Constructor (internal)
+// Uuid Constructor (protected)
 //
 // Arguments:
 //
-//	database			- Underlying Database instance
-//	restrictionlistid	- Unique identifier
+//	uuid		- Underlying unique identifier
 
-RestrictionList::RestrictionList(Database^ database, RestrictionListId^ restrictionlistid)
-	: m_database(database), m_restrictionlistid(restrictionlistid)
+Uuid::Uuid(Guid uuid) : m_uuid(uuid)
 {
-	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
-	if(CLRISNULL(restrictionlistid)) throw gcnew ArgumentNullException("restrictionlistid");
 }
 
 //---------------------------------------------------------------------------
-// RestrictionList::operator == (static)
+// Uuid::operator == (static)
 
-bool RestrictionList::operator==(RestrictionList^ lhs, RestrictionList^ rhs)
+bool Uuid::operator==(Uuid^ lhs, Uuid^ rhs)
 {
 	if(Object::ReferenceEquals(lhs, rhs)) return true;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	return lhs->m_restrictionlistid == rhs->m_restrictionlistid;
+	return lhs->m_uuid == rhs->m_uuid;
 }
 
 //---------------------------------------------------------------------------
-// RestrictionList::operator != (static)
+// Uuid::operator != (static)
 
-bool RestrictionList::operator!=(RestrictionList^ lhs, RestrictionList^ rhs)
+bool Uuid::operator!=(Uuid^ lhs, Uuid^ rhs)
 {
 	if(Object::ReferenceEquals(lhs, rhs)) return false;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return true;
 
-	return lhs->m_restrictionlistid != rhs->m_restrictionlistid;
+	return lhs->m_uuid != rhs->m_uuid;
 }
 
 //---------------------------------------------------------------------------
-// RestrictionList::EffectiveDate::get
+// Uuid::Equals
 //
-// Gets the RestrictionList effective date
-
-DateTime RestrictionList::EffectiveDate::get(void)
-{
-	return m_effectivedate;
-}
-
-//---------------------------------------------------------------------------
-// RestrictionList::EffectiveDate::set (internal)
-//
-// Sets the RestrictionList effective date
-
-void RestrictionList::EffectiveDate::set(DateTime value)
-{
-	m_effectivedate = value;
-}
-
-//---------------------------------------------------------------------------
-// RestrictionList::Equals
-//
-// Compares this RestrictionList instance to another RestrictionList instance
+// Compares this Uuid instance to another Uuid instance
 //
 // Arguments:
 //
-//	rhs		- Right-hand RestrictionList instance to compare against
+//	rhs		- Right-hand Uuid instance to compare against
 
-bool RestrictionList::Equals(RestrictionList^ rhs)
+bool Uuid::Equals(Uuid^ rhs)
 {
 	return (this == rhs);
 }
 
 //---------------------------------------------------------------------------
-// RestrictionList::Equals
+// Uuid::Equals
 //
 // Overrides Object::Equals()
 //
@@ -110,19 +83,19 @@ bool RestrictionList::Equals(RestrictionList^ rhs)
 //
 //	rhs		- Right-hand object instance to compare against
 
-bool RestrictionList::Equals(Object^ rhs)
+bool Uuid::Equals(Object^ rhs)
 {
 	if(Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	// Convert the provided object into a RestrictionList instance
-	RestrictionList^ rhsref = dynamic_cast<RestrictionList^>(rhs);
+	// Convert the provided object into a Uuid instance
+	Uuid^ rhsref = dynamic_cast<Uuid^>(rhs);
 	if(rhsref == nullptr) return false;
 
 	return (this == rhsref);
 }
 
 //---------------------------------------------------------------------------
-// RestrictionList::GetHashCode
+// Uuid::GetHashCode
 //
 // Overrides Object::GetHashCode()
 //
@@ -130,13 +103,27 @@ bool RestrictionList::Equals(Object^ rhs)
 //
 //	NONE
 
-int RestrictionList::GetHashCode(void)
+int Uuid::GetHashCode(void)
 {
-	return m_restrictionlistid->GetHashCode();
+	return m_uuid.GetHashCode();
 }
 
 //---------------------------------------------------------------------------
-// RestrictionList::ToString
+// Uuid::ToByteArray
+//
+// Converts the underlying unique identifier into a byte array
+//
+// Arguments:
+//
+//	NONE
+
+array<Byte>^ Uuid::ToByteArray(void)
+{
+	return m_uuid.ToByteArray();
+}
+
+//---------------------------------------------------------------------------
+// Uuid::ToString
 //
 // Overrides Object::ToString()
 //
@@ -144,9 +131,9 @@ int RestrictionList::GetHashCode(void)
 //
 //	NONE
 
-String^ RestrictionList::ToString(void)
+String^ Uuid::ToString(void)
 {
-	return m_effectivedate.ToString("yyyy-MM-dd");
+	return m_uuid.ToString();
 }
 
 //---------------------------------------------------------------------------

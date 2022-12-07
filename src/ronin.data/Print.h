@@ -24,8 +24,12 @@
 #define __PRINT_H_
 #pragma once
 
+#include "ArtworkId.h"
+#include "CardId.h"
+#include "PrintId.h"
 #include "PrintRarity.h"
 #include "Series.h"
+#include "SeriesId.h"
 
 #pragma warning(push, 4)
 
@@ -101,24 +105,6 @@ public:
 	//-----------------------------------------------------------------------
 	// Properties
 
-	// ArtworkID
-	//
-	// Gets the artwork unique identifier
-	property Guid ArtworkID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
-	// CardID
-	//
-	// Gets the card identifier
-	property Guid CardID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
 	// Code
 	//
 	// Gets the print code
@@ -137,6 +123,15 @@ public:
 		internal: void set(String^ value);
 	}
 
+	// LimitedEdition
+	//
+	// Gets a flag indicating if the print is a Limited Edition
+	property bool LimitedEdition
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
 	// Number
 	//
 	// Gets the print number
@@ -144,15 +139,6 @@ public:
 	{
 		String^ get(void);
 		internal: void set(String^ value);
-	}
-
-	// PrintID
-	//
-	// Gets the print identifier
-	property Guid PrintID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
 	}
 
 	// Rarity
@@ -167,34 +153,17 @@ public:
 	// ReleaseDate
 	//
 	// Gets the print release date
-	property Nullable<DateTime> ReleaseDate
+	property DateTime ReleaseDate
 	{
-		Nullable<DateTime> get(void);
-		internal: void set(Nullable<DateTime> value);
-	}
-
-	// SeriesID
-	//
-	// Gets the series unique identifier
-	property Guid SeriesID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
+		DateTime get(void);
+		internal: void set(DateTime value);
 	}
 
 internal:
 
 	// Instance Constructor
 	//
-	Print(Database^ database);
-
-	//-----------------------------------------------------------------------
-	// Internal Member Functions
-
-	// ParseRarity (static)
-	//
-	// Parses a string into a PrintRarity
-	static PrintRarity ParseRarity(String^ value);
+	Print(Database^ database, PrintId^ printid, CardId^ cardid, SeriesId^ seriesid, ArtworkId^ artworkid);
 
 private:
 
@@ -202,16 +171,16 @@ private:
 	// Member Variables
 
 	initonly Database^		m_database;					// Database instance
+	initonly PrintId^		m_printid;					// Unique identifier
+	initonly CardId^		m_cardid;					// Unique identifer
+	initonly SeriesId^		m_seriesid;					// Unique identifier
+	initonly ArtworkId^		m_artworkid;				// Unique identifier
 
-	Guid					m_printid;					// Unique identifier
-	Guid					m_cardid;					// Card unique identifer
-	Guid					m_seriesid;					// Series unique identifier
-	Guid					m_artworkid;				// Artwork unique identifier
 	String^					m_code = String::Empty;		// Print code
 	String^					m_language = String::Empty;	// Language code
 	String^					m_number = String::Empty;	// Print number
 	PrintRarity				m_rarity;					// Print rarity
-	Nullable<DateTime>		m_releasedate;				// Print release date
+	DateTime				m_releasedate;				// Print release date
 };
 
 //---------------------------------------------------------------------------

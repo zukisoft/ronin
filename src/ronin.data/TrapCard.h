@@ -85,7 +85,7 @@ internal:
 
 	// Instance Constructor
 	//
-	TrapCard(Database^ database);
+	TrapCard(Database^ database, CardId^ cardid);
 
 private:
 

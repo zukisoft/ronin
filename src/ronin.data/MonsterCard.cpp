@@ -33,8 +33,9 @@ namespace zuki::ronin::data {
 // Arguments:
 //
 //	database	- Underlying Database instance
+//	cardid		- Unique indentifier
 
-MonsterCard::MonsterCard(Database^ database) : Card(database, CardType::Monster)
+MonsterCard::MonsterCard(Database^ database, CardId^ cardid) : Card(database, cardid, CardType::Monster)
 {
 }
 

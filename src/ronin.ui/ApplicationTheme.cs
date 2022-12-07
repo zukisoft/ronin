@@ -98,12 +98,12 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// The background color of an interverted panel
 		/// </summary>
-		public static Color InvertedPanelBackColor => (s_darkmode) ? Color.FromArgb(0x58, 0x58, 0x58) : Color.FromArgb(0xB0, 0xB0, 0xB0);
+		public static Color InvertedPanelBackColor => s_darkmode ? Color.FromArgb(0x58, 0x58, 0x58) : Color.FromArgb(0xB0, 0xB0, 0xB0);
 
 		/// <summary>
 		/// The foreground color of an inverted panel
 		/// </summary>
-		public static Color InvertedPanelForeColor => (s_darkmode) ? Color.White : Color.White;
+		public static Color InvertedPanelForeColor => s_darkmode ? Color.White : Color.White;
 
 		/// <summary>
 		/// Gets the light mode indicator
@@ -143,12 +143,12 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// The background color of a panel
 		/// </summary>
-		public static Color PanelBackColor => (s_darkmode) ? Color.FromArgb(0x2B, 0x2B, 0x2B) : Color.White;
+		public static Color PanelBackColor => s_darkmode ? Color.FromArgb(0x2B, 0x2B, 0x2B) : Color.White;
 
 		/// <summary>
 		/// The foreground color of a panel
 		/// </summary>
-		public static Color PanelForeColor => (s_darkmode) ? Color.White : Color.Black;
+		public static Color PanelForeColor => s_darkmode ? Color.White : Color.Black;
 		
 		/// <summary>
 		/// Accesses the ProfessionalColorTable instance

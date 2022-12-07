@@ -27,9 +27,14 @@
 #pragma warning(push, 4)
 
 #include "Artwork.h"
+#include "ArtworkId.h"
 #include "Card.h"
+#include "CardId.h"
 #include "Print.h"
+#include "PrintId.h"
 #include "RestrictionList.h"
+#include "RestrictionListId.h"
+#include "SeriesId.h"
 #include "SQLiteSafeHandle.h"
 
 using namespace System;
@@ -92,47 +97,48 @@ internal:
 	// InsertArtwork
 	//
 	// Inserts a new artwork image into the database
-	Guid InsertArtwork(Guid cardid, String^ format, int width, int height, array<Byte>^ image);
+	Guid InsertArtwork(CardId^ cardid, String^ format, int width, int height, array<Byte>^ image);
 
 	// SelectArtwork
 	//
-	// Selects an artwork object from the database
-	Artwork^ SelectArtwork(Guid artworkid);
+	// Selects a single artwork object from the database
+	Artwork^ SelectArtwork(ArtworkId^ artworkid);
 
-	// SelectArtworks
+	// SelectArtwork
 	//
-	// Selects artwork objects from the database for a specific card
-	List<Artwork^>^ SelectArtworks(Guid cardid);
+	// Selects artwork objects from the database
+	List<Artwork^>^ SelectArtwork(CardId^ cardid);
 
 	// SelectCard
 	//
 	// Selects a single Card object from the database
-	Card^ SelectCard(Guid cardid);
-
+	Card^ SelectCard(CardId^ cardid);
+	
 	// SelectCards
 	//
-	// Selects multiple Card objects from the database
-	// List<Card^>^ SelectCards(IEnumerable<Guid>^ cardids);
+	// Selects Card objects from the database
+	Dictionary<Card^, Restriction>^ SelectCards(RestrictionListId^ restrictionlistid);
 
 	// SelectPrints
 	//
 	// Selects Print objects from the database
-	List<Print^>^ SelectPrints(Guid cardid);
+	List<Print^>^ SelectPrints(CardId^ cardid);
+	//List<Print^>^ SelectPrints(SeriesId^ seriesid);
 
 	// UpdateArtwork
 	//
 	// Updates an artwork image in the database
-	void UpdateArtwork(Guid artworkid, String^ format, int width, int height, array<Byte>^ image);
+	void UpdateArtwork(ArtworkId^ artworkid, String^ format, int width, int height, array<Byte>^ image);
 
 	// UpdateCardText
 	//
 	// Updates the text for a Card in the database
-	void UpdateCardText(Guid cardid, String^ text);
+	void UpdateCardText(CardId^ cardid, String^ text);
 
 	// UpdateDefaultArtwork
 	//
 	// Updates the default artwork for a card in the database
-	void UpdateDefaultArtwork(Guid cardid, Guid artworkid);
+	void UpdateDefaultArtwork(CardId^ cardid, ArtworkId^ artworkid);
 
 private:
 

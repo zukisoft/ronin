@@ -108,8 +108,7 @@ namespace zuki.ronin
 			if(m_selected == null) return;
 
 			// Refresh the information for the Card associated with this Artwork
-			var cards = m_cardselector.Cards;
-			foreach(Card card in cards.Where(card => card.CardID == artwork.CardID)) card.Refresh();
+			m_selected.Refresh();
 
 			// Refresh the artwork for selected card
 			OnSelectionChanged(this, m_selected);
@@ -184,7 +183,7 @@ namespace zuki.ronin
 
 			if(card != null)
 			{
-				List<Artwork> artworks = card.GetArtworks();
+				List<Artwork> artworks = card.GetArtwork();
 
 				if(artworks.Count == 1)
 				{
@@ -228,7 +227,7 @@ namespace zuki.ronin
 					m_layoutpanel.Controls.Add(tile);
 					tile.ArtworkChanged += new EventHandler<Artwork>(OnArtworkChanged);
 					tile.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
-					tile.SetArtwork(artwork, artwork.ArtworkID == m_selected.ArtworkID);					
+					tile.SetArtwork(artwork);		// TODO: did this break without the second argument?
 				}
 			}
 		}

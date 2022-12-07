@@ -33,8 +33,9 @@ namespace zuki::ronin::data {
 // Arguments:
 //
 //	database	- Underlying Database instance
+//	cardid		- Unique indentifier
 
-TrapCard::TrapCard(Database^ database) : Card(database, CardType::Trap)
+TrapCard::TrapCard(Database^ database, CardId^ cardid) : Card(database, cardid, CardType::Trap)
 {
 }
 

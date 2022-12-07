@@ -78,7 +78,7 @@ namespace zuki.build.tools
 				CommandLine commandline = new CommandLine(arguments);
 
 				// If insufficient arguments specified or help was requested, display the usage and exit
-				if((commandline.Arguments.Count == 0) || (commandline.Switches.ContainsKey("?")))
+				if((commandline.Arguments.Count == 0) || commandline.Switches.ContainsKey("?"))
 				{
 					ShowUsage();
 					return 0;
@@ -92,7 +92,7 @@ namespace zuki.build.tools
 				if(!Directory.Exists(basedir)) throw new ArgumentException("Specified base directory [" + basedir + "] does not exist");
 
 				// -ver - Limit the directories to search based on the VCRedistVersion value
-				string redistver = (commandline.Switches.ContainsKey("ver")) ? commandline.Switches["ver"] : string.Empty;
+				string redistver = commandline.Switches.ContainsKey("ver") ? commandline.Switches["ver"] : string.Empty;
 
 				// -filter - Specify merge module filter(s)
 				List<string> filters = new List<string>();
@@ -103,7 +103,7 @@ namespace zuki.build.tools
 				if(filters.Count == 0) filters.Add("CRT_x86");
 
 				// -out - Specify output file name
-				string outputfile = (commandline.Switches.ContainsKey("out")) ? commandline.Switches["out"] :
+				string outputfile = commandline.Switches.ContainsKey("out") ? commandline.Switches["out"] :
 					Path.Combine(Environment.CurrentDirectory, "vcmergemods.wxs");
 
 				// Attempt to create the output directory if it does not exist

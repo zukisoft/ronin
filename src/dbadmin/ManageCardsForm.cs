@@ -124,6 +124,12 @@ namespace zuki.ronin
 			List<Card> cards = new List<Card>();
 			m_database.EnumerateCards(card => { cards.Add(card); });
 			m_cardselector.Cards = cards;
+
+			List<RestrictionList> reslists = new List<RestrictionList>();
+			m_database.EnumerateRestrictionLists(reslist => { reslists.Add(reslist); });
+
+			int x = 123;
+
 		}
 
 		/// <summary>

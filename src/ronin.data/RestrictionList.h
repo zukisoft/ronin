@@ -25,6 +25,7 @@
 #pragma once
 
 #include "Restriction.h"
+#include "RestrictionListId.h"
 
 #pragma warning(push, 4)
 
@@ -77,11 +78,6 @@ public:
 	// Overrides Object::GetHashCode()
 	virtual int GetHashCode(void) override;
 
-	// GetRestriction
-	//
-	// Gets the restriction status of a Card
-	Restriction GetRestriction(Card^ card);
-
 	// ToString
 	//
 	// Overrides Object::ToString()
@@ -99,20 +95,11 @@ public:
 		internal: void set(DateTime value);
 	}
 
-	// RestrictionListID
-	//
-	// Gets the RestrictionList unique identifier
-	property Guid RestrictionListID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
 internal:
 
 	// Instance Constructor
 	//
-	RestrictionList(Database^ database);
+	RestrictionList(Database^ database, RestrictionListId^ restrictionlistid);
 
 private:
 
@@ -120,10 +107,9 @@ private:
 	// Member Variables
 
 	initonly Database^				m_database;				// Database instance
+	initonly RestrictionListId^		m_restrictionlistid;	// Unique identifier
 
-	Guid							m_restrictionlistid;	// Unique identifier
 	DateTime						m_effectivedate;		// Effective date
-	Dictionary<Guid, Restriction>^	m_restrictions;			// Restrictions
 };
 
 //---------------------------------------------------------------------------

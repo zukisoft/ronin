@@ -137,7 +137,7 @@ namespace zuki.ronin
 						name = name.Replace(ch, '_');
 					}
 
-					List<Artwork> art = card.GetArtworks();
+					List<Artwork> art = card.GetArtwork();
 					for(int index = 0; index < art.Count; index++)
 					{
 						// "Dark Magician (1).jpg"

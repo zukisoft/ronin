@@ -20,12 +20,9 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __SPELLCARD_H_
-#define __SPELLCARD_H_
+#ifndef __UUID_H_
+#define __UUID_H_
 #pragma once
-
-#include "Card.h"
-#include "CardIcon.h"
 
 #pragma warning(push, 4)
 
@@ -34,97 +31,66 @@ using namespace System;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Class SpellCard
+// Class Uuid (internal)
 //
-// Describes a spell card object
+// Abstraction around a System::Guid
 //---------------------------------------------------------------------------
 
-public ref class SpellCard : public Card
+ref class Uuid abstract
 {
 public:
 
 	//-----------------------------------------------------------------------
-	// Properties
+	// Overloaded Operators
 
-	// Continuous
+	// operator== (static)
 	//
-	// Gets the continuous spell flag
-	property bool Continuous
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
+	static bool operator==(Uuid^ lhs, Uuid^ rhs);
 
-	// Equip
+	// operator!= (static)
 	//
-	// Gets the equip spell flag
-	property bool Equip
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
+	static bool operator!=(Uuid^ lhs, Uuid^ rhs);
 
-	// Icon
+	//-----------------------------------------------------------------------
+	// Member Functions
+
+	// Equals
 	//
-	// Gets the spell card icon
-	property CardIcon Icon
-	{
-		CardIcon get(void);
-	}
+	// Overrides Object::Equals()
+	virtual bool Equals(Object^ rhs) override;
 
-	// Field
+	// Equals
 	//
-	// Gets the field spell flag
-	property bool Field
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
+	// Compares this Uuid instance to another Uuid instance
+	bool Equals(Uuid^ rhs);
 
-	// Normal
+	// GetHashCode
 	//
-	// Gets the normal spell flag
-	property bool Normal
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
+	// Overrides Object::GetHashCode()
+	virtual int GetHashCode(void) override;
 
-	// QuickPlay
+	// ToByteArray
 	//
-	// Gets the quick-play spell flag
-	property bool QuickPlay
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
+	// Converts the underlying unique identifier into a byte array
+	array<Byte>^ ToByteArray(void);
 
-	// Ritual
+	// ToString
 	//
-	// Gets the ritual spell flag
-	property bool Ritual
-	{
-		bool get(void);
-		internal: void set(bool value);
-	}
+	// Overrides Object::ToString()
+	virtual String^ ToString(void) override;
 
-internal:
+protected:
 
 	// Instance Constructor
 	//
-	SpellCard(Database^ database, CardId^ cardid);
+	Uuid(Guid uuid);
 
 private:
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
-	bool			m_continuous = false;		// Continuous spell
-	bool			m_equip = false;			// Equip spell
-	bool			m_field = false;			// Field spell
-	bool			m_normal = false;			// Normal spell
-	bool			m_quickplay = false;		// Quick-Play spell
-	bool			m_ritual = false;			// Ritual spell
+	Guid			m_uuid;			// Underlying unique identifier
 };
 
 //---------------------------------------------------------------------------
@@ -133,4 +99,4 @@ private:
 
 #pragma warning(pop)
 
-#endif	// __SPELLCARD_H_
+#endif	// __UUID_H_

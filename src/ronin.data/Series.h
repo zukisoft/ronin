@@ -24,13 +24,17 @@
 #define __SERIES_H_
 #pragma once
 
-#include "CardType.h"
+#include "SeriesId.h"
 
 #pragma warning(push, 4)
 
 using namespace System;
 
 namespace zuki::ronin::data {
+
+// FORWARD DECLARATIONS
+//
+ref class Database;
 
 //---------------------------------------------------------------------------
 // Class Series
@@ -79,6 +83,15 @@ public:
 	//-----------------------------------------------------------------------
 	// Properties
 
+	// BoosterPack
+	//
+	// Gets a flag indicating if the series is a booster pack
+	property bool BoosterPack
+	{
+		bool get(void);
+		internal: void set(bool value);
+	}
+
 	// Code
 	//
 	// Gets the series code
@@ -106,27 +119,20 @@ public:
 		internal: void set(Nullable<DateTime> value);
 	}
 
-	// SeriesID
-	//
-	// Gets the series unique identifier
-	property Guid SeriesID
-	{
-		Guid get(void);
-		internal: void set(Guid value);
-	}
-
 internal:
 
 	// Instance Constructor
 	//
-	Series();
+	Series(Database^ database, SeriesId^ seriesid);
 
 private:
 
 	//-----------------------------------------------------------------------
 	// Member Variables
 
-	Guid					m_seriesid;					// Unique identifier
+	initonly Database^		m_database;					// Database instance
+	initonly SeriesId^		m_seriesid;					// Unique identifier
+
 	String^					m_code = String::Empty;		// Series code
 	String^					m_name = String::Empty;		// Series name
 	Nullable<DateTime>		m_releasedate;				// Series release date

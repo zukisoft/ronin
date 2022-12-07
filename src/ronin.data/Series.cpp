@@ -32,10 +32,13 @@ namespace zuki::ronin::data {
 //
 // Arguments:
 //
-//	NONE
+//	database	- Underlying Database instance
+//	seriesid	- Unique identifier
 
-Series::Series()
+Series::Series(Database^ database, SeriesId^ seriesid) : m_database(database), m_seriesid(seriesid)
 {
+	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
+	if(CLRISNULL(seriesid)) throw gcnew ArgumentNullException("seriesid");
 }
 
 //---------------------------------------------------------------------------
@@ -46,7 +49,7 @@ bool Series::operator==(Series^ lhs, Series^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return true;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	return lhs->SeriesID == rhs->SeriesID;
+	return lhs->m_seriesid == rhs->m_seriesid;
 }
 
 //---------------------------------------------------------------------------
@@ -57,7 +60,28 @@ bool Series::operator!=(Series^ lhs, Series^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return false;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return true;
 
-	return lhs->SeriesID != rhs->SeriesID;
+	return lhs->m_seriesid != rhs->m_seriesid;
+}
+
+//---------------------------------------------------------------------------
+// Series::BoosterPack::get
+//
+// Gets a flag indicating if the series is a booster pack
+
+bool Series::BoosterPack::get(void)
+{
+	// TODO
+	return false;
+}
+
+//---------------------------------------------------------------------------
+// Series::BoosterPack::set (internal)
+//
+// Gets a flag indicating if the series is a booster pack
+
+void Series::BoosterPack::set(bool /*value*/)
+{
+	// TODO
 }
 
 //---------------------------------------------------------------------------
@@ -125,7 +149,7 @@ bool Series::Equals(Object^ rhs)
 
 int Series::GetHashCode(void)
 {
-	return m_seriesid.GetHashCode();
+	return m_seriesid->GetHashCode();
 }
 
 //---------------------------------------------------------------------------
@@ -166,26 +190,6 @@ Nullable<DateTime> Series::ReleaseDate::get(void)
 void Series::ReleaseDate::set(Nullable<DateTime> value)
 {
 	m_releasedate = value;
-}
-
-//---------------------------------------------------------------------------
-// Series::SeriesID::get
-//
-// Gets the series unique identifier
-
-Guid Series::SeriesID::get(void)
-{
-	return m_seriesid;
-}
-
-//---------------------------------------------------------------------------
-// Series::SeriesID::set (internal)
-//
-// Sets the series unique identifier
-
-void Series::SeriesID::set(Guid value)
-{
-	m_seriesid = value;
 }
 
 //---------------------------------------------------------------------------

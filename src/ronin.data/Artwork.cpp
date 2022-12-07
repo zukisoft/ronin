@@ -38,10 +38,15 @@ namespace zuki::ronin::data {
 // Arguments:
 //
 //	database	- Underlying Database instance
+//	artworkid	- Artwork unique identifier
+//	cardid		- Card unique identifier
 
-Artwork::Artwork(Database^ database) : m_database(database)
+Artwork::Artwork(Database^ database, ArtworkId^ artworkid, CardId^ cardid) : m_database(database),
+	m_artworkid(artworkid), m_cardid(cardid)
 {
 	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
+	if(CLRISNULL(artworkid)) throw gcnew ArgumentNullException("artworkid");
+	if(CLRISNULL(cardid)) throw gcnew ArgumentNullException("cardid");
 }
 
 //---------------------------------------------------------------------------
@@ -64,7 +69,7 @@ bool Artwork::operator==(Artwork^ lhs, Artwork^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return true;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	return lhs->ArtworkID == rhs->ArtworkID;
+	return lhs->m_artworkid == rhs->m_artworkid;
 }
 
 //---------------------------------------------------------------------------
@@ -75,51 +80,7 @@ bool Artwork::operator!=(Artwork^ lhs, Artwork^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return false;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return true;
 
-	return lhs->ArtworkID != rhs->ArtworkID;
-}
-
-//---------------------------------------------------------------------------
-// Artwork::ArtworkID::get
-//
-// Gets the artwork unique identifier
-
-Guid Artwork::ArtworkID::get(void)
-{
-	CHECK_DISPOSED(m_disposed);
-	return m_artworkid;
-}
-
-//---------------------------------------------------------------------------
-// Artwork::ArtworkID::set (internal)
-//
-// Sets the artwork unique identifier
-
-void Artwork::ArtworkID::set(Guid value)
-{
-	CHECK_DISPOSED(m_disposed);
-	m_artworkid = value;
-}
-
-//---------------------------------------------------------------------------
-// Artwork::CardID::get
-//
-// Gets the card unique identifier
-
-Guid Artwork::CardID::get(void)
-{
-	CHECK_DISPOSED(m_disposed);
-	return m_cardid;
-}
-
-//---------------------------------------------------------------------------
-// Artwork::CardID::set (internal)
-//
-// Sets the card unique identifier
-
-void Artwork::CardID::set(Guid value)
-{
-	CHECK_DISPOSED(m_disposed);
-	m_cardid = value;
+	return lhs->m_artworkid != rhs->m_artworkid;
 }
 
 //---------------------------------------------------------------------------
@@ -182,23 +143,6 @@ void Artwork::Format::set(String^ value)
 }
 
 //---------------------------------------------------------------------------
-// Artwork::GetCard
-//
-// Gets the card associated with the artwork
-//
-// Arguments:
-//
-//	NONE
-
-Card^ Artwork::GetCard(void)
-{
-	CHECK_DISPOSED(m_disposed);
-	CLRASSERT(CLRISNOTNULL(m_database));
-
-	return m_database->SelectCard(m_cardid);
-}
-
-//---------------------------------------------------------------------------
 // Artwork::GetHashCode
 //
 // Overrides Object::GetHashCode()
@@ -210,7 +154,7 @@ Card^ Artwork::GetCard(void)
 int Artwork::GetHashCode(void)
 {
 	CHECK_DISPOSED(m_disposed);
-	return m_cardid.GetHashCode();
+	return m_artworkid->GetHashCode();
 }
 
 //---------------------------------------------------------------------------
@@ -305,7 +249,7 @@ Bitmap^ Artwork::ToBitmap(void)
 String^ Artwork::ToString(void)
 {
 	CHECK_DISPOSED(m_disposed);
-	return m_artworkid.ToString();
+	return m_artworkid->ToString();
 }
 
 //---------------------------------------------------------------------------
@@ -326,7 +270,7 @@ void Artwork::UpdateImage(String^ format, int width, int height, array<Byte>^ im
 	CLRASSERT(CLRISNOTNULL(m_database));
 
 	if(CLRISNULL(format)) throw gcnew ArgumentNullException("format");
-	if(CLRISNULL(image)) throw gcnew ArgumentNullException("format");
+	if(CLRISNULL(image)) throw gcnew ArgumentNullException("image");
 
 	// Attempt to update the image in the database
 	m_database->UpdateArtwork(m_artworkid, format, width, height, image);

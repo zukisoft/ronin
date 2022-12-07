@@ -38,10 +38,10 @@ namespace zuki::ronin::data {
 
 public enum class Restriction
 {
-	Unlimited = 0,
-	SemiLimited,
+	Forbidden = 0,
 	Limited,
-	Forbidden,
+	SemiLimited,
+	Unlimited,
 };
 
 //---------------------------------------------------------------------------

@@ -37,10 +37,19 @@ namespace zuki::ronin::data {
 // Arguments:
 //
 //	database	- Underlying Database instance
+//	printid		- Print unique identifier
+//	cardid		- Card unique identifier
+//	seriesid	- Series unique identifier
+//	artworkid	- Artwork unique identifier
 
-Print::Print(Database^ database) : m_database(database)
+Print::Print(Database^ database, PrintId^ printid, CardId^ cardid, SeriesId^ seriesid, ArtworkId^ artworkid)
+	: m_database(database), m_printid(printid), m_cardid(cardid), m_seriesid(seriesid), m_artworkid(artworkid)
 {
 	if(CLRISNULL(database)) throw gcnew ArgumentNullException("database");
+	if(CLRISNULL(printid)) throw gcnew ArgumentNullException("printid");
+	if(CLRISNULL(cardid)) throw gcnew ArgumentNullException("cardid");
+	if(CLRISNULL(seriesid)) throw gcnew ArgumentNullException("seriesid");
+	if(CLRISNULL(artworkid)) throw gcnew ArgumentNullException("artworkid");
 }
 
 //---------------------------------------------------------------------------
@@ -51,7 +60,7 @@ bool Print::operator==(Print^ lhs, Print^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return true;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return false;
 
-	return lhs->PrintID == rhs->PrintID;
+	return lhs->m_printid == rhs->m_printid;
 }
 
 //---------------------------------------------------------------------------
@@ -62,47 +71,7 @@ bool Print::operator!=(Print^ lhs, Print^ rhs)
 	if(Object::ReferenceEquals(lhs, rhs)) return false;
 	if(Object::ReferenceEquals(lhs, nullptr) || Object::ReferenceEquals(rhs, nullptr)) return true;
 
-	return lhs->PrintID != rhs->PrintID;
-}
-
-//---------------------------------------------------------------------------
-// Print::ArtworkID::get
-//
-// Gets the artwork unique identifier
-
-Guid Print::ArtworkID::get(void)
-{
-	return m_artworkid;
-}
-
-//---------------------------------------------------------------------------
-// Print::ArtworkID::set (internal)
-//
-// Sets the artwork unique identifier
-
-void Print::ArtworkID::set(Guid value)
-{
-	m_artworkid = value;
-}
-
-//---------------------------------------------------------------------------
-// Print::CardID::get
-//
-// Gets the card unique identifier
-
-Guid Print::CardID::get(void)
-{
-	return m_cardid;
-}
-
-//---------------------------------------------------------------------------
-// Print::CardID::set (internal)
-//
-// Sets the card unique identifier
-
-void Print::CardID::set(Guid value)
-{
-	m_cardid = value;
+	return lhs->m_printid != rhs->m_printid;
 }
 
 //---------------------------------------------------------------------------
@@ -200,7 +169,7 @@ Card^ Print::GetCard(void)
 
 int Print::GetHashCode(void)
 {
-	return m_printid.GetHashCode();
+	return m_printid->GetHashCode();
 }
 
 //---------------------------------------------------------------------------
@@ -214,6 +183,7 @@ int Print::GetHashCode(void)
 
 Series^ Print::GetSeries(void)
 {
+	// TODO
 	return nullptr;
 }
 
@@ -238,6 +208,27 @@ void Print::Language::set(String^ value)
 }
 
 //---------------------------------------------------------------------------
+// Print::LimitedEdition::get
+//
+// Gets a flag indicating if the print is a Limited Edition
+
+bool Print::LimitedEdition::get(void)
+{
+	// TODO
+	return false;
+}
+
+//---------------------------------------------------------------------------
+// Print::LimitedEdition::set (internal)
+//
+// Sets a flag indicating if the print is a Limited Edition
+
+void Print::LimitedEdition::set(bool /*value*/)
+{
+	// TODO
+}
+
+//---------------------------------------------------------------------------
 // Print::Number::get
 //
 // Gets the print number
@@ -255,41 +246,6 @@ String^ Print::Number::get(void)
 void Print::Number::set(String^ value)
 {
 	m_number = value;
-}
-
-//---------------------------------------------------------------------------
-// Print::ParseRarity (internal, static)
-//
-// Parses a string into a PrintRarity
-//
-// Arguments:
-//
-//	value		- String to be parsed into a PrintRarity
-
-PrintRarity Print::ParseRarity(String^ /*value*/)
-{
-	// TODO - Move into database as an extension function
-	return PrintRarity::Common;
-}
-
-//---------------------------------------------------------------------------
-// Print::PrintID::get
-//
-// Gets the print unique identifier
-
-Guid Print::PrintID::get(void)
-{
-	return m_printid;
-}
-
-//---------------------------------------------------------------------------
-// Print::PrintID::set (internal)
-//
-// Sets the print unique identifier
-
-void Print::PrintID::set(Guid value)
-{
-	m_printid = value;
 }
 
 //---------------------------------------------------------------------------
@@ -317,7 +273,7 @@ void Print::Rarity::set(PrintRarity value)
 //
 // Gets the print release date
 
-Nullable<DateTime> Print::ReleaseDate::get(void)
+DateTime Print::ReleaseDate::get(void)
 {
 	return m_releasedate;
 }
@@ -327,29 +283,9 @@ Nullable<DateTime> Print::ReleaseDate::get(void)
 //
 // Sets the print release date
 
-void Print::ReleaseDate::set(Nullable<DateTime> value)
+void Print::ReleaseDate::set(DateTime value)
 {
 	m_releasedate = value;
-}
-
-//---------------------------------------------------------------------------
-// Print::SeriesID::get
-//
-// Gets the series unique identifier
-
-Guid Print::SeriesID::get(void)
-{
-	return m_seriesid;
-}
-
-//---------------------------------------------------------------------------
-// Print::SeriesID::set (internal)
-//
-// Sets the series unique identifier
-
-void Print::SeriesID::set(Guid value)
-{
-	m_seriesid = value;
 }
 
 //---------------------------------------------------------------------------

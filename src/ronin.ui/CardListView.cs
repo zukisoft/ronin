@@ -230,7 +230,7 @@ namespace zuki.ronin.ui
 		private void OnResize(object sender, EventArgs args)
 		{
 			// Resize the column(s) of the list view
-			m_listviewcolumn.Width = (m_listview.ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor));
+			m_listviewcolumn.Width = m_listview.ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
