@@ -32,7 +32,7 @@ using zuki.ronin.ui;
 
 namespace zuki.ronin
 {
-	public partial class ArtworkTileControl : UserControl
+	public partial class ArtworkTileControl : UserControlBase
 	{
 		/// <summary>
 		/// Instance constructor
@@ -41,33 +41,12 @@ namespace zuki.ronin
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
+			// Manual DPI scaling
+			m_lowerpanel.Margin = m_lowerpanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_lowerpanel.Padding = m_lowerpanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_lowerpanel.Margin = m_lowerpanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_lowerpanel.Padding = m_lowerpanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-		}
-
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
 		}
 
 		//-------------------------------------------------------------------
@@ -112,17 +91,6 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Invoked when the application theme has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
-		{
-			BackColor = ApplicationTheme.PanelBackColor;
-			ForeColor = ApplicationTheme.PanelForeColor;
-		}
 
 		/// <summary>
 		/// Invoked when the "Set Default" button has been clicked
@@ -183,11 +151,6 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
 		/// The displayed Artwork instance

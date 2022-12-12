@@ -21,21 +21,10 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using zuki.ronin.data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace zuki.ronin.ui
 {
-	public partial class SeriesTreeView : UserControl
+	public partial class SeriesTreeView : UserControlBase
 	{
 		/// <summary>
 		/// Instance Constructor
@@ -44,55 +33,8 @@ namespace zuki.ronin.ui
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
-
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
-
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
-		}
-
-		//---------------------------------------------------------------------
-		// Event Handlers
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Invoked when the application theme has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
-		{
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
-		}
-
-		//---------------------------------------------------------------------
-		// Member Variables
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 	}
 }

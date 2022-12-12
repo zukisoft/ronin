@@ -175,8 +175,6 @@
 			this.ClientSize = new System.Drawing.Size(933, 519);
 			this.Controls.Add(this.m_statusstrip);
 			this.Controls.Add(this.m_menu);
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.IsMdiContainer = true;
 			this.MainMenuStrip = this.m_menu;
 			this.Name = "MainForm";

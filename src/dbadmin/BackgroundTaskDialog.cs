@@ -22,7 +22,6 @@
 
 using System;
 using System.ComponentModel;
-using System.Windows.Forms;
 using zuki.ronin.ui;
 
 namespace zuki.ronin
@@ -32,7 +31,7 @@ namespace zuki.ronin
 	/// the task has completed.  Uses a marquee progress bar to indicate
 	/// that the task is running
 	/// </summary>
-	public partial class BackgroundTaskDialog : Form
+	public partial class BackgroundTaskDialog : FormBase
 	{
 		/// <summary>
 		/// Default constructor
@@ -41,17 +40,12 @@ namespace zuki.ronin
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
+			// Manual DPI scaling
+			m_panel.Padding = m_panel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_panel.Margin = m_panel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Reset the theme based on the current system settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_panel.Padding = m_panel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_panel.Margin = m_panel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
 		/// <summary>
@@ -67,21 +61,6 @@ namespace zuki.ronin
 			m_task = task ?? throw new ArgumentNullException("task");
 		}
 
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
-		}
-
 		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
@@ -91,12 +70,10 @@ namespace zuki.ronin
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
+			base.OnApplicationThemeChanged(sender, args);
 
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
 			m_panel.BackColor = ApplicationTheme.PanelBackColor;
 			m_panel.ForeColor = ApplicationTheme.PanelForeColor;
 		}
@@ -156,11 +133,6 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
 		/// The task to be executed by the background worker instance

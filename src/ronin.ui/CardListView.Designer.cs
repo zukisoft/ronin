@@ -61,7 +61,6 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.Controls.Add(this.m_listview);
 			this.DoubleBuffered = true;
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "CardListView";
 			this.Size = new System.Drawing.Size(330, 457);
 			this.ResumeLayout(false);

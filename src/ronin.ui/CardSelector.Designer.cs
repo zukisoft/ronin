@@ -7,6 +7,19 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
 		#region Component Designer generated code
 
 		/// <summary> 
@@ -45,7 +58,6 @@
 			// 
 			this.m_cardlistview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardlistview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.m_cardlistview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_cardlistview.ForeColor = System.Drawing.Color.Black;
 			this.m_cardlistview.Location = new System.Drawing.Point(0, 28);
 			this.m_cardlistview.Name = "m_cardlistview";
@@ -60,7 +72,6 @@
 			this.Controls.Add(this.m_cardlistview);
 			this.Controls.Add(this.m_toppanel);
 			this.DoubleBuffered = true;
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "CardSelector";
 			this.Size = new System.Drawing.Size(294, 432);
 			this.m_toppanel.ResumeLayout(false);

@@ -7,6 +7,19 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
 		#region Component Designer generated code
 
 		/// <summary> 
@@ -81,7 +94,6 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.Controls.Add(this.m_image);
 			this.Controls.Add(this.m_lowerpanel);
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "ArtworkTile";
 			this.Padding = new System.Windows.Forms.Padding(4);
 			this.Size = new System.Drawing.Size(309, 351);

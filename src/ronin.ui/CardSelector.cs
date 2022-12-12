@@ -24,13 +24,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Forms;
 
 using zuki.ronin.data;
 
 namespace zuki.ronin.ui
 {
-	public partial class CardSelector : UserControl
+	public partial class CardSelector : UserControlBase
 	{
 		/// <summary>
 		/// Instance Constructor
@@ -39,33 +38,12 @@ namespace zuki.ronin.ui
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
+			// Manual DPI scaling
+			m_toppanel.Margin = m_toppanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_toppanel.Padding = m_toppanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_toppanel.Margin = m_toppanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_toppanel.Padding = m_toppanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-		}
-
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
 		}
 
 		//-------------------------------------------------------------------
@@ -113,11 +91,12 @@ namespace zuki.ronin.ui
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			BackColor = m_toppanel.BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = m_toppanel.ForeColor = ApplicationTheme.FormForeColor;
+			base.OnApplicationThemeChanged(sender, args);
 
+			m_toppanel.BackColor = ApplicationTheme.FormBackColor;
+			m_toppanel.ForeColor = ApplicationTheme.FormForeColor;
 			m_filter.BackColor = ApplicationTheme.PanelBackColor;
 			m_filter.ForeColor = ApplicationTheme.PanelForeColor;
 		}
@@ -146,11 +125,6 @@ namespace zuki.ronin.ui
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
 		/// Backing List<> for the virtual list view

@@ -22,7 +22,6 @@
 
 using System;
 using System.Drawing;
-using System.Windows.Forms;
 
 using zuki.ronin.data;
 using zuki.ronin.renderer;
@@ -32,7 +31,7 @@ namespace zuki.ronin.ui
 	/// <summary>
 	/// Implements a card image picture box
 	/// </summary>
-	public partial class CardImage : UserControl
+	public partial class CardImage : UserControlBase
 	{
 		/// <summary>
 		/// Instance Constructor
@@ -41,31 +40,8 @@ namespace zuki.ronin.ui
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
-
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-		}
-
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
 		}
 
 		//---------------------------------------------------------------------
@@ -109,10 +85,10 @@ namespace zuki.ronin.ui
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
+			base.OnApplicationThemeChanged(sender, args);
+
 			m_image.BackColor = ApplicationTheme.PanelBackColor;
 		}
 
@@ -130,14 +106,5 @@ namespace zuki.ronin.ui
 			m_image.Image = image ?? null;
 			old?.Dispose();
 		}
-
-		//---------------------------------------------------------------------
-		// Member Variables
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 	}
 }

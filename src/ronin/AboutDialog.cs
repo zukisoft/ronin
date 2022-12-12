@@ -23,7 +23,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Windows.Forms;
 
 using zuki.ronin.ui;
 
@@ -32,7 +31,7 @@ namespace zuki.ronin
 	/// <summary>
 	/// Implements the About dialog
 	/// </summary>
-	public partial class AboutDialog : Form
+	public partial class AboutDialog : FormBase
 	{
 		/// <summary>
 		/// Instance Constructor
@@ -41,59 +40,12 @@ namespace zuki.ronin
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
-
-			// Reset the theme based on the current system settings
-			OnApplicationThemeChanged(this, EventArgs.Empty);
-
-			// Manual DPI scaling
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-
 			// Get the version information for the binary and update the label
 			FileVersionInfo fileverinfo = FileVersionInfo.GetVersionInfo(typeof(AboutDialog).Assembly.Location);
 			m_version.Text = "RONIN v" + fileverinfo.FileVersion;
+
+			// Reset the theme based on the current settings
+			OnApplicationThemeChanged(this, EventArgs.Empty);
 		}
-
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
-		}
-
-		//---------------------------------------------------------------------
-		// Event Handlers
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Invoked when the application theme has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
-		{
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
-		}
-
-		//---------------------------------------------------------------------
-		// Member Variables
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 	}
 }

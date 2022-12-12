@@ -23,7 +23,6 @@
 using System.Drawing;
 
 using zuki.ronin.data;
-using zuki.ronin.renderer.Properties;
 
 namespace zuki.ronin.renderer
 {

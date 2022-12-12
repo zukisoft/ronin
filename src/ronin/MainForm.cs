@@ -37,7 +37,7 @@ namespace zuki.ronin
 	/// <summary>
 	/// Implements the main application form
 	/// </summary>
-	public partial class MainForm : Form
+	public partial class MainForm : FormBase
 	{
 		#region Win32 API Declarations
 		private static class NativeMethods
@@ -77,21 +77,14 @@ namespace zuki.ronin
 			using(Graphics graphics = CreateGraphics())
 				ApplicationTheme.SetScalingFactor(new SizeF(graphics.DpiX / 96.0F, graphics.DpiY / 96.0F));
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
-
-			// Reset the theme based on the current settings
-			OnApplicationThemeChanged(this, EventArgs.Empty);
-			
 			// Set the custom professional renderer for the MenuStrip
 			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
 
 			// Enable rounded corners if supported by the OS
 			this.EnableRoundedCorners(true);
 
-			// Manual DPI scaling
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			// Reset the theme based on the current settings
+			OnApplicationThemeChanged(this, EventArgs.Empty);
 
 			// Create the system theme change monitor instance
 			if(VersionHelper.IsWindows10OrGreater())
@@ -112,7 +105,6 @@ namespace zuki.ronin
 		{
 			if(disposing)
 			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
 				m_thememonitor?.Dispose();
 				components?.Dispose();
 			}
@@ -129,11 +121,9 @@ namespace zuki.ronin
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			this.EnableImmersiveDarkMode(ApplicationTheme.DarkMode);
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
+			base.OnApplicationThemeChanged(sender, args);
 
 			foreach(ToolStripMenuItem item in m_menu.Items)
 			{
@@ -207,11 +197,6 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
 		/// Event handler for system theme changes

@@ -7,6 +7,19 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
 		#region Windows Form Designer generated code
 
 		/// <summary>
@@ -119,8 +132,6 @@
 			this.ClientSize = new System.Drawing.Size(848, 638);
 			this.Controls.Add(this.m_rightpanel);
 			this.Controls.Add(this.m_leftpanel);
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ArtworkManager";
 			this.Text = "Manage Artwork";
 			this.Load += new System.EventHandler(this.OnLoad);

@@ -20,48 +20,73 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-using System.ComponentModel;
-using System.Drawing.Drawing2D;
+using System;
 using System.Windows.Forms;
 
 namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Extends the Windows Forms PictureBox class
+	/// Implements the base class for user controls
 	/// </summary>
-	public class PictureBox : System.Windows.Forms.PictureBox
+	public partial class UserControlBase : UserControl
 	{
 		/// <summary>
-		/// Instance Constructor
+		/// Instance constructor
 		/// </summary>
-		public PictureBox()
+		public UserControlBase()
 		{
-			InterpolationMode = InterpolationMode.Default;
+			InitializeComponent();
+
+			// Wire up the application theme change handler
+			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
+			ApplicationTheme.Changed += m_appthemechanged;
+
+			// Reset the theme based on the current settings
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
+
+			// Manual DPI scaling
+			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+		}
+
+		/// <summary>
+		/// Clean up any resources being used
+		/// </summary>
+		/// <param name="disposing">flag if managed resources should be disposed</param>
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing)
+			{
+				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
+				components?.Dispose();
+			}
+
+			base.Dispose(disposing);
 		}
 
 		//---------------------------------------------------------------------
-		// Properties
+		// Event Handlers
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Gets/sets the interpolation mode to use when drawing the image
+		/// Invoked when the application theme has changed
 		/// </summary>
-		[Category("Behavior")]
-		[DefaultValue(InterpolationMode.Default)]
-		public InterpolationMode InterpolationMode { get; set; }
-
-		//---------------------------------------------------------------------
-		// PictureBox overrides
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Invoked when the control is going to be painted
-		/// </summary>
-		/// <param name="args">Paint event arguments</param>
-		protected override void OnPaint(PaintEventArgs args)
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		protected virtual void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			args.Graphics.InterpolationMode = InterpolationMode;
-			base.OnPaint(args);
+			BackColor = ApplicationTheme.FormBackColor;
+			ForeColor = ApplicationTheme.FormForeColor;
 		}
+
+		//---------------------------------------------------------------------
+		// Member Variables
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Event handler for application theme changes
+		/// </summary>
+		private readonly EventHandler m_appthemechanged;
 	}
 }

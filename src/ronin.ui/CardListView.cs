@@ -37,7 +37,7 @@ namespace zuki.ronin.ui
 	/// <summary>
 	/// Implements a Card ListView control
 	/// </summary>
-	public partial class CardListView : UserControl
+	public partial class CardListView : UserControlBase
 	{
 		#region Win32 API Declarations
 		private static class NativeMethods
@@ -66,37 +66,16 @@ namespace zuki.ronin.ui
 		{
 			InitializeComponent();
 
-			// Wire up the application theme change handler
-			m_appthemechanged = new EventHandler(OnApplicationThemeChanged);
-			ApplicationTheme.Changed += m_appthemechanged;
-
-			// Reset the theme based on the current settings
-			OnApplicationThemeChanged(this, EventArgs.Empty);
-
 			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			m_dummyimagelist.ImageSize = m_dummyimagelist.ImageSize.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Fix the flicker seen on the owner drawn listview items when the mouse moves over them
 			IntPtr lvmstyles = NativeMethods.SendMessageW(m_listview.Handle, NativeMethods.LVM_GETEXTENDEDLISTVIEWSTYLE);
 			lvmstyles = new IntPtr(lvmstyles.ToInt32() | NativeMethods.LVS_EX_DOUBLEBUFFER);
 			NativeMethods.SendMessageW(m_listview.Handle, NativeMethods.LVM_SETEXTENDEDLISTVIEWSTYLE, IntPtr.Zero, lvmstyles);
-		}
 
-		/// <summary>
-		/// Clean up any resources being used
-		/// </summary>
-		/// <param name="disposing">flag if managed resources should be disposed</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing)
-			{
-				if(m_appthemechanged != null) ApplicationTheme.Changed -= m_appthemechanged;
-				components?.Dispose();
-			}
-
-			base.Dispose(disposing);
+			// Reset the theme based on the current settings
+			OnApplicationThemeChanged(this, EventArgs.Empty);
 		}
 
 		//-------------------------------------------------------------------
@@ -164,10 +143,9 @@ namespace zuki.ronin.ui
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnApplicationThemeChanged(object sender, EventArgs args)
+		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
-			BackColor = ApplicationTheme.FormBackColor;
-			ForeColor = ApplicationTheme.FormForeColor;
+			base.OnApplicationThemeChanged(sender, args);
 
 			m_listview.BackColor = ApplicationTheme.FormBackColor;
 			m_listview.ForeColor = ApplicationTheme.FormForeColor;
@@ -265,11 +243,6 @@ namespace zuki.ronin.ui
 		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Event handler for application theme changes
-		/// </summary>
-		private readonly EventHandler m_appthemechanged;
 
 		/// <summary>
 		/// Backing List<> for the virtual list view
