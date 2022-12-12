@@ -73,6 +73,12 @@ public:
 	// Compares this RestrictionList instance to another RestrictionList instance
 	bool Equals(RestrictionList^ rhs);
 
+	// GetCards
+	//
+	// Gets the Card objects associated with this RestrictionList
+	List<Card^>^ GetCards(Restriction restriction);
+	Dictionary<Card^, Restriction>^ GetCards(void);
+
 	// GetHashCode
 	//
 	// Overrides Object::GetHashCode()

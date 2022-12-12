@@ -250,6 +250,21 @@ namespace zuki.ronin
 		}
 
 		/// <summary>
+		/// Invoked when the Manage/Restriction Lists... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnManageRestrictionLists(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(ManageRestrictionListsForm)))
+			{
+				var child = new ManageRestrictionListsForm(m_database);
+				child.MdiParent = this;
+				child.Show();
+			}
+		}
+
+		/// <summary>
 		/// Invoked when the system theme(s) have changed
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>

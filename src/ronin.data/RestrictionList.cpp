@@ -122,6 +122,36 @@ bool RestrictionList::Equals(Object^ rhs)
 }
 
 //---------------------------------------------------------------------------
+// RestrictionList::GetCards
+//
+// Gets the Card objects associated with this RestrictionList
+//
+// Arguments:
+//
+//	restriction		- Restriction on which to filter the cards
+
+List<Card^>^ RestrictionList::GetCards(Restriction restriction)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectCards(m_restrictionlistid, restriction);
+}
+
+//---------------------------------------------------------------------------
+// RestrictionList::GetCards
+//
+// Gets the Card objects associated with this RestrictionList
+//
+// Arguments:
+//
+//	NONE
+
+Dictionary<Card^, Restriction>^ RestrictionList::GetCards(void)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectCards(m_restrictionlistid);
+}
+
+//---------------------------------------------------------------------------
 // RestrictionList::GetHashCode
 //
 // Overrides Object::GetHashCode()

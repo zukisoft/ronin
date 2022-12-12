@@ -235,6 +235,31 @@ static void restriction(sqlite3_context* context, int argc, sqlite3_value** argv
 }
 
 //---------------------------------------------------------------------------
+// restrictionstr (local)
+//
+// SQLite scalar function to convert a Restriction into a restriction string
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void restrictionstr(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	Restriction restriction = static_cast<Restriction>(sqlite3_value_int(argv[0]));
+
+	if(restriction == Restriction::Forbidden) return sqlite3_result_text16(context, L"Forbidden", -1, SQLITE_STATIC);
+	else if(restriction == Restriction::Limited) return sqlite3_result_text16(context, L"Limited", -1, SQLITE_STATIC);
+	else if(restriction == Restriction::SemiLimited) return sqlite3_result_text16(context, L"Semi-Limited", -1, SQLITE_STATIC);
+	
+	// Input value was not a valid restriction
+	return sqlite3_result_null(context);
+}
+
+//---------------------------------------------------------------------------
 // uuid (local)
 //
 // SQLite scalar function to convert a string into a UUID
@@ -345,6 +370,11 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 	//
 	result = sqlite3_create_function16(db, L"restriction", 1, SQLITE_UTF16, nullptr, restriction, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function restriction (%d)", result); return result; }
+
+	// restrictionstr function
+	//
+	result = sqlite3_create_function16(db, L"restrictionstr", 1, SQLITE_UTF16, nullptr, restrictionstr, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function restrictionstr (%d)", result); return result; }
 
 	// uuid function
 	//

@@ -22,7 +22,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 using zuki.ronin.data;
 using zuki.ronin.ui;
@@ -30,14 +29,17 @@ using zuki.ronin.ui;
 namespace zuki.ronin
 {
 	/// <summary>
-	/// Implements the card viewer form
+	/// Implements the restriction list management tools; this was
+	/// pared down into just a viewer to not need to add a bunch of
+	/// functions to the database layer when any updates can be done
+	/// manually at this point if they become necessary
 	/// </summary>
-	public partial class ManageCardsForm : FormBase
+	public partial class ManageRestrictionListsForm : FormBase
 	{
 		/// <summary>
-		/// Default constructor
+		/// Default Constructor
 		/// </summary>
-		private ManageCardsForm()
+		private ManageRestrictionListsForm()
 		{
 			InitializeComponent();
 
@@ -49,7 +51,7 @@ namespace zuki.ronin
 		/// Instance constructor
 		/// </summary>
 		/// <param name="database">Database instance to use</param>
-		public ManageCardsForm(Database database) : this()
+		public ManageRestrictionListsForm(Database database) : this()
 		{
 			m_database = database ?? throw new ArgumentNullException(nameof(database));
 		}
@@ -67,26 +69,10 @@ namespace zuki.ronin
 		{
 			base.OnApplicationThemeChanged(sender, args);
 
-			m_separator.BackColor = ApplicationTheme.InvertedPanelBackColor;
-		}
-
-		/// <summary>
-		/// Invoked when the "Edit Card Text..." button has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnEditText(object sender, EventArgs args)
-		{
-			if(m_selected == null) return;
-
-			using(CardTextEditorDialog dialog = new CardTextEditorDialog(m_selected))
-			{
-				if(dialog.ShowDialog(this) == DialogResult.OK)
-				{
-					m_selected.UpdateText(dialog.CardText);
-					OnSelectionChanged(this, m_selected);
-				}
-			}
+			m_accentpanel.BackColor = ApplicationTheme.PanelBackColor;
+			m_accentpanel.ForeColor = ApplicationTheme.PanelForeColor;
+			m_lowerpanel.BackColor = ApplicationTheme.FormBackColor;
+			m_lowerpanel.ForeColor = ApplicationTheme.FormForeColor;
 		}
 
 		/// <summary>
@@ -96,68 +82,51 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			List<Card> cards = new List<Card>();
-			m_database.EnumerateCards(card => { cards.Add(card); });
-			m_cardselector.Cards = cards;
+			Reload();
 		}
 
 		/// <summary>
-		/// Invoked when the next button has been clicked
+		/// Invoked when the selected restriction list index changes
 		/// </summary>
 		/// <param name="sender">Object raising this event</param>
 		/// <param name="args">Standard event arguments</param>
-		private void OnNext(object sender, EventArgs args)
+		private void OnSelectedListChanged(object sender, EventArgs args)
 		{
-			if(m_selected == null) return;
-
-			Print print = m_prints[++m_printindex];
-			if(print == null) m_image.SetCard(m_selected);
-			else m_image.SetPrint(print);
-
-			m_previous.Enabled = true;
-			m_next.Enabled = (m_printindex + 1) < m_prints.Count;
-		}
-
-		/// <summary>
-		/// Invoked when the previous button has been clicked
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Standard event arguments</param>
-		private void OnPrevious(object sender, EventArgs args)
-		{
-			if(m_selected == null) return;
-
-			Print print = m_prints[--m_printindex];
-			if(print == null) m_image.SetCard(m_selected);
-			else m_image.SetPrint(print);
-
-			m_previous.Enabled = m_printindex > 0;
-			m_next.Enabled = m_prints.Count > 1;
-		}
-
-		/// <summary>
-		/// Invoked when the selected card has changed
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="card">Selected Card instance</param>
-		private void OnSelectionChanged(object sender, Card card)
-		{
-			m_selected = card;
-			m_edittext.Enabled = m_selected != null;
-
-			m_prints.Clear();
-			m_printindex = 0;
-
-			if(card != null)
+			// No selection -- use a dummy List<>
+			if(m_reslistcombo.SelectedItem == null)
 			{
-				m_prints.Add(null);         // Generic image
-				m_prints.AddRange(card.GetPrints());
+				var dummy = new List<Card>();
+				m_forbiddencards.Cards = dummy;
+				m_limitedcards.Cards = dummy;
+				m_semilimitedcards.Cards = dummy;
+				return;
 			}
 
-			m_previous.Enabled = false;
-			m_next.Enabled = m_prints.Count > 1;
+			RestrictionList list = (RestrictionList)m_reslistcombo.SelectedItem;
 
-			m_image.SetCard(m_selected);
+			// Reload all the individual restricted card lists
+			m_forbiddencards.Cards = list.GetCards(Restriction.Forbidden);
+			m_limitedcards.Cards = list.GetCards(Restriction.Limited);
+			m_semilimitedcards.Cards = list.GetCards(Restriction.SemiLimited);
+		}
+
+		//---------------------------------------------------------------------
+		// Private Member Functions
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Reloads the restriction list information from the database
+		/// </summary>
+		private void Reload()
+		{
+			m_lists.Clear();
+			m_database.EnumerateRestrictionLists(reslist => { m_lists.Add(reslist); });
+
+			// Rebind the restriction list combo box to the List<>
+			m_reslistcombo.DataSource = null;
+			m_reslistcombo.DataSource = m_lists;
+			m_reslistcombo.DisplayMember = "Name";
+			m_reslistcombo.ValueMember = "EffectiveDate";
 		}
 
 		//---------------------------------------------------------------------
@@ -165,23 +134,13 @@ namespace zuki.ronin
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Database instance
+		/// Underlying Database instance
 		/// </summary>
-		private readonly Database m_database;
+		readonly Database m_database;
 
 		/// <summary>
-		/// Currently selected Card instance
+		/// Restriction list instances
 		/// </summary>
-		private Card m_selected;
-
-		/// <summary>
-		/// List<> of available prints for the selected Card
-		/// </summary>
-		private List<Print> m_prints = new List<Print>();
-
-		/// <summary>
-		/// Index of the currently displayed print
-		/// </summary>
-		private int m_printindex;
+		List<RestrictionList> m_lists = new List<RestrictionList>();
 	}
 }

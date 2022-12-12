@@ -710,7 +710,8 @@ void Database::EnumerateRestrictionLists(Action<RestrictionList^>^ callback)
 	sqlite3_stmt* statement;
 
 	// restrictionlistid | effective | cardid | restriction
-	auto sql = L"select restrictionlist.restrictionlistid, restrictionlist.effective from restrictionlist";
+	auto sql = L"select restrictionlist.restrictionlistid, restrictionlist.effective from restrictionlist "
+		"order by restrictionlist.effective desc";
 
 	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
 	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
@@ -1142,6 +1143,8 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		dbversion = 5;
 	}
 
+	// TODO: Add index on restriction.restriction
+
 	CLRASSERT(dbversion == 5);
 
 	// view: cards
@@ -1174,7 +1177,7 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 }
 
 //---------------------------------------------------------------------------
-// Database::InsertArtwork
+// Database::InsertArtwork (internal)
 //
 // Inserts a new artwork image into the database
 //
@@ -1186,7 +1189,7 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 //	height		- Image height
 //	image		- Image data
 
-Guid Database::InsertArtwork(CardId^ cardid, String^ format, int width, int height, array<Byte>^ image)
+ArtworkId^ Database::InsertArtwork(CardId^ cardid, String^ format, int width, int height, array<Byte>^ image)
 {
 	CHECK_DISPOSED(m_disposed);
 	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
@@ -1200,9 +1203,9 @@ Guid Database::InsertArtwork(CardId^ cardid, String^ format, int width, int heig
 
 	auto sql = L"insert into artwork values(?1, ?2, ?3, ?4, ?5, ?6)";
 
-	// Create a new Guid to represent the artworkid and pin it
-	Guid artworkid = Guid::NewGuid();
-	array<Byte>^ _artworkid = artworkid.ToByteArray();
+	// Create a new ArtworkId and pin it
+	ArtworkId^ artworkid = gcnew ArtworkId(Guid::NewGuid());
+	array<Byte>^ _artworkid = artworkid->ToByteArray();
 	pin_ptr<Byte> pinartworkid = &_artworkid[0];
 
 	// Convert the cardid into a byte array and pin it
@@ -1241,7 +1244,7 @@ Guid Database::InsertArtwork(CardId^ cardid, String^ format, int width, int heig
 }
 
 //---------------------------------------------------------------------------
-// Database::SelectArtwork
+// Database::SelectArtwork (internal)
 //
 // Selects an artwork object from the database
 //
@@ -1443,6 +1446,65 @@ Card^ Database::SelectCard(CardId^ cardid)
 // Arguments:
 //
 //	restrictionlistid	- RestrictionList to select the cards for
+//	restriction			- Restriction within the RestrictionList to select
+
+List<Card^>^ Database::SelectCards(RestrictionListId^ restrictionlistid, Restriction restriction)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(restrictionlistid)) throw gcnew ArgumentNullException("restrictionlistid");
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	List<Card^>^ cards = gcnew List<Card^>();
+
+	// cards view
+	auto sql = L"select cards.*, restriction(restriction.restriction) from cards "
+		"inner join restriction on cards.cardid = restriction.cardid "
+		"where restriction.restrictionlistid = ?1 and restriction = restrictionstr(?2) "
+		"order by type, name asc";
+
+	// Convert the restrictionlistid into a byte array and pin it
+	array<Byte>^ _restrictionlistid = restrictionlistid->ToByteArray();
+	pin_ptr<Byte> pinrestrictionlistid = &_restrictionlistid[0];
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pinrestrictionlistid, _restrictionlistid->Length, SQLITE_STATIC);
+		if(result == SQLITE_OK) sqlite3_bind_int(statement, 2, static_cast<int>(restriction));
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			cards->Add(row_cards(this, statement));		// Add the Card instance
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return cards;
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectCards (internal)
+//
+// Selects Card objects from the database
+//
+// Arguments:
+//
+//	restrictionlistid	- RestrictionList to select the cards for
 
 Dictionary<Card^, Restriction>^ Database::SelectCards(RestrictionListId^ restrictionlistid)
 {
@@ -1451,7 +1513,51 @@ Dictionary<Card^, Restriction>^ Database::SelectCards(RestrictionListId^ restric
 
 	if(CLRISNULL(restrictionlistid)) throw gcnew ArgumentNullException("restrictionlistid");
 
-	return nullptr;
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	Dictionary<Card^, Restriction>^ cards = gcnew Dictionary<Card^, Restriction>();
+
+	// cards view
+	auto sql = L"select cards.*, restriction(restriction.restriction) from cards "
+		"inner join restriction on cards.cardid = restriction.cardid "
+		"where restriction.restrictionlistid = ?1"
+		"order by restriction(restriction.restriction), type, name asc";
+
+	// Convert the restrictionlistid into a byte array and pin it
+	array<Byte>^ _restrictionlistid = restrictionlistid->ToByteArray();
+	pin_ptr<Byte> pinrestrictionlistid = &_restrictionlistid[0];
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pinrestrictionlistid, _restrictionlistid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			// Columns 0-28 are consumed by row_cards
+			Card^ card = row_cards(this, statement);
+
+			// restriction
+			Restriction restriction = static_cast<Restriction>(sqlite3_column_int(statement, 29));
+
+			cards->Add(card, restriction);				// Add the Card instance
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return cards;
 }
 
 //---------------------------------------------------------------------------

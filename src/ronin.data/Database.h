@@ -97,7 +97,7 @@ internal:
 	// InsertArtwork
 	//
 	// Inserts a new artwork image into the database
-	Guid InsertArtwork(CardId^ cardid, String^ format, int width, int height, array<Byte>^ image);
+	ArtworkId^ InsertArtwork(CardId^ cardid, String^ format, int width, int height, array<Byte>^ image);
 
 	// SelectArtwork
 	//
@@ -117,13 +117,13 @@ internal:
 	// SelectCards
 	//
 	// Selects Card objects from the database
+	List<Card^>^ SelectCards(RestrictionListId^ restrictionlistid, Restriction restriction);
 	Dictionary<Card^, Restriction>^ SelectCards(RestrictionListId^ restrictionlistid);
 
 	// SelectPrints
 	//
 	// Selects Print objects from the database
 	List<Print^>^ SelectPrints(CardId^ cardid);
-	//List<Print^>^ SelectPrints(SeriesId^ seriesid);
 
 	// UpdateArtwork
 	//

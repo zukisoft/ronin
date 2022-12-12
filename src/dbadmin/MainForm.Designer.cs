@@ -15,7 +15,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.m_opendatabase = new System.Windows.Forms.OpenFileDialog();
 			this.m_statusstrip = new System.Windows.Forms.StatusStrip();
 			this.m_statuslabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -29,9 +28,10 @@
 			this.m_managecards = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportartwork = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_exportcardimages = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowcloseall = new System.Windows.Forms.ToolStripMenuItem();
-			this.m_exportcardimages = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_managerestrictionlists = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_statusstrip.SuspendLayout();
 			this.m_menu.SuspendLayout();
 			this.SuspendLayout();
@@ -111,7 +111,8 @@
 			// 
 			this.m_managemenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_manageartwork,
-            this.m_managecards});
+            this.m_managecards,
+            this.m_managerestrictionlists});
 			this.m_managemenu.Name = "m_managemenu";
 			this.m_managemenu.Size = new System.Drawing.Size(62, 20);
 			this.m_managemenu.Text = "&Manage";
@@ -119,14 +120,14 @@
 			// m_manageartwork
 			// 
 			this.m_manageartwork.Name = "m_manageartwork";
-			this.m_manageartwork.Size = new System.Drawing.Size(125, 22);
+			this.m_manageartwork.Size = new System.Drawing.Size(180, 22);
 			this.m_manageartwork.Text = "&Artwork...";
 			this.m_manageartwork.Click += new System.EventHandler(this.OnManageArtwork);
 			// 
 			// m_managecards
 			// 
 			this.m_managecards.Name = "m_managecards";
-			this.m_managecards.Size = new System.Drawing.Size(125, 22);
+			this.m_managecards.Size = new System.Drawing.Size(180, 22);
 			this.m_managecards.Text = "&Cards...";
 			this.m_managecards.Click += new System.EventHandler(this.OnManageCards);
 			// 
@@ -142,9 +143,16 @@
 			// m_exportartwork
 			// 
 			this.m_exportartwork.Name = "m_exportartwork";
-			this.m_exportartwork.Size = new System.Drawing.Size(180, 22);
+			this.m_exportartwork.Size = new System.Drawing.Size(149, 22);
 			this.m_exportartwork.Text = "&Artwork...";
 			this.m_exportartwork.Click += new System.EventHandler(this.OnExportArtwork);
+			// 
+			// m_exportcardimages
+			// 
+			this.m_exportcardimages.Name = "m_exportcardimages";
+			this.m_exportcardimages.Size = new System.Drawing.Size(149, 22);
+			this.m_exportcardimages.Text = "&Card Images...";
+			this.m_exportcardimages.Click += new System.EventHandler(this.OnExportCardImages);
 			// 
 			// m_windowmenu
 			// 
@@ -161,12 +169,12 @@
 			this.m_windowcloseall.Text = "&Close All";
 			this.m_windowcloseall.Click += new System.EventHandler(this.OnWindowCloseAll);
 			// 
-			// m_exportcardimages
+			// m_managerestrictionlists
 			// 
-			this.m_exportcardimages.Name = "m_exportcardimages";
-			this.m_exportcardimages.Size = new System.Drawing.Size(180, 22);
-			this.m_exportcardimages.Text = "&Card Images...";
-			this.m_exportcardimages.Click += new System.EventHandler(this.OnExportCardImages);
+			this.m_managerestrictionlists.Name = "m_managerestrictionlists";
+			this.m_managerestrictionlists.Size = new System.Drawing.Size(180, 22);
+			this.m_managerestrictionlists.Text = "Restriction &Lists...";
+			this.m_managerestrictionlists.Click += new System.EventHandler(this.OnManageRestrictionLists);
 			// 
 			// MainForm
 			// 
@@ -176,6 +184,7 @@
 			this.Controls.Add(this.m_statusstrip);
 			this.Controls.Add(this.m_menu);
 			this.IsMdiContainer = true;
+			this.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip = this.m_menu;
 			this.Name = "MainForm";
 			this.Text = "RONIN Database Administration";
@@ -208,5 +217,6 @@
 		private System.Windows.Forms.ToolStripMenuItem m_databasemenu;
 		private System.Windows.Forms.ToolStripMenuItem m_databasevacuum;
 		private System.Windows.Forms.ToolStripMenuItem m_exportcardimages;
+		private System.Windows.Forms.ToolStripMenuItem m_managerestrictionlists;
 	}
 }
