@@ -67,11 +67,11 @@ namespace zuki.ronin
 		/// </summary>
 		public MainForm()
 		{
-			InitializeComponent();
-
 			// Precalculate a DPI-based scaling factor to be applied as necessary
 			using(Graphics graphics = CreateGraphics())
 				ApplicationTheme.SetScalingFactor(new SizeF(graphics.DpiX / 96.0F, graphics.DpiY / 96.0F));
+
+			InitializeComponent();
 
 			// Set the custom professional renderer for the MenuStrip and StatusStrip
 			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
@@ -128,6 +128,21 @@ namespace zuki.ronin
 				item.ForeColor = ApplicationTheme.MenuForeColor;
 				item.DropDown.BackColor = ApplicationTheme.MenuBackColor;
 				item.DropDown.ForeColor = ApplicationTheme.MenuForeColor;
+			}
+		}
+
+		/// <summary>
+		/// Invoked when the Database/Export... menu option has been selected
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnDatabaseExport(object sender, EventArgs args)
+		{
+			if(!ActivateExistingMDIChild(typeof(ExportDatabaseForm)))
+			{
+				var child = new ExportDatabaseForm(m_database);
+				child.MdiParent = this;
+				child.Show();
 			}
 		}
 

@@ -86,6 +86,17 @@ public:
 	// Enumerates RestrictionLists from the database
 	void EnumerateRestrictionLists(Action<RestrictionList^>^ callback);
 
+	// Export
+	//
+	// Exports the database into flat files for storage
+	void Export(String^ path);
+
+	// Open
+	//
+	// Opens a new database instance
+	static Database^ Open(String^ path);
+	static Database^ Open(String^ path, bool readonly);
+
 	// Vacuum
 	//
 	// Vacuums the database

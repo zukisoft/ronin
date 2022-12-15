@@ -429,12 +429,13 @@ Database^ Database::Create(String^ path)
 {
 	sqlite3* instance = nullptr;
 
-	// If the specified path is null/empty use an in-memory database,
-	// otherwise canonicalize the path to prevent traversal
-	if(String::IsNullOrEmpty(path)) path = gcnew String(":memory:");
-	else path = Path::GetFullPath(path);
+	if(CLRISNULL(path)) throw gcnew ArgumentNullException("path");
+
+	// Canonicalize the path to prevent traversal
+	path = Path::GetFullPath(path);
 
 	// Attempt to create or open the database at the specified path
+	// (sqlite3_open16() implies SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE)
 	pin_ptr<wchar_t const> pinpath = PtrToStringChars(path);
 	int result = sqlite3_open16(pinpath, &instance);
 	if(result != SQLITE_OK) {
@@ -1244,6 +1245,59 @@ ArtworkId^ Database::InsertArtwork(CardId^ cardid, String^ format, int width, in
 }
 
 //---------------------------------------------------------------------------
+// Database::Open (static)
+//
+// Opens an existing database file
+//
+// Arguments:
+//
+//	path		- Path on which to open the database file
+//	readonly	- Read-only access flag
+
+Database^ Database::Open(String^ path)
+{
+	// Default to read-only access
+	return Open(path, true);
+}
+
+//---------------------------------------------------------------------------
+// Database::Open (static)
+//
+// Opens an existing database file
+//
+// Arguments:
+//
+//	path		- Path on which to open the database file
+//	readonly	- Read-only access flag
+
+Database^ Database::Open(String^ path, bool readonly)
+{
+	sqlite3* instance = nullptr;
+
+	if(CLRISNULL(path)) throw gcnew ArgumentNullException("path");
+
+	// Create a marshaling context to convert the String^ into an ANSI C-style string
+	msclr::auto_handle<msclr::interop::marshal_context> context(gcnew msclr::interop::marshal_context());
+
+	// Attempt to open the database on the specified path
+	int result = sqlite3_open_v2(context->marshal_as<char const*>(Path::GetFullPath(path)), &instance,
+		(readonly) ? SQLITE_OPEN_READONLY : SQLITE_OPEN_READWRITE, nullptr);
+	if(result != SQLITE_OK) {
+
+		if(instance != nullptr) sqlite3_close(instance);
+		throw gcnew SQLiteException(result);
+	}
+
+	// Create the safe handle wrapper around the sqlite3*
+	SQLiteSafeHandle^ handle = gcnew SQLiteSafeHandle(std::move(instance));
+	CLRASSERT(instance == nullptr);
+
+	// Delete the safe handle on a construction failure
+	try { return gcnew Database(handle); }
+	catch(Exception^) { delete handle; throw; }
+}
+
+//---------------------------------------------------------------------------
 // Database::SelectArtwork (internal)
 //
 // Selects an artwork object from the database
@@ -1838,7 +1892,6 @@ int64_t Database::Vacuum([OutAttribute] int64_t% oldsize)
 	pagecount = execute_scalar_int64(instance, L"pragma page_count");
 
 	return pagecount * pagesize;
-
 }
 
 //---------------------------------------------------------------------------

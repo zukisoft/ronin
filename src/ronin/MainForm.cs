@@ -22,12 +22,14 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
+using zuki.ronin.data;
 using zuki.ronin.ui;
 using zuki.ronin.util;
 using zuki.ronin.Properties;
@@ -68,17 +70,35 @@ namespace zuki.ronin
 		/// </summary>
 		public MainForm()
 		{
+			// Precalculate a DPI-based scaling factor to be applied as necessary
+			using(Graphics graphics = CreateGraphics())
+				ApplicationTheme.SetScalingFactor(new SizeF(graphics.DpiX / 96.0F, graphics.DpiY / 96.0F)); 
+			
 			InitializeComponent();
 
 			// Wire up a handler to watch for property changes
 			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
 
-			// Precalculate a DPI-based scaling factor to be applied as necessary
-			using(Graphics graphics = CreateGraphics())
-				ApplicationTheme.SetScalingFactor(new SizeF(graphics.DpiX / 96.0F, graphics.DpiY / 96.0F));
+			// Manual DPI scaling
+			cardSelector1.Margin = cardSelector1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardSelector1.Padding = cardSelector1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardImage1.Margin = cardImage1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardImage1.Padding = cardImage1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			toolStripStatusLabel2.Margin = toolStripStatusLabel2.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			toolStripStatusLabel2.Padding = toolStripStatusLabel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			toolStripStatusLabel1.Margin = toolStripStatusLabel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			toolStripStatusLabel1.Padding = toolStripStatusLabel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+
+			// Windows 11
+			if(VersionHelper.IsWindows10OrGreater())
+			{
+				m_statusstrip.Font = new Font("Segoe UI Variable Text Semibold", m_statusstrip.Font.Size, m_statusstrip.Font.Style);
+				toolStripStatusLabel2.Font = new Font("Segoe Fluent Icons", toolStripStatusLabel2.Font.Size, toolStripStatusLabel2.Font.Style);
+			}
 
 			// Set the custom professional renderer for the MenuStrip
 			m_menu.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
+			m_statusstrip.Renderer = new ToolStripProfessionalRenderer(ApplicationTheme.ProfessionalColorTable);
 
 			// Enable rounded corners if supported by the OS
 			this.EnableRoundedCorners(true);
@@ -131,6 +151,10 @@ namespace zuki.ronin
 				item.DropDown.BackColor = ApplicationTheme.MenuBackColor;
 				item.DropDown.ForeColor = ApplicationTheme.MenuForeColor;
 			}
+
+			toolStripStatusLabel2.LinkColor = ApplicationTheme.LinkColor;
+			toolStripStatusLabel2.ActiveLinkColor = ApplicationTheme.LinkColor;
+			toolStripStatusLabel2.VisitedLinkColor = ApplicationTheme.LinkColor;
 		}
 
 		/// <summary>
@@ -163,6 +187,10 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
+			m_database = Database.Open(@"d:\ronin.db");
+			List<Card> allcards = new List<Card>();
+			m_database.EnumerateCards(card => allcards.Add(card));
+			cardSelector1.Cards = allcards;
 		}
 
 		/// <summary>
@@ -202,5 +230,12 @@ namespace zuki.ronin
 		/// Event handler for system theme changes
 		/// </summary>
 		private readonly RegistryKeyValueChangeMonitor m_thememonitor;
+
+		private Database m_database;
+
+		private void OnCardSelectionChanged(object sender, Card e)
+		{
+			cardImage1.SetCard(e);
+		}
 	}
 }

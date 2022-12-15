@@ -103,9 +103,6 @@
 			// 
 			// m_semilimitedcards
 			// 
-			this.m_semilimitedcards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-			this.m_semilimitedcards.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_semilimitedcards.ForeColor = System.Drawing.Color.Black;
 			this.m_semilimitedcards.Location = new System.Drawing.Point(664, 33);
 			this.m_semilimitedcards.Name = "m_semilimitedcards";
 			this.m_semilimitedcards.Size = new System.Drawing.Size(318, 482);
@@ -113,9 +110,6 @@
 			// 
 			// m_limitedcards
 			// 
-			this.m_limitedcards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-			this.m_limitedcards.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_limitedcards.ForeColor = System.Drawing.Color.Black;
 			this.m_limitedcards.Location = new System.Drawing.Point(340, 33);
 			this.m_limitedcards.Name = "m_limitedcards";
 			this.m_limitedcards.Size = new System.Drawing.Size(318, 482);
@@ -123,9 +117,6 @@
 			// 
 			// m_forbiddencards
 			// 
-			this.m_forbiddencards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-			this.m_forbiddencards.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_forbiddencards.ForeColor = System.Drawing.Color.Black;
 			this.m_forbiddencards.Location = new System.Drawing.Point(16, 33);
 			this.m_forbiddencards.Name = "m_forbiddencards";
 			this.m_forbiddencards.Size = new System.Drawing.Size(318, 482);

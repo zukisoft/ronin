@@ -89,7 +89,7 @@ namespace zuki.ronin.ui
 		{
 			base.OnApplicationThemeChanged(sender, args);
 
-			m_image.BackColor = ApplicationTheme.PanelBackColor;
+			m_image.BackColor = ApplicationTheme.FormBackColor;
 		}
 
 		//---------------------------------------------------------------------

@@ -44,10 +44,7 @@
 			// 
 			// m_cardselector
 			// 
-			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
 			this.m_cardselector.Location = new System.Drawing.Point(4, 4);
 			this.m_cardselector.Name = "m_cardselector";
 			this.m_cardselector.Size = new System.Drawing.Size(296, 630);

@@ -56,9 +56,7 @@
 			// 
 			// m_cardlistview
 			// 
-			this.m_cardlistview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardlistview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.m_cardlistview.ForeColor = System.Drawing.Color.Black;
 			this.m_cardlistview.Location = new System.Drawing.Point(0, 28);
 			this.m_cardlistview.Name = "m_cardlistview";
 			this.m_cardlistview.Size = new System.Drawing.Size(294, 404);

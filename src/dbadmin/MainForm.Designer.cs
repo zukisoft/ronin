@@ -26,12 +26,13 @@
 			this.m_managemenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_manageartwork = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_managecards = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_managerestrictionlists = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportartwork = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportcardimages = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowcloseall = new System.Windows.Forms.ToolStripMenuItem();
-			this.m_managerestrictionlists = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_databaseexport = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_statusstrip.SuspendLayout();
 			this.m_menu.SuspendLayout();
 			this.SuspendLayout();
@@ -95,6 +96,7 @@
 			// m_databasemenu
 			// 
 			this.m_databasemenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.m_databaseexport,
             this.m_databasevacuum});
 			this.m_databasemenu.Name = "m_databasemenu";
 			this.m_databasemenu.Size = new System.Drawing.Size(67, 20);
@@ -103,7 +105,7 @@
 			// m_databasevacuum
 			// 
 			this.m_databasevacuum.Name = "m_databasevacuum";
-			this.m_databasevacuum.Size = new System.Drawing.Size(117, 22);
+			this.m_databasevacuum.Size = new System.Drawing.Size(180, 22);
 			this.m_databasevacuum.Text = "&Vacuum";
 			this.m_databasevacuum.Click += new System.EventHandler(this.OnDatabaseVacuum);
 			// 
@@ -131,6 +133,13 @@
 			this.m_managecards.Text = "&Cards...";
 			this.m_managecards.Click += new System.EventHandler(this.OnManageCards);
 			// 
+			// m_managerestrictionlists
+			// 
+			this.m_managerestrictionlists.Name = "m_managerestrictionlists";
+			this.m_managerestrictionlists.Size = new System.Drawing.Size(180, 22);
+			this.m_managerestrictionlists.Text = "Restriction &Lists...";
+			this.m_managerestrictionlists.Click += new System.EventHandler(this.OnManageRestrictionLists);
+			// 
 			// m_exportmenu
 			// 
 			this.m_exportmenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -143,14 +152,14 @@
 			// m_exportartwork
 			// 
 			this.m_exportartwork.Name = "m_exportartwork";
-			this.m_exportartwork.Size = new System.Drawing.Size(149, 22);
+			this.m_exportartwork.Size = new System.Drawing.Size(180, 22);
 			this.m_exportartwork.Text = "&Artwork...";
 			this.m_exportartwork.Click += new System.EventHandler(this.OnExportArtwork);
 			// 
 			// m_exportcardimages
 			// 
 			this.m_exportcardimages.Name = "m_exportcardimages";
-			this.m_exportcardimages.Size = new System.Drawing.Size(149, 22);
+			this.m_exportcardimages.Size = new System.Drawing.Size(180, 22);
 			this.m_exportcardimages.Text = "&Card Images...";
 			this.m_exportcardimages.Click += new System.EventHandler(this.OnExportCardImages);
 			// 
@@ -169,12 +178,12 @@
 			this.m_windowcloseall.Text = "&Close All";
 			this.m_windowcloseall.Click += new System.EventHandler(this.OnWindowCloseAll);
 			// 
-			// m_managerestrictionlists
+			// m_databaseexport
 			// 
-			this.m_managerestrictionlists.Name = "m_managerestrictionlists";
-			this.m_managerestrictionlists.Size = new System.Drawing.Size(180, 22);
-			this.m_managerestrictionlists.Text = "Restriction &Lists...";
-			this.m_managerestrictionlists.Click += new System.EventHandler(this.OnManageRestrictionLists);
+			this.m_databaseexport.Name = "m_databaseexport";
+			this.m_databaseexport.Size = new System.Drawing.Size(180, 22);
+			this.m_databaseexport.Text = "&Export...";
+			this.m_databaseexport.Click += new System.EventHandler(this.OnDatabaseExport);
 			// 
 			// MainForm
 			// 
@@ -218,5 +227,6 @@
 		private System.Windows.Forms.ToolStripMenuItem m_databasevacuum;
 		private System.Windows.Forms.ToolStripMenuItem m_exportcardimages;
 		private System.Windows.Forms.ToolStripMenuItem m_managerestrictionlists;
+		private System.Windows.Forms.ToolStripMenuItem m_databaseexport;
 	}
 }

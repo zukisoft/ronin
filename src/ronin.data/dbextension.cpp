@@ -35,11 +35,97 @@
 #include "PrintRarity.h"
 #include "Restriction.h"
 
+// RapidJSON tries to use intrinsics that cause warnings when compiled with
+// CLR support; performance isn't necessary here so get rid of them
+#pragma push_macro("_MSC_VER")
+#undef _MSC_VER
+#include <rapidjson/document.h>
+#include <rapidjson/prettywriter.h>
+#pragma pop_macro("_MSC_VER")
+
+
 extern "C" { SQLITE_EXTENSION_INIT1 };
 
 using namespace zuki::ronin::data;
 
 #pragma warning(push, 4)
+
+//---------------------------------------------------------------------------
+// base64decode (local)
+//
+// SQLite scalar function to convert a base-64 encoded string into a blob
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void base64decode(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	DWORD cb = 0;			// Length of the decoded binary data
+
+	// Grab a pointer to the input string in UTF-16
+	wchar_t const* input = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if(input == nullptr) return sqlite3_result_null(context);
+
+	// Determine the length of the binary data that would result from conversion
+	CryptStringToBinaryW(input, 0, CRYPT_STRING_BASE64_ANY, nullptr, &cb, nullptr, nullptr);
+
+	// Allocate the memory using sqlite3_malloc64
+	LPBYTE data = reinterpret_cast<LPBYTE>(sqlite3_malloc64(cb));
+	if(data == nullptr) return sqlite3_result_error(context, "unable to allocate memory", -1);
+
+	// Convert the base-64 encoded string back into binary data
+	if(!CryptStringToBinaryW(input, 0, CRYPT_STRING_BASE64_ANY, data, &cb, nullptr, nullptr)) {
+
+		sqlite3_free(data);
+		return sqlite3_result_error(context, "failed to decode binary data from base-64", -1);
+	}
+
+	return sqlite3_result_blob(context, data, static_cast<int>(cb), sqlite3_free);
+}
+
+//---------------------------------------------------------------------------
+// base64encode (local)
+//
+// SQLite scalar function to convert a blob column into a base-64 string
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void base64encode(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	DWORD cb = 0;			// Length, in bytes, of the base-64 encoded string
+
+	// Get the length of the data to be encoded
+	int length = sqlite3_value_bytes(argv[0]);
+	if(length == 0) return sqlite3_result_null(context);
+
+	// Determine the length of the resultant base-64 encoded string
+	LPCBYTE data = reinterpret_cast<LPCBYTE>(sqlite3_value_blob(argv[0]));
+	CryptBinaryToStringW(data, length, CRYPT_STRING_BASE64 | CRYPT_STRING_NOCRLF, nullptr, &cb);
+
+	// Allocate the memory using sqlite3_malloc64
+	LPWSTR pwsz = reinterpret_cast<LPWSTR>(sqlite3_malloc64(cb * sizeof(wchar_t)));
+	if(pwsz == nullptr) return sqlite3_result_error(context, "unable to allocate memory", -1);
+
+	// Convert the binary data into the base-64 encoded string value
+	if(!CryptBinaryToStringW(data, length, CRYPT_STRING_BASE64 | CRYPT_STRING_NOCRLF, pwsz, &cb)) {
+
+		sqlite3_free(pwsz);
+		return sqlite3_result_error(context, "failed to encode binary data into base-64", -1);
+	}
+	
+	return sqlite3_result_text16(context, pwsz, -1, sqlite3_free);
+}
 
 //---------------------------------------------------------------------------
 // cardattribute (local)
@@ -170,6 +256,35 @@ static void newid(sqlite3_context* context, int argc, sqlite3_value** /*argv*/)
 
 	// Return the UUID back as a 16-byte blob
 	return sqlite3_result_blob(context, &uuid, sizeof(UUID), SQLITE_TRANSIENT);
+}
+
+//---------------------------------------------------------------------------
+// prettyjson (local)
+//
+// SQLite scalar function to pretty print a JSON string
+//
+// Arguments:
+//
+//	context		- SQLite context object
+//	argc		- Number of supplied arguments
+//	argv		- Argument values
+
+static void prettyjson(sqlite3_context* context, int argc, sqlite3_value** argv)
+{
+	if((argc != 1) || (argv[0] == nullptr)) return sqlite3_result_error(context, "invalid arguments", -1);
+
+	// Null or zero-length input string results in null
+	wchar_t const* json = reinterpret_cast<wchar_t const*>(sqlite3_value_text16(argv[0]));
+	if((json == nullptr) || (*json == L'\0')) return sqlite3_result_null(context);
+
+	// Pretty print the JSON using rapidjson
+	rapidjson::GenericDocument<rapidjson::UTF16<>> document;
+	document.Parse(json);
+	rapidjson::GenericStringBuffer<rapidjson::UTF16<>> sb;
+	rapidjson::PrettyWriter<rapidjson::GenericStringBuffer<rapidjson::UTF16<>>, rapidjson::UTF16<>, rapidjson::UTF16<>> writer(sb);
+	document.Accept(writer);
+
+	return sqlite3_result_text16(context, sb.GetString(), -1, SQLITE_TRANSIENT);
 }
 
 //---------------------------------------------------------------------------
@@ -341,9 +456,19 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 
 	*errmsg = nullptr;							// Initialize [out] variable
 
+	// base64decode function
+	//
+	int result = sqlite3_create_function16(db, L"base64decode", 1, SQLITE_UTF16, nullptr, base64decode, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function base64decode (%d)", result); return result; }
+
+	// base64encode function
+	//
+	result = sqlite3_create_function16(db, L"base64encode", 1, SQLITE_UTF16, nullptr, base64encode, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function base64encode (%d)", result); return result; }
+
 	// cardattribute function
 	//
-	int result = sqlite3_create_function16(db, L"cardattribute", 1, SQLITE_UTF16, nullptr, cardattribute, nullptr, nullptr);
+	result = sqlite3_create_function16(db, L"cardattribute", 1, SQLITE_UTF16, nullptr, cardattribute, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function cardattribute (%d)", result); return result; }
 
 	// cardtype function
@@ -360,6 +485,11 @@ extern "C" int sqlite3_extension_init(sqlite3* db, char** errmsg, const sqlite3_
 	//
 	result = sqlite3_create_function16(db, L"newid", 0, SQLITE_UTF16, nullptr, newid, nullptr, nullptr);
 	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function newid (%d)", result); return result; }
+
+	// prettyjson function
+	//
+	result = sqlite3_create_function16(db, L"prettyjson", 1, SQLITE_UTF16, nullptr, prettyjson, nullptr, nullptr);
+	if(result != SQLITE_OK) { *errmsg = sqlite3_mprintf("Unable to register scalar function prettyjson (%d)", result); return result; }
 
 	// printrarity function
 	//
