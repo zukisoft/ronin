@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "Wcx6I8CneUuIXdfXIZm8Vw==",
+        "sequence": 1,
+        "ruling": "- The text ***Your opponent discards 1 random card*** is read from the perspective of the Normal Spell Card's activator. So the player who activates [[Dark Deal]] is the player who discards a card."
+    },
+    {
+        "cardid": "Wcx6I8CneUuIXdfXIZm8Vw==",
+        "sequence": 2,
+        "ruling": "- This card must be chained directly to the Normal Spell Card. If another card is chained directly to the Normal Spell Card, you cannot activate [[Dark Deal]]."
+    },
+    {
+        "cardid": "Wcx6I8CneUuIXdfXIZm8Vw==",
+        "sequence": 3,
+        "ruling": "- You cannot activate this card if you have 0 cards in your hand. If an effect is chained to make you discard all the cards in your hand, the effect of the opponent's Normal Spell Card still changes, but does nothing since you have 0 cards in your hand."
+    },
+    {
+        "cardid": "Wcx6I8CneUuIXdfXIZm8Vw==",
+        "sequence": 4,
+        "ruling": "- This card can be chained to [[Swords of Revealing Light]] like any other Normal Spell Card, and [[Swords of Revealing Light]] will not stay on the field."
+    },
+    {
+        "cardid": "Wcx6I8CneUuIXdfXIZm8Vw==",
+        "sequence": 5,
+        "ruling": "- If your opponent activates a Normal Spell Card that targets, when you chain [[Dark Deal]], the card no longer targets. If the Normal Spell Card originally targeted [[Spirit Reaper]], the [[Spirit Reaper]] would not be destroyed."
+    }
+]

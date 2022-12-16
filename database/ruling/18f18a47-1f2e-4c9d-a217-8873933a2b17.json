@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "R4rxGC4fnUyiF4hzkzorFw==",
+        "sequence": 1,
+        "ruling": "- If you have 2 [[Goblin King]]s, or a [[Goblin King]] equipped with [[Raregold Armor]] and another Fiend-Type monster, your opponent cannot attack."
+    },
+    {
+        "cardid": "R4rxGC4fnUyiF4hzkzorFw==",
+        "sequence": 2,
+        "ruling": "- [[Goblin King]]'s second effect includes Fiend-Type monsters on your opponent's side of the field."
+    },
+    {
+        "cardid": "R4rxGC4fnUyiF4hzkzorFw==",
+        "sequence": 3,
+        "ruling": "- Face-down Fiend-Type monsters are not included for [[Goblin King]]'s second effect."
+    },
+    {
+        "cardid": "R4rxGC4fnUyiF4hzkzorFw==",
+        "sequence": 4,
+        "ruling": "- If you equip [[Megamorph]] to [[Goblin King]], [[Goblin King]]'s ATK is 0."
+    },
+    {
+        "cardid": "R4rxGC4fnUyiF4hzkzorFw==",
+        "sequence": 5,
+        "ruling": "- If you have a Fiend-Type monster and a face-down [[Goblin King]], and [[Goblin King]] is attacked, [[Goblin King]]'s ATK and DEF increase after he's flipped face-up, but before damage calculation is applied."
+    }
+]

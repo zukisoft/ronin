@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 1,
+        "ruling": "- [[Manticore of Darkness]]' effect can be activated during the End Phase when it was sent to the Graveyard from the field, hand, or your Deck that same turn."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 2,
+        "ruling": "- When you send 1 [[Manticore of Darkness]] to the Graveyard to Special Summon another [[Manticore of Darkness]], you can then send the new [[Manticore of Darkness]] to the Graveyard to Special Summon the first [[Manticore of Darkness]]."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 3,
+        "ruling": "- If [[Card of Safe Return]] is active, and [[Manticore of Darkness]] is Special Summoned with its effect, you can draw a card. So with 2 [[Manticore of Darkness]]es, 1 of them sent to the Graveyard, and [[Card of Safe Return]] in play, you can draw as many cards as you want."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 4,
+        "ruling": "- When [[Manticore of Darkness]] is sent to the Graveyard because of hand size adjustment in the End Phase, you can activate its effect."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 5,
+        "ruling": "- You can send a face-down Beast, Beast-Warrior, or Winged Beast-Type monster to the Graveyard for [[Manticore of Darkness]]' effect."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 6,
+        "ruling": "- Sending monsters to the Graveyard for [[Manticore of Darkness]]' effect is a cost."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 7,
+        "ruling": "- You can't send a Monster Token to the Graveyard for [[Manticore of Darkness]]' effect because Monster Tokens are taken off the field instead of going to the Graveyard."
+    },
+    {
+        "cardid": "DQOd9u2AxkqNhbhT0pKgjg==",
+        "sequence": 8,
+        "ruling": "- The owner of [[Manticore of Darkness]] gets the effect, so if your opponent controls your [[Manticore of Darkness]] and it's sent to the Graveyard, you get to activate the effect."
+    }
+]

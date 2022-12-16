@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "O12TI7J9DkuUXxDWO0OL7Q==",
+        "sequence": 1,
+        "ruling": "- While [[Non-Spellcasting Area]] is active, you cannot use face-up monsters on the field, except Effect Monsters, for [[Polymerization]] or Ritual Spell Cards."
+    },
+    {
+        "cardid": "O12TI7J9DkuUXxDWO0OL7Q==",
+        "sequence": 2,
+        "ruling": "- While [[Non-Spellcasting Area]] is active, no Spell Card, including [[Raigeki]] or Equip Spell Cards, can affect a monster, unless it is an Effect Monster."
+    },
+    {
+        "cardid": "O12TI7J9DkuUXxDWO0OL7Q==",
+        "sequence": 3,
+        "ruling": "- While [[Non-Spellcasting Area]] is active, and only one player has Effect Monsters on the field, you can activate [[Creature Swap]] but its effect will be negated because none of the non-Effect Monsters can switch control due to a Spell Card's effect."
+    },
+    {
+        "cardid": "O12TI7J9DkuUXxDWO0OL7Q==",
+        "sequence": 4,
+        "ruling": "- The effect of [[Non-Spellcasting Area]] includes Ritual Monsters and Fusion Monsters that do not have effects, as well as Monster Tokens."
+    }
+]

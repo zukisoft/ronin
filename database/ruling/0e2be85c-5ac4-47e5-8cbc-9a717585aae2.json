@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "XOgrDsRa5UeMvJpxdYWq4g==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Bountiful Artemis]] is a Continuous Effect, and cannot be chained to. You will draw 1 card immediately after a Counter Trap's effects have resolved."
+    },
+    {
+        "cardid": "XOgrDsRa5UeMvJpxdYWq4g==",
+        "sequence": 2,
+        "ruling": "- Your [[Bountiful Artemis]]'s effect will activate even if your opponent is the one who activated the Counter Trap."
+    },
+    {
+        "cardid": "XOgrDsRa5UeMvJpxdYWq4g==",
+        "sequence": 3,
+        "ruling": "- If [[Seven Tools of the Bandit]] is used to negate the activation of another Trap Card, such as [[Magic Jammer]], you will not draw a card for [[Magic Jammer]] since its activation was negated."
+    }
+]

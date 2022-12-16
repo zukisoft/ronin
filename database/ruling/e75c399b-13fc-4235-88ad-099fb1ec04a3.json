@@ -1,0 +1,72 @@
+[
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 1,
+        "ruling": "- [[Voltanis the Adjudicator]]'s Special Summon effect starts a Chain. After [[Voltanis the Adjudicator]] is Special Summoned, its effect starts another new Chain if activated."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 2,
+        "ruling": "- Tributing all your monsters to Special Summon [[Voltanis the Adjudicator]] is a cost. If you do not have at least 1 monster to Tribute, you cannot activate this effect."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 3,
+        "ruling": "- If the negated effect was Chain Link 2 or higher, you can still activate [[Voltanis the Adjudicator]]'s effect when the Chain resolves."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 4,
+        "ruling": "- [[Voltanis the Adjudicator]]'s effect does not target the cards you want to destroy."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 5,
+        "ruling": "- [[Voltanis the Adjudicator]]'s effect cannot be activated during the Damage Step."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 6,
+        "ruling": "- If [[DNA Surgery]] is on the field making all face-up monsters Fairy-Type, then all the face-up monsters you Tributed will count towards [[Voltanis the Adjudicator]]'s effect for determining how many cards are destroyed by [[Voltanis the Adjudicator]]."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 7,
+        "ruling": "- You cannot Special Summon [[Voltanis the Adjudicator]] if [[Mask of Restrict]] is active on the field."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 8,
+        "ruling": "- If you have 2 or more [[Voltanis the Adjudicator]] in your hand when your Counter Trap Card negates your opponent's effect, you can only activate the effect of 1 [[Voltanis the Adjudicator]], even if you negate multiple card effects."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 9,
+        "ruling": "- If you have [[Voltanis the Adjudicator]] and [[Van'Dalgyon the Dark Dragon Lord]] in your hand and your Counter Trap Card negates your opponent's card effect, you can Special Summon only 1 of the 2 monsters. You cannot Special Summon both monsters."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 10,
+        "ruling": "- If you draw [[Voltanis the Adjudicator]] during the Chain your Counter Trap Card negates the effect of your opponent's card(s), you can activate its effect after the Chain resolves."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 11,
+        "ruling": "- If you activate [[Magic Drain]] and your opponent discards 1 Spell Card, you cannot activate [[Voltanis the Adjudicator]]'s effect."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 12,
+        "ruling": "- [[Voltanis the Adjudicator]]'s effect can be activated when you activate [[Goblin Out of the Frying Pan]] or [[Malfunction]] to negate your opponent's Spell or Trap Card."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 13,
+        "ruling": "- [[Royal Oppression]] can be used to negate [[Voltanis the Adjudicator]]'s effect to Special Summon itself."
+    },
+    {
+        "cardid": "mzlc5/wTNUKIrQmfsewEow==",
+        "sequence": 14,
+        "ruling": "- If you activate [[Magic Jammer]], etc. and discard [[Night Assailant]] for its activation cost, the effects of [[Night Assailant]] and [[Voltanis the Adjudicator]] will start a new Chain after the Chain that included your [[Magic Jammer]] resolves. [[Night Assailant]]'s effect will be Chain Link 1 and [[Voltanis the Adjudicator]]'s will be Chain Link 2."
+    }
+]

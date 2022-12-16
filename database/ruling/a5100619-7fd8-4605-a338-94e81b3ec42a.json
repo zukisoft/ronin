@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "GQYQpdh/BUajOJToGz7EKg==",
+        "sequence": 1,
+        "ruling": "- [[Cyber Tutu]]'s effect is a Continuous Effect; it cannot be chained to."
+    },
+    {
+        "cardid": "GQYQpdh/BUajOJToGz7EKg==",
+        "sequence": 2,
+        "ruling": "- [[Cyber Tutu]] cannot attack directly if the opponent controls any face-down monsters."
+    },
+    {
+        "cardid": "GQYQpdh/BUajOJToGz7EKg==",
+        "sequence": 3,
+        "ruling": "- If [[Cyber Tutu]] uses its effect to attack directly, you can activate [[Rush Recklessly]] during the Damage Step, and even if it raises its ATK higher than the ATK of an opponent's monster a replay will not occur. But if you activate [[Rush Recklessly]] during the Battle Step, a replay will occur."
+    }
+]

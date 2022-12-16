@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 1,
+        "ruling": "- You can activate [[Macro Cosmos]] even if you don't have [[Helios - The Primordial Sun]] in your hand or Deck."
+    },
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 2,
+        "ruling": "- You can only Special Summon [[Helios - The Primordial Sun]] when [[Macro Cosmos]] first resolves. It is not an effect that you can activate at any time or more than once."
+    },
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 3,
+        "ruling": "- If [[Mystical Space Typhoon]] is chained to [[Macro Cosmos]]'s activation to destroy it, then you will not Special Summon [[Helios - The Primordial Sun]]. Because [[Macro Cosmos]] is a Continuous Trap Card, it needs to remain on the field to resolve."
+    },
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 4,
+        "ruling": "- While [[Macro Cosmos]] is active on the field, monsters that are unaffected by the effects of Trap Cards (like [[Elemental Hero Wildheart]]) are still removed from play instead of going to the Graveyard."
+    },
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 5,
+        "ruling": "- While [[Macro Cosmos]] is active on the field, if you Tribute a monster to Summon [[Jinzo]], the Tributed monster will still be removed from play."
+    },
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 6,
+        "ruling": "- You can activate [[Polymerization]] while [[Macro Cosmos]] is active on the field because sending Fusion Material Monsters to the Graveyard is an effect of [[Polymerization]] and not a cost."
+    },
+    {
+        "cardid": "L727HyPqvUSaEVlTNcLC8g==",
+        "sequence": 7,
+        "ruling": "- If you also have [[Gravekeeper's Servant]] active on the field, your opponent cannot declare an attack."
+    }
+]

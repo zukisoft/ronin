@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "SNY9LD4FCEq5/MnBoOpWDg==",
+        "sequence": 1,
+        "ruling": "- You must choose Spell Cards or Trap Cards when you activate this card."
+    },
+    {
+        "cardid": "SNY9LD4FCEq5/MnBoOpWDg==",
+        "sequence": 2,
+        "ruling": "- Any card treated as a Spell Card (a monster equipped to [[Relinquished]], etc.) when this card resolves will be destroyed."
+    },
+    {
+        "cardid": "SNY9LD4FCEq5/MnBoOpWDg==",
+        "sequence": 3,
+        "ruling": "- If you choose Trap Cards when you activate this card, and the only face-down card in your opponent's Spell & Trap Card Zones is [[Fake Trap]], the cannot activate [[Fake Trap]]."
+    }
+]

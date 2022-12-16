@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "+dPDJEfrIkWxvoKbkbuAyA==",
+        "sequence": 1,
+        "ruling": "- The limit applied by [[Summon Limit]] includes Normal Summons, Flip Summons, and Special Summons."
+    },
+    {
+        "cardid": "+dPDJEfrIkWxvoKbkbuAyA==",
+        "sequence": 2,
+        "ruling": "- Summons performed before [[Summon Limit]] resolves are applied to the limit of 2 per turn."
+    },
+    {
+        "cardid": "+dPDJEfrIkWxvoKbkbuAyA==",
+        "sequence": 3,
+        "ruling": "- If you Flip Summon 3 monsters during your turn, you can activate [[Summon Limit]] afterwards in the same turn, but you cannot Summon any monsters for the rest of the turn."
+    }
+]

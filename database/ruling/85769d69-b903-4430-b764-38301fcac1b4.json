@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "aZ12hQO5MES3ZDgwH8rBtA==",
+        "sequence": 1,
+        "ruling": "- This card's effect to destroy all Fiend-Type monsters Special Summoned by its effect when it leaves the field does not start a Chain."
+    },
+    {
+        "cardid": "aZ12hQO5MES3ZDgwH8rBtA==",
+        "sequence": 2,
+        "ruling": "- If you activate [[Doom Shaman]]'s effect, and a card is chained that destroys [[Doom Shaman]], the effect to Special Summon is still resolved. The Special Summoned monster will not be destroyed by [[Doom Shaman]]'s effect."
+    },
+    {
+        "cardid": "aZ12hQO5MES3ZDgwH8rBtA==",
+        "sequence": 3,
+        "ruling": "- This card's effect does not target when activated. However, after a monster is Special Summoned with this effect, it is continuously targeted."
+    },
+    {
+        "cardid": "aZ12hQO5MES3ZDgwH8rBtA==",
+        "sequence": 4,
+        "ruling": "- If there is no monster in either Graveyard or in your hand that can be Special Summoned by this effect when it resolves, your opponent can look at your hand to verify."
+    },
+    {
+        "cardid": "aZ12hQO5MES3ZDgwH8rBtA==",
+        "sequence": 5,
+        "ruling": "- If [[Doom Shaman]] leaves the field while its effect is negated by [[Skill Drain]], etc., monsters Special Summoned by its effect will not be destroyed."
+    },
+    {
+        "cardid": "aZ12hQO5MES3ZDgwH8rBtA==",
+        "sequence": 6,
+        "ruling": "- If you activate the effect of [[Doom Shaman]] and an effect is chained that turns it face-down, the effect still resolves and you can Special Summon a monster."
+    }
+]

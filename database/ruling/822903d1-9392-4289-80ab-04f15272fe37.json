@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "0QMpgpKTiUKAqwTxUnL+Nw==",
+        "sequence": 1,
+        "ruling": "- [[Cold Wave]] can only be activated when you start your Main Phase 1. If you activate any other effects or Normal Summon or Set a monster during your Main Phase 1, you cannot activate [[Cold Wave]]."
+    },
+    {
+        "cardid": "0QMpgpKTiUKAqwTxUnL+Nw==",
+        "sequence": 2,
+        "ruling": "- The Ignition-like effects of Continuous Spell or Trap Cards like [[Blaze Accelerator]] cannot be activated while [[Cold Wave]]'s effect is applied."
+    },
+    {
+        "cardid": "0QMpgpKTiUKAqwTxUnL+Nw==",
+        "sequence": 3,
+        "ruling": "- The Trigger Effects of Spell and Trap Cards, like [[Begone, Knave!]] or [[Card of Safe Return]], cannot activate while [[Cold Wave]]'s effect is applied."
+    }
+]

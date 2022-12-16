@@ -1,0 +1,47 @@
+[
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 1,
+        "ruling": "- This card targets 1 monster."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 2,
+        "ruling": "- If you use [[Emergency Provisions]], it sends Spell & Trap Cards to the Graveyard, it does not destroy them, so if you send this card to the Graveyard with [[Emergency Provisions]], this card's effect will not be activated. The same applies to [[Woodland Sprite]]."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 3,
+        "ruling": "- If you equip this card to [[Gearfried the Iron Knight]], then this card's effect will be activated because it was destroyed by a card effect."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 4,
+        "ruling": "- When this card is negated by [[Solemn Judgment]] or [[Seven Tools of the Bandit]], this card is negated and destroyed and the effect does not activate."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 5,
+        "ruling": "- You can activate this card during the Damage Step because it specifically modifies ATK."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 6,
+        "ruling": "- You cannot target [[Tyrant Dragon]] with this card and if you attempt to, then this card is negated and destroyed, and you do not get the effect of this card."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 7,
+        "ruling": "- If a monster attacks [[Gearfried the Iron Knight]], and you activate [[Blast with Chain]] during the Damage Step, [[Blast with Chain]] is destroyed and gets its effect, so you can destroy the attacking monster before Damage Calculation."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 8,
+        "ruling": "- If your opponent activates [[Mystical Space Typhoon]] targeting your face-down [[Blast with Chain]], and you chain [[Blast with Chain]], you still get [[Blast with Chain]]'s effect."
+    },
+    {
+        "cardid": "RmIcijmWqkazsK3qxqHTnA==",
+        "sequence": 9,
+        "ruling": "- If this card is destroyed in the middle of a resolving chain, its effect will start a new chain after current one resolves."
+    }
+]

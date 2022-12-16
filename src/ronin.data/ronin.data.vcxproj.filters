@@ -166,6 +166,9 @@
     <ClCompile Include="Export.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Import.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\tmp\version\version.rc">

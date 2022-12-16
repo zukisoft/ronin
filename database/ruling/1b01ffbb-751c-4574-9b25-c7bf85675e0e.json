@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "u/8BGxx1dEWbJce/hWdeDg==",
+        "sequence": 1,
+        "ruling": "- [[Honest]]'s effect is a Quick Effect."
+    },
+    {
+        "cardid": "u/8BGxx1dEWbJce/hWdeDg==",
+        "sequence": 2,
+        "ruling": "- [[Honest]]'s effect does not target the LIGHT monster."
+    },
+    {
+        "cardid": "u/8BGxx1dEWbJce/hWdeDg==",
+        "sequence": 3,
+        "ruling": "- Sending [[Honest]] to the Graveyard is a cost to activate its effect."
+    },
+    {
+        "cardid": "u/8BGxx1dEWbJce/hWdeDg==",
+        "sequence": 4,
+        "ruling": "- The ATK increase is equal to the ATK of the opponent's monster when [[Honest]]'s effect resolves."
+    },
+    {
+        "cardid": "u/8BGxx1dEWbJce/hWdeDg==",
+        "sequence": 5,
+        "ruling": "- The ATK increases from the effects of multiple [[Honest]] are cumulative."
+    },
+    {
+        "cardid": "u/8BGxx1dEWbJce/hWdeDg==",
+        "sequence": 6,
+        "ruling": "- If you use [[Honest]]'s effect to increase the attack of [[Asura Priest]] or [[Cyber Twin Dragon]], the ATK increase does not change when you battle a different monster."
+    }
+]

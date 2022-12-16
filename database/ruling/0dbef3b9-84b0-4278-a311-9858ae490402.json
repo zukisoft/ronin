@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "ufO+DbCEeEKjEZhYrkkEAg==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Strike Ninja]]'s effect during the Damage Step."
+    },
+    {
+        "cardid": "ufO+DbCEeEKjEZhYrkkEAg==",
+        "sequence": 2,
+        "ruling": "- [[Strike Ninja]]'s effect is a Quick Effect so you can chain it to another Spell Speed 1 or 2 effect and can activate it outside your Main Phases, even during your opponent's turn (but not during the Damage Step)."
+    },
+    {
+        "cardid": "ufO+DbCEeEKjEZhYrkkEAg==",
+        "sequence": 3,
+        "ruling": "- You can only activate [[Strike Ninja]]'s effect when [[Strike Ninja]] is face-up on the field."
+    },
+    {
+        "cardid": "ufO+DbCEeEKjEZhYrkkEAg==",
+        "sequence": 4,
+        "ruling": "- Removing 2 DARK monsters for [[Strike Ninja]]'s effect is a cost."
+    }
+]

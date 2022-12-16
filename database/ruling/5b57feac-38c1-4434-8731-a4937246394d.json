@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "rP5XW8E4NESHMaSTckY5TQ==",
+        "sequence": 1,
+        "ruling": "- The card discarded by the effect of [[Drop Off]] is considered to be discarded from your hand, not your Deck. If [[Penguin Knight]] is the card discarded, its effect will not activate. If [[Electric Snake]], [[Regenerating Mummy]], or [[Fear from the Dark]] is the card discarded, its effect will activate."
+    },
+    {
+        "cardid": "rP5XW8E4NESHMaSTckY5TQ==",
+        "sequence": 2,
+        "ruling": "- This card is activated during the opponent's Draw Phase in response to the opponent drawing a card. It is not chained to the draw."
+    },
+    {
+        "cardid": "rP5XW8E4NESHMaSTckY5TQ==",
+        "sequence": 3,
+        "ruling": "- If a Quick-Play Spell Card is drawn, the opponent may activate it in a chain to [[Drop Off]] and the effect of [[Drop Off]] will disappear since the drawn card is no longer in the opponent's hand."
+    },
+    {
+        "cardid": "rP5XW8E4NESHMaSTckY5TQ==",
+        "sequence": 4,
+        "ruling": "- If the fifth and final piece of [[Exodia the Forbidden One]] is drawn, the opponent wins before the effect of [[Drop Off]] is resolved."
+    }
+]

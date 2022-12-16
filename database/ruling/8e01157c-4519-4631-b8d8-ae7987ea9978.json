@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Maji-Gire Panda]] is a Trigger Effect that activates when 1 or more Beast-Type monster(s) are destroyed. If the monsters were destroyed as a result of battle, the timing of this effect is at the end of the Damage Step, when the monsters are sent to the Graveyard."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 2,
+        "ruling": "- You can chain to the activation of [[Maji-Gire Panda]]'s effect, including with [[Divine Wrath]]."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 3,
+        "ruling": "- If 2 or more Beast-Type monsters are destroyed at the same time, the ATK of [[Maji-Gire Panda]] only increases by 500 points."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 4,
+        "ruling": "- Beast-Type tokens like \"Sheep Tokens\" are included and will increase the ATK of [[Maji-Gire Panda]] when destroyed."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 5,
+        "ruling": "- Monsters changed to Beast-Type by [[DNA Surgery]] are included and will increase the ATK of [[Maji-Gire Panda]] when destroyed."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 6,
+        "ruling": "- Beast-Type monsters on your opponent's side of the field are included and will increase the ATK of [[Maji-Gire Panda]] when destroyed."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 7,
+        "ruling": "- When face-down Beast-Type monsters are destroyed (by a card effect), the ATK of [[Maji-Gire Panda]] does not increase."
+    },
+    {
+        "cardid": "fBUBjhlFMUa42K55h+qZeA==",
+        "sequence": 8,
+        "ruling": "- The ATK increase from the effect of [[Maji-Gire Panda]] remains as long as [[Maji-Gire Panda]] remains face-up on the field."
+    }
+]

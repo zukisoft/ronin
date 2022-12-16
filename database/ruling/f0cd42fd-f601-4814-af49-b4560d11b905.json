@@ -1,0 +1,47 @@
+[
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 1,
+        "ruling": "- \"Barrier Statue\"s will even prevent monsters from being Special Summoned face-down if they have the barred Attribute (the Attribute that the \"Barrier Statue\" is preventing from being Special Summoned)."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 2,
+        "ruling": "- Effects like [[Giant Rat]] and [[Mystic Tomato]] cannot be used while a \"Barrier Statue\" is in play if they would Special Summon a monster with a barred Attribute."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 3,
+        "ruling": "- You can activate [[Reasoning]] while a \"Barrier Statue\" is in play. But you cannot Special Summon the barred monster Attribute. If you pick up a monster with that Attribute, it cannot be Special Summoned and is sent to the Graveyard (And the effect of [[Reasoning]] ends.)"
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 4,
+        "ruling": "- You cannot activate [[The Shallow Grave]] while a \"Barrier Statue\" is in play if the only monsters in the opponent's Graveyard are barred monsters."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 5,
+        "ruling": "- You cannot activate [[Future Fusion]] or the effect of [[Cyber-Stein]] while a \"Barrier Statue\" is in play if the only Fusion Monsters in your Fusion Deck have barred Attributes."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 6,
+        "ruling": "- Effects that Special Summon, like [[Jam Breeding Machine]], will activate while a \"Barrier Statue\" is in play, but if they would Special Summon a monster with a barred Attribute, no monster will be Special Summoned."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 7,
+        "ruling": "- You cannot activate [[Magical Hats]] while a \"Barrier Statue\" is in play."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 8,
+        "ruling": "- You cannot activate [[Overload Fusion]] while a \"Barrier Statue\" is in play (unless it is [[Barrier Statue of the Abyss]])."
+    },
+    {
+        "cardid": "/ULN8AH2FEivSbRWDRG5BQ==",
+        "sequence": 9,
+        "ruling": "- Effects like [[DNA Transplant]] change monster Attributes only after they are on the field, so it has no impact on what monsters can be Special Summoned while a \"Barrier Statue\" is in play."
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "ym7vnrarjUmVKLuFrsRjmQ==",
+        "sequence": 1,
+        "ruling": "- [[Destiny End Dragoon]] cannot be Special Summoned from the Graveyard if it was not successfully Fusion Summoned before being sent to the Graveyard. For example, if [[Destiny End Dragoon]] is randomly sent to the Graveyard by [[Success Probability 0%]], it cannot be Special Summoned from the Graveyard."
+    },
+    {
+        "cardid": "ym7vnrarjUmVKLuFrsRjmQ==",
+        "sequence": 2,
+        "ruling": "- The damage inflicted with [[Destiny End Dragoon]]'s effect is equal to the current ATK of the destroyed monster on the field. If you destroy a face-down monster, 0 damage is inflicted."
+    }
+]

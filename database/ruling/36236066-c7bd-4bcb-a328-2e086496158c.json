@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "ZmAjNr3Hy0ujKC4IZJYVjA==",
+        "sequence": 1,
+        "ruling": "- When you use [[Dark Scorpion Combination]], each \"Dark Scorpion\"'s card effects are also activated when they attack your opponent directly."
+    },
+    {
+        "cardid": "ZmAjNr3Hy0ujKC4IZJYVjA==",
+        "sequence": 2,
+        "ruling": "- When you attack with [[Dark Scorpion Combination]], the Battle Damage is 400 points for each \"Dark Scorpion\", even if their ATK's are changed by some Equip Spell Card, Field Spell Card, [[Rush Recklessly]], etc. (exception: [[Rod of the Mind's Eye]] will adjust the damage to become 1000 points)."
+    },
+    {
+        "cardid": "ZmAjNr3Hy0ujKC4IZJYVjA==",
+        "sequence": 3,
+        "ruling": "- \"Dark Scorpion\"s that are Summoned after [[Dark Scorpion Combination]] resolves cannot attack directly using its effect."
+    },
+    {
+        "cardid": "ZmAjNr3Hy0ujKC4IZJYVjA==",
+        "sequence": 4,
+        "ruling": "- When you activate [[Dark Scorpion Combination]], all the \"Dark Scorpion\" cards listed on the text must be face-up on the field."
+    },
+    {
+        "cardid": "ZmAjNr3Hy0ujKC4IZJYVjA==",
+        "sequence": 5,
+        "ruling": "- If your opponent has a monster equipped with [[Ring of Magnetism]], you must attack that monster if you attack, even if using [[Dark Scorpion Combination]]."
+    },
+    {
+        "cardid": "ZmAjNr3Hy0ujKC4IZJYVjA==",
+        "sequence": 6,
+        "ruling": "- [[Waboku]] will prevent your \"Dark Scorpion\"s from inflicting Battle Damage, even if you use [[Dark Scorpion Combination]]."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "EzFJo2XTUEuC9PZAfOGyCA==",
+        "sequence": 1,
+        "ruling": "- While [[Spell Economics]] is active, you don't have to pay Life Points to activate a Spell Card (place it face-up on the field), but to activate an effect of a Spell Card, like [[Archfiend's Oath]], you still have to pay."
+    },
+    {
+        "cardid": "EzFJo2XTUEuC9PZAfOGyCA==",
+        "sequence": 2,
+        "ruling": "- Only the controller of [[Spell Economics]] gets its effect."
+    },
+    {
+        "cardid": "EzFJo2XTUEuC9PZAfOGyCA==",
+        "sequence": 3,
+        "ruling": "- You have to pay for [[Chain Energy]] even if you control [[Spell Economics]]."
+    },
+    {
+        "cardid": "EzFJo2XTUEuC9PZAfOGyCA==",
+        "sequence": 4,
+        "ruling": "- You pay the 500 Life Points to restore [[Horn of Light]] to your Deck even if [[Spell Economics]] is on the field."
+    }
+]

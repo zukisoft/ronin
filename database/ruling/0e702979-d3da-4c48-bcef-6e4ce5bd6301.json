@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "eSlwDtrTSEy8725M5b1jAQ==",
+        "sequence": 1,
+        "ruling": "- [[Cyber Dinosaur]]'s effect is a Quick Effect."
+    },
+    {
+        "cardid": "eSlwDtrTSEy8725M5b1jAQ==",
+        "sequence": 2,
+        "ruling": "- If your opponent Special Summons a monster from their hand while [[Stumbling]] is active, you can chain [[Cyber Dinosaur]]'s effect to the effect of [[Stumbling]]. [[Stumbling]]'s effect will be Chain Link 1 and [[Cyber Dinosaur]]'s effect will be Chain Link 2."
+    },
+    {
+        "cardid": "eSlwDtrTSEy8725M5b1jAQ==",
+        "sequence": 3,
+        "ruling": "- If your opponent Special Summons a Machine-Type monster from their hand while [[Cyber Summon Blaster]] is active, you can chain [[Cyber Dinosaur]]'s effect to the effect of [[Cyber Summon Blaster]]. [[Cyber Summon Blaster]]'s effect will be Chain Link 1 and [[Cyber Dinosaur]]'s effect will be Chain Link 2."
+    },
+    {
+        "cardid": "eSlwDtrTSEy8725M5b1jAQ==",
+        "sequence": 4,
+        "ruling": "- If you have 2 [[Cyber Dinosaur]]s in your hand when your opponent Special Summons a monster from their hand, you can only activate the effect of 1 of the [[Cyber Dinosaur]]s."
+    }
+]

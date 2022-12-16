@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "hhfVj4ZsSk2P5lALiGUkbw==",
+        "sequence": 1,
+        "ruling": "- For the effect of [[A Rival Appears!]], refer to the levels of the monster on the field and the monster in the hand at the time [[A Rival Appears!]] resolves (for purposes of [[Cost Down]], [[Level Conversion Lab]], [[Mystical Space Typhoon]] in a chain destroying [[Demotion]], etc.)"
+    },
+    {
+        "cardid": "hhfVj4ZsSk2P5lALiGUkbw==",
+        "sequence": 2,
+        "ruling": "- If the opponent's monster is face-down or not on the field when [[A Rival Appears!]] resolves, then its effect disappears."
+    },
+    {
+        "cardid": "hhfVj4ZsSk2P5lALiGUkbw==",
+        "sequence": 3,
+        "ruling": "- If you do not have a monster of the same level as the target, you cannot activate [[A Rival Appears!]]"
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "AuD0dwI6UkiD5KYEbOcmhw==",
+        "sequence": 1,
+        "ruling": "- Show the card to your opponent."
+    },
+    {
+        "cardid": "AuD0dwI6UkiD5KYEbOcmhw==",
+        "sequence": 2,
+        "ruling": "- If [[Imperial Order]] & [[Necrovalley]] are both active, and [[An Owl of Luck]] is flipped, you add the card to your hand because [[Necrovalley]] is face-up on the field, even though its effect is negated."
+    },
+    {
+        "cardid": "AuD0dwI6UkiD5KYEbOcmhw==",
+        "sequence": 3,
+        "ruling": "- If [[Mystical Space Typhoon]] is chained to the effect to destroy [[Necrovalley]], so that [[Necrovalley]] is not on the field when this effect resolves, you cannot place the card in your hand."
+    },
+    {
+        "cardid": "AuD0dwI6UkiD5KYEbOcmhw==",
+        "sequence": 4,
+        "ruling": "- You select the card for this effect when the effect resolves, not when it activates."
+    }
+]

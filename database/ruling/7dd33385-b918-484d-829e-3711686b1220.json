@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 1,
+        "ruling": "- This card is unaffected by the effects of Trap Cards, but it still may be the target of Trap Cards. For example, you can activate [[Two-Pronged Attack]] and target your [[Elemental Hero Wildheart]], another of your monsters, and the opponent's monster. When [[Two-Pronged Attack]] resolves, the other 2 monsters will be destroyed. [[Elemental Hero Wildheart]] will remain on the field."
+    },
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 2,
+        "ruling": "- If you attack with [[Elemental Hero Wildheart]] and the opponent activates [[Widespread Ruin]], if [[Elemental Hero Wildheart]] is your monster with the highest ATK, no monster will be destroyed by the effect of [[Widespread Ruin]]. If the opponent activates [[Mirror Force]], [[Elemental Hero Wildheart]] will not be destroyed, but all your other Attack Position monsters will be destroyed. If the opponent activates [[Negate Attack]], his attack will not be negated, and the Battle Phase will not end. If the opponent activates [[Magic Cylinder]], his attack will not be negated and no Effect Damage will be dealt."
+    },
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 3,
+        "ruling": "- You may activate [[Torrential Tribute]] when [[Elemental Hero Wildheart]] is Summoned, and when it resolves all monsters (except [[Elemental Hero Wildheart]]) will be destroyed."
+    },
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 4,
+        "ruling": "- You can Special Summon [[Elemental Hero Wildheart]] with [[Call of the Haunted]]. He will not be destroyed if [[Call of the Haunted]] is later removed from the field."
+    },
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 5,
+        "ruling": "- You can Special Summon [[Elemental Hero Wildheart]] with [[Return from the Different Dimension]] and it will not be removed from play during the End Phase."
+    },
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 6,
+        "ruling": "- If [[Waboku]] is activated, its effect is still applied to any damage calculation involving [[Elemental Hero Wildheart]]. This is because [[Waboku]] is affecting the damage and is not affecting [[Elemental Hero Wildheart]]."
+    },
+    {
+        "cardid": "hTPTfRi5TUiCnjcRaGsSIA==",
+        "sequence": 7,
+        "ruling": "- For [[Elemental Hero Wildheart]] vs. [[Skill Drain]], whichever effect was active on the field first takes precedence. So if [[Elemental Hero Wildheart]] is on the field and [[Skill Drain]] is activated, his effect is not negated. But if [[Skill Drain]] is on the field and [[Elemental Hero Wildheart]] is Summoned, his effect is negated by [[Skill Drain]] as long as [[Skill Drain]] remains on the field."
+    }
+]

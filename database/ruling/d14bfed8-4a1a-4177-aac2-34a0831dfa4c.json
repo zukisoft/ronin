@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "2P5L0RpKd0GqwjSggx36TA==",
+        "sequence": 1,
+        "ruling": "- The damage that is inflicted to your opponent's Life Points as a result of battle with [[Gravekeeper's Vassal]] attack is treated as effect damage instead, not Battle Damage. So your opponent cannot use [[Kuriboh]] or [[Waboku]] to prevent the damage, for example."
+    },
+    {
+        "cardid": "2P5L0RpKd0GqwjSggx36TA==",
+        "sequence": 2,
+        "ruling": "- A monster destroyed by [[Gravekeeper's Vassal]] in battle is still treated as \"destroyed as a result of battle\" (for [[Mystic Tomato]], [[Nimble Momonga]], etc.)."
+    },
+    {
+        "cardid": "2P5L0RpKd0GqwjSggx36TA==",
+        "sequence": 3,
+        "ruling": "- If you equip [[Fairy Meteor Crush]] to [[Gravekeeper's Vassal]], and attack a Defense Position monster and inflict Battle Damage to the opponent's Life Points, the damage is treated as effect damage due to [[Gravekeeper's Vassal]]'s effect."
+    },
+    {
+        "cardid": "2P5L0RpKd0GqwjSggx36TA==",
+        "sequence": 4,
+        "ruling": "- You cannot activate [[Barrel Behind the Door]] against damage inflicted by [[Gravekeeper's Vassal]] because its effect is a Continuous Effect and you cannot activate [[Barrel Behind the Door]] against Continuous Effects."
+    }
+]

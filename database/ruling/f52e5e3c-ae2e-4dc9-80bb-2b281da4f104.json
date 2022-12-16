@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "PF4u9S6uyU2AuysoHaTxBA==",
+        "sequence": 1,
+        "ruling": "- If neither player has a Level 3 or lower Normal Monster in their Deck, the effect of [[Emissary of the Afterlife]] disappears BUT both players get to look at their opponent's Decks before they are shuffled."
+    },
+    {
+        "cardid": "PF4u9S6uyU2AuysoHaTxBA==",
+        "sequence": 2,
+        "ruling": "- If only 1 player as a Level 3 or lower Normal Monster in their Deck, then that player gets to add the monster to his hand."
+    },
+    {
+        "cardid": "PF4u9S6uyU2AuysoHaTxBA==",
+        "sequence": 3,
+        "ruling": "- You select monsters when the effect resolves. The effect of [[Emissary of the Afterlife]] does not target."
+    }
+]

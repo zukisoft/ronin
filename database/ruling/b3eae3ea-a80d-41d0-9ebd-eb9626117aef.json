@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "6uPqsw2o0EGeveuWJhF67w==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Samsara]] does not start a chain. The Tributed monsters will be shuffled into the Deck immediately, instead of being sent to the Graveyard. Then the Ritual Monster is Special Summoned."
+    },
+    {
+        "cardid": "6uPqsw2o0EGeveuWJhF67w==",
+        "sequence": 2,
+        "ruling": "- If [[Samsara]] and [[Banisher of the Light]] are both on the field the monsters Tributed for a Ritual Summon will be shuffled back into the Deck."
+    },
+    {
+        "cardid": "6uPqsw2o0EGeveuWJhF67w==",
+        "sequence": 3,
+        "ruling": "- If [[Dark Magician of Chaos]] is used as a Tribute for a Ritual Summon while [[Samsara]] is on the field it will be shuffled back into the Deck."
+    }
+]

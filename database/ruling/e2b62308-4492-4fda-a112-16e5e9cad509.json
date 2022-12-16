@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "CCO24pJE2k+hEhbl6crVCQ==",
+        "sequence": 1,
+        "ruling": "- If the targeted monster is a Flip Effect Monster, it is not flipped face-up and its Flip Effect is not activated. Both players must reveal their Decks to each other to verify that all cards of the same name as the Flip Effect Monster are removed from play."
+    },
+    {
+        "cardid": "CCO24pJE2k+hEhbl6crVCQ==",
+        "sequence": 2,
+        "ruling": "- The targeted monster, and any cards of the same name if the target was a Flip Effect Monster, are removed from play and never go to the Graveyard, so the effects of cards like [[Sangan]] will not activate."
+    },
+    {
+        "cardid": "CCO24pJE2k+hEhbl6crVCQ==",
+        "sequence": 3,
+        "ruling": "- Cards of the same name in your hand or on the field are NOT removed from play."
+    }
+]

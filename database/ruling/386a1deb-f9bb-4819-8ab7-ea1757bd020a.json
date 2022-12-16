@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "6x1qOLv5GUiKt+oXV70CCg==",
+        "sequence": 1,
+        "ruling": "- If you select an Attack Position monster, it is flipped into face-down Attack Position."
+    },
+    {
+        "cardid": "6x1qOLv5GUiKt+oXV70CCg==",
+        "sequence": 2,
+        "ruling": "- You can Flip Summon the face-down Attack Position monster into face-up Attack Position."
+    },
+    {
+        "cardid": "6x1qOLv5GUiKt+oXV70CCg==",
+        "sequence": 3,
+        "ruling": "- When a face-down Attack Position monster is attacked, it is flipped into face-up Attack Position."
+    }
+]

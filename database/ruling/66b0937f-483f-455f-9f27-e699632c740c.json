@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "f5OwZj9IX0WfJ+aZYyx0DA==",
+        "sequence": 1,
+        "ruling": "- You reveal your chosen [[Ancient Gear]] monster when the effect of [[Ancient Gear Factory]] resolves. Not when it is activated."
+    },
+    {
+        "cardid": "f5OwZj9IX0WfJ+aZYyx0DA==",
+        "sequence": 2,
+        "ruling": "- You can activate [[Ancient Gear Factory]] and then decide not to Summon the revealed monster."
+    },
+    {
+        "cardid": "f5OwZj9IX0WfJ+aZYyx0DA==",
+        "sequence": 3,
+        "ruling": "- You cannot select a monster for [[Ancient Gear Factory]] that you could not Tribute Summon, such as Level 4 and lower monsters."
+    }
+]

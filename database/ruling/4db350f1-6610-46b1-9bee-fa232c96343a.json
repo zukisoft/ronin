@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "8VCzTRBmsUab7vojLJY0Og==",
+        "sequence": 1,
+        "ruling": "- If you target the opponent's monster with the effect of [[B.E.S. Crystal Core]], and an effect is chained that causes it to no longer be on your opponent's side of the field (such as [[Remove Brainwashing]] or [[Enemy Controller]]), the effect of [[B.E.S. Crystal Core]] is not applied."
+    },
+    {
+        "cardid": "8VCzTRBmsUab7vojLJY0Og==",
+        "sequence": 2,
+        "ruling": "- The effect of [[B.E.S. Crystal Core]] that destroys itself during the damage step cannot be chained to."
+    }
+]

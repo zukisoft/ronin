@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "ovBEp2jAwkS8OLxMkhOm2Q==",
+        "sequence": 1,
+        "ruling": "- Placing 1 D Counter onto [[D - Formation]] does not start a Chain."
+    },
+    {
+        "cardid": "ovBEp2jAwkS8OLxMkhOm2Q==",
+        "sequence": 2,
+        "ruling": "- The second effect of [[D - Formation]] starts a Chain. It does not target."
+    },
+    {
+        "cardid": "ovBEp2jAwkS8OLxMkhOm2Q==",
+        "sequence": 3,
+        "ruling": "- You cannot activate [[D - Formation]]'s second effect when you Special Summon a monster face-down."
+    },
+    {
+        "cardid": "ovBEp2jAwkS8OLxMkhOm2Q==",
+        "sequence": 4,
+        "ruling": "- If an effect is chained that flips the Normal or Special Summoned monster face-down, [[D - Formation]]'s effect disappears."
+    },
+    {
+        "cardid": "ovBEp2jAwkS8OLxMkhOm2Q==",
+        "sequence": 5,
+        "ruling": "- If you have 2 or more [[D - Formation]]s with 2 D Counters when you Normal or Special Summon a monster, you can activate the second effect of each [[D - Formation]]."
+    },
+    {
+        "cardid": "ovBEp2jAwkS8OLxMkhOm2Q==",
+        "sequence": 6,
+        "ruling": "- If a card's effect  Special Summons multiple monsters during your Main Phase, you can activate the second effect of [[D - Formation]]. In this case you will select which monster you will apply towards the effect when [[D - Formation]]'s effect resolves."
+    }
+]

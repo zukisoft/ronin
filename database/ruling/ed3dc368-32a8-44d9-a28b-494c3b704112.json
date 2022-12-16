@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "aMM97agy2USii0lMO3BBEg==",
+        "sequence": 1,
+        "ruling": "- When [[Legendary Fiend]] is removed from the field or flipped face-down, the ATK gain disappears."
+    },
+    {
+        "cardid": "aMM97agy2USii0lMO3BBEg==",
+        "sequence": 2,
+        "ruling": "- When control of [[Legendary Fiend]] shifts to another player, the ATK gain is still applied."
+    },
+    {
+        "cardid": "aMM97agy2USii0lMO3BBEg==",
+        "sequence": 3,
+        "ruling": "- When [[Legendary Fiend]] is equipped with [[Megamorph]], first double or halve its original ATK and then reapply the ATK gain."
+    },
+    {
+        "cardid": "aMM97agy2USii0lMO3BBEg==",
+        "sequence": 4,
+        "ruling": "- If you Special Summon [[Legendary Fiend]] during your Standby Phase, its effect activates during that same Standby Phase."
+    },
+    {
+        "cardid": "aMM97agy2USii0lMO3BBEg==",
+        "sequence": 5,
+        "ruling": "- If [[Legendary Fiend]] is equipped with your opponent's [[Blast Sphere]], you can choose to activate [[Legendary Fiend]]'s effect or pass to your opponent. If they decide to pass, you must activate [[Legendary Fiend]]'s effect."
+    },
+    {
+        "cardid": "aMM97agy2USii0lMO3BBEg==",
+        "sequence": 6,
+        "ruling": "- While [[Skill Drain]] is active, the ATK gain disappears. When [[Skill Drain]] is negated or removed from the field, the ATK gain is not reapplied."
+    }
+]

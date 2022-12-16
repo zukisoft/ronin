@@ -1,0 +1,57 @@
+[
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 1,
+        "ruling": "- Note that [[Amplifier]]'s activation and effect cannot be negated. This is written on the card."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 2,
+        "ruling": "- It is the controller of [[Jinzo]] equipped with [[Amplifier]], not the controller of [[Amplifier]], that can activate Trap Cards."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 3,
+        "ruling": "- If you equip [[Amplifier]] to your opponent's [[Jinzo]], then your opponent can activate Trap Cards and they will not be negated."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 4,
+        "ruling": "- If you control 2 [[Jinzo]]s and only 1 is equipped with [[Amplifier]], you cannot activate Trap Cards."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 5,
+        "ruling": "- If you have [[Jinzo]] with [[Amplifier]], your Trap Cards are not negated and their effects are applied, including [[Aqua Chorus]], [[Royal Command]], [[Royal Oppression]], [[Coffin Seller]], [[Forced Requisition]], [[Mirror Wall]], [[Gravity Bind]], [[Rivalry of Warlords]], [[Minor Goblin Official]], [[Final Attack Orders]], [[Pitch-Black Power Stone]], [[Bad Reaction to Simochi]], [[Skull Invitation]], [[Skull Lair]], [[The Eye of Truth]], [[Spirit's Invitation]], [[Respect Play]], [[Ring of Destruction]], [[Metalmorph]], [[Torrential Tribute]], [[Self-Destruct Button]], [[Zero Gravity]], and [[Big Burn]]."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 6,
+        "ruling": "- If you activate [[Mask of Restrict]] and you have [[Jinzo]] with [[Amplifier]], [[Mask of Restrict]] is not negated and its effect still applies, so neither player may Tribute."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 7,
+        "ruling": "- If the controller of [[Jinzo]] with [[Amplifier]] has activated the effects of [[The Regulation of Tribe]], [[Spatial Collapse]], [[Robbin' Goblin]], [[Robbin' Zombie]], [[Curse of Darkness]], etc., their effects are not negated, but if the opponent activates them, they are negated."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 8,
+        "ruling": "- If your [[Amplifier]] is switched from your [[Jinzo]] to your opponent's [[Jinzo]] with [[Tailor of the Fickle]], then your [[Jinzo]] is not destroyed."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 9,
+        "ruling": "- You cannot activate a card that would cause an infinite loop because its effect cannot resolve completely."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 10,
+        "ruling": "> Example #1: You activate [[Snatch Steal]] targeting your opponent's [[Jinzo]]. You then equip [[Jinzo]] with [[Amplifier]]. You cannot activate [[Imperial Order]] because it cannot resolve completely (it would negate [[Snatch Steal]], returning [[Jinzo]] to your opponent, which would negate [[Imperial Order]] so [[Snatch Steal]] would re-activate). If you activate [[Imperial Order]] by mistake in such a situation, flip it face-down again."
+    },
+    {
+        "cardid": "jyEw9l+2kUeA975aOxHHMw==",
+        "sequence": 11,
+        "ruling": "> Example #2: you control [[Jinzo]] equipped with [[Amplifier]] and [[Skill Drain]]. Your opponent cannot activate [[Royal Decree]]."
+    }
+]

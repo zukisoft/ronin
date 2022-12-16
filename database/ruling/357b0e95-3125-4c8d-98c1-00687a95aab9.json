@@ -1,0 +1,62 @@
+[
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 1,
+        "ruling": "- This card can remove from play multiple monsters at once, if they are Summoned simultaneously. Since this card can affect multiple monsters, it does not target."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 2,
+        "ruling": "- If the opponent has [[Lord of D.]] on the field and activates [[The Flute of Summoning Dragon]] to Special Summon 2 copies of [[Blue-Eyes White Dragon]], you can activate this card and both will be removed from play. [[Lord of D.]] does not protect the Dragons because [[Bottomless Trap Hole]] does not target. The same situation would occur if only 1 [[Blue-Eyes White Dragon]] was Special Summoned, [[Bottomless Trap Hole]] still does not target."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 3,
+        "ruling": "- This card can only be activated when the last thing that resolved in the Duel was the opponent Normal / Flip / Special Summoning a monster(s). It cannot be activated at any other time."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 4,
+        "ruling": "- If [[Cyber Jar]] is flipped during a Main Phase, and the opponent Special Summons [[Dark Blade]], [[Luster Dragon]], [[Magical Scientist]] and a face-down monster, you can activate [[Bottomless Trap Hole]] and both [[Luster Dragon]] and [[Dark Blade]] will be removed from play. The [[Magical Scientist]], face-down monster, and all monsters you Summoned will remain on the field."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 5,
+        "ruling": "- If [[Cyber Jar]] is flipped as a result of being attacked, you cannot activate [[Bottomless Trap Hole]] because it cannot be activated during the Damage Step."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 6,
+        "ruling": "- If the opponent Summons a monster, then you activate [[Bottomless Trap Hole]], and the opponent chains [[Book of Moon]] to flip the Summoned monster face-down, it is not removed from play by the effect of [[Bottomless Trap Hole]]."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 7,
+        "ruling": "- Use the current ATK at time of Summoning to determine if you can activate [[Bottomless Trap Hole]]. So if the opponent Tribute Summons [[Enraged Muka Muka]] with 1 card in their hand, you can activate [[Bottomless Trap Hole]] since its ATK is 1600."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 8,
+        "ruling": "- You cannot activate this card after [[Jinzo]] is Summoned."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 9,
+        "ruling": "- You can activate this card after a monster was Special Summoned by the effect of another card, such as [[Monster Reborn]]."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 10,
+        "ruling": "- If the opponent activates [[Monster Reborn]] and then chains [[Call of the Haunted]] (so that 2 monsters are Summoned in the same chain), and then you activate [[Bottomless Trap Hole]] after that chain resolves only the monster Summoned by chain link 1 (i.e. [[Monster Reborn]]) is removed from play."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 11,
+        "ruling": "- Only the monster(s) that triggered [[Bottomless Trap Hole]] by being Normal / Flip / Special Summoned can be destroyed and removed from play by [[Bottomless Trap Hole]]'s effect."
+    },
+    {
+        "cardid": "lQ57NSUxjUyYwQBoepWquQ==",
+        "sequence": 12,
+        "ruling": "> Example: Player A Normal Summons [[Dark Blade]], and Player B activates [[Bottomless Trap Hole]] in response (Chain Link 1), then Player A chains the effect of their face-up [[Ultimate Offering]] to Tribute [[Dark Blade]] for [[Summoned Skull]] (Chain Link 2). [[Ultimate Offering]]'s effect resolves first, and [[Dark Blade]] is Tributed for [[Summoned Skull]]. Then the effect of [[Bottomless Trap Hole]] disappears because the monster it would have applied to is no longer on the field."
+    }
+]

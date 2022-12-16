@@ -1,0 +1,57 @@
+[
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 1,
+        "ruling": "- The effect of [[D.D. Survivor]] activates during the End Phase if [[D.D. Survivor]] is currently removed from play. It does not activate at the moment it is removed from play. You can chain to this effect."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 2,
+        "ruling": "- The effect of [[D.D. Survivor]] can only be activated once per turn."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 3,
+        "ruling": "- If your [[D.D. Survivor]] is on your opponent's side of the field when it is removed from play its effect will not be activated. This is because it is in your Removed Zone, but was not on your side of the field when it was removed from play."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 4,
+        "ruling": "- If [[Macro Cosmos]] is active on the field and a face-down [[D.D. Survivor]] on your side of the field is destroyed by battle, its effect will not activate. [[D.D. Survivor]] needs to be face-up when it is selected as an attack target in order for its effect to activate. (Similar to [[Poison Draw Frog]].)"
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 5,
+        "ruling": "- You can activate [[Divine Wrath]] against the effect of [[D.D. Survivor]] when it activates during the End Phase. In this case, [[D.D. Survivor]] is not actually Special Summoned. [[D.D. Survivor]] remains removed from play (its effect doesn't activate again)."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 6,
+        "ruling": "- If [[Skill Drain]] is active when [[D.D. Survivor]] is removed from play, it is still Special Summoned because its effect activates during the End Phase while it is removed from play."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 7,
+        "ruling": "- If you have no open Monster Card Zones during your End Phase, and [[D.D. Survivor]] is currently removed from play, it is not Special Summoned."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 8,
+        "ruling": "- If [[D.D. Survivor]] is removed from play, then placed in the Graveyard with [[Miracle Dig]], it is not Special Summoned."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 9,
+        "ruling": "- If [[D.D. Survivor]] is removed from play with [[Dimensionhole]], and [[D.D. Survivor]] is Special Summoned by its effect, the effect of [[Dimensionhole]] ends (freeing up the occupied Monster Card Zone) even though the effect of [[Dimensionhole]] did not return [[D.D. Survivor]] to the field."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 10,
+        "ruling": "- If [[D.D. Survivor]] or [[D.D. Scout Plane]] is removed from play with [[Interdimensional Matter Transporter]], you can choose whether it is Special Summoned (with its effect) or returned to the field (with [[Interdimensional Matter Transporter]])."
+    },
+    {
+        "cardid": "6BHPZdhH20q8tB5wECdR4w==",
+        "sequence": 11,
+        "ruling": "- If [[D.D. Survivor]]'s effect is activated in the End Phase, and it is removed from play again (by [[Bottomless Trap Hole]], or [[Torrential Tribute]] while [[Dimensional Fissure]] is in play, etc.), its effect will activate during the next turn's End Phase."
+    }
+]

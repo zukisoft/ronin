@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "LHzsd4EeVkGGWsf1ePwM2w==",
+        "sequence": 1,
+        "ruling": "- [[Lucky Chance]]'s Trigger Effect is chained to the effect of the Effect Monster. You choose what you think the coin flip will be when you resolve [[Lucky Chance]]'s effect."
+    },
+    {
+        "cardid": "LHzsd4EeVkGGWsf1ePwM2w==",
+        "sequence": 2,
+        "ruling": "- If you control 2 or more face-up [[Lucky Chance]], you will only call the coin toss once and you will draw 1 card if you call it right."
+    },
+    {
+        "cardid": "LHzsd4EeVkGGWsf1ePwM2w==",
+        "sequence": 3,
+        "ruling": "- If you use the effect of [[Second Coin Toss]] to re-flip the coin, you do not reselect for [[Lucky Chance]]."
+    }
+]

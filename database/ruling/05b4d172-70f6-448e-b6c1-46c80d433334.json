@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "ctG0BfZwjkS2wUbIDUMzNA==",
+        "sequence": 1,
+        "ruling": "- When [[Neko Mane King]] ends your opponent's turn, your opponent proceeds immediately to his/her End Phase, even if [[Neko Mane King]] is sent to the Graveyard during the Damage Step."
+    },
+    {
+        "cardid": "ctG0BfZwjkS2wUbIDUMzNA==",
+        "sequence": 2,
+        "ruling": "- [[Neko Mane King]] doesn't actually end the turn, it advances play to the End Phase, so [[Destiny Board]] can still be used, etc."
+    },
+    {
+        "cardid": "ctG0BfZwjkS2wUbIDUMzNA==",
+        "sequence": 3,
+        "ruling": "- [[Neko Mane King]]'s effect activates even if it is sent to the Graveyard while face-down on the field, or sent to the Graveyard from your Deck or hand."
+    },
+    {
+        "cardid": "ctG0BfZwjkS2wUbIDUMzNA==",
+        "sequence": 4,
+        "ruling": "- When [[Neko Mane King]] is sent to the Graveyard by the effect of [[Delinquent Duo]] or [[Card Destruction]], [[Neko Mane King]]'s effect is activated after those cards completely resolve all of their effects."
+    },
+    {
+        "cardid": "ctG0BfZwjkS2wUbIDUMzNA==",
+        "sequence": 5,
+        "ruling": "- [[Neko Mane King]]'s effect only activates when the owner controls it; if the opponent controls [[Neko Mane King]] then its effect is not activated."
+    },
+    {
+        "cardid": "ctG0BfZwjkS2wUbIDUMzNA==",
+        "sequence": 6,
+        "ruling": "- When [[Neko Mane King]] is designated by [[Prohibition]], its effect is not activated."
+    }
+]

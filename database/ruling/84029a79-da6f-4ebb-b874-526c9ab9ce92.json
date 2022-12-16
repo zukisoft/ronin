@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "eZoChG/au064dFJsmrnOkg==",
+        "sequence": 1,
+        "ruling": "- [[Soul Devouring Bamboo Sword]] targets the selected monster that is equipped with \"Bamboo Sword\"."
+    },
+    {
+        "cardid": "eZoChG/au064dFJsmrnOkg==",
+        "sequence": 2,
+        "ruling": "- The effect of [[Soul Devouring Bamboo Sword]] that causes the opponent to skip their next Draw Phase activates at the time the selected monster inflicts Battle Damage. This effect begins a Chain."
+    },
+    {
+        "cardid": "eZoChG/au064dFJsmrnOkg==",
+        "sequence": 3,
+        "ruling": "- If a \"Bamboo Sword\" equip card is no longer equipped to the selected monster, the effect of [[Soul Devouring Bamboo Sword]] no longer activates when the selected monster inflicts Battle Damage. The effect that destroys [[Soul Devouring Bamboo Sword]] during the second Standby Phase after activation is still applied."
+    },
+    {
+        "cardid": "eZoChG/au064dFJsmrnOkg==",
+        "sequence": 4,
+        "ruling": "- The effect that destroys [[Soul Devouring Bamboo Sword]] during the second Standby Phase after it was activated does not begin a Chain."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "/PQEqMPUMkuiWh0Js5BdTQ==",
+        "sequence": 1,
+        "ruling": "- The Beast-Type monster is Special Summoned from your hand."
+    },
+    {
+        "cardid": "/PQEqMPUMkuiWh0Js5BdTQ==",
+        "sequence": 2,
+        "ruling": "- You can Special Summon the same Beast-Type monster you returned to your hand with the same effect of [[Beast Soul Swap]]."
+    },
+    {
+        "cardid": "/PQEqMPUMkuiWh0Js5BdTQ==",
+        "sequence": 3,
+        "ruling": "- You can use [[Beast Soul Swap]] to return a non-Beast-Type monster on the field that has been changed to Beast-Type with [[DNA Surgery]]."
+    },
+    {
+        "cardid": "/PQEqMPUMkuiWh0Js5BdTQ==",
+        "sequence": 4,
+        "ruling": "- This card targets the 1 face-up Beast-Type monster you returned to the hand."
+    }
+]

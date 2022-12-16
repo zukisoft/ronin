@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 1,
+        "ruling": "- The second effect of this card restricts your opponent to either 1 Spell Card or 1 Trap Card each turn; not one of each. This effect applies during both players' turns."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 2,
+        "ruling": "- The second effect of this card only restricts the activation of new cards. It does not restrict the number of times that the effects of face-up Continuous Spell and Trap Cards can be used."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 3,
+        "ruling": "- The second effect of this card only applies to cards activated after [[Great Shogun Shien]] is face-up on the field. If your opponent activates a Spell or Trap Card, and then later you Special Summon [[Great Shogun Shien]] (or flip him face-up), your opponent can still activate 1 more Spell/Trap Card this turn."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 4,
+        "ruling": "- If [[Great Shogun Shien]] is face-up, and the activation of your opponent's Spell/Trap Card is negated (by [[Magic Jammer]], etc.), they can still activate 1 more Spell/Trap Card after that."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 5,
+        "ruling": "- Please see [[The Six Samurai - Irou]] for additional rulings."
+    }
+]

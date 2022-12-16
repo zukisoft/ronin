@@ -1,0 +1,102 @@
+[
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 1,
+        "ruling": "- If you activate [[Divine Wrath]] during the Damage Step to destroy the attacking monster or the monster being attacked, the monster is destroyed. No replay occurs because a replay can only happen during the Battle Step. If damage calculation has not been performed yet, it is not performed."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 2,
+        "ruling": "- You can activate [[Divine Wrath]] against [[Sasuke Samurai]] or [[Mystic Swordsman LV2]] when they attack a face-down Defense Position monster."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 3,
+        "ruling": "- You can activate [[Divine Wrath]] to negate either effect of [[Don Zaloog]] and to negate the effect of [[Airknight Parshath]] that allows its controller to draw a card."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 4,
+        "ruling": "- You can activate [[Divine Wrath]] to negate an effect that activates in the Graveyard, such as [[Witch of the Black Forest]], [[Mystic Tomato]], [[Despair from the Dark]], [[Night Assailant]], [[Electric Snake]], and [[Sangan]]."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 5,
+        "ruling": "- You can activate [[Divine Wrath]] when the opponent discards [[Kuriboh]] from their hand to negate the effect of [[Kuriboh]] and when a [[Night Assailant]] is discarded to negate the effect of returning a Flip Effect monster to the owner's hand."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 6,
+        "ruling": "- You can activate [[Divine Wrath]] when [[Exiled Force]], [[Red-Eyes B. Chick]], or [[Paladin of White Dragon]] is Tributed for its own effect."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 7,
+        "ruling": "- You can activate [[Divine Wrath]] when [[Dark Necrofear]] activates its effect in the Graveyard during the End Phase, and since a monster in the Graveyard cannot be destroyed, [[Dark Necrofear]] is not destroyed by a card effect, so its effect does not activate again."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 8,
+        "ruling": "- You can chain [[Divine Wrath]] to the effect of [[King Dragun]] that Special Summons a Dragon-Type monster."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 9,
+        "ruling": "- You can activate [[Divine Wrath]] when the opponent uses [[Relinquished]]'s effect to equip itself with a monster, or when [[Relinquished]]'s effect inflicts damage."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 10,
+        "ruling": "- You can activate [[Divine Wrath]] when a Spirit Monster is returned to the owner's hand by its own effect, and the Spirit Monster will be destroyed and sent to the Graveyard."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 11,
+        "ruling": "- You can activate [[Divine Wrath]] when the effect of [[Helpoemer]] activates in the Graveyard, and the effect of [[Helpoemer]] will not activate again."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 12,
+        "ruling": "- You can activate [[Divine Wrath]] when [[Vampire Lord]] or [[Sacred Phoenix of Nephthys]] activate their effects in the Graveyard, and their effects are negated and they are not Special Summoned; but because they cannot be destroyed while in the Graveyard, they are not destroyed by a card effect so their effect will not activate again."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 13,
+        "ruling": "- You can chain [[Divine Wrath]] to the activation of [[Peten the Dark Clown]], and the effect of [[Peten the Dark Clown]] will not resolve (however, the [[Peten the Dark Clown]] that was removed from play remains removed from play)."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 14,
+        "ruling": "- You can activate [[Divine Wrath]] when the effect of [[Black Luster Soldier - Envoy of the Beginning]] activates that allows it to attack a second time."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 15,
+        "ruling": "- You cannot chain [[Divine Wrath]] to Continuous Effects such as [[Perfect Machine King]], [[Raging Flame Sprite]] (either effect), [[Jinzo]], [[Fire Princess]], [[Mad Sword Beast]], [[Hayabusa Knight]], [[Cat's Ear Tribe]], [[Amazoness Swords Woman]], [[Harpie Lady 3]], [[Fusilier Dragon, the Dual-Mode Beast]], [[The Fiend Megacyber]], [[Blade Knight]] (either effect), [[Patrician of Darkness]], or monsters like [[Element Saurus]] that gain ATK continuously."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 16,
+        "ruling": "- You cannot activate [[Divine Wrath]] when [[Giant Orc]], [[Goblin Attack Force]], or [[Spear Dragon]] changes to Defense Position because these are considered Continuous Effects."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 17,
+        "ruling": "- You can activate [[Divine Wrath]] when [[Lava Golem]] does damage to your Life Points, but you cannot activate it when [[Lava Golem]] is Special Summoned."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 18,
+        "ruling": "- You can activate [[Divine Wrath]] when any Union Monster activates its effect to equip itself to another monster, because that is an Ignition Effect. However, you cannot activate [[Divine Wrath]] when a Union Monster Special Summons itself back as a monster, because that is an effect of an Equip Spell Card."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 19,
+        "ruling": "- You can activate [[Divine Wrath]] when an \"LV\" monster is sent to the Graveyard to Special Summon the next level version (an Ignition Effect), and [[Divine Wrath]] will negate that effect, even though it cannot destroy the \"LV\" monster because it is already in the Graveyard."
+    },
+    {
+        "cardid": "7sBsjS5aKU2y8i4grsNwVA==",
+        "sequence": 20,
+        "ruling": "- After you negate the effect of [[Sinister Serpent]] with [[Divine Wrath]], your opponent can activate the effect of [[Sinister Serpent]] again to return it to their hand, even during the same Standby Phase."
+    }
+]

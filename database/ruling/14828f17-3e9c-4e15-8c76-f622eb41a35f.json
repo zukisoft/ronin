@@ -1,0 +1,47 @@
+[
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 1,
+        "ruling": "- [[Future Fusion]] must remain on the field for the effect to activate. If it is not on the field during the 2nd Standby Phase, then you do not Special Summon the Fusion Monster."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 2,
+        "ruling": "- You cannot use substitute Fusion Material Monsters such as [[King of the Swamp]]. You must use the monsters listed on the Fusion Monster Card."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 3,
+        "ruling": "- You cannot activate [[Future Fusion]] if you do not have a Fusion Monster in your Fusion Deck and the appropriate Fusion Material Monsters in your Main Deck."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 4,
+        "ruling": "- Destroying the monster when [[Future Fusion]] is removed from the field is an effect that cannot be chained to."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 5,
+        "ruling": "- If the Special Summoned Fusion Monster is removed from the field without being destroyed then [[Future Fusion]] will remain on the field meaninglessly."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 6,
+        "ruling": "- You cannot select a Fusion Monster that has another Fusion Monster as one of its Materials, such as [[Dark Flare Knight]] or [[Elemental Hero Shining Flare Wingman]], for [[Future Fusion]]. The Fusion Material Monsters must be sent from the Main Deck."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 7,
+        "ruling": "- You can chain [[Royal Oppression]] to negate [[Future Fusion]] when it is activated (placed face-up on the field)."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 8,
+        "ruling": "- [[Future Fusion]]'s effect counts Standby Phases, not turns, so [[Pyro Clock of Destiny]] would have no effect."
+    },
+    {
+        "cardid": "F4+CFJw+FU6MdvYi60GjXw==",
+        "sequence": 9,
+        "ruling": "- You cannot select a Fusion Monster that can only be Special Summoned by the method written in its text, like [[Gladiator Beast Heraklinos]], [[Elemental Hero Grand Neos]], [[XYZ-Dragon Cannon]], or [[Evil Hero Dark Gaia]]."
+    }
+]

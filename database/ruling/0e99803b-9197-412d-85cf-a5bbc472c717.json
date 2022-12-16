@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "O4CZDpeRLUGFz6W7xHLHFw==",
+        "sequence": 1,
+        "ruling": "- [[Kuriboh]] does not target the attacking monster."
+    },
+    {
+        "cardid": "O4CZDpeRLUGFz6W7xHLHFw==",
+        "sequence": 2,
+        "ruling": "- [[Kuriboh]] only prevents Battle Damage to your Life Points; it will not prevent your monsters from being destroyed."
+    },
+    {
+        "cardid": "O4CZDpeRLUGFz6W7xHLHFw==",
+        "sequence": 3,
+        "ruling": "- [[Kuriboh]] can only be activated while in your hand, its effect cannot be used while [[Kuriboh]] is on the field."
+    },
+    {
+        "cardid": "O4CZDpeRLUGFz6W7xHLHFw==",
+        "sequence": 4,
+        "ruling": "- [[Kuriboh]]'s effect is a Quick Effect."
+    },
+    {
+        "cardid": "O4CZDpeRLUGFz6W7xHLHFw==",
+        "sequence": 5,
+        "ruling": "- [[Kuriboh]] is activated during damage calculation. If your opponent attacks with [[Injection Fairy Lily]] and activates her effect, you can chain [[Kuriboh]] to reduce the damage to zero."
+    }
+]

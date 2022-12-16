@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "F8IWVhJ9hk6UeO9iultJFg==",
+        "sequence": 1,
+        "ruling": "- This card does not target."
+    },
+    {
+        "cardid": "F8IWVhJ9hk6UeO9iultJFg==",
+        "sequence": 2,
+        "ruling": "- You cannot Chain [[Pulling the Rug]] to an Ignition Effect that was activated when a monster was Normal Summoned. ([[Exiled Force]], etc.)"
+    },
+    {
+        "cardid": "F8IWVhJ9hk6UeO9iultJFg==",
+        "sequence": 3,
+        "ruling": "- [[Pulling the Rug]] can be activated when any Trigger Effect is activated due to a Normal Summon. Even if the Trigger Effect came from a different monster than the one that was Normal Summoned. (In this case, the monster that produced the Trigger Effect is destroyed, not the monster that was Normal Summoned.)"
+    }
+]

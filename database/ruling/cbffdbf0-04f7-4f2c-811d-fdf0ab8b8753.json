@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "8Nv/y/cELE+BHf3wq4uHUw==",
+        "sequence": 1,
+        "ruling": "- This card's effect is an Ignition Effect."
+    },
+    {
+        "cardid": "8Nv/y/cELE+BHf3wq4uHUw==",
+        "sequence": 2,
+        "ruling": "- Tributing a monster is a cost. You cannot Tribute a monster if you do not have a monster with the appropriate Attribute in your hand to Special Summon."
+    },
+    {
+        "cardid": "8Nv/y/cELE+BHf3wq4uHUw==",
+        "sequence": 3,
+        "ruling": "- If this card is flipped face-down, any monsters Special Summoned by its effect will not be destroyed. If this card is destroyed while it is face-down, any monsters Special Summoned by its effect will not be destroyed."
+    },
+    {
+        "cardid": "8Nv/y/cELE+BHf3wq4uHUw==",
+        "sequence": 4,
+        "ruling": "- If a monster Special Summoned by this card's effect is flipped face-down, it will not be destroyed when this card is destroyed."
+    }
+]

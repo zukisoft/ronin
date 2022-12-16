@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "+0i5qfixAU6+exdK8bFSXQ==",
+        "sequence": 1,
+        "ruling": "- [[Gift of the Martyr]] increases the monster's ATK by the original ATK of the monster sent to the Graveyard."
+    },
+    {
+        "cardid": "+0i5qfixAU6+exdK8bFSXQ==",
+        "sequence": 2,
+        "ruling": "- Sending a monster to the Graveyard is a cost for [[Gift of the Martyr]]. This is an effect that targets."
+    },
+    {
+        "cardid": "+0i5qfixAU6+exdK8bFSXQ==",
+        "sequence": 3,
+        "ruling": "- You can send a face-down monster to the Graveyard as the cost of [[Gift of the Martyr]]. Refer to the original ATK of the monster."
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "QPyhToFouE22TDKxxCILCA==",
+        "sequence": 1,
+        "ruling": "- If you have 2 [[Batteryman C]]s on the field in Attack Position, each of your Machines gains +1000 ATK. If you have 3 [[Batteryman C]]s on the field in Attack Position, each of your Machines gains +1500 ATK."
+    },
+    {
+        "cardid": "QPyhToFouE22TDKxxCILCA==",
+        "sequence": 2,
+        "ruling": "- A [[Batteryman C]] equipped to [[Relinquished]] is not in Attack or Defense Position so it will not be counted for the effect of [[Batteryman C]]."
+    },
+    {
+        "cardid": "QPyhToFouE22TDKxxCILCA==",
+        "sequence": 3,
+        "ruling": "- If [[Batteryman C]] is changed to Machine-Type, it will itself gain the ATK bonus."
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "d41drsJVQ0qE84ZmiA+8RQ==",
+        "sequence": 1,
+        "ruling": "- [[Blast Juggler]] targets 2 face-up monsters with 1000 or less ATK."
+    },
+    {
+        "cardid": "d41drsJVQ0qE84ZmiA+8RQ==",
+        "sequence": 2,
+        "ruling": "- [[Blast Juggler]]'s effect cannot be activated if there is only 1 face-up monster (excluding [[Blast Juggler]]) with 1000 or less ATK."
+    }
+]

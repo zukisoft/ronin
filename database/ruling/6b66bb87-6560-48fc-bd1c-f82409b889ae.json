@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 1,
+        "ruling": "- You can't search for [[Maju Garzett]] with [[Sangan]] or [[Mystic Tomato]]."
+    },
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 2,
+        "ruling": "- You can Tribute face-down monsters for [[Maju Garzett]] and their ATK will count towards [[Maju Garzett]]'s ATK."
+    },
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 3,
+        "ruling": "- [[Maju Garzett]]'s ATK will be 0 if you Special Summon it, or Tribute Summon it with a monster with \"?\" ATK (such as [[Gradius' Option]] or another [[Maju Garzett]]), or Tribute Summon it with only 1 Tribute using [[Cost Down]], or equip it with [[Megamorph]], or if it's flipped face-down and then face-up again, or if you Tribute Summon it with Mirage Tokens, or if you remove it from play with [[Dimensionhole]] and it returns to the field."
+    },
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 4,
+        "ruling": "- If [[Skill Drain]] is active, [[Maju Garzett]]'s ATK is reset to 0 even if [[Skill Drain]] is later destroyed."
+    },
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 5,
+        "ruling": "- If [[Maju Garzett]] battles [[Cat's Ear Tribe]], its original ATK is changed to 200 for the battle, then after the battle its ATK is reset to 0."
+    },
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 6,
+        "ruling": "- When you Tribute Monster Tokens to Tribute Summon [[Maju Garzett]], the sum of their ATK's will be the ATK of [[Maju Garzett]]."
+    },
+    {
+        "cardid": "h7tma2Bl/Ei9HPgkCbiJrg==",
+        "sequence": 7,
+        "ruling": "- When you Tribute Summon [[Maju Garzett]], your opponent can use [[Trap Hole]] or [[Bottomless Trap Hole]] if appropriate."
+    }
+]

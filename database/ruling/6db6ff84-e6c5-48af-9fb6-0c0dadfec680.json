@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "hP+2bcXmr0iftgwNrf7GgA==",
+        "sequence": 1,
+        "ruling": "- If you chain [[Rare Metalmorph]] to an effect like [[Snatch Steal]] that targets a monster, [[Snatch Steal]] is equipped but its effect is negated while [[Rare Metalmorph]] is active."
+    },
+    {
+        "cardid": "hP+2bcXmr0iftgwNrf7GgA==",
+        "sequence": 2,
+        "ruling": "- If a monster targeted by [[Rare Metalmorph]] is flipped face-down, it is no longer targeted by [[Rare Metalmorph]] and [[Rare Metalmorph]] remains on the field meaninglessly."
+    },
+    {
+        "cardid": "hP+2bcXmr0iftgwNrf7GgA==",
+        "sequence": 3,
+        "ruling": "- You can activate this card during the Damage Step."
+    }
+]

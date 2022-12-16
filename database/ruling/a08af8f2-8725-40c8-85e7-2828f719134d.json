@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 1,
+        "ruling": "- You can activate [[D.D. Trap Hole]] when your opponent Sets a monster from the hand, or Special Summons a monster face-down with [[The Shallow Grave]], or flips his monster face-down with a card effect."
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 2,
+        "ruling": "- If [[Ceasefire]] is chained to [[D.D. Trap Hole]], the effect of [[D.D. Trap Hole]] disappears because the opponent's monster is no longer Set."
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 3,
+        "ruling": "- If either targeted monster is removed from play before [[D.D. Trap Hole]] resolves, then the effect of [[D.D. Trap Hole]] disappears."
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 4,
+        "ruling": "- You cannot activate [[D.D. Trap Hole]] during the damage step."
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 5,
+        "ruling": "- If your opponent Sets more than 1 monster simultaneously, as with [[Cyber Jar]], you cannot activate [[D.D. Trap Hole]]. You can only activate it when your opponent Sets 1 and only 1 monster. (In the case of [[The Shallow Grave]] your opponent is only Setting 1 monster, even though you are Setting 1 too. So you can activate [[D.D. Trap Hole]].)"
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 6,
+        "ruling": "- You can select a Token as your monster to destroy and remove from play from your side of the field for [[D.D. Trap Hole]]."
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 7,
+        "ruling": "- [[D.D. Trap Hole]] is an effect that targets. It targets 1 of your monsters and your opponent's monster that was just Set."
+    },
+    {
+        "cardid": "8viKoCWHyECF5ygo9xkTTQ==",
+        "sequence": 8,
+        "ruling": "- If you select your monster equipped with [[Heavy Mech Support Platform]] for your monster to destroy with [[D.D. Trap Hole]], then [[Heavy Mech Support Platform]] is destroyed instead and is sent to the Graveyard. Your opponent's monster is destroyed and removed from play."
+    }
+]

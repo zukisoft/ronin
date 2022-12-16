@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "xDnBfwK9l0WXXiv6mj3MeA==",
+        "sequence": 1,
+        "ruling": "- You must choose to send 1, 2, or 3 cards to the Graveyard when you activate this effect."
+    },
+    {
+        "cardid": "xDnBfwK9l0WXXiv6mj3MeA==",
+        "sequence": 2,
+        "ruling": "- If [[Card Trooper]]'s first effect is activated, and it is flipped face-down then face-up again, the increase in ATK is no longer applied. The effect can be activated again."
+    },
+    {
+        "cardid": "xDnBfwK9l0WXXiv6mj3MeA==",
+        "sequence": 3,
+        "ruling": "- You cannot activate [[Card Trooper]]'s first effect if [[Dimensional Fissure]] or [[Macro Cosmos]] is face-up on the field."
+    },
+    {
+        "cardid": "xDnBfwK9l0WXXiv6mj3MeA==",
+        "sequence": 4,
+        "ruling": "- If [[Skill Drain]] is activated after [[Card Trooper]]'s first effect has been activated, the increase in ATK will be negated. Even if [[Skill Drain]] leaves play, the increase in ATK will not return."
+    },
+    {
+        "cardid": "xDnBfwK9l0WXXiv6mj3MeA==",
+        "sequence": 5,
+        "ruling": "- [[Card Trooper]]'s second effect activates in the Graveyard. If your opponent controls your [[Card Trooper]] and it is destroyed while on their side of the field, this effect cannot be activated."
+    },
+    {
+        "cardid": "xDnBfwK9l0WXXiv6mj3MeA==",
+        "sequence": 6,
+        "ruling": "- [[Card Trooper]]'s second effect will activate if it was treated as an Equip Card when it was destroyed, but only if it was sent from your side of the field to your Graveyard."
+    }
+]

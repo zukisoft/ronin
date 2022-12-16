@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "NhSvCsXjBUqDrpWF0nh5zg==",
+        "sequence": 1,
+        "ruling": "- Count the number of \"Elemental Heroes\" on your side of the field when the effect of [[R - Righteous Justice]] resolves."
+    },
+    {
+        "cardid": "NhSvCsXjBUqDrpWF0nh5zg==",
+        "sequence": 2,
+        "ruling": "- There must be enough Spell & Trap Cards on the field in order to activate [[R - Righteous Justice]]. If there are fewer Spell & Trap Cards than the number of your \"Elemental Heroes\" then you cannot activate it."
+    },
+    {
+        "cardid": "NhSvCsXjBUqDrpWF0nh5zg==",
+        "sequence": 3,
+        "ruling": "- If an effect is chained that reduces the number of Spell & Trap Cards on the field so that you have more \"Elemental Heroes\" than cards to destroy, the entire effect disappears."
+    },
+    {
+        "cardid": "NhSvCsXjBUqDrpWF0nh5zg==",
+        "sequence": 4,
+        "ruling": "- You cannot pick [[R - Righteous Justice]] as 1 of the Spell & Trap Cards to destroy for its own effect."
+    },
+    {
+        "cardid": "NhSvCsXjBUqDrpWF0nh5zg==",
+        "sequence": 5,
+        "ruling": "- [[R - Righteous Justice]] does not target."
+    }
+]

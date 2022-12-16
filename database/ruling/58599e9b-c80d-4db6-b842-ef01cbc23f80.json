@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "m55ZWA3Itk24Qu8By8I/gA==",
+        "sequence": 1,
+        "ruling": "- Discarding your hand is not a cost for either player."
+    },
+    {
+        "cardid": "m55ZWA3Itk24Qu8By8I/gA==",
+        "sequence": 2,
+        "ruling": "- [[Card Destruction]] can be activated if either player has at least 1 card in their hand (not including [[Card Destruction]]). If your opponent has 1 or more cards in their hand and you only have [[Card Destruction]] in your hand, you can activate [[Card Destruction]]. If your opponent has no cards in their hand and you have [[Card Destruction]] and 1 other card in your hand, you can activate [[Card Destruction]]. If your opponent has no cards in their hand and you only have [[Card Destruction]] in your hand, you cannot activate [[Card Destruction]]."
+    }
+]

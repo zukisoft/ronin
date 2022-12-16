@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "d14lmqKQ9ECxJq7NbC8ATQ==",
+        "sequence": 1,
+        "ruling": "- Destroying [[Deck Lockdown]] during the Standby Phase does not start a Chain."
+    },
+    {
+        "cardid": "d14lmqKQ9ECxJq7NbC8ATQ==",
+        "sequence": 2,
+        "ruling": "- Monsters can be Special Summoned from the Fusion Deck while [[Deck Lockdown]] is active."
+    },
+    {
+        "cardid": "d14lmqKQ9ECxJq7NbC8ATQ==",
+        "sequence": 3,
+        "ruling": "- [[Reinforcement of the Army]], the effect of [[Green Gadget]], etc. cannot be activated while [[Deck Lockdown]] is active."
+    },
+    {
+        "cardid": "d14lmqKQ9ECxJq7NbC8ATQ==",
+        "sequence": 4,
+        "ruling": "- If [[Sangan]] is sent from the field to the Graveyard while [[Deck Lockdown]] is active, its effect will start a Chain but its effect will disappear when it resolves."
+    },
+    {
+        "cardid": "d14lmqKQ9ECxJq7NbC8ATQ==",
+        "sequence": 5,
+        "ruling": "- [[Crystal Seer]]'s effect can activate while [[Deck Lockdown]] is active, but the card you would add to your hand is sent to the Graveyard instead."
+    }
+]

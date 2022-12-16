@@ -1,0 +1,67 @@
+[
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 1,
+        "ruling": "- If you have a [[Soul-Absorbing Bone Tower]] equipped with [[Raregold Armor]] and a Zombie-Type monster, your opponent cannot attack. Even if you have a Zombie-Type monster, [[Gemini Elf]], and a [[Soul-Absorbing Bone Tower]] equipped with [[Raregold Armor]], your opponent cannot attack."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 2,
+        "ruling": "- If you have another Zombie-Type monster and [[Soul-Absorbing Bone Tower]], your opponent cannot attack the [[Soul-Absorbing Bone Tower]], but if you equip the [[Soul-Absorbing Bone Tower]] with [[Ring of Magnetism]] your opponent can declare an attack but must attack the [[Soul-Absorbing Bone Tower]] equipped with the [[Ring of Magnetism]]."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 3,
+        "ruling": "- If you have multiple [[Soul-Absorbing Bone Tower]]s and no other monsters, your opponent cannot attack."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 4,
+        "ruling": "- When your opponent attacks your [[Soul-Absorbing Bone Tower]] and during the Battle Step you activate [[Call of the Haunted]] to Special Summon another Zombie-Type monster, then a replay occurs (and you send 2 cards from your opponent's Deck to the Graveyard)."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 5,
+        "ruling": "- If [[DNA Surgery]] is in play changing all monsters to Zombie-Types, and a monster that was not originally a Zombie-Type is Special Summoned, [[Soul-Absorbing Bone Tower]]'s effect is applied and you send 2 cards from your opponent's Deck to the Graveyard."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 6,
+        "ruling": "- If a Zombie-Type monster is Special Summoned on your opponent's side of the field, [[Soul-Absorbing Bone Tower]]'s effect activates."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 7,
+        "ruling": "- If a Zombie-Type monster is Special Summoned face-down (with [[The Shallow Grave]], etc.) then [[Soul-Absorbing Bone Tower]]'s effect does not activate."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 8,
+        "ruling": "- If multiple Zombie-Type monsters are Special Summoned simultaneously, [[Soul-Absorbing Bone Tower]]'s effect is only applied once (so send just 2 cards)."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 9,
+        "ruling": "- If [[Soul-Absorbing Bone Tower]] is Special Summoned by itself, its effect is not applied for its own Special Summon."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 10,
+        "ruling": "- If [[Soul-Absorbing Bone Tower]] and several other Zombie-Type monsters are Special Summoned simultaneously (with [[Cyber Jar]]), that Soul-Absorbing Bone Tower's effect is not applied."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 11,
+        "ruling": "- If you have [[Soul-Absorbing Bone Tower]] in play and [[The Kick Man]] is Special Summoned, [[Soul-Absorbing Bone Tower]]'s effect is Step 1 of a chain and [[The Kick Man]]'s effect is Step 2."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 12,
+        "ruling": "- If you have [[Soul-Absorbing Bone Tower]] and [[Card of Safe Return]], and a Zombie-Type monster is Special Summoned, [[Soul-Absorbing Bone Tower]] is Step 1 of the chain and [[Card of Safe Return]] is Step 2."
+    },
+    {
+        "cardid": "K0UVY/L70UiASTxohiBd7w==",
+        "sequence": 13,
+        "ruling": "- You can chain to [[Soul-Absorbing Bone Tower]]'s effect that sends 2 cards to the Graveyard."
+    }
+]

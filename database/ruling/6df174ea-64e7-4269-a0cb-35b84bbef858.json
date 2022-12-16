@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 1,
+        "ruling": "- You can use [[Magical Scientist]]'s effect multiple times in the same turn."
+    },
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 2,
+        "ruling": "- [[Magical Scientist]]'s effect does not target."
+    },
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 3,
+        "ruling": "- If the Fusion Monster is flipped face-down with [[Book of Moon]], or removed from play with [[Dimensionhole]] or [[Interdimensional Matter Transporter]] or [[Different Dimension Gate]], the effect is reset and the Fusion Monster does not go back to the Fusion Deck, and is not prohibited from attacking your opponent's Life Points directly."
+    },
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 4,
+        "ruling": "- If you Special Summon [[Reaper on the Nightmare]] with [[Magical Scientist]], it cannot attack your opponent's Life Points directly (but can attack a monster)."
+    },
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 5,
+        "ruling": "- You cannot activate [[Secret Pass to the Treasures]] targeting a Fusion Monster Special Summoned with [[Magical Scientist]] because it cannot attack your opponent's Life Points directly that turn."
+    },
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 6,
+        "ruling": "- If [[Skill Drain]] is activated after a Fusion Monster is Special Summoned with [[Magical Scientist]], the effect of [[Magical Scientist]] (that makes the Fusion Monster unable to attack directly and have to go back to the Fusion Deck) has been applied already, and is not negated, so the Special Summoned Fusion Monster still cannot attack directly and must go back to the Fusion Deck."
+    },
+    {
+        "cardid": "6nTxbedkaUKgyzW4S774WA==",
+        "sequence": 7,
+        "ruling": "- If [[Jowgen the Spiritualist]] is on the field, you cannot activate the effect of [[Magical Scientist]] (so you cannot even pay the cost to try and activate [[Last Turn]], for example)."
+    }
+]

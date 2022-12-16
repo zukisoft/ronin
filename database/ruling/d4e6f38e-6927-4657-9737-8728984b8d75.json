@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 1,
+        "ruling": "- [[Chaos Command Magician]] must be face-up to negate a monster effect; if face-down then [[Chaos Command Magician]] will not negate any effects."
+    },
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 2,
+        "ruling": "- When [[Chaos Command Magician]] is targeted by a card that doesn't select only 1 target, the effect of [[Chaos Command Magician]] is not applied and the effect resolves as normal."
+    },
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 3,
+        "ruling": "- When [[Penguin Soldier]] targets 2 monsters, including [[Chaos Command Magician]], this is an effect that targets, but not one that selects 1 target. So [[Chaos Command Magician]] will not negate the effect of [[Penguin Soldier]]. However, if [[Penguin Soldier]] only targets [[Chaos Command Magician]], then it is an effect that selects 1 target so [[Chaos Command Magician]] will negate the effect of [[Penguin Soldier]]."
+    },
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 4,
+        "ruling": "- [[Dark Cat with White Tail]]'s effect selects 3 targets so [[Chaos Command Magician]] will not negate [[Dark Cat with White Tail]]'s effect."
+    },
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 5,
+        "ruling": "- If [[Chaos Command Magician]] is targeted by [[Dark Necrofear]], that effect selects 1 target so the effect of [[Dark Necrofear]] is negated and it is not equipped to [[Chaos Command Magician]]."
+    },
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 6,
+        "ruling": "- When [[Chaos Command Magician]] battles [[D.D. Warrior Lady]], [[D.D. Warrior Lady]]'s effect is not negated because it does not target."
+    },
+    {
+        "cardid": "jvPm1CdpV0aXN4comEuNdQ==",
+        "sequence": 7,
+        "ruling": "- You can activate the effect of [[Metallizing Parasite - Lunatite]] and target [[Chaos Command Magician]], but [[Chaos Command Magician]] will negate the effect and [[Metallizing Parasite - Lunatite]] will remain on the field as a monster."
+    }
+]

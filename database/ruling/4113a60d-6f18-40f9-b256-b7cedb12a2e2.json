@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "DaYTQRhv+UCyVrfO2xKi4g==",
+        "sequence": 1,
+        "ruling": "- The heads/tails effects of [[Arcana Force I - The Magician]] are Continuous Effects and are applied immediately after the Spell Card resolves."
+    },
+    {
+        "cardid": "DaYTQRhv+UCyVrfO2xKi4g==",
+        "sequence": 2,
+        "ruling": "- The heads effect of [[Arcana Force I - The Magician]] does not change its original ATK. It creates a new current ATK equal to twice its original ATK. Any other increases or decreases of ATK are reapplied to this new ATK value."
+    },
+    {
+        "cardid": "DaYTQRhv+UCyVrfO2xKi4g==",
+        "sequence": 3,
+        "ruling": "- If [[Arcana Force I - The Magician]] is affected by a Spell Card that changes its ATK, like [[Shrink]] or [[Rush Recklessly]], first the Spell Card's effect is applied, then [[Arcana Force I - The Magician]]'s effect is applied, changing its current ATK to twice its original ATK, or 2200."
+    }
+]

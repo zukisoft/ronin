@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "QHKZcj8yUkijZgTZZvS1tw==",
+        "sequence": 1,
+        "ruling": "- If you equip your opponent's monster with [[Ribbon of Rebirth]] and destroy the monster in battle, you will Special Summon it onto your side of the field during the End Phase."
+    },
+    {
+        "cardid": "QHKZcj8yUkijZgTZZvS1tw==",
+        "sequence": 2,
+        "ruling": "- If [[Ribbon of Rebirth]] is not in the Graveyard or Removed Zone during the End Phase, its effect does not activate."
+    },
+    {
+        "cardid": "QHKZcj8yUkijZgTZZvS1tw==",
+        "sequence": 3,
+        "ruling": "- [[Ribbon of Rebirth]] does not target the monster it will Special Summon."
+    },
+    {
+        "cardid": "QHKZcj8yUkijZgTZZvS1tw==",
+        "sequence": 4,
+        "ruling": "- If the monster that was equipped with [[Ribbon of Rebirth]] is removed from play, it will not be Special Summoned. Even if the monster is returned to the Graveyard during the same turn, it will not be Special Summoned."
+    },
+    {
+        "cardid": "QHKZcj8yUkijZgTZZvS1tw==",
+        "sequence": 5,
+        "ruling": "- If you do not have any open Monster Card Zones during the End Phase, the effect of your [[Ribbon of Rebirth]] still activates but its effect disappears when it resolves."
+    }
+]

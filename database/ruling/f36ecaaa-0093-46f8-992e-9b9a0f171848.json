@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 1,
+        "ruling": "- Sending a card to the Graveyard is a cost."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 2,
+        "ruling": "- If the first attack of a monster equipped with [[Twin Swords of Flashing Light - Tryce]] is negated by [[Magic Cylinder]], the monster can still perform the second attack."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 3,
+        "ruling": "- When you declare the second attack of a monster equipped with [[Twin Swords of Flashing Light - Tryce]], and the [[Twin Swords of Flashing Light - Tryce]] is destroyed during the Battle Step with [[Mystical Space Typhoon]], the monster is no longer capable of performing the second attack, and a replay occurs."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 4,
+        "ruling": "- If a monster that normally attacks twice like [[Hayabusa Knight]], [[Gray Wing]], or [[Tyrant Dragon]] is equipped with [[Twin Swords of Flashing Light - Tryce]], it doesn't get a third attack."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 5,
+        "ruling": "- You can equip [[Twin Swords of Flashing Light - Tryce]] to [[Injection Fairy Lily]] and you can use her effect for each attack."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 6,
+        "ruling": "- If [[Twin Swords of Flashing Light - Tryce]] is equipped to a monster affected by [[Diffusion Wave-Motion]], it can only attack twice."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 7,
+        "ruling": "- If [[Dark Blade]] equipped with [[Kiryu]] is also equipped with [[Twin Swords of Flashing Light - Tryce]], and attacks twice, and [[Kiryu]] is then \"detached\" with [[Combination Attack]], [[Dark Blade]] can attack 1 more time (not 2 more times)."
+    },
+    {
+        "cardid": "qspu85MA+EaZLpuaDxcYSA==",
+        "sequence": 8,
+        "ruling": "- If [[Airknight Parshath]] is equipped with [[Twin Swords of Flashing Light - Tryce]] and attacks twice, you can draw twice."
+    }
+]

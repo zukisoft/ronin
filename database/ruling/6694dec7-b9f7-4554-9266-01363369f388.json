@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 1,
+        "ruling": "- You can Tribute face-down Fiends to Special Summon [[Raviel, Lord of Phantasms]]."
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 2,
+        "ruling": "- Tributing 1 monster is a cost to activate this card's Ignition Effect. You cannot Tribute this card for its own effect."
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 3,
+        "ruling": "- Summoning a \"Phantasm Token\" is a Trigger Effect that activates when the opponent Normal Summons a monster. The activation of this effect can be chained to."
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 4,
+        "ruling": "- If [[Skill Drain]] is activated, any \"Phantasm Tokens\" on the field still cannot attack. (Also, while [[Skill Drain]] is active, [[Raviel, Lord of Phantasms]] will not generate any more \"Phantasm Tokens\".)"
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 5,
+        "ruling": "- A \"Phantasm Token\" cannot be forced to attack with a card effect like [[Dark Spirit of the Silent]] or [[Amazoness Archers]]."
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 6,
+        "ruling": "- If your opponent Normal Summons a monster in a chain using [[Ultimate Offering]], resolve all effects in that chain, then activate the effect of [[Raviel, Lord of Phantasms]] to start a new chain. If the Normal Summon for [[Ultimate Offering]] was Chain Link 2 or higher, you still activate the effect of \"Raviel\". It does not miss the timing."
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 7,
+        "ruling": "- If all of your Monster Card Zones are full, this card's effect will activate, but if there are no available spaces when the effect resolves, the effect is not applied."
+    },
+    {
+        "cardid": "x96UZve5VEWSZgE2M2nziA==",
+        "sequence": 8,
+        "ruling": "- If an effect is chained to turn [[Raviel, Lord of Phantasms]] face-down, or remove it from the field, the \"Phantasm Token\" will still be Special Summoned when the effect resolves."
+    }
+]

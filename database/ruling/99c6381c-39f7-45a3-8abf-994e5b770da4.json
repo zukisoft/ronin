@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "HDjGmfc5o0WKv5lOW3cNpA==",
+        "sequence": 1,
+        "ruling": "- You can't activate [[Dragged Down into the Grave]] if either you or your opponent has no cards in their hard other than [[Dragged Down into the Grave]]. But you can activate it if a player has no cards left in their Deck."
+    },
+    {
+        "cardid": "HDjGmfc5o0WKv5lOW3cNpA==",
+        "sequence": 2,
+        "ruling": "- The turn player selects a card first for [[Dragged Down into the Grave]]."
+    },
+    {
+        "cardid": "HDjGmfc5o0WKv5lOW3cNpA==",
+        "sequence": 3,
+        "ruling": "- You can activate [[Appropriate]] in response to [[Dragged Down into the Grave]] because drawing was the last thing performed."
+    }
+]

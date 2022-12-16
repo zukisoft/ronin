@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "wHRtgVjs20WqLTQb1zrtvg==",
+        "sequence": 1,
+        "ruling": "- Discarding 1 card from your hand is a cost."
+    },
+    {
+        "cardid": "wHRtgVjs20WqLTQb1zrtvg==",
+        "sequence": 2,
+        "ruling": "- This card targets.  The target of [[Dark Core]] is selected at activation of [[Dark Core]]."
+    },
+    {
+        "cardid": "wHRtgVjs20WqLTQb1zrtvg==",
+        "sequence": 3,
+        "ruling": "- If [[Ring of Destruction]] is chained to [[Dark Core]], and destroys the monster targeted by [[Dark Core]], then the effect of [[Dark Core]] disappears."
+    }
+]

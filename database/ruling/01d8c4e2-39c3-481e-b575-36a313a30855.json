@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "4sTYAcM5Hki1dTajE6MIVQ==",
+        "sequence": 1,
+        "ruling": "- You can activate the effect of [[Ordeal of a Traveler]] each time your opponent attacks."
+    },
+    {
+        "cardid": "4sTYAcM5Hki1dTajE6MIVQ==",
+        "sequence": 2,
+        "ruling": "- You must show the card your opponent selects to your opponent."
+    },
+    {
+        "cardid": "4sTYAcM5Hki1dTajE6MIVQ==",
+        "sequence": 3,
+        "ruling": "- If your opponent calls it right, the attack resolves normally."
+    },
+    {
+        "cardid": "4sTYAcM5Hki1dTajE6MIVQ==",
+        "sequence": 4,
+        "ruling": "- You cannot activate [[Ordeal of a Traveler]]'s effect if you have no cards in your hand."
+    },
+    {
+        "cardid": "4sTYAcM5Hki1dTajE6MIVQ==",
+        "sequence": 5,
+        "ruling": "- When [[Ordeal of a Traveler]] & [[Fairy Box]] are both active, [[Fairy Box]] (mandatory) is step 1 of the chain, and [[Ordeal of a Traveler]] (optional) is step 2."
+    },
+    {
+        "cardid": "4sTYAcM5Hki1dTajE6MIVQ==",
+        "sequence": 6,
+        "ruling": "- When you activate [[Ordeal of a Traveler]]'s effect as a chain to [[Magic Cylinder]], since [[Ordeal of a Traveler]] resolves first, if your opponent guesses incorrectly then the attack does not resolve and the effect of [[Magic Cylinder]] disappears. If multiple copies of [[Ordeal of a Traveler]] are active, their effects are cumulative."
+    }
+]

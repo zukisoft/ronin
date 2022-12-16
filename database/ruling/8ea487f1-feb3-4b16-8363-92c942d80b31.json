@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "8YekjrP+FkuDY5LJQtgLMQ==",
+        "sequence": 1,
+        "ruling": "- When [[Jinzo]] is Tribute Summoned, cards like [[Trap Hole]] and [[Torrential Tribute]] cannot be activated because [[Jinzo]]'s Continuous Effect is applied when it is Summoned, but you can negate its Summon with [[Solemn Judgment]], [[Horn of Heaven]], etc."
+    },
+    {
+        "cardid": "8YekjrP+FkuDY5LJQtgLMQ==",
+        "sequence": 2,
+        "ruling": "- If your opponent activates [[Waboku]] during your Standby Phase and you Summon [[Jinzo]] in your Main Phase, the effect of [[Waboku]] is still applied because it resolved before [[Jinzo]] was Summoned."
+    },
+    {
+        "cardid": "8YekjrP+FkuDY5LJQtgLMQ==",
+        "sequence": 3,
+        "ruling": "- If a face-down [[Jinzo]] is flipped by [[Acid Trap Hole]], [[Jinzo]]'s effect is not applied if it is destroyed by [[Acid Trap Hole]]."
+    }
+]

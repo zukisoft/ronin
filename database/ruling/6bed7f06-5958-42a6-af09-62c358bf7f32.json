@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "Bn/ta1hZpkKvCWLDWL9/Mg==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Dark Bribe]] if your opponent has no cards remaining in their Deck."
+    },
+    {
+        "cardid": "Bn/ta1hZpkKvCWLDWL9/Mg==",
+        "sequence": 2,
+        "ruling": "- If your opponent activates a Spell or Trap Card outside of their Draw Phase (Chain Link 1) and you negate its activation and effect with [[Dark Bribe]] (Chain Link 2), after your opponent draws a card with the effect of [[Dark Bribe]] you can activate [[Appropriate]], because the activation of your opponent's Spell or Trap Card is negated by [[Dark Bribe]]."
+    }
+]

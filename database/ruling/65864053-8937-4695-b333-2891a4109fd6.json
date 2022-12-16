@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "U0CGZTeJlUazMyiRpBCf1g==",
+        "sequence": 1,
+        "ruling": "- If this card is sent to the Graveyard for the effect of a [[Blaze Accelerator]] card, its effect to inflict 500 damage to your opponent does not activate."
+    },
+    {
+        "cardid": "U0CGZTeJlUazMyiRpBCf1g==",
+        "sequence": 2,
+        "ruling": "- The effect \"inflict 500 damage to your opponent.\" of other [[Volcanic Scattershot]] cards sent to the Graveyard as a cost to activate the effect of this card will activate. Their effects will go on a new Chain after the resolution of [[Blaze Accelerator]] or [[Tri-Blaze Accelerator]]."
+    },
+    {
+        "cardid": "U0CGZTeJlUazMyiRpBCf1g==",
+        "sequence": 3,
+        "ruling": "- You can send 1 [[Volcanic Scattershot]] from your hand and 1 from your Deck, or 2 from either your hand or Deck to the Graveyard to pay the cost of this card's effect."
+    }
+]

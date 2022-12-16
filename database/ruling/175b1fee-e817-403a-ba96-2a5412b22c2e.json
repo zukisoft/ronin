@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "7h9bFxfoOkC6lipUErIsLg==",
+        "sequence": 1,
+        "ruling": "- Typically, Player A will Normal Summon [[D.D. Guide]], and control of [[D.D. Guide]] will shift to Player B. During each End Phase, Player B will activate the effect of their [[D.D. Guide]], Player A will select 1 card in Player B's Graveyard, and Player B will remove that card from play."
+    },
+    {
+        "cardid": "7h9bFxfoOkC6lipUErIsLg==",
+        "sequence": 2,
+        "ruling": "- If Player A uses [[Snatch Steal]] to take control of the [[D.D. Guide]] they Normal Summoned, then they will be the one to lose a card from the Graveyard each End Phase."
+    },
+    {
+        "cardid": "7h9bFxfoOkC6lipUErIsLg==",
+        "sequence": 3,
+        "ruling": "- Both effects of [[D.D. Guide]] are Trigger Effects that can be chained to."
+    },
+    {
+        "cardid": "7h9bFxfoOkC6lipUErIsLg==",
+        "sequence": 4,
+        "ruling": "- The effect of [[D.D. Guide]] targets 1 card in the Graveyard. The target is chosen by the controller's opponent."
+    },
+    {
+        "cardid": "7h9bFxfoOkC6lipUErIsLg==",
+        "sequence": 5,
+        "ruling": "- If you Normal Summon [[D.D. Guide]] and your opponent's Monster Card Zones are full, [[D.D. Guide]] will be destroyed when its effect resolves."
+    },
+    {
+        "cardid": "7h9bFxfoOkC6lipUErIsLg==",
+        "sequence": 6,
+        "ruling": "- If [[Kycoo the Ghost Destroyer]] and [[D.D. Guide]] are on opposite sides of the field, the effect of [[D.D. Guide]] will activate but not resolve."
+    }
+]

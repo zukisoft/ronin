@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "AZK9ISaaXEaoEpikrUKxOA==",
+        "sequence": 1,
+        "ruling": "- If a monster on the field, with an ATK of 500 or less, is changed to Machine-Type with [[DNA Surgery]], you can use [[Machine Duplication]] to Special Summon up to 2 copies of it from your Deck."
+    },
+    {
+        "cardid": "AZK9ISaaXEaoEpikrUKxOA==",
+        "sequence": 2,
+        "ruling": "- The Machine-Type monster is chosen at activation of this card, so if the opponent chains [[Ring of Destruction]] to destroy the chosen monster, up to 2 copies of that card can still be Special Summoned."
+    }
+]

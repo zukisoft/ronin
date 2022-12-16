@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 1,
+        "ruling": "- This card's effect can be activated during either player's turn."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 2,
+        "ruling": "- This effect can be activated after a Beast-Type monster you control is destroyed and sent to the Graveyard, if that monster was face-up and [[Green Baboon, Defender of the Forest]] was in your hand or Graveyard when it was destroyed."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 3,
+        "ruling": "- This effect can be activated during the Damage Step, at the same time as effects like [[Giant Rat]]'s."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 4,
+        "ruling": "- When [[Green Baboon, Defender of the Forest]] is destroyed, you cannot use its effect to Special Summon itself."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 5,
+        "ruling": "- When [[Green Baboon, Defender of the Forest]] and another Beast-Type monster are destroyed at the same time by a card's effect, like [[Lightning Vortex]], you cannot use [[Green Baboon, Defender of the Forest]]'s effect to Special Summon itself."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 6,
+        "ruling": "- You cannot activate this effect when a face-down Beast-Type monster you control is destroyed by a card effect."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 7,
+        "ruling": "- You cannot activate this effect when a Beast-Type monster treated as a Spell Card (such as one equipped to [[Relinquished]] or a \"Crystal Beast\") is destroyed."
+    },
+    {
+        "cardid": "bKWXeh4vWkyj1Qih89gz8Q==",
+        "sequence": 8,
+        "ruling": "- You can activate this effect when a face-up monster you control that is treated as a Beast-Type monster (due to [[DNA Surgery]], etc.) is destroyed and sent to the Graveyard."
+    }
+]

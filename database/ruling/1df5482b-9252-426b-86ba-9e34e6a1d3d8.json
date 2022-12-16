@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "K0j1HVKSa0KGup405qHT2A==",
+        "sequence": 1,
+        "ruling": "- When you Tribute Summon this card by Tributing \"Gadget\" monsters, it does not start a chain. Gaining the appropriate effect(s) is a Continuous Effect."
+    },
+    {
+        "cardid": "K0j1HVKSa0KGup405qHT2A==",
+        "sequence": 2,
+        "ruling": "- If this card is flipped face-down, any effects it obtained from its Tribute Summon will disappear, even if flipped face-up again."
+    },
+    {
+        "cardid": "K0j1HVKSa0KGup405qHT2A==",
+        "sequence": 3,
+        "ruling": "- The effect granted by Tributing [[Green Gadget]] is a Continuous Effect."
+    },
+    {
+        "cardid": "K0j1HVKSa0KGup405qHT2A==",
+        "sequence": 4,
+        "ruling": "- The effect granted by Tributing [[Red Gadget]] is a Trigger Effect that starts a chain when this card inflicts battle damage."
+    },
+    {
+        "cardid": "K0j1HVKSa0KGup405qHT2A==",
+        "sequence": 5,
+        "ruling": "- The effect granted by Tributing [[Yellow Gadget]] is a Trigger Effect that starts a chain when this card destroys an opponent's monster by battle."
+    },
+    {
+        "cardid": "K0j1HVKSa0KGup405qHT2A==",
+        "sequence": 6,
+        "ruling": "- If you Tribute 2 of the same \"Gadget\" to Tribute Summon this card, the effect does not duplicate. For example, if you Tributed 2 [[Yellow Gadget]]s this card will not do 1200 damage to your opponent when it destroys a monster by battle."
+    }
+]

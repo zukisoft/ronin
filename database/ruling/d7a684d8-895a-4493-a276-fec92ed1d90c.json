@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "2ISm11qJk0Sidv7JLtHZDA==",
+        "sequence": 1,
+        "ruling": "- If the effect of [[DNA Surgery]] is making all monsters on the field Dragon-Type, the ones that are Tributed will count for [[Super Rejuvenation]]."
+    },
+    {
+        "cardid": "2ISm11qJk0Sidv7JLtHZDA==",
+        "sequence": 2,
+        "ruling": "- You can activate [[Super Rejuvenation]] at any time outside the Damage Step, and the effect will be applied during the End Phase."
+    },
+    {
+        "cardid": "2ISm11qJk0Sidv7JLtHZDA==",
+        "sequence": 3,
+        "ruling": "- Multiple copies of [[Super Rejuvenation]] are cumulative. So if you activate two copies during your Main Phase 1 and Tribute two Dragon-Type monsters during the course of the turn, you will draw 4 cards in the End Phase."
+    },
+    {
+        "cardid": "2ISm11qJk0Sidv7JLtHZDA==",
+        "sequence": 4,
+        "ruling": "- If you have [[Solemn Wishes]] active on the field, you can increase your Life Points by the number of cards you draw for the effect of [[Super Rejuvenation]] x 500. So if you drew 2 cards by its effect, you can increase your Life Points by 1000."
+    }
+]

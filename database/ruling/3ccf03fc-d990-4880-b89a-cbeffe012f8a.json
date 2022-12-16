@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "/APPPJDZgEi4msvv/gEvig==",
+        "sequence": 1,
+        "ruling": "- If you attack with your [[Giant Rat]] and it is destroyed as a result of battle, you may attack with the monster Special Summoned by [[Giant Rat]] before entering Main Phase 2."
+    },
+    {
+        "cardid": "/APPPJDZgEi4msvv/gEvig==",
+        "sequence": 2,
+        "ruling": "- If your opponent controls your [[Giant Rat]] and it is destroyed as a result of battle, you get the effect of [[Giant Rat]] NOT your opponent."
+    },
+    {
+        "cardid": "/APPPJDZgEi4msvv/gEvig==",
+        "sequence": 3,
+        "ruling": "- Since the Special Summoning occurs during the Damage Step, [[Torrential Tribute]], etc. cannot be used."
+    }
+]

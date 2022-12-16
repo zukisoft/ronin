@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "py4T4JQCDUS+KAB6NJaf/A==",
+        "sequence": 1,
+        "ruling": "- This is a Trigger Effect"
+    },
+    {
+        "cardid": "py4T4JQCDUS+KAB6NJaf/A==",
+        "sequence": 2,
+        "ruling": "- This effect activates in the Damage Step, before a face-down monster is flipped face-up. (Therefore, this effect will not activate if a face-down [[Neo-Spacian Grand Mole]] is attacked. Also, if [[Neo-Spacian Grand Mole]] attacks a face-down Flip Effect Monster, you can return both monsters to the owners' hands without activating the Flip Effect.)"
+    },
+    {
+        "cardid": "py4T4JQCDUS+KAB6NJaf/A==",
+        "sequence": 3,
+        "ruling": "- This effect does not target."
+    }
+]

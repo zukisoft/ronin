@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "Fm/mcqhymEOxXz8es4A0xg==",
+        "sequence": 1,
+        "ruling": "- [[Amazoness Swords Woman]] only applies its effect to Battle Damage to its controller, so if attacked by a stronger monster, the [[Amazoness Swords Woman]] itself is still destroyed as normal."
+    },
+    {
+        "cardid": "Fm/mcqhymEOxXz8es4A0xg==",
+        "sequence": 2,
+        "ruling": "- Damage inflicted to the opponent when [[Amazoness Swords Woman]]'s effect is activated is Battle Damage, so the opponent cannot use [[Barrel Behind the Door]]."
+    },
+    {
+        "cardid": "Fm/mcqhymEOxXz8es4A0xg==",
+        "sequence": 3,
+        "ruling": "- When [[Dark Ruler Ha Des]] attacks [[Amazoness Swords Woman]], the effect of [[Amazoness Swords Woman]] is still resolved."
+    },
+    {
+        "cardid": "Fm/mcqhymEOxXz8es4A0xg==",
+        "sequence": 4,
+        "ruling": "- When a monster affected by [[Diffusion Wave-Motion]] attacks [[Amazoness Swords Woman]], the [[Amazoness Swords Woman]]'s effect is applied and the opponent (who used [[Diffusion Wave-Motion]]) takes the damage dealt to Life Points. Likewise, the controller of [[Spear Dragon]] takes damages when [[Spear Dragon]] battles [[Amazoness Swords Woman]] (or the controller of a monster equipped with [[Fairy Meteor Crush]], or who used [[Meteorain]])."
+    },
+    {
+        "cardid": "Fm/mcqhymEOxXz8es4A0xg==",
+        "sequence": 5,
+        "ruling": "- When the controller of [[Amazoness Swords Woman]] uses [[Kuriboh]], the controller takes 0 Battle Damage so no damage is dealt to the opponent."
+    },
+    {
+        "cardid": "Fm/mcqhymEOxXz8es4A0xg==",
+        "sequence": 6,
+        "ruling": "- When [[Susa Soldier]] battles [[Amazoness Swords Woman]], the controller of [[Susa Soldier]] takes full damage; the damage is not halved."
+    }
+]

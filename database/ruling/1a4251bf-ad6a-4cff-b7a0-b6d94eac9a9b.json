@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 1,
+        "ruling": "- You can only chain [[Null and Void]] to an effect that draws cards and does nothing else. You can chain [[Null and Void]] to the activation of [[Pot of Greed]] or [[Jar of Greed]]. You can chain [[Null and Void]] to the activation of the effect of cards like [[Airknight Parshath]]."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 2,
+        "ruling": "- You can chain [[Null and Void]] to a Continuous Spell or Trap Card that causes drawing, such as [[Mirage of Nightmare]] or [[Heart of the Underdog]]."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 4,
+        "ruling": "- You cannot chain [[Null and Void]] to [[Disturbance Strategy]], [[Graceful Charity]], [[Card Destruction]], [[Morphing Jar]], [[Mind Wipe]], [[Dragged Down into the Grave]], or [[Reload]]."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 5,
+        "ruling": "- You can activate [[Null and Void]] during the Damage Step, for example against the effects of [[Airknight Parshath]], [[Sasuke Samurai #3]] or [[The Bistro Butcher]]."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 6,
+        "ruling": "- The card(s) discarded by the effect of [[Null and Void]] are never treated as actually drawn, so they are considered sent from the Deck to the Graveyard."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 7,
+        "ruling": "- You can chain [[Null and Void]] to [[Reckless Greed]]. Since you cannot draw by the effect of [[Reckless Greed]], the effect of skipping 2 Draw Phases is NOT applied."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 8,
+        "ruling": "- You can chain [[Null and Void]] to the effect of [[Royal Magical Library]]."
+    },
+    {
+        "cardid": "v1FCGmqt/0y3oLbZTqyamw==",
+        "sequence": 9,
+        "ruling": "- You cannot chain [[Null and Void]] to the effect of [[Appropriate]] because the effect of [[Appropriate]] cannot be chained to."
+    }
+]

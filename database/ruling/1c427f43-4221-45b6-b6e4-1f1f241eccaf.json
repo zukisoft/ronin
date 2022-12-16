@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "Q39CHCFCtkW25B8fJB7Mrw==",
+        "sequence": 1,
+        "ruling": "- When [[Imperial Order]] is activated, [[Mystical Space Typhoon]] can be chained to destroy it."
+    },
+    {
+        "cardid": "Q39CHCFCtkW25B8fJB7Mrw==",
+        "sequence": 2,
+        "ruling": "- If you chain [[Imperial Order]] when a Spell Card is activated, [[Imperial Order]] will resolve first and negate the Spell Card."
+    },
+    {
+        "cardid": "Q39CHCFCtkW25B8fJB7Mrw==",
+        "sequence": 3,
+        "ruling": "- If you activate [[Imperial Order]] while Equip Spell Cards are equipped to monsters, the Equip Spell Cards remain equipped to the monsters but their effects are negated."
+    },
+    {
+        "cardid": "Q39CHCFCtkW25B8fJB7Mrw==",
+        "sequence": 4,
+        "ruling": "- [[Imperial Order]] cannot be activated in the Damage Step, so you cannot activate it to negate [[Rush Recklessly]], etc. in the Damage Step."
+    },
+    {
+        "cardid": "Q39CHCFCtkW25B8fJB7Mrw==",
+        "sequence": 5,
+        "ruling": "- Spell Cards can still be activated while [[Imperial Order]] is active, but their effects are negated."
+    }
+]

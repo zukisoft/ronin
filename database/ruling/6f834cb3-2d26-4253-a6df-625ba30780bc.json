@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "s0yDbyYtU0Km32JboweAvA==",
+        "sequence": 1,
+        "ruling": "- [[A Wingbeat of Giant Dragon]] targets 1 Level 5 or higher Dragon-Type monster."
+    },
+    {
+        "cardid": "s0yDbyYtU0Km32JboweAvA==",
+        "sequence": 2,
+        "ruling": "- If you select a Level 5 or higher Dragon-Type Fusion Monster, it is returned to your Fusion Deck."
+    },
+    {
+        "cardid": "s0yDbyYtU0Km32JboweAvA==",
+        "sequence": 3,
+        "ruling": "- If the selected Dragon-Type monster is flipped face-down, removed from the field, or has its Monster Type changed, [[A Wingbeat of Giant Dragon]]'s effect disappears."
+    }
+]

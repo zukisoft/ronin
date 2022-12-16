@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "o8+u88UAOUGVzKGesOr/0g==",
+        "sequence": 1,
+        "ruling": "- [[Hyper Hammerhead]]'s effect activates at the time that a monster would be sent to the Graveyard."
+    },
+    {
+        "cardid": "o8+u88UAOUGVzKGesOr/0g==",
+        "sequence": 2,
+        "ruling": "- Even if [[Hyper Hammerhead]] was destroyed, its effect resolves."
+    },
+    {
+        "cardid": "o8+u88UAOUGVzKGesOr/0g==",
+        "sequence": 3,
+        "ruling": "- The effect of [[Hyper Hammerhead]] can be chained to."
+    },
+    {
+        "cardid": "o8+u88UAOUGVzKGesOr/0g==",
+        "sequence": 4,
+        "ruling": "- If you have another effect that activates at the end of the Damage Step, you can place it on a chain with [[Hyper Hammerhead]]'s effect (such as [[Hyper Hammerhead]] vs. [[Hyper Hammerhead]])."
+    }
+]

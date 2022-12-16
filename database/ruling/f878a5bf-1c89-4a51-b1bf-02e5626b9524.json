@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "v6V4+IkcUUqxvwLlYmuVJA==",
+        "sequence": 1,
+        "ruling": "- [[Ultimate Baseball Kid]]'s ATK increase includes FIRE monsters on your opponent's side of the field."
+    },
+    {
+        "cardid": "v6V4+IkcUUqxvwLlYmuVJA==",
+        "sequence": 2,
+        "ruling": "- You can only send FIRE monsters on your side of the field to the Graveyard for [[Ultimate Baseball Kid]]'s second effect, not monsters in the hand, Deck, Side Deck, Fusion Deck, Removed Zone, or on your opponent's side of the field."
+    },
+    {
+        "cardid": "v6V4+IkcUUqxvwLlYmuVJA==",
+        "sequence": 3,
+        "ruling": "- You can send monsters to the Graveyard for [[Ultimate Baseball Kid]]'s second effect that have been changed to FIRE Attribute by [[DNA Transplant]] or [[Scroll of Bewitchment]]."
+    },
+    {
+        "cardid": "v6V4+IkcUUqxvwLlYmuVJA==",
+        "sequence": 4,
+        "ruling": "- You cannot send a face-down FIRE monster to the Graveyard to activate [[Ultimate Baseball Kid]]'s effect."
+    },
+    {
+        "cardid": "v6V4+IkcUUqxvwLlYmuVJA==",
+        "sequence": 5,
+        "ruling": "- If 2 [[Ultimate Baseball Kid]]s are on the field, and no other FIRE monsters, each of them has an ATK of 1500."
+    }
+]

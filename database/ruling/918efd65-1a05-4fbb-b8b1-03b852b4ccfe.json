@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "Zf2OkQUau0+4sQO4UrTM/g==",
+        "sequence": 1,
+        "ruling": "- Your opponent does not have to conduct their Battle Phase. If your opponent does not conduct their Battle Phase, [[Evil Hero Malicious Fiend]]'s effect is not applied."
+    },
+    {
+        "cardid": "Zf2OkQUau0+4sQO4UrTM/g==",
+        "sequence": 2,
+        "ruling": "- [[Evil Hero Malicious Fiend]]'s effect is applied at the start of your opponent's Battle Phase and remains activate for their entire Battle Phase. Monster Special Summoned during your opponent's Battle Phase will be affected. If a monster's Battle Position is changed to Defense Position at the end of the Battle Phase ([[Goblin Attack Force]], etc.), it will be shifted into Attack Position."
+    },
+    {
+        "cardid": "Zf2OkQUau0+4sQO4UrTM/g==",
+        "sequence": 3,
+        "ruling": "- If you have 2 or more [[Evil Hero Malicious Fiend]] when your opponent attacks, you decide which [[Evil Hero Malicious Fiend]] is attacked."
+    },
+    {
+        "cardid": "Zf2OkQUau0+4sQO4UrTM/g==",
+        "sequence": 4,
+        "ruling": "- Only monsters that are able to attack must attack [[Evil Hero Malicious Fiend]]. If you have [[Swords of Revealing Light]] and [[Evil Hero Malicious Fiend]] on your side of the field, your opponent's monsters are unable to attack, so they cannot attack [[Evil Hero Malicious Fiend]]. If you have [[Gravity Bind]] and [[Evil Hero Malicious Fiend]] on your side of the field, your opponent's monsters of Level 4 or higher are unable to attack, so they cannot attack [[Evil Hero Malicious Fiend]]."
+    },
+    {
+        "cardid": "Zf2OkQUau0+4sQO4UrTM/g==",
+        "sequence": 5,
+        "ruling": "- If [[Level Limit - Area B]] is face-up on the field, when your opponent starts their Battle Phase their Defense Position monsters are still shifted into Attack Position and must attack [[Evil Hero Malicious Fiend]]. If [[Level Limit - Area B]] is being negated and then during the Battle Phase its effect is reapplied, the opponent's Level 4 or higher monsters are shifted into Defense Position and are unable to attack."
+    },
+    {
+        "cardid": "Zf2OkQUau0+4sQO4UrTM/g==",
+        "sequence": 6,
+        "ruling": "- If your opponent's face-down Flip Effect Monsters are flipped simultaneously by [[Evil Hero Malicious Fiend]]'s effect, their effects start a Chain. (refer the advanced FAQ section \"simultaneous effects\")"
+    }
+]

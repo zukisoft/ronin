@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "0ivvZxzt9kSpMZCRkB7MBg==",
+        "sequence": 1,
+        "ruling": "- This effect targets one face-up \"Alien\" monster you control."
+    },
+    {
+        "cardid": "0ivvZxzt9kSpMZCRkB7MBg==",
+        "sequence": 2,
+        "ruling": "- You choose which monsters to put the A-Counters on when this effect resolves."
+    },
+    {
+        "cardid": "0ivvZxzt9kSpMZCRkB7MBg==",
+        "sequence": 3,
+        "ruling": "- You can distribute the A-Counters however you wish among your opponent's face-up monsters."
+    },
+    {
+        "cardid": "0ivvZxzt9kSpMZCRkB7MBg==",
+        "sequence": 4,
+        "ruling": "- You must place exactly as many A-Counters as the Level of the monster targeted by this effect."
+    },
+    {
+        "cardid": "0ivvZxzt9kSpMZCRkB7MBg==",
+        "sequence": 5,
+        "ruling": "- You cannot activate this card if your opponent controls no face-up monsters."
+    }
+]

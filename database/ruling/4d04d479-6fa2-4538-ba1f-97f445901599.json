@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "edQETaJvOEW6H5f0RZAVmQ==",
+        "sequence": 1,
+        "ruling": "- This card's effect targets 1 Level 4 or lower Zombie-Type Monster when activated."
+    },
+    {
+        "cardid": "edQETaJvOEW6H5f0RZAVmQ==",
+        "sequence": 2,
+        "ruling": "- If you activate [[Zombie Master]]'s effect, and an effect is chained that removes [[Zombie Master]] from the field or flips it face-down, the effect disappears and you cannot Special Summon the targeted monster."
+    },
+    {
+        "cardid": "edQETaJvOEW6H5f0RZAVmQ==",
+        "sequence": 3,
+        "ruling": "- You can Special Summon the monster sent to the Graveyard as a cost to activate this effect."
+    },
+    {
+        "cardid": "edQETaJvOEW6H5f0RZAVmQ==",
+        "sequence": 4,
+        "ruling": "- You cannot activate [[Zombie Master]]'s effect if there are no Level 4 or lower Zombie-Type monsters in the Graveyard, even if you would discard one to activate the effect."
+    }
+]

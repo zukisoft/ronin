@@ -1,0 +1,157 @@
+[
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 1,
+        "ruling": "- Paying 1000 Life Points is a cost."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 2,
+        "ruling": "- [[Skill Drain]] negates the effects of face-up Effect Monsters on the field, but does not negate effects that activate in the Graveyard, such as [[Witch of the Black Forest]], [[Sangan]], [[Mystic Tomato]], [[Giant Rat]], [[Sinister Serpent]], and [[Vampire Lord]]."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 3,
+        "ruling": "- If your [[Dark Flare Knight]] is sent to the Graveyard while [[Skill Drain]] is active, its effect activates in the Graveyard so you can Special Summon [[Mirage Knight]] (but [[Mirage Knight]]'s effects will be negated once it is in play)."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 4,
+        "ruling": "- If your [[Neko Mane King]] is sent to the Graveyard by your opponent's card effect while [[Skill Drain]] is active, its effect is activated."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 5,
+        "ruling": "- If your [[Twin-Headed Behemoth]] is destroyed and sent to the Graveyard while [[Skill Drain]] is active, its effect activates and it is Special Summoned."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 6,
+        "ruling": "- [[Skill Drain]] will not negate an Ignition Effect or Trigger Effect if the Effect Monster is not face-up on the field when the effect resolves."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 7,
+        "ruling": "- [[Skill Drain]] does not stop you from activating Ignition Effects, but it does negate their effects as long as the Effect Monster remains on the field. If you Tribute [[Cannon Soldier]] to itself while [[Skill Drain]] is active, [[Cannon Soldier]]'s effect is not negated because [[Cannon Soldier]] is in the Graveyard, but if you Tribute a different monster for [[Cannon Soldier]]'s effect, then the effect is negated and your opponent takes no damage. Likewise, if you activate [[Winged Minion]]'s effect while [[Skill Drain]] is active, [[Winged Minion]] is no longer on the field and its effect resolves. If you activate [[Exiled Force]]'s effect while [[Skill Drain]] is active, [[Exiled Force]] is no longer on the field and you can select and destroy 1 monster on the field. If you Tribute [[Paladin of White Dragon]] to activate its effect while [[Skill Drain]] is active, it is no longer on the field and you can Special Summon [[Blue-Eyes White Dragon]]. If you Tribute [[Great Dezard]] while [[Skill Drain]] is active, it is no longer on the field and you can Special Summon [[Fushioh Richie]]."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 8,
+        "ruling": "- [[Skill Drain]] will negate Flip Effects, and you can chain the activation of [[Skill Drain]] to the activation of a Flip Effect, but you cannot activate [[Skill Drain]] in the Damage Step because it does not specifically modify ATK or DEF, so you cannot chain [[Skill Drain]] to a Flip Effect that is activated because a monster was attacked while face-down."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 9,
+        "ruling": "- If you Flip Summon [[Spear Cretin]] while [[Skill Drain]] is active, [[Spear Cretin]]'s effect is negated when it is sent to the Graveyard because it is a Flip Effect and [[Skill Drain]] negates Flip Effects."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 10,
+        "ruling": "- [[Skill Drain]] negates Quick Effects such as [[Dark Paladin]] and [[Ryu Senshi]]."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 11,
+        "ruling": "- While [[Skill Drain]] is active you cannot Tribute a face-up [[Kaiser Sea Horse]] to Tribute Summon a Level 7 or higher LIGHT monster. However, you can Tribute a face-down [[Kaiser Sea Horse]]."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 12,
+        "ruling": "- While [[Skill Drain]] is active, \"maintenance costs\" are not negated (see the Advanced Gameplay FAQ) so you still have to pay for [[The Unfriendly Amazon]], [[Armor Exe]], Archfiends, etc. However, all other costs are negated, so you do not have to pay to attack with [[Dark Elf]] or [[Jirai Gumo]]."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 13,
+        "ruling": "- Restrictions are also lifted, so you can attack with [[Ultimate Obedient Fiend]] even if you have other cards on your side of the field."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 14,
+        "ruling": "- Spirit Monsters are not returned to the owner's hand while [[Skill Drain]] is active."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 15,
+        "ruling": "- Toon Monsters' effects are negated while [[Skill Drain]] is active and the Toon Monster is on the field, so they can attack the same turn they are Summoned, you do not have to pay 500 Life Points to attack with them, and they are not destroyed if [[Toon World]] is destroyed, but they cannot attack your opponent directly."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 16,
+        "ruling": "- [[Jinzo]] cannot negate Trap Cards while [[Skill Drain]] is already active, because [[Skill Drain]] is negating [[Jinzo]]'s effect. But if [[Jinzo]] is already on the field, you cannot activate [[Skill Drain]] because [[Jinzo]]'s effect prevents you from doing so."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 17,
+        "ruling": "- When a monster's ATK or DEF are changed by its own effect, like [[Slate Warrior]] or [[Berserk Dragon]], and [[Skill Drain]] is activated, that monster's effect is negated and the ATK/DEF are returned to normal. Even if [[Skill Drain]] is then destroyed, the old adjustment to ATK/DEF does not come back. Any bonuses or penalties are lost when [[Skill Drain]] effect is applied, and you have to start over from the beginning."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 18,
+        "ruling": "- If your opponent uses [[Bazoo the Soul-Eater]]'s effect to increase its ATK, and you use [[Skill Drain]], [[Bazoo the Soul-Eater]]'s ATK returns to normal, even if [[Skill Drain]] is destroyed after resolving. If [[Skill Drain]] is negating [[Bazoo the Soul-Eater]]'s effect, you can still pay the cost and remove monsters in your Graveyard from play, but [[Bazoo the Soul-Eater]]'s ATK will not increase."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 19,
+        "ruling": "- [[Goblin Attack Force]] and [[Spear Dragon]] do not change their battle position after attacking while [[Skill Drain]] is active. If [[Goblin Attack Force]] attacks and changes battle position, then on your next turn you activate [[Skill Drain]], you can change [[Goblin Attack Force]] back to Attack Position because its effect that prevents this is negated."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 20,
+        "ruling": "- Monsters equipped to [[Relinquished]] while [[Skill Drain]] is active are negated and destroyed because [[Relinquished]] no longer has an effect that allows it to be equipped with a monster, and [[Relinquished]]'s ATK and DEF are returned to normal."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 21,
+        "ruling": "- Monsters that can hold Spell Counters, like [[Skilled Dark Magician]], no longer have that effect while [[Skill Drain]] is active, so they cannot gain more Spell Counters and all Spell Counters already placed on them are removed."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 22,
+        "ruling": "- If a face-down [[Kiseitai]] is attacked while [[Skill Drain]] is active, the effect of [[Kiseitai]] is negated, damage calculation is performed, and [[Kiseitai]] will not equip itself to the attacking monster. But if [[Kiseitai]] is already an Equip Spell Card, and [[Skill Drain]] is activated, Kiseitai is unaffected because it is no longer an Effect Monster."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 23,
+        "ruling": "- The effects of [[Zombyra the Dark]] are negated while [[Skill Drain]] is active, so [[Zombyra the Dark]] can attack your opponent directly, and its ATK is not decreased because of its effect. If [[Skill Drain]] is destroyed, [[Zombyra the Dark]]'s ATK is not changed."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 24,
+        "ruling": "- The ATK and DEF of [[Gradius' Option]], the ATK of [[Maju Garzett]], and similar monsters is 0 while [[Skill Drain]] is active, and is not restored even if [[Skill Drain]] is destroyed."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 25,
+        "ruling": "- If [[Skill Drain]] is activated after [[Hayabusa Knight]]'s first attack, [[Hayabusa Knight]] does not get its second attack."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 26,
+        "ruling": "- You can Special Summon [[Gilasaurus]] while [[Skill Drain]] is active, but its effect is negated so your opponent does not get to Special Summon."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 27,
+        "ruling": "- Do not roll dice for Archfiends while [[Skill Drain]] is active."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 28,
+        "ruling": "- A Union Monster that attached itself to another monster before [[Skill Drain]] became active is unaffected by [[Skill Drain]]. If [[Skill Drain]] is active, you can activate a Union Monster's effect to attach it to another monster, but nothing happens and it remains a monster."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 29,
+        "ruling": "- [[Skill Drain]] will not affect lingering effects or conditions that are left over from a previous effect. For example, if you Special Summon a Fusion Monster with [[Summoner of Illusions]], and then [[Skill Drain]] is activated afterwards, the Fusion Monster is still destroyed in the End Phase. If you Special Summon a Fusion Monster with [[Magical Scientist]], and then [[Skill Drain]] is activated, the Fusion Monster cannot attack your opponent's Life Points directly, and is returned to the Fusion Deck at the end of the turn."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 30,
+        "ruling": "- When [[Jowls of Dark Demise]]'s effect is activated and resolves, and then [[Skill Drain]] is activated afterwards, it has no effect on [[Jowls of Dark Demise]]'s effect, so control of the monster does not change until it is returned to the original controller at the end of the turn."
+    },
+    {
+        "cardid": "9qeOfL5qR0OJcbt8LtZN5Q==",
+        "sequence": 31,
+        "ruling": "- If [[Hino-Kagu-Tsuchi]]'s effect is activated, and then [[Skill Drain]] is activated later, [[Hino-Kagu-Tsuchi]]'s effect is not negated and the opponent must discard his/her hand during their next"
+    }
+]

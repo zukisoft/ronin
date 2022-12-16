@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 1,
+        "ruling": "- You can only Tribute 1 monster to increase [[Destiny Hero - Dasher]]'s ATK during your Main Phases."
+    },
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 2,
+        "ruling": "- You can use [[Destiny Hero - Dasher]]'s effect to Special Summon 1 monster you draw only once while it is in the Graveyard. If [[Destiny Hero - Dasher]] is returned to your hand or Deck and then sent back to the Graveyard you could activate its effect again."
+    },
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 3,
+        "ruling": "- You can activate this effect when you draw a monster during your Draw Phase because of a card effect such as [[Reload]] or [[Heart of the Underdog]]."
+    },
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 4,
+        "ruling": "- If you have 2 [[Destiny Hero - Dasher]]s in your Graveyard, and you activate [[Reload]] during your Draw Phase and draw 2 or more Monster Cards, you can activate the effects of both [[Destiny Hero - Dasher]]s in a chain."
+    },
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 5,
+        "ruling": "- [[Destiny Hero - Dasher]] cannot Tribute itself to activate its own effect."
+    },
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 6,
+        "ruling": "- If you have [[Destiny Hero - Dasher]] in your Graveyard and your opponent has [[Drastic Drop Off]] Set, when you draw a Monster Card during your Draw Phase you can use priority to activate [[Destiny Hero - Dasher]]'s effect. Your opponent can chain [[Drastic Drop Off]] to discard the Monster Card you drew."
+    },
+    {
+        "cardid": "fo0+tBCGrECWh4Eh66Tu1w==",
+        "sequence": 7,
+        "ruling": "- If an effect is chained to [[Destiny Hero - Dasher]]'s third effect that removes it from the Graveyard, the drawn monster is still Special Summoned."
+    }
+]

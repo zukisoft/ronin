@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "DL0B9Wa8U0Kmq6E7d1/rZQ==",
+        "sequence": 1,
+        "ruling": "- [[Bubble Shuffle]] is an effect that targets 2 monsters."
+    },
+    {
+        "cardid": "DL0B9Wa8U0Kmq6E7d1/rZQ==",
+        "sequence": 2,
+        "ruling": "- If either target of [[Bubble Shuffle]] is changed to Defense Position or removed from the field before [[Bubble Shuffle]] resolves, the entire effect of [[Bubble Shuffle]] disappears."
+    },
+    {
+        "cardid": "DL0B9Wa8U0Kmq6E7d1/rZQ==",
+        "sequence": 3,
+        "ruling": "- You can target your opponent's [[Elemental Hero Bubbleman]] with [[Soul Exchange]] and Tribute it for [[Bubble Shuffle]]."
+    },
+    {
+        "cardid": "DL0B9Wa8U0Kmq6E7d1/rZQ==",
+        "sequence": 4,
+        "ruling": "- If there is no monster in your hand with \"Elemental Hero\" in the card name, you cannot activate [[Bubble Shuffle]]."
+    },
+    {
+        "cardid": "DL0B9Wa8U0Kmq6E7d1/rZQ==",
+        "sequence": 5,
+        "ruling": "- You need a face-up Attack Position [[Elemental Hero Bubbleman]] on the field to activate [[Bubble Shuffle]]. If it's in Defense Position you cannot activate it."
+    }
+]

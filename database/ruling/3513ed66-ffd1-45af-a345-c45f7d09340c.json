@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "Zu0TNdH/r0WjRcRffQk0DA==",
+        "sequence": 1,
+        "ruling": "- Discarding 1 card is a cost to activate this effect."
+    },
+    {
+        "cardid": "Zu0TNdH/r0WjRcRffQk0DA==",
+        "sequence": 2,
+        "ruling": "- If you discard a Level 4 or lower \"Lightsworn\" monster to activate [[Lumina, Lightsworn Summoner]]'s effect, you can Special Summon it."
+    },
+    {
+        "cardid": "Zu0TNdH/r0WjRcRffQk0DA==",
+        "sequence": 3,
+        "ruling": "- You cannot activate [[Lumina, Lightsworn Summoner]]'s effect if you do not have any Level 4 or lower \"Lightsworn\" monsters in your Graveyard, even if you would discard one to activate the effect."
+    },
+    {
+        "cardid": "Zu0TNdH/r0WjRcRffQk0DA==",
+        "sequence": 4,
+        "ruling": "- If an effect is chained that removes [[Lumina, Lightsworn Summoner]] from the field, the targeted \"Lightsworn\" monster is still Special Summoned."
+    },
+    {
+        "cardid": "Zu0TNdH/r0WjRcRffQk0DA==",
+        "sequence": 5,
+        "ruling": "- See [[Jain, Lightsworn Paladin]] for additional rulings."
+    }
+]

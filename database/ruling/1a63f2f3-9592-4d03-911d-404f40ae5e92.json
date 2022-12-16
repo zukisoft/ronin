@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "8/JjGpKVA02RHUBPQK5ekg==",
+        "sequence": 1,
+        "ruling": "- This is a Trigger Effect that activates when Battle Damage is inflicted."
+    },
+    {
+        "cardid": "8/JjGpKVA02RHUBPQK5ekg==",
+        "sequence": 2,
+        "ruling": "- This effect activates even if you have no Normal Monsters in your Graveyard when this card inflicts Battle Damage, although the effect will do no damage."
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "rmG/M9eG1Ua37l/PSVlNxA==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Magical Hats]] if you do not have at least 2 open Monster Card Zones."
+    },
+    {
+        "cardid": "rmG/M9eG1Ua37l/PSVlNxA==",
+        "sequence": 2,
+        "ruling": "- You must show your opponent the 2 selected Non-Monster Cards before they are Set."
+    },
+    {
+        "cardid": "rmG/M9eG1Ua37l/PSVlNxA==",
+        "sequence": 3,
+        "ruling": "- If you activate [[Magical Hats]] while [[Light of Intervention]] is active, the cards are placed in face-up Defense Position."
+    },
+    {
+        "cardid": "rmG/M9eG1Ua37l/PSVlNxA==",
+        "sequence": 4,
+        "ruling": "- If you select [[Black Pendant]], when it is destroyed during the end of the Battle Phase its effect activates, even if it was face-down."
+    },
+    {
+        "cardid": "rmG/M9eG1Ua37l/PSVlNxA==",
+        "sequence": 5,
+        "ruling": "- If one of the Non-Monster Cards is removed from play with [[Interdimensional Matter Transporter]], it is destroyed when it is returned to the field during the End Phase."
+    },
+    {
+        "cardid": "rmG/M9eG1Ua37l/PSVlNxA==",
+        "sequence": 6,
+        "ruling": "- If [[Statue of the Wicked]] or [[Dark Coffin]] are selected and they are destroyed while face-down, their effects activate. If they are flipped by an attack and destroyed, their effects do not activate."
+    }
+]

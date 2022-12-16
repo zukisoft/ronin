@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "p/gMVb2h00K/zKULinE2CA==",
+        "sequence": 1,
+        "ruling": "- The \"Gladiator Beast\" cards returned to the Deck are returned when the effect of [[Gladiator Beast's Respite]] is resolved. It is not a cost."
+    },
+    {
+        "cardid": "p/gMVb2h00K/zKULinE2CA==",
+        "sequence": 2,
+        "ruling": "- You can return any card with \"Gladiator Beast\" in its card name to your Deck when resolving the effect of [[Gladiator Beast's Respite]], such as [[Gladiator Beast's Battle Halberd]] or [[Gladiator Beast's Battle Manica]]."
+    },
+    {
+        "cardid": "p/gMVb2h00K/zKULinE2CA==",
+        "sequence": 3,
+        "ruling": "- When resolving the effect of [[Gladiator Beast's Respite]], if you do not have 2 \"Gladiator Beast\" cards to return to your Deck the effect of [[Gladiator Beast's Respite]] disappears. In this case you would not return any \"Gladiator Beast\" cards to your Deck and you would not draw 3 cards."
+    }
+]

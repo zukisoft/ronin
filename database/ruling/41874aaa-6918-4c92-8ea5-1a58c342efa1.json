@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "qkqHQRhpkkyOpRpYw0LvoQ==",
+        "sequence": 1,
+        "ruling": "- [[Destiny Hero - Dreadmaster]]'s first effect, ***destroy all monsters you control (except \"Destiny Hero\" monsters), then you can Special Summon up to 2 \"Destiny Hero\" monsters from your Graveyard***, is a Trigger Effect and its other effects are Continuous Effects."
+    },
+    {
+        "cardid": "qkqHQRhpkkyOpRpYw0LvoQ==",
+        "sequence": 2,
+        "ruling": "- [[Destiny Hero - Dreadmaster]]'s second effect, ***During the turn this card is Special Summoned, \"Destiny Hero\" monsters you control cannot be destroyed, and you take no Battle Damage when they battle***, is applied if it is Special Summoned by any method, not just by the effect of [[Clock Tower Prison]]."
+    },
+    {
+        "cardid": "qkqHQRhpkkyOpRpYw0LvoQ==",
+        "sequence": 3,
+        "ruling": "- Destroying all your non-\"Destiny Hero\" monsters and Special Summoning 2 \"Destiny Hero\" monsters is resolved in the same chain link. Even if you have no monsters that will be destroyed you still get to Special Summon 2 \"Destiny Hero\" monsters."
+    },
+    {
+        "cardid": "qkqHQRhpkkyOpRpYw0LvoQ==",
+        "sequence": 4,
+        "ruling": "- If you have any face-down \"Destiny Hero\" monsters, they will be destroyed, because their names cannot be confirmed."
+    }
+]

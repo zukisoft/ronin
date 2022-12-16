@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "qEIqA3ifFEexV7pCb6ipKA==",
+        "sequence": 1,
+        "ruling": "- Even if the Battle Damage is reduced to 0 by the effect of [[Waboku]], [[Kuriboh]], [[Sanga of the Thunder]], etc., both the attacking and defending monster are still destroyed during the End Step by this card's effect."
+    },
+    {
+        "cardid": "qEIqA3ifFEexV7pCb6ipKA==",
+        "sequence": 2,
+        "ruling": "- If you activate [[After the Struggle]], even a monster that performs a direct attack will be destroyed by this card's effect during the End Step."
+    },
+    {
+        "cardid": "qEIqA3ifFEexV7pCb6ipKA==",
+        "sequence": 3,
+        "ruling": "- Note that [[After the Struggle]] will destroy monsters during the End Step, not the End Phase."
+    }
+]

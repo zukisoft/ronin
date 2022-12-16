@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "bbhbMy+2K0ij5l/5EE4y9w==",
+        "sequence": 1,
+        "ruling": "- [[Grandmaster of the Six Samurai]]'s second effect targets 1 \"Six SamuraI\" monster in your Graveyard. If [[Grandmaster of the Six Samurai]] is in your Graveyard, it can target itself."
+    },
+    {
+        "cardid": "bbhbMy+2K0ij5l/5EE4y9w==",
+        "sequence": 2,
+        "ruling": "- If [[Grandmaster of the Six Samurai]] is destroyed by your opponent's card effect while in your hand or your Deck, its effect activates."
+    },
+    {
+        "cardid": "bbhbMy+2K0ij5l/5EE4y9w==",
+        "sequence": 3,
+        "ruling": "- If you Special Summon [[Grandmaster of the Six Samurai]] and your opponent negates the Special Summon and destroys it with their [[Royal Oppression]], [[Grandmaster of the Six Samurai]]'s effect activates. If your opponent uses the effect of your [[Royal Oppression]] to negate the Special Summon, [[Grandmaster of the Six Samurai]]'s effect does not activate."
+    },
+    {
+        "cardid": "bbhbMy+2K0ij5l/5EE4y9w==",
+        "sequence": 4,
+        "ruling": "- If your opponent activates an effect to destroy one of your \"Six Samurai\" monsters and you use the effect of the \"Six Samurai\" monster to destroy your [[Grandmaster of the Six Samurai]], [[Grandmaster of the Six Samurai]]'s effect doesn't activate because it was destroyed by your \"Six Samurai\" monster and not by your opponent's card effect."
+    }
+]

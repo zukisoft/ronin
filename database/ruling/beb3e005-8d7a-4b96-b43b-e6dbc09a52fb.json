@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "BeCzvnqNlku0O+bbwJpS+w==",
+        "sequence": 1,
+        "ruling": "- The effect of [[\"A\" Cell Incubator]] that places an A-Counter onto itself whenever an A-Counter is removed by a card effect does not use the Chain."
+    },
+    {
+        "cardid": "BeCzvnqNlku0O+bbwJpS+w==",
+        "sequence": 2,
+        "ruling": "- The effect of [[\"A\" Cell Incubator]] that distributes the A-Counters on [[\"A\" Cell Incubator]] and places them onto monsters when it is destroyed begins a Chain."
+    },
+    {
+        "cardid": "BeCzvnqNlku0O+bbwJpS+w==",
+        "sequence": 3,
+        "ruling": "- If an A-Counter on [[\"A\" Cell Incubator]] is removed by an effect, an A-Counter is still placed upon [[\"A\" Cell Incubator]]."
+    },
+    {
+        "cardid": "BeCzvnqNlku0O+bbwJpS+w==",
+        "sequence": 4,
+        "ruling": "- The effect of [[\"A\" Cell Incubator]] is not applied when A-Counters are removed because the card with the A-Counters was removed from the field or flipped face-down, because these A-Counters are not removed by an effect."
+    },
+    {
+        "cardid": "BeCzvnqNlku0O+bbwJpS+w==",
+        "sequence": 5,
+        "ruling": "- If an A-Counter is removed to pay a cost, an A-Counter is placed upon [[\"A\" Cell Incubator]]."
+    }
+]

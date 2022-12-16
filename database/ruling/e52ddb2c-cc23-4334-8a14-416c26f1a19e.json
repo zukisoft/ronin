@@ -1,0 +1,67 @@
+[
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 1,
+        "ruling": "- [[Destiny Hero - Diamond Dude]] doesn't actually activate the Normal Spell card itself. Instead, it just activates its effect. So the Spell Card remains in the Graveyard."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 2,
+        "ruling": "- Since you are only activating the Normal Spell Card's effect, and not the Normal Spell Card itself, you do not pay costs and you do not have to meet any activation requirements. For example, you would not pay 1000 Life Points for [[Confiscation]], or discard 1 card for [[Monster Reincarnation]], or need a [[Blue-Eyes White Dragon]] on the field to activate the effect of [[Burst Stream of Destruction]]."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 3,
+        "ruling": "- Since the Spell Card itself is not activated (only its effect is), your opponent cannot chain [[Magic Jammer]], [[Dark Deal]], [[Barrel Behind the Door]] or any other card that has to be chained to the activation of a Spell Card."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 4,
+        "ruling": "- When you resolve [[Destiny Hero - Diamond Dude]]'s effect you first reveal the top card of your Deck, then either send it to your Graveyard if it is a Normal Spell Card or return it to the bottom of your Deck if it's not. Activating that Spell Card's effect during your next turn is not activating [[Destiny Hero - Diamond Dude]]'s effect at that time. Even if [[Destiny Hero - Diamond Dude]] is not on the field during your next turn's Main Phases, you can still activate the effect of that Normal Spell Card."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 5,
+        "ruling": "- [[Divine Wrath]] can be chained to [[Destiny Hero - Diamond Dude]]'s Ignition Effect when it is activated. You cannot chain [[Divine Wrath]] to the activation of the Normal Spell Card's effect during the next Main Phase because [[Destiny Hero - Diamond Dude]]'s effect is not activating at that time."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 6,
+        "ruling": "- You can choose to activate the effect of the Normal Spell Card during your Main Phase 1 or Main Phase 2."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 7,
+        "ruling": "- You can choose not to activate the effect of the Normal Spell Card during your next turn if you do not want to."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 8,
+        "ruling": "- The Normal Spell Card's effect activates in the Graveyard. So its effect will not be negated by [[Spell Canceller]]."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 9,
+        "ruling": "- If the Normal Spell Card is no longer in your Graveyard during your next turn, you cannot activate its effect."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 10,
+        "ruling": "- If the effect of the Normal Spell Card targets, you cannot activate the effect unless there is an eligible target on the field."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 11,
+        "ruling": "- If [[Swords of Revealing Light]] is sent to the Graveyard by this effect you can activate it, but only its effect that flips monsters face-up will apply. It will not stop the opponent's monsters from attacking because it is not on the field."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 12,
+        "ruling": "- You cannot activate the effect of [[Curse of Fiend]], because it can only be activated during the Standby Phase."
+    },
+    {
+        "cardid": "LNst5SPMNEOKFEFsJvGhng==",
+        "sequence": 13,
+        "ruling": "- If you have activated the effect of [[Destiny Hero - Diamond Dude]] and it is flipped face-down, then face-up again in the same turn, you can activate its effect again."
+    }
+]

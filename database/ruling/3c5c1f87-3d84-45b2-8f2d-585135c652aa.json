@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "hx9cPIQ9skWPLVhRNcZSqg==",
+        "sequence": 1,
+        "ruling": "- [[System Down]] does not remove face-down Machines."
+    },
+    {
+        "cardid": "hx9cPIQ9skWPLVhRNcZSqg==",
+        "sequence": 2,
+        "ruling": "- [[Kycoo the Ghost Destroyer]] will prevent Machines in the Graveyard from being removed from play for [[System Down]], but Machines on the field can still be removed from play by its effect."
+    },
+    {
+        "cardid": "hx9cPIQ9skWPLVhRNcZSqg==",
+        "sequence": 3,
+        "ruling": "- If your opponent has no Machines in the Graveyard and no Machines on the field, you cannot activate [[System Down]]."
+    },
+    {
+        "cardid": "hx9cPIQ9skWPLVhRNcZSqg==",
+        "sequence": 4,
+        "ruling": "- If [[Heavy Mech Support Platform]] is equipped to a Machine when [[System Down]] is activated, the equipped monster is removed from play but [[Heavy Mech Support Platform]] is just destroyed and sent to the Graveyard."
+    }
+]

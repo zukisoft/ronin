@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "ckdqmbLmeUGiYPF+JAwMTw==",
+        "sequence": 1,
+        "ruling": "- [[Super Polymerization]] does not target. The Fusion Material Monsters are sent to the Graveyard when [[Super Polymerization]] resolves."
+    },
+    {
+        "cardid": "ckdqmbLmeUGiYPF+JAwMTw==",
+        "sequence": 2,
+        "ruling": "- [[Super Polymerization]] prevents effects from being chained, but Continous Effects are still applied."
+    },
+    {
+        "cardid": "ckdqmbLmeUGiYPF+JAwMTw==",
+        "sequence": 3,
+        "ruling": "- If [[Super Polymerization]] is activated while [[Light and Darkness Dragon]] is face-up on the field, [[Light and Darkness Dragon]]'s effect does not activate."
+    },
+    {
+        "cardid": "ckdqmbLmeUGiYPF+JAwMTw==",
+        "sequence": 4,
+        "ruling": "- If [[Super Polymerization]] is activated while [[Spell Absorption]] is active, the player who controls [[Spell Absorption]] gains Life Points."
+    }
+]

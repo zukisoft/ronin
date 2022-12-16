@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "7vpoewK8rUWGuydRJXv14A==",
+        "sequence": 1,
+        "ruling": "- If you can Special Summon a monster but your opponent cannot, you will still Special Summon. If your opponent can Special Summon a monster and you cannot, your opponent will still Special Summon."
+    },
+    {
+        "cardid": "7vpoewK8rUWGuydRJXv14A==",
+        "sequence": 2,
+        "ruling": "- Special Summoning a monster is optional."
+    },
+    {
+        "cardid": "7vpoewK8rUWGuydRJXv14A==",
+        "sequence": 3,
+        "ruling": "- [[Spear Cretin]] cannot Special Summon itself from the Graveyard, but it can Special Summon another copy of [[Spear Cretin]]."
+    },
+    {
+        "cardid": "7vpoewK8rUWGuydRJXv14A==",
+        "sequence": 4,
+        "ruling": "- After [[Spear Cretin]] is flipped face-up, if it and another monster you control are destroyed by the same effect, you can Special Summon the other destroyed monster."
+    }
+]

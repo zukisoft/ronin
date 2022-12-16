@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "VYw2Jw3qr0er0MPYOXWmZg==",
+        "sequence": 1,
+        "ruling": "- If you activate [[Dark Designator]] and your opponent says they have no cards in their Deck of that name, you may check the Deck to verify."
+    },
+    {
+        "cardid": "VYw2Jw3qr0er0MPYOXWmZg==",
+        "sequence": 2,
+        "ruling": "- You cannot declare a nonexistent card for [[Dark Designator]]."
+    },
+    {
+        "cardid": "VYw2Jw3qr0er0MPYOXWmZg==",
+        "sequence": 3,
+        "ruling": "- Your opponent must show you the card added to his hand."
+    }
+]

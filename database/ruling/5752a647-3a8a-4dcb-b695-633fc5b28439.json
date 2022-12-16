@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "R6ZSV4o6y022lWM/xbKEOQ==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Book of Life]] if there is no monster in the Graveyard to remove from play."
+    },
+    {
+        "cardid": "R6ZSV4o6y022lWM/xbKEOQ==",
+        "sequence": 2,
+        "ruling": "- You cannot activate [[Book of Life]] if your opponent controls [[Kycoo the Ghost Destroyer]]."
+    },
+    {
+        "cardid": "R6ZSV4o6y022lWM/xbKEOQ==",
+        "sequence": 3,
+        "ruling": "- If you activate [[Book of Life]] and your opponent chains [[Call of the Haunted]] to Special Summon [[Kycoo the Ghost Destroyer]], you still get to Special Summon 1 Zombie with [[Book of Life]]'s effect (but you do not remove 1 monster from your opponent's Graveyard)."
+    }
+]

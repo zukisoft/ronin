@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "7OEEaYe7vkOpU7GSFg9laA==",
+        "sequence": 1,
+        "ruling": "- [[Cyber Valley]]'s first effect is a Trigger Effect. Its second and third effects are Ignition Effects."
+    },
+    {
+        "cardid": "7OEEaYe7vkOpU7GSFg9laA==",
+        "sequence": 2,
+        "ruling": "- [[Cyber Valley]]'s second effect targets [[Cyber Valley]] and 1 face-up monster you control. They are removed from play when the effect resolves."
+    },
+    {
+        "cardid": "7OEEaYe7vkOpU7GSFg9laA==",
+        "sequence": 3,
+        "ruling": "- [[Cyber Valley]]'s third effect targets 1 card in your Graveyard. [[Cyber Valley]] and 1 card from your hand are removed from play when the effect is resolved."
+    },
+    {
+        "cardid": "7OEEaYe7vkOpU7GSFg9laA==",
+        "sequence": 4,
+        "ruling": "- If an effect is chained to [[Cyber Valley]]'s second or third effect that removes [[Cyber Valley]] from the field, the effect disappears."
+    },
+    {
+        "cardid": "7OEEaYe7vkOpU7GSFg9laA==",
+        "sequence": 5,
+        "ruling": "- If an effect is chained to [[Cyber Valley]]'s second effect that flips it face-down, the effect is still resolved. If the selected face-up monster is flipped face-down, the effect disappears."
+    }
+]

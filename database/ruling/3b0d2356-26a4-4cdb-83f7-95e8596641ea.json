@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "ViMNO6Qm20yD95XoWWZB6g==",
+        "sequence": 1,
+        "ruling": "- You can activate [[Chain Disappearance]] in response to your own Summon of a monster, in which case your opponent still removes all cards with that name from their hand and Deck."
+    },
+    {
+        "cardid": "ViMNO6Qm20yD95XoWWZB6g==",
+        "sequence": 2,
+        "ruling": "- If you use [[Chain Disappearance]] in response to a Flip Summon, any Flip Effects like [[Penguin Soldier]] would still resolve. The Flip Effect is Step 1 of the chain, and [[Chain Disappearance]] is step 2."
+    },
+    {
+        "cardid": "ViMNO6Qm20yD95XoWWZB6g==",
+        "sequence": 3,
+        "ruling": "- The effect of [[Chain Disappearance]] can remove multiple monsters that are Summoned simultaneously, for example if your opponent activates [[Scapegoat]], you can respond with [[Chain Disappearance]] to remove all 4 \"Sheep Tokens\" that were Special Summoned from the field."
+    },
+    {
+        "cardid": "ViMNO6Qm20yD95XoWWZB6g==",
+        "sequence": 4,
+        "ruling": "- If your opponent activates [[Chain Disappearance]] and you chain [[Ring of Destruction]], [[Ring of Destruction]] resolves first and destroys the monster and sends it to the Graveyard, and there is no monster of the same name so no cards are removed from play for the effect of [[Chain Disappearance]]. If you chain [[Book of Moon]], the monster will be face-down, so no cards are removed from play for the effect of [[Chain Disappearance]]."
+    },
+    {
+        "cardid": "ViMNO6Qm20yD95XoWWZB6g==",
+        "sequence": 5,
+        "ruling": "- If you use [[Chain Disappearance]] when a Fusion Monster is Special Summoned, remove from play that Fusion Monster plus all copies of that Fusion Monster in the Fusion Deck."
+    },
+    {
+        "cardid": "ViMNO6Qm20yD95XoWWZB6g==",
+        "sequence": 6,
+        "ruling": "- [[Chain Disappearance]] does not target the Summoned monster."
+    }
+]

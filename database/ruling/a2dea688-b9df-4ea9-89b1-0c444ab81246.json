@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "iKbeot+5qU6JsQxESrgSRg==",
+        "sequence": 1,
+        "ruling": "- This card is only activated if sent from the field to the Graveyard. There is no way to activate this card while it is Set on the field."
+    },
+    {
+        "cardid": "iKbeot+5qU6JsQxESrgSRg==",
+        "sequence": 2,
+        "ruling": "- The effect of [[Dark Coffin]] is activated in the Graveyard, so its effect is activated even if [[Jinzo]] is on the field, because [[Jinzo]] only applies to Trap Cards and Trap Card effects on the field. Also, cards like [[Seven Tools of the Bandit]] cannot be used against [[Dark Coffin]]."
+    },
+    {
+        "cardid": "iKbeot+5qU6JsQxESrgSRg==",
+        "sequence": 3,
+        "ruling": "- [[Dark Coffin]] activates its effect even if it is destroyed on the same turn it was Set."
+    },
+    {
+        "cardid": "iKbeot+5qU6JsQxESrgSRg==",
+        "sequence": 4,
+        "ruling": "- If [[Banisher of the Light]] is in play, then [[Dark Coffin]] does not activate its effect when destroyed, because it is not sent to the Graveyard."
+    },
+    {
+        "cardid": "iKbeot+5qU6JsQxESrgSRg==",
+        "sequence": 5,
+        "ruling": "- You cannot choose an effect you cannot fulfill, so if you have no cards in your hand, you cannot choose to discard for [[Dark Coffin]]."
+    },
+    {
+        "cardid": "iKbeot+5qU6JsQxESrgSRg==",
+        "sequence": 6,
+        "ruling": "- [[Dark Coffin]] activates its effect even if you destroy your own [[Dark Coffin]]."
+    }
+]

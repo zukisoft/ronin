@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "W7q8pfilAUmFVZFvn5toag==",
+        "sequence": 1,
+        "ruling": "- You select the 2 Normal Monsters when you activate [[Dark Factory of Mass Production]]."
+    },
+    {
+        "cardid": "W7q8pfilAUmFVZFvn5toag==",
+        "sequence": 2,
+        "ruling": "- This card targets 2 monsters."
+    },
+    {
+        "cardid": "W7q8pfilAUmFVZFvn5toag==",
+        "sequence": 3,
+        "ruling": "- If your opponent chains an effect like [[Disappear]] to remove 1 of the 2 selected monsters from your Graveyard, you still add the remaining Normal Monster to your hand."
+    }
+]

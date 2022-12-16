@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "O0eCCETlhEKoqujUVK5H0A==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Mind Crush]] if you have no hand. Both players must have at least 1 card in hand in order to activate [[Mind Crush]]."
+    },
+    {
+        "cardid": "O0eCCETlhEKoqujUVK5H0A==",
+        "sequence": 2,
+        "ruling": "- You declare the card name when you activate [[Mind Crush]]."
+    },
+    {
+        "cardid": "O0eCCETlhEKoqujUVK5H0A==",
+        "sequence": 3,
+        "ruling": "- If the opponent doesn't have the named card, you can check their hand to confirm."
+    }
+]

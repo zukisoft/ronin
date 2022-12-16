@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "2Db7YUJwokyfbGdb7MIY2A==",
+        "sequence": 1,
+        "ruling": "- [[Test Tiger]]'s effect targets 1 \"Gladiator Beast\" monster you control."
+    },
+    {
+        "cardid": "2Db7YUJwokyfbGdb7MIY2A==",
+        "sequence": 2,
+        "ruling": "- You can Special Summon the same \"Gladiator Beast\" monster that you returned to your Deck, unless the \"Gladiator Beast\" monster has an effect preventing you from doing so, like [[Gladiator Beast Alexander]]."
+    },
+    {
+        "cardid": "2Db7YUJwokyfbGdb7MIY2A==",
+        "sequence": 3,
+        "ruling": "- [[Test Tiger]] cannot target a face-down \"Gladiator Beast\" monster."
+    },
+    {
+        "cardid": "2Db7YUJwokyfbGdb7MIY2A==",
+        "sequence": 4,
+        "ruling": "- If you target a \"Gladiator Beast\" Fusion Monster with [[Test Tiger]]'s effect, it is placed into the Fusion Deck when [[Test Tiger]]'s effect resolves."
+    }
+]

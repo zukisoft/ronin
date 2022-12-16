@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "u6UuB//5rEe4uatcD6HwPw==",
+        "sequence": 1,
+        "ruling": "- You choose an Equip Spell Card when [[Chopman the Desperate Outlaw]]'s effect activates, so your opponent can chain [[Disappear]] and remove it from play, and [[Chopman the Desperate Outlaw]]'s effect will disappear."
+    },
+    {
+        "cardid": "u6UuB//5rEe4uatcD6HwPw==",
+        "sequence": 2,
+        "ruling": "- You cannot select an inappropriate Equip Spell Card with [[Chopman the Desperate Outlaw]]'s effect, like [[Fuhma Shuriken]]."
+    },
+    {
+        "cardid": "u6UuB//5rEe4uatcD6HwPw==",
+        "sequence": 3,
+        "ruling": "- If you equip [[Chopman the Desperate Outlaw]] with an inappropriate Equip Spell Card and later notice it is inappropriate, destroy the Equip Spell Card."
+    },
+    {
+        "cardid": "u6UuB//5rEe4uatcD6HwPw==",
+        "sequence": 4,
+        "ruling": "- You cannot choose [[Metallizing Parasite - Lunatite]] with [[Chopman the Desperate Outlaw]]'s effect."
+    },
+    {
+        "cardid": "u6UuB//5rEe4uatcD6HwPw==",
+        "sequence": 5,
+        "ruling": "- [[Curse of Darkness]] does not apply when you use [[Chopman the Desperate Outlaw]]'s effect because the Equip Spell Card is not being activated."
+    }
+]

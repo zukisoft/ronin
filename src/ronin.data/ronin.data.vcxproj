@@ -211,6 +211,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Export.cpp" />
+    <ClCompile Include="Import.cpp" />
     <ClCompile Include="Uuid.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="dbextension.cpp" />

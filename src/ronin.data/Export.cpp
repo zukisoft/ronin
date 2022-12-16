@@ -39,14 +39,16 @@ namespace zuki::ronin::data {
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_artwork(sqlite3* instance, String^ path)
+static void export_artwork(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// artworkid | cardid | format | height | width | image
 	auto sql = L"select uuidstr(artworkid), prettyjson(json_object('artworkid', base64encode(artworkid), 'cardid', base64encode(cardid), "
@@ -87,14 +89,16 @@ static void export_artwork(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_card(sqlite3* instance, String^ path)
+static void export_card(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// cardid | name | type | passcode | text
 	auto sql = L"select uuidstr(cardid), prettyjson(json_object('cardid', base64encode(cardid), 'name', name, "
@@ -135,14 +139,16 @@ static void export_card(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_defaultartwork(sqlite3* instance, String^ path)
+static void export_defaultartwork(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// cardid | artworkid
 	auto sql = L"select uuidstr(cardid), prettyjson(json_object('cardid', base64encode(cardid), "
@@ -183,14 +189,16 @@ static void export_defaultartwork(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_monster(sqlite3* instance, String^ path)
+static void export_monster(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// cardid | attribute | level | type | attack | defense | normal | effect | fusion | ritual | toon | union | spirit | gemini
 	auto sql = L"select uuidstr(cardid), prettyjson(json_object('cardid', base64encode(cardid), 'attribute', attribute, "
@@ -232,14 +240,16 @@ static void export_monster(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_print(sqlite3* instance, String^ path)
+static void export_print(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// printid | cardid | seriesid | artworkid | code | language | number | rarity | limitededition | releasedate
 	auto sql = L"select uuidstr(printid), prettyjson(json_object('printid', base64encode(printid), 'cardid', base64encode(cardid), "
@@ -281,14 +291,16 @@ static void export_print(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_restriction(sqlite3* instance, String^ path)
+static void export_restriction(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// restrictionlistid | cardid | restriction
 	auto sql = L"select uuidstr(restrictionlistid), prettyjson(json_group_array(json_object('restrictionlistid', base64encode(restrictionlistid), "
@@ -329,14 +341,16 @@ static void export_restriction(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_restrictionlist(sqlite3* instance, String^ path)
+static void export_restrictionlist(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// restrictionlistid | effective
 	auto sql = L"select uuidstr(restrictionlistid), prettyjson(json_object('restrictionlistid', base64encode(restrictionlistid), "
@@ -377,14 +391,16 @@ static void export_restrictionlist(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_ruling(sqlite3* instance, String^ path)
+static void export_ruling(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// cardid | sequence | ruling
 	auto sql = L"select uuidstr(cardid), prettyjson(json_group_array(json_object('cardid', base64encode(cardid), "
@@ -425,14 +441,16 @@ static void export_ruling(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_series(sqlite3* instance, String^ path)
+static void export_series(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// seriesid | code | name | boosterpack | releasedate
 	auto sql = L"select uuidstr(seriesid), prettyjson(json_object('seriesid', base64encode(seriesid), "
@@ -473,14 +491,16 @@ static void export_series(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_spell(sqlite3* instance, String^ path)
+static void export_spell(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// cardid | normal | continuous | equip | field | quickplay | ritual
 	auto sql = L"select uuidstr(cardid), prettyjson(json_object('cardid', base64encode(cardid), 'normal', normal, "
@@ -521,14 +541,16 @@ static void export_spell(sqlite3* instance, String^ path)
 //
 // Arguments:
 //
-//	instance	- Database instance handle
+//	handle		- Database instance handle
 //	path		- Path on which to export the table data
 
-static void export_trap(sqlite3* instance, String^ path)
+static void export_trap(SQLiteSafeHandle^ handle, String^ path)
 {
-	CLRASSERT(instance != nullptr);
+	CLRASSERT(CLRISNOTNULL(handle));
+	CLRASSERT(CLRISNOTNULL(path));
 
-	sqlite3_stmt* statement;			// SQLite statement handle
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
 
 	// cardid | normal | continuous | counter
 	auto sql = L"select uuidstr(cardid), prettyjson(json_object('cardid', base64encode(cardid), 'normal', normal, "
@@ -601,8 +623,6 @@ void Database::Export(String^ path)
 
 	if(CLRISNULL(path)) throw gcnew ArgumentNullException("path");
 
-	SQLiteSafeHandle::Reference instance(m_handle);
-
 	// Check that the output path exists and try to create it if not
 	path = Path::GetFullPath(path);
 	if(!try_create_directory(path)) throw gcnew Exception("Unable to create specified export directory");
@@ -611,67 +631,67 @@ void Database::Export(String^ path)
 	//
 	String^ cardpath = Path::Combine(path, "card");
 	if(!try_create_directory(cardpath)) throw gcnew Exception("Unable to create card export directory");
-	export_card(instance, cardpath);
+	export_card(m_handle, cardpath);
 
 	// MONSTER
 	//
 	String^ monsterpath = Path::Combine(path, "monster");
 	if(!try_create_directory(monsterpath)) throw gcnew Exception("Unable to create monster export directory");
-	export_monster(instance, monsterpath);
+	export_monster(m_handle, monsterpath);
 
 	// SPELL
 	//
 	String^ spellpath = Path::Combine(path, "spell");
 	if(!try_create_directory(spellpath)) throw gcnew Exception("Unable to create spell export directory");
-	export_spell(instance, spellpath);
+	export_spell(m_handle, spellpath);
 
 	// TRAP
 	//
 	String^ trappath = Path::Combine(path, "trap");
 	if(!try_create_directory(trappath)) throw gcnew Exception("Unable to create trap export directory");
-	export_trap(instance, trappath);
+	export_trap(m_handle, trappath);
 
 	// ARTWORK
 	//
 	String^ artworkpath = Path::Combine(path, "artwork");
 	if(!try_create_directory(artworkpath)) throw gcnew Exception("Unable to create artwork export directory");
-	export_artwork(instance, artworkpath);
+	export_artwork(m_handle, artworkpath);
 
 	// DEFAULTARTWORK
 	//
 	String^ defaultartworkpath = Path::Combine(path, "defaultartwork");
 	if(!try_create_directory(defaultartworkpath)) throw gcnew Exception("Unable to create defaultartwork export directory");
-	export_defaultartwork(instance, defaultartworkpath);
+	export_defaultartwork(m_handle, defaultartworkpath);
 
 	// SERIES
 	//
 	String^ seriespath = Path::Combine(path, "series");
 	if(!try_create_directory(seriespath)) throw gcnew Exception("Unable to create series export directory");
-	export_series(instance, seriespath);
+	export_series(m_handle, seriespath);
 
 	// PRINT
 	//
 	String^ printpath = Path::Combine(path, "print");
 	if(!try_create_directory(printpath)) throw gcnew Exception("Unable to create print export directory");
-	export_print(instance, printpath);
+	export_print(m_handle, printpath);
 
 	// RESTRICTIONLIST
 	//
 	String^ restrictionlistpath = Path::Combine(path, "restrictionlist");
 	if(!try_create_directory(restrictionlistpath)) throw gcnew Exception("Unable to create restrictionlist export directory");
-	export_restrictionlist(instance, restrictionlistpath);
+	export_restrictionlist(m_handle, restrictionlistpath);
 
 	// RESTRICTION
 	//
 	String^ restrictionpath = Path::Combine(path, "restriction");
 	if(!try_create_directory(restrictionpath)) throw gcnew Exception("Unable to create restriction export directory");
-	export_restriction(instance, restrictionpath);
+	export_restriction(m_handle, restrictionpath);
 
 	// RULING
 	//
 	String^ rulingpath = Path::Combine(path, "ruling");
 	if(!try_create_directory(rulingpath)) throw gcnew Exception("Unable to create ruling export directory");
-	export_ruling(instance, rulingpath);
+	export_ruling(m_handle, rulingpath);
 }
 
 //---------------------------------------------------------------------------

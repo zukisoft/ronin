@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "3THYM4Ksak6mC4U2mV656g==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Ring of Destruction]] during the Damage Step."
+    },
+    {
+        "cardid": "3THYM4Ksak6mC4U2mV656g==",
+        "sequence": 2,
+        "ruling": "- [[Ring of Destruction]] inflicts damage based on the current (total) ATK value, NOT the original ATK."
+    },
+    {
+        "cardid": "3THYM4Ksak6mC4U2mV656g==",
+        "sequence": 3,
+        "ruling": "- This card targets a monster."
+    },
+    {
+        "cardid": "3THYM4Ksak6mC4U2mV656g==",
+        "sequence": 4,
+        "ruling": "- If you chain [[Ring of Destruction]] to [[Magic Cylinder]], [[Magic Cylinder]]'s effect disappears because the monster is no longer there (so [[Magic Cylinder]] inflicts no damage)."
+    },
+    {
+        "cardid": "3THYM4Ksak6mC4U2mV656g==",
+        "sequence": 5,
+        "ruling": "- If a player Tributes [[Witch of the Black Forest]] for [[Summoned Skull]], you can chain [[Ring of Destruction]] to the effect of [[Witch of the Black Forest]], in order to destroy [[Summoned Skull]]. If this reduces the player's Life Points to zero, then they cannot use [[Witch of the Black Forest]]'s effect (to retrieve a 5th Exodia piece, for example)."
+    }
+]

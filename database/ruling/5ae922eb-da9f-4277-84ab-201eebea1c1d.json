@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 1,
+        "ruling": "- [[Dark Paladin]] cannot be Special Summoned, except by Fusion Summon. So you cannot Special Summon [[Dark Paladin]] using [[Monster Reborn]], etc., even if it was properly Summoned before. You cannot Special Summon [[Dark Paladin]] using [[Magical Scientist]], etc."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 2,
+        "ruling": "- You can use substitute Fusion Material Monsters such as [[Goddess with the Third Eye]], etc. to Fusion Summon [[Dark Paladin]]."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 3,
+        "ruling": "- [[Dark Paladin]]'s Spell-negating effect is a Quick Effect, so it can be activated during your opponent's turn."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 4,
+        "ruling": "- You can activate [[Dark Paladin]]'s Spell-negating effect multiple times in the same chain."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 5,
+        "ruling": "- [[Dark Paladin]]'s Spell-negating effect can be chained to."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 6,
+        "ruling": "- If you activate [[Dark Paladin]]'s Spell-negating effect, and your opponent chains [[Ring of Destruction]] to destroy [[Dark Paladin]], the Spell Card is still negated even though [[Dark Paladin]] is destroyed."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 7,
+        "ruling": "- If you activate [[Dark Paladin]]'s Spell-negating effect, and your opponent chains [[Book of Moon]] to flip [[Dark Paladin]] face-down, the Spell Card is still negated even though [[Dark Paladin]] is face-down."
+    },
+    {
+        "cardid": "6yLpWp/ad0KEqyAe6+ocHQ==",
+        "sequence": 8,
+        "ruling": "- [[Dark Paladin]]'s +500 ATK effect is a Continuous Effect. While [[Skill Drain]] is active, the effects of [[Dark Paladin]] are negated."
+    }
+]

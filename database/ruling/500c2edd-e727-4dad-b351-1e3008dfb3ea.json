@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "3S4MUCfnrU2zUR4wCN+z6g==",
+        "sequence": 1,
+        "ruling": "- If [[Ultimate Ancient Gear Golem]] is destroyed in battle, its effect activates when it is sent to the Graveyard at the end of the Damage Step. Its effect activates even if it is removed from play when destroyed."
+    },
+    {
+        "cardid": "3S4MUCfnrU2zUR4wCN+z6g==",
+        "sequence": 2,
+        "ruling": "- If your opponent controls your [[Ultimate Ancient Gear Golem]] when it is destroyed, you will activate its effect."
+    },
+    {
+        "cardid": "3S4MUCfnrU2zUR4wCN+z6g==",
+        "sequence": 3,
+        "ruling": "- If this card is destroyed during a resolving chain, you can activate its effect after the chain has resolved."
+    }
+]

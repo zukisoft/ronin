@@ -1,0 +1,87 @@
+[
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 1,
+        "ruling": "- [[Prime Material Dragon]]'s first effect is a Continuous Effect."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 2,
+        "ruling": "- While [[Prime Material Dragon]] is face-up on the field, if an effect would inflict damage to both players' Life Points, both players will gain Life Points instead."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 3,
+        "ruling": "- If [[The Immortal of Thunder]] is sent to the Graveyard, its owner will lose 5000 Life Points because this is not damage. [[Prime Material Dragon]] cannot change it into a Life Point gain."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 4,
+        "ruling": "- [[Prime Material Dragon]]'s second effect can be activated during any Game Phase, including the Damage Step."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 5,
+        "ruling": "- [[Prime Material Dragon]]'s second effect can be activated when the effect of a Continuous Spell or Trap Card that destroys a monster(s) is activated, like [[Blaze Accelerator]] or [[Skull Lair]]."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 6,
+        "ruling": "- [[Prime Material Dragon]]'s second effect works like [[My Body as a Shield]]. [[Prime Material Dragon]] can negate cards such as [[Smashing Ground]], [[Nobleman of Crossout]], [[Shield Crush]], [[Thousand Knives]], [[Trap Hole]], [[Mirror Force]], [[Ring of Destruction]], [[Torrential Tribute]], [[Bottomless Trap Hole]], [[Swarm of Scarabs]], [[Dark Armed Dragon]], [[Raigeki Break]], \"XYZ Dragon Cannon\", [[Mega Ton Magical Cannon]], [[Exiled Force]] (negates the effect but will not destroy [[Exiled Force]] as it is already in the Graveyard), [[Soul Taker]] (negates [[Soul Taker]] so you do not gain Life Points), [[Jowgen the Spiritualist]] (when its effect is activated), [[Dragon's Gunfire]] (if the effect that destroys a monster is selected), or \"The Last Warrior From Another Planet\" (negates the effect and destroys \"The Last Warrior From Another Planet\")."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 7,
+        "ruling": "- [[Prime Material Dragon]] can only be used against effects that will destroy monsters at that time. For example, you cannot use [[Prime Material Dragon]]'s effect when [[Dark Armed Dragon]] is Special Summoned; you can only use it in response to the activation of [[Dark Armed Dragon]]'s effect when it targets a monster. Also, you cannot use [[Prime Material Dragon]]'s effect against cards whose effects will not destroy a monster right away, so you cannot use [[Prime Material Dragon]] against [[Jigen Bakudan]], [[Ekibyo Drakmord]], [[Magical Hats]], [[Steel Scorpion]], \"Toon Monsters\", [[Thunder Nyan Nyan]], [[Gradius' Option]], [[Summoner of Illusions]], [[Limiter Removal]], [[Call of the Haunted]], [[Premature Burial]], or \"Arutonomous Action Unit\"."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 8,
+        "ruling": "- You cannot use [[Prime Material Dragon]]'s effect against cards whose effects may or may not destroy a monster right away, such as [[Earthshaker]], [[Barrel Dragon]], [[Acid Trap Hole]], or [[Time Wizard]]."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 9,
+        "ruling": "- You cannot use [[Prime Material Dragon]]'s effect against monsters with continuous effects such as [[Kotodama]] ."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 10,
+        "ruling": "- You can activate the second effect of your [[Prime Material Dragon]] when your opponent activates the second effect of their [[Prime Material Dragon]]."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 11,
+        "ruling": "- When [[Judgment Dragon]]'s effect to destroy all other cards on the field is activated, [[Prime Material Dragon]]'s effect can be chained."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 12,
+        "ruling": "- You cannot chain [[Prime Material Dragon]]'s effect to [[Magical Dimension]], since destroying a monster on the field is optional."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 13,
+        "ruling": "- If [[Royal Oppression]]'s effect is activated to negate the Special Summon of a monster, like [[Cyber Dragon]] or [[Gladiator Beast Gyzarus]], [[Prime Material Dragon]]'s effect cannot be chained because the monster being Special Summoned is not considered to be \"on the field\" until its Summon is successful."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 14,
+        "ruling": "- If you attack with [[Jirai Gumo]] while you have [[Prime Material Dragon]] face-up on your side of the field, when you call the coin toss wrong you still lose half of your Life Points because losing Life Points in this way is not damage."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 15,
+        "ruling": "- If your opponent activates [[Gladiator Beast Gyzarus]]' effect and selects to destroy a monster, you can chain [[Prime Material Dragon]]'s effect."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 16,
+        "ruling": "- When [[Crush Card Virus]] is activated, if there is a face-up monster that would be destroyed you can chain [[Prime Material Dragon]]'s effect."
+    },
+    {
+        "cardid": "l15WfxUn3UmdpUNLl3Metg==",
+        "sequence": 17,
+        "ruling": "- If the effect of a Normal Spell Card sent to the Graveyard by [[Destiny Hero - Diamond Dude]] will destroy monster(s) on the field, [[Prime Material Dragon]]'s effect can be chained."
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "kLbqHWj6qUaOmh75N/zQsQ==",
+        "sequence": 1,
+        "ruling": "- If [[Gemini Elf]] attacks a Defense Position [[Battle Footballer]], and [[Gemini Elf]]'s controller takes 200 damage, then [[Begone, Knave!]]'s effect will send [[Battle Footballer]] back to its owner's hand."
+    },
+    {
+        "cardid": "kLbqHWj6qUaOmh75N/zQsQ==",
+        "sequence": 2,
+        "ruling": "- The effect of [[Begone, Knave!]] can be on a chain."
+    },
+    {
+        "cardid": "kLbqHWj6qUaOmh75N/zQsQ==",
+        "sequence": 3,
+        "ruling": "- The effect of [[Begone, Knave!]] is applied to the monster that inflicts Battle Damage to the player, so if [[Amazoness Swords Woman]] battles a stronger monster, [[Amazoness Swords Woman]] would normally be returned to the owner's hand, but because it is destroyed and sent to the Graveyard, it will not be returned."
+    }
+]

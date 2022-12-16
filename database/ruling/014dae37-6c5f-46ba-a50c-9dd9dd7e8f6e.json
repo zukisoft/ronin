@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 1,
+        "ruling": "- You select the card you are activating in your opponent's Graveyard when you activate [[Double Spell]]. [[Double Spell]] can then be chained to after you announce your selection."
+    },
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 2,
+        "ruling": "- The selected card itself cannot be chained to as you are in resolution of the chain at that point."
+    },
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 3,
+        "ruling": "- If the selected Spell Card is Ritual, Normal, or Quick-Play (except for [[Swords of Revealing Light]]), it remains in your opponent's Graveyard and is not placed on the field, so you only need one vacant Spell & Trap Card Zone spot (for [[Double Spell]] itself) to activate [[Double Spell]]."
+    },
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 4,
+        "ruling": "- If you activate [[Double Spell]] and select a Continuous, Field, or Equip Spell Card, or [[Swords of Revealing Light]], you place the selected Spell Card in your Spell & Trap Card Zone, so you need two vacant Spell & Trap Card Zone spots (one for [[Double Spell]], one for the selected card). The Continuous / Field / Equip / [[Swords of Revealing Light]] Spell Card then remains on the field as normal."
+    },
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 5,
+        "ruling": "- The player who activates [[Double Spell]] pays any costs for the selected Spell Card (for [[Delinquent Duo]], [[Tribute to the Doomed]], etc.)."
+    },
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 6,
+        "ruling": "- You cannot select a Spell Card with [[Double Spell]] that cannot be activated, such as an Equip Spell Card when no monsters are on the field."
+    },
+    {
+        "cardid": "N65NAV9sukalDJ3Z3X6Pbg==",
+        "sequence": 7,
+        "ruling": "- You cannot use [[Double Spell]] while [[Necrovalley]] is in effect."
+    }
+]

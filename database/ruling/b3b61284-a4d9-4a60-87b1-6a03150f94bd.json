@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "hBK2s9mkYEqHsWoDFQ+UvQ==",
+        "sequence": 1,
+        "ruling": "- If there are multiple monsters tied for the highest ATK, they are all destroyed."
+    },
+    {
+        "cardid": "hBK2s9mkYEqHsWoDFQ+UvQ==",
+        "sequence": 2,
+        "ruling": "- If [[Bottomless Shifting Sand]] is active and [[Tyrant Dragon]] is the monster with the highest ATK, [[Tyrant Dragon]] is destroyed because [[Bottomless Shifting Sand]] does not target a monster."
+    }
+]

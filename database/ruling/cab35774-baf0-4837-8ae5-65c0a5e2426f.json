@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "dFezyvC6N0iK5WXApeJCbw==",
+        "sequence": 1,
+        "ruling": "- If you take control of your opponent's [[Sword Hunter]] and destroy a monster by battle, the monster is placed into your Spell and Trap Card Zone and remains there when control of [[Sword Hunter]] is returned to your opponent."
+    },
+    {
+        "cardid": "dFezyvC6N0iK5WXApeJCbw==",
+        "sequence": 2,
+        "ruling": "- While [[Imperial Order]] is active, you do not gain ATK for the Monster Cards equipped to [[Sword Hunter]]."
+    },
+    {
+        "cardid": "dFezyvC6N0iK5WXApeJCbw==",
+        "sequence": 3,
+        "ruling": "- If the monster destroyed by battle with [[Sword Hunter]] is Special Summoned from the Graveyard before the end of the Battle Phase, it is not equipped to [[Sword Hunter]]."
+    }
+]

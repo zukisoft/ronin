@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "m7aD6tr6PkSym4GOsflI/g==",
+        "sequence": 1,
+        "ruling": "- [[Ceasefire]] can be activated if there is at least 1 face-down Defense Position monster and/or at least 1 face-up Effect Monster."
+    },
+    {
+        "cardid": "m7aD6tr6PkSym4GOsflI/g==",
+        "sequence": 2,
+        "ruling": "- Monsters flipped by [[Ceasefire]] are not Flip Summoned, so the effect of [[Mysterious Puppeteer]] does not activate."
+    },
+    {
+        "cardid": "m7aD6tr6PkSym4GOsflI/g==",
+        "sequence": 3,
+        "ruling": "- If you chain [[Ceasefire]] to the Flip Effect of a monster, the Flip Effect is not negated."
+    },
+    {
+        "cardid": "m7aD6tr6PkSym4GOsflI/g==",
+        "sequence": 4,
+        "ruling": "- If [[Jinzo]] is flipped by [[Ceasefire]], the damage from [[Ceasefire]]'s effect is still inflicted."
+    },
+    {
+        "cardid": "m7aD6tr6PkSym4GOsflI/g==",
+        "sequence": 5,
+        "ruling": "- Monster Tokens and monsters being treated as Equip Cards are not counted as Effect Monsters."
+    }
+]

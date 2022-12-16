@@ -1,0 +1,47 @@
+[
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 1,
+        "ruling": "- This effect does not target."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 2,
+        "ruling": "- [[Interplanetary Invader \"A\"]]s effect first activates at the end of the damage step when it is attacked, but it does not yet take control of the attacking monster. At the end of the Battle Phase its effect starts another Chain, this time taking control of every monster that attacked it during the Battle Phase."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 3,
+        "ruling": "- Your opponent's monsters that you take control of with [[Interplanetary Invader \"A\"]]'s effect remain under your control when [[Interplanetary Invader \"A\"]] is removed from the field or flipped face-down."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 4,
+        "ruling": "- [[Interplanetary Invader \"A\"]]'s effect activates even if [[Interplanetary Invader \"A\"]] is destroyed in battle or removed from play. If [[Interplanetary Invader \"A\"]] is returned to the Deck by [[Grave Protector]], etc., its effect will not activate."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 5,
+        "ruling": "- If the monster that attacks your [[Interplanetary Invader \"A\"]] is flipped face-down before the end of the Battle Phase, you will still take control of it during the end of the Battle Phase."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 6,
+        "ruling": "- If [[Interplanetary Invader \"A\"]] is attacked by multiple monsters during the Battle Phase, at the end of the Battle Phase you will take control of every monster that attacked it."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 7,
+        "ruling": "- If a Level 4 or higher monster attacks [[Interplanetary Invader \"A\"]] and [[Gravity Bind]] is activated, [[Interplanetary Invader \"A\"]]'s effect does not activate because the attack did not proceed to the Damage Step."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 8,
+        "ruling": "- If [[Interplanetary Invader \"A\"]] is destroyed without applying damage calculation ([[Sasuke Samurai #4]], etc.), its effect does not activate."
+    },
+    {
+        "cardid": "2st33GvaKESyhKqiJMwtzg==",
+        "sequence": 9,
+        "ruling": "- If you do not have any open Monster Card Zones when [[Interplanetary Invader \"A\"]]'s effect activates, any monster that you would have gained control of will be destroyed."
+    }
+]

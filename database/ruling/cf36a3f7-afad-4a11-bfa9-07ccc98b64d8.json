@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "96M2z62vEUq/qQfMyYtk2A==",
+        "sequence": 1,
+        "ruling": "- You cannot use [[Change of Heart]] on a face-up [[Mataza the Zapper]]."
+    },
+    {
+        "cardid": "96M2z62vEUq/qQfMyYtk2A==",
+        "sequence": 2,
+        "ruling": "- If you take control of a face-down [[Mataza the Zapper]] and flip it face-up, it stays on your side of the field and doesn't return to the original controller."
+    },
+    {
+        "cardid": "96M2z62vEUq/qQfMyYtk2A==",
+        "sequence": 3,
+        "ruling": "- If you use [[Monster Reborn]] on [[Mataza the Zapper]] while [[Remove Brainwashing]] is active, control of [[Mataza the Zapper]] does not return to the original owner."
+    },
+    {
+        "cardid": "96M2z62vEUq/qQfMyYtk2A==",
+        "sequence": 4,
+        "ruling": "- While [[Skill Drain]] is active, you can take control of [[Mataza the Zapper]] from your opponent."
+    }
+]

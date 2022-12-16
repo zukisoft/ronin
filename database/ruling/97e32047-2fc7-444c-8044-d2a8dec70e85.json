@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "RyDjl8cvTESARNKo3scOhQ==",
+        "sequence": 1,
+        "ruling": "- The effect to reduce the ATK of monsters with A-Counters is an effect of this card. If this card (or another with the same effect) is not on the field, then a monster with an A-Counter will not lose ATK while battling an \"Alien\"."
+    },
+    {
+        "cardid": "RyDjl8cvTESARNKo3scOhQ==",
+        "sequence": 2,
+        "ruling": "- If 2 [[Alien Grey]] (or other monsters with the A-Counter text) are on the field, then a monster with 1 A-Counter will lose 600 ATK while battling an \"Alien\"."
+    }
+]

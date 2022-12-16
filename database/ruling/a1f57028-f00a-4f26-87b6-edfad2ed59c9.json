@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "KHD1oQrwJk+Htu360u1ZyQ==",
+        "sequence": 1,
+        "ruling": "- [[Salvage]] targets 2 WATER monsters in the Graveyard."
+    },
+    {
+        "cardid": "KHD1oQrwJk+Htu360u1ZyQ==",
+        "sequence": 2,
+        "ruling": "- If 1 of the targeted WATER monsters is removed from the Graveyard by an effect chained to [[Salvage]], the remaining WATER monster is still added to your hand."
+    }
+]

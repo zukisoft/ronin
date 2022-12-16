@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "0jTRpaKC3USWd9m9mDwNtg==",
+        "sequence": 1,
+        "ruling": "- You can only use [[Roulette Barrel]]'s effect once per turn."
+    },
+    {
+        "cardid": "0jTRpaKC3USWd9m9mDwNtg==",
+        "sequence": 2,
+        "ruling": "- You have to roll a die twice, not once. You must roll the die twice in a row, not once in Main Phase 1 and once in Main Phase 2, etc."
+    },
+    {
+        "cardid": "0jTRpaKC3USWd9m9mDwNtg==",
+        "sequence": 3,
+        "ruling": "- You CAN select a die roll result which doesn't match the Level Stars of a face-up monster. But if the die roll you select does match a monster, you MUST destroy a face-up monster with the correct number of Level Stars."
+    },
+    {
+        "cardid": "0jTRpaKC3USWd9m9mDwNtg==",
+        "sequence": 4,
+        "ruling": "- [[Roulette Barrel]] can destroy itself with its effect."
+    },
+    {
+        "cardid": "0jTRpaKC3USWd9m9mDwNtg==",
+        "sequence": 5,
+        "ruling": "- You cannot destroy a monster with 7 or more stars with [[Roulette Barrel]]'s effect."
+    }
+]

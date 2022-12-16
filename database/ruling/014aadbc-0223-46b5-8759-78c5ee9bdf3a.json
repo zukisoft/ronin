@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "vK1KASMCtUaHWXjF7pvfOg==",
+        "sequence": 1,
+        "ruling": "- You select which Spell & Trap Card Zone to make unusable when you activate [[Mystical Cards of Light]]."
+    },
+    {
+        "cardid": "vK1KASMCtUaHWXjF7pvfOg==",
+        "sequence": 2,
+        "ruling": "- You cannot activate [[Mystical Cards of Light]] if you do not have a Spell & Trap Card Zone to make unusable."
+    },
+    {
+        "cardid": "vK1KASMCtUaHWXjF7pvfOg==",
+        "sequence": 3,
+        "ruling": "- Drawing 2 cards with [[Mystical Cards of Light]] does not start a Chain."
+    },
+    {
+        "cardid": "vK1KASMCtUaHWXjF7pvfOg==",
+        "sequence": 4,
+        "ruling": "- You can choose to draw only 1 card."
+    },
+    {
+        "cardid": "vK1KASMCtUaHWXjF7pvfOg==",
+        "sequence": 5,
+        "ruling": "- You cannot choose to draw 2 cards if you have 1 card remaining in your Deck."
+    },
+    {
+        "cardid": "vK1KASMCtUaHWXjF7pvfOg==",
+        "sequence": 6,
+        "ruling": "- If [[Mystical Cards of Light]]'s effect is negated, you can activate or Set Spell and Trap Cards into the unusable Spell & Trap Card Zone. If the effect of [[Mystical Cards of Light]] is reapplied while a Spell or Trap Card is in the unusable Spell & Trap Card Zone, the Spell & Trap Card Zone become unusable when the Spell or Trap Card is removed from the field."
+    }
+]

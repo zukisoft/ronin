@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "/lf/qQLJakesc/7s9VcAzA==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Royal Keeper]] is not a Flip Effect."
+    },
+    {
+        "cardid": "/lf/qQLJakesc/7s9VcAzA==",
+        "sequence": 2,
+        "ruling": "- When a face-down [[Royal Keeper]] is attacked and flipped face-up, its +300 ATK effect is applied AFTER damage calculation."
+    },
+    {
+        "cardid": "/lf/qQLJakesc/7s9VcAzA==",
+        "sequence": 3,
+        "ruling": "- When your opponent activates [[Bottomless Trap Hole]] against [[Royal Keeper]], the +300 ATK effect of [[Royal Keeper]] resolves after [[Bottomless Trap Hole]]."
+    }
+]

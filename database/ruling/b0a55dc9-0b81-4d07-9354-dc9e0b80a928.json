@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "yV2lsIELB02TVNyeC4CpKA==",
+        "sequence": 1,
+        "ruling": "- You cannot activate [[Pot of Avarice]] while [[Transmigration Break]] is active."
+    },
+    {
+        "cardid": "yV2lsIELB02TVNyeC4CpKA==",
+        "sequence": 2,
+        "ruling": "- You can activate [[Cyberdark Impact!]] while [[Transmigration Break]] is active, but the \"Cyberdark\" Monsters are removed from play instead of being returned to the Deck."
+    },
+    {
+        "cardid": "yV2lsIELB02TVNyeC4CpKA==",
+        "sequence": 3,
+        "ruling": "- If an effect would return a Fusion Monster in the Graveyard to its owner's hand or Fusion Deck, the Fusion Monster is removed from play instead."
+    }
+]

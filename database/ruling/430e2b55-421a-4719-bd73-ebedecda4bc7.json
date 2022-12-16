@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "VSsOQxpCGUe9c+vt7NpLxw==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Flint Lock]] that moves [[Flint]] from [[Flint Lock]] to another monster can be activated multiple times in the same turn."
+    },
+    {
+        "cardid": "VSsOQxpCGUe9c+vt7NpLxw==",
+        "sequence": 2,
+        "ruling": "- You cannot target activate [[Flint]] from you hand targeting a [[Flint Lock]] that is already equipped with [[Flint]]."
+    },
+    {
+        "cardid": "VSsOQxpCGUe9c+vt7NpLxw==",
+        "sequence": 3,
+        "ruling": "- This card's effect to equip [[Flint]] to itself targets the [[Flint]] card."
+    },
+    {
+        "cardid": "VSsOQxpCGUe9c+vt7NpLxw==",
+        "sequence": 4,
+        "ruling": "- This card's effect to to equip [[Flint]] to another monster targets that monster and [[Flint]]."
+    }
+]

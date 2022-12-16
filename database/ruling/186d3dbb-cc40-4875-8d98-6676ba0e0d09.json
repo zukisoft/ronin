@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "uz1tGEDMdUiNmGZ2ug4NCQ==",
+        "sequence": 1,
+        "ruling": "- The \"same ATK\" as [[Kaiser Glider]] means the same as the current ATK, not the original ATK."
+    },
+    {
+        "cardid": "uz1tGEDMdUiNmGZ2ug4NCQ==",
+        "sequence": 2,
+        "ruling": "- When [[Kaiser Glider]] is in Attack Position and battles a monster with the same ATK, only the other monster is destroyed."
+    },
+    {
+        "cardid": "uz1tGEDMdUiNmGZ2ug4NCQ==",
+        "sequence": 3,
+        "ruling": "- [[Kaiser Glider]]'s second effect activates when destroyed and sent to the Graveyard from the field, hand, or Deck."
+    },
+    {
+        "cardid": "uz1tGEDMdUiNmGZ2ug4NCQ==",
+        "sequence": 4,
+        "ruling": "- If [[Kaiser Glider]] is equipped to [[Relinquished]] or [[Thousand-Eyes Restrict]], and is destroyed and sent to the Graveyard, [[Kaiser Glider]]'s effect activates."
+    }
+]

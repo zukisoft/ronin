@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "/hHXNcfCiUyIAOte7V1ynA==",
+        "sequence": 1,
+        "ruling": "- Choosing Attributes is a Trigger Effect that activates when [[Disciple of the Forbidden Spell]] is Summoned. Your opponent could chain [[Disappear]] to remove from play one [[Disciple of the Forbidden Spell]] in the Graveyard and you would choose one less Attribute."
+    },
+    {
+        "cardid": "/hHXNcfCiUyIAOte7V1ynA==",
+        "sequence": 2,
+        "ruling": "- If [[Chain Destruction]] is chained to the Trigger Effect when [[Disciple of the Forbidden Spell]] is Summoned, [[Chain Destruction]] will resolve first, so all your copies of [[Disciple of the Forbidden Spell]] will be in the Graveyard, and you choose a number of Attributes equal to the new amount."
+    },
+    {
+        "cardid": "/hHXNcfCiUyIAOte7V1ynA==",
+        "sequence": 3,
+        "ruling": "- If you have two copies of this card in the Graveyard when you Summon it, you must choose two different Attributes."
+    },
+    {
+        "cardid": "/hHXNcfCiUyIAOte7V1ynA==",
+        "sequence": 4,
+        "ruling": "- The effect of [[Disciple of the Forbidden Spell]] is activated at the start of the Damage Step, before the attacked monster is flipped face-up. If this card attacks a face-down monster, it will not be destroyed by this effect, even if it is revealed to have one of the chosen Attributes."
+    },
+    {
+        "cardid": "/hHXNcfCiUyIAOte7V1ynA==",
+        "sequence": 5,
+        "ruling": "- If LIGHT was a chosen Attribute, and [[Disciple of the Forbidden Spell]] attacks [[Reflect Bounder]], [[Reflect Bounder]]'s effect will not activate and no damage will be inflicted."
+    }
+]

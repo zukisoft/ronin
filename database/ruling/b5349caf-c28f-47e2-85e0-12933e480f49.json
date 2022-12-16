@@ -1,0 +1,52 @@
+[
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 1,
+        "ruling": "- [[Soul Exchange]] targets. Select the target at activation."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 2,
+        "ruling": "- [[Soul Exchange]] allows you to Tribute the targeted monster as though it was yours for the rest of the turn."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 3,
+        "ruling": "- You can Tribute the targeted monster for any card that requires a Tribute, or for a Tribute Summon. So you could Tribute it for the effect of [[Cannon Soldier]], a Ritual Summon, or for the cost of [[Monster Gate]]."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 4,
+        "ruling": "- [[Soul Exchange]] does NOT give you control of your opponent's monster, so you can use [[Soul Exchange]] combined with your [[Cannon Soldier]]'s effect even if you already have 5 monsters in your Monster Card Zone."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 5,
+        "ruling": "- You can activate 2 [[Soul Exchange]]s and target 2 different monsters. You could Tribute them both for the Tribute Summon of a Level 7 or higher monster."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 6,
+        "ruling": "- You cannot activate [[Soul Exchange]] during your Main Phase 2 because you must skip your Battle Phase."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 7,
+        "ruling": "- You can target a face-down monster, but you cannot Tribute it for a Ritual Summon or for [[Metamorphosis]] because you do not know its Level."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 8,
+        "ruling": "- You cannot use [[Soul Exchange]] for [[Polymerization]] because [[Polymerization]] does not use Tribute."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 9,
+        "ruling": "- If the activation of your [[Soul Exchange]] is negated (by [[Solemn Judgment]], etc.), you may conduct your Battle Phase. If only the effect of [[Soul Exchange]] is negated (by [[Imperial Order]], etc.), you may not conduct your Battle Phase."
+    },
+    {
+        "cardid": "r5w0tY/C4keF4BKTPkgPSQ==",
+        "sequence": 10,
+        "ruling": "- You cannot Tribute the monster targeted by [[Soul Exchange]] to pay the cost to activate the effect of your [[Exiled Force]], because [[Exiled Force]] must Tribute itself."
+    }
+]

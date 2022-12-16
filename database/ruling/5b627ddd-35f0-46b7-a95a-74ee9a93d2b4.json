@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "3X1iW/A1t0apWnTumpPStA==",
+        "sequence": 1,
+        "ruling": "- You select the monster when you activate [[Micro Ray]]."
+    },
+    {
+        "cardid": "3X1iW/A1t0apWnTumpPStA==",
+        "sequence": 2,
+        "ruling": "- If you apply [[Micro Ray]]'s effect and then a new card increases the DEF, add the new DEF to the zero."
+    },
+    {
+        "cardid": "3X1iW/A1t0apWnTumpPStA==",
+        "sequence": 3,
+        "ruling": "- You can activate [[Micro Ray]] during the Damage Step."
+    }
+]

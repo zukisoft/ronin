@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "rZTqwpd0F02VNRheUXr0WA==",
+        "sequence": 1,
+        "ruling": "- [[Hero Blast]] targets 1 \"Elemental Hero\" Normal Monster in your Graveyard."
+    },
+    {
+        "cardid": "rZTqwpd0F02VNRheUXr0WA==",
+        "sequence": 2,
+        "ruling": "- You can activate [[Hero Blast]] when you opponent doesn't have any face-up monsters."
+    },
+    {
+        "cardid": "rZTqwpd0F02VNRheUXr0WA==",
+        "sequence": 3,
+        "ruling": "- If the selected \"Elemental Hero\" Normal Monster is not returned to your hand, you cannot destroy 1 of your opponent's cards.\""
+    }
+]

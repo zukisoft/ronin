@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "MzPUHrzIW0yZU9w2Jvp1RQ==",
+        "sequence": 1,
+        "ruling": "- This is an Ignition Effect activated from your hand."
+    },
+    {
+        "cardid": "MzPUHrzIW0yZU9w2Jvp1RQ==",
+        "sequence": 2,
+        "ruling": "- Discarding this card is a cost to activate the effect."
+    },
+    {
+        "cardid": "MzPUHrzIW0yZU9w2Jvp1RQ==",
+        "sequence": 3,
+        "ruling": "- This effect targets."
+    },
+    {
+        "cardid": "MzPUHrzIW0yZU9w2Jvp1RQ==",
+        "sequence": 4,
+        "ruling": "- If the targeted monster is flipped face-down by an effect chained to this card's activation, control of the target will not switch."
+    },
+    {
+        "cardid": "MzPUHrzIW0yZU9w2Jvp1RQ==",
+        "sequence": 5,
+        "ruling": "- If [[DNA Surgery]] is chained to this effect, so that the target's Type changes before this effect resolves, then the effect is not applied."
+    },
+    {
+        "cardid": "MzPUHrzIW0yZU9w2Jvp1RQ==",
+        "sequence": 6,
+        "ruling": "- If [[DNA Surgery]] is activated later in the turn, after this effect has already resolved, it has no effect on the resolution of this effect. (Control does not instantly change back. Control changes back as normal at the end of the turn.)"
+    }
+]

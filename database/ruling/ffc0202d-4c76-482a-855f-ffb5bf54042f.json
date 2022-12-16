@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "LSDA/3ZMKkiFX/+1v1QELw==",
+        "sequence": 1,
+        "ruling": "- [[Hand Destruction]] cannot be activated if either play has 1 or less cards in their hand and/or remaining in their Deck. If you have [[Hand Destruction]] and 1 other card in your hand, you cannot activate [[Hand Destruction]]."
+    },
+    {
+        "cardid": "LSDA/3ZMKkiFX/+1v1QELw==",
+        "sequence": 2,
+        "ruling": "- If either player has 1 or less cards in their hand when [[Hand Destruction]] resolves, its effect disappears. If either player has 1 or less cards remaining in their Deck, they lose the Duel when they are unable to draw a card."
+    },
+    {
+        "cardid": "LSDA/3ZMKkiFX/+1v1QELw==",
+        "sequence": 3,
+        "ruling": "- [[Hand Destruction]] cannot be activated while [[Protector of the Sanctuary]] is face-up on the field."
+    },
+    {
+        "cardid": "LSDA/3ZMKkiFX/+1v1QELw==",
+        "sequence": 4,
+        "ruling": "- If [[Macro Cosmos]] is face-up on the field, [[Hand Destruction]] can still be activated. The cards sent from the hand to the Graveyard are removed from play instead."
+    }
+]

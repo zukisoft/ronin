@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "Ic4qYaGz50CXB6gQ6dThnA==",
+        "sequence": 1,
+        "ruling": "- You pay 500 Life Points when [[Vampire's Curse]] is sent to the Graveyard. Paying 500 Life Points is a cost."
+    },
+    {
+        "cardid": "Ic4qYaGz50CXB6gQ6dThnA==",
+        "sequence": 2,
+        "ruling": "- The effect that increases [[Vampire's Curse]]'s ATK starts a Chain when it is Special Summoned by its effect."
+    },
+    {
+        "cardid": "Ic4qYaGz50CXB6gQ6dThnA==",
+        "sequence": 3,
+        "ruling": "- [[Vampire's Curse]] is not Special Summoned with its effect if it is removed from play."
+    }
+]

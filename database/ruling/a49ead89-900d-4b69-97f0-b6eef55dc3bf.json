@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "ia2epA2QaUuX8Lbu9V3Dvw==",
+        "sequence": 1,
+        "ruling": "- If you select a Fusion Monster it returns to its owner's Fusion Deck."
+    },
+    {
+        "cardid": "ia2epA2QaUuX8Lbu9V3Dvw==",
+        "sequence": 2,
+        "ruling": "- If you select your opponent's monster that you currently control, it is returned to your opponent's Deck."
+    },
+    {
+        "cardid": "ia2epA2QaUuX8Lbu9V3Dvw==",
+        "sequence": 3,
+        "ruling": "- You can select a Monster Token. It is removed from the field instead, because it cannot be shuffled into the Deck."
+    }
+]

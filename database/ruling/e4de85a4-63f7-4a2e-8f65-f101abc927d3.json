@@ -1,0 +1,62 @@
+[
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 1,
+        "ruling": "- \"This card's effect that negates Spell Cards that target it is not optional."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 2,
+        "ruling": "- You can Special Summon this card from the Graveyard with [[Monster Reborn]] because its effect that negates Spell Cards is not active while it is in the Graveyard."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 3,
+        "ruling": "- You can activate [[Premature Burial]] to Special Summon this card from the Graveyard, and then this card's effect will negate and destroy [[Premature Burial]]. [[Freed the Matchless General]] will not be destroyed since the effect of [[Premature Burial]] was negated by his effect."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 4,
+        "ruling": "- If this card is targeted by the effect of a Spell Card while face-down, the Spell Card's effect resolves."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 5,
+        "ruling": "- If your opponent activates [[Change of Heart]] and gains control of this card while it is face-down, and it is then flipped face-up, they retain control of it until the end of the turn. This is because the effect of [[Freed the Matchless General]] must be applied when the Spell Card is activated."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 6,
+        "ruling": "- A Spell Card that targets this card may be activated, but it will be negated and destroyed."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 7,
+        "ruling": "- The effect of this card will not negate [[Creature Swap]], [[Fissure]], [[Smashing Ground]], [[Dark Hole]], [[Raigeki]], or similar Spell Cards that do not target."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 8,
+        "ruling": "- If you try to equip [[Fusion Sword Murasame Blade]] to this monster, it will be negated and destroyed."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 9,
+        "ruling": "- [[Freed the Matchless General]]'s second effect cannot be activated if you have no Level 4 or lower Warrior-Type monsters in your Deck."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 10,
+        "ruling": "- You can only forfeit your normal draw. If you activate [[Jar of Greed]] during the Draw Phase, you cannot replace that draw with the effect of [[Freed the Matchless General]]."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 11,
+        "ruling": "- If you have two copies of this card on the field, you can still only add 1 Warrior-Type monster to your hand by forfeiting your normal draw."
+    },
+    {
+        "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
+        "sequence": 12,
+        "ruling": "- The activation of this card's effect that adds a Warrior-Type monster to your hand can be chained to.\""
+    }
+]

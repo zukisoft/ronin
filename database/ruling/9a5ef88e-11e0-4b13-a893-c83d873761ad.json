@@ -1,0 +1,62 @@
+[
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 1,
+        "ruling": "- This card can be activated during the Damage Step, before Damage Calculation."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 2,
+        "ruling": "- If a monster affected by [[Shrink]] is turned face-down and face-up again that turn, the effect of [[Shrink]] is no longer applied."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 3,
+        "ruling": "- Even if a monster is targeted by multiple copies of [[Shrink]], its ATK will still be half of its original ATK. For example, if a monster with 1400 original ATK is affected by 2 copies of [[Shrink]], its ATK will be 700 NOT 350."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 4,
+        "ruling": "- The effect of [[Shrink]] works like [[Megamorph]], setting a new current ATK based on original ATK. If the same monster is targeted by both [[Shrink]] and [[Megamorph]], only the effect of the card that resolved last will be applied."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 5,
+        "ruling": "- If a monster's ATK is modified by a Field or Equip Spell Card, or a Continous Effect of a monster or Trap Card, etc.,  and it is targeted by [[Shrink]], first calculate half of its original ATK, then add the appropriate modifiers from the Equip Spell, etc."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 6,
+        "ruling": "- If [[Shrink]] affects a monster whose original ATK is set by its effect when it is Summoned, like [[Maju Garzett]], [[Chimeratech Overdragon]] or [[Megarock Dragon]], that monster's ATK will become 0, and remain 0 even after the effect of [[Shrink]] wears off."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 7,
+        "ruling": "- If [[Shrink]] affects a monster with ATK that varies due to its Continuous Effect, like [[Gren Maju Da Eiza]] or [[King of the Skull Servants]], that monster's ATK will be halved. If its ATK changes due to its own effect in the same turn, recalculate the effect of [[Shrink]] based on the new original ATK. When the effect of [[Shrink]] wears off, that monster's ATK will be calculated as normal."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 8,
+        "ruling": "- If [[Shrink]] affects a monster whose ATK is doubled by [[Limiter Removal]], that monster's ATK will become half of its original (printed) ATK."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 9,
+        "ruling": "- If [[Bottomless Trap Hole]] is activated in response to a Summon and [[Shrink]] is chained so that the monster's ATK is less than 1500 when [[Bottomless Trap Hole]] resolves, that monster will not be destroyed and removed from play by [[Bottomless Trap Hole]]."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 10,
+        "ruling": "- If a monster affect by [[Shrink]] attacks while [[Mirror Wall]] is in play, both effects are applied and the monster's ATK becomes 1/4 its original ATK. Because [[Mirror Wall]] continually recalculates, the result is the same no matter which card is activated first."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 11,
+        "ruling": "- If a monster whose ATK is reduced by [[Dark Jeroid]] is affected by [[Shrink]], first calculate half that monster's original ATK, then subtract 800 for [[Dark Jeroid]]'s effect; this becomes the monster's current ATK."
+    },
+    {
+        "cardid": "jvhemuARE0uok8g9hzdhrQ==",
+        "sequence": 12,
+        "ruling": "- If [[Exarion Universe]] is targeted by [[Shrink]], its ATK will become half of its original ATK, even if its effect to reduce its own ATK by 400 has been used."
+    }
+]

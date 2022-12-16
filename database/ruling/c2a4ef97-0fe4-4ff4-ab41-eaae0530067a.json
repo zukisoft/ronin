@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "l++kwuQP9E+rQequBTAGeg==",
+        "sequence": 1,
+        "ruling": "- [[Regenerating Mummy]]'s effect will activate when sent to the Graveyard by the effect of [[Morphing Jar]] or [[Card Destruction]]."
+    },
+    {
+        "cardid": "l++kwuQP9E+rQequBTAGeg==",
+        "sequence": 2,
+        "ruling": "- [[Regenerating Mummy]]'s effect will activate during the Damage Step because of [[Spirit Reaper]] or [[Don Zaloog]]."
+    },
+    {
+        "cardid": "l++kwuQP9E+rQequBTAGeg==",
+        "sequence": 3,
+        "ruling": "- [[Regenerating Mummy]]'s effect will activate when destroyed and sent to the Graveyard because of [[Chain Destruction]]."
+    },
+    {
+        "cardid": "l++kwuQP9E+rQequBTAGeg==",
+        "sequence": 4,
+        "ruling": "- You can chain to [[Regenerating Mummy]]'s effect."
+    },
+    {
+        "cardid": "l++kwuQP9E+rQequBTAGeg==",
+        "sequence": 5,
+        "ruling": "- You cannot use the same [[Regenerating Mummy]] for both parts of [[Delinquent Duo]]'s effect."
+    }
+]

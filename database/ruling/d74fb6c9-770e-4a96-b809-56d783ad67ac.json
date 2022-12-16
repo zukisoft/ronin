@@ -1,0 +1,112 @@
+[
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 1,
+        "ruling": "- [[Light and Darkness Dragon]]'s first effect is a Continuous Effect that makes its Attributes both LIGHT and DARK while it is face-up on the field."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 2,
+        "ruling": "- [[Light and Darkness Dragon]]'s second effect that negates the activation of Spell, Trap, and the effects of Effect Monsters is Quick Effect. [[Light and Darkness Dragon]] loses 500 ATK and DEF when its effect is resolved, after negating the activation of the Spell, Trap, or effect of the Effect Monster. This effect can be activated during the Damage Step."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 3,
+        "ruling": "- [[Light and Darkness Dragon]]'s second effect can only activate once during the Chain. If a Spell, Trap, or effect of an Effect Monster is chained to the second effect of [[Light and Darkness Dragon]], [[Light and Darkness Dragon]]'s second effect will not activate again in that same Chain."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 4,
+        "ruling": "- If the ATK and DEF of [[Light and Darkness Dragon]] are less than 500 when a Spell, Trap, or effect of an Effect Monster is activated, the second effect of [[Light and Darkness Dragon]] will still activate but when it resolves it will not negate the activation of the Spell, Trap, or effect of the Effect Monster because its ATK and DEF cannot be reduced by 500."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 5,
+        "ruling": "- The ATK and DEF lost by [[Light and Darkness Dragon]] from its second effect is applied to its total ATK, including all other gains and losses of ATK and/or DEF. Example: If you use the second effect of [[Light and Darkness Dragon]] 4 times (500 X 4 = 2000 loss of ATK and DEF) while [[Luminous Spark]] is face-up on the Field Spell Card Zone, the [[Light and Darkness Dragon]] will have 1300 ATK and 0 DEF. If [[Luminous Spark]] is then removed from the field or negated, the [[Light and Darkness Dragon]]'s would change to 800 ATK and 400 DEF."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 6,
+        "ruling": "- If [[Shrink]] is used to halve the original ATK of [[Light and Darkness Dragon]], the original ATK of [[Light and Darkness Dragon]] is halved to create a new current ATK and then the ATK and DEF lost by the effect of [[Light and Darkness Dragon]] is reapplied. Example: If you use the second effect of [[Light and Darkness Dragon]] twice (500 X 2 = 1000 lost ATK and DEF) and [[Shrink]] is used to halve the original ATK of [[Light and Darkness Dragon]], the effect of [[Shrink]] is applied (2800 / 2 = 1400 ATK) and then [[Light and Darkness Dragon]]'s  ATK is reduced by 1000 (1400 - 1000 = 400) for a total of 400 ATK and 1400 DEF. When the effect of [[Shrink]] is no longer applied (because the turn had ended, etc.), reapply the lost ATK and DEF to the [[Light and Darkness Dragon]]'s original ATK of 2800. (In our example, the values would be 1800 ATK and 1400 DEF)"
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 7,
+        "ruling": "- [[Light and Darkness Dragon]]'s third effect is a Trigger Effect that activates whenever [[Light and Darkness Dragon]] is destroyed and sent to the Graveyard. This effect targets 1 monster in its owner's Graveyard. When [[Light and Darkness Dragon]]'s effect is resolved, you will destroy every card you control and then Special Summon the selected monster from your Graveyard."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 8,
+        "ruling": "- If your [[Light and Darkness Dragon]] is the only card on your side of the field when it is destroyed and sent to your Graveyard, its effect to Special Summon 1 monster from your Graveyard will still activate, even though you control no cards."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 9,
+        "ruling": "- If the monster you select to Special Summon is removed from the Graveyard in Chain (by using [[D.D. Crow]], etc.), before resolving the effect of [[Light and Darkness Dragon]], the selected monster will not be Special Summoned but you will still destroy every card that you control."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 10,
+        "ruling": "- When [[Light and Darkness Dragon]] is destroyed and sent to your Graveyard while you have no monsters in your Graveyard that you can Special Summon, the effect of [[Light and Darkness Dragon]] will not Special Summon a monster but it will still destroy every card you control."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 11,
+        "ruling": "- [[Light and Darkness Dragon]]'s third effect will activate when it is destroyed while in the hand or the Deck and sent to the Graveyard. Example: [[Light and Darkness Dragon]] is destroyed by [[Crush Card Virus]] while in the player's hand."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 12,
+        "ruling": "- If [[Light and Darkness Dragon]] is removed from the field or flipped face-down, any loses of ATK and DEF from its effect are reset and will not be reapplied when it is returned to the field or flipped face-up."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 13,
+        "ruling": "- If [[Light and Darkness Dragon]] is Summoned or flipped face-up while [[Skill Drain]] is active, [[Light and Darkness Dragon]]'s first effect will be negated. Its second effect will still activate whenever a Spell, Trap, or effect of an Effect Monster is activated, but the effect of [[Light and Darkness Dragon]] will be negated so the activation of the Spell, Trap, or effect of Effect Monster will not be negated and [[Light and Darkness Dragon]] will not lose ATK or DEF. Its third effect that activates when it is destroyed and sent to the Graveyard will not be negated because this effect activates and resolves while [[Light and Darkness Dragon]] is not on the field."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 14,
+        "ruling": "- If you cannot Special Summon a monster because of a card's effect ([[Scapegoat]], etc.) when [[Light and Darkness Dragon]] is destroyed and sent to the Graveyard you will not be able to Special Summon the selected monster but you must still destroy every card that you control."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 15,
+        "ruling": "- If you cannot Special Summon a monster because all of your Monster Card Zones are forbidden (by [[Ground Collapse]], [[Ojama Knight]], etc.) when your [[Light and Darkness Dragon]] is destroyed and sent to the Graveyard, the effect of \"Light of Darkness Dragon\" will not Special Summon a monster but it will still destroy every card that you control."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 16,
+        "ruling": "- [[Light and Darkness Dragon]] cannot negate the activation of the Ignition-like effect of Continuous Spell or Trap Cards ([[Ultimate Offering]], etc.) or Field Spell Cards ([[Ancient City - Rainbow Ruins]], etc.). [[Light and Darkness Dragon]]'s second effect activates when a Spell or Trap Card is first activated (placed face-up onto the field or flipped face-up)."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 17,
+        "ruling": "- When the effect of a Normal Spell Card is activated in the Graveyard due to the effect of [[Destiny Hero - Diamond Dude]], [[Light and Darkness Dragon]]'s second effect will not activate because the Normal Spell Card is not \"activated\"."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 18,
+        "ruling": "- When [[Light and Darkness Dragon]] negates the activation of a Continuous Spell or Trap Card, the Continuous Spell or Trap Card is sent to the Graveyard. When [[Light and Darkness Dragon]] negates the activation of [[Swords of Revealing Light]], the [[Swords of Revealing Light]] is sent to the Graveyard."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 19,
+        "ruling": "- When the effect of a Spell, Trap, or effect of an Effect Monster is activated while the card is in your hand ([[Green Baboon, Defender of the Forest]], etc.), the card will remain in the player's hand when its activation is negated by [[Light and Darkness Dragon]]."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 20,
+        "ruling": "- If a monster with an optional Trigger Effect, like [[Peten the Dark Clown]] or [[Infernal Dragon]], is destroyed by [[Light and Darkness Dragon]]'s third effect, the timing to activate the effect of the destroyed monster is missed because immediately afterwards a monster is Special Summoned. The last thing to happen when resolving the effect is the Special Summon of a monster and not the destruction of [[Peten the Dark Clown]] or [[Infernal Dragon]]."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 21,
+        "ruling": "- When [[Light and Darkness Dragon]] negates the activation of a Spell, Trap, or effect of an Effect Monster that can only be activated once per turn ([[Blowback Dragon]], etc.), the Spell, Trap, or effect of the Effect Monster cannot be activated again because the Spell, Trap, or effect of the Effect Monster is treated as having been activated during that turn. If the effect of the Effect Monster can be activated multiple times during the same turn ([[Treeborn Frog]], etc.), the effect of the Effect Monster can be activated again."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 22,
+        "ruling": "- If you have 2 or more [[Light and Darkness Dragon]] face-up on your side of the field when a Spell, Trap, or effect of an Effect Monster is activated, the effect of each [[Light and Darkness Dragon]] form a Chain, but only the effect of the [[Light and Darkness Dragon]] chained directly to the activated Spell, Trap, or effect of an Effect Monster will resolve. The other \"Light and Darkness D"
+    }
+]

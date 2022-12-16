@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "OcGU0bH5TkSOHR1cqz84KA==",
+        "sequence": 1,
+        "ruling": "- The Battle Damage doubled by [[Stone Statue of the Aztecs]]' effect is still considered Battle Damage (not effect damage)."
+    },
+    {
+        "cardid": "OcGU0bH5TkSOHR1cqz84KA==",
+        "sequence": 2,
+        "ruling": "- If [[Rod of the Mind's Eye]] is equipped to [[Stone Statue of the Aztecs]], the Battle Damage will be 1000."
+    },
+    {
+        "cardid": "OcGU0bH5TkSOHR1cqz84KA==",
+        "sequence": 3,
+        "ruling": "- The Battle Damage is doubled during damage calculation."
+    },
+    {
+        "cardid": "OcGU0bH5TkSOHR1cqz84KA==",
+        "sequence": 4,
+        "ruling": "- When [[Amazoness Swords Woman]] (1500 ATK) attacks [[Stone Statue of the Aztecs]] (2000 DEF), the controller of Stone Statue of the Aztecs takes 1000 Battle Damage."
+    }
+]

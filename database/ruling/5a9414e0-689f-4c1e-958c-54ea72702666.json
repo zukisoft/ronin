@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "4BSUWp9oHkyVjFTqcnAmZg==",
+        "sequence": 1,
+        "ruling": "- Returning the Fusion Monster that was removed from play to the field does not start a Chain."
+    },
+    {
+        "cardid": "4BSUWp9oHkyVjFTqcnAmZg==",
+        "sequence": 2,
+        "ruling": "- The Fusion Monster's ATK is only doubled if it is returned to the field with [[Cybernetic Zone]]'s effect."
+    },
+    {
+        "cardid": "4BSUWp9oHkyVjFTqcnAmZg==",
+        "sequence": 3,
+        "ruling": "- Destroying the returned monster during your next Standby Phase does not start a Chain."
+    },
+    {
+        "cardid": "4BSUWp9oHkyVjFTqcnAmZg==",
+        "sequence": 4,
+        "ruling": "- When the monster is returned to the field, its total ATK is doubled. Any ATK gained afterwards is not doubled."
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "2M/fC8sh5UusgU8zRx7J5w==",
+        "sequence": 1,
+        "ruling": "- Pick up cards until you pick up a monster that can be Normal Summoned."
+    },
+    {
+        "cardid": "2M/fC8sh5UusgU8zRx7J5w==",
+        "sequence": 2,
+        "ruling": "- You can Special Summon a high-level monster like [[Dark Magician]] with [[Reasoning]], but not Special Summon-only monsters like [[Gate Guardian]], Ritual Monsters, etc."
+    },
+    {
+        "cardid": "2M/fC8sh5UusgU8zRx7J5w==",
+        "sequence": 3,
+        "ruling": "- If you pick up a Spirit Monster, then all picked up cards are sent to the Graveyard."
+    },
+    {
+        "cardid": "2M/fC8sh5UusgU8zRx7J5w==",
+        "sequence": 4,
+        "ruling": "- If no monster is picked up, shuffle your Deck and put it back in the Deck Zone; the effect of [[Reasoning]] disappears."
+    },
+    {
+        "cardid": "2M/fC8sh5UusgU8zRx7J5w==",
+        "sequence": 5,
+        "ruling": "- You cannot activate [[Reasoning]] if you already activated [[Scapegoat]] this turn."
+    },
+    {
+        "cardid": "2M/fC8sh5UusgU8zRx7J5w==",
+        "sequence": 6,
+        "ruling": "- If [[Banisher of the Light]] is Special Summoned with [[Reasoning]], the other cards picked up for [[Reasoning]] are sent to the Graveyard. The effect of [[Banisher of the Light]] is not applied until after [[Reasoning]] resolves."
+    }
+]

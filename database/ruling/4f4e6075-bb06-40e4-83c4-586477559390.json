@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "dWBOTwa75ECDxFhkd1WTkA==",
+        "sequence": 1,
+        "ruling": "- Using the effect of [[Mausoleum of the Emperor]] can be chained to."
+    },
+    {
+        "cardid": "dWBOTwa75ECDxFhkd1WTkA==",
+        "sequence": 2,
+        "ruling": "- [[Mausoleum of the Emperor]] does not grant extra Normal Summons. If you use its effect, you cannot Normal Summon or Set another monster during the same turn."
+    },
+    {
+        "cardid": "dWBOTwa75ECDxFhkd1WTkA==",
+        "sequence": 3,
+        "ruling": "- A monster Normal Summoned with the effect of [[Mausoleum of the Emperor]] is NOT Tribute Summoned. So if you pay 1000 Life Points and Normal Summon [[Zaborg the Thunder Monarch]], its effect will not activate."
+    },
+    {
+        "cardid": "dWBOTwa75ECDxFhkd1WTkA==",
+        "sequence": 4,
+        "ruling": "- You cannot use its effect in conjunction with [[Ultimate Offering]], because you cannot activate [[Mausoleum of the Emperor]]'s effect during the resolution of [[Ultimate Offering]]'s effect."
+    },
+    {
+        "cardid": "dWBOTwa75ECDxFhkd1WTkA==",
+        "sequence": 5,
+        "ruling": "- You cannot pay 3000 Life Points to Normal Summon [[Gilford the Lightning]] and activate its effect. You can pay 2000 Life Points just to Summon it. You cannot then Tribute just 1 monster to activate its effect."
+    },
+    {
+        "cardid": "dWBOTwa75ECDxFhkd1WTkA==",
+        "sequence": 6,
+        "ruling": "- You cannot Normal Summon [[Victory Dragon]] with the effect of [[Mausoleum of the Emperor]]."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "YFSqvGyL/022exlt1Ra78Q==",
+        "sequence": 1,
+        "ruling": "- You activate [[Dice Re-Roll]] before you activate the effect which will let you roll a die. Then you can use the effect of [[Dice Re-Roll]] once during the turn in which you activated it. When you resolve the effect, you negate the result of a die roll and roll again."
+    },
+    {
+        "cardid": "YFSqvGyL/022exlt1Ra78Q==",
+        "sequence": 2,
+        "ruling": "- You can use a [[Dice Re-Roll]] to re-roll a die roll for an \"Archfiend\"."
+    },
+    {
+        "cardid": "YFSqvGyL/022exlt1Ra78Q==",
+        "sequence": 3,
+        "ruling": "- You can use a [[Dice Re-Roll]] to re-roll a die roll during the Damage Step."
+    },
+    {
+        "cardid": "YFSqvGyL/022exlt1Ra78Q==",
+        "sequence": 4,
+        "ruling": "- If you negate [[Roulette Barrel]]'s die roll, you negate both rolls and must roll twice again."
+    }
+]

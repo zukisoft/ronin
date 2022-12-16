@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "YU55k4djkUylEMlJC+Z9mw==",
+        "sequence": 1,
+        "ruling": "- While [[Ancient Gear Cannon]]'s effect is active, you can still activate the effect of a Continuous Trap Card that was already face-up, such as [[Type Zero Magic Crusher]]. But you cannot activate (flip face-up) any more Trap Cards."
+    },
+    {
+        "cardid": "YU55k4djkUylEMlJC+Z9mw==",
+        "sequence": 2,
+        "ruling": "- The restriction on Trap Cards is tied to [[Ancient Gear Cannon]] inflicting damage. If [[Barrel Behind the Door]] is chained to the effect of [[Ancient Gear Cannon]], the rest of [[Ancient Gear Cannon]]'s effect is not applied and Trap Cards can still be activated."
+    },
+    {
+        "cardid": "YU55k4djkUylEMlJC+Z9mw==",
+        "sequence": 3,
+        "ruling": "- If [[Pikeru's Circle of Enchantment]] is chained to [[Ancient Gear Cannon]]'s effect to prevent the damage, the rest of [[Ancient Gear Cannon]]'s effect is not applied and Trap Cards can still be activated."
+    },
+    {
+        "cardid": "YU55k4djkUylEMlJC+Z9mw==",
+        "sequence": 4,
+        "ruling": "- The effect of [[Ancient Gear Cannon]] is an Ignition Effect and can be chained to."
+    }
+]

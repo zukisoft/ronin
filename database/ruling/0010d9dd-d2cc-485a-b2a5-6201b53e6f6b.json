@@ -1,0 +1,47 @@
+[
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 1,
+        "ruling": "- [[Exchange of the Spirit]] does not \"send\" cards to the Graveyard; it swaps the cards in your Deck with those in your Graveyard. So the effects of cards like [[Penguin Knight]], [[Cockroach Knight]], or [[Archfiend of Gilfer]] will not activate, nor would the effect of [[Skull Invitation]] deal any damage. If \"Banisher of Light\" is on the field no cards will become removed from play because they are not being sent to the Graveyard."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 2,
+        "ruling": "- [[Necrovalley]] will negate the effect of [[Exchange of the Spirit]]."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 3,
+        "ruling": "- [[Exchange of the Spirit]] does not target cards in the Graveyard, so [[Big Burn]] cannot be activated."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 4,
+        "ruling": "- [[Exchange of the Spirit]] is put into the new Graveyard after it resolves."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 5,
+        "ruling": "- You need 15 cards in your Graveyard to activate [[Exchange of the Spirit]]. If you have exactly 15 and the opponent chains [[Disappear]] to remove from play 1 of those cards, [[Exchange of the Spirit]] was already activated correctly so it will resolve correctly."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 6,
+        "ruling": "- Your opponent can have any number of cards in their Graveyard when you activate [[Exchange of the Spirit]], including 0."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 7,
+        "ruling": "- If the opponent activates [[Premature Burial]] or [[Call of the Haunted]] you can chain [[Exchange of the Spirit]] (if you meet the requirements) to swap the cards in the Deck and the Graveyard. Since the targeted monster is no longer in their Graveyard, [[Premature Burial]] would be destroyed and [[Call of the Haunted]] would remain on the field meaninglessly."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 8,
+        "ruling": "- Any Fusion Monsters in the Graveyard when [[Exchange of the Spirit]] resolves will be returned to the Fusion Deck."
+    },
+    {
+        "cardid": "3dkQAMzSWkiypWIBtT5vaw==",
+        "sequence": 9,
+        "ruling": "- If [[Parasite Paracide]] is face-up in a Deck when [[Exchange of the Spirit]] resolves, it will be sent to its owner's Graveyard."
+    }
+]

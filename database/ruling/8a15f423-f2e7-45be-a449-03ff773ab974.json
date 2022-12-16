@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "I/QViufyvkWkSQP/dzq5dA==",
+        "sequence": 1,
+        "ruling": "- [[Arcana Force VII - The Chariot]]'s heads effect activates at the end of the Damage Step, when the monster it destroys in battle is sent to the Graveyard or Removed Zone."
+    },
+    {
+        "cardid": "I/QViufyvkWkSQP/dzq5dA==",
+        "sequence": 2,
+        "ruling": "- If [[Reversal of Fate]] changes [[Arcana Force VII - The Chariot]]'s effect from heads to tails, control of [[Arcana Force VII - The Chariot]] immediately shifts to the opponent. If its effect is changed to heads again after control is shifted to the opponent, it remains under the opponent's control."
+    },
+    {
+        "cardid": "I/QViufyvkWkSQP/dzq5dA==",
+        "sequence": 3,
+        "ruling": "- If your [[Arcana Force VII - The Chariot]] destroys a \"Crystal Beast\" monster by battle and the \"Crystal Beast\" monster is placed into the Spell and Trap Card Zone, you cannot Special Summon that \"Crystal Beast\" monster."
+    },
+    {
+        "cardid": "I/QViufyvkWkSQP/dzq5dA==",
+        "sequence": 4,
+        "ruling": "- If [[Arcana Force VII - The Chariot]] is destroyed by a monster with equal ATK, its heads effect wont activate."
+    }
+]

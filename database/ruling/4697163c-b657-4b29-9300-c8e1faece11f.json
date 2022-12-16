@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "PBaXRle2KUuTAMjh+uzhHw==",
+        "sequence": 1,
+        "ruling": "- This card is only activated if sent from the field to the Graveyard. There is no way to activate this card while it is Set on the field."
+    },
+    {
+        "cardid": "PBaXRle2KUuTAMjh+uzhHw==",
+        "sequence": 2,
+        "ruling": "- The effect of [[Statue of the Wicked]] is activated in the Graveyard, so its effect is activated even if [[Jinzo]] is on the field, because [[Jinzo]] only applies to Trap Cards and Trap Card effects on the field. Also, cards like [[Seven Tools of the Bandit]] cannot be used against [[Statue of the Wicked]]."
+    },
+    {
+        "cardid": "PBaXRle2KUuTAMjh+uzhHw==",
+        "sequence": 3,
+        "ruling": "- [[Statue of the Wicked]] activates its effect even if it is destroyed on the same turn it was Set."
+    },
+    {
+        "cardid": "PBaXRle2KUuTAMjh+uzhHw==",
+        "sequence": 4,
+        "ruling": "- If [[Banisher of the Light]] is in play, then [[Statue of the Wicked]] does not activate its effect when destroyed, because it is not sent to the Graveyard."
+    },
+    {
+        "cardid": "PBaXRle2KUuTAMjh+uzhHw==",
+        "sequence": 5,
+        "ruling": "- [[Statue of the Wicked]] activates its effect even if you destroy your own [[Statue of the Wicked]]."
+    },
+    {
+        "cardid": "PBaXRle2KUuTAMjh+uzhHw==",
+        "sequence": 6,
+        "ruling": "- You can Tribute a \"Wicked Token\"."
+    }
+]

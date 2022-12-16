@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "STo8CSYJFUyXRjPO2eYJyQ==",
+        "sequence": 1,
+        "ruling": "- If you Special Summon [[Apprentice Magician]] face-down (such as with [[Apprentice Magician]]'s effect) then you do not place a Spell Counter."
+    },
+    {
+        "cardid": "STo8CSYJFUyXRjPO2eYJyQ==",
+        "sequence": 2,
+        "ruling": "- [[Apprentice Magician]]'s effect activates at the same time as when monsters are sent to the Graveyard. But it does not have to be sent to the Graveyard; you get to Special Summon a new monster when [[Apprentice Magician]] is destroyed as a result of battle, even if [[Banisher of the Light]] is in play."
+    },
+    {
+        "cardid": "STo8CSYJFUyXRjPO2eYJyQ==",
+        "sequence": 3,
+        "ruling": "- If you take control of your opponent's [[Apprentice Magician]], and it is destroyed as a result of battle, then your opponent (the original owner) will get to Special Summon. Because [[Apprentice Magician]] is no longer on your side of the field, it is now in the opponent's Graveyard (or removed from play)."
+    },
+    {
+        "cardid": "STo8CSYJFUyXRjPO2eYJyQ==",
+        "sequence": 4,
+        "ruling": "- You must show your opponent the monster you Special Summon."
+    },
+    {
+        "cardid": "STo8CSYJFUyXRjPO2eYJyQ==",
+        "sequence": 5,
+        "ruling": "- For effects that place a Spell Counter, you can chain to the activation of those effects. The Spell Counter is actually placed when the effect resolves."
+    }
+]

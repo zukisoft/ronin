@@ -1,0 +1,57 @@
+[
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 1,
+        "ruling": "- Monsters with ATK 1400 or less that are already on the field when [[King Tiger Wanghu]] is Summoned are not destroyed. [[King Tiger Wanghu]]'s effect only applies to monsters Summoned while it is face-up on the field."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 2,
+        "ruling": "- When a monster is Flip Summoned or flipped face-up by a card effect, it is not destroyed by the effect of [[King Tiger Wanghu]]."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 3,
+        "ruling": "- [[King Tiger Wanghu]]'s effect applies to both sides of the field."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 4,
+        "ruling": "- When [[King Tiger Wanghu]] is Special Summoned by the effect of [[Cyber Jar]], other monsters with ATK 1400 or less that are Special Summoned by the same [[Cyber Jar]] are destroyed if they are Special Summoned in face-up Attack Position."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 5,
+        "ruling": "- If a monster's ATK when it is Summoned is less than 1400 due to the effect of other cards, such as a Field Spell Card that reduces its ATK, it is destroyed by [[King Tiger Wanghu]]'s effect (so apply all existing modifiers before determining if the monster is destroyed). If [[Command Knight]] is Summoned, it increases its own ATK to 1600 before [[King Tiger Wanghu]] can destroy it."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 6,
+        "ruling": "- If [[King Tiger Wanghu]] is Normal Summoned or Special Summoned, and its own ATK is reduced below 1400 by a pre-existing effect, then it destroys itself when Summoned. (Example: [[King Tiger Wanghu]] and [[Bladefly]] are Special Summoned simultaneously by [[Cyber Jar]]. [[King Tiger Wanghu]]'s ATK is 1300, and it is destroyed by its own effect (and [[Bladefly]] is also destroyed by [[King Tiger Wanghu]]'s effect)."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 7,
+        "ruling": "- Monsters that are Summoned face-down (like with [[The Shallow Grave]]) are not destroyed by King Tiger Wanghu."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 8,
+        "ruling": "-  [[King Tiger Wanghu]]'s effect includes Monster Tokens with ATK 1400 or less."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 9,
+        "ruling": "- If [[King Tiger Wanghu]] is on the field and [[Marauding Captain]] is Summoned, [[Marauding Captain]] can still activate its effect and Special Summon a monster even though [[Marauding Captain]] is destroyed."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 10,
+        "ruling": "- If [[King Tiger Wanghu]] is on the field along with Trigger Effect monsters such as [[Mysterious Puppeteer]], [[Ryu-Kishin Clown]], [[Sonic Bird]], and [[Dragon Seeker]], then they form a chain."
+    },
+    {
+        "cardid": "LLlgjrq+1U2EnXh+5MMp3A==",
+        "sequence": 11,
+        "ruling": "- If [[King Tiger Wanghu]] is on the field, and [[Exiled Force]] is Summoned, [[King Tiger Wanghu]]'s effect immediately activates. Since [[Exiled Force]] cannot be chained, [[King Tiger Wanghu]] will destroy [[Exiled Force]] before the turn player can Tribute [[Exiled Force]] using its effect."
+    }
+]

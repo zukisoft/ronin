@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "llTofrv5q0WVa2Pdg7/zwg==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Prepare to Strike Back]] can be chained to."
+    },
+    {
+        "cardid": "llTofrv5q0WVa2Pdg7/zwg==",
+        "sequence": 2,
+        "ruling": "- The damage from [[Prepare to Strike Back]] is effect damage, not battle damage."
+    },
+    {
+        "cardid": "llTofrv5q0WVa2Pdg7/zwg==",
+        "sequence": 3,
+        "ruling": "- [[Prepare to Strike Back]] does not target."
+    },
+    {
+        "cardid": "llTofrv5q0WVa2Pdg7/zwg==",
+        "sequence": 4,
+        "ruling": "- If an effect is chained to [[Prepare to Strike Back]] that flips the monster face-down, the effect of [[Prepare to Strike Back]] is not applied."
+    }
+]

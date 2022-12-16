@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "pIrDEcK0AkWqOzFlxDyrlQ==",
+        "sequence": 1,
+        "ruling": "- [[Call of the Haunted]] targets the Special Summoned monster, when it is selected in the Graveyard and while it is face-up on the field."
+    },
+    {
+        "cardid": "pIrDEcK0AkWqOzFlxDyrlQ==",
+        "sequence": 2,
+        "ruling": "- If the monster Special Summoned with [[Call of the Haunted]] is returned to its owner's hand by an effect, [[Call of the Haunted]] remains on the field meaninglessly."
+    },
+    {
+        "cardid": "pIrDEcK0AkWqOzFlxDyrlQ==",
+        "sequence": 3,
+        "ruling": "- If an effect is chained that removes [[Call of the Haunted]] from the field, the selected monster is not Special Summoned."
+    },
+    {
+        "cardid": "pIrDEcK0AkWqOzFlxDyrlQ==",
+        "sequence": 4,
+        "ruling": "- If [[Royal Decree]] is activated after [[Call of the Haunted]] has resolved, and later [[Royal Decree]] is destroyed, [[Call of the Haunted]] continues to target the Special Summoned monster."
+    }
+]

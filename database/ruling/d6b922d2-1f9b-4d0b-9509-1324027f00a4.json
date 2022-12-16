@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "0iK51psfC02VCRMkAn8ApA==",
+        "sequence": 1,
+        "ruling": "- If you activate [[Sonic Jammer]] during your turn, it lasts until the end of your opponent's End Phase. If you activate [[Sonic Jammer]] during your opponent's turn, it lasts until the end of your End Phase."
+    },
+    {
+        "cardid": "0iK51psfC02VCRMkAn8ApA==",
+        "sequence": 2,
+        "ruling": "- If [[Skill Drain]] is activated after [[Sonic Jammer]]'s effect has resolved, the effect of [[Sonic Jammer]] is not negated because [[Skill Drain]] was not active when [[Sonic Jammer]] was flipped, activated its effect, and applied its effect."
+    },
+    {
+        "cardid": "0iK51psfC02VCRMkAn8ApA==",
+        "sequence": 3,
+        "ruling": "- While [[Sonic Jammer]]'s effect is applied, your opponent can still use the effects of [[Wave-Motion Cannon]], or [[Black Pendant]] when sent to the Graveyard, or Field Spell Cards like [[Fusion Gate]]."
+    },
+    {
+        "cardid": "0iK51psfC02VCRMkAn8ApA==",
+        "sequence": 4,
+        "ruling": "- While [[Sonic Jammer]]'s effect is applied, your opponent cannot activate [[Spiritualism]]."
+    }
+]

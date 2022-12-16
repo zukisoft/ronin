@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 1,
+        "ruling": "- Please see [[The Six Samurai - Irou]] for additional rulings."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 2,
+        "ruling": "- This is a Trigger Effect."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 3,
+        "ruling": "- [[The Six Samurai - Zanji]] does not need to remain on the field after battle for its effect to activate. Even if it is destroyed by battle, as long as you control another \"Six Samurai\" monster, the monster it attacked will be destroyed."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 4,
+        "ruling": "- [[The Six Samurai - Zanji]]'s effect activates at the end of the Damage Step. If there are no other \"Six Samurai\" monsters with a different name face-up on your side of the field when its effect resolves, the effect disappears."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 5,
+        "ruling": "- Example 1: If you have [[The Six Samurai - Zanji]] and [[The Six Samurai - Irou]] on your side of the field and [[The Six Samurai - Zanji]] attacks your opponent's face-down [[Nightmare Penguin]], if your opponent returns [[The Six Samurai - Irou]] to your hand the [[Nightmare Penguin]] is not destroyed by [[The Six Samurai - Zanji]]'s effect."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 6,
+        "ruling": "- Example 2: If you have [[The Six Samurai - Zanji]] and [[The Six Samurai - Irou]] on your side of the field and [[The Six Samurai - Zanji]] attacks your opponent's Attack Position [[Cyber Dragon]], if you select to have [[The Six Samurai - Irou]] be destroyed instead the [[Cyber Dragon]] will not be destroyed by [[The Six Samurai - Zanji]]'s effect because [[The Six Samurai - Irou]] will not be on your side of the field when [[The Six Samurai - Zanji]]'s effect resolves."
+    }
+]

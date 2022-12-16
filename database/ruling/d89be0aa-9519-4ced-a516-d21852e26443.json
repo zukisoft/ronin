@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "quCb2BmV7UylFtIYUuJkQw==",
+        "sequence": 1,
+        "ruling": "- [[Dimension Explosion]] targets the selected removed from play monsters."
+    },
+    {
+        "cardid": "quCb2BmV7UylFtIYUuJkQw==",
+        "sequence": 2,
+        "ruling": "- [[Dimension Explosion]] cannot be activated if either player has no monsters in their Removed Zone they can Special Summon."
+    },
+    {
+        "cardid": "quCb2BmV7UylFtIYUuJkQw==",
+        "sequence": 3,
+        "ruling": "- [[Dimension Explosion]] cannot be activated if either player has no open Monster Card Zones."
+    },
+    {
+        "cardid": "quCb2BmV7UylFtIYUuJkQw==",
+        "sequence": 4,
+        "ruling": "- If either player has only one open Monster Card Zone, they can only select one monster in their Removed Zone."
+    }
+]

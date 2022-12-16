@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "o6S5i0tT6EiKBJCnNpGNjg==",
+        "sequence": 1,
+        "ruling": "- The first effect of The Six Samurai - Kamon targets the card to be destroyed."
+    },
+    {
+        "cardid": "o6S5i0tT6EiKBJCnNpGNjg==",
+        "sequence": 2,
+        "ruling": "- If all other \"Six Samurai\" monsters you controlled were destroyed by an effect chained to [[The Six Samurai - Kamon]]'s effect, [[The Six Samurai - Kamon]]'s effect will not resolve."
+    },
+    {
+        "cardid": "o6S5i0tT6EiKBJCnNpGNjg==",
+        "sequence": 3,
+        "ruling": "- If The Six Samurai - Kamon declares an attack, then is flipped face-down, then flipped face-up, you cannot use its effect that same turn because it already attacked."
+    },
+    {
+        "cardid": "o6S5i0tT6EiKBJCnNpGNjg==",
+        "sequence": 4,
+        "ruling": "- If [[The Six Samurai - Kamon]]'s effect is used, then [[Skill Drain]] is activated later, [[The Six Samurai - Kamon]] still cannot declare an attack that turn."
+    },
+    {
+        "cardid": "o6S5i0tT6EiKBJCnNpGNjg==",
+        "sequence": 5,
+        "ruling": "- Please see [[The Six Samurai - Irou]] for additional rulings."
+    }
+]

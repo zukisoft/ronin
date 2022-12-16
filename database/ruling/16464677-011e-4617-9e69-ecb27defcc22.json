@@ -1,0 +1,157 @@
+[
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 1,
+        "ruling": "- Once [[Embodiment of Apophis]] has been activated, it takes up 1 Monster Card Zone and 1 Spell & Trap Card Zone. The physical location of [[Embodiment of Apophis]] should be on the Monster Card Zones, however."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 2,
+        "ruling": "- If your Monster Card Zones are all full you cannot activate [[Embodiment of Apophis]]. If your Spell & Trap Card Zones are all full you cannot take control of your opponent's [[Embodiment of Apophis]] because you will need 1 Monster Card Zone and 1 Spell & Trap Card Zone for it."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 3,
+        "ruling": "- If your opponent has no vacant Spell & Trap Card Zones, you cannot give them [[Embodiment of Apophis]] for [[Creature Swap]]. If [[Embodiment of Apophis]] is your only monster in such a case, neither player can activate [[Creature Swap]]."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 4,
+        "ruling": "- You can activate [[Embodiment of Apophis]] during your opponent's Main Phase, or your own."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 5,
+        "ruling": "- While [[Embodiment of Apophis]] is a monster, it is still treated as a Trap Card and can be destroyed by [[Heavy Storm]] or [[Mystical Space Typhoon]]."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 6,
+        "ruling": "- If an effect that destroys Trap Cards is used against [[Embodiment of Apophis]], you can use [[Fake Trap]] to prevent it from being destroyed. When preventing the destruction of [[Embodiment of Apophis]], you must be using a card of the appropriate type. You cannot use [[My Body as a Shield]] to rescue it from [[Heavy Storm]]. You cannot use [[Fake Trap]] to rescue it from [[Raigeki]]. You can use [[Riryoku Field]] when [[Embodiment of Apophis]] is targeted by [[Snatch Steal]], but not when it's targeted by [[Mystical Space Typhoon]]. You can use any of these effects to protect [[Embodiment of Apophis]] from [[Raigeki Break]] because [[Raigeki Break]] can destroy a Monster card or a Trap Card."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 7,
+        "ruling": "- vs. [[Jinzo]]: If [[Embodiment of Apophis]] is a monster, and [[Jinzo]] or [[Royal Decree]] is played, [[Embodiment of Apophis]] cannot remain as a monster and is placed face-up in the Spell & Trap Card Zone, where it remains on the field meaninglessly (even if [[Jinzo]] leaves play later). If [[Royal Decree]] is chained to the activation of [[Embodiment of Apophis]], the effect of [[Embodiment of Apophis]] is negated and it remains on the field in the Spell & Trap Card Zone meaninglessly."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 8,
+        "ruling": "- If [[Embodiment of Apophis]] attacks a face-down [[Jinzo]], once [[Jinzo]] is flipped face-up, [[Embodiment of Apophis]] reverts to a Trap Card. Damage calculation is not applied."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 9,
+        "ruling": "- If [[Embodiment of Apophis]] is a monster, and is flipped face-down, it goes back to the Spell & Trap Card Zone as a Trap Card (vertically, since Trap Cards do not have battle positions). You cannot activate [[Embodiment of Apophis]] that same turn, because it is a Trap Card that was just Set."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 10,
+        "ruling": "- When [[Embodiment of Apophis]] is sent to the Graveyard, it is sent as a Trap Card and remains treated as a Trap Card. You cannot revive it with [[Monster Reborn]] or retrieve it with [[Return of the Doomed]]. It will not trigger [[Last Will]]. You cannot activate [[Michizure]]. It will not be Special Summoned by [[Red-Moon Baby]]. No damage is inflicted by [[KA-2 Des Scissors]] or [[Inferno]] or [[Fatal Abacus]]. [[Emes the Infinity]] does not increase its ATK. No Life Points are increased by [[Absorbing Kid from the Sky]]. You would not gain Life Points for [[Altar for Tribute]]. (You can, however, now add it back to your hand with [[Mask of Darkness]].)"
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 11,
+        "ruling": "- If your opponent controls your [[Embodiment of Apophis]] as a monster with [[Snatch Steal]] or [[Creature Swap]], and it is flipped face-down, it goes to your opponent's Spell & Trap Card Zone because he is the controller."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 12,
+        "ruling": "- If your opponent controls your [[Embodiment of Apophis]] as a monster with [[Snatch Steal]], and [[Jinzo]] is Summoned, it returns to your Spell & Trap Card Zone and remains there meaninglessly. If your opponent controls your [[Embodiment of Apophis]] as a monster because of [[Creature Swap]], and [[Jinzo]] is Summoned, it is placed on your opponent's Spell & Trap Card Zone and remains there meaninglessly."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 13,
+        "ruling": "- [[Embodiment of Apophis]] is considered a Normal Monster. It does not inflict damage for [[Ceasefire]]. You can use [[Delta Attacker]] if you have 3 [[Embodiment of Apophis]] monsters. You can Tribute [[Embodiment of Apophis]] for [[Sword of the Soul-Eater]] while it is a monster."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 14,
+        "ruling": "- If [[Non-Spellcasting Area]] is active, [[Embodiment of Apophis]] cannot be destroyed by [[Raigeki]], etc., but can still be destroyed by [[Heavy Storm]] or [[Mystical Space Typhoon]]."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 15,
+        "ruling": "- [[Embodiment of Apophis]], while a monster, has original ATK 1600 and original DEF 1800 (for purposes of [[Megamorph]], etc.)."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 16,
+        "ruling": "- You can negate the activation of [[Embodiment of Apophis]] by chaining [[Solemn Judgment]] or [[Seven Tools of the Bandit]] or [[Royal Oppression]], but you cannot use these against it once it is a monster."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 17,
+        "ruling": "- When [[Embodiment of Apophis]] is Special Summoned, you can activate [[Torrential Tribute]] just like with any other Summon."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 18,
+        "ruling": "- You can use [[Chain Destruction]] when [[Embodiment of Apophis]] is Special Summoned, and [[Chain Destruction]] will destroy all copies of [[Embodiment of Apophis]] in the hand and Deck even though they are Trap Cards."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 19,
+        "ruling": "- You can use [[Embodiment of Apophis]] as a Tribute once it is a monster. You cannot Tribute it for a Ritual Summon, etc., while it is in your hand."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 20,
+        "ruling": "- If [[Embodiment of Apophis]] is a monster and [[Morphing Jar #2]] is activated, [[Embodiment of Apophis]] is shuffled into the Deck as a Trap Card, so it does NOT count towards the number of monsters you need to pick up. (Also, if you pick up [[Embodiment of Apophis]] for the effect of [[Morphing Jar #2]], it is not counted as a monster and will be one of the cards sent to the Graveyard.)"
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 21,
+        "ruling": "- If you pick up [[Embodiment of Apophis]] for [[Cyber Jar]], it is added to your hand."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 22,
+        "ruling": "- If [[Embodiment of Apophis]] is a monster and is equipped to [[Relinquished]], [[Embodiment of Apophis]] is treated as any other monster equipped to [[Relinquished]], and [[Relinquished]] gets 1600 ATK and 1800 DEF."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 23,
+        "ruling": "- If [[Embodiment of Apophis]] is a monster, [[Giant Trunade]] will still return it to the owner's hand."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 24,
+        "ruling": "- When [[Embodiment of Apophis]] is a monster, and is returned to the hand by [[Penguin Soldier]], etc., it is returned as a Trap Card. So you cannot activate [[Major Riot]]."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 25,
+        "ruling": "- You can target [[Embodiment of Apophis]] with [[Monster Recovery]] while it is a monster, and return it to the Deck."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 26,
+        "ruling": "- If [[Embodiment of Apophis]] is a monster, and you use [[Magical Hats]] with it, it returns to your Spell & Trap Card Zone face-down. The other effects of [[Magical Hats]] apply normally."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 27,
+        "ruling": "- If [[Embodiment of Apophis]] battles [[D.D. Warrior Lady]] and her effect is activated, both will be removed from play."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 28,
+        "ruling": "- If you select [[Embodiment of Apophis]] as your monster for [[Last Turn]], it is not sent to the Graveyard even though [[Last Turn]] sends all other cards to the Graveyard."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 29,
+        "ruling": "- If you control [[Theban Nightmare]] and [[Embodiment of Apophis]], you control a Trap Card so the effect of [[Theban Nightmare]] cannot be applied."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 30,
+        "ruling": "- If you change [[Embodiment of Apophis]] to Machine-Type and use [[Limiter Removal]], then [[Jinzo]] is Summoned later that turn and [[Embodiment of Apophis]] switches back to a Trap Card, [[Embodiment of Apophis]] is not destroyed in the End Phase by [[Limiter Removal]]."
+    },
+    {
+        "cardid": "d0ZGFh4BF0aeaeyyfe/MIg==",
+        "sequence": 31,
+        "ruling": "- If you use [[Dimensionhole]] or [[Interdimensional Matter Transporter]] against [[Embodiment of Apophis]], it returns to the field as a Trap Card and is destroyed immediately. If [[Dimensionhole]] was used, you cannot use the Monster Card Zone while [[Embodiment of Apophis]] is removed from play, but you can use the Spell & Trap Card Zone it was occupying."
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "EjibhwInJ0C4YCxX9f0kmg==",
+        "sequence": 1,
+        "ruling": "- You can only activate [[Chaos Sorcerer]]'s effect during Main Phase 1 or 2 of your turn."
+    },
+    {
+        "cardid": "EjibhwInJ0C4YCxX9f0kmg==",
+        "sequence": 2,
+        "ruling": "- You can only activate [[Chaos Sorcerer]]'s effect once per turn."
+    },
+    {
+        "cardid": "EjibhwInJ0C4YCxX9f0kmg==",
+        "sequence": 3,
+        "ruling": "- If [[Chaos Sorcerer]] attacks, you cannot use its effect during Main Phase 2. But if [[Chaos Sorcerer]] did not attack, you can activate its effect in Main Phase 2."
+    },
+    {
+        "cardid": "EjibhwInJ0C4YCxX9f0kmg==",
+        "sequence": 4,
+        "ruling": "- If you select a face-up monster with [[Chaos Sorcerer]]'s effect, and your opponent chains [[Book of Moon]] to flip the monster face-down, then [[Chaos Sorcerer]]'s effect disappears. But even if [[Chaos Sorcerer]]'s effect disappears, its effect was activated so it cannot attack or activate its effect again."
+    },
+    {
+        "cardid": "EjibhwInJ0C4YCxX9f0kmg==",
+        "sequence": 5,
+        "ruling": "- If [[Chaos Sorcerer]] attacks and the attack is negated with [[Magic Cylinder]], [[Chaos Sorcerer]] cannot activate its effect in Main Phase 2."
+    },
+    {
+        "cardid": "EjibhwInJ0C4YCxX9f0kmg==",
+        "sequence": 6,
+        "ruling": "- If [[Chaos Sorcerer]] attacks and a replay occurs, and you decide not to attack again with [[Chaos Sorcerer]], you cannot activate [[Chaos Sorcerer]]'s effect in Main Phase 2."
+    }
+]

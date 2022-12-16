@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "NwLcvtUqnkmUjegANFwkCg==",
+        "sequence": 1,
+        "ruling": "- The first effect of [[The Six Samurai - Yaichi]] targets the card to be destroyed."
+    },
+    {
+        "cardid": "NwLcvtUqnkmUjegANFwkCg==",
+        "sequence": 2,
+        "ruling": "- If the targeted face-down card is chained to the activation of this effect, it will not be destroyed because it is face-up when the effect resolves."
+    },
+    {
+        "cardid": "NwLcvtUqnkmUjegANFwkCg==",
+        "sequence": 3,
+        "ruling": "- If all other \"Six Samurai\" monsters you controlled were destroyed by an effect chained to [[The Six Samurai - Yaichi]]'s effect, [[The Six Samurai - Yaichi]]'s effect will not resolve."
+    },
+    {
+        "cardid": "NwLcvtUqnkmUjegANFwkCg==",
+        "sequence": 4,
+        "ruling": "- If [[The Six Samurai - Yaichi]] declares an attack, then is flipped face-down, then flipped face-up, you cannot use its effect that same turn because it already attacked."
+    },
+    {
+        "cardid": "NwLcvtUqnkmUjegANFwkCg==",
+        "sequence": 5,
+        "ruling": "- If [[The Six Samurai - Yaichi]]'s effect is used, then [[Skill Drain]] is activated later, [[The Six Samurai - Yaichi]] still cannot declare an attack that turn."
+    },
+    {
+        "cardid": "NwLcvtUqnkmUjegANFwkCg==",
+        "sequence": 6,
+        "ruling": "- Please see [[The Six Samurai - Irou]] for additional rulings."
+    }
+]

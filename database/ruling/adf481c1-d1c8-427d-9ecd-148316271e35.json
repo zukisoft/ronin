@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "wYH0rcjRfUKezRSDFiceNQ==",
+        "sequence": 1,
+        "ruling": "- This card's first effect is a Continuous Effect and its second effect is a Trigger Effect."
+    },
+    {
+        "cardid": "wYH0rcjRfUKezRSDFiceNQ==",
+        "sequence": 2,
+        "ruling": "- [[Cyber Phoenix]]'s Continuous Effect will not negate cards that have 2 targets, such as [[Penguin Soldier]] or [[Mystic Box]]."
+    },
+    {
+        "cardid": "wYH0rcjRfUKezRSDFiceNQ==",
+        "sequence": 3,
+        "ruling": "- While you have [[Cyber Phoenix]] on the field in Attack Position, a Machine-Type monster on your side of the field equipped with [[Premature Burial]] will not be destroyed if [[Premature Burial]] is destroyed."
+    },
+    {
+        "cardid": "wYH0rcjRfUKezRSDFiceNQ==",
+        "sequence": 4,
+        "ruling": "- While you have [[Cyber Phoenix]] on the field in Attack Position, [[Heavy Mech Support Platform]] can be equipped to a Machine-Type monster on your side of the field but all of its effects are negated. It will not increase ATK, or be destroyed in place of the equipped monster, and it cannot be unequipped & Special Summoned by its own effect. (The Machine-Type monster can still only be equipped with 1 Union Monster at a time, because that is a condition, not an effect)."
+    }
+]

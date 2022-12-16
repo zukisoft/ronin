@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "hUBBtegMa06i/DoqO8+byw==",
+        "sequence": 1,
+        "ruling": "- Monster tokens and face-down monsters are included for [[White Magician Pikeru]]'s effect."
+    },
+    {
+        "cardid": "hUBBtegMa06i/DoqO8+byw==",
+        "sequence": 2,
+        "ruling": "- Even if there are many monsters, [[White Magician Pikeru]] increases Life Points by 1 lump sum."
+    },
+    {
+        "cardid": "hUBBtegMa06i/DoqO8+byw==",
+        "sequence": 3,
+        "ruling": "- [[White Magician Pikeru]] includes itself in its effect."
+    },
+    {
+        "cardid": "hUBBtegMa06i/DoqO8+byw==",
+        "sequence": 4,
+        "ruling": "- If you resolve [[White Magician Pikeru]]'s effect and then in the same Standby Phase the number of monsters on the field increases, you don't get additional Life Points."
+    }
+]

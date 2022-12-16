@@ -1,0 +1,52 @@
+[
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 1,
+        "ruling": "- When you activate [[Book of Moon]] during the Battle Step to flip your defending monster into face-down Defense Position, the attack resolves as normal. No replay occurs because the possible attack targets on your side of the field did not change."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 2,
+        "ruling": "- When you activate [[Book of Moon]] during the Battle Step to flip an attacking monster into face-down Defense Position, the attack stops. No replay is triggered. The attacking monster cannot change its battle position in Main Phase 2, because it is still considered to have declared an attack. (So it cannot be Flip Summoned in Main Phase 2.)"
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 3,
+        "ruling": "- If you are attacking, and you chain [[Book of Moon]] to your opponent's [[Mirror Force]] to flip one of your monsters face-down, that monster is not destroyed by [[Mirror Force]]."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 4,
+        "ruling": "- If you chain [[Book of Moon]] to [[Magic Cylinder]], [[Ring of Destruction]], or [[Trap Hole]] to flip the target of any of those cards face-down, the card's effect disappears."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 5,
+        "ruling": "- If you use [[Book of Moon]] on a monster that had its ATK doubled with [[Limiter Removal]], the monster is not destroyed at the end of the turn."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 6,
+        "ruling": "- If you chain [[Book of Moon]] to [[Bottomless Trap Hole]], the now face-down monster will not be destroyed by [[Bottomless Trap Hole]], but any other appropriate monsters Summoned at the same time will still be destroyed."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 7,
+        "ruling": "- If you use [[Book of Moon]] on [[Dream Clown]], [[Dream Clown]]'s effect is not activated."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 8,
+        "ruling": "- If you chain [[Book of Moon]] to the activation of a Flip Effect Monster's effect, such as [[Fiber Jar]], [[Book of Moon]] flips the monster face-down again, but the Flip Effect still resolves as normal."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 9,
+        "ruling": "- You cannot flip a Monster Token face-down because Monster Tokens are always face-up."
+    },
+    {
+        "cardid": "o25f2azvekOp2DUtSQ0Mkg==",
+        "sequence": 10,
+        "ruling": "- You cannot activate [[Book of Moon]] while [[Light of Intervention]] is active."
+    }
+]

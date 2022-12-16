@@ -1,0 +1,47 @@
+[
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 1,
+        "ruling": "- [[Barrel Behind the Door]] can be chained to the effect of [[Marshmallon]] that inflicts damage."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 2,
+        "ruling": "- The effect of [[Marshmallon]] that inflicts damage activates after damage calculation."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 3,
+        "ruling": "- When your opponent's [[Airknight Parshath]] attacks your face-down [[Marshmallon]], after damage calculation the effect of [[Airknight Parshath]] will be Chain Link 1 and the effect of your [[Marshmallon]] will be Chain Link 2."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 4,
+        "ruling": "- If a face-down [[Marshmallon]] is attacked by [[Sasuke Samurai]] or [[Mystic Swordsman LV2]], the [[Marshmallon]] will be destroyed without being flipped face-up. [[Marshmallon]] will not inflict any damage with its effect in this case."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 5,
+        "ruling": "- If a face-down, Defense Position [[Marshmallon]] is attacked by [[Drillroid]], the effect of [[Drillroid]] will destroy [[Marshmallon]]. The effect of [[Marshmallon]] that inflicts damage will not be inflicted in this case."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 6,
+        "ruling": "- If a face-up, Defense Position [[Marshmallon]] is attacked by [[Ninja Grandmaster Sasuke]], the [[Marshmallon]] will be destroyed by the effect of [[Ninja Grandmaster Sasuke]]."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 7,
+        "ruling": "- If a face-down, Defense Position [[Marshmallon]] is attacked while the effect of [[Gorgon's Eye]] is being applied, the effects of [[Marshmallon]] will be negated. [[Marshmallon]] will be destroyed if the attacking monster's ATK is higher than [[Marshmallon]]'s DEF and its effect that inflicts damage will be negated."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 8,
+        "ruling": "- [[Divine Wrath]] can be chained to [[Marshmallon]]'s damage inflicting effect."
+    },
+    {
+        "cardid": "BDOI0Pftgkyx+T1E0RGw8A==",
+        "sequence": 9,
+        "ruling": "- When a monster equipped with [[Ballista of Rampart Smashing]] attacks a face-down, Defense Position [[Marshmallon]], the effect of [[Ballista of Rampart Smashing]] that increases the ATK of the equipped monster is applied during damage calculation. After damage calculation, the effect of [[Marshmallon]] that inflicts damage is activated."
+    }
+]

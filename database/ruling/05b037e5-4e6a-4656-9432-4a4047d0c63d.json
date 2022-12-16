@@ -1,0 +1,42 @@
+[
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 1,
+        "ruling": "- This is an Ignition Effect."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 2,
+        "ruling": "- You can select a face-up or face-down monster to remove from play. A face-down monster removed with this effect will remain face-down while removed from play. So if a face-down [[D.D. Scout Plane]] is removed from play, its effect will not activate."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 3,
+        "ruling": "- Returning the monster to play cannot be chained to. The effect will resolve and the monster will return to play during your second Standby Phase even if [[Destiny Hero - Doom Lord]] is no longer on the field or is flipped face-down (even as a chain to the activation of his effect)."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 4,
+        "ruling": "- If your second Standby Phase is skipped by the effect of a card like [[Solomon's Lawbook]], then the removed monster will never return to play."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 5,
+        "ruling": "- You can activate [[Destiny Hero - Doom Lord]]'s effect even if your Battle Phase is going to be skipped because of a card effect like [[Soul Exchange]]."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 6,
+        "ruling": "- If you declared an attack then you cannot activate [[Destiny Hero - Doom Lord]]'s effect this turn, even if your only attack was negated."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 7,
+        "ruling": "- If you have both [[Destiny Hero - Doom Lord]] and [[Berserk Gorilla]] face-up on the field you can still activate [[Destiny Hero - Doom Lord]]'s effect. [[Berserk Gorilla]] will not be able to attack that turn."
+    },
+    {
+        "cardid": "5TewBWpOVkaUMkpAR9DGPQ==",
+        "sequence": 8,
+        "ruling": "- If all 5 of your opponent's Monster Card Zones are full when the removed monster would return to play, it is destroyed."
+    }
+]

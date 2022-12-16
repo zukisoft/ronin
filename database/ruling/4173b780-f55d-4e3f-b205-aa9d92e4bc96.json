@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "gLdzQV31P06yBaqdkuS8lg==",
+        "sequence": 1,
+        "ruling": "- You can only get 1 copy of [[Polymerization]] when you discard [[King of the Swamp]] from your hand."
+    },
+    {
+        "cardid": "gLdzQV31P06yBaqdkuS8lg==",
+        "sequence": 2,
+        "ruling": "- You can activate the effect of [[King of the Swamp]] even if all 3 of your [[Polymerization]] cards are in your Graveyard."
+    },
+    {
+        "cardid": "gLdzQV31P06yBaqdkuS8lg==",
+        "sequence": 3,
+        "ruling": "- If [[King of the Swamp]] is selected for the effect of [[Prohibition]], you cannot use either of its effects."
+    },
+    {
+        "cardid": "gLdzQV31P06yBaqdkuS8lg==",
+        "sequence": 4,
+        "ruling": "- Discarding this card is a cost."
+    },
+    {
+        "cardid": "gLdzQV31P06yBaqdkuS8lg==",
+        "sequence": 5,
+        "ruling": "- If you use [[King of the Swamp]] as Fusion Material from your hand, you do not get to activate its effect to search your Deck for [[Polymerization]]."
+    }
+]

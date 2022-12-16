@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "Xppf1lgjEkaRcIwiWrRGpg==",
+        "sequence": 1,
+        "ruling": "- Tributing 1 monster is a cost. This effect is an Ignition Effect."
+    },
+    {
+        "cardid": "Xppf1lgjEkaRcIwiWrRGpg==",
+        "sequence": 2,
+        "ruling": "- The inflicted damage is equal to half the total ATK of the monster at the time it was Tributed."
+    },
+    {
+        "cardid": "Xppf1lgjEkaRcIwiWrRGpg==",
+        "sequence": 3,
+        "ruling": "- When you Tribute a face-down monster, the damage is equal to half the monster's original ATK while it is in the Graveyard."
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "WOV0g5GlL02rHjovUBsXNQ==",
+        "sequence": 1,
+        "ruling": "- If a monster Special Summoned by this card is flipped face-down before the End Phase, it will not be removed from play during the End Phase. This includes using a monster's effect to flip itself face-down, such as [[Guardian Sphinx]]."
+    },
+    {
+        "cardid": "WOV0g5GlL02rHjovUBsXNQ==",
+        "sequence": 2,
+        "ruling": "- If [[Jinzo]] is Special Summoned with this card, it will still be removed from play during the End Phase because [[Return from the Different Dimension]] is sent to the Graveyard once its effect is resolved, so [[Jinzo]] cannot negate its effect."
+    },
+    {
+        "cardid": "WOV0g5GlL02rHjovUBsXNQ==",
+        "sequence": 3,
+        "ruling": "- If [[Strike Ninja]] is Special Summoned with this card, you can activate its effect and remove it from play again. Then during the End Phase, [[Strike Ninja]] will return to play by its own effect, and will remain in play, since the effect of [[Return from the Different Dimension]] on [[Strike Ninja]] was reset when [[Strike Ninja]] left play."
+    },
+    {
+        "cardid": "WOV0g5GlL02rHjovUBsXNQ==",
+        "sequence": 4,
+        "ruling": "- You can attack with a monster, remove it from play with a card effect like [[Interdimensional Matter Transporter]], then Special Summon that monster with [[Return from the Different Dimension]] and attack again during the same Battle Phase."
+    },
+    {
+        "cardid": "WOV0g5GlL02rHjovUBsXNQ==",
+        "sequence": 5,
+        "ruling": "- If [[D.D. Survivor]] or [[D.D. Scout Plane]] is Special Summoned by [[Return from the Different Dimension]], when it is removed from play during the End Phase it will be Special Summoned back to the field during the same End Phase."
+    },
+    {
+        "cardid": "WOV0g5GlL02rHjovUBsXNQ==",
+        "sequence": 6,
+        "ruling": "- If [[Elemental Hero Wildheart]] or [[Tenkabito Shien]] is Special Summoned by this card's effect they will not be removed from play during the End Phase."
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 1,
+        "ruling": "- If you Special Summon [[Treeborn Frog]] during your Standby Phase, then it's sent to the Graveyard during that same Standby Phase (like if it's Tributed for [[Enemy Controller]]), you can Special Summon [[Treeborn Frog]] again that same Standby Phase."
+    },
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 2,
+        "ruling": "- If you start your Standby Phase with [[Messenger of Peace]] face-up on the field, you can choose not to pay the maintenance cost so it is destroyed, then Special Summon [[Treeborn Frog]]."
+    },
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 3,
+        "ruling": "- If you have 2 or more [[Treeborn Frog]]s in your Graveyard, you can activate and resolve the effect of 1, but then you cannot activate and resolve the effect of the 2nd one because you now have a face-up [[Treeborn Frog]] on the field."
+    },
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 4,
+        "ruling": "- [[Necrovalley]] will not negate the effect of [[Treeborn Frog]]."
+    },
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 5,
+        "ruling": "- If an effect is chained to [[Treeborn Frog]] that puts a Spell or Trap Card on your side of field, then [[Treeborn Frog]]'s effect will not resolve. Example: The opponent controls your [[Embodiment of Apophis]] and activates [[Remove Brainwashing]]."
+    },
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 6,
+        "ruling": "- If the effect of [[Treeborn Frog]] is negated, you can activate its effect again during the same Standby Phase and Special Summon it."
+    },
+    {
+        "cardid": "Gd2i64B1QkiaQKGp5AkbVw==",
+        "sequence": 7,
+        "ruling": "- If [[King Tiger Wanghu]] is on the field when [[Treeborn Frog]] is Special Summoned, [[Treeborn Frog]] will be destroyed, but can be Special Summoned again with its effect during the same Standby Phase. Doing so without purpose is considered stalling and is a violation of Tournament Policy."
+    }
+]

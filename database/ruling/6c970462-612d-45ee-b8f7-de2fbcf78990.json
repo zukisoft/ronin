@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "YgSXbC1h7kW4994vvPeJkA==",
+        "sequence": 1,
+        "ruling": "- Monsters with an original ATK that is already 0 are not affected by [[Alchemy Cycle]]. You will not draw a card when they are destroyed by battle."
+    },
+    {
+        "cardid": "YgSXbC1h7kW4994vvPeJkA==",
+        "sequence": 2,
+        "ruling": "- The effect to draw 1 card starts a Chain."
+    },
+    {
+        "cardid": "YgSXbC1h7kW4994vvPeJkA==",
+        "sequence": 3,
+        "ruling": "- Monsters Summoned or flipped face-up after [[Alchemy Cycle]] resolves will not have their original ATK become 0."
+    }
+]

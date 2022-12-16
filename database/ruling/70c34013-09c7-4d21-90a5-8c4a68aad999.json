@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "E0DDcMcJIU2QpYxKaKrZmQ==",
+        "sequence": 1,
+        "ruling": "- [[Angel O7]]'s effect does not prevent a monster's Continuous Effects from being applied, because Continuous Effects never 'activate'."
+    },
+    {
+        "cardid": "E0DDcMcJIU2QpYxKaKrZmQ==",
+        "sequence": 2,
+        "ruling": "- [[Angel O7]] prevents Monster Card Effects from activating in any Zone. Ignition Effects and Quick Effects of Effect Monsters cannot be activated. The Trigger Effects of Effect Monsters will not activate. The Flip Effects of flipped monsters will not activate."
+    },
+    {
+        "cardid": "E0DDcMcJIU2QpYxKaKrZmQ==",
+        "sequence": 3,
+        "ruling": "- If you Tribute [[Sangan]] when you Tribute Summon [[Angel O7]], [[Sangan]]'s effect does not activate."
+    }
+]

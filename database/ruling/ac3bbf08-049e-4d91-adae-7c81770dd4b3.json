@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 1,
+        "ruling": "- A monster removed with [[Interdimensional Matter Transporter]] doesn't occupy a Monster Card Zone. If there are no Monster Card Zones available when it returns, it is destroyed."
+    },
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 2,
+        "ruling": "- If you control your opponent's monster because of [[Change of Heart]] or [[Snatch Steal]], and remove the monster with [[Interdimensional Matter Transporter]], the monster returns to your side of the field, then immediately returns to your opponent's side of the field."
+    },
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 3,
+        "ruling": "- A monster returned to the field because of [[Interdimensional Matter Transporter]] returns in the same Battle Position that it was in when it was removed from the field."
+    },
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 4,
+        "ruling": "- If a Spirit Monster is returned to the field with [[Interdimensional Matter Transporter]] the same turn it was Summoned or flipped face-up, it returns to the field and then returns to the owner's hand."
+    },
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 5,
+        "ruling": "- When a Fusion Monster is returned to the field with [[Interdimensional Matter Transporter]] the same turn it was Special Summoned with [[Summoner of Illusions]] or [[Magical Scientist]], the Fusion Monster is not destroyed or returned to the Fusion Deck."
+    },
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 6,
+        "ruling": "- When an Archfiend is returned to the field with [[Interdimensional Matter Transporter]] after it was Special Summoned with [[Archfiend's Roar]], it is not destroyed by [[Archfiend's Roar]]'s effect."
+    },
+    {
+        "cardid": "CL87rJ4EkU2trnyBdw3Usw==",
+        "sequence": 7,
+        "ruling": "- When [[Karate Man]], or a monster affected by [[Limiter Removal]], is removed from play with [[Interdimensional Matter Transporter]], it is not destroyed that turn because the effect of [[Karate Man]]/[[Limiter Removal]] is reset."
+    }
+]

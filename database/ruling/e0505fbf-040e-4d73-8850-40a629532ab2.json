@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "v19Q4A4Ec02IUECmKVMqsg==",
+        "sequence": 1,
+        "ruling": "- If you attack with your [[Mystic Tomato]] and it is destroyed as a result of battle, you may attack with the monster Special Summoned by [[Mystic Tomato]] before entering Main Phase 2."
+    },
+    {
+        "cardid": "v19Q4A4Ec02IUECmKVMqsg==",
+        "sequence": 2,
+        "ruling": "- If your opponent controls your [[Mystic Tomato]] and it is destroyed as a result of battle, you get the effect of [[Mystic Tomato]] NOT your opponent."
+    },
+    {
+        "cardid": "v19Q4A4Ec02IUECmKVMqsg==",
+        "sequence": 3,
+        "ruling": "- Since the Special Summoning occurs during the Damage Step, [[Torrential Tribute]], etc. cannot be used."
+    }
+]

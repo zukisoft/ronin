@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "k2TXA2vQtUmdZibg5RT6ZA==",
+        "sequence": 1,
+        "ruling": "- \"Lightsworn\" monsters face-up on the field, in the Graveyard, or Removed Zone cannot be targeted by effects."
+    },
+    {
+        "cardid": "k2TXA2vQtUmdZibg5RT6ZA==",
+        "sequence": 2,
+        "ruling": "- [[Aurkus, Lightsworn Druid]] cannot negate effects; it only prevents \"Lightsworn\" monsters from being selected as the targets of effects.  Once a target has been selected, the effect of [[Aurkus, Lightsworn Druid]] is irrelevant."
+    },
+    {
+        "cardid": "k2TXA2vQtUmdZibg5RT6ZA==",
+        "sequence": 3,
+        "ruling": "- If your opponent activates [[Ring of Destruction]] targeting a \"Lightsworn\" monster you control and you chain [[Glorious Illusion]] to Special Summon [[Aurkus, Lightsworn Druid]] from your Graveyard, your \"Lightsworn\" monster is still destroyed."
+    },
+    {
+        "cardid": "k2TXA2vQtUmdZibg5RT6ZA==",
+        "sequence": 4,
+        "ruling": "- If you Special Summon a \"Lightsworn\" monster with [[Glorious Illusion]], and afterwards you Summon [[Aurkus, Lightsworn Druid]], if your opponent later destroys [[Glorious Illusion]] your \"Lightsworn\" monster is also destroyed because [[Glorious Illusion]] is NOT selecting your \"Lightsworn\" monster as a target."
+    },
+    {
+        "cardid": "k2TXA2vQtUmdZibg5RT6ZA==",
+        "sequence": 5,
+        "ruling": "- While you have [[Aurkus, Lightsworn Druid]] on the field you cannot equip your \"Lightsworn\" monsters with Equip Cards, but if you already have a \"Lightsworn\" monster equipped with an Equip Card when you Summon [[Aurkus, Lightsworn Druid]], the Equip Card is not destroyed or negated, because [[Aurkus, Lightsworn Druid]] only prevents \"Lightsworn\" monsters from being selected as a target."
+    },
+    {
+        "cardid": "k2TXA2vQtUmdZibg5RT6ZA==",
+        "sequence": 6,
+        "ruling": "- [[Aurkus, Lightsworn Druid]] will not stop [[Torrential Tribute]], [[Mirror Force]], [[Lightning Vortex]], [[Fissure]], [[Smashing Ground]], or [[Hammer Shot]], because these effects do not target."
+    }
+]

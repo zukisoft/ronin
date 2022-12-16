@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "8qERCLN0xUyXsVLmsRyqTg==",
+        "sequence": 1,
+        "ruling": "- If you have multiple copies of [[Dark Snake Syndrome]], the effects are cumulative."
+    },
+    {
+        "cardid": "8qERCLN0xUyXsVLmsRyqTg==",
+        "sequence": 2,
+        "ruling": "- Both players take damage during the Standby Phase of the controller of the [[Dark Snake Syndrome]]."
+    },
+    {
+        "cardid": "8qERCLN0xUyXsVLmsRyqTg==",
+        "sequence": 3,
+        "ruling": "- If [[Imperial Order]] is active, you still increase the damage from turn to turn for [[Dark Snake Syndrome]] even though no damage is dealt."
+    }
+]

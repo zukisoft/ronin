@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "BpPx/h+T/UCTatV/cvCDFg==",
+        "sequence": 1,
+        "ruling": "- If this card is destroyed while face-down, it still does damage to your opponent."
+    },
+    {
+        "cardid": "BpPx/h+T/UCTatV/cvCDFg==",
+        "sequence": 2,
+        "ruling": "- If this card's activation is negated, such as with [[Magic Jammer]] or [[Riryoku Field]] it does not do damage to your opponent."
+    },
+    {
+        "cardid": "BpPx/h+T/UCTatV/cvCDFg==",
+        "sequence": 3,
+        "ruling": "- [[Black Pendant]] activates in the Graveyard, so if it is destroyed when [[Imperial Order]] is on the field, it still does damage to your opponent."
+    },
+    {
+        "cardid": "BpPx/h+T/UCTatV/cvCDFg==",
+        "sequence": 4,
+        "ruling": "- You can chain to the activation of the effect of [[Black Pendant]] when it is sent to the Graveyard."
+    }
+]

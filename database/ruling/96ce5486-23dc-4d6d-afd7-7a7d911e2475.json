@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "hlTOltwjbU2v13p9kR4kdQ==",
+        "sequence": 1,
+        "ruling": "- This card's effect targets 1 face-down monster."
+    },
+    {
+        "cardid": "hlTOltwjbU2v13p9kR4kdQ==",
+        "sequence": 2,
+        "ruling": "- If the targeted monster is flipped face-up by an effect chained to this card's effect, it will not be returned to the top of its owner's Deck."
+    }
+]

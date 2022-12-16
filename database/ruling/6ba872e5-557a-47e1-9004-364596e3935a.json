@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "5XKoa3pV4UeQBDZFluOTWg==",
+        "sequence": 1,
+        "ruling": "- Tributing 1 Fairy-Type monster, except [[Athena]], is a cost to activate [[Athena]]'s Ignition Effect."
+    },
+    {
+        "cardid": "5XKoa3pV4UeQBDZFluOTWg==",
+        "sequence": 2,
+        "ruling": "- [[Athena]]'s second effect targets 1 Fairy-Type monster in your Graveyard."
+    },
+    {
+        "cardid": "5XKoa3pV4UeQBDZFluOTWg==",
+        "sequence": 3,
+        "ruling": "- [[Athena]]'s first effect does not inflict damage when it is Summoned."
+    },
+    {
+        "cardid": "5XKoa3pV4UeQBDZFluOTWg==",
+        "sequence": 4,
+        "ruling": "- If multiple Fairy-Type monsters are Special Summoned by the same effect, [[Athena]] inflicts 600 damage to the opponent's Life Points. If 2 or more effects on the Chain Special Summon a Fairy-Type monster, [[Athena]]'s effect will inflict 600 damage for each effect."
+    }
+]

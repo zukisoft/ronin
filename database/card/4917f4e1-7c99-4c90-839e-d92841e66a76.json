@@ -1,0 +1,7 @@
+{
+    "cardid": "4fQXSZl8kEyDntkoQeZqdg==",
+    "name": "Neo-Spacian Aqua Dolphin",
+    "type": "Monster",
+    "passcode": "17955766",
+    "text": "Once per turn, by discarding 1 card, look at your opponent's hand and select 1 Monster Card in it. If you control a monster with ATK greater than or equal to the ATK of the selected Monster Card, destroy the selected card and inflict 500 damage to your opponent. Otherwise, take 500 damage."
+}

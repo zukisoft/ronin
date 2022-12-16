@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "Pkm4scu1Gk2ie2nK4taeNA==",
+        "sequence": 1,
+        "ruling": "- If [[Flashbang]] is activated, effects that activate when Battle Damage is inflicted to a player will miss the timing for activation, such as [[Don Zaloog]]."
+    },
+    {
+        "cardid": "Pkm4scu1Gk2ie2nK4taeNA==",
+        "sequence": 2,
+        "ruling": "- If [[Flashbang]] is activated, any effects that would activate at the end of the Battle Phase will miss the timing for activation, such as [[Goblin Attack Force]]."
+    }
+]

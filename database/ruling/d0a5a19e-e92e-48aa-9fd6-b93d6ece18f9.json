@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "nqGl0C7pqkif1rk9bs4Y+Q==",
+        "sequence": 1,
+        "ruling": "- This effect activates at the same time that the monster destroyed by battle is sent to the Graveyard."
+    },
+    {
+        "cardid": "nqGl0C7pqkif1rk9bs4Y+Q==",
+        "sequence": 2,
+        "ruling": "- This effect will activate even if this card destroys a Monster Token, because the text does not require the destroyed monster to be sent to the Graveyard."
+    },
+    {
+        "cardid": "nqGl0C7pqkif1rk9bs4Y+Q==",
+        "sequence": 3,
+        "ruling": "- If this card destroys [[Embodiment of Apophis]], this effect will activate."
+    },
+    {
+        "cardid": "nqGl0C7pqkif1rk9bs4Y+Q==",
+        "sequence": 4,
+        "ruling": "- This effect will activate if you destroy your monster controlled by your opponent."
+    },
+    {
+        "cardid": "nqGl0C7pqkif1rk9bs4Y+Q==",
+        "sequence": 5,
+        "ruling": "- The effects of face-up Continuous Cards can be activated even while the effect of this card is being applied."
+    }
+]

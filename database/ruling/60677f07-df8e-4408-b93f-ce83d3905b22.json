@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "B39nYI7fCES5P86D05BbIg==",
+        "sequence": 1,
+        "ruling": "- The effect of [[Alien Hypno]] that removes 1 A-Counter from the monsters controlled through its effect and the effect that destroys the controlled monsters when the last A-Counter is removed do not start a Chain."
+    },
+    {
+        "cardid": "B39nYI7fCES5P86D05BbIg==",
+        "sequence": 2,
+        "ruling": "- The effect of [[Alien Hypno]] that takes control of an opponent's monster with A-Counter(s) can be activated multiple times during the same turn."
+    },
+    {
+        "cardid": "B39nYI7fCES5P86D05BbIg==",
+        "sequence": 3,
+        "ruling": "- The effect of [[Alien Hypno]] that takes control of an opponent's monster with A-Counter(s) targets the selected monster, both when the monster is selected and as long as the selected monster remains on the field."
+    },
+    {
+        "cardid": "B39nYI7fCES5P86D05BbIg==",
+        "sequence": 4,
+        "ruling": "- If you take control of your opponent's monster with [[Alien Hypno]] and [[Skill Drain]] is activated, control of the selected monster is returned to the opponent. If [[Skill Drain]] is later negated or removed from the field, the selected monster is returned to your control."
+    },
+    {
+        "cardid": "B39nYI7fCES5P86D05BbIg==",
+        "sequence": 5,
+        "ruling": "- If you take control of your opponent's monster with [[Alien Hypno]] and afterwards [[Alien Hypno]] is flipped face-down, every monster that you are controlling with [[Alien Hypno]]'s effect is returned to your opponent."
+    },
+    {
+        "cardid": "B39nYI7fCES5P86D05BbIg==",
+        "sequence": 6,
+        "ruling": "- If you take control of your opponent's monster with [[Alien Hypno]] and afterwards the selected monster is flipped face-down, the selected monster is returned to your opponent."
+    }
+]

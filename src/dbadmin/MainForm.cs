@@ -225,7 +225,7 @@ namespace zuki.ronin
 			try
 			{
 				string canonicalizedpath = Path.GetFullPath(m_opendatabase.FileName);
-				m_database = Database.Create(canonicalizedpath);
+				m_database = Database.Open(canonicalizedpath, false);
 				m_statuslabel.Text = canonicalizedpath;
 			}
 			catch(Exception) { /* TODO - HANDLER */ }

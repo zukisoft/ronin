@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "w4l0tW8aSUWZkTXfzqN0ag==",
+        "sequence": 1,
+        "ruling": "- If there is a Spell or Trap Card on your opponent's side of the field, [[Black Tyranno]] cannot attack directly."
+    },
+    {
+        "cardid": "w4l0tW8aSUWZkTXfzqN0ag==",
+        "sequence": 2,
+        "ruling": "- If there is an Attack Position monster on your opponent's side of the field, [[Black Tyranno]] cannot attack directly."
+    },
+    {
+        "cardid": "w4l0tW8aSUWZkTXfzqN0ag==",
+        "sequence": 3,
+        "ruling": "- If your opponent has only Defense Position monsters on their side of the field, [[Black Tyranno]] can attack directly even if some are face-down."
+    },
+    {
+        "cardid": "w4l0tW8aSUWZkTXfzqN0ag==",
+        "sequence": 4,
+        "ruling": "- If an effect resolves during the Battle Step of [[Black Tyranno]]'s direct attack that results in a Spell Card, Trap Card, or Attack Position monster on your opponent's side of the field, a replay occurs."
+    },
+    {
+        "cardid": "w4l0tW8aSUWZkTXfzqN0ag==",
+        "sequence": 5,
+        "ruling": "- If your opponent's only monster is in face-up Defense Position, but is equipped with [[Ring of Magnetism]], [[Black Tyranno]] must attack that monster if [[Black Tyranno]] attacks."
+    }
+]

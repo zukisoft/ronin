@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "FiLJfFDj+U66tk6ubPZK/g==",
+        "sequence": 1,
+        "ruling": "- Cards that are Tributed or Discarded are included, because they are also \"sent to the Graveyard\"."
+    },
+    {
+        "cardid": "FiLJfFDj+U66tk6ubPZK/g==",
+        "sequence": 2,
+        "ruling": "- The effects of multiple [[Skull Invitation]] are cumulative."
+    },
+    {
+        "cardid": "FiLJfFDj+U66tk6ubPZK/g==",
+        "sequence": 3,
+        "ruling": "- If [[Dark Hole]] destroys monsters controlled by both players, the damage from [[Skull Invitation]] is applied to both players simultaneously."
+    },
+    {
+        "cardid": "FiLJfFDj+U66tk6ubPZK/g==",
+        "sequence": 4,
+        "ruling": "- If you draw the final piece of [[Exodia the Forbidden One]] with [[Graceful Charity]] and have all 5 pieces of [[Exodia the Forbidden One]] in your hand after discarding, you win the Duel even if the damage resulting from [[Skull Invitation]] would reduce your Life Points to 0."
+    }
+]

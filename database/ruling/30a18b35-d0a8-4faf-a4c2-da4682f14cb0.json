@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "NYuhMKjQr0+kwtpGgvFMsA==",
+        "sequence": 1,
+        "ruling": "- If you equip [[Chaos Necromancer]] with [[Axe of Despair]] and you have 5 monsters in your Graveyard, the ATK of [[Chaos Necromancer]] is 2500 (1500 + 1000)."
+    },
+    {
+        "cardid": "NYuhMKjQr0+kwtpGgvFMsA==",
+        "sequence": 2,
+        "ruling": "- If [[Chaos Necromancer]] is equipped with [[Megamorph]], its ATK is 0, but if [[Megamorph]] leaves play, recalculate the ATK of [[Chaos Necromancer]] using its effect."
+    },
+    {
+        "cardid": "NYuhMKjQr0+kwtpGgvFMsA==",
+        "sequence": 3,
+        "ruling": "- If [[Shield & Sword]] is activated, it reverses the original ATK & DEF of [[Chaos Necromancer]], which are both 0, then [[Chaos Necromancer]]'s effect is applied and its ATK will be 300 x the number of monsters in your Graveyard, and its DEF will be 0."
+    }
+]

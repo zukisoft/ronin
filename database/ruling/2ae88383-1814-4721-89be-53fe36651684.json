@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "g4PoKhQYIUeJvlP+NmUWhA==",
+        "sequence": 1,
+        "ruling": "- You can select a face-down monster."
+    },
+    {
+        "cardid": "g4PoKhQYIUeJvlP+NmUWhA==",
+        "sequence": 2,
+        "ruling": "- When a face-down [[Dark-Eyes Illusionist]] is attacked and destroyed, its effect does not activate."
+    },
+    {
+        "cardid": "g4PoKhQYIUeJvlP+NmUWhA==",
+        "sequence": 3,
+        "ruling": "- If [[Royal Command]] is actived after [[Dark-Eyes Illusionist]]'s effect resolves, [[Dark-Eyes Illusionist]]'s effect is negated."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "6+Oe4PONYkiVBu6gi1D3hA==",
+        "sequence": 1,
+        "ruling": "- The first sentence of this card's text means that monsters such as [[Beastking of the Swamps]] cannot be used as a substitute for one of the required Fusion Material Monsters. You can use the effect of [[Magical Scientist]] or [[Summoner of Illusions]] to Special Summon this card like any other Fusion Monster."
+    },
+    {
+        "cardid": "6+Oe4PONYkiVBu6gi1D3hA==",
+        "sequence": 2,
+        "ruling": "- You can only use this card's effect to negate Normal Spell Cards, not Quick-Play, Equip, Continuous, Field, or Ritual Spell Cards. This effect is a Quick Effect, so it is Spell Speed 2 and may be activated during the opponent's turn."
+    },
+    {
+        "cardid": "6+Oe4PONYkiVBu6gi1D3hA==",
+        "sequence": 3,
+        "ruling": "- This card's effect only negates the effect of a Spell Card when it is activated, not the activation. So if your opponent activates [[Swords of Revealing Light]] and you activate the effect of this card to negate it, it will remain meaninglessly on the field for 3 turns. Its effect will remain negated for all 3 turns even if [[Dark Balter the Terrible]] is later destroyed."
+    },
+    {
+        "cardid": "6+Oe4PONYkiVBu6gi1D3hA==",
+        "sequence": 4,
+        "ruling": "- This card's effect to negate the effect of Effect Monsters that it destroys as a result of battle is a separate effect from the other one; you do not pay Life Points to activate it. This effect works the same as the effect of [[Dark Ruler Ha Des]]."
+    }
+]

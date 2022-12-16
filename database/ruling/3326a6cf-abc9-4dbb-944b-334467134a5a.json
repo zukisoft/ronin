@@ -1,0 +1,117 @@
+[
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 1,
+        "ruling": "- [[Doomcaliber Knight]]'s effect is a Quick Effect. When an Effect Monster's effect is activated, [[Doomcaliber Knight]]'s effect activates in a Chain to that effect. This effect does not target."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 2,
+        "ruling": "- Tributing [[Doomcaliber Knight]] is a cost."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 3,
+        "ruling": "- [[Doomcaliber Knight]]'s effect can activate during the the Damage Step."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 4,
+        "ruling": "- [[Doomcaliber Knight]]'s effect will not activate while [[Mask of Restrict]] is active, because it cannot be Tributed."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 5,
+        "ruling": "- If [[Kuriboh]]'s effect is activated to negate the Battle Damage from [[Doomcaliber Knight]], [[Doomcaliber Knight]] is Tributed to negate [[Kuriboh]]'s effect. Damage has already been calculated, so if [[Doomcaliber Knight]] was attacking a monster with equal or lower ATK that monster will be destroyed, and Battle Damage will be inflicted as normal."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 6,
+        "ruling": "- If [[Doomcaliber Knight]]'s effect activates while [[Skill Drain]] is face-up on the field, its effect is not negated because it is not on the field when its effect resolves."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 7,
+        "ruling": "- If [[Doomcaliber Knight]] is destroyed by battle and an Effect Monster's effect activates after damage calculation ([[D.D. Warrior Lady]], etc.), [[Doomcaliber Knight]]'s effect still activates."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 8,
+        "ruling": "- If an Effect Monster's effect is activated while multiple [[Doomcaliber Knight]]s are face-up on the field, they all activate and are Tributed. Their effects are chained following the rules for simultaneous effects. Only the last [[Doomcaliber Knight]] to resolve will be applied, and the effects of the other [[Doomcaliber Knight]]s disappear."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 9,
+        "ruling": "> Example: Player A controls 2  [[Doomcaliber Knight]]s. Player B activates an Effect Monster's effect. Both of Player A's [[Doomcaliber Knight]] activate and form a Chain:\r\nEffect Monster → Doomcaliber Knight A → Doomcaliber Knight B. \r\nOnly Doomcaliber Knight A negates the Effect Monster's effect."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 10,
+        "ruling": "- When multiple Effect Monster effects activate simultaneously, [[Doomcaliber Knight]]'s effect is chained after determining the order of the Effect Monster effects and will negate the Effect Monster's effect that was placed last on the Chain."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 11,
+        "ruling": "> Example 1: Player A Tributes their [[Sangan]] and [[Witch of the Black Forest]] to Tribute Summon [[Dark Magician]]. [[Sangan]]'s effect is Chain Link 1 and [[Witch of the Black Forest]]'s effect is Chain Link 2. The effect of Player B's [[Doomcaliber Knight]] is chained, and it will negate [[Witch of the Black Forest]]'s effect."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 12,
+        "ruling": "> Example 2: Player A and Player B have [[Goldd, Wu-Lord of Dark World]] in their hand and Player A controls [[Doomcaliber Knight]]. Player A activates [[Card Destruction]]. When both copies of [[Goldd, Wu-Lord of Dark World]] are discarded, their effects start a Chain. Player A is the turn player, so their [[Goldd, Wu-Lord of Dark World]] is Chain Link 1 and Player B's is Chain Link 2. [[Doomcaliber Knight]]'s effect is chained, and it will negate Player B's [[Goldd, Wu-Lord of Dark World]]."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 13,
+        "ruling": "> Example 3: Player A's [[Giant Rat]] is destroyed in battle and sent to the Graveyard while they have [[Green Baboon, Defender of the Forest]] in their hand and [[Doomcaliber Knight]] is face-up on the field. Player A can activate [[Giant Rat]] and/or [[Green Baboon, Defender of the Forest]]'s effect. If they activate both effects, they choose the order the effects are placed onto the Chain, and [[Doomcaliber Knight]] will negate the effect that is placed highest on the Chain. If [[Green Baboon, Defender of the Forest]] is Chain Link 1 and [[Giant Rat]] is Chain Link 2, [[Doomcaliber Knight]] will negate [[Giant Rat]]."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 14,
+        "ruling": "> Example 4: If [[Sangan]] is Tributed to Tribute Summon [[Raiza the Storm Monarch]] while [[Doomcaliber Knight]] is face-up on the field, [[Sangan]]'s effect is Chain Link 1 and [[Raiza the Storm Monarch]]'s effect is Chain Link 2. [[Doomcaliber Knight]]'s effect is chained, negating [[Raiza the Storm Monarch]]'s effect and destroying it."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 15,
+        "ruling": "> Example 5: Player A's [[Sasuke Samurai #4]] attacks Player B's [[Neo-Spacian Grand Mole]] while [[Doomcaliber Knight]] is face-up on the field. [[Sasuke Samurai #4]]'s effect is Chain Link 1 and [[Neo-Spacian Grand Mole]] is Chain Link 2. [[Doomcaliber Knight]]'s effect is chained, and it will negate and destroy [[Neo-Spacian Grand Mole]]."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 16,
+        "ruling": "- If an Effect Monster's effect that is not optional activates, even if it would not do anything when it resolves, it will still be negated by [[Doomcaliber Knight]]."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 17,
+        "ruling": "> Example: Player A's face-down [[Magician of Faith]] is attacked by Player B's [[Doomcaliber Knight]] while Player A has no Spell Cards in their Graveyard. [[Magician of Faith]]'s Flip Effect activates and [[Doomcaliber Knight]]'s effect activates in a Chain to it."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 18,
+        "ruling": "- If your [[Doomcaliber Knight]] attacks an Effect Monster with a non-continuous effect and destroys it while you control [[Dark Ruler Ha Des]], when the Effect Monster's effect activates [[Doomcaliber Knight]]'s effect is still chained."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 19,
+        "ruling": "- If [[Doomcaliber Knight]]'s effect would destroy a monster on the field, [[My Body as a Shield]] can be chained."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 20,
+        "ruling": "- Even if [[Book of Moon]], etc., is chained to [[Doomcaliber Knight]]'s effect and flips the Effect Monster face-down, the Effect Monster's effect is still negated by [[Doomcaliber Knight]] and it is still destroyed."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 21,
+        "ruling": "- If [[Light and Darkness Dragon]] and [[Doomcaliber Knight]] are face-up on the field when a Spell or Trap Card is activated, [[Light and Darkness Dragon]]'s effect is chained to the Spell or Trap Card and [[Doomcaliber Knight]]'s effect is chained to [[Light and Darkness Dragon]]."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 22,
+        "ruling": "- If [[Doomcaliber Knight]] attacks an Attack Position [[Reflect Bounder]], when [[Reflect Bounder]]'s effect activates [[Doomcaliber Knight]]'s effect is chained. [[Doomcaliber Knight]] negates [[Reflect Bounder]]'s effect and destroys it. Damage Calculation is not conducted."
+    },
+    {
+        "cardid": "z6YmM8mru02USzNEZxNKWg==",
+        "sequence": 23,
+        "ruling": "- If [[Crystal Beast Ruby Carbuncle]]'s effect is activated when it is Special Summoned and [[Doomcaliber Knight]]'s effect is activated, [[Doomcaliber Knight]] will negate the effect of [[Crystal Beast Ruby Carbuncle]] that Special Summons \"Crystal Beast\" monsters and destroy it. The player controlling [[Crystal Beast Ruby Carbuncle]] can place it into their Spell and Trap Card Zone."
+    }
+]

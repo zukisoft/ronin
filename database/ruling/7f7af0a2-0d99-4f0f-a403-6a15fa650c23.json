@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "ovB6f5kND0+kA2oV+mUMIw==",
+        "sequence": 1,
+        "ruling": "- When [[Banisher of the Light]] is destroyed it will be sent to the Graveyard.  If [[Banisher of the Light]] and other monsters are destroyed simultaneously all monsters are sent to the Graveyard."
+    },
+    {
+        "cardid": "ovB6f5kND0+kA2oV+mUMIw==",
+        "sequence": 2,
+        "ruling": "- Effects that trigger when cards are sent to the Graveyard, such as [[Sangan]], [[Witch of the Black Forest]], [[Mystic Tomato]], [[The Immortal of Thunder]], and [[Last Will]], will not activate."
+    },
+    {
+        "cardid": "ovB6f5kND0+kA2oV+mUMIw==",
+        "sequence": 3,
+        "ruling": "- [[Kuriboh]] and [[Thunder Dragon]] can be discarded from your hand and activated while [[Banisher of the Light]] is on the field."
+    }
+]

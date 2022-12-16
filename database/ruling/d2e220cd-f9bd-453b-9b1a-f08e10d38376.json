@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "zSDi0r35O0WbGvCOENODdg==",
+        "sequence": 1,
+        "ruling": "- Shuffling 1 card into your Deck is a cost."
+    },
+    {
+        "cardid": "zSDi0r35O0WbGvCOENODdg==",
+        "sequence": 2,
+        "ruling": "- Using this effect starts a Chain."
+    },
+    {
+        "cardid": "zSDi0r35O0WbGvCOENODdg==",
+        "sequence": 3,
+        "ruling": "- If you have your opponent's card in your hand and return it to their Deck to pay the cost of this effect, you still Draw as normal."
+    },
+    {
+        "cardid": "zSDi0r35O0WbGvCOENODdg==",
+        "sequence": 4,
+        "ruling": "- If your opponent controls [[Protector of the Sanctuary]], you cannot activate this effect."
+    }
+]

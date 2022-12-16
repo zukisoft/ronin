@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "jIgyBNeD00iiiBsCg8FA8Q==",
+        "sequence": 1,
+        "ruling": "- [[Relinquished]]'s effect to equip itself with a monster can only be activated during your Main Phase 1 or 2 since it is a Ignition Effect."
+    },
+    {
+        "cardid": "jIgyBNeD00iiiBsCg8FA8Q==",
+        "sequence": 2,
+        "ruling": "- A monster equipped to [[Relinquished]] occupies a Spell & Trap Zone of the controller of [[Relinquished]].  So if you already have 5 Spell & Trap Cards on the field you cannot activate the effect of [[Relinquished]]. Any Equip Spell Cards equipped to the selected monster are destroyed. [[Relinquished]] gains the ATK and DEF of the monster equipped to it, but not the effects of an Effect Monster."
+    },
+    {
+        "cardid": "jIgyBNeD00iiiBsCg8FA8Q==",
+        "sequence": 3,
+        "ruling": "- The selected monster is treated as a Monster Card when it is sent to the Graveyard, so the effects of [[Sangan]] or [[Witch of the Black Forest]] would activate, but the effect of [[Mystic Tomato]] would not, since it was not destroyed as a result of battle."
+    },
+    {
+        "cardid": "jIgyBNeD00iiiBsCg8FA8Q==",
+        "sequence": 4,
+        "ruling": "- You can not voluntarily destroy a monster equipped to [[Relinquished]] but you can use [[Mystical Space Typhoon]] or [[Emergency Provisions]] to eliminate it."
+    },
+    {
+        "cardid": "jIgyBNeD00iiiBsCg8FA8Q==",
+        "sequence": 5,
+        "ruling": "- [[Relinquished]] inflicts effect damage to your opponent whenever you take battle damage from a battle involving [[Relinquished]], if it is equipped with a monster. This can occur when [[Relinquished]] battles another Attack Position Monster, or when it attacks a Defense Position monster with DEF higher than its current ATK."
+    }
+]

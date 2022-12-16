@@ -1,0 +1,37 @@
+[
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 1,
+        "ruling": "- Sending 1 Pyro-Type monster with 500 or less ATK to the Graveyard is part of this card's effect. It is not a cost."
+    },
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 2,
+        "ruling": "- You cannot activate the effect of this card in the same Chain as this card's activation. You can only activate the effect after this card's activation is resolved, and it is face-up on the field."
+    },
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 3,
+        "ruling": "- If you activate this card's effect then you, the player, cannot declare an attack so even a monster unaffected by the effects of Spell Cards like [[Horus the Black Flame Dragon LV6]] cannot attack."
+    },
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 4,
+        "ruling": "- [[Blaze Accelerator]]'s effect targets. If an effect is chained that removes the targeted monster from your opponent's side of the field, you must still send the Pyro-Type Monster to the Graveyard."
+    },
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 5,
+        "ruling": "- Sending 1 Pyro-Type Monster from your hand to the Graveyard is not a cost. The Pyro-Type Monster is sent to the Graveyard when [[Blaze Accelerator]]'s effect resolves."
+    },
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 6,
+        "ruling": "- [[Blaze Accelerator]]'s effect can be activated while [[Dimensional Fissure]] is face-up on the field. The Pyro-Type Monster sent to the Graveyard is removed from play instead."
+    },
+    {
+        "cardid": "aQoAoqf750CP0sbDBNEH0w==",
+        "sequence": 7,
+        "ruling": "- If you activate [[Blaze Accelerator]]'s effect and an effect is chained that removes the selected target from the field, [[Blaze Accelerator]]'s effect disappears, but you still cannot declare an attack during the turn."
+    }
+]

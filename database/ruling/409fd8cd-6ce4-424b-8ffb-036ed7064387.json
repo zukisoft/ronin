@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "zdifQORsS0KP+wNu1wZDhw==",
+        "sequence": 1,
+        "ruling": "- You may use the effect of [[Burning Beast]] to destroy a Spell or Trap Card on your side of the field."
+    },
+    {
+        "cardid": "zdifQORsS0KP+wNu1wZDhw==",
+        "sequence": 2,
+        "ruling": "- If a monster equipped with [[Burning Beast]] attacks your opponent's Life Points directly, and [[Robbin' Goblin]] is the only face-up Spell or Trap Card on the field, the turn player chooses whether to resolve [[Robbin' Goblin]]'s effect first or resolve [[Burning Beast]]'s effect first. If the effect of [[Burning Beast]] is resolved first and destroys [[Robbin' Goblin]], then [[Robbin' Goblin]]'s effect is not applied because it is a Continuous Trap Card that is no longer in play."
+    }
+]

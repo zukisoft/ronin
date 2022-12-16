@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "+dMzJVubwU+yob3zm9jshA==",
+        "sequence": 1,
+        "ruling": "- When you activate [[Phantom Skyblaster]]'s effect, you must Special Summon at least 1 \"Skyblaster Token\", if able."
+    },
+    {
+        "cardid": "+dMzJVubwU+yob3zm9jshA==",
+        "sequence": 2,
+        "ruling": "- [[Phantom Skyblaster]]'s effect disappears if you do not have any monsters on your side of the field when its effect resolves."
+    },
+    {
+        "cardid": "+dMzJVubwU+yob3zm9jshA==",
+        "sequence": 3,
+        "ruling": "- If you activate [[Phantom Skyblaster]]'s damage inflicting effect, \"Skyblaster\" monsters Summoned later in the turn also cannot attack."
+    }
+]

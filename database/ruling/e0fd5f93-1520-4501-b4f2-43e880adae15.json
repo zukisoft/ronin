@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "k1/94CAVAUW08kPogK2uFQ==",
+        "sequence": 1,
+        "ruling": "- This card targets 1 opponent's monster."
+    },
+    {
+        "cardid": "k1/94CAVAUW08kPogK2uFQ==",
+        "sequence": 2,
+        "ruling": "- If you destroy a monster whose original ATK is undefined, like [[King of the Skull Servants]], this card will not inflict any damage to the opponent."
+    },
+    {
+        "cardid": "k1/94CAVAUW08kPogK2uFQ==",
+        "sequence": 3,
+        "ruling": "- If an effect like [[Enemy Controller]] is chained to [[Edge Hammer]] and control of the targeted monster switches, it will not be destroyed by [[Edge Hammer]]."
+    }
+]

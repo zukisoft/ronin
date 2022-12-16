@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "ZDF3yjzb00SmjoObH50eSQ==",
+        "sequence": 1,
+        "ruling": "- If the Special Summoned [[Jinzo]] is flipped face-down, it is not destroyed in the End Phase. Even if the [[Jinzo]] is flipped face-up afterwards, it is not destroyed in the End Phase."
+    },
+    {
+        "cardid": "ZDF3yjzb00SmjoObH50eSQ==",
+        "sequence": 2,
+        "ruling": "- If you send [[Jinzo]] and [[Jinzo - Returner]] to the Graveyard at the same time, with [[Future Fusion]], etc., you can activate the effect of [[Jinzo - Returner]]. If you send multiple copies [[Jinzo]] and [[Jinzo - Returner]], the effect of each copy of [[Jinzo - Returner]] can be activated and will create a Chain (see the rulings for \"Simultaneous Effects\" in the FAQ)."
+    },
+    {
+        "cardid": "ZDF3yjzb00SmjoObH50eSQ==",
+        "sequence": 3,
+        "ruling": "- Destroying [[Jinzo]] in the End Phase does not start a Chain."
+    }
+]

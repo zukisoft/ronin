@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "NZ6E/G2w7UKYt5GM/Xbi5w==",
+        "sequence": 1,
+        "ruling": "- If the Battle Damage caused by this card is reduced to 0 (with the effect of [[Kuriboh]], [[Waboku]], etc.) its effect is not activated."
+    },
+    {
+        "cardid": "NZ6E/G2w7UKYt5GM/Xbi5w==",
+        "sequence": 2,
+        "ruling": "- If this face-down Defense Position card is attacked by a monster with 0 ATK, its effect will activate, since Battle Damage was inflicted to the attacking player."
+    }
+]

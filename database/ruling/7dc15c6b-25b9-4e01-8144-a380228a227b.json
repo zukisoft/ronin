@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "a1zBfbklAU6BRKOAIooiew==",
+        "sequence": 1,
+        "ruling": "- If there are no cards left in your Deck, you cannot activate [[Damage Condenser]]."
+    },
+    {
+        "cardid": "a1zBfbklAU6BRKOAIooiew==",
+        "sequence": 2,
+        "ruling": "- You cannot use [[Damage Condenser]] to Special Summon a monster whose ATK is variable or undetermined ([[King of the Skull Servants]], [[Maju Garzett]], etc.)"
+    },
+    {
+        "cardid": "a1zBfbklAU6BRKOAIooiew==",
+        "sequence": 3,
+        "ruling": "- Discarding a card is a cost to activate [[Damage Condenser]]."
+    },
+    {
+        "cardid": "a1zBfbklAU6BRKOAIooiew==",
+        "sequence": 4,
+        "ruling": "- [[Damage Condenser]] is activated during the Damage Step immediately after you take battle damage. Because [[Kuriboh]] is activated before this (during damage calculation), you cannot discard [[Kuriboh]] to prevent damage and still activate [[Damage Condenser]] when taking damage for the same attack."
+    },
+    {
+        "cardid": "a1zBfbklAU6BRKOAIooiew==",
+        "sequence": 5,
+        "ruling": "- If your opponent attacks you directly with [[The Bistro Butcher]] while you have no cards in your hand, you cannot draw 2 cards for [[The Bistro Butcher]] then discard to activate [[Damage Condenser]]."
+    }
+]

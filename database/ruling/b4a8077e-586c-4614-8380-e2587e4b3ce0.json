@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "fgeotGxYFEaDgOJYfks84A==",
+        "sequence": 1,
+        "ruling": "- [[Evil Hero Infernal Prodigy]]'s effect to draw 1 card during the End Phase starts a Chain."
+    },
+    {
+        "cardid": "fgeotGxYFEaDgOJYfks84A==",
+        "sequence": 2,
+        "ruling": "- If [[Evil Hero Infernal Prodigy]] is removed from play when Tributed (by [[Macro Cosmos]], etc.) or after it is Tributed (by [[Soul Release]], etc.), its effect will still activate in the End Phase. If it is returned to the Graveyard with [[Burial from a Different Dimension]], its effect will not activate during the End Phase."
+    },
+    {
+        "cardid": "fgeotGxYFEaDgOJYfks84A==",
+        "sequence": 3,
+        "ruling": "- If [[Evil Hero Infernal Prodigy]] is Special Summoned, or returned to the hand or Deck, after it is Tributed, its effect will not activate during the End Phase."
+    },
+    {
+        "cardid": "fgeotGxYFEaDgOJYfks84A==",
+        "sequence": 4,
+        "ruling": "- If you Tribute [[Evil Hero Infernal Prodigy]] to Set an \"Elemental Hero\", \"Destiny Hero\", or \"Evil Hero, its effect does not activate during the End Phase."
+    },
+    {
+        "cardid": "fgeotGxYFEaDgOJYfks84A==",
+        "sequence": 5,
+        "ruling": "- If the Tribute Summon is negated (with [[Solemn Judgment]], etc.), [[Evil Hero Infernal Prodigy]]'s effect does not activate during the End Phase."
+    }
+]

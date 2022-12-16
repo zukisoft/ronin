@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "OxqiIX7gSEudeYEOinhyyA==",
+        "sequence": 1,
+        "ruling": "- When you Special Summon a Fiend-Type Fusion Monster with [[Dark Fusion]] and during the same turn control of the Fiend-Type Fusion Monster is shifted to your opponent (with [[Creature Swap]], etc.), your opponent still cannot target that Fiend-Type Fusion Monster with the effects of Spell, Trap, or Monster Cards until the end of the turn, even though they now control the Fiend-Type Fusion Monster."
+    },
+    {
+        "cardid": "OxqiIX7gSEudeYEOinhyyA==",
+        "sequence": 2,
+        "ruling": "- If the Fiend-Type Fusion Monster Fusion Summoned by [[Dark Fusion]] is sent to the Graveyard, the effect that prevents it from being targeted by the opponent's Spell, Trap, and Monster Card effects is no longer applied."
+    },
+    {
+        "cardid": "OxqiIX7gSEudeYEOinhyyA==",
+        "sequence": 3,
+        "ruling": "- If the Fiend-Type Fusion Monster Fusion Summoned by [[Dark Fusion]] is flipped face-down, the effect that prevents it from being targeted by the opponent's Spell, Trap, and Monster Card effects is no longer applied."
+    }
+]

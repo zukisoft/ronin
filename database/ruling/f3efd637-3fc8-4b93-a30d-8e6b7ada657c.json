@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "N9bv88g/k0ujDY5retplfA==",
+        "sequence": 1,
+        "ruling": "- The \"Gladiator Beast\" monster Special Summoned by [[Gladiator Beast Darius]] is continually targeted by its effect."
+    },
+    {
+        "cardid": "N9bv88g/k0ujDY5retplfA==",
+        "sequence": 2,
+        "ruling": "- Returning the Special Summoned \"Gladiator Beast\" monster to the Deck does not start a Chain."
+    },
+    {
+        "cardid": "N9bv88g/k0ujDY5retplfA==",
+        "sequence": 3,
+        "ruling": "- If the Special Summoned \"Gladiator Beast\" attacks or is attacked, it can be returned to the Deck to activate its effect, but the effect will be negated by [[Gladiator Beast Darius]]."
+    },
+    {
+        "cardid": "N9bv88g/k0ujDY5retplfA==",
+        "sequence": 4,
+        "ruling": "- While [[Skill Drain]] is active, if [[Gladiator Beast Darius]] is removed from the field, the Special Summoned \"Gladiator Beast\" monster will remain on the field. If the Special Summoned \"Gladiator Beast\" monster attacks or is attacked, and it is returned to the Deck to activate its effect, the effect will not be negated because [[Gladiator Beast Darius]]' effects are being negated by [[Skill Drain]]."
+    },
+    {
+        "cardid": "N9bv88g/k0ujDY5retplfA==",
+        "sequence": 5,
+        "ruling": "- When [[Gladiator Beast Darius]] is flipped face-down, its effect disappears and the effects of the Special Summoned \"Gladiator Beast\" monster are no longer negated. If [[Gladiator Beast Darius]] is removed from the field while face-down, the Special Summoned \"Gladiator Beast\" monster will not be returned to the Deck."
+    },
+    {
+        "cardid": "N9bv88g/k0ujDY5retplfA==",
+        "sequence": 6,
+        "ruling": "- If [[Bottomless Trap Hole]] is chained when [[Gladiator Beast Darius]] is Special Summoned and activates its effect, the selected \"Gladiator Beast\" monster is still Special Summoned and its effects are negated."
+    }
+]

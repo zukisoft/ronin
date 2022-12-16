@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "N8LaS86gnEiLdFIwLga8Wg==",
+        "sequence": 1,
+        "ruling": "- [[Solemn Judgment]] cannot negate a Special Summon if it results from the activated effect of a monster card, like [[Mystic Tomato]], [[Light and Darkness Dragon]], [[Van'Dalgyon the Dark Dragon Lord]], [[Marauding Captain]], [[Lonefire Blossom]], etc."
+    },
+    {
+        "cardid": "N8LaS86gnEiLdFIwLga8Wg==",
+        "sequence": 2,
+        "ruling": "- [[Solemn Judgment]] can negate the Special Summon of a monster that is Special Summoned through its own inherent Special Summon effect that does not start a Chain, like [[Cyber Dragon]], [[The Fiend Megacyber]], [[Dark Necrofear]], [[Dark Armed Dragon]], [[Judgment Dragon]], [[Gladiator Beast Gyzarus]], [[Elemental Hero Storm Neos]], etc."
+    },
+    {
+        "cardid": "N8LaS86gnEiLdFIwLga8Wg==",
+        "sequence": 3,
+        "ruling": "- You cannot negate the Special Summon of a monster after it is Special Summoned with a Spell or Trap Card, but you can use [[Solemn Judgment]] to negate the activation of the Spell or Trap Card."
+    },
+    {
+        "cardid": "N8LaS86gnEiLdFIwLga8Wg==",
+        "sequence": 4,
+        "ruling": "- If halving your Life Points results in a fraction, your Life Points are rounded up."
+    },
+    {
+        "cardid": "N8LaS86gnEiLdFIwLga8Wg==",
+        "sequence": 5,
+        "ruling": "- [[Solemn Judgment]] does not target the card it will destroy."
+    }
+]

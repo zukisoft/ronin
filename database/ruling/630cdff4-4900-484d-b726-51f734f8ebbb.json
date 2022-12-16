@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "9N8MYwBJTUi3JlH3NPjruw==",
+        "sequence": 1,
+        "ruling": "- A marker may be placed on this card to indicate that its effect has been used.  The effect resets if the monster is destroyed or removed from the field."
+    },
+    {
+        "cardid": "9N8MYwBJTUi3JlH3NPjruw==",
+        "sequence": 2,
+        "ruling": "- You can use the effect of this card even if it is face-down when it is attacked because its effect is activated during the Damage Step, and it will be face-up at that point."
+    },
+    {
+        "cardid": "9N8MYwBJTUi3JlH3NPjruw==",
+        "sequence": 3,
+        "ruling": "- The effect of this card targets."
+    }
+]

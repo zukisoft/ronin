@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "IbAM14LEfkasg6L/D8UuvQ==",
+        "sequence": 1,
+        "ruling": "- [[D.D. Crow]]'s effect is a Quick Effect."
+    },
+    {
+        "cardid": "IbAM14LEfkasg6L/D8UuvQ==",
+        "sequence": 2,
+        "ruling": "- Discarding [[D.D. Crow]] to activate its effect is a cost."
+    },
+    {
+        "cardid": "IbAM14LEfkasg6L/D8UuvQ==",
+        "sequence": 3,
+        "ruling": "- You cannot activate this effect during the Damage Step."
+    }
+]

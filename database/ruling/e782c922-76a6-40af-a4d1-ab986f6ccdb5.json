@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "IsmC56Z2r0Ck0auYb2zNtQ==",
+        "sequence": 1,
+        "ruling": "- Reveal the drawn DARK monster when you activate the effect of [[Veil of Darkness]]. That DARK monster is sent to the Graveyard when the effect is resolved."
+    },
+    {
+        "cardid": "IsmC56Z2r0Ck0auYb2zNtQ==",
+        "sequence": 2,
+        "ruling": "- You can activate the effect of [[Veil of Darkness]] when you draw a DARK monster with a card effect during your Draw Phase."
+    },
+    {
+        "cardid": "IsmC56Z2r0Ck0auYb2zNtQ==",
+        "sequence": 3,
+        "ruling": "- When you draw a DARK monster with the effect of [[Veil of Darkness]], you can reveal the drawn DARK monster to activate the effect of [[Veil of Darkness]]' again."
+    },
+    {
+        "cardid": "IsmC56Z2r0Ck0auYb2zNtQ==",
+        "sequence": 4,
+        "ruling": "- [[Veil of Darkness]]' effect can only be activated during your own Draw Phase."
+    }
+]

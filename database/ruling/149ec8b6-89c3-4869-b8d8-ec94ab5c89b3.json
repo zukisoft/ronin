@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "tsieFMOJaUi42OyUq1yJsw==",
+        "sequence": 1,
+        "ruling": "- [[Herald of Purple Light]]'s effect is a Quick Effect so it can be activated during the Damage Step. Since it has a Spell Speed of 2 it cannot be chained to the activation of a Counter Trap Card."
+    },
+    {
+        "cardid": "tsieFMOJaUi42OyUq1yJsw==",
+        "sequence": 2,
+        "ruling": "- If [[Banisher of the Radiance]] or [[Macro Cosmos]] is face-up on the field you cannot activate [[Herald of Purple Light]]'s effect because you cannot send it and another Fairy-Type monster to the Graveyard for the cost."
+    },
+    {
+        "cardid": "tsieFMOJaUi42OyUq1yJsw==",
+        "sequence": 3,
+        "ruling": "- [[Herald of Purple Light]]'s effect will not be negated by the effect of [[The End of Anubis]] because it doesn't activate in the Graveyard."
+    }
+]

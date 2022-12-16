@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "FF4V1Xj/l0OCrfbdhWG1Jg==",
+        "sequence": 1,
+        "ruling": "- Sending [[Wave-Motion Cannon]] to the Graveyard is a cost, so when you send it to the Graveyard, it's too late for your opponent to chain [[Mystical Space Typhoon]], etc., to destroy [[Wave-Motion Cannon]], because [[Wave-Motion Cannon]] is already in the Graveyard."
+    },
+    {
+        "cardid": "FF4V1Xj/l0OCrfbdhWG1Jg==",
+        "sequence": 2,
+        "ruling": "- Your opponent cannot chain [[Magic Jammer]], or use [[Dark Paladin]], etc., when you send [[Wave-Motion Cannon]] from the field to the Graveyard. Your opponent CAN chain [[Magic Jammer]] or use [[Dark Paladin]], etc., when you first activate [[Wave-Motion Cannon]] (meaning when you place it face-up on the field)."
+    },
+    {
+        "cardid": "FF4V1Xj/l0OCrfbdhWG1Jg==",
+        "sequence": 3,
+        "ruling": "- If [[Imperial Order]] is active on the field, count Standby Phases as normal for [[Wave-Motion Cannon]]."
+    },
+    {
+        "cardid": "FF4V1Xj/l0OCrfbdhWG1Jg==",
+        "sequence": 4,
+        "ruling": "- You can activate [[Wave-Motion Cannon]] (place it face-up on the field) and send it to the Graveyard during the same turn, but it will not do any damage."
+    },
+    {
+        "cardid": "FF4V1Xj/l0OCrfbdhWG1Jg==",
+        "sequence": 5,
+        "ruling": "- If the Standby Phase is skipped with [[Solomon's Lawbook]] or the turn is skipped with [[Gamble]], increase the count for [[Wave-Motion Cannon]] anyway."
+    },
+    {
+        "cardid": "FF4V1Xj/l0OCrfbdhWG1Jg==",
+        "sequence": 6,
+        "ruling": "- You cannot use [[Pyro Clock of Destiny]] with [[Wave-Motion Cannon]]."
+    }
+]

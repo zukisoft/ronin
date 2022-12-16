@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "N+qjE/ZP7Uaz8q9oXpZlsw==",
+        "sequence": 1,
+        "ruling": "- [[Call of the Earthbound]] does not target. You decide which monster your opponent's attacking monster will attack when resolving [[Call of the Earthbound]]."
+    },
+    {
+        "cardid": "N+qjE/ZP7Uaz8q9oXpZlsw==",
+        "sequence": 2,
+        "ruling": "- If [[Call of the Earthbound]] is chained to [[Astral Barrier]], [[Astral Barrier]] is applied. If [[Astral Barrier]] is chained to [[Call of the Earthbound]], [[Call of the Earthbound]] is applied."
+    },
+    {
+        "cardid": "N+qjE/ZP7Uaz8q9oXpZlsw==",
+        "sequence": 3,
+        "ruling": "- When multiple [[Call of the Earthbound]]s are chained, only the last to resolve is applied."
+    },
+    {
+        "cardid": "N+qjE/ZP7Uaz8q9oXpZlsw==",
+        "sequence": 4,
+        "ruling": "- You can select the same monster your opponent had already declared as the attack target."
+    },
+    {
+        "cardid": "N+qjE/ZP7Uaz8q9oXpZlsw==",
+        "sequence": 5,
+        "ruling": "- The new attack target that you select must be a legal target for the attack. For example, you cannot change the attack target to one of your opponent's monsters."
+    }
+]

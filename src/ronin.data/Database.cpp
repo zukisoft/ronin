@@ -400,9 +400,6 @@ Database::Database(SQLiteSafeHandle^ handle) : m_handle(handle)
 	// Ensure that the static initialization completed successfully
 	if(s_result != SQLITE_OK)
 		throw gcnew Exception("Static initialization failed", gcnew SQLiteException(s_result));
-
-	// Initialize the database instance
-	InitializeInstance(handle);
 }
 
 //---------------------------------------------------------------------------
@@ -414,43 +411,6 @@ Database::~Database()
 
 	delete m_handle;					// Release the safe handle
 	m_disposed = true;					// Object is now in a disposed state
-}
-
-//---------------------------------------------------------------------------
-// Database::Create (static)
-//
-// Creates a new database file and opens it
-//
-// Arguments:
-//
-//	path		- Path on which to create a new database file
-
-Database^ Database::Create(String^ path)
-{
-	sqlite3* instance = nullptr;
-
-	if(CLRISNULL(path)) throw gcnew ArgumentNullException("path");
-
-	// Canonicalize the path to prevent traversal
-	path = Path::GetFullPath(path);
-
-	// Attempt to create or open the database at the specified path
-	// (sqlite3_open16() implies SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE)
-	pin_ptr<wchar_t const> pinpath = PtrToStringChars(path);
-	int result = sqlite3_open16(pinpath, &instance);
-	if(result != SQLITE_OK) {
-
-		if(instance != nullptr) sqlite3_close(instance);
-		throw gcnew SQLiteException(result);
-	}
-
-	// Create the safe handle wrapper around the sqlite3*
-	SQLiteSafeHandle^ handle = gcnew SQLiteSafeHandle(std::move(instance));
-	CLRASSERT(instance == nullptr);
-	
-	// Delete the safe handle on a construction failure
-	try { return gcnew Database(handle); }
-	catch(Exception^) { delete handle; throw; }
 }
 
 //---------------------------------------------------------------------------
@@ -1236,7 +1196,7 @@ ArtworkId^ Database::InsertArtwork(CardId^ cardid, String^ format, int width, in
 
 		// Execute the query; no rows are expected to be returned
 		result = sqlite3_step(statement);
-		if(result != SQLITE_DONE) SQLiteException(result, sqlite3_errmsg(instance));
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 	}
 
 	finally { sqlite3_finalize(statement); }
@@ -1291,6 +1251,9 @@ Database^ Database::Open(String^ path, bool readonly)
 	// Create the safe handle wrapper around the sqlite3*
 	SQLiteSafeHandle^ handle = gcnew SQLiteSafeHandle(std::move(instance));
 	CLRASSERT(instance == nullptr);
+
+	// Initialize the database instance
+	InitializeInstance(handle);
 
 	// Delete the safe handle on a construction failure
 	try { return gcnew Database(handle); }
@@ -1744,7 +1707,7 @@ void Database::UpdateArtwork(ArtworkId^ artworkid, String^ format, int width, in
 
 		// Execute the query; no rows are expected to be returned
 		result = sqlite3_step(statement);
-		if(result != SQLITE_DONE) SQLiteException(result, sqlite3_errmsg(instance));
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 	}
 
 	finally { sqlite3_finalize(statement); }
@@ -1792,7 +1755,7 @@ void Database::UpdateCardText(CardId^ cardid, String^ text)
 
 		// Execute the query; no rows are expected to be returned
 		result = sqlite3_step(statement);
-		if(result != SQLITE_DONE) SQLiteException(result, sqlite3_errmsg(instance));
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 	}
 
 	finally { sqlite3_finalize(statement); }
@@ -1843,7 +1806,7 @@ void Database::UpdateDefaultArtwork(CardId^ cardid, ArtworkId^ artworkid)
 
 		// Execute the query; no rows are expected to be returned
 		result = sqlite3_step(statement);
-		if(result != SQLITE_DONE) SQLiteException(result, sqlite3_errmsg(instance));
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 	}
 
 	finally { sqlite3_finalize(statement); }

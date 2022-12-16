@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "r/7LHzKA/EaPVCus/JHB+w==",
+        "sequence": 1,
+        "ruling": "- The total ATK of the monster is doubled, including any ATK increases/decreases from other effects."
+    },
+    {
+        "cardid": "r/7LHzKA/EaPVCus/JHB+w==",
+        "sequence": 2,
+        "ruling": "- When a monster's ATK is doubled with [[Limiter Removal]] and another [[Limiter Removal]] is activated, the ATK created by the first [[Limiter Removal]] is doubled by the second [[Limiter Removal]]."
+    },
+    {
+        "cardid": "r/7LHzKA/EaPVCus/JHB+w==",
+        "sequence": 3,
+        "ruling": "- Machine-Type monsters Summoned after [[Limiter Removal]] resolves are unaffected and are not destroyed during the End Phase."
+    },
+    {
+        "cardid": "r/7LHzKA/EaPVCus/JHB+w==",
+        "sequence": 4,
+        "ruling": "- If an affected monster is flipped face-down or becomes an Equip Card, it is not destroyed in the End Phase."
+    },
+    {
+        "cardid": "r/7LHzKA/EaPVCus/JHB+w==",
+        "sequence": 5,
+        "ruling": "- If a Machine-Type monster's ATK is doubled with [[Limiter Removal]] and afterwards its Monster Type is changed, it is still destroyed in the End Phase."
+    }
+]

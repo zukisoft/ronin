@@ -60,11 +60,6 @@ public:
 	//-----------------------------------------------------------------------
 	// Member Functions
 
-	// Create
-	//
-	// Creates a new database instance
-	static Database^ Create(String^ path);
-
 	// EnumerateArtwork
 	//
 	// Enumerates Artwork from the database
@@ -90,6 +85,11 @@ public:
 	//
 	// Exports the database into flat files for storage
 	void Export(String^ path);
+
+	// Import
+	//
+	// Creates a new database instance via import
+	static Database^ Import(String^ path, String^ outputfile);
 
 	// Open
 	//

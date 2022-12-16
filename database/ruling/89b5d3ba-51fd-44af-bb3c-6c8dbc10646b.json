@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "utO1if1Rr0S7PGyNvBBkaw==",
+        "sequence": 1,
+        "ruling": "- [[All-Out Attacks]] starts a Chain whenever a monster is Special Summoned, even if the monster is Special Summoned in Attack Position."
+    },
+    {
+        "cardid": "utO1if1Rr0S7PGyNvBBkaw==",
+        "sequence": 2,
+        "ruling": "- Monsters that are Special Summoned face-down are also changed to face-up Attack Position."
+    },
+    {
+        "cardid": "utO1if1Rr0S7PGyNvBBkaw==",
+        "sequence": 3,
+        "ruling": "- If [[All-Out Attacks]] is activated when a monster is Special Summoned, its effect is not applied because it must already be face-up on the field at the time the monster is Special Summoned."
+    }
+]

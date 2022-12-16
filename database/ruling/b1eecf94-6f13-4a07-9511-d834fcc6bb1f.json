@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "lM/usRNvB0qVEdg0/Ma7Hw==",
+        "sequence": 1,
+        "ruling": "- When [[Destiny Hero - Departed]] is sent to the Graveyard to pay a cost, it is not removed from play."
+    },
+    {
+        "cardid": "lM/usRNvB0qVEdg0/Ma7Hw==",
+        "sequence": 2,
+        "ruling": "- [[Destiny Hero - Departed]]'s first effect is a Trigger Effect. It is not optional."
+    },
+    {
+        "cardid": "lM/usRNvB0qVEdg0/Ma7Hw==",
+        "sequence": 3,
+        "ruling": "- [[Destiny Hero - Departed]]'s effect is not activated while [[King Tiger Wanghu]] is face-up on the field because an infinite loop would result. If [[Destiny Hero - Departed]]'s ATK would become greater than 1400 when Special Summoned, because of another card's effect, it is Special Summoned."
+    }
+]

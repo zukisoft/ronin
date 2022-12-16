@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "auQqSzF0eEmpGZ+ma6KebQ==",
+        "sequence": 1,
+        "ruling": "- This card's effect is a Trigger Effect that activates at the end of the Damage Step."
+    },
+    {
+        "cardid": "auQqSzF0eEmpGZ+ma6KebQ==",
+        "sequence": 2,
+        "ruling": "- If [[Chainsaw Insect]] battles, your opponent draws 1 card even if [[Chainsaw Insect]] is destroyed as a result of the battle, or is removed from the field before the end of the Damage Step (for example, by the effect of [[Man-Eater Bug]] or [[Begone, Knave!]])."
+    },
+    {
+        "cardid": "auQqSzF0eEmpGZ+ma6KebQ==",
+        "sequence": 3,
+        "ruling": "- If your opponent controls your [[Chainsaw Insect]] and it is destroyed as a result of battle, it will be sent to your Graveyard before the end of the Damage Step and its effect will activate there. So when its effect activates, since it is in your Graveyard, your opponent (who controlled it during the battle) will draw the 1 card."
+    },
+    {
+        "cardid": "auQqSzF0eEmpGZ+ma6KebQ==",
+        "sequence": 4,
+        "ruling": "- If your face-down [[Chainsaw Insect]] is attacked, its effect will still activate."
+    },
+    {
+        "cardid": "auQqSzF0eEmpGZ+ma6KebQ==",
+        "sequence": 5,
+        "ruling": "- If your Defense Position [[Chainsaw Insect]] is attacked by [[Drillroid]], damage calculation is not conducted, so [[Chainsaw Insect]] did not battle and its effect will not activate."
+    },
+    {
+        "cardid": "auQqSzF0eEmpGZ+ma6KebQ==",
+        "sequence": 6,
+        "ruling": "- If [[Skill Drain]] is active, your opponent will not get to draw, unless [[Chainsaw Insect]] is destroyed in the battle, then its effect will activate in the Graveyard and your opponent will draw 1 card."
+    }
+]

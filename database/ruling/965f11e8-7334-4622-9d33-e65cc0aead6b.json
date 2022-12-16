@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "6BFfljRzIkadM+ZcwK6taw==",
+        "sequence": 1,
+        "ruling": "- If your monster in Defense Position is attacked by a monster with equal ATK to your monster's ATK, your Defense Position monster will not be destroyed even if its DEF was lower than the attacking monster's ATK."
+    },
+    {
+        "cardid": "6BFfljRzIkadM+ZcwK6taw==",
+        "sequence": 2,
+        "ruling": "- When [[Spear Dragon]] attacks a Defense Position monster with equal ATK to [[Spear Dragon]], perform damage calculation normally even though the Defense Position monster is not destroyed."
+    }
+]

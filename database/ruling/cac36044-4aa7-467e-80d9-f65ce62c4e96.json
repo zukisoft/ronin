@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "RGDDyqdKfkaA2fZc5ixOlg==",
+        "sequence": 1,
+        "ruling": "- You can only activate [[Sasuke Samurai #2]]'s effect during your Main Phase 1 or 2 because it's an Ignition Effect."
+    },
+    {
+        "cardid": "RGDDyqdKfkaA2fZc5ixOlg==",
+        "sequence": 2,
+        "ruling": "- You can only activate [[Sasuke Samurai #2]]'s effect once per turn."
+    },
+    {
+        "cardid": "RGDDyqdKfkaA2fZc5ixOlg==",
+        "sequence": 3,
+        "ruling": "- The effect of [[Sasuke Samurai #2]] stops in the End Phase, and after the effect ends, you can activate Trap Cards or Quick-Play Spell Cards during the remainder of the End Phase."
+    },
+    {
+        "cardid": "RGDDyqdKfkaA2fZc5ixOlg==",
+        "sequence": 4,
+        "ruling": "- While [[Sasuke Samurai #2]]'s effect is active, you can't activate the effects of cards that activate in the Graveyard like [[Black Pendant]] and [[Statue of the Wicked]]."
+    },
+    {
+        "cardid": "RGDDyqdKfkaA2fZc5ixOlg==",
+        "sequence": 5,
+        "ruling": "- You cannot activate the effects of Continuous cards like [[Skull Lair]], [[Ultimate Offering]], or [[Mass Driver]] while [[Sasuke Samurai #2]]'s effect is active."
+    }
+]

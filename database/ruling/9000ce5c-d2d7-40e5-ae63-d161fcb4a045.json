@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "XM4AkNfS5UCuY9Fh/LSgRQ==",
+        "sequence": 1,
+        "ruling": "- Sending a monster to the Graveyard for [[Altar for Tribute]] is a cost."
+    },
+    {
+        "cardid": "XM4AkNfS5UCuY9Fh/LSgRQ==",
+        "sequence": 2,
+        "ruling": "- You can select a Token Monster as the cost for [[Altar for Tribute]], but you won't gain any Life Points because Tokens are taken off the field instead of going to the Graveyard."
+    },
+    {
+        "cardid": "XM4AkNfS5UCuY9Fh/LSgRQ==",
+        "sequence": 3,
+        "ruling": "- You can send your opponent's monster that you control to the Graveyard as the cost for [[Altar for Tribute]], and you would gain the Life Points."
+    }
+]

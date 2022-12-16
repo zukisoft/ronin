@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "cYBtBAdZbEOcgOyCsrgzXw==",
+        "sequence": 1,
+        "ruling": "- If [[Ante]] is the only card in your hand, you cannot activate it."
+    },
+    {
+        "cardid": "cYBtBAdZbEOcgOyCsrgzXw==",
+        "sequence": 2,
+        "ruling": "- If your opponent has no cards in their hand, you cannot activate [[Ante]]."
+    },
+    {
+        "cardid": "cYBtBAdZbEOcgOyCsrgzXw==",
+        "sequence": 3,
+        "ruling": "- You select cards at the resolution of [[Ante]]'s effect, not at [[Ante]]'s activation."
+    },
+    {
+        "cardid": "cYBtBAdZbEOcgOyCsrgzXw==",
+        "sequence": 4,
+        "ruling": "- You cannot chain [[Barrel Behind the Door]] to [[Ante]] because you don't know for certain whether you will take damage."
+    },
+    {
+        "cardid": "cYBtBAdZbEOcgOyCsrgzXw==",
+        "sequence": 5,
+        "ruling": "- If either player chains [[Raigeki Break]] or [[Last Turn]] to [[Ante]] and then has no cards at resolution of [[Ante]]'s effect, [[Ante]]'s effect disappears."
+    },
+    {
+        "cardid": "cYBtBAdZbEOcgOyCsrgzXw==",
+        "sequence": 6,
+        "ruling": "- When [[A Legendary Ocean]] is active and you activate [[Ante]], when you check the Level, treat the Levels of WATER monsters in the hand as 1 lower for purposes of [[Ante]]."
+    }
+]

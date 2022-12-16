@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "MCKKrMCnNEiASu+5bykarA==",
+        "sequence": 1,
+        "ruling": "- When determining if a monster's effect should be negated by [[Shadow-Imprisoning Mirror]], check the monster's Attribute at the time its effect is resolved."
+    },
+    {
+        "cardid": "MCKKrMCnNEiASu+5bykarA==",
+        "sequence": 2,
+        "ruling": "- When a Non-DARK monster's effect is activated while the monster and [[Shadow-Imprisoning Mirror]] are both face-up on the field, if you chain [[DNA Transplant]] and select DARK, the monster's effect will be negated if the monster is still face-up on the field when its effect resolves because it is now a DARK monster."
+    },
+    {
+        "cardid": "MCKKrMCnNEiASu+5bykarA==",
+        "sequence": 3,
+        "ruling": "- [[Shadow-Imprisoning Mirror]] cannot negate the Continuous Effects of DARK monsters."
+    }
+]

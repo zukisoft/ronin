@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "3JY9eGM8YEqV5Y534e8IMQ==",
+        "sequence": 1,
+        "ruling": "- The effect of this monster prevents the activation of Trap Cards that can be activated when a monster is Normal Summoned, such as [[Trap Hole]] and [[Torrential Tribute]]."
+    },
+    {
+        "cardid": "3JY9eGM8YEqV5Y534e8IMQ==",
+        "sequence": 2,
+        "ruling": "- You can activate Trap Cards later in the turn."
+    },
+    {
+        "cardid": "3JY9eGM8YEqV5Y534e8IMQ==",
+        "sequence": 3,
+        "ruling": "- You can negate the Normal Summon of this monsters with [[Horn of Heaven]] or [[Solemn Judgment]]. (In which case the Normal Summon failed and the effect of the monster is not applied.)"
+    },
+    {
+        "cardid": "3JY9eGM8YEqV5Y534e8IMQ==",
+        "sequence": 4,
+        "ruling": "- The effect of this monster is applied to both players (so you cannot activate [[Pineapple Blast]] in response to your Normal Summon of this monster)."
+    },
+    {
+        "cardid": "3JY9eGM8YEqV5Y534e8IMQ==",
+        "sequence": 5,
+        "ruling": "- This is a Continuous Effect that you cannot chain to."
+    }
+]

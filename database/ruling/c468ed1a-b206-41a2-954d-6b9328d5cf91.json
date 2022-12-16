@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "Gu1oxAayokGVTWuTKNXPkQ==",
+        "sequence": 1,
+        "ruling": "- This card's effect to place a Venom Counter on each face-up monster starts a Chain."
+    },
+    {
+        "cardid": "Gu1oxAayokGVTWuTKNXPkQ==",
+        "sequence": 2,
+        "ruling": "- This card's effect to destroy a monster whose ATK is reduced to 0 does not start a Chain."
+    },
+    {
+        "cardid": "Gu1oxAayokGVTWuTKNXPkQ==",
+        "sequence": 3,
+        "ruling": "- If a monster's original ATK is 0, or its ATK has been reduced to 0 by another card effect(s) and a Venom Counter is placed on it, it will not be destroyed by [[Venom Swamp]]."
+    },
+    {
+        "cardid": "Gu1oxAayokGVTWuTKNXPkQ==",
+        "sequence": 4,
+        "ruling": "- If [[Venom Swamp]] is negated by [[Imperial Order]], etc., Venom Counters placed by its effect remain in play."
+    }
+]

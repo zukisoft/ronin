@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "jOwaumg2ik+vz9hZSyomlA==",
+        "sequence": 1,
+        "ruling": "- If you have three [[7]]s and destroy them all, you get 2100 Life Points."
+    },
+    {
+        "cardid": "jOwaumg2ik+vz9hZSyomlA==",
+        "sequence": 2,
+        "ruling": "- If your opponent also has [[7]]s, they are also destroyed."
+    },
+    {
+        "cardid": "jOwaumg2ik+vz9hZSyomlA==",
+        "sequence": 3,
+        "ruling": "- If you have three [[7]]s and activate their effect, your opponent can chain [[Imperial Order]] to negate the effect."
+    },
+    {
+        "cardid": "jOwaumg2ik+vz9hZSyomlA==",
+        "sequence": 4,
+        "ruling": "- Each effect of [[7]] that gives you 700 Life Points goes on a chain, so if multiple [[7]]s are sent to the Graveyard simultaneously, each effect is 1 step in the chain."
+    },
+    {
+        "cardid": "jOwaumg2ik+vz9hZSyomlA==",
+        "sequence": 5,
+        "ruling": "- If other cards are also sent to the Graveyard at the same time, like [[Sangan]] or [[Black Pendant]], the card controlled by the turn player is Step 1."
+    },
+    {
+        "cardid": "jOwaumg2ik+vz9hZSyomlA==",
+        "sequence": 6,
+        "ruling": "- If your third [[7]] is activated, but destroyed by [[Mystical Space Typhoon]] in a chain, you can't activate its effect, but you still gain 700 Life Points for its Graveyard effect."
+    }
+]

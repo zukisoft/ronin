@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "+njX+IP/TEGQvvsWoPCwjA==",
+        "sequence": 1,
+        "ruling": "- The damage dealt by this card's effect is Effect Damage, not Battle Damage."
+    },
+    {
+        "cardid": "+njX+IP/TEGQvvsWoPCwjA==",
+        "sequence": 2,
+        "ruling": "- This card's effect is a Trigger Effect. It activates in the Graveyard."
+    },
+    {
+        "cardid": "+njX+IP/TEGQvvsWoPCwjA==",
+        "sequence": 3,
+        "ruling": "- If your opponent takes control of your [[Chthonian Soldier]] with [[Snatch Steal]] and you attack it next turn, its effect will not activate because when it is sent to your Graveyard, it was not your opponent's monster that attacked it."
+    }
+]

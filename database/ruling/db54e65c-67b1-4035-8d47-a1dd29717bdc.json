@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "XOZU27FnNUCNR6HdKXF73A==",
+        "sequence": 1,
+        "ruling": "- A Field Spell Card or similar effect will adjust the ATK/DEF of [[Cyber Shadow Gardna]] accordingly after it copies the ATK & DEF of another monster."
+    },
+    {
+        "cardid": "XOZU27FnNUCNR6HdKXF73A==",
+        "sequence": 2,
+        "ruling": "- You cannot chain to the effect of [[Cyber Shadow Gardna]] that copies another monster's ATK & DEF."
+    },
+    {
+        "cardid": "XOZU27FnNUCNR6HdKXF73A==",
+        "sequence": 3,
+        "ruling": "- [[Light of Intervention]] only stops you from Setting monsters. Since the final effect of [[Cyber Shadow Gardna]] Sets it as a Trap Card, this effect will still happen even if [[Light of Intervention]] is active."
+    },
+    {
+        "cardid": "XOZU27FnNUCNR6HdKXF73A==",
+        "sequence": 4,
+        "ruling": "- If you use [[Limiter Removal]] on your [[Cyber Shadow Gardna]], both effects (destroy it because of [[Limiter Removal]], and change it back into a Trap Card by its own effect) happen during the End Phase in the order of the controller's preference."
+    }
+]

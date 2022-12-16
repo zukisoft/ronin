@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "P5M045auVEelre+HBSuEOg==",
+        "sequence": 1,
+        "ruling": "- When you activate [[Lyla, Lightsworn Sorceress]]' effect to destroy 1 Spell or Trap Card, it is changed to Defense Position when the effect resolves. It is not a cost to activate this effect."
+    },
+    {
+        "cardid": "P5M045auVEelre+HBSuEOg==",
+        "sequence": 2,
+        "ruling": "- This effect targets 1 Spell or Trap Card your opponent controls."
+    },
+    {
+        "cardid": "P5M045auVEelre+HBSuEOg==",
+        "sequence": 3,
+        "ruling": "- If you activate [[Lyla, Lightsworn Sorceress]]' effect while [[Final Attack Orders]] is active, [[Lyla, Lightsworn Sorceress]] will be changed to Attack Position after resolving its effect and its effect can be activated again."
+    },
+    {
+        "cardid": "P5M045auVEelre+HBSuEOg==",
+        "sequence": 4,
+        "ruling": "- If you activate [[Lyla, Lightsworn Sorceress]]' effect and an effect is chained that shifts [[Lyla, Lightsworn Sorceress]] into Defense Position or removes it from the field, its effect disappears."
+    },
+    {
+        "cardid": "P5M045auVEelre+HBSuEOg==",
+        "sequence": 5,
+        "ruling": "- See [[Jain, Lightsworn Paladin]] for additional rulings."
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 1,
+        "ruling": "- [[Asura Priest]] may attack directly if it has not already attacked a monster this turn."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 2,
+        "ruling": "- [[Asura Priest]] cannot attack a monster if it has already attacked directly this turn. For example, the opponent activates [[Call of the Haunted]] or [[Scapegoat]] after [[Asura Priest]] has completed a direct attack."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 3,
+        "ruling": "- [[Asura Priest]] may attack each monster only once. If the opponent controls [[Spirit Reaper]] you cannot continually attack it."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 4,
+        "ruling": "- When cards like [[Gravekeeper's Servant]] or [[Toll]] are active on the field, you must pay each time [[Asura Priest]] attacks."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 5,
+        "ruling": "- [[Asura Priest]] attacks each monster one a time. Resolve the battle with one monster before declaring an attack on another monster."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 6,
+        "ruling": "- [[Asura Priest]] does not have to attack all monsters on your opponent's side of the field. If your opponent controls 3 monsters, you may choose to attack only 2 of them."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 7,
+        "ruling": "- When [[Asura Priest]] attacks and destroys [[Giant Rat]] or [[Masked Dragon]], you may then attack the monster Special Summoned by the effect of those monsters."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 8,
+        "ruling": "- If [[Asura Priest]] attacks a monster and your opponent activates [[Magic Cylinder]] to negate the attack, [[Asura Priest]] can attack that same monster again."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 9,
+        "ruling": "- If your opponent has [[Patrician of Darkness]] on the field they can choose the same monster as the attack target of [[Asura Priest]] each time you declare an attack with it. (For example, redirect all of your [[Asura Priest]] attacks at [[Spirit Reaper]] instead.)"
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 10,
+        "ruling": "- After [[Asura Priest]] has attacked monsters, other monsters you control may still attack directly."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 11,
+        "ruling": "- [[Asura Priest]] can attack each monster once during the same Battle Phase. These attacks do not have to be all in a row. For example, you can attack monsters with [[Asura Priest]], then attack with another monster, and [[Asura Priest]] can still attack again as long as it attacks a monster it has not attacked yet."
+    },
+    {
+        "cardid": "WJ3URv77mEqF9ZIJbiVDOA==",
+        "sequence": 12,
+        "ruling": "- When [[Asura Priest]] attacks your opponent's only monster, if the monster is removed from the field in the battle step, a replay occurs. Since Asura Priest never battled with a monster it can attack directly."
+    }
+]

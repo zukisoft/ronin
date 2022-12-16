@@ -1,0 +1,22 @@
+[
+    {
+        "cardid": "VWRyEzmFCE2Q9Npwo+YclQ==",
+        "sequence": 1,
+        "ruling": "- You choose if you will destroy a card when [[Ryko, Lightsworn Hunter]]'s effect activates. If you choose to destroy a card, this effect targets the card to be destroyed.."
+    },
+    {
+        "cardid": "VWRyEzmFCE2Q9Npwo+YclQ==",
+        "sequence": 2,
+        "ruling": "- You must send 3 cards from the top of your Deck to your Graveyard even if you do not destroy a card with [[Ryko, Lightsworn Hunter]]'s effect."
+    },
+    {
+        "cardid": "VWRyEzmFCE2Q9Npwo+YclQ==",
+        "sequence": 3,
+        "ruling": "- If you have 2 or fewer cards remaining in your Deck, they are sent to the Graveyard."
+    },
+    {
+        "cardid": "VWRyEzmFCE2Q9Npwo+YclQ==",
+        "sequence": 4,
+        "ruling": "- If [[Peten the Dark Clown]] is destroyed by [[Ryko, Lightsworn Hunter]], its effect cannot be activated. If [[Peten the Dark Clown]] is sent from the top of the Deck to the Graveyard by [[Ryko, Lightsworn Hunter]]'s effect, its effect can be activated if there are no other effects remaining on the Chain."
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "C5g8stzSBUWUI5t27IYgPA==",
+        "sequence": 1,
+        "ruling": "- [[Dark Nephthys]]' first effect is an Ignition Effect. Removing DARK monsters from play is a cost."
+    },
+    {
+        "cardid": "C5g8stzSBUWUI5t27IYgPA==",
+        "sequence": 2,
+        "ruling": "- You can activate [[Dark Nephthys]]' first effect while [[Banisher of the Light]] or [[Macro Cosmos]] is face-up, but [[Dark Nephthys]] will be removed from play."
+    },
+    {
+        "cardid": "C5g8stzSBUWUI5t27IYgPA==",
+        "sequence": 3,
+        "ruling": "- [[Dark Nephthys]] effect to Special Summon itself starts a Chain."
+    },
+    {
+        "cardid": "C5g8stzSBUWUI5t27IYgPA==",
+        "sequence": 4,
+        "ruling": "- The owner of [[Dark Nephthys]] Special Summons it, even if their opponent activated its first effect."
+    },
+    {
+        "cardid": "C5g8stzSBUWUI5t27IYgPA==",
+        "sequence": 5,
+        "ruling": "- [[Dark Nephthys]]' third effect activates whenever it is Special Summoned, including by another card's effect. It is not optional."
+    }
+]

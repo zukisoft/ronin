@@ -1,0 +1,17 @@
+[
+    {
+        "cardid": "ltCIWvTKQEOvDcSXSvYvVQ==",
+        "sequence": 1,
+        "ruling": "- If a face-down [[Gora Turtle]] is attacked by a monster with ATK higher than 1899, the attack continues and damage calculation is applied normally."
+    },
+    {
+        "cardid": "ltCIWvTKQEOvDcSXSvYvVQ==",
+        "sequence": 2,
+        "ruling": "- If [[Gora Turtle]] is face-up on your side of the field, and your opponent's monster's ATK is increased over 1899 after the declaration of the attack, the attack continues and damage calculation is applied normally."
+    },
+    {
+        "cardid": "ltCIWvTKQEOvDcSXSvYvVQ==",
+        "sequence": 3,
+        "ruling": "- If the ATK of [[Gora Turtle]] is higher than 1899, it cannot attack either."
+    }
+]

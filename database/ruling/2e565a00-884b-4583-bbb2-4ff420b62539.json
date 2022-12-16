@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "AFpWLkuIg0W7sk/0ILYlOQ==",
+        "sequence": 1,
+        "ruling": "- Putting 2 counters on [[B.E.S. Covered Core]] is a Trigger Effect that activates when it is Normal Summoned."
+    },
+    {
+        "cardid": "AFpWLkuIg0W7sk/0ILYlOQ==",
+        "sequence": 2,
+        "ruling": "- If [[B.E.S. Covered Core]] battles a monster, and afterwards you lose the coin toss, so that [[B.E.S. Covered Core]] now has no counters, it is not destroyed because it still had a counter during damage calculation."
+    }
+]

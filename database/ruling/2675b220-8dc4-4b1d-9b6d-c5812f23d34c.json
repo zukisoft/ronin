@@ -1,0 +1,12 @@
+[
+    {
+        "cardid": "ILJ1JsSNHUubbcWBLyPTTA==",
+        "sequence": 1,
+        "ruling": "- [[Ballista of Rampart Smashing]] increases the ATK at damage calculation."
+    },
+    {
+        "cardid": "ILJ1JsSNHUubbcWBLyPTTA==",
+        "sequence": 2,
+        "ruling": "- [[Ballista of Rampart Smashing]] only increases the ATK for damage calculation, then the increase disappears after the end of damage calculation."
+    }
+]

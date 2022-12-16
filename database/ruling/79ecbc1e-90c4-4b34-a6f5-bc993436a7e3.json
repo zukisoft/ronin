@@ -1,0 +1,27 @@
+[
+    {
+        "cardid": "HrzsecSQNEum9byZNDan4w==",
+        "sequence": 1,
+        "ruling": "- [[Yubel]]'s damage inflicting effect is a Trigger Effect that activates before damage calculation."
+    },
+    {
+        "cardid": "HrzsecSQNEum9byZNDan4w==",
+        "sequence": 2,
+        "ruling": "- Tributing 1 monster or destroying [[Yubel]] is a Trigger Effect that activates during your End Phase. You make your choice when the effect resolves."
+    },
+    {
+        "cardid": "HrzsecSQNEum9byZNDan4w==",
+        "sequence": 3,
+        "ruling": "- When [[Yubel]] is destroyed while in the hand or Deck, its effect activates. If it is destroyed while face-down, its effect activates."
+    },
+    {
+        "cardid": "HrzsecSQNEum9byZNDan4w==",
+        "sequence": 4,
+        "ruling": "- The owner of [[Yubel]] activates the effect. (If your opponent controls your [[Yubel]] when it is destroyed, you get the effect, not your opponent.)"
+    },
+    {
+        "cardid": "HrzsecSQNEum9byZNDan4w==",
+        "sequence": 5,
+        "ruling": "- When [[Yubel]] is destroyed during the Damage Step, its effect can be activated."
+    }
+]
