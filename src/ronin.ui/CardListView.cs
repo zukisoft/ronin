@@ -31,6 +31,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
+using zuki.ronin.ui.Properties;
 
 namespace zuki.ronin.ui
 {
@@ -172,12 +173,19 @@ namespace zuki.ronin.ui
 			// that serve as the visual separator between the items
 			var adjustedBounds = args.Bounds.InflateDPI(0, -2, ApplicationTheme.ScalingFactor);
 
-			// Can't use args.State here - known (and very old) defect in .NET
-			Brush background = new SolidBrush(args.Item.Selected ? ApplicationTheme.InvertedPanelBackColor : 
-				ApplicationTheme.PanelBackColor);
-
-			// Fill the background with a different color based on if the item is selected or not
-			args.Graphics.FillRoundedRectangle(background, adjustedBounds, 4.ScaleDPI(ApplicationTheme.ScalingFactor));
+			// Render the backdrop for the item
+			bool isdark = ApplicationTheme.DarkMode ? !args.Item.Selected : args.Item.Selected;
+			using(GraphicsPath gp = new GraphicsPath())
+			{
+				float CornerRadius = 4.ScaleDPI(ApplicationTheme.ScalingFactor) * 2.0F;
+				gp.AddArc(adjustedBounds.Left -1, adjustedBounds.Top -1, CornerRadius, CornerRadius, 180, 90);
+				gp.AddArc(adjustedBounds.Left + adjustedBounds.Width - CornerRadius, adjustedBounds.Top -1, CornerRadius, CornerRadius, 270, 90);
+				gp.AddArc(adjustedBounds.Left + adjustedBounds.Width - CornerRadius, adjustedBounds.Top + adjustedBounds.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
+				gp.AddArc(adjustedBounds.Left -1, adjustedBounds.Top + adjustedBounds.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
+				args.Graphics.SetClip(gp);
+				args.Graphics.DrawImage(SelectBackdrop((Card)args.Item.Tag, isdark), adjustedBounds);
+				args.Graphics.ResetClip();
+			}
 		}
 
 		/// <summary>
@@ -195,9 +203,9 @@ namespace zuki.ronin.ui
 			args.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
 			// TextRenderer does a better job than Graphics.DrawString, quality-wise
+			bool isdark = ApplicationTheme.DarkMode ? !args.Item.Selected : args.Item.Selected;
 			TextRenderer.DrawText(args.Graphics, args.SubItem.Text, args.SubItem.Font, adjustedBounds,
-				args.Item.Selected ? ApplicationTheme.InvertedPanelForeColor : ApplicationTheme.PanelForeColor,
-				TextFormatFlags.VerticalCenter);
+				isdark ? Color.White : Color.Black, TextFormatFlags.VerticalCenter);
 		}
 
 		/// <summary>
@@ -241,6 +249,35 @@ namespace zuki.ronin.ui
 		}
 
 		//---------------------------------------------------------------------
+		// Private Member Functions
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Selects the backdrop bitmap image for the ListView item
+		/// </summary>
+		/// <param name="card">Selected Card instance</param>
+		/// <param name="dark">Flag indicating if the dark backdrop should be used</param>
+		Bitmap SelectBackdrop(Card card, bool dark)
+		{
+			// SPELL CARD
+			if(card.Type == CardType.Spell) return dark ? s_backdrop_spell_dark : s_backdrop_spell_light;
+
+			// TRAP CARD
+			else if(card.Type == CardType.Trap) return dark ? s_backdrop_trap_dark : s_backdrop_trap_light;
+
+			// MONSTER CARD
+			else if(card is MonsterCard monster)
+			{
+				if(monster.Normal) return dark ? s_backdrop_normal_dark : s_backdrop_normal_light;
+				else if(monster.Fusion) return dark ? s_backdrop_fusion_dark : s_backdrop_fusion_light;
+				else if(monster.Ritual) return dark ? s_backdrop_ritual_dark : s_backdrop_ritual_light;
+			}
+
+			// DEFAULT: EFFECT MONSTER CARD
+			return dark ? s_backdrop_effect_dark : s_backdrop_effect_light;
+		}
+
+		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
 
@@ -248,5 +285,65 @@ namespace zuki.ronin.ui
 		/// Backing List<> for the virtual list view
 		/// </summary>
 		private readonly List<Card> m_cards = new List<Card>();
+
+		/// <summary>
+		/// Dark effect monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_effect_dark = Resources.listbackdrop_effect_dark;
+
+		/// <summary>
+		/// Dark fusion monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_fusion_dark = Resources.listbackdrop_fusion_dark;
+
+		/// <summary>
+		/// Dark normal monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_normal_dark = Resources.listbackdrop_normal_dark;
+
+		/// <summary>
+		/// Dark ritual monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_ritual_dark = Resources.listbackdrop_ritual_dark;
+
+		/// <summary>
+		/// Dark spell backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_spell_dark = Resources.listbackdrop_spell_dark;
+
+		/// <summary>
+		/// Dark trap backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_trap_dark = Resources.listbackdrop_trap_dark;
+
+		/// <summary>
+		/// Light effect monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_effect_light = Resources.listbackdrop_effect_light;
+
+		/// <summary>
+		/// Light fusion monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_fusion_light = Resources.listbackdrop_fusion_light;
+
+		/// <summary>
+		/// Light normal monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_normal_light = Resources.listbackdrop_normal_light;
+
+		/// <summary>
+		/// Light ritual monster backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_ritual_light = Resources.listbackdrop_ritual_light;
+
+		/// <summary>
+		/// Light spell backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_spell_light = Resources.listbackdrop_spell_light;
+
+		/// <summary>
+		/// Light trap backdrop
+		/// </summary>
+		private static readonly Bitmap s_backdrop_trap_light = Resources.listbackdrop_trap_light;
 	}
 }
