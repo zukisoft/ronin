@@ -77,8 +77,7 @@ namespace zuki.ronin.ui
 					NativeMethods.DWMWINDOWATTRIBUTE.DWMA_USE_IMMERSIVE_DARK_MODE_WIN10;
 
 				uint preference = enable ? 0xFFFFFFFF : 0;
-				NativeMethods.DwmSetWindowAttribute(form.Handle, NativeMethods.DWMWINDOWATTRIBUTE.DWMA_USE_IMMERSIVE_DARK_MODE,
-					ref preference, sizeof(uint));
+				NativeMethods.DwmSetWindowAttribute(form.Handle, attribute, ref preference, sizeof(uint));
 			}
 		}
 

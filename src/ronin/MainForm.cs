@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -187,7 +188,12 @@ namespace zuki.ronin
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			m_database = Database.Open(@"d:\ronin.db");
+			// TODO: Move to registry and have installer set the location of this database file
+			string databasepath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+			databasepath = Path.Combine(databasepath, "ZukiSoft\\RONIN\\ronin.db");
+			
+			m_database = Database.Open(databasepath);
+
 			List<Card> allcards = new List<Card>();
 			m_database.EnumerateCards(card => allcards.Add(card));
 			cardSelector1.Cards = allcards;

@@ -203,13 +203,6 @@ namespace zuki.ronin.renderer
 			if(materials == null) throw new ArgumentNullException(nameof(materials));
 			if(text == null) throw new ArgumentNullException(nameof(text));
 
-			// Top/Left alignment
-			StringFormat format = new StringFormat(StringFormat.GenericTypographic)
-			{
-				Alignment = StringAlignment.Near,
-				LineAlignment = StringAlignment.Near
-			};
-
 			graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 

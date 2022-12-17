@@ -214,7 +214,7 @@ namespace zuki.ronin
 		private void OnLoad(object sender, EventArgs args)
 		{
 			// TODO: hacked for ease of debugging for now
-			if(File.Exists("d:\\ronin.db")) m_opendatabase.FileName = "D:\\ronin.db";
+			if(File.Exists("d:\\ronin.db")) m_opendatabase.FileName = "d:\\ronin.db";
 			else
 			{
 				// TODO: Can OpenFileDialog support dark mode?

@@ -66,7 +66,14 @@
           </Directory>
         </Directory>
       <?endif?>
-      
+
+      <!-- C:\ProgramData\ZukiSoft\RONIN -->
+      <Directory Id="CommonAppDataFolder">
+        <Directory Id="ZukiSoftAppDataFolder" Name="ZukiSoft">
+          <Directory Id="RONINAppDataFolder" Name="RONIN"/>
+        </Directory>
+      </Directory>
+
       <!-- Start Menu -->
       <Directory Id="ProgramMenuFolder"/>
 
@@ -86,6 +93,7 @@
       <ComponentRef Id="ronin_renderer_dll"/>
       <ComponentRef Id="ronin_ui_dll"/>
       <ComponentRef Id="ronin_util_dll"/>
+      <ComponentRef Id="ronin_db"/>
 
       <?if $(var.Configuration) = "Debug" ?>
       <ComponentRef Id="ronin_pdb"/>
@@ -120,6 +128,10 @@
 
     <Component Id="ronin_util_dll" Directory="RONINBinFolder" Guid="085DF2E6-7C20-47B5-AE8D-5459D61CDC22">
       <File Id="ronin.util.dll" Source="$(var.ProjectBinFolder)ronin.util.dll" Vital="yes" KeyPath="yes" />
+    </Component>
+
+    <Component Id="ronin_db" Directory="RONINAppDataFolder" Guid="50DC3638-2B82-47F6-B0E2-AA58FB3ED72F">
+      <File Id="ronin.db" Source="$(var.ProjectBinFolder)ronin.db" Vital="yes" KeyPath="yes" />
     </Component>
 
     <?if $(var.Configuration) = "Debug" ?>

@@ -33,6 +33,48 @@ using namespace System::IO;
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
+// execute_non_query (local)
+//
+// Executes a database query and returns the number of rows affected
+//
+// Arguments:
+//
+//	handle		- Database instance handle
+//	sql			- SQL query to execute
+
+static int execute_non_query(SQLiteSafeHandle^ handle, wchar_t const* sql)
+{
+	int changes = 0;
+
+	SQLiteSafeHandle::Reference instance(handle);
+	sqlite3_stmt* statement = nullptr;
+
+	if(CLRISNULL(handle)) throw gcnew ArgumentNullException("handle");
+	if(sql == nullptr) throw gcnew ArgumentNullException("sql");
+
+	// Prepare the statement
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query; ignore any rows that are returned
+		do result = sqlite3_step(statement);
+		while(result == SQLITE_ROW);
+
+		// The final result from sqlite3_step should be SQLITE_DONE
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+		// Record the number of changes made by the statement
+		changes = sqlite3_changes(instance);
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return changes;
+}
+
+//---------------------------------------------------------------------------
 // import_artwork (local)
 //
 // Imports the artwork table 
@@ -77,7 +119,8 @@ static void import_artwork(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -129,7 +172,8 @@ static void import_card(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -181,7 +225,8 @@ static void import_defaultartwork(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -237,7 +282,8 @@ static void import_monster(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -291,7 +337,8 @@ static void import_print(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -343,7 +390,8 @@ static void import_restriction(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -395,7 +443,8 @@ static void import_restrictionlist(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -447,7 +496,8 @@ static void import_ruling(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -499,7 +549,8 @@ static void import_series(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -552,7 +603,8 @@ static void import_spell(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -604,7 +656,8 @@ static void import_trap(SQLiteSafeHandle^ handle, String^ path)
 			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 
 			// Reset the prepared statement so that it can be executed again
-			result = sqlite3_reset(statement);
+			result = sqlite3_clear_bindings(statement);
+			if(result == SQLITE_OK) result = sqlite3_reset(statement);
 			if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
 		}
 	}
@@ -685,6 +738,9 @@ Database^ Database::Import(String^ path, String^ outputfile)
 
 	try {
 
+		// Begin a transaction to improve insert performance
+		execute_non_query(handle, L"begin immediate transaction");
+
 		// CARD
 		//
 		String^ cardpath = Path::Combine(path, "card");
@@ -751,6 +807,9 @@ Database^ Database::Import(String^ path, String^ outputfile)
 		if(!try_create_directory(rulingpath)) throw gcnew Exception("Unable to access ruling import directory");
 		import_ruling(handle, rulingpath);
 
+		// Commit the transaction
+		execute_non_query(handle, L"commit transaction");
+
 		// Create and Vacuum the database instance
 		Database^ database = gcnew Database(handle);
 		database->Vacuum();
@@ -760,6 +819,9 @@ Database^ Database::Import(String^ path, String^ outputfile)
 
 	catch(Exception^) {
 		
+		// Roll back the transaction
+		execute_non_query(handle, L"rollback transaction");
+
 		delete handle;				// Delete the safe handle
 		File::Delete(outputfile);	// Delete the invalid output file
 		throw;
