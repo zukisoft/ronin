@@ -57,6 +57,6 @@
     {
         "cardid": "ixXhdlc4zUWBqkXNs8zROA==",
         "sequence": 12,
-        "ruling": "- If [[Physical Double]] creates a Mirage Token of a Warrior-Type monster while [[Command Knight]] is on the field, take the current ATK (including [[Command Knight]] Bonus), then apply all bonuses again if appropriate. So a Mirage Token of a 1600 ATK Warrior-Type monster would be ATK 2000 (it copies the 1600 ATK and then gains [[Command Knight]]'s +400 ATK bonus)."
+        "ruling": "- If [[Physical Double]] creates a \"Mirage Token\" of a Warrior-Type monster while [[Command Knight]] is on the field, take the current ATK (including [[Command Knight]] Bonus), then apply all bonuses again if appropriate. So a \"Mirage Token\" of a 1600 ATK Warrior-Type monster would be ATK 2000 (it copies the 1600 ATK and then gains [[Command Knight]]'s +400 ATK bonus)."
     }
 ]

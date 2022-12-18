@@ -2,27 +2,27 @@
     {
         "cardid": "+juZ5r7+akyw6xSD0u834g==",
         "sequence": 1,
-        "ruling": "- If Ultimate Offering is face-up, you can activate its effect multiple times in the same chain."
+        "ruling": "- If [[Ultimate Offering]] is face-up, you can activate its effect multiple times in the same chain."
     },
     {
         "cardid": "+juZ5r7+akyw6xSD0u834g==",
         "sequence": 2,
-        "ruling": "- When you activate Ultimate Offering's effect, you pay the 500 Life Points as a cost at activation, and then the Summon occurs at resolution of Ultimate Offering's effect in that chain. This means that it is possible to Summon a monster in the middle of a chain with Ultimate Offering's effect."
+        "ruling": "- When you activate [[Ultimate Offering]]'s effect, you pay the 500 Life Points as a cost at activation, and then the Summon occurs at resolution of [[Ultimate Offering]]'s effect in that chain. This means that it is possible to Summon a monster in the middle of a chain with [[Ultimate Offering]]'s effect."
     },
     {
         "cardid": "+juZ5r7+akyw6xSD0u834g==",
         "sequence": 3,
-        "ruling": "- If you are using Ultimate Offering's effect to perform a Tribute Summon, you Tribute the monster when Ultimate Offering's effect RESOLVES and you perform the Tribute Summon, NOT when you activate Ultimate Offering's effect and pay the 500 Life Points."
+        "ruling": "- If you are using [[Ultimate Offering]]'s effect to perform a Tribute Summon, you Tribute the monster when [[Ultimate Offering]]'s effect resolves and you perform the Tribute Summon, not when you activate [[Ultimate Offering]]'s effect and pay the 500 Life Points."
     },
     {
         "cardid": "+juZ5r7+akyw6xSD0u834g==",
         "sequence": 4,
-        "ruling": "- If your opponent activates a Trap Card, you can chain the effect of your face-up Ultimate Offering to the Trap Card to Tribute Summon Jinzo (if you had a monster on the field to Tribute) and negate the Trap Card's effect."
+        "ruling": "- If your opponent activates a Trap Card, you can chain the effect of your face-up [[Ultimate Offering]] to the Trap Card to Tribute Summon [[Jinzo]] (if you had a monster on the field to Tribute) and negate the Trap Card's effect."
     },
     {
         "cardid": "+juZ5r7+akyw6xSD0u834g==",
         "sequence": 5,
-        "ruling": "- If you activate Ultimate Offering's effect to Summon, and your opponent chains Mystical Space Typhoon to destroy Ultimate Offering, the Summon does not resolve because Ultimate Offering is a Continuous Trap Card and is no longer on the field."
+        "ruling": "- If you activate [[Ultimate Offering]]'s effect to Summon, and your opponent chains [[Mystical Space Typhoon]] to destroy [[Ultimate Offering]], the Summon does not resolve because [[Ultimate Offering]] is a Continuous Trap Card and is no longer on the field."
     },
     {
         "cardid": "+juZ5r7+akyw6xSD0u834g==",

@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -80,6 +82,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RulingsWebView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RulingsWebView.designer.cs">
+      <DependentUpon>RulingsWebView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +151,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RulingsWebView.resx">
+      <DependentUpon>RulingsWebView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlBase.resx">
       <DependentUpon>UserControlBase.cs</DependentUpon>
