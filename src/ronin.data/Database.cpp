@@ -78,12 +78,12 @@ static void bind_parameter(sqlite3_stmt* statement, int& paramindex, String^ val
 //	paramindex		- Index of the parameter to bind; will be incremented
 //	value			- Value to bind as the parameter
 
-static void bind_parameter(sqlite3_stmt* statement, int& paramindex, Guid value)
+static void bind_parameter(sqlite3_stmt* statement, int& paramindex, Uuid^ value)
 {
 	int					result;				// Result from binding operation
 
 	// Convert the Guid into a byte array and pin it
-	array<Byte>^ guid = value.ToByteArray();
+	array<Byte>^ guid = value->ToByteArray();
 	pin_ptr<Byte> pinguid = &guid[0];
 
 	// Specify SQLITE_TRANSIENT to have SQLite copy the data
@@ -584,6 +584,50 @@ void Database::EnumerateCards(DateTime releasedate, Action<Card^>^ callback)
 }
 
 //---------------------------------------------------------------------------
+// Database::EnumerateCardsWithRulings
+//
+// Enumerates Cards from the database that have Rulings
+//
+// Arguments:
+//
+//	callback	- Action<> to invoke for each Card instance
+
+void Database::EnumerateCardsWithRulings(Action<Card^>^ callback)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(callback)) throw gcnew ArgumentNullException("callback");
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	// cards view
+	auto sql = L"select * from cards where cardid in (select distinct cardid from ruling) order by name asc";
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			try { callback->Invoke(row_cards(this, statement)); }
+			catch(Exception^) { /* DO NOTHING */ }
+
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
 // Database::EnumeratePrints
 //
 // Enumerates Cards from the database
@@ -692,6 +736,59 @@ void Database::EnumerateRestrictionLists(Action<RestrictionList^>^ callback)
 
 			// Invoke the callback and just eat any exceptions that occur
 			try { callback->Invoke(restrictionlist); }
+			catch(Exception^) { /* DO NOTHING */ }
+
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
+// Database::EnumerateRulings
+//
+// Enumerates Rulings from the database
+//
+// Arguments:
+//
+//	callback	- Action<> to invoke for each Ruling instance
+
+void Database::EnumerateRulings(Action<Ruling^>^ callback)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(callback)) throw gcnew ArgumentNullException("callback");
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	// sequence | ruling
+	auto sql = L"select ruling.sequence, ruling.ruling from ruling order by ruling.cardid, ruling.sequence asc";
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Ruling^ ruling = gcnew Ruling();
+
+			// sequence
+			ruling->Sequence = sqlite3_column_int(statement, 0);
+
+			// text
+			ruling->Text = column_string(statement, 1);
+
+			// Invoke the callback and just eat any exceptions that occur
+			try { callback->Invoke(ruling); }
 			catch(Exception^) { /* DO NOTHING */ }
 
 			result = sqlite3_step(statement);			// Move to the next result set row
@@ -1105,6 +1202,10 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 	}
 
 	// TODO: Add index on restriction.restriction
+	// TODO: group table (Six Samurai, Archfiend, Harpy, etc), include linkname
+	// TODO: groupruling table
+	// TODO: card.linkname
+	// TODO: cardgroup table or card.groupid column, depends on if there is overlap in the rulings
 
 	CLRASSERT(dbversion == 5);
 
@@ -1655,6 +1756,68 @@ List<Print^>^ Database::SelectPrints(CardId^ cardid)
 }
 
 //---------------------------------------------------------------------------
+// Database::SelectRulings (internal)
+//
+// Selects Ruling objects from the database
+//
+// Arguments:
+//
+//	cardid		- Card identifier on which to filter the results
+
+List<Ruling^>^ Database::SelectRulings(CardId^ cardid)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(cardid)) throw gcnew ArgumentNullException("cardid");
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	List<Ruling^>^ rulings = gcnew List<Ruling^>();
+
+	// sequence | ruling
+	auto sql = L"select ruling.sequence, ruling.ruling from ruling where ruling.cardid = ?1 order by ruling.sequence asc";
+
+	// Convert the cardid into a byte array and pin it
+	array<Byte>^ _cardid = cardid->ToByteArray();
+	pin_ptr<Byte> pincardid = &_cardid[0];
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pincardid, _cardid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query and iterate over all returned rows
+		result = sqlite3_step(statement);
+		while(result == SQLITE_ROW) {
+
+			Ruling^ ruling = gcnew Ruling();
+
+			// sequence
+			ruling->Sequence = sqlite3_column_int(statement, 0);
+
+			// text
+			ruling->Text = column_string(statement, 1);
+
+			rulings->Add(ruling);						// Add the Ruling instance
+			result = sqlite3_step(statement);			// Move to the next result set row
+		}
+
+		// If the final result of the query was not SQLITE_DONE, something bad happened
+		if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+	}
+
+	finally { sqlite3_finalize(statement); }
+
+	return rulings;
+}
+
+//---------------------------------------------------------------------------
 // Database::UpdateArtwork
 //
 // Updates an artwork image in the database
@@ -1714,13 +1877,79 @@ void Database::UpdateArtwork(ArtworkId^ artworkid, String^ format, int width, in
 }
 
 //---------------------------------------------------------------------------
+// Database::UpdateCardRulings (internal)
+//
+// Updates the rulings for a Card in the database
+//
+// Arguments:
+//
+//	cardid		- Unique identifier
+//	rulings		- Enumerable collection of card ruling strings
+
+void Database::UpdateCardRulings(CardId^ cardid, IEnumerable<String^>^ rulings)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	if(CLRISNULL(cardid)) throw gcnew ArgumentNullException("cardid");
+	if(CLRISNULL(rulings)) throw gcnew ArgumentNullException("rulings");
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	auto sql = L"insert into ruling values(?1, ?2, ?3)";
+
+	// Convert the cardid into a byte array and pin it
+	array<Byte>^ _cardid = cardid->ToByteArray();
+	pin_ptr<Byte> pincardid = &_cardid[0];
+
+	// Prepare the query
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		execute_non_query(instance, L"begin immediate transaction");
+		execute_non_query(instance, L"delete from ruling where cardid = ?1", cardid);
+
+		int sequence = 1;
+		for each(String^ ruling in rulings)
+		{
+			// Pin the ruling text
+			pin_ptr<wchar_t const> pinruling = PtrToStringChars(ruling);
+
+			// Bind the query parameter(s)
+			result = sqlite3_bind_blob(statement, 1, pincardid, _cardid->Length, SQLITE_STATIC);
+			if(result == SQLITE_OK) sqlite3_bind_int(statement, 2, sequence);
+			if(result == SQLITE_OK) result = sqlite3_bind_text16(statement, 3, pinruling, -1, SQLITE_STATIC);
+			if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+			// Execute the query; no rows are expected to be returned
+			result = sqlite3_step(statement);
+			if(result != SQLITE_DONE) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+			sqlite3_clear_bindings(statement);				// Clear statement bindings
+			sqlite3_reset(statement);						// Reset statement for next iteration
+
+			sequence++;										// Increment the sequence number
+		}
+
+		execute_non_query(instance, L"commit transaction");
+	}
+
+	catch(Exception^) { execute_non_query(instance, L"rollback transaction"); throw; }
+
+	finally { sqlite3_finalize(statement); }
+}
+
+//---------------------------------------------------------------------------
 // Database::UpdateCardText (internal)
 //
 // Updates the text for a Card in the database
 //
 // Arguments:
 //
-//	card		- Card instance to retrieve the artwork for
+//	cardid		- Unique identifier
 
 void Database::UpdateCardText(CardId^ cardid, String^ text)
 {

@@ -2,7 +2,7 @@
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 1,
-        "ruling": "- \"cannot be used\" means that the declared card cannot be placed onto the field from your hand. A declared Monster Card cannot be Summoned or Set from your hand, and any effect it activates while in your hand cannot be activated. A declared Spell or Trap Card cannot be activated or Set from your hand. Every player in the Duel cannot \"use\" the declared card."
+        "ruling": "- *cannot be used* means that the declared card cannot be placed onto the field from your hand. A declared Monster Card cannot be Summoned or Set from your hand, and any effect it activates while in your hand cannot be activated. A declared Spell or Trap Card cannot be activated or Set from your hand. Every player in the Duel cannot use the declared card."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
@@ -52,7 +52,7 @@
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 11,
-        "ruling": "- If [[Mystic Tomato]] is declared with [[Prohibition]] while a [[Mystic Tomato]] is on the field, when the [[Mystic Tomato]] is destroyed by battle and sent to the Graveyard its effect activates. If it Special Summons another [[Mystic Tomato]], the Special Summoned [[Mystic Tomato]] \"cannot be used\", so its effects will not be applied and its battle position cannot be chained."
+        "ruling": "- If [[Mystic Tomato]] is declared with [[Prohibition]] while a [[Mystic Tomato]] is on the field, when the [[Mystic Tomato]] is destroyed by battle and sent to the Graveyard its effect activates. If it Special Summons another [[Mystic Tomato]], the Special Summoned [[Mystic Tomato]] cannot be used, so its effects will not be applied and its battle position cannot be chained."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
@@ -62,7 +62,7 @@
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 13,
-        "ruling": "- If [[Sinister Serpent]] is declared, a [[Sinister Serpent]] in the Graveyard cannot be returned to its owner's hand. If the [[Sinister Serpent]] was on the field before [[Prohibition]] resolved, it can be returned to its owner's hand but \"cannot be used\" after returning to its owner's hand."
+        "ruling": "- If [[Sinister Serpent]] is declared, a [[Sinister Serpent]] in the Graveyard cannot be returned to its owner's hand. If the [[Sinister Serpent]] was on the field before [[Prohibition]] resolved, it can be returned to its owner's hand but cannot be used after returning to its owner's hand."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
@@ -72,22 +72,22 @@
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 15,
-        "ruling": "- If [[Prohibition]] declares [[Sangan]] or [[Witch of the Black Forest]], if the declared card is on the field when [[Prohibition]] resolves, its effect will activate when it is sent to the Graveyard. If the declared card is Special Summoned after [[Prohibition]] resolves, it \"cannot be used\", so its effect will not activate when it is sent to the Graveyard."
+        "ruling": "- If [[Prohibition]] declares [[Sangan]] or [[Witch of the Black Forest]], if the declared card is on the field when [[Prohibition]] resolves, its effect will activate when it is sent to the Graveyard. If the declared card is Special Summoned after [[Prohibition]] resolves, it cannot be used, so its effect will not activate when it is sent to the Graveyard."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 16,
-        "ruling": "- If [[Nimble Momonga]] or [[Giant Germ]] is on the field when declared by [[Prohibition]], when it is destroyed by battle and sent to the Graveyard its effect activates, but the Special Summoned [[Nimble Momonga]] or [[Giant Germ]] \"cannot be used\", so their effects will not be applied when they are destroyed by battle and sent to the Graveyard."
+        "ruling": "- If [[Nimble Momonga]] or [[Giant Germ]] is on the field when declared by [[Prohibition]], when it is destroyed by battle and sent to the Graveyard its effect activates, but the Special Summoned [[Nimble Momonga]] or [[Giant Germ]] cannot be used, so their effects will not be applied when they are destroyed by battle and sent to the Graveyard."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 17,
-        "ruling": "- A Level 4 or lower Monster Card declared by [[Prohibition]] can be Special Summoned by [[Cyber Jar]], but it \"cannot be used\" so its effects are not applied and it cannot attack or change its battle position manually."
+        "ruling": "- A Level 4 or lower Monster Card declared by [[Prohibition]] can be Special Summoned by [[Cyber Jar]], but it cannot be used so its effects are not applied and it cannot attack or change its battle position manually."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 18,
-        "ruling": "- If [[Jinzo]] is declared by [[Prohibition]], the effect of a [[Jinzo]] that is already on the field is still applied. If a [[Jinzo]] is Special Summoned, it \"cannot be used\", so the effects of Trap Cards are not negated and Trap Cards can be activated."
+        "ruling": "- If [[Jinzo]] is declared by [[Prohibition]], the effect of a [[Jinzo]] that is already on the field is still applied. If a [[Jinzo]] is Special Summoned, it cannot be used, so the effects of Trap Cards are not negated and Trap Cards can be activated."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
@@ -97,7 +97,7 @@
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 20,
-        "ruling": "- If the effect of [[Prohibition]] is being negated, the declared card can be \"used\". If the declared card is on the field when the effect of [[Prohibition]] becomes active again the declared card on the field is unaffected."
+        "ruling": "- If the effect of [[Prohibition]] is being negated, the declared card can be used. If the declared card is on the field when the effect of [[Prohibition]] becomes active again the declared card on the field is unaffected."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
@@ -127,7 +127,7 @@
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",
         "sequence": 26,
-        "ruling": "- If [[Lord of D.]] is declared with [[Prohibition]], if it is Special Summoned it \"cannot be used\", but [[The Flute of Summoning Dragon]] can be activated."
+        "ruling": "- If [[Lord of D.]] is declared with [[Prohibition]], if it is Special Summoned it cannot be used, but [[The Flute of Summoning Dragon]] can be activated."
     },
     {
         "cardid": "5xJ0rd/jWEaYfmhE+kTUuw==",

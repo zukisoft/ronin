@@ -110,6 +110,9 @@
     <ClInclude Include="RestrictionListId.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ruling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -167,6 +170,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Import.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ruling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

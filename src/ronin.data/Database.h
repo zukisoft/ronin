@@ -34,6 +34,7 @@
 #include "PrintId.h"
 #include "RestrictionList.h"
 #include "RestrictionListId.h"
+#include "Ruling.h"
 #include "SeriesId.h"
 #include "SQLiteSafeHandle.h"
 
@@ -71,6 +72,11 @@ public:
 	void EnumerateCards(Action<Card^>^ callback);
 	void EnumerateCards(DateTime releasedate, Action<Card^>^ callback);
 
+	// EnumerateCardsWithRulings
+	//
+	// Enumerates Cards from the database that have Rulings
+	void EnumerateCardsWithRulings(Action<Card^>^ callback);
+
 	// EnumeratePrints
 	//
 	// Enumerates Prints from the database
@@ -80,6 +86,11 @@ public:
 	//
 	// Enumerates RestrictionLists from the database
 	void EnumerateRestrictionLists(Action<RestrictionList^>^ callback);
+
+	// EnumerateRulings
+	//
+	// Enumerates Rulings from the database
+	void EnumerateRulings(Action<Ruling^>^ callback);
 
 	// Export
 	//
@@ -136,10 +147,20 @@ internal:
 	// Selects Print objects from the database
 	List<Print^>^ SelectPrints(CardId^ cardid);
 
+	// SelectRulings
+	//
+	// Selects Ruling objects from the database
+	List<Ruling^>^ SelectRulings(CardId^ cardid);
+
 	// UpdateArtwork
 	//
 	// Updates an artwork image in the database
 	void UpdateArtwork(ArtworkId^ artworkid, String^ format, int width, int height, array<Byte>^ image);
+
+	// UpdateCardRulings
+	//
+	// Updates the rulings for a Card in the database
+	void UpdateCardRulings(CardId^ cardid, IEnumerable<String^>^ rulings);
 
 	// UpdateCardText
 	//

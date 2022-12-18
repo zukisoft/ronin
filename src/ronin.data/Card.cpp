@@ -25,6 +25,8 @@
 
 #include "Artwork.h"
 #include "Database.h"
+#include "Print.h"
+#include "Ruling.h"
 
 #pragma warning(push, 4)
 
@@ -189,6 +191,21 @@ List<Print^>^ Card::GetPrints(void)
 }
 
 //---------------------------------------------------------------------------
+// Card::GetRulings
+//
+// Gets the Ruling objects associated with this Card
+//
+// Arguments:
+//
+//	NONE
+
+List<Ruling^>^ Card::GetRulings(void)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectRulings(m_cardid);
+}
+
+//---------------------------------------------------------------------------
 // Card::Name::get
 //
 // Gets the card name
@@ -313,6 +330,22 @@ String^ Card::ToString(void)
 CardType Card::Type::get(void)
 {
 	return m_type;
+}
+
+//---------------------------------------------------------------------------
+// Card::UpdateRulings
+//
+// Updates the rulings for this card in the database
+//
+// Arguments:
+//
+//	rulings		- New rulings to assign to the card
+
+void Card::UpdateRulings(IEnumerable<String^>^ rulings)
+{
+	CLRASSERT(CLRISNOTNULL(m_database));
+
+	m_database->UpdateCardRulings(m_cardid, rulings);
 }
 
 //---------------------------------------------------------------------------

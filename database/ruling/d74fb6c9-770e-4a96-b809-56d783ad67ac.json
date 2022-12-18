@@ -72,7 +72,7 @@
     {
         "cardid": "ybZP1w53lkq4CVbXg61nrA==",
         "sequence": 15,
-        "ruling": "- If you cannot Special Summon a monster because all of your Monster Card Zones are forbidden (by [[Ground Collapse]], [[Ojama Knight]], etc.) when your [[Light and Darkness Dragon]] is destroyed and sent to the Graveyard, the effect of \"Light of Darkness Dragon\" will not Special Summon a monster but it will still destroy every card that you control."
+        "ruling": "- If you cannot Special Summon a monster because all of your Monster Card Zones are forbidden (by [[Ground Collapse]], [[Ojama Knight]], etc.) when your [[Light and Darkness Dragon]] is destroyed and sent to the Graveyard, the effect of [[Light and Darkness Dragon]] will not Special Summon a monster but it will still destroy every card that you control."
     },
     {
         "cardid": "ybZP1w53lkq4CVbXg61nrA==",
@@ -82,7 +82,7 @@
     {
         "cardid": "ybZP1w53lkq4CVbXg61nrA==",
         "sequence": 17,
-        "ruling": "- When the effect of a Normal Spell Card is activated in the Graveyard due to the effect of [[Destiny Hero - Diamond Dude]], [[Light and Darkness Dragon]]'s second effect will not activate because the Normal Spell Card is not \"activated\"."
+        "ruling": "- When the effect of a Normal Spell Card is activated in the Graveyard due to the effect of [[Destiny Hero - Diamond Dude]], [[Light and Darkness Dragon]]'s second effect will not activate because the Normal Spell Card is not activated."
     },
     {
         "cardid": "ybZP1w53lkq4CVbXg61nrA==",
@@ -107,6 +107,76 @@
     {
         "cardid": "ybZP1w53lkq4CVbXg61nrA==",
         "sequence": 22,
-        "ruling": "- If you have 2 or more [[Light and Darkness Dragon]] face-up on your side of the field when a Spell, Trap, or effect of an Effect Monster is activated, the effect of each [[Light and Darkness Dragon]] form a Chain, but only the effect of the [[Light and Darkness Dragon]] chained directly to the activated Spell, Trap, or effect of an Effect Monster will resolve. The other \"Light and Darkness D"
+        "ruling": "- If you have 2 or more [[Light and Darkness Dragon]]s face-up on your side of the field when a Spell, Trap, or effect of an Effect Monster is activated, the effect of each [[Light and Darkness Dragon]] form a Chain, but only the effect of the [[Light and Darkness Dragon]] chained directly to the activated Spell, Trap, or effect of an Effect Monster will resolve. The other [[Light and Darkness Dragon]] on the Chain will not negate the activation of the Spell, Trap, or effect of the Effect Monster and they will not lose any ATK or DEF from their effect."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 23,
+        "ruling": "> Example: Player A and Player B each have [[Light and Darkness Dragon]] face-up on the field. Player A activates [[Smashing Ground]] in his Main Phase 1. The effect of both copies of [[Light and Darkness Dragon]] activate. Player A is the turn player, so theirs is placed first onto the Chain ([[Light and Darkness Dragon]] A), followed by their opponent’s ([[Light and Darkness Dragon]] B). Since Player A’s [[Light and Darkness Dragon]] is chained directly to [[Smashing Ground]], it will negate the [[Smashing Ground]] and lose 500 ATK and DEF. Player B’s [[Light and Darkness Dragon]] will not negate [[Smashing Ground]] and will not lose ATK or DEF."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 24,
+        "ruling": "- If you Tribute [[Sangan]] and [[Witch of the Black Forest]] to Tribute Summon [[Light and Darkness Dragon]], the effect of [[Sangan]] and [[Witch of the Black Forest]] form a Chain. [[Light and Darkness Dragon]] will negate the activation of whichever effect is placed second on the Chain."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 25,
+        "ruling": "- If the second effect of [[Light and Darkness Dragon]] is activated and an effect is chained that removes [[Light and Darkness Dragon]] from the field or flips it face-down, the effect of [[Light and Darkness Dragon]] will disappear and the activation of the Spell, Trap, or effect of the Effect Monster will not be negated."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 26,
+        "ruling": "- If [[Light and Darkness Dragon]] negates the activation of [[Twin-Headed Behemoth]]’s effect, the effect of [[Twin-Headed Behemoth]] will not activate again during the Duel."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 27,
+        "ruling": "- If the activation of [[Destiny Hero - Dasher]]’s effect that Special Summons a monster is negated by [[Light and Darkness Dragon]], the [[Destiny Hero - Dasher]] will not be able to activate the effect while it remains in the Graveyard. If it is removed from the Graveyard and then later returned to the Graveyard, it will be able to activate its effect once again."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 28,
+        "ruling": "- When [[Light and Darkness Dragon]] negates the activation of a Spirit Monster’s effect that would return it to its owner’s hand, the effect of the Spirit Monster activates again during the same End Phase. When the return effect of the Spirit Monster is activated during the End Phase while [[Light and Darkness Dragon]] has less than 500 ATK and DEF, the second effect of [[Light and Darkness Dragon]] will still activate, but it will not be able to negate the activation and the Spirit Monster will return to its owner's hand."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 29,
+        "ruling": "- [[Light and Darkness Dragon]] will negate the activation of [[Serpentine Princess]]’ effect when the face-up [[Serpentine Princess]] is sent from the field to the Deck. ([[Serpentine Princess]] remains in the Deck)"
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 30,
+        "ruling": "- [[Light and Darkness Dragon]] will negate the activation of [[Mokey Mokey King]]’s effect that activates when it is removed from the field, even if it is returned to the Fusion Deck."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 31,
+        "ruling": "- If [[Light and Darkness Dragon]] is destroyed and sent to the Graveyard while being treated as an Equip Card, its third effect that Special Summons 1 monster will activate."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 32,
+        "ruling": "- When a monster is Summoned that has an effect that activates at the time the monster is successfully Summoned ([[Zaborg the Thunder Monarch]], [[Breaker the Magical Warrior]], etc.) while [[Light and Darkness Dragon]] is face-up on the field, the effect of the Summoned monster will be Chain Link 1 and [[Light and Darkness Dragon]] will be Chain Link 2. Because of this, it is not possible to use [[Pulling the Rug]] to negate the effect of the monster if it was Normal Summoned."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 33,
+        "ruling": "- If [[Light and Darkness Dragon]] negates the activation of the effect of [[Majestic Mech - Ohka]] or [[Majestic Mech - Goryu]] that activate during the End Phase, the effect of the [[Majestic Mech - Ohka]] or [[Majestic Mech - Goryu]] will activate again during the same End Phase. If the effect of [[Majestic Mech - Ohka]] or [[Majestic Mech - Goryu]] is activated during the End Phase while [[Light and Darkness Dragon]] has less than 500 ATK and DEF, the second effect of [[Light and Darkness Dragon]] will still activate, but it will not be able to negate the activation and the [[Majestic Mech - Ohka]] or [[Majestic Mech - Goryu]] will be sent to the Graveyard."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 34,
+        "ruling": "- During the turn [[Reverse Trap]] is activated, [[Light and Darkness Dragon]]'s second effect will only activate 1 time after [[Reverse Trap]] resolves. When it does, it will gain 500 ATK and DEF instead of losing 500 ATK and DEF. [[Light and Darkness Dragon]]'s second effect will activate normally during following turns, and if it gained 500 ATK and DEF the gained ATK and DEF becomes a loss of 500 ATK and DEF."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 35,
+        "ruling": "> Example: Player A activates [[Reverse Trap]] in his Main Phase 1. Afterwards, he Tribute Summons [[Light and Darkness Dragon]]. Player B activates [[Bottomless Trap Hole]]. [[Light and Darkness Dragon]]'s effect activates, negating [[Bottomless Trap Hole]] and gaining 500 ATK and DEF."
+    },
+    {
+        "cardid": "ybZP1w53lkq4CVbXg61nrA==",
+        "sequence": 36,
+        "ruling": "- During the Battle Phase, Player A attacks with [[Light and Darkness Dragon]]. Player B activates [[Sakuretsu Armor]]. [[Light and Darkness Dragon]]'s second effect does not activate and it is destroyed by [[Sakuretsu Armor]]."
     }
 ]

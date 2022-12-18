@@ -21,7 +21,6 @@
 //---------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 
 using zuki.ronin.data;
@@ -84,7 +83,7 @@ namespace zuki.ronin
 				// Attempt to generate the database from the import folder
 				using(Database db = Database.Import(importdir, outputfile)) { }
 
-				Console.WriteLine("Database successfully generated in " + (DateTime.Now - start).TotalSeconds + " seconds.");
+				Console.WriteLine("> Database successfully generated in " + (DateTime.Now - start).TotalSeconds + " seconds.");
 				Console.WriteLine();
 
 				return 0;

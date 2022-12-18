@@ -168,6 +168,7 @@
     <ClInclude Include="CardId.h" />
     <ClInclude Include="PrintId.h" />
     <ClInclude Include="RestrictionListId.h" />
+    <ClInclude Include="Ruling.h" />
     <ClInclude Include="SeriesId.h" />
     <ClInclude Include="Uuid.h" />
     <ClInclude Include="CardType.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Export.cpp" />
     <ClCompile Include="Import.cpp" />
+    <ClCompile Include="Ruling.cpp" />
     <ClCompile Include="Uuid.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="dbextension.cpp" />

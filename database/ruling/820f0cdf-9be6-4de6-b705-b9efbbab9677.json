@@ -12,7 +12,7 @@
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
         "sequence": 3,
-        "ruling": "- If this card's first effect, ***This card cannot be destroyed by a card effect*** is active, this card can be targeted by [[Mystical Space Typhoon]], etc., but this card will not be destroyed."
+        "ruling": "- If this card's first effect, *This card cannot be destroyed by a card effect* is active, this card can be targeted by [[Mystical Space Typhoon]], etc., but this card will not be destroyed."
     },
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
@@ -27,7 +27,7 @@
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
         "sequence": 6,
-        "ruling": "- This card will be destroyed if your opponent plays a Field Spell Card, even if the effect ***This card cannot be destroyed by a card effect*** is active."
+        "ruling": "- This card will be destroyed if your opponent plays a Field Spell Card, even if the effect *This card cannot be destroyed by a card effect* is active."
     },
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
@@ -37,21 +37,21 @@
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
         "sequence": 8,
-        "ruling": "- This card's effect ***Once per turn, you can halve the Battle Damage you take*** does not start a Chain. You choose whether or not to activate it during Damage Calculation, when you would take Battle Damage."
+        "ruling": "- This card's effect *Once per turn, you can halve the Battle Damage you take* does not start a Chain. You choose whether or not to activate it during Damage Calculation, when you would take Battle Damage."
     },
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
         "sequence": 9,
-        "ruling": "- This card's effect ***You can send 1 \"Crystal Beast\" monster you control to the Graveyard to negate the activation of a Spell or Trap Card and destroy it*** is activated in a Chain to a Spell or Trap Card. It is treated as Spell Speed 2, so you cannot Chain this effect to a Counter-Trap Card. You can activate it multiple times in the same Chain. Sending a \"Crystal Beast\" monster you control to the Graveyard is a cost to activate this effect."
+        "ruling": "- This card's effect *You can send 1 \"Crystal Beast\" monster you control to the Graveyard to negate the activation of a Spell or Trap Card and destroy it* is activated in a Chain to a Spell or Trap Card. It is treated as Spell Speed 2, so you cannot Chain this effect to a Counter-Trap Card. You can activate it multiple times in the same Chain. Sending a \"Crystal Beast\" monster you control to the Graveyard is a cost to activate this effect."
     },
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
         "sequence": 10,
-        "ruling": "- This card's effect ***Once per turn, during your Main Phase, you can draw 1 card*** starts a Chain. It can only be used once per turn, even if the number of \"Crystal Beast\" cards in your Spell & Trap Card Zones becomes less than 4, and then becomes 4 or more again after you have used it in a given turn."
+        "ruling": "- This card's effect *Once per turn, during your Main Phase, you can draw 1 card* starts a Chain. It can only be used once per turn, even if the number of \"Crystal Beast\" cards in your Spell & Trap Card Zones becomes less than 4, and then becomes 4 or more again after you have used it in a given turn."
     },
     {
         "cardid": "3wwPguab5k23Bbnvu6uWdw==",
         "sequence": 11,
-        "ruling": "- This card's effect ***Once per turn, during your Main Phase, you can Special Summon 1 \"Crystal Beast\" card from your Spell & Trap Card Zone*** starts a Chain. It targets 1 \"Crystal Beast\" card in your Spell & Trap Card Zones."
+        "ruling": "- This card's effect *Once per turn, during your Main Phase, you can Special Summon 1 \"Crystal Beast\" card from your Spell & Trap Card Zone* starts a Chain. It targets 1 \"Crystal Beast\" card in your Spell & Trap Card Zones."
     }
 ]

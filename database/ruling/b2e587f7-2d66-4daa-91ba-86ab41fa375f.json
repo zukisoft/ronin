@@ -12,6 +12,6 @@
     {
         "cardid": "94flsmYtqk2RuoarQfo3Xw==",
         "sequence": 3,
-        "ruling": "- You cannot choose a monster whose DEF is undefined (printed DEF is \"?\", etc.) as a target of this card."
+        "ruling": "- You cannot choose a monster whose DEF is undefined (printed DEF is ?, etc.) as a target of this card."
     }
 ]

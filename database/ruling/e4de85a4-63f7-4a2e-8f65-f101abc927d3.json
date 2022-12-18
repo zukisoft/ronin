@@ -2,7 +2,7 @@
     {
         "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
         "sequence": 1,
-        "ruling": "- \"This card's effect that negates Spell Cards that target it is not optional."
+        "ruling": "- This card's effect that negates Spell Cards that target it is not optional."
     },
     {
         "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
@@ -57,6 +57,6 @@
     {
         "cardid": "pIXe5PdjLkqPZfEBq8kn0w==",
         "sequence": 12,
-        "ruling": "- The activation of this card's effect that adds a Warrior-Type monster to your hand can be chained to.\""
+        "ruling": "- The activation of this card's effect that adds a Warrior-Type monster to your hand can be chained to."
     }
 ]

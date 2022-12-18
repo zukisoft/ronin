@@ -77,7 +77,7 @@ bool Series::BoosterPack::get(void)
 //---------------------------------------------------------------------------
 // Series::BoosterPack::set (internal)
 //
-// Gets a flag indicating if the series is a booster pack
+// Sets a flag indicating if the series is a booster pack
 
 void Series::BoosterPack::set(bool /*value*/)
 {

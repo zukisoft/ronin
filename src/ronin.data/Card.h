@@ -40,6 +40,7 @@ namespace zuki::ronin::data {
 ref class Artwork;
 ref class Database;
 ref class Print;
+ref class Ruling;
 
 //---------------------------------------------------------------------------
 // Class Card
@@ -100,6 +101,11 @@ public:
 	// Gets the Print objects associated with this Card
 	List<Print^>^ GetPrints(void);
 
+	// GetRulings
+	//
+	// Gets all the rulings associated with the card
+	List<Ruling^>^ GetRulings(void);
+
 	// Refresh
 	//
 	// Refreshes the information for this Card from the database
@@ -109,6 +115,11 @@ public:
 	//
 	// Overrides Object::ToString()
 	virtual String^ ToString(void) override;
+
+	// UpdateRulings
+	//
+	// Updates the rulings for this card in the database
+	void UpdateRulings(IEnumerable<String^>^ rulings);
 
 	// UpdateText
 	//

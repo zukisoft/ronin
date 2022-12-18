@@ -22,6 +22,7 @@
 			this.m_filemenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_fileexit = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_databasemenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_databaseexport = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_databasevacuum = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_managemenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_manageartwork = new System.Windows.Forms.ToolStripMenuItem();
@@ -32,7 +33,7 @@
 			this.m_exportcardimages = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowcloseall = new System.Windows.Forms.ToolStripMenuItem();
-			this.m_databaseexport = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_managerulings = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_statusstrip.SuspendLayout();
 			this.m_menu.SuspendLayout();
 			this.SuspendLayout();
@@ -102,10 +103,17 @@
 			this.m_databasemenu.Size = new System.Drawing.Size(67, 20);
 			this.m_databasemenu.Text = "&Database";
 			// 
+			// m_databaseexport
+			// 
+			this.m_databaseexport.Name = "m_databaseexport";
+			this.m_databaseexport.Size = new System.Drawing.Size(117, 22);
+			this.m_databaseexport.Text = "&Export...";
+			this.m_databaseexport.Click += new System.EventHandler(this.OnDatabaseExport);
+			// 
 			// m_databasevacuum
 			// 
 			this.m_databasevacuum.Name = "m_databasevacuum";
-			this.m_databasevacuum.Size = new System.Drawing.Size(180, 22);
+			this.m_databasevacuum.Size = new System.Drawing.Size(117, 22);
 			this.m_databasevacuum.Text = "&Vacuum";
 			this.m_databasevacuum.Click += new System.EventHandler(this.OnDatabaseVacuum);
 			// 
@@ -114,7 +122,8 @@
 			this.m_managemenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_manageartwork,
             this.m_managecards,
-            this.m_managerestrictionlists});
+            this.m_managerestrictionlists,
+            this.m_managerulings});
 			this.m_managemenu.Name = "m_managemenu";
 			this.m_managemenu.Size = new System.Drawing.Size(62, 20);
 			this.m_managemenu.Text = "&Manage";
@@ -152,14 +161,14 @@
 			// m_exportartwork
 			// 
 			this.m_exportartwork.Name = "m_exportartwork";
-			this.m_exportartwork.Size = new System.Drawing.Size(180, 22);
+			this.m_exportartwork.Size = new System.Drawing.Size(149, 22);
 			this.m_exportartwork.Text = "&Artwork...";
 			this.m_exportartwork.Click += new System.EventHandler(this.OnExportArtwork);
 			// 
 			// m_exportcardimages
 			// 
 			this.m_exportcardimages.Name = "m_exportcardimages";
-			this.m_exportcardimages.Size = new System.Drawing.Size(180, 22);
+			this.m_exportcardimages.Size = new System.Drawing.Size(149, 22);
 			this.m_exportcardimages.Text = "&Card Images...";
 			this.m_exportcardimages.Click += new System.EventHandler(this.OnExportCardImages);
 			// 
@@ -178,12 +187,12 @@
 			this.m_windowcloseall.Text = "&Close All";
 			this.m_windowcloseall.Click += new System.EventHandler(this.OnWindowCloseAll);
 			// 
-			// m_databaseexport
+			// m_managerulings
 			// 
-			this.m_databaseexport.Name = "m_databaseexport";
-			this.m_databaseexport.Size = new System.Drawing.Size(180, 22);
-			this.m_databaseexport.Text = "&Export...";
-			this.m_databaseexport.Click += new System.EventHandler(this.OnDatabaseExport);
+			this.m_managerulings.Name = "m_managerulings";
+			this.m_managerulings.Size = new System.Drawing.Size(180, 22);
+			this.m_managerulings.Text = "&Rulings...";
+			this.m_managerulings.Click += new System.EventHandler(this.OnManageRulings);
 			// 
 			// MainForm
 			// 
@@ -228,5 +237,6 @@
 		private System.Windows.Forms.ToolStripMenuItem m_exportcardimages;
 		private System.Windows.Forms.ToolStripMenuItem m_managerestrictionlists;
 		private System.Windows.Forms.ToolStripMenuItem m_databaseexport;
+		private System.Windows.Forms.ToolStripMenuItem m_managerulings;
 	}
 }

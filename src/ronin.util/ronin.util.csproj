@@ -65,9 +65,136 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\depends\commonmark\CommonMark\CommonMarkAdditionalFeatures.cs">
+      <Link>commonmark\CommonMarkAdditionalFeatures.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\CommonMarkConverter.cs">
+      <Link>commonmark\CommonMarkConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\CommonMarkException.cs">
+      <Link>commonmark\CommonMarkException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\CommonMarkSettings.cs">
+      <Link>commonmark\CommonMarkSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Formatters\HtmlFormatter.cs">
+      <Link>commonmark\formatters\HtmlFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Formatters\HtmlFormatterSlim.cs">
+      <Link>commonmark\formatters\HtmlFormatterSlim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Formatters\HtmlTextWriter.cs">
+      <Link>commonmark\formatters\HtmlTextWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Formatters\Printer.cs">
+      <Link>commonmark\formatters\Printer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Func.cs">
+      <Link>commonmark\Func.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Lazy.cs">
+      <Link>commonmark\Lazy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\OutputFormat.cs">
+      <Link>commonmark\OutputFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\BlockMethods.cs">
+      <Link>commonmark\parser\BlockMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\EntityDecoder.cs">
+      <Link>commonmark\parser\EntityDecoder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\InlineMethods.cs">
+      <Link>commonmark\parser\InlineMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\InlineStack.cs">
+      <Link>commonmark\parser\InlineStack.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\LineInfo.cs">
+      <Link>commonmark\parser\LineInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\PositionOffset.cs">
+      <Link>commonmark\parser\PositionOffset.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\PositionTracker.cs">
+      <Link>commonmark\parser\PositionTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\Scanner.cs">
+      <Link>commonmark\parser\Scanner.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\ScannerCharacterMatcher.cs">
+      <Link>commonmark\parser\ScannerCharacterMatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\ScannerHtmlTag.cs">
+      <Link>commonmark\parser\ScannerHtmlTag.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\Subject.cs">
+      <Link>commonmark\parser\Subject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Parser\TabTextReader.cs">
+      <Link>commonmark\parser\TabTextReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\Block.cs">
+      <Link>commonmark\syntax\Block.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\BlockTag.cs">
+      <Link>commonmark\syntax\BlockTag.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\DocumentData.cs">
+      <Link>commonmark\syntax\DocumentData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\EmphasisData.cs">
+      <Link>commonmark\syntax\EmphasisData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\Enumerable.cs">
+      <Link>commonmark\syntax\Enumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\EnumeratorEntry.cs">
+      <Link>commonmark\syntax\EnumeratorEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\FencedCodeData.cs">
+      <Link>commonmark\syntax\FencedCodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\HeadingData.cs">
+      <Link>commonmark\syntax\HeadingData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\HtmlBlockType.cs">
+      <Link>commonmark\syntax\HtmlBlockType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\Inline.cs">
+      <Link>commonmark\syntax\Inline.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\InlineContentLinkable.cs">
+      <Link>commonmark\syntax\InlineContentLinkable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\InlineTag.cs">
+      <Link>commonmark\syntax\InlineTag.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\ListData.cs">
+      <Link>commonmark\syntax\ListData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\ListDelimiter.cs">
+      <Link>commonmark\syntax\ListDelimiter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\ListType.cs">
+      <Link>commonmark\syntax\ListType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\Reference.cs">
+      <Link>commonmark\syntax\Reference.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\StringContent.cs">
+      <Link>commonmark\syntax\StringContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Syntax\StringContentPart.cs">
+      <Link>commonmark\syntax\StringContentPart.cs</Link>
+    </Compile>
+    <Compile Include="..\..\depends\commonmark\CommonMark\Utilities.cs">
+      <Link>commonmark\Utilities.cs</Link>
+    </Compile>
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
     </Compile>
+    <Compile Include="Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryKeyValueChangeMonitor.cs" />
     <Compile Include="VersionHelper.cs" />
