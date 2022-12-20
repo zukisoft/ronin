@@ -66,12 +66,10 @@ namespace zuki.ronin
 		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
 			base.OnApplicationThemeChanged(sender, args);
-
-			// TODO
-			//m_accentpanel.BackColor = ApplicationTheme.PanelBackColor;
-			//m_accentpanel.ForeColor = ApplicationTheme.PanelForeColor;
-			//m_lowerpanel.BackColor = ApplicationTheme.FormBackColor;
-			//m_lowerpanel.ForeColor = ApplicationTheme.FormForeColor;
+			panel1.BackColor = ApplicationTheme.PanelBackColor;
+			panel1.ForeColor = ApplicationTheme.PanelForeColor;
+			m_rightpanel.BackColor = ApplicationTheme.PanelBackColor;
+			m_rightpanel.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>

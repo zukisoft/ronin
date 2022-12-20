@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.m_rightpanel = new System.Windows.Forms.Panel();
-			this.m_rulingsview = new zuki.ronin.ui.RulingsWebView();
+			this.m_rulingsview = new zuki.ronin.ui.RulingsView();
 			this.m_rulings = new System.Windows.Forms.TextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.m_update = new System.Windows.Forms.Button();
@@ -52,10 +52,9 @@
 			// 
 			// m_rulingsview
 			// 
-			this.m_rulingsview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_rulingsview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.m_rulingsview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_rulingsview.ForeColor = System.Drawing.Color.Black;
+			this.m_rulingsview.ForeColor = System.Drawing.Color.White;
 			this.m_rulingsview.Location = new System.Drawing.Point(442, 0);
 			this.m_rulingsview.Name = "m_rulingsview";
 			this.m_rulingsview.Size = new System.Drawing.Size(225, 386);
@@ -96,10 +95,8 @@
 			// 
 			// m_cardselector
 			// 
-			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Left;
 			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
 			this.m_cardselector.Location = new System.Drawing.Point(4, 4);
 			this.m_cardselector.Name = "m_cardselector";
 			this.m_cardselector.Size = new System.Drawing.Size(284, 418);
@@ -133,6 +130,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button m_update;
         private System.Windows.Forms.TextBox m_rulings;
-		private ui.RulingsWebView m_rulingsview;
+		private ui.RulingsView m_rulingsview;
 	}
 }

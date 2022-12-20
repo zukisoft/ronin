@@ -22,11 +22,11 @@
     {
         "cardid": "BLT3KSyaLESjPu06wDpPlA==",
         "sequence": 5,
-        "ruling": "> Example 1: The opponent controls [[Gemini Elf]] and [[Dark Magician]]. The opponent attacks with their [[Dark Magician]], attacking [[Cyber Blader]], whose ATK is currently doubled. The opponent activates [[Mystik Wok]] and Tributes their [[Gemini Elf]] to gain 1900 Life Points. [[Cyber Blader]] now has 2100 ATK points, so it does not destroy [[Dark Magician]], but since the opponent has only 1 monster now, [[Cyber Blader]] is not destroyed as a result of battle, either."
+        "ruling": "> **Example 1**: The opponent controls [[Gemini Elf]] and [[Dark Magician]]. The opponent attacks with their [[Dark Magician]], attacking [[Cyber Blader]], whose ATK is currently doubled. The opponent activates [[Mystik Wok]] and Tributes their [[Gemini Elf]] to gain 1900 Life Points. [[Cyber Blader]] now has 2100 ATK points, so it does not destroy [[Dark Magician]], but since the opponent has only 1 monster now, [[Cyber Blader]] is not destroyed as a result of battle, either."
     },
     {
         "cardid": "BLT3KSyaLESjPu06wDpPlA==",
         "sequence": 6,
-        "ruling": "> Example 2: The opponent has 3 monsters on the field, 1 of them is [[Exiled Force]]. The opponent Tributes [[Exiled Force]] to activate its effect and destroy [[Cyber Blader]]. Now they only have 2 monsters on the field, so the effect of [[Exiled Force]] is not negated and [[Cyber Blader]] is destroyed."
+        "ruling": "> **Example 2**: The opponent has 3 monsters on the field, 1 of them is [[Exiled Force]]. The opponent Tributes [[Exiled Force]] to activate its effect and destroy [[Cyber Blader]]. Now they only have 2 monsters on the field, so the effect of [[Exiled Force]] is not negated and [[Cyber Blader]] is destroyed."
     }
 ]

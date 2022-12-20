@@ -130,10 +130,8 @@
 			// 
 			// cardSelector1
 			// 
-			this.cardSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.cardSelector1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cardSelector1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cardSelector1.ForeColor = System.Drawing.Color.Black;
 			this.cardSelector1.Location = new System.Drawing.Point(0, 24);
 			this.cardSelector1.Name = "cardSelector1";
 			this.cardSelector1.Padding = new System.Windows.Forms.Padding(4);
@@ -143,10 +141,8 @@
 			// 
 			// cardImage1
 			// 
-			this.cardImage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.cardImage1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.cardImage1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cardImage1.ForeColor = System.Drawing.Color.Black;
 			this.cardImage1.Location = new System.Drawing.Point(302, 24);
 			this.cardImage1.Name = "cardImage1";
 			this.cardImage1.Padding = new System.Windows.Forms.Padding(4);

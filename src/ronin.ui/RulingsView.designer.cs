@@ -1,6 +1,6 @@
 ﻿namespace zuki.ronin.ui
 {
-	partial class RulingsWebView
+	partial class RulingsView
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -33,22 +33,27 @@
 			// 
 			// m_webbrowser
 			// 
+			this.m_webbrowser.AllowWebBrowserDrop = false;
 			this.m_webbrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.m_webbrowser.IsWebBrowserContextMenuEnabled = false;
 			this.m_webbrowser.Location = new System.Drawing.Point(0, 0);
 			this.m_webbrowser.MinimumSize = new System.Drawing.Size(20, 20);
 			this.m_webbrowser.Name = "m_webbrowser";
+			this.m_webbrowser.ScriptErrorsSuppressed = true;
 			this.m_webbrowser.Size = new System.Drawing.Size(406, 393);
 			this.m_webbrowser.TabIndex = 0;
+			this.m_webbrowser.Visible = false;
+			this.m_webbrowser.WebBrowserShortcutsEnabled = false;
+			this.m_webbrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.OnDocumentCompleted);
 			// 
-			// RulingsWebView
+			// RulingsView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.Controls.Add(this.m_webbrowser);
 			this.DoubleBuffered = true;
-			this.Name = "RulingsWebView";
+			this.Name = "RulingsView";
 			this.Size = new System.Drawing.Size(406, 393);
-			this.Load += new System.EventHandler(this.OnLoad);
 			this.ResumeLayout(false);
 
 		}

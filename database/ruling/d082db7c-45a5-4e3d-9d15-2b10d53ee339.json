@@ -3,5 +3,40 @@
         "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
         "sequence": 1,
         "ruling": "- If this card is discarded from your hand by your opponent's card effect, you draw both cards at the same time. If you had [[Solemn Wishes]] on the field, you would only gain 500 Life Points."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 2,
+        "ruling": "- The effects of this card are Trigger Effects that can be chained to."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 3,
+        "ruling": "- These effects only activate if the card is discarded by a card effect. They will not activate if discarded for the cost of a card like [[Lightning Vortex]], [[Raigeki Break]], [[Tribe-Infecting Virus]], or [[Infernal Incinerator]]. They will not activate if sent to the graveyard by a card effect like [[Last Turn]] or [[Chaos Emperor Dragon - Envoy of the End]]."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 4,
+        "ruling": "- If this card is discarded by your opponent’s card effect, both parts of its effect resolve in a single chain link. If [[Divine Wrath]] is chained to its effects, it will negate both parts."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 5,
+        "ruling": "- The effects of this card activate in the Graveyard, so [[Skill Drain]] will not negate these effects."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 6,
+        "ruling": "- These effects can activate in the Damage Step, if discarded by the effect of a card like [[Don Zaloog]]."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 7,
+        "ruling": "- If this card is discarded by a card effect in the middle of a chain, or in the middle of a card effect like [[Dragged Down into the Grave]], its effects will activate after the current chain resolves. They cannot miss the timing."
+    },
+    {
+        "cardid": "fNuC0KVFPU6dFSsQ1T7jOQ==",
+        "sequence": 8,
+        "ruling": "- If this card is discarded from your hand by a card effect while [[Macro Cosmos]] is on the field, its effects will not activate because it was not discarded to the Graveyard."
     }
 ]

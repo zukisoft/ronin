@@ -82,11 +82,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RulingsWebView.cs">
+    <Compile Include="RulingsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RulingsWebView.designer.cs">
-      <DependentUpon>RulingsWebView.cs</DependentUpon>
+    <Compile Include="RulingsView.designer.cs">
+      <DependentUpon>RulingsView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlBase.cs">
       <SubType>UserControl</SubType>
@@ -152,8 +152,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RulingsWebView.resx">
-      <DependentUpon>RulingsWebView.cs</DependentUpon>
+    <EmbeddedResource Include="RulingsView.resx">
+      <DependentUpon>RulingsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlBase.resx">
       <DependentUpon>UserControlBase.cs</DependentUpon>

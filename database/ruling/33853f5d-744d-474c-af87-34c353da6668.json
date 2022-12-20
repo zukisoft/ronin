@@ -7,6 +7,11 @@
     {
         "cardid": "XT+FM010TEevhzTDU9pmaA==",
         "sequence": 2,
-        "ruling": "- See [[Diabolos, King of the Abyss]] for Tribute Summon rulings."
+        "ruling": "- If this card is Normal Summoned face-down, the monsters Tributed must still be DARK."
+    },
+    {
+        "cardid": "XT+FM010TEevhzTDU9pmaA==",
+        "sequence": 3,
+        "ruling": "- If this card is targeted by [[Soul Exchange]], it can be Tributed for a Tribute Summon. It is still considered to be Tributed for the Summon, not by the effect of [[Soul Exchange]].\r\n"
     }
 ]

@@ -2,26 +2,56 @@
     {
         "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
         "sequence": 1,
-        "ruling": "- Also see rulings for \"Dark World Monsters\"."
-    },
-    {
-        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
-        "sequence": 2,
         "ruling": "- If this card is discarded from your hand by the opponent's card effect, and they only have 1 card in their hand, then you still can Special Summon [[Sillva, Warlord of Dark World]], but the other part of the effect will not resolve because the opponent does not have 2 cards to select."
     },
     {
         "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
-        "sequence": 3,
+        "sequence": 2,
         "ruling": "- [[Sillva, Warlord of Dark World]] must be Special Summoned to resolve the second part of his effect. If you cannot Summon him because you activated [[Scapegoat]] that turn, or your Monster Card Zones are full, then the second part of his effect does not resolve."
     },
     {
         "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
-        "sequence": 4,
+        "sequence": 3,
         "ruling": "- If the Special Summon of [[Sillva, Warlord of Dark World]] is negated with [[Royal Oppression]], the second part of his effect does not resolve."
     },
     {
         "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
-        "sequence": 5,
+        "sequence": 4,
         "ruling": "- If [[Sillva, Warlord of Dark World]] is discarded by your opponent's card effect, when his effect resolves, he is Special Summoned first, and then the second part of his effect resolves. So the opponent cannot activate [[Bottomless Trap Hole]] or [[Torrential Tribute]]; the timing is no longer correct. Also, you could not draw a card for the effect of [[Card of Safe Return]]."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 5,
+        "ruling": "- The effects of this card are Trigger Effects that can be chained to."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 6,
+        "ruling": "- These effects only activate if the card is discarded by a card effect. They will not activate if discarded for the cost of a card like [[Lightning Vortex]], [[Raigeki Break]], [[Tribe-Infecting Virus]], or [[Infernal Incinerator]]. They will not activate if sent to the graveyard by a card effect like [[Last Turn]] or [[Chaos Emperor Dragon - Envoy of the End]]."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 7,
+        "ruling": "- If this card is discarded by your opponent’s card effect, both parts of its effect resolve in a single chain link. If [[Divine Wrath]] is chained to its effects, it will negate both parts."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 8,
+        "ruling": "- The effects of this card activate in the Graveyard, so [[Skill Drain]] will not negate these effects."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 9,
+        "ruling": "- These effects can activate in the Damage Step, if discarded by the effect of a card like [[Don Zaloog]]."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 10,
+        "ruling": "- If this card is discarded by a card effect in the middle of a chain, or in the middle of a card effect like [[Dragged Down into the Grave]], its effects will activate after the current chain resolves. They cannot miss the timing."
+    },
+    {
+        "cardid": "yRm+A+DwkE2m7fTCChY+Jw==",
+        "sequence": 11,
+        "ruling": "- If this card is discarded from your hand by a card effect while [[Macro Cosmos]] is on the field, its effects will not activate because it was not discarded to the Graveyard."
     }
 ]
