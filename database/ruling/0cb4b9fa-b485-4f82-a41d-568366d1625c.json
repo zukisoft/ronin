@@ -22,6 +22,51 @@
     {
         "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
         "sequence": 5,
-        "ruling": "- Please see [[The Six Samurai - Irou]] for additional rulings."
+        "ruling": "- The effect *If this card would be destroyed, you can destroy another Six Samurai monster you control instead* is a Continuous Effect. You can apply this effect while resolving an effect that would destroy the monster."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 6,
+        "ruling": "- This effect does not target."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 7,
+        "ruling": "- This effect can be used during the Damage Step. If you destroy a \"Six Samurai\" to save another \"Six Samurai\" that would have been destroyed by battle, you do so during damage calculation. The \"Six Samurai\" that you destroyed instead is sent to the Graveyard at the same time that monsters destroyed by battle are sent to the Graveyard."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 8,
+        "ruling": "- You cannot destroy a face-down \"Six Samurai\" monster instead."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 9,
+        "ruling": "- You cannot destroy a \"Six Samurai\" monster to save more than one other \"Six Samurai\" monster at the same time. Example: You control [[The Six Samurai - Yariza]] in Defense Position and [[The Six Samurai - Nisashi]] and [[The Six Samurai - Irou]] in Attack Position. [[Mirror Force]] is activated when you attack with [[The Six Samurai - Nisashi]]. You can destroy [[The Six Samurai - Yariza]] to save [[The Six Samurai - Nisashi]], or destroy [[The Six Samurai - Yariza]] to save [[The Six Samurai - Irou]]. You cannot destroy [[The Six Samurai - Yariza]] to save both [[The Six Samurai - Nisashi]] and [[The Six Samurai - Irou]] at the same time."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 10,
+        "ruling": "- A \"Six Samurai\" monster that is in the process of being destroyed cannot be destroyed to save another \"Six Samurai\" monster. For example, if you control [[The Six Samurai - Yariza]], [[The Six Samurai - Nisashi]], and [[The Six Samurai - Irou]] all in Attack Position, and your opponent activates [[Mirror Force]], you cannot destroy any of those 3 instead of another."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 11,
+        "ruling": "- You can use the effect of \"Six Samurai\" monsters to prevent them from being destroyed by the effects of [[Call of the Haunted]] or [[Premature Burial]]. So if a \"Six Samurai\" (or [[Great Shogun Shien]]) is targeted by [[Call of the Haunted]], and [[Call of the Haunted]] is destroyed, you can destroy a different \"Six Samurai\" monster instead of the one that was targeted by [[Call of the Haunted]]."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 12,
+        "ruling": "- If [[Ring of Destruction]] targets a \"Six Samurai\" monster, and you destroy a different \"Six Samurai\" monster instead, zero damage will be inflicted by [[Ring of Destruction]]."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 13,
+        "ruling": "- A \"Six Samurai\" monster destroyed by this effect is considered to be destroyed by the effect, no matter how the other \"Six Samurai\" monster would have been destroyed."
+    },
+    {
+        "cardid": "+rm0DIW0gk+kHVaDZtFiXA==",
+        "sequence": 14,
+        "ruling": "- If you control 2 \"Six Samurai\" monsters, and 1 of them equipped with [[Legendary Ebon Steed]] would be destroyed, the effect of [[Legendary Ebon Steed]] must be used. You cannot choose to destroy another \"Six Samurai\" monster instead."
     }
 ]

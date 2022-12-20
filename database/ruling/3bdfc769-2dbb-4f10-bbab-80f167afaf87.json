@@ -12,6 +12,11 @@
     {
         "cardid": "acffO7stEE+7q4DxZ6+vhw==",
         "sequence": 3,
-        "ruling": "- See [[Jain, Lightsworn Paladin]] for additional rulings."
+        "ruling": "- If you do not have enough cards to send to the Graveyard remaining in your Deck when resolving the effect of a \"Lightsworn\" monster or [[Judgment Dragon]], all cards remaining in your Deck are sent to the Graveyard. For example, if you control [[Jain, Lightsworn Paladin]] and its effect activates during your End Phase when you have only 1 card remaining in your Deck, that card will be sent to the Graveyard."
+    },
+    {
+        "cardid": "acffO7stEE+7q4DxZ6+vhw==",
+        "sequence": 4,
+        "ruling": "- If an effect chained to a \"Lightsworn\" monster's (or [[Judgment Dragon]]'s) effect to send cards from your Deck to the Graveyard during the End Phase that removes that \"Lightsworn\" monster from the field, the \"Lightsworn\" monster's effect does not resolve."
     }
 ]

@@ -2,6 +2,51 @@
     {
         "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
         "sequence": 1,
-        "ruling": "- See [[Gladiator Beast Alexander]] for additional rulings."
+        "ruling": "- The effect of the \"Gladiator Beast\" monsters that says, *At the end of the Battle Phase, if this card attacked or was attacked, you can return it to the Deck…*, returning the \"Gladiator Beast\" monster to the Deck is a cost to activate the effect."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 2,
+        "ruling": "- If you do not have any \"Gladiator Beast\" monsters remaining in your Deck that you can Special Summon, you cannot activate the effect of the \"Gladiator Beast\" monster that attacked or was attacked. For example, if [[Gladiator Beast Murmillo]] attacks or is attacked and the only \"Gladiator Beast\" monster remaining in your Deck is another copy of [[Gladiator Beast Murmillo]], you could not activate the effect of [[Gladiator Beast Murmillo]] at the end of the Battle Phase."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 3,
+        "ruling": "- If a \"Gladiator Beast\" monster attacks or is attacked during the Battle Phase and the \"Gladiator Beast\" monster becomes flipped face-down by an effect during the Battle Phase, even if the \"Gladiator Beast\" monster is flipped face-up before the end of the Battle Phase its effect to Special Summon another \"Gladiator Beast\" monster cannot be activated."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 4,
+        "ruling": "- [[Divine Wrath]] can be chained to the effect that returns the \"Gladiator Beast\" to the Deck. The effect will be negated, but the \"Gladiator Beast\" monster will not be destroyed because it is in the Deck."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 5,
+        "ruling": "- If 2 or more \"Gladiator Beast\" monsters attack or are attacked during the Battle Phase, at the end of the Battle Phase the effect of each \"Gladiator Beast\" monster can be activated. The effects will activate and resolve separately. They are not combined onto the same Chain."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 6,
+        "ruling": "- You can return face-down \"Gladiator Beast\" monsters to your Deck to Special Summon a \"Gladiator Beast\" Fusion Monster, but you must show your opponent the \"Gladiator Beast\" monsters to verify that they are correct."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 7,
+        "ruling": "- If you take control of your opponent's \"Gladiator Beast\" monster and attack with it during the Battle Phase, you can return it to your opponent's Deck to Special Summon a \"Gladiator Beast\" monster from your Deck if you have a \"Gladiator Beast\" monster in your Deck that you can Special Summon.."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 8,
+        "ruling": "- You can use a \"Gladiator Beast\" Fusion Monster when Special Summoning another \"Gladiator Beast\" Fusion Monster. The \"Gladiator Beast\" Fusion Monster that you use for the Special Summon is returned to your Fusion Deck."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 9,
+        "ruling": "- You can activate [[Torrential Tribute]], [[Bottomless Trap Hole]], etc. when a \"Gladiator Beast\" monster is Special Summoned at the end of the Battle Phase."
+    },
+    {
+        "cardid": "G5IZwRMhZEO1tg7mWolVWg==",
+        "sequence": 10,
+        "ruling": "- If a \"Gladiator Beast\" monster attacks and its attack is stopped with a card effect ([[Gravity Bind]], [[Spellbinding Circle]], [[Enemy Controller]], etc.) or is negated during the Battle Step, the \"Gladiator Beast\" monster cannot activate its effect at the end of the Battle Phase."
     }
 ]

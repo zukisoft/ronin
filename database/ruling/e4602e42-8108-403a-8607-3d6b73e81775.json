@@ -1,0 +1,32 @@
+[
+    {
+        "cardid": "Qi5g5AiBOkCGBz1rc+gXdQ==",
+        "sequence": 1,
+        "ruling": "- The effect of this card is a Trigger Effect that can be chained to."
+    },
+    {
+        "cardid": "Qi5g5AiBOkCGBz1rc+gXdQ==",
+        "sequence": 2,
+        "ruling": "- This effect only activates if the card is discarded by a card effect. It will not activate if discarded for the cost of a card like [[Lightning Vortex]], [[Raigeki Break]], [[Tribe-Infecting Virus]], or [[Infernal Incinerator]]. It will not activate if sent to the graveyard by a card effect like [[Last Turn]] or [[Chaos Emperor Dragon - Envoy of the End]]."
+    },
+    {
+        "cardid": "Qi5g5AiBOkCGBz1rc+gXdQ==",
+        "sequence": 3,
+        "ruling": "- The effect of this card activates in the Graveyard, so [[Skill Drain]] will not negate this effects."
+    },
+    {
+        "cardid": "Qi5g5AiBOkCGBz1rc+gXdQ==",
+        "sequence": 4,
+        "ruling": "- This effect can activate in the Damage Step, if discarded by the effect of a card like [[Don Zaloog]]."
+    },
+    {
+        "cardid": "Qi5g5AiBOkCGBz1rc+gXdQ==",
+        "sequence": 5,
+        "ruling": "- If this card is discarded by a card effect in the middle of a chain, or in the middle of a card effect like [[Dragged Down into the Grave]], its effect will activate after the current chain resolves. It cannot miss the timing."
+    },
+    {
+        "cardid": "Qi5g5AiBOkCGBz1rc+gXdQ==",
+        "sequence": 6,
+        "ruling": "- If this card is discarded from your hand by a card effect while [[Macro Cosmos]] is on the field, its effect will not activate because it was not discarded to the Graveyard.\r\n"
+    }
+]

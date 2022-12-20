@@ -47,11 +47,11 @@
     {
         "cardid": "jyEw9l+2kUeA975aOxHHMw==",
         "sequence": 10,
-        "ruling": "> Example #1: You activate [[Snatch Steal]] targeting your opponent's [[Jinzo]]. You then equip [[Jinzo]] with [[Amplifier]]. You cannot activate [[Imperial Order]] because it cannot resolve completely (it would negate [[Snatch Steal]], returning [[Jinzo]] to your opponent, which would negate [[Imperial Order]] so [[Snatch Steal]] would re-activate). If you activate [[Imperial Order]] by mistake in such a situation, flip it face-down again."
+        "ruling": "> **Example #1**: You activate [[Snatch Steal]] targeting your opponent's [[Jinzo]]. You then equip [[Jinzo]] with [[Amplifier]]. You cannot activate [[Imperial Order]] because it cannot resolve completely (it would negate [[Snatch Steal]], returning [[Jinzo]] to your opponent, which would negate [[Imperial Order]] so [[Snatch Steal]] would re-activate). If you activate [[Imperial Order]] by mistake in such a situation, flip it face-down again."
     },
     {
         "cardid": "jyEw9l+2kUeA975aOxHHMw==",
         "sequence": 11,
-        "ruling": "> Example #2: you control [[Jinzo]] equipped with [[Amplifier]] and [[Skill Drain]]. Your opponent cannot activate [[Royal Decree]]."
+        "ruling": "> **Example #2**: you control [[Jinzo]] equipped with [[Amplifier]] and [[Skill Drain]]. Your opponent cannot activate [[Royal Decree]]."
     }
 ]

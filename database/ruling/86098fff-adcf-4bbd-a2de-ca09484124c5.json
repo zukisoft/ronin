@@ -2,31 +2,76 @@
     {
         "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
         "sequence": 1,
-        "ruling": "- Please see [[The Six Samurai - Irou]] for additional rulings."
-    },
-    {
-        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
-        "sequence": 2,
         "ruling": "- This is a Trigger Effect."
     },
     {
         "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
-        "sequence": 3,
+        "sequence": 2,
         "ruling": "- [[The Six Samurai - Zanji]] does not need to remain on the field after battle for its effect to activate. Even if it is destroyed by battle, as long as you control another \"Six Samurai\" monster, the monster it attacked will be destroyed."
     },
     {
         "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
-        "sequence": 4,
+        "sequence": 3,
         "ruling": "- [[The Six Samurai - Zanji]]'s effect activates at the end of the Damage Step. If there are no other \"Six Samurai\" monsters with a different name face-up on your side of the field when its effect resolves, the effect disappears."
     },
     {
         "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 4,
+        "ruling": "> **Example 1**: If you have [[The Six Samurai - Zanji]] and [[The Six Samurai - Irou]] on your side of the field and [[The Six Samurai - Zanji]] attacks your opponent's face-down [[Nightmare Penguin]], if your opponent returns [[The Six Samurai - Irou]] to your hand the [[Nightmare Penguin]] is not destroyed by [[The Six Samurai - Zanji]]'s effect."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
         "sequence": 5,
-        "ruling": "> Example 1: If you have [[The Six Samurai - Zanji]] and [[The Six Samurai - Irou]] on your side of the field and [[The Six Samurai - Zanji]] attacks your opponent's face-down [[Nightmare Penguin]], if your opponent returns [[The Six Samurai - Irou]] to your hand the [[Nightmare Penguin]] is not destroyed by [[The Six Samurai - Zanji]]'s effect."
+        "ruling": "> **Example 2**: If you have [[The Six Samurai - Zanji]] and [[The Six Samurai - Irou]] on your side of the field and [[The Six Samurai - Zanji]] attacks your opponent's Attack Position [[Cyber Dragon]], if you select to have [[The Six Samurai - Irou]] be destroyed instead the [[Cyber Dragon]] will not be destroyed by [[The Six Samurai - Zanji]]'s effect because [[The Six Samurai - Irou]] will not be on your side of the field when [[The Six Samurai - Zanji]]'s effect resolves."
     },
     {
         "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
         "sequence": 6,
-        "ruling": "> Example 2: If you have [[The Six Samurai - Zanji]] and [[The Six Samurai - Irou]] on your side of the field and [[The Six Samurai - Zanji]] attacks your opponent's Attack Position [[Cyber Dragon]], if you select to have [[The Six Samurai - Irou]] be destroyed instead the [[Cyber Dragon]] will not be destroyed by [[The Six Samurai - Zanji]]'s effect because [[The Six Samurai - Irou]] will not be on your side of the field when [[The Six Samurai - Zanji]]'s effect resolves."
+        "ruling": "- The effect *If this card would be destroyed, you can destroy another Six Samurai monster you control instead* is a Continuous Effect. You can apply this effect while resolving an effect that would destroy the monster."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 7,
+        "ruling": "- This effect does not target."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 8,
+        "ruling": "- This effect can be used during the Damage Step. If you destroy a \"Six Samurai\" to save another \"Six Samurai\" that would have been destroyed by battle, you do so during damage calculation. The \"Six Samurai\" that you destroyed instead is sent to the Graveyard at the same time that monsters destroyed by battle are sent to the Graveyard."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 9,
+        "ruling": "- You cannot destroy a face-down \"Six Samurai\" monster instead."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 10,
+        "ruling": "- You cannot destroy a \"Six Samurai\" monster to save more than one other \"Six Samurai\" monster at the same time. Example: You control [[The Six Samurai - Yariza]] in Defense Position and [[The Six Samurai - Nisashi]] and [[The Six Samurai - Irou]] in Attack Position. [[Mirror Force]] is activated when you attack with [[The Six Samurai - Nisashi]]. You can destroy [[The Six Samurai - Yariza]] to save [[The Six Samurai - Nisashi]], or destroy [[The Six Samurai - Yariza]] to save [[The Six Samurai - Irou]]. You cannot destroy [[The Six Samurai - Yariza]] to save both [[The Six Samurai - Nisashi]] and [[The Six Samurai - Irou]] at the same time."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 11,
+        "ruling": "- A \"Six Samurai\" monster that is in the process of being destroyed cannot be destroyed to save another \"Six Samurai\" monster. For example, if you control [[The Six Samurai - Yariza]], [[The Six Samurai - Nisashi]], and [[The Six Samurai - Irou]] all in Attack Position, and your opponent activates [[Mirror Force]], you cannot destroy any of those 3 instead of another."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 12,
+        "ruling": "- You can use the effect of \"Six Samurai\" monsters to prevent them from being destroyed by the effects of [[Call of the Haunted]] or [[Premature Burial]]. So if a \"Six Samurai\" (or [[Great Shogun Shien]]) is targeted by [[Call of the Haunted]], and [[Call of the Haunted]] is destroyed, you can destroy a different \"Six Samurai\" monster instead of the one that was targeted by [[Call of the Haunted]]."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 13,
+        "ruling": "- If [[Ring of Destruction]] targets a \"Six Samurai\" monster, and you destroy a different \"Six Samurai\" monster instead, zero damage will be inflicted by [[Ring of Destruction]]."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 14,
+        "ruling": "- A \"Six Samurai\" monster destroyed by this effect is considered to be destroyed by the effect, no matter how the other \"Six Samurai\" monster would have been destroyed."
+    },
+    {
+        "cardid": "/48Jhs+tvUui3soJSEEkxQ==",
+        "sequence": 15,
+        "ruling": "- If you control 2 \"Six Samurai\" monsters, and 1 of them equipped with [[Legendary Ebon Steed]] would be destroyed, the effect of [[Legendary Ebon Steed]] must be used. You cannot choose to destroy another \"Six Samurai\" monster instead."
     }
 ]

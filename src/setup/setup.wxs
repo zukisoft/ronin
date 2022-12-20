@@ -108,6 +108,7 @@
     <Component Id="ronin_exe" Directory="RONINBinFolder" Guid="A61EC129-474F-4E5F-8F82-525529980BF8">
       <File Id="ronin.exe" Source="$(var.ProjectBinFolder)ronin.exe" Vital="yes" KeyPath="yes"/>
       <Shortcut Id="ronin_exe_shortcut" Directory="ProgramMenuFolder" Advertise="yes" Name="RONIN" Description="RONIN" WorkingDirectory="ZukiSoftBinFolder"/>
+      <RegistryValue Id="ronin_exe_browser_emulation" Root="HKLM" Key="SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION" Name="ronin.exe" Value="11000" Type="integer" />
     </Component>
 
     <Component Id="ronin_exe_config" Directory="RONINBinFolder" Guid="23406546-C8AF-45A5-95D8-E113E65C3985">
@@ -159,7 +160,8 @@
     <Icon Id="app_ico" SourceFile="$(var.ProjectAssetsFolder)app.ico"/>
     <Property Id="ARPPRODUCTICON" Value="app_ico" />
 
-    <UIRef Id="WixUI_ronin" />
+    <UIRef Id="WixUI_ErrorProgressText"/>
+    <UIRef Id="WixUI_ronin"/>
 
     <InstallExecuteSequence>
       <Custom After="InstallInitialize" Action="WixCloseApplications"/>
