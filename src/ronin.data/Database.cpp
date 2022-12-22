@@ -646,7 +646,7 @@ void Database::EnumeratePrints(Action<Print^>^ callback)
 	SQLiteSafeHandle::Reference instance(m_handle);
 	sqlite3_stmt* statement;
 
-	// printid | cardid | seriesid | artworkid | code | language | number | rarity | releasedate
+	// printid | cardid | seriesid | artworkid | code | language | number | rarity | limitededition | releasedate
 	auto sql = L"select print.printid, print.cardid, print.seriesid, print.artworkid, print.code, print.language, "
 		"print.number, printrarity(print.rarity), print.releasedate from print "
 		"order by print.releasedate asc";
@@ -677,8 +677,11 @@ void Database::EnumeratePrints(Action<Print^>^ callback)
 			// rarity
 			print->Rarity = static_cast<PrintRarity>(sqlite3_column_int(statement, 7));
 
+			// limitededition
+			print->LimitedEdition = sqlite3_column_int(statement, 8) != 0;
+
 			// releasedate
-			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 8));
+			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 9));
 			print->ReleaseDate = (releasedateptr == nullptr) ? DateTime::MinValue : DateTime::Parse(gcnew String(releasedateptr));
 
 			// Invoke the callback and just eat any exceptions that occur
@@ -1008,8 +1011,8 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		//
 		// printid(pk) | cardid(fk) | seriesid(fk) | artworkid(fk) | code | language | number | rarity | limitededition | releasedate
 		execute_non_query(instance, L"create table print(printid blob not null, cardid blob not null, seriesid blob not null, "
-			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, limitededition not null, "
-			"releasedate not null, primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
+			"artworkid blob null, code text not null, language text null, number text not null, rarity text not null, limitededition integer not null, "
+			"releasedate text not null, primary key(printid), foreign key(cardid) references card(cardid), foreign key(seriesid) references series(seriesid), "
 			"foreign key(artworkid) references artwork(artworkid) "
 			"check(rarity in ('Common', 'Gold Rare', 'Parallel Rare', 'Prismatic Secret Rare', 'Rare', 'Secret Rare', 'Super Rare', 'Ultra Parallel Rare', "
 			"'Ultra Rare')))");
@@ -1201,12 +1204,6 @@ void Database::InitializeInstance(SQLiteSafeHandle^ handle)
 		dbversion = 5;
 	}
 
-	// TODO: Add index on restriction.restriction
-	// TODO: group table (Six Samurai, Archfiend, Harpy, etc), include linkname
-	// TODO: groupruling table
-	// TODO: card.linkname
-	// TODO: cardgroup table or card.groupid column, depends on if there is overlap in the rulings
-
 	CLRASSERT(dbversion == 5);
 
 	// view: cards
@@ -1380,8 +1377,6 @@ Artwork^ Database::SelectArtwork(ArtworkId^ artworkid)
 	SQLiteSafeHandle::Reference instance(m_handle);
 	sqlite3_stmt* statement;
 
-	Artwork^ artwork = nullptr;
-	
 	// artworkid | cardid | format | width | height | image
 	auto sql = L"select artworkid, cardid, format, width, height, image from artwork where artworkid = ?1";
 
@@ -1403,7 +1398,7 @@ Artwork^ Database::SelectArtwork(ArtworkId^ artworkid)
 		if(sqlite3_step(statement) == SQLITE_ROW) {
 
 			// artworkid | cardid
-			artwork = gcnew Artwork(this, gcnew ArtworkId(column_uuid(statement, 0)), gcnew CardId(column_uuid(statement, 1)));
+			Artwork^ artwork = gcnew Artwork(this, gcnew ArtworkId(column_uuid(statement, 0)), gcnew CardId(column_uuid(statement, 1)));
 
 			// passcode
 			artwork->Format = column_string(statement, 2);
@@ -1427,12 +1422,14 @@ Artwork^ Database::SelectArtwork(ArtworkId^ artworkid)
 					artwork->Image = image;
 				}
 			}
+
+			return artwork;
 		}
+
+		else return nullptr;
 	}
 
 	finally { sqlite3_finalize(statement); }
-
-	return artwork;
 }
 
 //---------------------------------------------------------------------------
@@ -1699,9 +1696,9 @@ List<Print^>^ Database::SelectPrints(CardId^ cardid)
 
 	List<Print^>^ prints = gcnew List<Print^>();
 
-	// printid | cardid | seriesid | artworkid | code | language | number | rarity | releasedate
+	// printid | cardid | seriesid | artworkid | code | language | number | rarity | limitededition | releasedate
 	auto sql = L"select print.printid, print.cardid, print.seriesid, print.artworkid, print.code, print.language, "
-		"print.number, printrarity(print.rarity), print.releasedate from print where print.cardid = ?1 "
+		"print.number, printrarity(print.rarity), print.limitededition, print.releasedate from print where print.cardid = ?1 "
 		"order by print.releasedate asc";
 
 	// Convert the cardid into a byte array and pin it
@@ -1738,8 +1735,11 @@ List<Print^>^ Database::SelectPrints(CardId^ cardid)
 			// rarity
 			print->Rarity = static_cast<PrintRarity>(sqlite3_column_int(statement, 7));
 
+			// limitededition
+			print->LimitedEdition = sqlite3_column_int(statement, 8) != 0;
+
 			// releasedate
-			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 8));
+			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 9));
 			print->ReleaseDate = (releasedateptr == nullptr) ? DateTime::MinValue : DateTime::Parse(gcnew String(releasedateptr));
 
 			prints->Add(print);							// Add the Print instance
@@ -1815,6 +1815,68 @@ List<Ruling^>^ Database::SelectRulings(CardId^ cardid)
 	finally { sqlite3_finalize(statement); }
 
 	return rulings;
+}
+
+//---------------------------------------------------------------------------
+// Database::SelectSeries (internal)
+//
+// Selects a single series object from the database
+//
+// Arguments:
+//
+//	seriesid		- Series identifier
+
+Series^ Database::SelectSeries(SeriesId^ seriesid)
+{
+	CHECK_DISPOSED(m_disposed);
+	CLRASSERT(CLRISNOTNULL(m_handle) && (m_handle->IsClosed == false));
+
+	SQLiteSafeHandle::Reference instance(m_handle);
+	sqlite3_stmt* statement;
+
+	// seriesid | code | name | boosterpack | releasedate
+	auto sql = L"select series.seriesid, series.code, series.name, series.boosterpack, series.releasedate "
+		"from series where seriesid = ?1";
+
+	// Convert the seriesid into a byte array and pin it
+	array<Byte>^ _seriesid = seriesid->ToByteArray();
+	pin_ptr<Byte> pincardid = &_seriesid[0];
+
+	int result = sqlite3_prepare16_v2(instance, sql, -1, &statement, nullptr);
+	if(result != SQLITE_OK) throw gcnew SQLiteException(result, sqlite3_errmsg(instance));
+
+	try {
+
+		// Bind the query parameter(s)
+		result = sqlite3_bind_blob(statement, 1, pincardid, _seriesid->Length, SQLITE_STATIC);
+		if(result != SQLITE_OK) throw gcnew SQLiteException(result);
+
+		// Execute the query; there should be at most one row returned
+		if(sqlite3_step(statement) == SQLITE_ROW) {
+
+			// seriesid
+			Series^ series = gcnew Series(this, gcnew SeriesId(column_uuid(statement, 0)));
+
+			// code
+			series->Code = column_string(statement, 1);
+
+			// name
+			series->Name = column_string(statement, 2);
+
+			// boosterpack
+			series->BoosterPack = sqlite3_column_int(statement, 3) != 0;
+
+			// releasedate
+			wchar_t const* releasedateptr = reinterpret_cast<wchar_t const*>(sqlite3_column_text16(statement, 4));
+			series->ReleaseDate = (releasedateptr == nullptr) ? Nullable<DateTime>() : DateTime::Parse(gcnew String(releasedateptr));
+
+			return series;
+		}
+
+		else return nullptr;
+	}
+
+	finally { sqlite3_finalize(statement); }
 }
 
 //---------------------------------------------------------------------------

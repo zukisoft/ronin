@@ -551,7 +551,7 @@ namespace zuki.ronin.renderer
 		/// <summary>
 		/// Boundary of the set code
 		/// </summary>
-		public override RectangleF SetCodeBounds => new Rectangle(556, 918, 198, 26);
+		public override RectangleF SetCodeBounds => new Rectangle(556, 916, 198, 26);
 
 		/// <summary>
 		/// Font used to draw the set code

@@ -217,18 +217,13 @@ namespace zuki.ronin
 			if(File.Exists("d:\\ronin.db")) m_opendatabase.FileName = "d:\\ronin.db";
 			else
 			{
-				// TODO: Can OpenFileDialog support dark mode?
 				var result = m_opendatabase.ShowDialog(this);
 				if(result != DialogResult.OK) Close();
 			}
 
-			try
-			{
-				string canonicalizedpath = Path.GetFullPath(m_opendatabase.FileName);
-				m_database = Database.Open(canonicalizedpath, false);
-				m_statuslabel.Text = canonicalizedpath;
-			}
-			catch(Exception) { /* TODO - HANDLER */ }
+			string canonicalizedpath = Path.GetFullPath(m_opendatabase.FileName);
+			m_database = Database.Open(canonicalizedpath, false);
+			m_statuslabel.Text = canonicalizedpath;
 
 			// Use the Card Manager as the default MDI child
 			OnManageCards(this, EventArgs.Empty);

@@ -183,8 +183,8 @@ int Print::GetHashCode(void)
 
 Series^ Print::GetSeries(void)
 {
-	// TODO
-	return nullptr;
+	CLRASSERT(CLRISNOTNULL(m_database));
+	return m_database->SelectSeries(m_seriesid);
 }
 
 //---------------------------------------------------------------------------
@@ -214,8 +214,7 @@ void Print::Language::set(String^ value)
 
 bool Print::LimitedEdition::get(void)
 {
-	// TODO
-	return false;
+	return m_limitededition;
 }
 
 //---------------------------------------------------------------------------
@@ -223,9 +222,9 @@ bool Print::LimitedEdition::get(void)
 //
 // Sets a flag indicating if the print is a Limited Edition
 
-void Print::LimitedEdition::set(bool /*value*/)
+void Print::LimitedEdition::set(bool value)
 {
-	// TODO
+	m_limitededition = value;
 }
 
 //---------------------------------------------------------------------------

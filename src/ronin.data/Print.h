@@ -180,6 +180,7 @@ private:
 	String^					m_language = String::Empty;	// Language code
 	String^					m_number = String::Empty;	// Print number
 	PrintRarity				m_rarity;					// Print rarity
+	bool					m_limitededition = false;	// Limited edition flag
 	DateTime				m_releasedate;				// Print release date
 };
 

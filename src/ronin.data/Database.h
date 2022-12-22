@@ -152,6 +152,11 @@ internal:
 	// Selects Ruling objects from the database
 	List<Ruling^>^ SelectRulings(CardId^ cardid);
 
+	// SelectSeries
+	//
+	// Selects a single Series object from the database
+	Series^ SelectSeries(SeriesId^ seriesid);
+
 	// UpdateArtwork
 	//
 	// Updates an artwork image in the database

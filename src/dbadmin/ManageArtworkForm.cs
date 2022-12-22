@@ -126,8 +126,6 @@ namespace zuki.ronin
 			}
 			catch(Exception ex)
 			{
-				// TODO: Make an error message dialog, go back and try/catch a bunch
-				// of things that aren't protected yet
 				MessageBox.Show(this, ex.Message, "Unable to import new artwork");
 			}
 		}
@@ -201,7 +199,7 @@ namespace zuki.ronin
 					m_layoutpanel.Controls.Add(tile);
 					tile.ArtworkChanged += new EventHandler<Artwork>(OnArtworkChanged);
 					tile.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
-					tile.SetArtwork(artwork);		// TODO: did this break without the second argument?
+					tile.SetArtwork(artwork);
 				}
 			}
 		}

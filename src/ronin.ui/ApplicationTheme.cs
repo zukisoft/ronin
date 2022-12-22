@@ -86,6 +86,11 @@ namespace zuki.ronin.ui
 		public static bool DarkMode => s_darkmode;
 
 		/// <summary>
+		/// The text color of a disabled hyperlink
+		/// </summary>
+		public static Color DisabledLinkColor => s_darkmode ? Color.Gray : Color.Gray;
+
+		/// <summary>
 		/// The foreground color of a form
 		/// </summary>
 		public static Color FormForeColor => s_darkmode ? Color.White : Color.Black;

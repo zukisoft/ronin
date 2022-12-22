@@ -70,6 +70,8 @@ namespace zuki.ronin
 			panel1.ForeColor = ApplicationTheme.PanelForeColor;
 			m_rightpanel.BackColor = ApplicationTheme.PanelBackColor;
 			m_rightpanel.ForeColor = ApplicationTheme.PanelForeColor;
+			m_rulings.BackColor = ApplicationTheme.PanelBackColor;
+			m_rulings.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>
