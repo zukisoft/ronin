@@ -70,8 +70,7 @@ bool Series::operator!=(Series^ lhs, Series^ rhs)
 
 bool Series::BoosterPack::get(void)
 {
-	// TODO
-	return false;
+	return m_boosterpack;
 }
 
 //---------------------------------------------------------------------------
@@ -79,9 +78,9 @@ bool Series::BoosterPack::get(void)
 //
 // Sets a flag indicating if the series is a booster pack
 
-void Series::BoosterPack::set(bool /*value*/)
+void Series::BoosterPack::set(bool value)
 {
-	// TODO
+	m_boosterpack = value;
 }
 
 //---------------------------------------------------------------------------

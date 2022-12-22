@@ -133,7 +133,6 @@ namespace zuki.ronin
 			// Throw up a message box with any exception that occurred
 			if(exception != null)
 			{
-				// TODO: A common exception dialog is still something this needs
 				MessageBox.Show(this, exception.Message, "Unable to export artwork", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}

@@ -77,7 +77,7 @@ namespace zuki.ronin
 
 			m_insertdot.ActiveLinkColor = ApplicationTheme.LinkColor;
 			m_insertdot.LinkColor = ApplicationTheme.LinkColor;
-			m_insertdot.DisabledLinkColor = ApplicationTheme.PanelForeColor;	// TODO: Need a DisabledLinkColor
+			m_insertdot.DisabledLinkColor = ApplicationTheme.DisabledLinkColor;
 			m_text.BackColor = ApplicationTheme.PanelBackColor;
 			m_text.ForeColor = ApplicationTheme.PanelForeColor;
 		}

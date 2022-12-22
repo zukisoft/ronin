@@ -73,26 +73,30 @@ namespace zuki.ronin.ui
 
 			string markdown = sb.ToString().TrimEnd(new char[] { '\r', '\n' });
 
-			// The markdown contains special delimiters ([[ and ]]) to indicate a card name
-			// in the text. Convert names that aren't this card into hyperlinks
+			// Create a List<> of all the unique card names present in the rulings
+			List<string> cardnames = new List<string>();
 			foreach(Match match in Regex.Matches(markdown, "\\[\\[(?<cardname>.*?)\\]\\]"))
 			{
-				// TODO: the performance of this is likely poor, it's going to do the same
-				// card over and over again; it'll do for now; since I've decided not to 
-				// cross-reference rulings, this can be done in the source rulings instead
-				// of at runtime
 				string cardname = match.Result("${cardname}");
-				string replace = "[[" + cardname + "]]";
-				string replacewith = (cardname == name ? "**" + cardname + "**" : 
+				if(!cardnames.Contains(cardname)) cardnames.Add(cardname);
+			}
+
+			// Convert all the card names into markdown hyperlinks
+			foreach(string cardname in cardnames)
+			{
+				// The identity card gets BOLDed, referenced cards become hyperlinks
+				// with the card name URL encoded ...
+				string replacewith = (cardname == name ? "**" + cardname + "**" :
 					"[**" + cardname + "**](" + WebUtility.UrlEncode(cardname) + ")");
-				markdown = markdown.Replace(replace, replacewith);
+				markdown = markdown.Replace("[[" + cardname + "]]", replacewith);
 			}
 
 			// Convert the Markdown into an HTML document body and render it
 			m_currentbody = "<body>" + Markdown.ToHTML(markdown) + "</body>";
 			RenderDocument();
 
-			m_webbrowser.Visible = true;
+			// Delay visibility of the browser until this function has been called
+			if(!m_webbrowser.Visible) m_webbrowser.Visible = true;
 		}
 
 		//---------------------------------------------------------------------
@@ -176,7 +180,10 @@ namespace zuki.ronin.ui
         text-decoration: none;
     }
     ul, li {
-        padding: 0 1.25em;
+        padding-top: 0;
+		padding-bottom: 0;
+		padding-left: 1.25em;
+		padding-right: 0;
     }
     li {
         list-style-type: none;
@@ -218,7 +225,10 @@ namespace zuki.ronin.ui
         text-decoration: none;
     }
     ul, li {
-        padding: 0 1.25em;
+        padding-top: 0;
+		padding-bottom: 0;
+		padding-left: 1.25em;
+		padding-right: 0;
     }
     li {
         list-style-type: none;

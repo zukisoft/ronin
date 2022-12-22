@@ -135,6 +135,7 @@ private:
 
 	String^					m_code = String::Empty;		// Series code
 	String^					m_name = String::Empty;		// Series name
+	bool					m_boosterpack = false;		// Booster pack flag
 	Nullable<DateTime>		m_releasedate;				// Series release date
 };
 

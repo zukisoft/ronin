@@ -142,8 +142,6 @@ namespace zuki.ronin
 			}
 			catch(Exception ex)
 			{
-				// TODO: Make an error message dialog, go back and try/catch a bunch
-				// of things that aren't protected yet
 				MessageBox.Show(this, ex.Message, "Unable to update artwork");
 			}
 		}
