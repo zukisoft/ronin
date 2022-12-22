@@ -132,7 +132,7 @@
     </Component>
 
     <Component Id="ronin_db" Directory="RONINAppDataFolder" Guid="50DC3638-2B82-47F6-B0E2-AA58FB3ED72F">
-      <File Id="ronin.db" Source="$(var.ProjectBinFolder)ronin.db" Vital="yes" KeyPath="yes" />
+      <File Id="ronin.db" Source="$(var.ProjectTempFolder)ronin.db" Vital="yes" KeyPath="yes" />
     </Component>
 
     <?if $(var.Configuration) = "Debug" ?>

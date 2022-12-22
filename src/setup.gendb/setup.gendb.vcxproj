@@ -73,16 +73,16 @@
     <OutDir>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
     <TargetName>$(RootNamespace)</TargetName>
     <IntDir>obj\$(Configuration)\$(PlatformTarget)\</IntDir>
-    <NMakeBuildCommandLine>if not exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" ( "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" )</NMakeBuildCommandLine>
-    <NMakeOutput>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db</NMakeOutput>
-    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" del "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeCleanCommandLine>
+    <NMakeBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db"</NMakeBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)..\..\tmp\ronin.db</NMakeOutput>
+    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db" -rebuild</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\tmp\ronin.db" del "$(ProjectDir)..\..\tmp\ronin.db"</NMakeCleanCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NMakeBuildCommandLine>if not exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" ( "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" )</NMakeBuildCommandLine>
-    <NMakeOutput>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db</NMakeOutput>
-    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" del "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeCleanCommandLine>
+    <NMakeBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db"</NMakeBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)..\..\tmp\ronin.db</NMakeOutput>
+    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db" -rebuild</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\tmp\ronin.db" del "$(ProjectDir)..\..\tmp\ronin.db"</NMakeCleanCommandLine>
     <TargetName>$(RootNamespace)</TargetName>
     <OutDir>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
     <IntDir>obj\$(Configuration)\$(PlatformTarget)\</IntDir>
@@ -91,16 +91,16 @@
     <OutDir>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
     <TargetName>$(RootNamespace)</TargetName>
     <IntDir>obj\$(Configuration)\$(PlatformTarget)\</IntDir>
-    <NMakeBuildCommandLine>if not exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" ( "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" )</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" del "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeCleanCommandLine>
-    <NMakeOutput>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db</NMakeOutput>
+    <NMakeBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db"</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db" -rebuild</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\tmp\ronin.db" del "$(ProjectDir)..\..\tmp\ronin.db"</NMakeCleanCommandLine>
+    <NMakeOutput>$(ProjectDir)..\..\tmp\ronin.db</NMakeOutput>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <NMakeBuildCommandLine>if not exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" ( "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" )</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db" del "$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db"</NMakeCleanCommandLine>
-    <NMakeOutput>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\ronin.db</NMakeOutput>
+    <NMakeBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db"</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>"$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\gendb" "$(ProjectDir)..\..\database" "$(ProjectDir)..\..\tmp\ronin.db" -rebuild</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>if exist "$(ProjectDir)..\..\tmp\ronin.db" del "$(ProjectDir)..\..\tmp\ronin.db"</NMakeCleanCommandLine>
+    <NMakeOutput>$(ProjectDir)..\..\tmp\ronin.db</NMakeOutput>
     <TargetName>$(RootNamespace)</TargetName>
     <OutDir>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
     <IntDir>obj\$(Configuration)\$(PlatformTarget)\</IntDir>
