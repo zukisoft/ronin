@@ -25,4 +25,8 @@
   <!-- Set to the root \src path for the project -->
   <?define ProjectSourceFolder = $(var.ProjectDir)..\..\src\ ?>
 
+  <!-- ProjectTempFolder -->
+  <!-- Set to the root \tmp path for the project -->
+  <?define ProjectTempFolder = $(var.ProjectDir)..\..\tmp\ ?>
+
 </Include>

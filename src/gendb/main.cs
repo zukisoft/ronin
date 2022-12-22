@@ -35,12 +35,13 @@ namespace zuki.ronin
 		private static void ShowUsage()
 		{
 			Console.WriteLine();
-			Console.WriteLine(AppDomain.CurrentDomain.FriendlyName.ToUpper() + " importdir outfile");
+			Console.WriteLine(AppDomain.CurrentDomain.FriendlyName.ToUpper() + " importdir outfile [-rebuild]");
 			Console.WriteLine();
 			Console.WriteLine("gendb - Generate the RONIN database");
 			Console.WriteLine();
 			Console.WriteLine("  importdir    : Base directory of the import files");
-			Console.WriteLine("  outfile      : output database file name");
+			Console.WriteLine("  outfile      : Output database file name");
+			Console.WriteLine("  -rebuild     : Specify to force a rebuild of the output file");
 		}
 
 		/// <summary>
@@ -49,6 +50,11 @@ namespace zuki.ronin
 		/// <param name="arguments">Array of comamnd line arguments</param>
 		private static int Main(string[] arguments)
 		{
+			// banner
+			Console.WriteLine();
+			Console.WriteLine("gendb - Generates the RONIN database from source");
+			Console.WriteLine();
+
 			try
 			{
 				// Parse the command line arguments and switches
@@ -73,9 +79,27 @@ namespace zuki.ronin
 				string outdir = Path.GetDirectoryName(outputfile);
 				if(!Directory.Exists(outdir)) Directory.CreateDirectory(outdir);
 
-				Console.WriteLine();
-				Console.WriteLine("Generating RONIN database " + outputfile + " from import directory " + importdir + " ...");
-				Console.WriteLine();
+				// If the output file already exists, scan the input folder for the newest modified date/time stamp
+				if(File.Exists(outputfile) && !commandline.Switches.ContainsKey("rebuild"))
+				{
+					DateTime maxfiletime = DateTime.MinValue;
+					foreach(string filename in Directory.GetFiles(importdir, "*.*", SearchOption.AllDirectories))
+					{
+						DateTime writetime = File.GetLastWriteTime(filename);
+						if(writetime > maxfiletime) maxfiletime = writetime;
+					}
+
+					// If the output file 
+					if(File.GetLastWriteTime(outputfile) > maxfiletime)
+					{
+						Console.WriteLine(" > Existing RONIN database " + outputfile + " is newer than import files");
+						Console.WriteLine(" > Bypassing database generation");
+						Console.WriteLine();
+						return 0;
+					}
+				}
+
+				Console.WriteLine(" > Generating RONIN database " + outputfile + " from import directory " + importdir);
 
 				// Dump how long this operation takes to the console
 				DateTime start = DateTime.Now;
@@ -83,7 +107,7 @@ namespace zuki.ronin
 				// Attempt to generate the database from the import folder
 				using(Database db = Database.Import(importdir, outputfile)) { }
 
-				Console.WriteLine("> Database successfully generated in " + (DateTime.Now - start).TotalSeconds + " seconds.");
+				Console.WriteLine(" > Database successfully generated in " + (DateTime.Now - start).TotalSeconds + " seconds.");
 				Console.WriteLine();
 
 				return 0;
