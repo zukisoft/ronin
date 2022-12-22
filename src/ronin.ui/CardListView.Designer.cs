@@ -17,6 +17,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.m_listview = new zuki.ronin.ui.VirtualListView();
+			this.m_dummycolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.m_listviewcolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.m_dummyimagelist = new System.Windows.Forms.ImageList(this.components);
 			this.SuspendLayout();
@@ -25,6 +26,7 @@
 			// 
 			this.m_listview.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.m_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.m_dummycolumn,
             this.m_listviewcolumn});
 			this.m_listview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.m_listview.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -44,10 +46,18 @@
 			this.m_listview.VirtualMode = true;
 			this.m_listview.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.OnDrawColumnHeader);
 			this.m_listview.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.OnDrawItem);
-			this.m_listview.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.OnDrawSubItem);
 			this.m_listview.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.OnSelectionChanged);
 			this.m_listview.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.OnRetrieveVirtualItem);
 			this.m_listview.Resize += new System.EventHandler(this.OnResize);
+			// 
+			// m_dummycolumn
+			// 
+			this.m_dummycolumn.DisplayIndex = 1;
+			this.m_dummycolumn.Width = 0;
+			// 
+			// m_listviewcolumn
+			// 
+			this.m_listviewcolumn.DisplayIndex = 0;
 			// 
 			// m_dummyimagelist
 			// 
@@ -72,5 +82,6 @@
         private zuki.ronin.ui.VirtualListView m_listview;
         private System.Windows.Forms.ColumnHeader m_listviewcolumn;
         private System.Windows.Forms.ImageList m_dummyimagelist;
-    }
+		private System.Windows.Forms.ColumnHeader m_dummycolumn;
+	}
 }

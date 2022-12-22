@@ -70,11 +70,6 @@ namespace zuki.ronin.ui
 			// Manual DPI scaling
 			m_dummyimagelist.ImageSize = m_dummyimagelist.ImageSize.ScaleDPI(ApplicationTheme.ScalingFactor);
 
-			// Fix the flicker seen on the owner drawn listview items when the mouse moves over them
-			IntPtr lvmstyles = NativeMethods.SendMessageW(m_listview.Handle, NativeMethods.LVM_GETEXTENDEDLISTVIEWSTYLE);
-			lvmstyles = new IntPtr(lvmstyles.ToInt32() | NativeMethods.LVS_EX_DOUBLEBUFFER);
-			NativeMethods.SendMessageW(m_listview.Handle, NativeMethods.LVM_SETEXTENDEDLISTVIEWSTYLE, IntPtr.Zero, lvmstyles);
-
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 		}
@@ -169,43 +164,43 @@ namespace zuki.ronin.ui
 		/// <param name="args">Draw item event arguments</param>
 		private void OnDrawItem(object sender, DrawListViewItemEventArgs args)
 		{
-			// Take off a few pixels at the top and bottom of the cell to provide the "lines"
-			// that serve as the visual separator between the items
-			var adjustedBounds = args.Bounds.InflateDPI(0, -2, ApplicationTheme.ScalingFactor);
-
-			// Render the backdrop for the item
-			bool isdark = ApplicationTheme.DarkMode ? !args.Item.Selected : args.Item.Selected;
-			using(GraphicsPath gp = new GraphicsPath())
-			{
-				float CornerRadius = 4.ScaleDPI(ApplicationTheme.ScalingFactor) * 2.0F;
-				gp.AddArc(adjustedBounds.Left -1, adjustedBounds.Top -1, CornerRadius, CornerRadius, 180, 90);
-				gp.AddArc(adjustedBounds.Left + adjustedBounds.Width - CornerRadius, adjustedBounds.Top -1, CornerRadius, CornerRadius, 270, 90);
-				gp.AddArc(adjustedBounds.Left + adjustedBounds.Width - CornerRadius, adjustedBounds.Top + adjustedBounds.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
-				gp.AddArc(adjustedBounds.Left -1, adjustedBounds.Top + adjustedBounds.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
-				args.Graphics.SetClip(gp);
-				args.Graphics.DrawImage(SelectBackdrop((Card)args.Item.Tag, isdark), adjustedBounds);
-				args.Graphics.ResetClip();
-			}
-		}
-
-		/// <summary>
-		/// Invoked when a subitem of the ListView control needs to be drawn
-		/// </summary>
-		/// <param name="sender">Object raising this event</param>
-		/// <param name="args">Draw item event arguments</param>
-		private void OnDrawSubItem(object sender, DrawListViewSubItemEventArgs args)
-		{
-			var adjustedBounds = args.SubItem.Bounds.InflateDPI(-4, -2, ApplicationTheme.ScalingFactor);
-
-			// Use high-quality text rendering for the subitem
+			Card card = (Card)args.Item.Tag;
+			// Use high-quality text rendering for the item
 			args.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 			args.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 			args.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
-			// TextRenderer does a better job than Graphics.DrawString, quality-wise
-			bool isdark = ApplicationTheme.DarkMode ? !args.Item.Selected : args.Item.Selected;
-			TextRenderer.DrawText(args.Graphics, args.SubItem.Text, args.SubItem.Font, adjustedBounds,
-				isdark ? Color.White : Color.Black, TextFormatFlags.VerticalCenter);
+			// Take off a few pixels at the top and bottom of the item to provide whitespace
+			var adjustedBounds = args.Bounds.InflateDPI(0, -3, ApplicationTheme.ScalingFactor);
+
+			// Render the item inside a GraphicsPath to round the corners
+			using(GraphicsPath gp = new GraphicsPath())
+			{
+				float CornerRadius = 6.ScaleDPI(ApplicationTheme.ScalingFactor) * 2.0F;
+				gp.AddArc(adjustedBounds.Left - 1, adjustedBounds.Top - 1, CornerRadius, CornerRadius, 180, 90);
+				gp.AddArc(adjustedBounds.Left + adjustedBounds.Width - CornerRadius, adjustedBounds.Top - 1, CornerRadius, CornerRadius, 270, 90);
+				gp.AddArc(adjustedBounds.Left + adjustedBounds.Width - CornerRadius, adjustedBounds.Top + adjustedBounds.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
+				gp.AddArc(adjustedBounds.Left - 1, adjustedBounds.Top + adjustedBounds.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
+				args.Graphics.SetClip(gp);
+
+				// Draw the background color
+				args.Graphics.FillPath(new SolidBrush(args.Item.Selected ? ApplicationTheme.SelectedListItemBackColor :
+					ApplicationTheme.ListItemBackColor), gp);
+
+				// Draw a colored "tab" indicating the type of card being referenced
+				RectangleF tabbounds = new RectangleF(adjustedBounds.Left, adjustedBounds.Top,
+					10.ScaleDPI(ApplicationTheme.ScalingFactor), adjustedBounds.Height);
+				args.Graphics.FillRectangle(new SolidBrush(SelectTabColor(card)), tabbounds);
+
+				// Draw the card name
+				Rectangle textbounds = new Rectangle(adjustedBounds.Left + 14.ScaleDPI(ApplicationTheme.ScalingFactor),
+					adjustedBounds.Top, adjustedBounds.Width - 14.ScaleDPI(ApplicationTheme.ScalingFactor), adjustedBounds.Height);
+				TextRenderer.DrawText(args.Graphics, card.Name, m_listview.Font, textbounds,
+					args.Item.Selected ? ApplicationTheme.ListItemForeColor : ApplicationTheme.SelectedListItemForeColor, 
+					TextFormatFlags.VerticalCenter);                
+				
+				args.Graphics.ResetClip();
+			}
 		}
 
 		/// <summary>
@@ -229,7 +224,7 @@ namespace zuki.ronin.ui
 			Debug.Assert(args.ItemIndex < m_cards.Count);
 
 			// Create and initialize a new ListViewItem to return
-			args.Item = new ListViewItem(m_cards[args.ItemIndex].Name.Replace("&", "&&"))
+			args.Item = new ListViewItem(new string[] { String.Empty, m_cards[args.ItemIndex].Name.Replace("&", "&&") })
 			{
 				Font = m_listview.Font,
 				Tag = m_cards[args.ItemIndex]
@@ -252,29 +247,24 @@ namespace zuki.ronin.ui
 		// Private Member Functions
 		//---------------------------------------------------------------------
 
-		/// <summary>
-		/// Selects the backdrop bitmap image for the ListView item
-		/// </summary>
-		/// <param name="card">Selected Card instance</param>
-		/// <param name="dark">Flag indicating if the dark backdrop should be used</param>
-		Bitmap SelectBackdrop(Card card, bool dark)
+		Color SelectTabColor(Card card)
 		{
 			// SPELL CARD
-			if(card.Type == CardType.Spell) return dark ? s_backdrop_spell_dark : s_backdrop_spell_light;
+			if(card.Type == CardType.Spell) return Color.FromArgb(0x48, 0x90, 0x7D);
 
 			// TRAP CARD
-			else if(card.Type == CardType.Trap) return dark ? s_backdrop_trap_dark : s_backdrop_trap_light;
+			else if(card.Type == CardType.Trap) return Color.FromArgb(0xB6, 0x59, 0x92);
 
 			// MONSTER CARD
 			else if(card is MonsterCard monster)
 			{
-				if(monster.Normal) return dark ? s_backdrop_normal_dark : s_backdrop_normal_light;
-				else if(monster.Fusion) return dark ? s_backdrop_fusion_dark : s_backdrop_fusion_light;
-				else if(monster.Ritual) return dark ? s_backdrop_ritual_dark : s_backdrop_ritual_light;
+				if(monster.Normal) return Color.FromArgb(0xBC, 0x9F, 0x2C);
+				else if(monster.Fusion) return Color.FromArgb(0x94, 0x5C, 0xB3);
+				else if(monster.Ritual) return Color.FromArgb(0x5E, 0x7C, 0xAD);
 			}
 
 			// DEFAULT: EFFECT MONSTER CARD
-			return dark ? s_backdrop_effect_dark : s_backdrop_effect_light;
+			return Color.FromArgb(0xB7, 0x6F, 0x2F);
 		}
 
 		//---------------------------------------------------------------------
@@ -286,64 +276,5 @@ namespace zuki.ronin.ui
 		/// </summary>
 		private readonly List<Card> m_cards = new List<Card>();
 
-		/// <summary>
-		/// Dark effect monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_effect_dark = Resources.listbackdrop_effect_dark;
-
-		/// <summary>
-		/// Dark fusion monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_fusion_dark = Resources.listbackdrop_fusion_dark;
-
-		/// <summary>
-		/// Dark normal monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_normal_dark = Resources.listbackdrop_normal_dark;
-
-		/// <summary>
-		/// Dark ritual monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_ritual_dark = Resources.listbackdrop_ritual_dark;
-
-		/// <summary>
-		/// Dark spell backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_spell_dark = Resources.listbackdrop_spell_dark;
-
-		/// <summary>
-		/// Dark trap backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_trap_dark = Resources.listbackdrop_trap_dark;
-
-		/// <summary>
-		/// Light effect monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_effect_light = Resources.listbackdrop_effect_light;
-
-		/// <summary>
-		/// Light fusion monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_fusion_light = Resources.listbackdrop_fusion_light;
-
-		/// <summary>
-		/// Light normal monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_normal_light = Resources.listbackdrop_normal_light;
-
-		/// <summary>
-		/// Light ritual monster backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_ritual_light = Resources.listbackdrop_ritual_light;
-
-		/// <summary>
-		/// Light spell backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_spell_light = Resources.listbackdrop_spell_light;
-
-		/// <summary>
-		/// Light trap backdrop
-		/// </summary>
-		private static readonly Bitmap s_backdrop_trap_light = Resources.listbackdrop_trap_light;
 	}
 }

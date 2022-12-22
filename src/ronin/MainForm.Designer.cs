@@ -27,6 +27,7 @@
 			this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.cardSelector1 = new zuki.ronin.ui.CardSelector();
 			this.cardImage1 = new zuki.ronin.ui.CardImage();
+			this.rulingsView1 = new zuki.ronin.ui.RulingsView();
 			this.m_menu.SuspendLayout();
 			this.m_statusstrip.SuspendLayout();
 			this.SuspendLayout();
@@ -135,25 +136,35 @@
 			this.cardSelector1.Location = new System.Drawing.Point(0, 24);
 			this.cardSelector1.Name = "cardSelector1";
 			this.cardSelector1.Padding = new System.Windows.Forms.Padding(4);
-			this.cardSelector1.Size = new System.Drawing.Size(302, 463);
+			this.cardSelector1.Size = new System.Drawing.Size(316, 463);
 			this.cardSelector1.TabIndex = 3;
 			this.cardSelector1.SelectionChanged += new System.EventHandler<zuki.ronin.data.Card>(this.OnCardSelectionChanged);
 			// 
 			// cardImage1
 			// 
-			this.cardImage1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cardImage1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cardImage1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cardImage1.Location = new System.Drawing.Point(302, 24);
+			this.cardImage1.Location = new System.Drawing.Point(316, 24);
 			this.cardImage1.Name = "cardImage1";
 			this.cardImage1.Padding = new System.Windows.Forms.Padding(4);
-			this.cardImage1.Size = new System.Drawing.Size(631, 463);
+			this.cardImage1.Size = new System.Drawing.Size(325, 463);
 			this.cardImage1.TabIndex = 4;
+			// 
+			// rulingsView1
+			// 
+			this.rulingsView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.rulingsView1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rulingsView1.Location = new System.Drawing.Point(641, 24);
+			this.rulingsView1.Name = "rulingsView1";
+			this.rulingsView1.Size = new System.Drawing.Size(292, 463);
+			this.rulingsView1.TabIndex = 5;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(933, 519);
+			this.Controls.Add(this.rulingsView1);
 			this.Controls.Add(this.cardImage1);
 			this.Controls.Add(this.cardSelector1);
 			this.Controls.Add(this.m_statusstrip);
@@ -185,5 +196,6 @@
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
 		private ui.CardSelector cardSelector1;
 		private ui.CardImage cardImage1;
+		private ui.RulingsView rulingsView1;
 	}
 }

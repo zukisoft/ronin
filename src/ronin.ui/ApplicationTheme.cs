@@ -121,6 +121,16 @@ namespace zuki.ronin.ui
 		public static Color LinkColor => s_darkmode ? Color.LightSkyBlue : Color.SteelBlue;
 
 		/// <summary>
+		/// The background color of a list item
+		/// </summary>
+		public static Color ListItemBackColor => s_darkmode ? Color.FromArgb(0x2B, 0x2B, 0x2B) : Color.White;
+
+		/// <summary>
+		/// The foreground color of a list item
+		/// </summary>
+		public static Color ListItemForeColor => s_darkmode ? Color.White : Color.Black;
+
+		/// <summary>
 		/// The background color of a menu item
 		/// </summary>
 		public static Color MenuBackColor => s_darkmode ? Color.FromArgb(0x2B, 0x2B, 0x2B) : Color.White;
@@ -164,6 +174,16 @@ namespace zuki.ronin.ui
 		/// Access the DPI scaling factor for the application
 		/// </summary>
 		public static SizeF ScalingFactor => s_scalingfactor;
+
+		/// <summary>
+		/// The background color of a selected list item
+		/// </summary>
+		public static Color SelectedListItemBackColor => s_darkmode ? Color.FromArgb(0x4B, 0x4B, 0x4B) : Color.FromArgb(0xE3, 0xE3, 0xE3);
+
+		/// <summary>
+		/// The foreground color of a selected list item
+		/// </summary>
+		public static Color SelectedListItemForeColor => s_darkmode ? Color.White : Color.Black;
 
 		//---------------------------------------------------------------------
 		// Private Data Types

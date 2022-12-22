@@ -81,10 +81,6 @@ namespace zuki.ronin
 			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
 
 			// Manual DPI scaling
-			cardSelector1.Margin = cardSelector1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			cardSelector1.Padding = cardSelector1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			cardImage1.Margin = cardImage1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
-			cardImage1.Padding = cardImage1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel2.Margin = toolStripStatusLabel2.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel2.Padding = toolStripStatusLabel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel1.Margin = toolStripStatusLabel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
@@ -192,7 +188,7 @@ namespace zuki.ronin
 			string databasepath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
 			databasepath = Path.Combine(databasepath, "ZukiSoft\\RONIN\\ronin.db");
 			
-			m_database = Database.Open(databasepath);
+			m_database = Database.Open("d:\\ronin.db");
 
 			List<Card> allcards = new List<Card>();
 			m_database.EnumerateCards(card => allcards.Add(card));
@@ -242,6 +238,7 @@ namespace zuki.ronin
 		private void OnCardSelectionChanged(object sender, Card e)
 		{
 			cardImage1.SetCard(e);
+			rulingsView1.SetCard(e);
 		}
 	}
 }
