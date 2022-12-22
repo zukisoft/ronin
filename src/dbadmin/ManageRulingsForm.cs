@@ -98,7 +98,7 @@ namespace zuki.ronin
 			if(card != null)
 			{
 				List<Ruling> rulings = card.GetRulings();
-				m_rulingsview.SetRulings(card, rulings);
+				m_rulingsview.SetCard(card);
 
 				StringBuilder sb = new StringBuilder();
 				foreach(Ruling ruling in rulings)
@@ -115,7 +115,7 @@ namespace zuki.ronin
 
 			else
 			{
-				m_rulingsview.SetRulings(null, null);
+				m_rulingsview.SetCard(null);
 				m_rulings.Text = string.Empty;
 				m_update.Enabled = false;
 				m_rulings.Enabled = false;

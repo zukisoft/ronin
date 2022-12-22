@@ -22,6 +22,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -29,6 +31,7 @@ using System.Windows.Forms;
 
 using zuki.ronin.data;
 using zuki.ronin.util;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace zuki.ronin.ui
 {
@@ -44,6 +47,8 @@ namespace zuki.ronin.ui
 		{
 			InitializeComponent();
 
+			ResizeRedraw = true;
+
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 		}
@@ -53,18 +58,18 @@ namespace zuki.ronin.ui
 		//---------------------------------------------------------------------
 
 		/// <summary>
-		/// Sets the rulings to display
+		/// Sets the card to display
 		/// </summary>
 		/// <param name="rulings">Ruling collection</param>
-		public void SetRulings(Card card, List<Ruling> rulings)
+		public void SetCard(Card card)
 		{
 			StringBuilder sb = new StringBuilder();
 			string name = card == null ? string.Empty : card.Name;
 
 			// Combine all of the individual rulings into a single string
-			if((rulings != null) && (rulings.Count > 0))
+			if(card != null)
 			{
-				foreach(Ruling ruling in rulings)
+				foreach(Ruling ruling in card.GetRulings())
 				{
 					sb.Append(ruling.Text);
 					sb.Append("\r\n\r\n");
@@ -128,6 +133,35 @@ namespace zuki.ronin.ui
 			}
 		}
 
+		/// <summary>
+		/// Invoked when the UserControl requires painting
+		/// </summary>
+		/// <param name="args">Paint event arguments</param>
+		protected override void OnPaint(PaintEventArgs args)
+		{
+			base.OnPaint(args);
+
+			// Fill with the background color first
+			args.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
+
+			// Render the item inside a GraphicsPath to round the corners
+			using(GraphicsPath gp = new GraphicsPath())
+			{
+				Rectangle bounds = args.ClipRectangle.InflateDPI(-4, -4, ApplicationTheme.ScalingFactor);
+				float CornerRadius = 8.ScaleDPI(ApplicationTheme.ScalingFactor) * 2.0F;
+				gp.AddArc(bounds.Left - 1, bounds.Top - 1, CornerRadius, CornerRadius, 180, 90);
+				gp.AddArc(bounds.Left + bounds.Width - CornerRadius, bounds.Top - 1, CornerRadius, CornerRadius, 270, 90);
+				gp.AddArc(bounds.Left + bounds.Width - CornerRadius, bounds.Top + bounds.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
+				gp.AddArc(bounds.Left - 1, bounds.Top + bounds.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
+				args.Graphics.SetClip(gp);
+
+				// Draw the background color
+				args.Graphics.FillRectangle(new SolidBrush(ApplicationTheme.PanelBackColor), ClientRectangle);
+				args.Graphics.ResetClip();
+			}
+
+		}
+
 		//---------------------------------------------------------------------
 		// Private Member Functions
 		//---------------------------------------------------------------------
@@ -169,7 +203,10 @@ namespace zuki.ronin.ui
         background: #ffffff;
         font-family: Segoe UI;
         color: #000000;
-        padding: 1em;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 1em;
+        padding-right: 1em;
         font-size: .8em;
     }
     a {
@@ -210,11 +247,15 @@ namespace zuki.ronin.ui
 		static string s_styledark = @"
 <style>
     body {
+        height: 100%;
         margin: 0 auto;
         background: #2b2b2b;
         font-family: Segoe UI;
         color: #ffffff;
-        padding: 1em;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 1em;
+        padding-right: 1em;
         font-size: .8em;
     }
     a {

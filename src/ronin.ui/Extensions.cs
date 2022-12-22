@@ -147,6 +147,18 @@ namespace zuki.ronin.ui
 		}
 
 		/// <summary>
+		/// Scales a float value based on a previously calculated scaling factor
+		/// </summary>
+		/// <param name="value">Value to be scaled</param>
+		/// <param name="factor">Precalcuated scaling factor</param>
+		/// <returns>Scaled int value</returns>
+		public static float ScaleDPI(this float value, SizeF factor)
+		{
+			// Use the mean of the width and height scaling to apply to an integer
+			return value * ((factor.Width + factor.Height) / 2.0F);
+		}
+
+		/// <summary>
 		/// Scales an int value based on a previously calculated scaling factor
 		/// </summary>
 		/// <param name="value">Value to be scaled</param>
