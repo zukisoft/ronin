@@ -81,9 +81,10 @@ namespace zuki.ronin
 			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
 
 			// Manual DPI scaling
-			toolStripStatusLabel2.Margin = toolStripStatusLabel2.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardSelector1.Padding = cardSelector1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardImage1.Padding = cardImage1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			rulingsView1.Padding = rulingsView1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel2.Padding = toolStripStatusLabel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			toolStripStatusLabel1.Margin = toolStripStatusLabel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel1.Padding = toolStripStatusLabel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Windows 11

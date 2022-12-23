@@ -42,7 +42,6 @@ namespace zuki.ronin
 			InitializeComponent();
 
 			// Manual DPI scaling
-			m_lowerpanel.Margin = m_lowerpanel.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			m_lowerpanel.Padding = m_lowerpanel.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Reset the theme based on the current settings

@@ -21,6 +21,7 @@
 			this.m_help = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_helpabout = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_statusstrip = new System.Windows.Forms.StatusStrip();
+			this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -78,6 +79,7 @@
 			// 
 			this.m_statusstrip.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_statusstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel5,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel1,
@@ -88,15 +90,26 @@
 			this.m_statusstrip.TabIndex = 2;
 			this.m_statusstrip.Text = "m_statusstrip";
 			// 
+			// toolStripStatusLabel5
+			// 
+			this.toolStripStatusLabel5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.toolStripStatusLabel5.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+			this.toolStripStatusLabel5.Padding = new System.Windows.Forms.Padding(4, 4, 0, 4);
+			this.toolStripStatusLabel5.Size = new System.Drawing.Size(27, 27);
+			this.toolStripStatusLabel5.Text = "";
+			this.toolStripStatusLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
 			// toolStripStatusLabel3
 			// 
 			this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
 			this.toolStripStatusLabel3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-			this.toolStripStatusLabel3.Padding = new System.Windows.Forms.Padding(4);
-			this.toolStripStatusLabel3.Size = new System.Drawing.Size(79, 27);
+			this.toolStripStatusLabel3.Padding = new System.Windows.Forms.Padding(0, 4, 4, 4);
+			this.toolStripStatusLabel3.Size = new System.Drawing.Size(75, 27);
 			this.toolStripStatusLabel3.Text = "2840 Cards";
+			this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// toolStripStatusLabel2
 			// 
@@ -131,20 +144,24 @@
 			// 
 			// cardSelector1
 			// 
+			this.cardSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.cardSelector1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cardSelector1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cardSelector1.ForeColor = System.Drawing.Color.Black;
 			this.cardSelector1.Location = new System.Drawing.Point(0, 24);
 			this.cardSelector1.Name = "cardSelector1";
 			this.cardSelector1.Padding = new System.Windows.Forms.Padding(4);
-			this.cardSelector1.Size = new System.Drawing.Size(316, 463);
+			this.cardSelector1.Size = new System.Drawing.Size(302, 463);
 			this.cardSelector1.TabIndex = 3;
 			this.cardSelector1.SelectionChanged += new System.EventHandler<zuki.ronin.data.Card>(this.OnCardSelectionChanged);
 			// 
 			// cardImage1
 			// 
+			this.cardImage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.cardImage1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cardImage1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cardImage1.Location = new System.Drawing.Point(316, 24);
+			this.cardImage1.ForeColor = System.Drawing.Color.Black;
+			this.cardImage1.Location = new System.Drawing.Point(302, 24);
 			this.cardImage1.Name = "cardImage1";
 			this.cardImage1.Padding = new System.Windows.Forms.Padding(4);
 			this.cardImage1.Size = new System.Drawing.Size(325, 463);
@@ -152,11 +169,14 @@
 			// 
 			// rulingsView1
 			// 
+			this.rulingsView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.rulingsView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rulingsView1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rulingsView1.Location = new System.Drawing.Point(641, 24);
+			this.rulingsView1.ForeColor = System.Drawing.Color.Black;
+			this.rulingsView1.Location = new System.Drawing.Point(627, 24);
 			this.rulingsView1.Name = "rulingsView1";
-			this.rulingsView1.Size = new System.Drawing.Size(292, 463);
+			this.rulingsView1.Padding = new System.Windows.Forms.Padding(4);
+			this.rulingsView1.Size = new System.Drawing.Size(306, 463);
 			this.rulingsView1.TabIndex = 5;
 			// 
 			// MainForm
@@ -197,5 +217,6 @@
 		private ui.CardSelector cardSelector1;
 		private ui.CardImage cardImage1;
 		private ui.RulingsView rulingsView1;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
 	}
 }

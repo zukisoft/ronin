@@ -47,7 +47,6 @@ namespace zuki.ronin.ui
 			ForeColor = ApplicationTheme.FormForeColor;
 
 			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
