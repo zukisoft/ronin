@@ -87,7 +87,7 @@ namespace zuki.ronin
 		{
 			List<Card> cards = new List<Card>();
 			m_database.EnumerateCardsWithRulings(card => { cards.Add(card); });
-			m_cardselector.Cards = cards;
+			m_cardselector.SetCards(cards);
 		}
 
 		/// <summary>

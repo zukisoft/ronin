@@ -630,7 +630,7 @@ void Database::EnumerateCardsWithRulings(Action<Card^>^ callback)
 //---------------------------------------------------------------------------
 // Database::EnumeratePrints
 //
-// Enumerates Cards from the database
+// Enumerates Prints from the database
 //
 // Arguments:
 //

@@ -27,6 +27,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::ComponentModel;
 
 namespace zuki::ronin::data {
 
@@ -38,9 +39,16 @@ namespace zuki::ronin::data {
 
 public enum class CardType
 {
+	[DescriptionAttribute("None")]
 	None = 0,
+
+	[DescriptionAttribute("Monster")]
 	Monster,
+
+	[DescriptionAttribute("Spell")]
 	Spell,
+
+	[DescriptionAttribute("Trap")]
 	Trap,
 };
 

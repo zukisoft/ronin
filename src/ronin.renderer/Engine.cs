@@ -881,7 +881,7 @@ namespace zuki.ronin.renderer
 							// Calculate the metrics to fully justify the line of text
 							float lineextra = bmp.Width - gr.MeasureString(line, font, int.MaxValue, renderformat).Width;
 							int numspaces = CountSpaces(line);
-							float spaceextra = (float)Math.Floor(lineextra / numspaces);
+							float spaceextra = (numspaces == 0) ? 0.0F : (float)Math.Floor(lineextra / numspaces);
 							float charextra = (lineextra - (spaceextra * numspaces)) / line.Length;
 
 							// Render each character in the string individually

@@ -52,9 +52,7 @@
 			// 
 			// m_rulingsview
 			// 
-			this.m_rulingsview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_rulingsview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.m_rulingsview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_rulingsview.ForeColor = System.Drawing.Color.White;
 			this.m_rulingsview.Location = new System.Drawing.Point(442, 0);
 			this.m_rulingsview.Name = "m_rulingsview";
@@ -97,10 +95,8 @@
 			// 
 			// m_cardselector
 			// 
-			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Left;
-			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
+			this.m_cardselector.ForeColor = System.Drawing.Color.White;
 			this.m_cardselector.Location = new System.Drawing.Point(4, 4);
 			this.m_cardselector.Name = "m_cardselector";
 			this.m_cardselector.Padding = new System.Windows.Forms.Padding(4);
@@ -118,6 +114,7 @@
 			this.Location = new System.Drawing.Point(0, 0);
 			this.Name = "ManageRulingsForm";
 			this.Padding = new System.Windows.Forms.Padding(4);
+			this.ShowIcon = false;
 			this.Text = "Manage Rulings";
 			this.Load += new System.EventHandler(this.OnLoad);
 			this.m_rightpanel.ResumeLayout(false);

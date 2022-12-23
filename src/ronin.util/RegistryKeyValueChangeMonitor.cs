@@ -24,6 +24,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.Win32;
+using Microsoft.Win32.SafeHandles;
 
 namespace zuki.ronin.util
 {
@@ -46,7 +47,7 @@ namespace zuki.ronin.util
 			public const uint REG_NOTIFY_THREAD_AGNOSTIC = 0x10000000;
 
 			[DllImport("advapi32.dll")]
-			public static extern int RegNotifyChangeKeyValue(IntPtr hKey, [MarshalAs(UnmanagedType.Bool)] bool watchSubtree,
+			public static extern int RegNotifyChangeKeyValue(SafeRegistryHandle hKey, [MarshalAs(UnmanagedType.Bool)] bool watchSubtree,
 				uint notifyFilter, IntPtr hEvent, [MarshalAs(UnmanagedType.Bool)] bool asynchronous);
 		}
 		#endregion
@@ -104,7 +105,7 @@ namespace zuki.ronin.util
 		{
 			get
 			{
-				lock(this)
+				lock(m_lock)
 				{
 					return m_monitoredkey != null;
 				}
@@ -120,7 +121,7 @@ namespace zuki.ronin.util
 		/// </summary>
 		public void Start()
 		{
-			lock(this)
+			lock(m_lock)
 			{
 				// Already monitoring
 				if(m_monitoredkey != null) return;
@@ -145,7 +146,7 @@ namespace zuki.ronin.util
 		/// </summary>
 		public void Stop()
 		{
-			lock(this)
+			lock(m_lock)
 			{
 				// Not monitoring
 				if(m_monitoredkey == null) return;
@@ -174,9 +175,9 @@ namespace zuki.ronin.util
 				while(true)
 				{
 					// RegNotifyChangeKeyValue will block until a change is registered or the key is closed
-					int result = NativeMethods.RegNotifyChangeKeyValue(key.Handle.DangerousGetHandle(), true, NativeMethods.LAST_SET, IntPtr.Zero, false);
+					int result = NativeMethods.RegNotifyChangeKeyValue(key.Handle, true, NativeMethods.LAST_SET, IntPtr.Zero, false);
 
-					lock(this)
+					lock(m_lock)
 					{
 						// A zero result and a valid reference in m_monitoredkey means to fire the event, otherwise die
 						if((result == 0) && (m_monitoredkey != null)) ValueChanged?.Invoke(this, EventArgs.Empty);
@@ -201,6 +202,11 @@ namespace zuki.ronin.util
 		/// Monitored registry hive
 		/// </summary>
 		private readonly RegistryKey m_hive;
+
+		/// <summary>
+		/// Lock target
+		/// </summary>
+		private readonly object m_lock = new object();
 
 		/// <summary>
 		/// Monitored registy subkey path

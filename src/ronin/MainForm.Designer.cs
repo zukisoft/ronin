@@ -15,6 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.m_menu = new System.Windows.Forms.MenuStrip();
 			this.m_file = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_fileexit = new System.Windows.Forms.ToolStripMenuItem();
@@ -27,8 +28,7 @@
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.cardSelector1 = new zuki.ronin.ui.CardSelector();
-			this.cardImage1 = new zuki.ronin.ui.CardImage();
-			this.rulingsView1 = new zuki.ronin.ui.RulingsView();
+			this.cardView1 = new zuki.ronin.ui.CardView();
 			this.m_menu.SuspendLayout();
 			this.m_statusstrip.SuspendLayout();
 			this.SuspendLayout();
@@ -41,7 +41,7 @@
 			this.m_menu.Location = new System.Drawing.Point(0, 0);
 			this.m_menu.Name = "m_menu";
 			this.m_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.m_menu.Size = new System.Drawing.Size(933, 24);
+			this.m_menu.Size = new System.Drawing.Size(1008, 24);
 			this.m_menu.TabIndex = 1;
 			this.m_menu.Text = "m_menustrip";
 			// 
@@ -84,9 +84,9 @@
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel4});
-			this.m_statusstrip.Location = new System.Drawing.Point(0, 487);
+			this.m_statusstrip.Location = new System.Drawing.Point(0, 697);
 			this.m_statusstrip.Name = "m_statusstrip";
-			this.m_statusstrip.Size = new System.Drawing.Size(933, 32);
+			this.m_statusstrip.Size = new System.Drawing.Size(1008, 32);
 			this.m_statusstrip.TabIndex = 2;
 			this.m_statusstrip.Text = "m_statusstrip";
 			// 
@@ -144,52 +144,38 @@
 			// 
 			// cardSelector1
 			// 
-			this.cardSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.cardSelector1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cardSelector1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cardSelector1.ForeColor = System.Drawing.Color.Black;
 			this.cardSelector1.Location = new System.Drawing.Point(0, 24);
 			this.cardSelector1.Name = "cardSelector1";
 			this.cardSelector1.Padding = new System.Windows.Forms.Padding(4);
-			this.cardSelector1.Size = new System.Drawing.Size(302, 463);
+			this.cardSelector1.Size = new System.Drawing.Size(302, 673);
 			this.cardSelector1.TabIndex = 3;
 			this.cardSelector1.SelectionChanged += new System.EventHandler<zuki.ronin.data.Card>(this.OnCardSelectionChanged);
 			// 
-			// cardImage1
+			// cardView1
 			// 
-			this.cardImage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-			this.cardImage1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.cardImage1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cardImage1.ForeColor = System.Drawing.Color.Black;
-			this.cardImage1.Location = new System.Drawing.Point(302, 24);
-			this.cardImage1.Name = "cardImage1";
-			this.cardImage1.Padding = new System.Windows.Forms.Padding(4);
-			this.cardImage1.Size = new System.Drawing.Size(325, 463);
-			this.cardImage1.TabIndex = 4;
-			// 
-			// rulingsView1
-			// 
-			this.rulingsView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-			this.rulingsView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.rulingsView1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rulingsView1.ForeColor = System.Drawing.Color.Black;
-			this.rulingsView1.Location = new System.Drawing.Point(627, 24);
-			this.rulingsView1.Name = "rulingsView1";
-			this.rulingsView1.Padding = new System.Windows.Forms.Padding(4);
-			this.rulingsView1.Size = new System.Drawing.Size(306, 463);
-			this.rulingsView1.TabIndex = 5;
+			this.cardView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cardView1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cardView1.ForeColor = System.Drawing.Color.Black;
+			this.cardView1.Location = new System.Drawing.Point(302, 24);
+			this.cardView1.Name = "cardView1";
+			this.cardView1.Padding = new System.Windows.Forms.Padding(4);
+			this.cardView1.Size = new System.Drawing.Size(706, 673);
+			this.cardView1.TabIndex = 4;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(933, 519);
-			this.Controls.Add(this.rulingsView1);
-			this.Controls.Add(this.cardImage1);
+			this.ClientSize = new System.Drawing.Size(1008, 729);
+			this.Controls.Add(this.cardView1);
 			this.Controls.Add(this.cardSelector1);
 			this.Controls.Add(this.m_statusstrip);
 			this.Controls.Add(this.m_menu);
 			this.DoubleBuffered = true;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Location = new System.Drawing.Point(0, 0);
 			this.Name = "MainForm";
 			this.Text = "RONIN";
@@ -215,8 +201,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
 		private ui.CardSelector cardSelector1;
-		private ui.CardImage cardImage1;
-		private ui.RulingsView rulingsView1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+		private ui.CardView cardView1;
 	}
 }

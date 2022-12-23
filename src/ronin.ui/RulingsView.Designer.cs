@@ -56,6 +56,7 @@
 			this.DoubleBuffered = true;
 			this.Name = "RulingsView";
 			this.Size = new System.Drawing.Size(400, 400);
+			this.Load += new System.EventHandler(this.OnLoad);
 			this.ResumeLayout(false);
 
 		}

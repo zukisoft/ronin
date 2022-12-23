@@ -113,10 +113,7 @@
 			// 
 			// m_image
 			// 
-			this.m_image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_image.Dock = System.Windows.Forms.DockStyle.Left;
-			this.m_image.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_image.ForeColor = System.Drawing.Color.White;
 			this.m_image.Location = new System.Drawing.Point(4, 4);
 			this.m_image.Name = "m_image";
 			this.m_image.Padding = new System.Windows.Forms.Padding(4);

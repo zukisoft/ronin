@@ -56,29 +56,21 @@ namespace zuki.ronin.ui
 		public event EventHandler<Card> SelectionChanged;
 
 		//-------------------------------------------------------------------
-		// Properties
+		// Member Functions
 		//-------------------------------------------------------------------
 
 		/// <summary>
-		/// Gets/sets the enumerable list of Card objects to display
+		/// Sets the collection of Cars to be displayed
 		/// </summary>
-		[Browsable(false)]
-		[Bindable(false)]
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public IEnumerable<Card> Cards
+		/// <param name="cards">Enumerable collection of Cards</param>
+		public void SetCards(IEnumerable<Card> cards)
 		{
-			get { return m_cards; }
-			set
-			{
-				// Clear out and reload the existing list of cards
-				m_cards.Clear();
-				m_cards.AddRange(value);
+			// Replace the List<> of cards
+			m_cards = new List<Card>(cards);
 
-				// Reset the filter text to trigger an update to the listview
-				if(m_filter.Text != string.Empty) m_filter.Text = string.Empty;
-				else OnFilterTextChanged(this, EventArgs.Empty);
-			}
+			// Reset the filter text to trigger an update to the listview
+			if(m_filter.Text != string.Empty) m_filter.Text = string.Empty;
+			else OnFilterTextChanged(this, EventArgs.Empty);
 		}
 
 		//---------------------------------------------------------------------
@@ -108,7 +100,7 @@ namespace zuki.ronin.ui
 		private void OnFilterTextChanged(object sender, EventArgs args)
 		{
 			// Update the listview to only contain the subset of Card objects with matching names to the filter
-			m_cardlistview.Cards = m_cards.Where(item => item.Name.IndexOf(m_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+			m_cardlistview.SetCards(m_cards.Where(item => item.Name.IndexOf(m_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0));
 		}
 
 		/// <summary>
@@ -128,6 +120,6 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// Backing List<> for the virtual list view
 		/// </summary>
-		private readonly List<Card> m_cards = new List<Card>();
+		private List<Card> m_cards = new List<Card>();
 	}
 }

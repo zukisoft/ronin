@@ -43,10 +43,8 @@
 			// 
 			// m_cardselector
 			// 
-			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
+			this.m_cardselector.ForeColor = System.Drawing.Color.White;
 			this.m_cardselector.Location = new System.Drawing.Point(4, 4);
 			this.m_cardselector.Name = "m_cardselector";
 			this.m_cardselector.Padding = new System.Windows.Forms.Padding(4);
@@ -134,6 +132,7 @@
 			this.Controls.Add(this.m_leftpanel);
 			this.Location = new System.Drawing.Point(0, 0);
 			this.Name = "ManageArtworkForm";
+			this.ShowIcon = false;
 			this.Text = "Manage Artwork";
 			this.Load += new System.EventHandler(this.OnLoad);
 			this.m_leftpanel.ResumeLayout(false);

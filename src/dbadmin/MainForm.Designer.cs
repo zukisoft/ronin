@@ -15,6 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.m_opendatabase = new System.Windows.Forms.OpenFileDialog();
 			this.m_statusstrip = new System.Windows.Forms.StatusStrip();
 			this.m_statuslabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -28,12 +29,12 @@
 			this.m_manageartwork = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_managecards = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_managerestrictionlists = new System.Windows.Forms.ToolStripMenuItem();
+			this.m_managerulings = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportartwork = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_exportcardimages = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowmenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_windowcloseall = new System.Windows.Forms.ToolStripMenuItem();
-			this.m_managerulings = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_statusstrip.SuspendLayout();
 			this.m_menu.SuspendLayout();
 			this.SuspendLayout();
@@ -131,23 +132,30 @@
 			// m_manageartwork
 			// 
 			this.m_manageartwork.Name = "m_manageartwork";
-			this.m_manageartwork.Size = new System.Drawing.Size(180, 22);
+			this.m_manageartwork.Size = new System.Drawing.Size(165, 22);
 			this.m_manageartwork.Text = "&Artwork...";
 			this.m_manageartwork.Click += new System.EventHandler(this.OnManageArtwork);
 			// 
 			// m_managecards
 			// 
 			this.m_managecards.Name = "m_managecards";
-			this.m_managecards.Size = new System.Drawing.Size(180, 22);
+			this.m_managecards.Size = new System.Drawing.Size(165, 22);
 			this.m_managecards.Text = "&Cards...";
 			this.m_managecards.Click += new System.EventHandler(this.OnManageCards);
 			// 
 			// m_managerestrictionlists
 			// 
 			this.m_managerestrictionlists.Name = "m_managerestrictionlists";
-			this.m_managerestrictionlists.Size = new System.Drawing.Size(180, 22);
+			this.m_managerestrictionlists.Size = new System.Drawing.Size(165, 22);
 			this.m_managerestrictionlists.Text = "Restriction &Lists...";
 			this.m_managerestrictionlists.Click += new System.EventHandler(this.OnManageRestrictionLists);
+			// 
+			// m_managerulings
+			// 
+			this.m_managerulings.Name = "m_managerulings";
+			this.m_managerulings.Size = new System.Drawing.Size(165, 22);
+			this.m_managerulings.Text = "&Rulings...";
+			this.m_managerulings.Click += new System.EventHandler(this.OnManageRulings);
 			// 
 			// m_exportmenu
 			// 
@@ -187,13 +195,6 @@
 			this.m_windowcloseall.Text = "&Close All";
 			this.m_windowcloseall.Click += new System.EventHandler(this.OnWindowCloseAll);
 			// 
-			// m_managerulings
-			// 
-			this.m_managerulings.Name = "m_managerulings";
-			this.m_managerulings.Size = new System.Drawing.Size(180, 22);
-			this.m_managerulings.Text = "&Rulings...";
-			this.m_managerulings.Click += new System.EventHandler(this.OnManageRulings);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -201,6 +202,7 @@
 			this.ClientSize = new System.Drawing.Size(933, 519);
 			this.Controls.Add(this.m_statusstrip);
 			this.Controls.Add(this.m_menu);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.IsMdiContainer = true;
 			this.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip = this.m_menu;

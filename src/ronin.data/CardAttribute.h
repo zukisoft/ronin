@@ -27,6 +27,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::ComponentModel;
 
 namespace zuki::ronin::data {
 
@@ -38,14 +39,31 @@ namespace zuki::ronin::data {
 
 public enum class CardAttribute
 {
+	[DescriptionAttribute("None")]
 	None = 0,
+
+	[DescriptionAttribute("DARK")]
 	Dark,
+
+	[DescriptionAttribute("EARTH")]
 	Earth,
+
+	[DescriptionAttribute("FIRE")]
 	Fire,
+
+	[DescriptionAttribute("LIGHT")]
 	Light,
+
+	[DescriptionAttribute("SPELL")]
 	Spell,
+
+	[DescriptionAttribute("TRAP")]
 	Trap,
+
+	[DescriptionAttribute("WATER")]
 	Water,
+
+	[DescriptionAttribute("WIND")]
 	Wind,
 };
 

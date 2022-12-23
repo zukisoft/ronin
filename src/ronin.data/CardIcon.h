@@ -27,6 +27,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::ComponentModel;
 
 namespace zuki::ronin::data {
 
@@ -38,12 +39,25 @@ namespace zuki::ronin::data {
 
 public enum class CardIcon
 {
+	[DescriptionAttribute("None")]
 	None = 0,
+
+	[DescriptionAttribute("Continuous")]
 	Continuous,
+
+	[DescriptionAttribute("Counter")]
 	Counter,
+
+	[DescriptionAttribute("Equip")]
 	Equip,
+
+	[DescriptionAttribute("Field")]
 	Field,
+
+	[DescriptionAttribute("Quick-Play")]
 	QuickPlay,
+
+	[DescriptionAttribute("Ritual")]
 	Ritual,
 };
 

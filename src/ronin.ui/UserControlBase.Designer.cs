@@ -15,16 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SuspendLayout();
-			// 
-			// BaseUserControl
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Name = "BaseUserControl";
-			this.ResumeLayout(false);
-
+			components = new System.ComponentModel.Container();
 		}
 
 		#endregion

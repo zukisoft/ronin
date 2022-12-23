@@ -22,6 +22,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using zuki.ronin.data;
 using zuki.ronin.ui;
@@ -100,19 +101,18 @@ namespace zuki.ronin
 			// No selection -- use a dummy List<>
 			if(m_reslistcombo.SelectedItem == null)
 			{
-				var dummy = new List<Card>();
-				m_forbiddencards.Cards = dummy;
-				m_limitedcards.Cards = dummy;
-				m_semilimitedcards.Cards = dummy;
+				m_forbiddencards.SetCards(Enumerable.Empty<Card>());
+				m_limitedcards.SetCards(Enumerable.Empty<Card>());
+				m_semilimitedcards.SetCards(Enumerable.Empty<Card>());
 				return;
 			}
 
 			RestrictionList list = (RestrictionList)m_reslistcombo.SelectedItem;
 
 			// Reload all the individual restricted card lists
-			m_forbiddencards.Cards = list.GetCards(Restriction.Forbidden);
-			m_limitedcards.Cards = list.GetCards(Restriction.Limited);
-			m_semilimitedcards.Cards = list.GetCards(Restriction.SemiLimited);
+			m_forbiddencards.SetCards(list.GetCards(Restriction.Forbidden));
+			m_limitedcards.SetCards(list.GetCards(Restriction.Limited));
+			m_semilimitedcards.SetCards(list.GetCards(Restriction.SemiLimited));
 		}
 
 		//---------------------------------------------------------------------

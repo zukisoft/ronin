@@ -35,9 +35,9 @@ using zuki.ronin.data;
 namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Implements a Card ListView control
+	/// Implements a Print ListView control
 	/// </summary>
-	public partial class CardListView : UserControlBase
+	public partial class PrintListView : UserControlBase
 	{
 		#region Win32 API Declarations
 		private static class NativeMethods
@@ -62,7 +62,7 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public CardListView()
+		public PrintListView()
 		{
 			InitializeComponent();
 
@@ -90,7 +90,7 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// Sets the enumerable list of Card objects to display
 		/// </summary>
-		public void SetCards(IEnumerable<Card> cards)
+		public void SetPrints(IEnumerable<Print> prints)
 		{
 			// De-select any item(s) that happen to be selected and fire off a
 			// SelectionChanged() event to make sure everyone else gets that
@@ -106,11 +106,26 @@ namespace zuki.ronin.ui
 				if((m_listview.VirtualListSize > 0) && (m_listview.TopItem != null))
 					m_listview.TopItem = m_listview.Items[0];
 
-				// Replace the existing List<> of cards with a new one
-				m_cards = new List<Card>(cards);
+				// Replace the existing List<> of prints
+				m_prints = new List<Print>(prints);
 
 				// Update the number of virtual items available for the ListView control
-				m_listview.VirtualListSize = m_cards.Count;
+				m_listview.VirtualListSize = m_prints.Count;
+
+				// TODO: TESTING
+				m_maxrarity = 0;
+				m_maxsetcode = 0;
+				foreach(Print p in m_prints)
+				{
+					Size size = TextRenderer.MeasureText(p.Rarity.EnumDescription(), m_listview.Font);
+					if(size.Width > m_maxrarity) m_maxrarity = size.Width;
+
+					size = TextRenderer.MeasureText(p.ToString(), m_listview.Font);
+					if(size.Width > m_maxsetcode) m_maxsetcode = size.Width;
+				}
+				OnResize(this, EventArgs.Empty);
+
+				// END TODO: TESTING
 			}
 
 			catch { m_listview.VirtualListSize = 0; throw; }
@@ -119,7 +134,7 @@ namespace zuki.ronin.ui
 			// Disable the horizontal scroll bar on the ListView control
 			NativeMethods.ShowScrollBar(m_listview.Handle, NativeMethods.SB_HORZ, false);
 		}
-
+		
 		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
@@ -154,8 +169,8 @@ namespace zuki.ronin.ui
 		/// <param name="args">Draw item event arguments</param>
 		private void OnDrawItem(object sender, DrawListViewItemEventArgs args)
 		{
-			Card card = (Card)args.Item.Tag;
-			Debug.Assert(card != null);
+			Print print = (Print)args.Item.Tag;
+			Debug.Assert(print != null);
 
 			// Use high-quality text rendering for the item
 			args.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
@@ -179,20 +194,20 @@ namespace zuki.ronin.ui
 				args.Graphics.FillPath(new SolidBrush(args.Item.Selected ? ApplicationTheme.SelectedListItemBackColor :
 					ApplicationTheme.ListItemBackColor), gp);
 
-				// Draw a colored "tab" indicating the type of card being referenced
-				RectangleF tabbounds = new RectangleF(adjustedBounds.Left, adjustedBounds.Top,
-					10.ScaleDPI(ApplicationTheme.ScalingFactor), adjustedBounds.Height);
-				args.Graphics.FillRectangle(new SolidBrush(SelectTabColor(card)), tabbounds);
-
-				// Draw the card name
-				Rectangle textbounds = new Rectangle(adjustedBounds.Left + 14.ScaleDPI(ApplicationTheme.ScalingFactor),
-					adjustedBounds.Top, adjustedBounds.Width - 14.ScaleDPI(ApplicationTheme.ScalingFactor), adjustedBounds.Height);
-				TextRenderer.DrawText(args.Graphics, card.Name.Replace("&", "&&"), m_listview.Font, textbounds,
-					args.Item.Selected ? ApplicationTheme.ListItemForeColor : ApplicationTheme.SelectedListItemForeColor, 
-					TextFormatFlags.VerticalCenter);                
-				
 				args.Graphics.ResetClip();
 			}
+		}
+
+		private void OnDrawSubItem(object sender, DrawListViewSubItemEventArgs args)
+		{
+			HorizontalAlignment alignment = m_listview.Columns[args.ColumnIndex].TextAlign;
+			TextFormatFlags flags = TextFormatFlags.VerticalCenter | TextFormatFlags.WordEllipsis;
+			if(alignment == HorizontalAlignment.Center) flags |= TextFormatFlags.HorizontalCenter;
+			else if(alignment == HorizontalAlignment.Right) flags |= TextFormatFlags.Right;
+
+			TextRenderer.DrawText(args.Graphics, args.SubItem.Text, m_listview.Font, args.Bounds,
+				args.Item.Selected ? ApplicationTheme.ListItemForeColor : ApplicationTheme.SelectedListItemForeColor,
+				flags);
 		}
 
 		/// <summary>
@@ -202,8 +217,14 @@ namespace zuki.ronin.ui
 		/// <param name="args">Standard event arguments</param>
 		private void OnResize(object sender, EventArgs args)
 		{
+			int width = m_listview.ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_setcodecolumn.Width = m_maxsetcode + 4.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_raritycolumn.Width = m_maxrarity + 4.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_setnamecolumn.Width = width - m_setcodecolumn.Width - m_raritycolumn.Width;
+
 			// Resize the column(s) of the list view
-			m_listviewcolumn.Width = m_listview.ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//m_listview.Width = ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//m_setnamecolumn.Width = m_listview.ClientSize.Width - 4.ScaleDPI(ApplicationTheme.ScalingFactor);	
 		}
 
 		/// <summary>
@@ -213,13 +234,16 @@ namespace zuki.ronin.ui
 		/// <param name="args">Virtual listview event arguments</param>
 		private void OnRetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs args)
 		{
-			Debug.Assert(args.ItemIndex < m_cards.Count);
+			Debug.Assert(args.ItemIndex < m_prints.Count);
+
+			Print print = m_prints[args.ItemIndex];
 
 			// Create and initialize a new ListViewItem to return
-			args.Item = new ListViewItem(new string[] { String.Empty, m_cards[args.ItemIndex].ToString() })
+			// TODO: The call to .GetSeries every time will be a performance concern
+			args.Item = new ListViewItem(new string[] { String.Empty, print.GetSeries().Name, print.ToString(), print.Rarity.EnumDescription() })
 			{
 				Font = m_listview.Font,
-				Tag = m_cards[args.ItemIndex]
+				Tag = m_prints[args.ItemIndex]
 			};
 		}
 
@@ -236,40 +260,16 @@ namespace zuki.ronin.ui
 		}
 
 		//---------------------------------------------------------------------
-		// Private Member Functions
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Selects the proper color for the "tab" portion of the list view item
-		/// </summary>
-		/// <param name="card">Card associated with the list view item</param>
-		Color SelectTabColor(Card card)
-		{
-			// SPELL CARD
-			if(card.Type == CardType.Spell) return Color.FromArgb(0x48, 0x90, 0x7D);
-
-			// TRAP CARD
-			else if(card.Type == CardType.Trap) return Color.FromArgb(0xB6, 0x59, 0x92);
-
-			// MONSTER CARD
-			else if(card is MonsterCard monster)
-			{
-				if(monster.Normal) return Color.FromArgb(0xBC, 0x9F, 0x2C);
-				else if(monster.Fusion) return Color.FromArgb(0x94, 0x5C, 0xB3);
-				else if(monster.Ritual) return Color.FromArgb(0x5E, 0x7C, 0xAD);
-			}
-
-			// DEFAULT: EFFECT MONSTER CARD
-			return Color.FromArgb(0xB7, 0x6F, 0x2F);
-		}
-
-		//---------------------------------------------------------------------
 		// Member Variables
 		//---------------------------------------------------------------------
 
 		/// <summary>
 		/// Backing List<> for the virtual list view
 		/// </summary>
-		private List<Card> m_cards = new List<Card>();
+		private List<Print> m_prints = new List<Print>();
+
+		private int m_maxrarity = 0;
+
+		private int m_maxsetcode = 0;
 	}
 }

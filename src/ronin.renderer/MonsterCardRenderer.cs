@@ -116,10 +116,7 @@ namespace zuki.ronin.renderer
 		private static string[] GetTypes(MonsterCard monstercard)
 		{
 			// All monster cards list their primary type first
-			List<string> types = new List<string>
-			{
-				Extensions.ToString(monstercard.Type)
-			};
+			List<string> types = new List<string> { monstercard.Type.EnumDescription() };
 
 			// Fusion/Ritual types come next when applicable
 			if(monstercard.Fusion) types.Add("Fusion");

@@ -81,6 +81,10 @@ namespace zuki.ronin.ui
 			ForeColor = ApplicationTheme.FormForeColor;
 		}
 
+		//---------------------------------------------------------------------
+		// Properties
+		//---------------------------------------------------------------------
+
 		/// <summary>
 		/// Hides base class property from designers
 		/// </summary>

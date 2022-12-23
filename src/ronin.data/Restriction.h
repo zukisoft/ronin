@@ -27,6 +27,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::ComponentModel;
 
 namespace zuki::ronin::data {
 
@@ -38,9 +39,16 @@ namespace zuki::ronin::data {
 
 public enum class Restriction
 {
+	[DescriptionAttribute("Forbidden")]
 	Forbidden = 0,
+
+	[DescriptionAttribute("Limited")]
 	Limited,
+
+	[DescriptionAttribute("Semi-Limited")]
 	SemiLimited,
+
+	[DescriptionAttribute("Unlimited")]
 	Unlimited,
 };
 
