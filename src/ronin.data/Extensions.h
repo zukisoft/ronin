@@ -48,11 +48,11 @@ public:
 	// Member Functions
 	//-----------------------------------------------------------------------
 
-	// ToString (MonsterType)
+	// EnumDescription
 	//
-	// Converts a MonsterType enumeration value into a string
-	[ExtensionAttribute]
-	static String^ ToString(MonsterType type);
+	// Converts an enum class value into a string based on its [Description] attribute
+	generic<typename T> where T: value class
+	[ExtensionAttribute] static String^ EnumDescription(T value);
 };
 
 //---------------------------------------------------------------------------

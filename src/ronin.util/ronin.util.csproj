@@ -194,7 +194,6 @@
     <Compile Include="..\..\tmp\version\version.cs">
       <Link>version.cs</Link>
     </Compile>
-    <Compile Include="Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryKeyValueChangeMonitor.cs" />
     <Compile Include="VersionHelper.cs" />

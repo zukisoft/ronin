@@ -31,14 +31,14 @@ using zuki.ronin.renderer;
 namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Implements a card image picture box
+	/// Implements the card information view
 	/// </summary>
-	public partial class CardImage : UserControlBase
+	public partial class CardInfo : UserControlBase
 	{
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public CardImage()
+		public CardInfo()
 		{
 			InitializeComponent();
 
@@ -59,26 +59,8 @@ namespace zuki.ronin.ui
 		/// <param name="card">Card for which to render and display the image</param>
 		public void SetCard(Card card)
 		{
-			SetImage((card != null) ? Renderer.RenderCard(card) : null);
-		}
-
-		/// <summary>
-		/// Sets the image from a Card instance with alternate text
-		/// </summary>
-		/// <param name="card">Card for which to render and display the image</param>
-		/// <param name="text">Alternate text to render for the card</param>
-		public void SetCard(Card card, string text)
-		{
-			SetImage((card != null) ? Renderer.RenderCard(card, text) : null);
-		}
-
-		/// <summary>
-		/// Sets the image from a Print instance
-		/// </summary>
-		/// <param name="print">Print for which to render and display the image</param>
-		public void SetPrint(Print print)
-		{
-			SetImage((print != null) ? Renderer.RenderPrint(print) : null);
+			m_name.Text = (card == null) ? "" : card.Name.Replace("&", "&&");
+			label1.Text = GenerateCardStats(card);
 		}
 
 		//---------------------------------------------------------------------
@@ -93,8 +75,8 @@ namespace zuki.ronin.ui
 		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
 			base.OnApplicationThemeChanged(sender, args);
-
-			m_image.BackColor = ApplicationTheme.PanelBackColor;
+			m_name.BackColor = label1.BackColor = ApplicationTheme.PanelBackColor;
+			m_name.ForeColor = label1.ForeColor = ApplicationTheme.PanelForeColor;
 		}
 
 		/// <summary>
@@ -104,9 +86,14 @@ namespace zuki.ronin.ui
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			// Reposition/resize the PictureBox after the control has been loaded
-			m_image.Location = new Point(12.ScaleDPI(ApplicationTheme.ScalingFactor), 12.ScaleDPI(ApplicationTheme.ScalingFactor));
-			m_image.Size = new Size(Width - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor));
+			//m_name.Location = new Point(12.ScaleDPI(ApplicationTheme.ScalingFactor), m_name.Top);
+			m_name.Size = new Size(Width - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor), m_name.Height);
+			//label1.Location = new Point(12.ScaleDPI(ApplicationTheme.ScalingFactor), label1.Top);
+			label1.Size = new Size(Width - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor), label1.Height);
+
+
+			//m_image.Location = new Point(12.ScaleDPI(ApplicationTheme.ScalingFactor), 12.ScaleDPI(ApplicationTheme.ScalingFactor));
+			//m_image.Size = new Size(Width - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 12 * 6.ScaleDPI(ApplicationTheme.ScalingFactor));
 		}
 
 		/// <summary>
@@ -141,15 +128,90 @@ namespace zuki.ronin.ui
 		// Private Member Functions
 		//---------------------------------------------------------------------
 
-		/// <summary>
-		/// Replaces the displayed card image
-		/// </summary>
-		/// <param name="image">Image to display</param>
-		private void SetImage(Bitmap image)
+		private string GenerateCardStats(Card card)
 		{
-			Image old = m_image.Image;
-			m_image.Image = image ?? null;
-			old?.Dispose();
+			if(card == null) return string.Empty;
+
+			if(card is MonsterCard monstercard) return GenerateMonsterCardStats(monstercard);
+			else if(card is SpellCard spellcard) return GenerateSpellCardStats(spellcard);
+			else if(card is TrapCard trapcard) return GenerateTrapCardStats(trapcard);
+
+			return string.Empty;
+		}
+
+		private string GenerateMonsterCardStats(MonsterCard card)
+		{
+			string statline;			// Generated monster card stat line
+
+			// Normal monster
+			if(card.Normal) statline = "Normal Monster";
+
+			// Fusion [/Effect] monster
+			else if(card.Fusion)
+			{
+				if(card.Effect) statline = "Fusion Effect Monster";
+				else statline = "Fusion Monster";
+			}
+
+			// Ritual [/Effect] monster
+			else if(card.Ritual)
+			{
+				if(card.Effect) statline = "Ritual Effect Monster";
+				else statline = "Ritual Monster";
+			}
+
+			// Spirit monster
+			else if(card.Spirit) statline = "Spirit Monster";
+
+			// Toon monster
+			else if(card.Toon) statline = "Toon Monster";
+
+			// Union monster
+			else if(card.Union) statline = "Union Monster";
+
+			// Gemini monster
+			else if(card.Gemini) statline = "Gemini Monster";
+
+			// Effect monster
+			else statline = "Effect Monster";
+
+			// (Type
+			statline += " (" + card.Type.EnumDescription();
+
+			// Attribute
+			statline += " / " + card.Attribute.EnumDescription();
+
+			// Level
+			statline += " / " + card.Level.ToString() + ((card.Level == 1) ? " Star" : " Stars");
+
+			// Attack
+			statline += " / ATK " + ((card.Attack < 0) ? "?" : card.Attack.ToString());
+
+			// Defense)
+			statline += " / DEF " + ((card.Defense < 0) ? "?" : card.Defense.ToString()) + ")";
+
+			return statline;
+		}
+
+		private string GenerateSpellCardStats(SpellCard card)
+		{
+			if(card.Normal) return "Normal Spell";
+			else if(card.Continuous) return "Continuous Spell";
+			else if(card.Equip) return "Equip Spell";
+			else if(card.Field) return "Field Spell";
+			else if(card.QuickPlay) return "Quick-Play Spell";
+			else if(card.Ritual) return "Ritual Spell";
+
+			return string.Empty;
+		}
+
+		private string GenerateTrapCardStats(TrapCard card)
+		{
+			if(card.Normal) return "Normal Trap";
+			else if(card.Continuous) return "Continuous Trap";
+			else if(card.Counter) return "Counter Trap";
+
+			return string.Empty;
 		}
 	}
 }

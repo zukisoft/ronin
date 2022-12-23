@@ -81,9 +81,7 @@ namespace zuki.ronin
 			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
 
 			// Manual DPI scaling
-			cardSelector1.Padding = cardSelector1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			cardImage1.Padding = cardImage1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			rulingsView1.Padding = rulingsView1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardView1.Padding = cardView1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel2.Padding = toolStripStatusLabel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel1.Padding = toolStripStatusLabel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
@@ -193,7 +191,7 @@ namespace zuki.ronin
 
 			List<Card> allcards = new List<Card>();
 			m_database.EnumerateCards(card => allcards.Add(card));
-			cardSelector1.Cards = allcards;
+			cardSelector1.SetCards(allcards);
 		}
 
 		/// <summary>
@@ -238,8 +236,7 @@ namespace zuki.ronin
 
 		private void OnCardSelectionChanged(object sender, Card e)
 		{
-			cardImage1.SetCard(e);
-			rulingsView1.SetCard(e);
+			cardView1.SetCard(e);
 		}
 	}
 }

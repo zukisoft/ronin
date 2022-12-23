@@ -27,6 +27,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::ComponentModel;
 
 namespace zuki::ronin::data {
 
@@ -38,15 +39,34 @@ namespace zuki::ronin::data {
 
 public enum class PrintRarity
 {
+	[DescriptionAttribute("None")]
 	None = 0,
+
+	[DescriptionAttribute("Common")]
 	Common,
+	
+	[DescriptionAttribute("Gold Rare")]
 	GoldRare,
+
+	[DescriptionAttribute("Parallel Rare")]
 	ParallelRare,
+
+	[DescriptionAttribute("Prismatic Secret Rare")]
 	PrismaticSecretRare,
+
+	[DescriptionAttribute("Rare")]
 	Rare,
+
+	[DescriptionAttribute("Secret Rare")]
 	SecretRare,
+
+	[DescriptionAttribute("Super Rare")]
 	SuperRare,
+
+	[DescriptionAttribute("Ultra Parallel Rare")]
 	UltraParallelRare,
+
+	[DescriptionAttribute("Ultra Rare")]
 	UltraRare,
 };
 

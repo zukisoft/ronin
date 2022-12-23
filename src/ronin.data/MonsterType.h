@@ -27,6 +27,7 @@
 #pragma warning(push, 4)
 
 using namespace System;
+using namespace System::ComponentModel;
 
 namespace zuki::ronin::data {
 
@@ -38,26 +39,67 @@ namespace zuki::ronin::data {
 
 public enum class MonsterType
 {
+	[DescriptionAttribute("None")]
 	None = 0,
+
+	[DescriptionAttribute("Aqua")]
 	Aqua,
+
+	[DescriptionAttribute("Beast")]
 	Beast,
+
+	[DescriptionAttribute("Beast-Warrior")]
 	BeastWarrior,
+
+	[DescriptionAttribute("Dinosaur")]
 	Dinosaur,
+
+	[DescriptionAttribute("Dragon")]
 	Dragon,
+
+	[DescriptionAttribute("Fairy")]
 	Fairy,
+
+	[DescriptionAttribute("Fiend")]
 	Fiend,
+
+	[DescriptionAttribute("Fish")]
 	Fish,
+
+	[DescriptionAttribute("Insect")]
 	Insect,
+
+	[DescriptionAttribute("Machine")]
 	Machine,
+
+	[DescriptionAttribute("Plant")]
 	Plant,
+
+	[DescriptionAttribute("Pyro")]
 	Pyro,
+
+	[DescriptionAttribute("Reptile")]
 	Reptile,
+
+	[DescriptionAttribute("Rock")]
 	Rock,
+
+	[DescriptionAttribute("Sea Serpent")]
 	SeaSerpent,
+
+	[DescriptionAttribute("Spellcaster")]
 	Spellcaster,
+
+	[DescriptionAttribute("Thunder")]
 	Thunder,
+
+	[DescriptionAttribute("Warrior")]
 	Warrior,
+
+	[DescriptionAttribute("Winged Beast")]
 	WingedBeast,
+
+	[DescriptionAttribute("Zombie")]
 	Zombie,
 };
 

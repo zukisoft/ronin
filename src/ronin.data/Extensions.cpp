@@ -25,45 +25,38 @@
 
 #pragma warning(push, 4)
 
+using namespace System::Reflection;
+
 namespace zuki::ronin::data {
 
 //---------------------------------------------------------------------------
-// Extensions::ToString (MonsterType)
+// Extensions::EnumDescription (static)
 //
-// Converts a MonsterType enumeration value into a String^
+// Converts an enum class value into a string based on its [Description] attribute
 //
 // Arguments:
 //
-//	type	- MonsterType to be converted
+//	value	- Enum class value to be converted
 
-String^ Extensions::ToString(MonsterType type)
+generic<typename T> where T: value class
+[ExtensionAttribute]
+String^ Extensions::EnumDescription(T value)
 {
-	switch(type) {
+	if(T::typeid->IsEnum) {
 
-		case(MonsterType::Aqua): return "Aqua";
-		case(MonsterType::Beast): return "Beast";
-		case(MonsterType::BeastWarrior): return "Beast-Warrior";
-		case(MonsterType::Dinosaur): return "Dinosaur";
-		case(MonsterType::Dragon): return "Dragon";
-		case(MonsterType::Fairy): return "Fairy";
-		case(MonsterType::Fiend): return "Fiend";
-		case(MonsterType::Fish): return "Fish";
-		case(MonsterType::Insect): return "Insect";
-		case(MonsterType::Machine): return "Machine";
-		case(MonsterType::Plant): return "Plant";
-		case(MonsterType::Pyro): return "Pyro";
-		case(MonsterType::Reptile): return "Reptile";
-		case(MonsterType::Rock): return "Rock";
-		case(MonsterType::SeaSerpent): return "Sea Serpent";
-		case(MonsterType::Spellcaster): return "Spellcaster";
-		case(MonsterType::Thunder): return "Thunder";
-		case(MonsterType::Warrior): return "Warrior";
-		case(MonsterType::WingedBeast): return "Winged Beast";
-		case(MonsterType::Zombie): return "Zombie";
+		array<MemberInfo^>^ memberinfo = T::typeid->GetMember(value->ToString());
+		if(CLRISNOTNULL(memberinfo) && memberinfo->Length > 0) {
+
+			array<Object^>^ attributes = memberinfo[0]->GetCustomAttributes(DescriptionAttribute::typeid, false);
+			if(CLRISNOTNULL(attributes) && attributes->Length > 0) {
+
+				DescriptionAttribute^ description = dynamic_cast<DescriptionAttribute^>(attributes[0]);
+				if(CLRISNOTNULL(description)) return description->Description;
+			}
+		}
 	}
 
-	return String::Empty;
-
+	return value->ToString();			// Default to a ToString()
 }
 
 //---------------------------------------------------------------------------

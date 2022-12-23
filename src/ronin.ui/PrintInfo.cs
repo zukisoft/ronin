@@ -31,14 +31,14 @@ using zuki.ronin.renderer;
 namespace zuki.ronin.ui
 {
 	/// <summary>
-	/// Implements a card image picture box
+	/// Implements the print information view
 	/// </summary>
-	public partial class CardImage : UserControlBase
+	public partial class PrintInfo : UserControlBase
 	{
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public CardImage()
+		public PrintInfo()
 		{
 			InitializeComponent();
 
@@ -59,26 +59,6 @@ namespace zuki.ronin.ui
 		/// <param name="card">Card for which to render and display the image</param>
 		public void SetCard(Card card)
 		{
-			SetImage((card != null) ? Renderer.RenderCard(card) : null);
-		}
-
-		/// <summary>
-		/// Sets the image from a Card instance with alternate text
-		/// </summary>
-		/// <param name="card">Card for which to render and display the image</param>
-		/// <param name="text">Alternate text to render for the card</param>
-		public void SetCard(Card card, string text)
-		{
-			SetImage((card != null) ? Renderer.RenderCard(card, text) : null);
-		}
-
-		/// <summary>
-		/// Sets the image from a Print instance
-		/// </summary>
-		/// <param name="print">Print for which to render and display the image</param>
-		public void SetPrint(Print print)
-		{
-			SetImage((print != null) ? Renderer.RenderPrint(print) : null);
 		}
 
 		//---------------------------------------------------------------------
@@ -104,9 +84,9 @@ namespace zuki.ronin.ui
 		/// <param name="args">Standard event arguments</param>
 		private void OnLoad(object sender, EventArgs args)
 		{
-			// Reposition/resize the PictureBox after the control has been loaded
-			m_image.Location = new Point(12.ScaleDPI(ApplicationTheme.ScalingFactor), 12.ScaleDPI(ApplicationTheme.ScalingFactor));
-			m_image.Size = new Size(Width - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor));
+			//// Reposition/resize the PictureBox after the control has been loaded
+			//m_image.Location = new Point(12.ScaleDPI(ApplicationTheme.ScalingFactor), 12.ScaleDPI(ApplicationTheme.ScalingFactor));
+			//m_image.Size = new Size(Width - 2 * 12.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 12 * 6.ScaleDPI(ApplicationTheme.ScalingFactor));
 		}
 
 		/// <summary>
@@ -135,21 +115,6 @@ namespace zuki.ronin.ui
 				args.Graphics.FillRectangle(new SolidBrush(ApplicationTheme.PanelBackColor), ClientRectangle);
 				args.Graphics.ResetClip();
 			}
-		}
-
-		//---------------------------------------------------------------------
-		// Private Member Functions
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Replaces the displayed card image
-		/// </summary>
-		/// <param name="image">Image to display</param>
-		private void SetImage(Bitmap image)
-		{
-			Image old = m_image.Image;
-			m_image.Image = image ?? null;
-			old?.Dispose();
 		}
 	}
 }

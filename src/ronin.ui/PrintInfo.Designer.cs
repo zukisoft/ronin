@@ -1,6 +1,6 @@
 ﻿namespace zuki.ronin.ui
 {
-	partial class RulingsView
+	partial class PrintInfo
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -28,40 +28,39 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.m_webbrowser = new System.Windows.Forms.WebBrowser();
+			this.m_image = new zuki.ronin.ui.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.m_image)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// m_webbrowser
+			// m_image
 			// 
-			this.m_webbrowser.AllowWebBrowserDrop = false;
-			this.m_webbrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.m_image.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_webbrowser.IsWebBrowserContextMenuEnabled = false;
-			this.m_webbrowser.Location = new System.Drawing.Point(6, 6);
-			this.m_webbrowser.MinimumSize = new System.Drawing.Size(20, 20);
-			this.m_webbrowser.Name = "m_webbrowser";
-			this.m_webbrowser.ScriptErrorsSuppressed = true;
-			this.m_webbrowser.Size = new System.Drawing.Size(388, 388);
-			this.m_webbrowser.TabIndex = 0;
-			this.m_webbrowser.Visible = false;
-			this.m_webbrowser.WebBrowserShortcutsEnabled = false;
-			this.m_webbrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.OnDocumentCompleted);
+			this.m_image.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+			this.m_image.Location = new System.Drawing.Point(12, 12);
+			this.m_image.Name = "m_image";
+			this.m_image.Size = new System.Drawing.Size(259, 278);
+			this.m_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.m_image.TabIndex = 0;
+			this.m_image.TabStop = false;
 			// 
-			// RulingsView
+			// PrintInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.Controls.Add(this.m_webbrowser);
+			this.Controls.Add(this.m_image);
 			this.DoubleBuffered = true;
-			this.Name = "RulingsView";
-			this.Size = new System.Drawing.Size(400, 400);
+			this.Name = "PrintInfo";
+			this.Size = new System.Drawing.Size(277, 296);
+			this.Load += new System.EventHandler(this.OnLoad);
+			((System.ComponentModel.ISupportInitialize)(this.m_image)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.WebBrowser m_webbrowser;
+		private PictureBox m_image;
 	}
 }

@@ -30,7 +30,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using zuki.ronin.data;
-using zuki.ronin.util;
+using CommonMark;
 
 namespace zuki.ronin.ui
 {
@@ -48,10 +48,6 @@ namespace zuki.ronin.ui
 
 			// The background has to be completely redrawn when resized
 			ResizeRedraw = true;
-
-			// Reposition/resize the web browser based on the DPI
-			m_webbrowser.Location = new Point(6.ScaleDPI(ApplicationTheme.ScalingFactor), 6.ScaleDPI(ApplicationTheme.ScalingFactor));
-			m_webbrowser.Size = new Size(Width - 2 * 6.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 2 * 6.ScaleDPI(ApplicationTheme.ScalingFactor));
 
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
@@ -101,7 +97,7 @@ namespace zuki.ronin.ui
 			}
 
 			// Convert the Markdown into an HTML document body and render it
-			m_currentbody = "<body>" + Markdown.ToHTML(markdown) + "</body>";
+			m_currentbody = "<body>" + CommonMarkConverter.Convert(markdown) + "</body>";
 			RenderDocument();
 
 			// Delay visibility of the browser until this function has been called
@@ -138,6 +134,18 @@ namespace zuki.ronin.ui
 		}
 
 		/// <summary>
+		/// Invoked when the control has been loaded
+		/// </summary>
+		/// <param name="sender">Object raising this event</param>
+		/// <param name="args">Standard event arguments</param>
+		private void OnLoad(object sender, EventArgs args)
+		{
+			// Reposition/resize the web browser after the control has been loaded
+			m_webbrowser.Location = new Point(6.ScaleDPI(ApplicationTheme.ScalingFactor), 6.ScaleDPI(ApplicationTheme.ScalingFactor));
+			m_webbrowser.Size = new Size(Width - 2 * 6.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 2 * 6.ScaleDPI(ApplicationTheme.ScalingFactor));
+		}
+
+		/// <summary>
 		/// Invoked when the UserControl requires painting
 		/// </summary>
 		/// <param name="args">Paint event arguments</param>
@@ -163,7 +171,6 @@ namespace zuki.ronin.ui
 				args.Graphics.FillRectangle(new SolidBrush(ApplicationTheme.PanelBackColor), ClientRectangle);
 				args.Graphics.ResetClip();
 			}
-
 		}
 
 		//---------------------------------------------------------------------
@@ -203,6 +210,7 @@ namespace zuki.ronin.ui
 		static string s_stylelight = @"
 <style>
     body {
+        text-align: justify;
         margin-left: 0 auto;
 		margin-right: 0;
         font-family: Segoe UI;
@@ -210,7 +218,7 @@ namespace zuki.ronin.ui
         padding-top: 0;
         padding-bottom: 0;
         padding-left: .5em;
-        padding-right: 0;
+        padding-right: .8em;
         font-size: .8em;
     }
     a {
@@ -223,7 +231,7 @@ namespace zuki.ronin.ui
     ul, li {
         padding-top: 0;
 		padding-bottom: 0;
-		padding-left: 1.25em;
+		padding-left: 1em;
 		padding-right: 0;
     }
     li {
@@ -239,7 +247,7 @@ namespace zuki.ronin.ui
     blockquote {
         background: #e3e3e3;
         border-radius: .5em;
-        margin-left: 2.4em;
+        margin-left: 2em;
         padding: .01em 1.25em;
         border-left: .5em solid #b0b0b0
     }
@@ -251,6 +259,7 @@ namespace zuki.ronin.ui
 		static string s_styledark = @"
 <style>
     body {
+        text-align: justify;
         margin: 0 auto;
         background: #2b2b2b;
         font-family: Segoe UI;
@@ -258,7 +267,7 @@ namespace zuki.ronin.ui
         padding-top: 0;
         padding-bottom: 0;
         padding-left: .5em;
-        padding-right: .5em;
+        padding-right: .8em;
         font-size: .8em;
     }
     a {
@@ -271,7 +280,7 @@ namespace zuki.ronin.ui
     ul, li {
         padding-top: 0;
 		padding-bottom: 0;
-		padding-left: 1.25em;
+		padding-left: 1em;
 		padding-right: 0;
     }
     li {
@@ -287,7 +296,7 @@ namespace zuki.ronin.ui
     blockquote {
         background: #4b4b4b;
         border-radius: .5em;
-        margin-left: 2.4em;
+        margin-left: 2em;
         padding: .01em 1.25em;
         border-left: .5em solid #585858
     }
