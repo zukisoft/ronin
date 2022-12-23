@@ -34,7 +34,7 @@ namespace zuki.ronin.ui
 		/// <summary>
 		/// Instance Constructor
 		/// </summary>
-		public PictureBox()
+		public PictureBox() : base()
 		{
 			InterpolationMode = InterpolationMode.Default;
 		}

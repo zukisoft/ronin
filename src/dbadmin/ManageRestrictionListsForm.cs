@@ -43,6 +43,11 @@ namespace zuki.ronin
 		{
 			InitializeComponent();
 
+			// Manual DPI scaling
+			m_forbiddencards.Padding = m_forbiddencards.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_limitedcards.Padding = m_limitedcards.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			m_semilimitedcards.Padding = m_semilimitedcards.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+
 			// Reset the theme based on the current system settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
 		}

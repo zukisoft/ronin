@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageArtworkForm));
 			this.m_cardselector = new zuki.ronin.ui.CardSelector();
 			this.m_leftpanel = new System.Windows.Forms.Panel();
 			this.m_rightpanel = new System.Windows.Forms.Panel();
@@ -44,9 +43,13 @@
 			// 
 			// m_cardselector
 			// 
+			this.m_cardselector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_cardselector.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.m_cardselector.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.m_cardselector.ForeColor = System.Drawing.Color.Black;
 			this.m_cardselector.Location = new System.Drawing.Point(4, 4);
 			this.m_cardselector.Name = "m_cardselector";
+			this.m_cardselector.Padding = new System.Windows.Forms.Padding(4);
 			this.m_cardselector.Size = new System.Drawing.Size(296, 630);
 			this.m_cardselector.TabIndex = 0;
 			this.m_cardselector.SelectionChanged += new System.EventHandler<zuki.ronin.data.Card>(this.OnSelectionChanged);
@@ -122,14 +125,15 @@
 			this.m_openfile.AddExtension = false;
 			this.m_openfile.Filter = "JPEG files|*.jpg|PNG files|*.png|BMP files|*.bmp|All files|*.*";
 			// 
-			// ArtworkManager
+			// ManageArtworkForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(848, 638);
 			this.Controls.Add(this.m_rightpanel);
 			this.Controls.Add(this.m_leftpanel);
-			this.Name = "ArtworkManager";
+			this.Location = new System.Drawing.Point(0, 0);
+			this.Name = "ManageArtworkForm";
 			this.Text = "Manage Artwork";
 			this.Load += new System.EventHandler(this.OnLoad);
 			this.m_leftpanel.ResumeLayout(false);

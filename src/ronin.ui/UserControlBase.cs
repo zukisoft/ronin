@@ -21,6 +21,8 @@
 //---------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace zuki.ronin.ui
@@ -46,7 +48,6 @@ namespace zuki.ronin.ui
 			ForeColor = ApplicationTheme.FormForeColor;
 
 			// Manual DPI scaling
-			Margin = Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			Padding = Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 		}
 
@@ -78,6 +79,26 @@ namespace zuki.ronin.ui
 		{
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
+		}
+
+		/// <summary>
+		/// Hides base class property from designers
+		/// </summary>
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor
+		{
+			get => base.BackColor;
+			set => base.BackColor = value;
+		}
+
+		/// <summary>
+		/// Hides base class property from designers
+		/// </summary>
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor
+		{
+			get => base.ForeColor;
+			set => base.ForeColor = value;
 		}
 
 		//---------------------------------------------------------------------

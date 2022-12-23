@@ -58,7 +58,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_marquee.Location = new System.Drawing.Point(8, 33);
-			this.m_marquee.Margin = new System.Windows.Forms.Padding(2);
 			this.m_marquee.MarqueeAnimationSpeed = 20;
 			this.m_marquee.Name = "m_marquee";
 			this.m_marquee.Size = new System.Drawing.Size(417, 15);
@@ -71,7 +70,6 @@
 			this.m_banner.Dock = System.Windows.Forms.DockStyle.Top;
 			this.m_banner.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_banner.Location = new System.Drawing.Point(0, 0);
-			this.m_banner.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.m_banner.Name = "m_banner";
 			this.m_banner.Size = new System.Drawing.Size(432, 31);
 			this.m_banner.TabIndex = 0;
@@ -87,7 +85,7 @@
 			this.ControlBox = false;
 			this.Controls.Add(this.m_panel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Location = new System.Drawing.Point(0, 0);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "BackgroundTaskDialog";

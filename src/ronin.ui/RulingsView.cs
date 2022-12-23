@@ -31,7 +31,6 @@ using System.Windows.Forms;
 
 using zuki.ronin.data;
 using zuki.ronin.util;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace zuki.ronin.ui
 {
@@ -47,7 +46,12 @@ namespace zuki.ronin.ui
 		{
 			InitializeComponent();
 
+			// The background has to be completely redrawn when resized
 			ResizeRedraw = true;
+
+			// Reposition/resize the web browser based on the DPI
+			m_webbrowser.Location = new Point(6.ScaleDPI(ApplicationTheme.ScalingFactor), 6.ScaleDPI(ApplicationTheme.ScalingFactor));
+			m_webbrowser.Size = new Size(Width - 2 * 6.ScaleDPI(ApplicationTheme.ScalingFactor), Height - 2 * 6.ScaleDPI(ApplicationTheme.ScalingFactor));
 
 			// Reset the theme based on the current settings
 			OnApplicationThemeChanged(this, EventArgs.Empty);
@@ -199,14 +203,14 @@ namespace zuki.ronin.ui
 		static string s_stylelight = @"
 <style>
     body {
-        margin: 0 auto;
-        background: #ffffff;
+        margin-left: 0 auto;
+		margin-right: 0;
         font-family: Segoe UI;
         color: #000000;
         padding-top: 0;
         padding-bottom: 0;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding-left: .5em;
+        padding-right: 0;
         font-size: .8em;
     }
     a {
@@ -247,15 +251,14 @@ namespace zuki.ronin.ui
 		static string s_styledark = @"
 <style>
     body {
-        height: 100%;
         margin: 0 auto;
         background: #2b2b2b;
         font-family: Segoe UI;
         color: #ffffff;
         padding-top: 0;
         padding-bottom: 0;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding-left: .5em;
+        padding-right: .5em;
         font-size: .8em;
     }
     a {

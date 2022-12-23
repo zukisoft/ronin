@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardTextEditorDialog));
 			this.m_cancel = new System.Windows.Forms.Button();
 			this.m_ok = new System.Windows.Forms.Button();
 			this.m_panel = new System.Windows.Forms.Panel();
@@ -114,16 +113,18 @@
 			// 
 			// m_image
 			// 
+			this.m_image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
 			this.m_image.Dock = System.Windows.Forms.DockStyle.Left;
+			this.m_image.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_image.ForeColor = System.Drawing.Color.White;
 			this.m_image.Location = new System.Drawing.Point(4, 4);
 			this.m_image.Name = "m_image";
-			this.m_image.Padding = new System.Windows.Forms.Padding(8);
+			this.m_image.Padding = new System.Windows.Forms.Padding(4);
 			this.m_image.Size = new System.Drawing.Size(338, 457);
 			this.m_image.TabIndex = 3;
 			this.m_image.TabStop = false;
 			// 
-			// CardTextEditor
+			// CardTextEditorDialog
 			// 
 			this.AcceptButton = this.m_ok;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -134,9 +135,10 @@
 			this.Controls.Add(this.m_ok);
 			this.Controls.Add(this.m_cancel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.Location = new System.Drawing.Point(0, 0);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "CardTextEditor";
+			this.Name = "CardTextEditorDialog";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Edit Card Text";
