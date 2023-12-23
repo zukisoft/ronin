@@ -98,7 +98,7 @@
 			this.m_static5.Name = "m_static5";
 			this.m_static5.Size = new System.Drawing.Size(234, 15);
 			this.m_static5.TabIndex = 7;
-			this.m_static5.Text = "Copyright © 2004-2022 Michael G. Brehm";
+			this.m_static5.Text = "Copyright © 2004-2024 Michael G. Brehm";
 			// 
 			// AboutDialog
 			// 

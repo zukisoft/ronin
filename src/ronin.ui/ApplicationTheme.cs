@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------
-// Copyright (c) 2004-2022 Michael G. Brehm
+// Copyright (c) 2004-2024 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -86,9 +86,9 @@ namespace zuki.ronin.ui
 		public static bool DarkMode => s_darkmode;
 
 		/// <summary>
-		/// The text color of a disabled hyperlink
+		/// The foreground color of a disabled control
 		/// </summary>
-		public static Color DisabledLinkColor => s_darkmode ? Color.Gray : Color.Gray;
+		public static Color DisabledForeColor => Color.Gray;
 
 		/// <summary>
 		/// The foreground color of a form
@@ -101,14 +101,14 @@ namespace zuki.ronin.ui
 		public static Color FormBackColor => s_darkmode ? Color.FromArgb(0x20, 0x20, 0x20) : Color.FromArgb(0xF3, 0xF3, 0xF3);
 
 		/// <summary>
-		/// The background color of an interverted panel
+		/// The background color of an inverted panel
 		/// </summary>
 		public static Color InvertedPanelBackColor => s_darkmode ? Color.FromArgb(0x58, 0x58, 0x58) : Color.FromArgb(0xB0, 0xB0, 0xB0);
 
 		/// <summary>
 		/// The foreground color of an inverted panel
 		/// </summary>
-		public static Color InvertedPanelForeColor => s_darkmode ? Color.White : Color.White;
+		public static Color InvertedPanelForeColor => Color.White;
 
 		/// <summary>
 		/// Gets the light mode indicator

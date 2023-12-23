@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------
-// Copyright (c) 2004-2022 Michael G. Brehm
+// Copyright (c) 2004-2024 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,6 +67,32 @@ namespace zuki.ronin.ui
 		}
 
 		//---------------------------------------------------------------------
+		// Properties
+		//---------------------------------------------------------------------
+
+		/// <summary>
+		/// Hides base class property from designers
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor
+		{
+			get => base.BackColor;
+			set => base.BackColor = value;
+		}
+
+		/// <summary>
+		/// Hides base class property from designers
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor
+		{
+			get => base.ForeColor;
+			set => base.ForeColor = value;
+		}
+
+		//---------------------------------------------------------------------
 		// Event Handlers
 		//---------------------------------------------------------------------
 
@@ -79,30 +105,6 @@ namespace zuki.ronin.ui
 		{
 			BackColor = ApplicationTheme.FormBackColor;
 			ForeColor = ApplicationTheme.FormForeColor;
-		}
-
-		//---------------------------------------------------------------------
-		// Properties
-		//---------------------------------------------------------------------
-
-		/// <summary>
-		/// Hides base class property from designers
-		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color BackColor
-		{
-			get => base.BackColor;
-			set => base.BackColor = value;
-		}
-
-		/// <summary>
-		/// Hides base class property from designers
-		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color ForeColor
-		{
-			get => base.ForeColor;
-			set => base.ForeColor = value;
 		}
 
 		//---------------------------------------------------------------------

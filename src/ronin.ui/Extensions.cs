@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------
-// Copyright (c) 2004-2022 Michael G. Brehm
+// Copyright (c) 2004-2024 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,6 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -100,28 +99,18 @@ namespace zuki.ronin.ui
 		}
 
 		/// <summary>
-		/// Enables double-buffering for a control via reflection
-		/// </summary>
-		/// <param name="control">Control to enable double-buffering for</param>
-		public static void EnableDoubleBuffering(this Control control)
-		{
-			PropertyInfo property = typeof(Control).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-			property.SetValue(control, true, null);
-		}
-
-		/// <summary>
-		/// Fills a rounded rectangle specified by a bounding Rectangle with a common corner radius value for each corners
+		/// Fills a rounded rectangle specified by a bounding Rectangle and a common corner radius value
 		/// </summary>
 		/// <param name="graphics">Graphics instance</param>
-		/// <param name="brush">Brush color to use</param>
-		/// <param name="bounds">Rectangle bounds</param>
-		/// <param name="cornerRadius">Radius to use for the rounding</param>
-		public static void FillRoundedRectangle(this Graphics graphics, Brush brush, Rectangle bounds, int cornerRadius)
+		/// <param name="brush">Brush to fill with</param>
+		/// <param name="bounds">Rectangle boundaries</param>
+		/// <param name="radius">Corner radius</param>
+		public static void FillRoundedRectangle(this Graphics graphics, Brush brush, Rectangle bounds, int radius)
 		{
 			if(graphics == null) throw new ArgumentNullException(nameof(graphics));
 			if(brush == null) throw new ArgumentNullException(nameof(brush));
 
-			using(GraphicsPath path = CreateRoundedRectangle(bounds, cornerRadius))
+			using(GraphicsPath path = CreateRoundedRectangle(bounds, radius))
 			{
 				graphics.FillPath(brush, path);
 			}
@@ -200,10 +189,10 @@ namespace zuki.ronin.ui
 		//-------------------------------------------------------------------
 
 		/// <summary>
-		/// Returns the path for a rounded rectangle specified by a bounding Rectangle and a common radius
+		/// Returns the path for a rounded rectangle specified by a bounding rectangle and a common corner radius
 		/// </summary>
-		/// <param name="bounds">Rectangle boundaries</param>
-		/// <param name="radius">Radius</param>
+		/// <param name="bounds">Bounding rectangle</param>
+		/// <param name="radius">Common corner radius</param>
 		private static GraphicsPath CreateRoundedRectangle(Rectangle bounds, int radius)
 		{
 			GraphicsPath path = new GraphicsPath();
@@ -221,11 +210,11 @@ namespace zuki.ronin.ui
 			path.AddArc(arc, 180, 90);
 
 			// top right arc
-			arc.X = bounds.Right - diameter;
+			arc.X = bounds.Right - diameter - 1;
 			path.AddArc(arc, 270, 90);
 
 			// bottom right arc
-			arc.Y = bounds.Bottom - diameter;
+			arc.Y = bounds.Bottom - diameter - 1;
 			path.AddArc(arc, 0, 90);
 
 			// bottom left arc
@@ -235,6 +224,5 @@ namespace zuki.ronin.ui
 			path.CloseFigure();
 			return path;
 		}
-
 	}
 }

@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------
-// Copyright (c) 2004-2022 Michael G. Brehm
+// Copyright (c) 2004-2024 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,10 +70,6 @@ namespace zuki.ronin
 		protected override void OnApplicationThemeChanged(object sender, EventArgs args)
 		{
 			base.OnApplicationThemeChanged(sender, args);
-			panel1.BackColor = ApplicationTheme.PanelBackColor;
-			panel1.ForeColor = ApplicationTheme.PanelForeColor;
-			m_rightpanel.BackColor = ApplicationTheme.PanelBackColor;
-			m_rightpanel.ForeColor = ApplicationTheme.PanelForeColor;
 			m_rulings.BackColor = ApplicationTheme.PanelBackColor;
 			m_rulings.ForeColor = ApplicationTheme.PanelForeColor;
 		}

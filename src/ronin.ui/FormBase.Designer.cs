@@ -20,7 +20,7 @@
 			// FormBase
 			// 
 			this.ClientSize = new System.Drawing.Size(917, 480);
-			this.Name = "BaseForm";
+			this.Name = "FormBase";
 			this.ResumeLayout(false);
 
 		}

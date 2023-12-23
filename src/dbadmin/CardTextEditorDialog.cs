@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------
-// Copyright (c) 2004-2022 Michael G. Brehm
+// Copyright (c) 2004-2024 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +77,7 @@ namespace zuki.ronin
 
 			m_insertdot.ActiveLinkColor = ApplicationTheme.LinkColor;
 			m_insertdot.LinkColor = ApplicationTheme.LinkColor;
-			m_insertdot.DisabledLinkColor = ApplicationTheme.DisabledLinkColor;
+			m_insertdot.DisabledLinkColor = ApplicationTheme.DisabledForeColor;
 			m_text.BackColor = ApplicationTheme.PanelBackColor;
 			m_text.ForeColor = ApplicationTheme.PanelForeColor;
 		}
