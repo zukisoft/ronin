@@ -81,7 +81,8 @@ namespace zuki.ronin
 			Settings.Default.PropertyChanged += new PropertyChangedEventHandler(OnPropertyChanged);
 
 			// Manual DPI scaling
-			cardView1.Padding = cardView1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			cardSelector1.Padding = cardSelector1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//cardView1.Padding = cardView1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel2.Padding = toolStripStatusLabel2.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			toolStripStatusLabel1.Padding = toolStripStatusLabel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 

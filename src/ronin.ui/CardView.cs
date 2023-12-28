@@ -42,15 +42,15 @@ namespace zuki.ronin.ui
 			InitializeComponent();
 
 			// Manual DPI scaling
-			m_cardimage.Padding = m_cardimage.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			m_cardimage.Margin = m_cardimage.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//m_cardimage.Padding = m_cardimage.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//m_cardimage.Margin = m_cardimage.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			//cardInfo1.Padding = cardInfo1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			//cardInfo1.Margin = cardInfo1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			//printInfo1.Padding = printInfo1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 			//printInfo1.Margin = printInfo1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 
-			tableLayoutPanel1.Padding = tableLayoutPanel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
-			tableLayoutPanel1.Margin = tableLayoutPanel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//tableLayoutPanel1.Padding = tableLayoutPanel1.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
+			//tableLayoutPanel1.Margin = tableLayoutPanel1.Margin.ScaleDPI(ApplicationTheme.ScalingFactor);
 			//m_printlistview.Padding = m_printlistview.Padding.ScaleDPI(ApplicationTheme.ScalingFactor);
 
 			// Reset the theme based on the current settings
